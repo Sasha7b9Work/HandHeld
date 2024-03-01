@@ -589,6 +589,16 @@
               <FileType>8</FileType>
               <FilePath>.\src\main.cpp</FilePath>
             </File>
+            <File>
+              <FileName>Device.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Device.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Device.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Device.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -646,6 +656,21 @@
               <FileName>HAL_PINS.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Hardware\HAL\HAL_PINS.h</FilePath>
+            </File>
+            <File>
+              <FileName>HAL.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Hardware\HAL\HAL.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>HAL.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Hardware\HAL\HAL.h</FilePath>
+            </File>
+            <File>
+              <FileName>HAL_I2C.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Hardware\HAL\HAL_I2C.cpp</FilePath>
             </File>
           </Files>
         </Group>
