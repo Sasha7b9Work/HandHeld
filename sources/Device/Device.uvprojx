@@ -674,6 +674,66 @@
             </File>
           </Files>
         </Group>
+        <Group>
+          <GroupName>Display</GroupName>
+          <Files>
+            <File>
+              <FileName>Display.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Display\Display.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Display.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Display\Display.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Modules/CMT2210AW</GroupName>
+          <Files>
+            <File>
+              <FileName>CMT2210AW.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Modules\CMT2210AW\CMT2210AW.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>CMT2210AW.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Modules\CMT2210AW\CMT2210AW.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Modules/PCF8563</GroupName>
+          <Files>
+            <File>
+              <FileName>PCF8563.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Modules\PCF8563\PCF8563.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>PCF8563.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Modules\PCF8563\PCF8563.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Modules/ST7755</GroupName>
+          <Files>
+            <File>
+              <FileName>ST7755.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Modules\ST7755\ST7755.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>ST7755.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Modules\ST7755\ST7755.h</FilePath>
+            </File>
+          </Files>
+        </Group>
       </Groups>
     </Target>
   </Targets>

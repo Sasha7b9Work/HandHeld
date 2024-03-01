@@ -6,7 +6,7 @@
   <Header>### uVision Project, (C) Keil Software</Header>
 
   <PrjGuiSettings>
-    <LastAddFilePath>C:\My\GitHub\_work\HandHeld\sources\Device\src\Hardware\HAL</LastAddFilePath>
+    <LastAddFilePath>C:\My\GitHub\_work\HandHeld\sources\Device\src\Modules\ST7755</LastAddFilePath>
   </PrjGuiSettings>
 
   <ViewPool/>
@@ -101,10 +101,10 @@
         <yPos>-1</yPos>
       </MaxPosition>
       <NormalPosition>
-        <Top>418</Top>
-        <Left>178</Left>
-        <Right>2070</Right>
-        <Bottom>1288</Bottom>
+        <Top>383</Top>
+        <Left>581</Left>
+        <Right>2473</Right>
+        <Bottom>1253</Bottom>
       </NormalPosition>
     </WindowPosition>
     <MDIClientArea>
