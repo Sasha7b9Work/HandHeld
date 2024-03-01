@@ -2,6 +2,8 @@
 #include "defines.h"
 #include "Device.h"
 #include "Display/Display.h"
+#include "Keyboard/Keyboard.h"
+#include "Menu/Menu.h"
 #include "Hardware/HAL/HAL.h"
 #include "Modules/CMT2210AW/CMT2210AW.h"
 #include "Modules/PCF8563/PCF8563.h"
@@ -10,6 +12,10 @@
 void Device::Init()
 {
     HAL::Init();
+
+    Keyboard::Init();
+
+    Menu::Init();
 
     Display::Init();
 
@@ -21,5 +27,9 @@ void Device::Init()
 
 void Device::Update()
 {
+    Keyboard::Update();
+
+    Menu::Update();
+
     Display::Update();
 }
