@@ -6,5 +6,5 @@ struct TimeMeterMS
 {
     void Reset();
 
-    uint ElapsedTime();
+    uint ElapsedTime() const;
 };

@@ -2,7 +2,7 @@
 
 project (Device)
 
-set(CMAKE_UNITY_BUILD OFF)
+#set(CMAKE_UNITY_BUILD OFF)
 
 set(CMAKE_UNITY_BUILD_BATCH_SIZE 16)
 
@@ -44,12 +44,16 @@ if(WIN32)
     add_compile_options(/wd5267)
 endif()
 
-file(GLOB SRC                   *.h *.cpp
+file(GLOB SRC                                *.h *.cpp
                                 ../../Device/src/*.*)
 file(GLOB DISPLAY               ../../Device/src/Display/*.*)
 file(GLOB DISPLAY_FONT          ../../Device/src/Display/Font/*.*)
-file(GLOB HARDWARE              ../../Device/src/Hardware/*.*)
-file(GLOB HARDWARE_HAL          ../../Device/src/Hardware/HAL/HAL.h)
+file(GLOB HARDWARE              ../../Device/src/Hardware/Timer.h
+                                                 Hardware/*.*)
+file(GLOB HARDWARE_HAL          ../../Device/src/Hardware/HAL/HAL.h
+                                                 Hardware/HAL/*.*)
+file(GLOB KEYBOARD              ../../Device/src/Keyboard/Keyboard.h
+                                                 Keyboard/*.*)
 file(GLOB MODULES_CMT2210AW     ../../Device/src/Modules/CMT2210AW/*.*)
 file(GLOB MODULES_PCF8563       ../../Device/src/Modules/PCF8563/*.*)
 file(GLOB MODULES_ST7755        ../../Device/src/Modules/ST7755/*.*)
@@ -63,6 +67,7 @@ source_group(Display            FILES ${DISPLAY})
 source_group(Display/Font       FILES ${DISPLAY_FONT})
 source_group(Hardware           FILES ${HARDWARE})
 source_group(Hardware/HAL       FILES ${HARDWARE_HAL})
+source_group(Keyboard           FILES ${KEYBOARD})
 source_group(Modules/CMT2210AW  FILES ${MODULES_CMT2210AW})
 source_group(Modules/PCF8563    FILES ${MODULES_PCF8563})
 source_group(Modules/ST7755     FILES ${MODULES_ST7755})
@@ -90,6 +95,7 @@ add_executable(${PROJECT_NAME}
     ${DISPLAY_FONT}
     ${HARDWARE}
     ${HARDWARE_HAL}
+    ${KEYBOARD}
     ${MODULES_CMT2210AW}
     ${MODULES_PCF8563}
     ${MODULES_ST7755}

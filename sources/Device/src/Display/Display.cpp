@@ -4,6 +4,15 @@
 #include "Modules/ST7755/ST7755.h"
 
 
+namespace Display
+{
+    namespace Buffer
+    {
+        static uint8 buffer[WIDTH * HEIGHT];
+    }
+}
+
+
 void Display::Init()
 {
     ST7755::Init();
@@ -13,4 +22,10 @@ void Display::Init()
 void Display::Update()
 {
 
+}
+
+
+uint8 *Display::Buffer::GetLine(int, int)
+{
+    return buffer;
 }

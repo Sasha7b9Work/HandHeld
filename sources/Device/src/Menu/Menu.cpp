@@ -13,3 +13,15 @@ void Menu::Update()
 {
 
 }
+
+
+void Menu::ShortPress()
+{
+
+}
+
+
+void Menu::LongPress()
+{
+
+}
