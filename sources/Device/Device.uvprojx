@@ -650,16 +650,6 @@
               <FilePath>.\src\Hardware\HAL\systick.h</FilePath>
             </File>
             <File>
-              <FileName>gd32e23x_it.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Hardware\HAL\gd32e23x_it.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>systick.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Hardware\HAL\systick.cpp</FilePath>
-            </File>
-            <File>
               <FileName>HAL_PINS.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Hardware\HAL\HAL_PINS.cpp</FilePath>
@@ -683,6 +673,16 @@
               <FileName>HAL_I2C.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Hardware\HAL\HAL_I2C.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>gd32e23x_it.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\Hardware\HAL\gd32e23x_it.c</FilePath>
+            </File>
+            <File>
+              <FileName>systick.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\Hardware\HAL\systick.c</FilePath>
             </File>
           </Files>
         </Group>

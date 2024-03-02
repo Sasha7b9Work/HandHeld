@@ -35,6 +35,10 @@ OF SUCH DAMAGE.
 #include "gd32e23x.h"
 #include "systick.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 volatile static uint32_t delay;
 
 /*!
@@ -81,3 +85,8 @@ void delay_decrement(void)
         delay--;
     }
 }
+
+
+#ifdef __cplusplus
+}
+#endif

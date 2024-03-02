@@ -37,6 +37,10 @@ OF SUCH DAMAGE.
 
 #include "gd32e23x.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /* function declarations */
 /* this function handles NMI exception */
 void NMI_Handler(void);
@@ -56,5 +60,9 @@ void DebugMon_Handler(void);
 void PendSV_Handler(void);
 /* this function handles SysTick exception */
 void SysTick_Handler(void);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* GD32E23X_IT_H */

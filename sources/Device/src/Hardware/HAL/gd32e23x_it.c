@@ -2,6 +2,10 @@
 #include "gd32e23x_it.h"
 #include "systick.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /*!
     \brief      this function handles NMI exception
     \param[in]  none
@@ -55,3 +59,8 @@ void SysTick_Handler(void)
 {
     delay_decrement();
 }
+
+
+#ifdef __cplusplus
+}
+#endif
