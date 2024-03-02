@@ -12,8 +12,6 @@ public:
 
     static Frame *Self() { return self; };
 
-    void OnQuit(wxCommandEvent &);
-    void OnAbout(wxCommandEvent &);
     void OnTimer(wxTimerEvent &);
     void OnTimerButton(wxTimerEvent &);
 
@@ -25,7 +23,6 @@ public:
     void EndScene();
 
 private:
-    wxDECLARE_EVENT_TABLE();
 
     wxTimer timer;
     static Frame *self;

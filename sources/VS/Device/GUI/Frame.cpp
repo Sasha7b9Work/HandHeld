@@ -24,12 +24,6 @@ enum
     TIMER_BUTTON_ID
 };
 
-wxBEGIN_EVENT_TABLE(Frame, wxFrame)
-EVT_MENU(wxID_ABOUT, Frame::OnAbout)
-EVT_MENU(wxID_EXIT, Frame::OnQuit)
-wxEND_EVENT_TABLE()
-
-
 class Screen : public wxPanel
 {
 public:
@@ -61,16 +55,6 @@ Frame::Frame(const wxString &title)
 {
     SetIcon(wxICON(sample));
 
-    wxMenu *menuFile = new wxMenu;
-
-    menuFile->Append(wxID_ABOUT);
-    menuFile->Append(wxID_EXIT);
-
-    wxMenuBar *menuBar = new wxMenuBar;
-    menuBar->Append(menuFile, _("&File"));
-
-    wxFrameBase::SetMenuBar(menuBar);
-
     self = this;
 
     screen = new Screen(this);
@@ -100,34 +84,6 @@ Frame::Frame(const wxString &title)
     SetPosition({ x, y });
 
     timer.StartOnce(25);
-}
-
-
-void Frame::OnQuit(wxCommandEvent &WXUNUSED(event))
-{
-    Close(true);
-}
-
-void Frame::OnAbout(wxCommandEvent &WXUNUSED(event))
-{
-    wxBoxSizer *topsizer;
-    wxDialog dlg(this, wxID_ANY, wxString(_("About")));
-
-    topsizer = new wxBoxSizer(wxVERTICAL);
-
-#if wxUSE_STATLINE
-    topsizer->Add(new wxStaticLine(&dlg, wxID_ANY), 0, wxEXPAND | wxLEFT | wxRIGHT, 10);
-#endif // wxUSE_STATLINE
-
-    wxButton *bu1 = new wxButton(&dlg, wxID_OK, _("OK"));
-    bu1->SetDefault();
-
-    topsizer->Add(bu1, 0, wxALL | wxALIGN_RIGHT, 15);
-
-    dlg.SetSizer(topsizer);
-    topsizer->Fit(&dlg);
-
-    dlg.ShowModal();
 }
 
 
