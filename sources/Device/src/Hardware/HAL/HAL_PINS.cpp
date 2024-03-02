@@ -1,27 +1,41 @@
 // 2024/03/01 22:10:32 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
 #include "Hardware/HAL/HAL_PINS.h"
+#include <gd32e23x.h>
 
 
-PinIn pinSW_LEFT;       // PB0  18 
-PinIn pinSW_DOWN;       // PB1  19
-PinIn pinSW_RIGHT;      // PB2  20
-PinIn pinSW_UP;         // PA7  17
+PinIn pinSW_LEFT(GPIOB, GPIO_PIN_0);       // PB0  18 
+PinIn pinSW_DOWN(GPIOB, GPIO_PIN_1);       // PB1  19
+PinIn pinSW_RIGHT(GPIOB, GPIO_PIN_2);      // PB2  20
+PinIn pinSW_UP(GPIOA, GPIO_PIN_7);         // PA7  17
 
-Pin pinDOUT;            // PB12 25
-Pin pinSCK;             // PB13 26
+PinOut pinDOUT(GPIOB, GPIO_PIN_12);            // PB12 25
+PinOut pinSCK(GPIOB, GPIO_PIN_13);             // PB13 26
 
-PinIn  pinPWR_CTRL;     // PA0  10
-PinOut pinADC;          // PA1  11
+PinIn  pinPWR_CTRL(GPIOA, GPIO_PIN_0);     // PA0  10
+PinOut pinADC(GPIOA, GPIO_PIN_1);          // PA1  11
 
-PinOut pinLEDPWR;       // PA2  12
-PinOut pinSOUND;        // PA3  13
-PinOut pinVIBRO;        // PA10 31
+PinOut pinLEDPWR(GPIOA, GPIO_PIN_2);       // PA2  12
+PinOut pinSOUND(GPIOA, GPIO_PIN_3);        // PA3  13
+PinOut pinVIBRO(GPIOA, GPIO_PIN_10);        // PA10 31
 
-PinIn pinPWR;           // PA12 33
+PinIn pinPWR(GPIOA, GPIO_PIN_12);           // PA12 33
 
 
 void Pin::Init()
+{
+
+}
+
+
+void PinOut::Init()
+{
+    gpio_mode_set(port, GPIO_MODE_OUTPUT, GPIO_PUPD_NONE, pin);
+    gpio_output_options_set(port, GPIO_OTYPE_PP, GPIO_OSPEED_50MHZ, pin);
+}
+
+
+void PinIn::Init()
 {
 
 }

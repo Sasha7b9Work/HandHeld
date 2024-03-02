@@ -4,7 +4,6 @@
 
 
 I2C i2cCOMMON;
-I2C i2cTFT;
 
 
 void I2C::Init()

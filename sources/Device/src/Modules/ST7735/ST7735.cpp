@@ -9,14 +9,11 @@
 
 namespace ST7735
 {
-    static PinOut pinDC;       // PA5  15
-    static PinOut pinRES;      // PA8  29
-    static PinOut pinBKG;      // PA9  30
-    static PinOut pinSCL;      // PA4  14
-    static PinOut pinSDA;      // PA6  16
-
-#define SET_DC   pinTFT_DC.ToHi()
-#define RESET_DC pinTFT_DC.ToLow()
+    static PinOut pinDC(GPIOA, GPIO_PIN_5);       // PA5  15
+    static PinOut pinRES(GPIOA, GPIO_PIN_8);      // PA8  29
+    static PinOut pinBKG(GPIOA, GPIO_PIN_9);      // PA9  30
+    static PinOut pinSCL(GPIOA, GPIO_PIN_4);      // PA4  14
+    static PinOut pinSDA(GPIOA, GPIO_PIN_6);      // PA6  16
 
     static void SendByte(uint8);
     static void SendCommand(uint8);

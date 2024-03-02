@@ -14,5 +14,4 @@ struct I2C
 };
 
 
-extern I2C i2cTFT;          // Для дисплея
 extern I2C i2cCOMMON;       // Для часов и приёмника
