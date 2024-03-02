@@ -36,10 +36,4 @@ extern PinOut pinLEDPWR;
 extern PinOut pinSOUND;
 extern PinOut pinVIBRO;
 
-extern PinOut pinTFT_DC;
-extern PinOut pinTFT_RES;
-extern PinOut pinTFT_BKG;
-extern PinOut pinTFT_SCL;
-extern PinOut pinTFT_SDA;
-
 extern PinIn pinPWR;

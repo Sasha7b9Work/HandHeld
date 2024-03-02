@@ -9,9 +9,16 @@
 
 namespace ST7735
 {
+    static PinOut pinDC;       // PA5  15
+    static PinOut pinRES;      // PA8  29
+    static PinOut pinBKG;      // PA9  30
+    static PinOut pinSCL;      // PA4  14
+    static PinOut pinSDA;      // PA6  16
+
 #define SET_DC   pinTFT_DC.ToHi()
 #define RESET_DC pinTFT_DC.ToLow()
 
+    static void SendByte(uint8);
     static void SendCommand(uint8);
     static void SendData8(uint8);
     static void SendData16(uint16);
@@ -21,20 +28,24 @@ namespace ST7735
 
 void ST7735::Init()
 {
-    pinTFT_DC.Init();
-    pinTFT_RES.Init();
-    pinTFT_BKG.Init();
-    pinTFT_SCL.Init();
-    pinTFT_SDA.Init();
+    pinDC.Init();
+    pinRES.Init();
+    pinBKG.Init();
+    pinSCL.Init();
+    pinSDA.Init();
 
-    pinTFT_RES.ToLow();
-    pinTFT_DC.ToLow();
+    pinSCL.ToLow();
 
-    pinTFT_RES.ToHi(); //-V525
+    pinBKG.ToHi();
+
+    pinRES.ToLow();
+    pinDC.ToLow();
+
+    pinRES.ToHi(); //-V525
     Timer::Delay(20);
-    pinTFT_RES.ToLow();
+    pinRES.ToLow();
     Timer::Delay(20);
-    pinTFT_RES.ToHi();
+    pinRES.ToHi();
     Timer::Delay(20);
 
     SendCommand(0x01);      // SWRESET Software reset
@@ -44,7 +55,7 @@ void ST7735::Init()
     Timer::Delay(12);
 
     SendCommand(0x3A);      // COLMOD Interface pixel format
-    Timer::Delay(0x05);        // 16 bit / pixel
+    Timer::Delay(0x05);     // 16 bit / pixel
 
     SendCommand(0x36);      // MADCTL Memory Data Access Control
     SendData8(BINARY_U8(01100000));
@@ -86,17 +97,40 @@ void ST7735::SetWindow(int x, int y, int width, int height)
 }
 
 
-void ST7735::SendCommand(uint8)
+void ST7735::SendByte(uint8 byte)
 {
+    for (int bit = 7; bit >= 0; bit--)
+    {
+        (byte & (1 << bit)) == 0 ? pinSDA.ToLow() : pinSDA.ToHi();
+
+        pinSCL.ToHi();
+
+        pinSCL.ToLow();
+    }
 }
 
 
-
-void ST7735::SendData8(uint8)
+void ST7735::SendCommand(uint8 command)
 {
+    pinDC.ToLow();
+
+    SendByte(command);
 }
 
 
-void ST7735::SendData16(uint16)
+void ST7735::SendData8(uint8 data)
 {
+    pinDC.ToHi();
+
+    SendByte(data);
+}
+
+
+void ST7735::SendData16(uint16 data)
+{
+    pinDC.ToHi();
+
+    SendByte((uint8)(data >> 8));
+
+    SendByte((uint8)data);
 }
