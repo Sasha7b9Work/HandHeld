@@ -5,4 +5,6 @@
 namespace ST7755
 {
     void Init();
+
+    void WriteBuffer(int x0, int y0, int width, int height);
 }

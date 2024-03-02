@@ -18,7 +18,7 @@ include_directories(
     ../../common/VS_KEIL
 )
 
-link_directories(../../generated/ThirdParty/lib/vc_dll)
+link_directories(../../ThirdParty/wxWidgets/generated/lib/vc_lib)
 
 add_definitions(-DSTM32F103xB -DWXUSINGDLL -DGUI -DDEVICE)
 
@@ -43,36 +43,32 @@ if(WIN32)
     add_compile_options(/wd5267)
 endif()
 
-file(GLOB LIBS_USBD                 ../../common/_VS_LIBS/USBD/*.*)
-file(GLOB SRC                       *.h *.cpp
-                                    ../../Device/src/defines.h
-                                    ../../Device/src/Device.*)
-file(GLOB DISPLAY                   ../../Device/src/Display/*.*)
-file(GLOB DISPLAY_FONT              ../../Device/src/Display/Font/*.*)
-file(GLOB HARDWARE                  ../../Device/src/Hardware/*.*)
-file(GLOB HARDWARE_HAL              ../../Device/src/Hardware/HAL/*.*
-                                                     Hardware/HAL/*.*)
-file(GLOB MODULES_CMT2210AW         ../../Device/src/Modules/CMT2210AW/*.*)
-file(GLOB MODULES_PCF8563           ../../Device/src/Modules/PCF8563/*.*)
-file(GLOB MODULES_ST7755            ../../Device/src/Modules/ST7755/*.*)
-file(GLOB MENU                      ../../Device/src/Menu/*.*)
-file(GLOB MENU_PAGES                ../../Device/src/Menu/Pages/*.*)
-file(GLOB SETTINGS                  ../../Device/src/Settings/*.*)
-file(GLOB UTILS                     ../../Device/src/Utils/*.*)
+file(GLOB SRC                   *.h *.cpp
+                                ../../Device/src/*.*)
+file(GLOB DISPLAY               ../../Device/src/Display/*.*)
+file(GLOB DISPLAY_FONT          ../../Device/src/Display/Font/*.*)
+file(GLOB HARDWARE              ../../Device/src/Hardware/*.*)
+file(GLOB HARDWARE_HAL          ../../Device/src/Hardware/HAL/HAL.h)
+file(GLOB MODULES_CMT2210AW     ../../Device/src/Modules/CMT2210AW/*.*)
+file(GLOB MODULES_PCF8563       ../../Device/src/Modules/PCF8563/*.*)
+file(GLOB MODULES_ST7755        ../../Device/src/Modules/ST7755/*.*)
+file(GLOB MENU                  ../../Device/src/Menu/*.*)
+file(GLOB MENU_PAGES            ../../Device/src/Menu/Pages/*.*)
+file(GLOB SETTINGS              ../../Device/src/Settings/*.*)
+file(GLOB UTILS                 ../../Device/src/Utils/*.*)
 
-source_group(libs/USBD                  FILES ${LIBS_USBD})
-source_group(src                        FILES ${SRC})
-source_group(Display                    FILES ${DISPLAY})
-source_group(Display/Font               FILES ${DISPLAY_FONT})
-source_group(Hardware                   FILES ${HARDWARE})
-source_group(Hardware/HAL               FILES ${HARDWARE_HAL})
-source_group(Modules/CMT2210AW          FILES ${MODULES_CMT2210AW})
-source_group(Modules/PCF8563            FILES ${MODULES_PCF8563})
-source_group(Modules/ST7755             FILES ${MODULES_ST7755})
-source_group(Menu                       FILES ${MENU})
-source_group(Menu/Pages                 FILES ${MENU_PAGES})
-source_group(Settings                   FILES ${SETTINGS})
-source_group(Utils                      FILES ${UTILS})
+source_group(src                FILES ${SRC})
+source_group(Display            FILES ${DISPLAY})
+source_group(Display/Font       FILES ${DISPLAY_FONT})
+source_group(Hardware           FILES ${HARDWARE})
+source_group(Hardware/HAL       FILES ${HARDWARE_HAL})
+source_group(Modules/CMT2210AW  FILES ${MODULES_CMT2210AW})
+source_group(Modules/PCF8563    FILES ${MODULES_PCF8563})
+source_group(Modules/ST7755     FILES ${MODULES_ST7755})
+source_group(Menu               FILES ${MENU})
+source_group(Menu/Pages         FILES ${MENU_PAGES})
+source_group(Settings           FILES ${SETTINGS})
+source_group(Utils              FILES ${UTILS})
 
 
 set_source_files_properties(
@@ -83,13 +79,11 @@ set_source_files_properties(
 )
 
 
-set_source_files_properties(../../Device/src/Hardware/CDC/usbd_conf.c
-                            PROPERTIES HEADER_FILE_ONLY TRUE)
+#set_source_files_properties(
+#    PROPERTIES HEADER_FILE_ONLY TRUE
+#)
 
 add_executable(${PROJECT_NAME}
-    ${LIBS_STM32F1}
-    ${LIBS_STM32F1_INC}
-    ${LIBS_USBD}
     ${SRC}
     ${DISPLAY}
     ${DISPLAY_FONT}

@@ -2,7 +2,7 @@
 #include "defines.h"
 #include "Frame.h"
 #include "Display/Display.h"
-#include "Hardware/Modules/ST7735/ST7735.h"
+#include "Modules/ST7755/ST7755.h"
 #include "Application.h"
 #include "Menu/Menu.h"
 #include "wx/statline.h"
@@ -191,7 +191,7 @@ static wxColour ConvertColor(Color::E e)
 }
 
 
-void ST7735::WriteBuffer(int x0, int y0, int width, int height)
+void ST7755::WriteBuffer(int x0, int y0, int width, int height)
 {
     static const wxColour colors[16] =
     {
