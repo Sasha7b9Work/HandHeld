@@ -2,6 +2,12 @@
 #pragma once
 
 
+namespace Timer
+{
+    void Delay(uint timeMS);
+}
+
+
 struct TimeMeterMS
 {
     void Reset();

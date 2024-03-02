@@ -18,8 +18,28 @@ PinOut pinLEDPWR;       // PA2  12
 PinOut pinSOUND;        // PA3  13
 PinOut pinVIBRO;        // PA10 31
 
-PinOut pinTFT_RS;       // PA5  15
+PinOut pinTFT_DC;       // PA5  15
 PinOut pinTFT_RES;      // PA8  29
 PinOut pinTFT_BKG;      // PA9  30
+PinOut pinTFT_SCL;      // PA4  14
+PinOut pinTFT_SDA;      // PA6  16
 
 PinIn pinPWR;           // PA12 33
+
+
+void Pin::Init()
+{
+
+}
+
+
+void PinOut::ToLow() const
+{
+
+}
+
+
+void PinOut::ToHi() const
+{
+
+}

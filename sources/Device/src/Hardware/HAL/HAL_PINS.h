@@ -4,7 +4,7 @@
 
 struct Pin
 {
-
+    void Init();
 };
 
 
@@ -16,7 +16,8 @@ struct PinIn : public Pin
 
 struct PinOut : public Pin
 {
-
+    void ToLow() const;
+    void ToHi() const;
 };
 
 
@@ -35,8 +36,10 @@ extern PinOut pinLEDPWR;
 extern PinOut pinSOUND;
 extern PinOut pinVIBRO;
 
-extern PinOut pinTFT_RS;
+extern PinOut pinTFT_DC;
 extern PinOut pinTFT_RES;
 extern PinOut pinTFT_BKG;
+extern PinOut pinTFT_SCL;
+extern PinOut pinTFT_SDA;
 
 extern PinIn pinPWR;

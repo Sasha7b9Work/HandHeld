@@ -38,7 +38,7 @@ void Display::Init()
 
 void Display::Update()
 {
-    for (int i = 0; i < NUMBER_PARTS; i++)
+    for (int i = 0; i < NUMBER_PARTS_HEIGHT; i++)
     {
         BeginScene(i);
         DrawScene(i);
@@ -57,7 +57,7 @@ void Display::BeginScene(int num_part)
 
 void Display::EndScene(int num_parts)
 {
-    ST7735::WriteBuffer(HEIGHT / NUMBER_PARTS * num_parts);
+    ST7735::WriteBuffer(HEIGHT / NUMBER_PARTS_HEIGHT * num_parts);
 }
 
 
@@ -105,17 +105,17 @@ void Pixel::Set(int x, int y, const Color &color) const
         return;
     }
 
-    y -= Display::HEIGHT / Display::NUMBER_PARTS * Display::current_part;
+    y -= Display::HEIGHT / Display::NUMBER_PARTS_HEIGHT * Display::current_part;
 
     if (y < 0)
     {
         return;
     }
 
-    if (y >= Display::HEIGHT / Display::NUMBER_PARTS)
+    if (y >= Display::HEIGHT / Display::NUMBER_PARTS_HEIGHT)
     {
         return;
     }
 
-    Display::Buffer::buffer[y * Display::WIDTH + x] = Color::current.value;
+    Display::Buffer::buffer[y * Display::WIDTH + x] = (uint8)Color::current.value;
 }

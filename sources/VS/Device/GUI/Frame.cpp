@@ -191,9 +191,15 @@ static wxColour ConvertColor(Color::E e)
 }
 
 
+void ST7735::Init()
+{
+
+}
+
+
 void ST7735::WriteBuffer(int y0)
 {
-    static const wxColour colors[16] =
+    static const wxColour colors[Color::Count] =
     {
         ConvertColor((Color::E)0),
         ConvertColor((Color::E)1),
@@ -213,7 +219,7 @@ void ST7735::WriteBuffer(int y0)
 
     int line = 0;
 
-    for (int y = y0; y < y0 + Display::HEIGHT / Display::NUMBER_PARTS; y++)
+    for (int y = y0; y < y0 + Display::HEIGHT / Display::NUMBER_PARTS_HEIGHT; y++)
     {
         uint8 *points = Display::Buffer::GetLine(line++);
 

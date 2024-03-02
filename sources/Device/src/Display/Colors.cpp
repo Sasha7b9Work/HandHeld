@@ -3,9 +3,6 @@
 #include "Display/Colors.h"
 
 
-Color Color::current = Color::NUMBER;
-
-
 uint16 Color::colors[16] =
 {
     0xFFFF,                         // WHITE
@@ -27,12 +24,15 @@ uint16 Color::colors[16] =
 };
 
 
-Color Color::WHITE(White);
+Color Color::WHITE(Color::White);
 Color Color::BLACK(Black);
 Color Color::RED(Red);
 Color Color::GREEN(Green);
 Color Color::BLUE(Blue);
 Color Color::NUMBER(Count);
+
+
+Color Color::current = Color::NUMBER;
 
 
 void Color::SetAsCurrent() const

@@ -2,3 +2,8 @@
 #include "defines.h"
 #include "Hardware/Timer.h"
 
+
+void Timer::Delay(uint)
+{
+
+}

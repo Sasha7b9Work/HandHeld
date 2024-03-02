@@ -2,7 +2,7 @@
 
 project (Device)
 
-#set(CMAKE_UNITY_BUILD OFF)
+set(CMAKE_UNITY_BUILD OFF)
 
 message("------------------------------------------------------------------------ ${PROJECT_NAME}")
 
@@ -20,7 +20,12 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -MP -Wall")
 
 add_compile_options(
     /wd4127
+    /wd4310
+    /wd4514
+    /wd4626
     /wd4820    # 'xxx': '4' bytes padding added after data member 'yyy'
+    /wd5027
+    /wd5045
 )
 
 

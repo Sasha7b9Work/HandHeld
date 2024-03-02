@@ -51,7 +51,7 @@ file(GLOB KEYBOARD              ../../Device/src/Keyboard/Keyboard.h
                                                  Keyboard/*.*)
 file(GLOB MODULES_CMT2210AW     ../../Device/src/Modules/CMT2210AW/*.*)
 file(GLOB MODULES_PCF8563       ../../Device/src/Modules/PCF8563/*.*)
-file(GLOB MODULES_ST7735        ../../Device/src/Modules/ST7735/*.*)
+file(GLOB MODULES_ST7735        ../../Device/src/Modules/ST7735/*.h)
 file(GLOB MENU                  ../../Device/src/Menu/*.*)
 file(GLOB MENU_PAGES            ../../Device/src/Menu/Pages/*.*)
 file(GLOB SETTINGS              ../../Device/src/Settings/*.*)

@@ -8,7 +8,7 @@ namespace Display
     static const int WIDTH = 160;
     static const int HEIGHT = 80;
 
-    static const int NUMBER_PARTS = 8;          // Ќа столько частей разбит дислей. —только раз будем отрисовывать изображение,
+    static const int NUMBER_PARTS_HEIGHT = 8;          // Ќа столько частей разбит дислей. —только раз будем отрисовывать изображение,
                                                 // чтобы получить полную картинку
 
     void Init();
@@ -17,7 +17,7 @@ namespace Display
 
     namespace Buffer
     {
-        static const uint SIZE = WIDTH * HEIGHT / NUMBER_PARTS;
+        static const uint SIZE = WIDTH * HEIGHT / NUMBER_PARTS_HEIGHT;
 
         // ¬озвращает указатель на строку
         uint8 *GetLine(int y);
