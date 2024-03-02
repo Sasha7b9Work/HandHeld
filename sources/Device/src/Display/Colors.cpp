@@ -10,7 +10,7 @@ uint16 Color::colors[16] =
     MAKE_COLOR(0x1f, 0x00, 0x00),   // RED
     MAKE_COLOR(0x00, 0x3f, 0x00),   // GREEN
     MAKE_COLOR(0x00, 0x00, 0x1f),   // BLUE
-    0x0000,
+    MAKE_COLOR(0x10, 0x20, 0x10),   // GRAY
     0x0000,
     0x0000,
     0x0000,
@@ -29,6 +29,7 @@ Color Color::BLACK(Black);
 Color Color::RED(Red);
 Color Color::GREEN(Green);
 Color Color::BLUE(Blue);
+Color Color::GRAY(Gray);
 Color Color::NUMBER(Count);
 
 

@@ -11,6 +11,7 @@ struct Color
         Red,
         Green,
         Blue,
+        Gray,
         Count = 16
     };
 
@@ -23,6 +24,7 @@ struct Color
     static Color RED;
     static Color GREEN;
     static Color BLUE;
+    static Color GRAY;
 
     static Color NUMBER;
 
