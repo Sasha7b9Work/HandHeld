@@ -14,6 +14,7 @@ typedef unsigned char uchar;
     #pragma clang diagnostic ignored "-Wmissing-noreturn"
     #pragma clang diagnostic ignored "-Wglobal-constructors"
     #pragma clang diagnostic ignored "-Wpadded"
+    #pragma clang diagnostic ignored "-Winvalid-source-encoding"
 #else
 #endif
 
