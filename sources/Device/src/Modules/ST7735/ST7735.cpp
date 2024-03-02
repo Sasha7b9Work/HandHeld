@@ -67,7 +67,7 @@ void ST7735::WriteBuffer(int y0)
 
     SendCommand(0x2C);
 
-    for (int y = y0; y < y0 + Display::HEIGHT / Display::NUMBER_PARTS_HEIGHT; y++)
+    for (int y = 0; y < Display::HEIGHT / Display::NUMBER_PARTS_HEIGHT; y++)
     {
         uint8 *points = Display::Buffer::GetLine(y);
 
