@@ -1,3 +1,4 @@
 sources/Device/Listings-Debug/*
 sources/Device/Objects-Debug/*
 sources/generated/*
+sources/ThirdParty/wxWidgets/generated/*

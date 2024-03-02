@@ -14,13 +14,8 @@ include_directories(
     ../../Device/src/Hardware/CDC
     ../../Device/src/Hardware/HAL
     ../../ThirdParty/wxWidgets/include
-    ../../generated/ThirdParty/lib/vc_dll/mswud
-    ../../common/_VS_KEIL/CMSIS
-    ../../common/_VS_LIBS/STM32F1
-    ../../common/STM32Cube_F1/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc
-    ../../common/STM32Cube_F1/Middlewares/ST/STM32_USB_Device_Library/Core/Inc
-    ../../common/STM32Cube_F1/Drivers/CMSIS/Device/ST/STM32F1xx/Include
-    ../../common/STM32Cube_F1/Drivers/STM32F1xx_HAL_Driver/Inc
+    ../../ThirdParty/wxWidgets/generated/lib/vc_lib/mswud
+    ../../common/VS_KEIL
 )
 
 link_directories(../../generated/ThirdParty/lib/vc_dll)
