@@ -1,3 +1,1 @@
-@echo on
-
-start ..\..\generated\Win32\HandHels-GUI.sln
+start ..\..\generated\GUI\HandHels-GUI.sln

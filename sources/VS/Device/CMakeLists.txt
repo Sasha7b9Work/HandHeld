@@ -13,12 +13,12 @@ include_directories(
     ../../Device/src
     ../../Device/src/Hardware/CDC
     ../../Device/src/Hardware/HAL
-    ../../ThirdParty/wxWidgets/include
-    ../../ThirdParty/wxWidgets/generated/lib/vc_lib/mswud
+    ../../VS/ThirdParty/wxWidgets/include
+    ../../generated/ThirdParty/lib/vc_dll/mswud
     ../../common/VS_KEIL
 )
 
-link_directories(../../ThirdParty/wxWidgets/generated/lib/vc_lib)
+link_directories(../../generated/ThirdParty/lib/vc_dll)
 
 add_definitions(-DSTM32F103xB -DWXUSINGDLL -DGUI -DDEVICE)
 
@@ -27,6 +27,7 @@ if(WIN32)
     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /SUBSYSTEM:WINDOWS")
 
     add_compile_options(/wd4365)
+    add_compile_options(/wd4464)
     add_compile_options(/wd4514)
     add_compile_options(/wd4623)
     add_compile_options(/wd4625)
