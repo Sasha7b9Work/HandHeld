@@ -38,6 +38,7 @@ if(WIN32)
     add_compile_options(/wd5045)
 endif()
 
+file(GLOB GUI                                GUI/*.*)
 file(GLOB SRC                                *.h *.cpp
                                 ../../Device/src/*.*)
 file(GLOB DISPLAY               ../../Device/src/Display/*.*)
@@ -56,6 +57,7 @@ file(GLOB MENU_PAGES            ../../Device/src/Menu/Pages/*.*)
 file(GLOB SETTINGS              ../../Device/src/Settings/*.*)
 file(GLOB UTILS                 ../../Device/src/Utils/*.*)
 
+source_group(GUI                FILES ${GUI})
 source_group(src                FILES ${SRC})
 source_group(Display            FILES ${DISPLAY})
 source_group(Display/Font       FILES ${DISPLAY_FONT})
@@ -84,6 +86,7 @@ set_source_files_properties(
 #)
 
 add_executable(${PROJECT_NAME}
+    ${GUI}
     ${SRC}
     ${DISPLAY}
     ${DISPLAY_FONT}
