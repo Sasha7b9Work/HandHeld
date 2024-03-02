@@ -8,13 +8,43 @@ namespace Display
     static const int WIDTH = 160;
     static const int HEIGHT = 80;
 
+    static const int NUMBER_PARTS = 8;          // Ќа столько частей разбит дислей. —только раз будем отрисовывать изображение,
+                                                // чтобы получить полную картинку
+
     void Init();
 
     void Update();
 
     namespace Buffer
     {
+        static const uint SIZE = WIDTH * HEIGHT / NUMBER_PARTS;
+
         // ¬озвращает указатель на строку
-        uint8 *GetLine(int x, int y);
+        uint8 *GetLine(int y);
     }
 }
+
+
+struct Pixel
+{
+    void Set(int x, int y, const Color &color = Color::NUMBER) const;
+};
+
+
+struct HLine
+{
+    HLine(int w) : width(w) { }
+    void Draw(int x, int y, const Color &color = Color::NUMBER) const;
+private:
+    const int width;
+};
+
+
+struct Rect
+{
+    Rect(int w, int h) : width(w), height(h) { }
+    void Draw(int x, int y, const Color &color = Color::NUMBER) const;
+private:
+    const int width;
+    const int height;
+};

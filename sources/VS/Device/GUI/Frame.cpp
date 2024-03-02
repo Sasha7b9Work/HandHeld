@@ -191,7 +191,7 @@ static wxColour ConvertColor(Color::E e)
 }
 
 
-void ST7735::WriteBuffer(int x0, int y0, int width, int height)
+void ST7735::WriteBuffer(int y0)
 {
     static const wxColour colors[16] =
     {
@@ -211,13 +211,15 @@ void ST7735::WriteBuffer(int x0, int y0, int width, int height)
 
     static wxPen pen = *wxWHITE_PEN;
 
-    for (int y = y0; y < y0 + height; y++)
+    int line = 0;
+
+    for (int y = y0; y < y0 + Display::WIDTH / Display::NUMBER_PARTS; y++)
     {
-        uint8 *points = Display::Buffer::GetLine(x0, y);
+        uint8 *points = Display::Buffer::GetLine(line++);
 
         uint8 value = *points;
 
-        for (int x = x0; x < x0 + width; x += 2)
+        for (int x = 0; x < Display::WIDTH; x += 2)
         {
             pen.SetColour(colors[value >> 4]);
 

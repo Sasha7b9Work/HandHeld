@@ -6,10 +6,31 @@ struct Color
 {
     enum E
     {
-        Count
+        White,
+        Black,
+        Red,
+        Green,
+        Blue,
+        Count = 16
     };
 
-    static uint16 colors[16];
+    Color(E v) : value(v) { }
+
+    E value;
+
+    static Color WHITE;
+    static Color BLACK;
+    static Color RED;
+    static Color GREEN;
+    static Color BLUE;
+
+    static Color NUMBER;
+
+    static uint16 colors[Count];
+
+    void SetAsCurrent() const;
+
+    static Color current;
 };
 
 

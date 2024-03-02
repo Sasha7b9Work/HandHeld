@@ -6,5 +6,6 @@ namespace ST7735
 {
     void Init();
 
-    void WriteBuffer(int x0, int y0, int width, int height);
+    // Записывает буфер дисплея в строки, начиная с y
+    void WriteBuffer(int y);
 }

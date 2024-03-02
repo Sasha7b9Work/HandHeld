@@ -2,14 +2,31 @@
 #include "defines.h"
 #include "Display/Display.h"
 #include "Modules/ST7735/ST7735.h"
+#include <string>
 
 
 namespace Display
 {
     namespace Buffer
     {
-        static uint8 buffer[WIDTH * HEIGHT];
+        static uint8 buffer[SIZE];
+
+        static void Fill(const Color &color)
+        {
+            std::memset(buffer, color.value, SIZE);
+        }
+
+        uint8 *GetLine(int y)
+        {
+            return buffer + y * Display::WIDTH;
+        }
     }
+
+    static int current_part = 0;                            // Эту часть сейчас отрисовываем
+
+    static void BeginScene(int num_part);
+    static void DrawScene(int num_part);
+    static void EndScene(int num_parts);
 }
 
 
@@ -21,11 +38,84 @@ void Display::Init()
 
 void Display::Update()
 {
-
+    for (int i = 0; i < NUMBER_PARTS; i++)
+    {
+        BeginScene(i);
+        DrawScene(i);
+        EndScene(i);
+    }
 }
 
 
-uint8 *Display::Buffer::GetLine(int, int)
+void Display::BeginScene(int num_part)
 {
-    return buffer;
+    current_part = num_part;
+
+    Buffer::Fill(Color::BLACK);
+}
+
+
+void Display::EndScene(int num_parts)
+{
+    ST7735::WriteBuffer(HEIGHT / NUMBER_PARTS * num_parts);
+}
+
+
+void Display::DrawScene(int num_part)
+{
+    (void)num_part;
+
+    Rect(50, 50).Draw(20, 20, Color::WHITE);
+}
+
+
+void Rect::Draw(int x0, int y0, const Color &color) const
+{
+    color.SetAsCurrent();
+
+    for (int y = y0; y < y0 + height; y++)
+    {
+        HLine(width).Draw(x0, y);
+    }
+}
+
+
+void HLine::Draw(int x, int y, const Color &color) const
+{
+    color.SetAsCurrent();
+
+    for (int i = 0; i < width; i++)
+    {
+        Pixel().Set(x++, y);
+    }
+}
+
+
+void Pixel::Set(int x, int y, const Color &color) const
+{
+    color.SetAsCurrent();
+
+    if (x < 0)
+    {
+        return;
+    }
+
+    if (x >= Display::WIDTH)
+    {
+        return;
+    }
+
+    y -= Display::HEIGHT / Display::NUMBER_PARTS * Display::current_part;
+
+    if (y < 0)
+    {
+        return;
+    }
+
+    if (y >= Display::HEIGHT / Display::NUMBER_PARTS)
+    {
+        return;
+    }
+
+    Display::Buffer::buffer[y * Display::WIDTH + x] = Color::current.value;
 }
