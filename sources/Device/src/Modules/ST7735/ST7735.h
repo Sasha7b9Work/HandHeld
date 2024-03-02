@@ -2,7 +2,7 @@
 #pragma once
 
 
-namespace ST7755
+namespace ST7735
 {
     void Init();
 

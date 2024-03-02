@@ -33,7 +33,7 @@ file(GLOB KEYBOARD          src/Keyboard/*.*)
 file(GLOB MENU              src/Menu/*.*)
 file(GLOB MODULES_CMT2210AW src/Modules/CMT2210AW/*.*)
 file(GLOB MODULES_PCF8563   src/Modules/PCF8563/*.*)
-file(GLOB MODULES_ST7755    src/Modules/ST7755/*.*)
+file(GLOB MODULES_ST7735    src/Modules/ST7735/*.*)
 
 source_group(src               FILES ${SRC})
 source_group(Display           FILES ${DISPLAY})
@@ -44,7 +44,7 @@ source_group(Keyboard          FILES ${KEYBOARD})
 source_group(Menu              FILES ${MENU})
 source_group(Modules/CMT2210AW FILES ${MODULES_CMT2210AW})
 source_group(Modules/PCF8563   FILES ${MODULES_PCF8563})
-source_group(Modules/ST7755    FILES ${MODULES_ST7755})
+source_group(Modules/ST7735    FILES ${MODULES_ST7735})
 
 add_library(${PROJECT_NAME}
     ${SRC}
@@ -56,5 +56,5 @@ add_library(${PROJECT_NAME}
     ${KEYBOARD}
     ${MODULES_CMT2210AW}
     ${MODULES_PCF8563}
-    ${MODULES_ST7755}
+    ${MODULES_ST7735}
 )

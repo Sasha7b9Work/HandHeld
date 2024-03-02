@@ -729,6 +729,31 @@
               <FileType>5</FileType>
               <FilePath>.\src\Menu\Menu.h</FilePath>
             </File>
+            <File>
+              <FileName>MenuItems.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Menu\MenuItems.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>MenuItems.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Menu\MenuItems.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Menu/Pages</GroupName>
+          <Files>
+            <File>
+              <FileName>Pages.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Menu\Pages\Pages.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Pages.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Menu\Pages\Pages.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -762,17 +787,17 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Modules/ST7755</GroupName>
+          <GroupName>Modules/ST7735</GroupName>
           <Files>
             <File>
-              <FileName>ST7755.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Modules\ST7755\ST7755.cpp</FilePath>
+              <FileName>ST7735.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Modules\ST7735\ST7735.h</FilePath>
             </File>
             <File>
-              <FileName>ST7755.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Modules\ST7755\ST7755.h</FilePath>
+              <FileName>ST7735.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Modules\ST7735\ST7735.cpp</FilePath>
             </File>
           </Files>
         </Group>
