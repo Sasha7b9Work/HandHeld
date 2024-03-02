@@ -213,25 +213,19 @@ void ST7735::WriteBuffer(int y0)
 
     int line = 0;
 
-    for (int y = y0; y < y0 + Display::WIDTH / Display::NUMBER_PARTS; y++)
+    for (int y = y0; y < y0 + Display::HEIGHT / Display::NUMBER_PARTS; y++)
     {
         uint8 *points = Display::Buffer::GetLine(line++);
 
         uint8 value = *points;
 
-        for (int x = 0; x < Display::WIDTH; x += 2)
+        for (int x = 0; x < Display::WIDTH; x++)
         {
-            pen.SetColour(colors[value >> 4]);
+            pen.SetColour(colors[value]);
 
             memDC.SetPen(pen);
 
             memDC.DrawPoint(x + 1, y);
-
-            pen.SetColour(colors[value & 0x0f]);
-
-            memDC.SetPen(pen);
-
-            memDC.DrawPoint(x, y);
 
             value = *(++points);
         }
