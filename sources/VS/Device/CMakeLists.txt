@@ -40,7 +40,7 @@ endif()
 
 file(GLOB GUI                                GUI/*.*)
 file(GLOB SRC                                *.h *.cpp
-                                ../../Device/src/*.*)
+                                ../../Device/src/Device.*)
 file(GLOB DISPLAY               ../../Device/src/Display/*.*)
 file(GLOB DISPLAY_FONT          ../../Device/src/Display/Font/*.*)
 file(GLOB HARDWARE              ../../Device/src/Hardware/Timer.h
