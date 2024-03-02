@@ -27,21 +27,15 @@ if(WIN32)
     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /SUBSYSTEM:WINDOWS")
 
     add_compile_options(/wd4365)
-    add_compile_options(/wd4464)
-    add_compile_options(/wd4514)
-    add_compile_options(/wd4623)
     add_compile_options(/wd4625)
     add_compile_options(/wd4626)
     add_compile_options(/wd4774)
     add_compile_options(/wd4820)
-    add_compile_options(/wd4996)
     add_compile_options(/wd5026)
     add_compile_options(/wd5027)
     add_compile_options(/wd5039)    # 'xxx': pointer or reference to potentially throwing function passed to extern C
                                     # function under -EHc.
     add_compile_options(/wd5045)
-    add_compile_options(/wd5220)
-    add_compile_options(/wd5267)
 endif()
 
 file(GLOB SRC                                *.h *.cpp
