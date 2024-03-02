@@ -22,6 +22,7 @@ add_compile_options(
     /wd4127
     /wd4310
     /wd4514
+    /wd4623
     /wd4626
     /wd4820    # 'xxx': '4' bytes padding added after data member 'yyy'
     /wd5027

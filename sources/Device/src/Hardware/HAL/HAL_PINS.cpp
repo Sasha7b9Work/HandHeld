@@ -43,11 +43,11 @@ void PinIn::Init()
 
 void PinOut::ToLow() const
 {
-
+    gpio_bit_reset(port, pin);
 }
 
 
 void PinOut::ToHi() const
 {
-
+    gpio_bit_set(port, pin);
 }
