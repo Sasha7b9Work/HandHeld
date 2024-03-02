@@ -3,8 +3,6 @@
 #include "Settings/Settings.h"
 #include "Display/Display.h"
 
-Source Source::PHONE_HOME(PhoneHome);
-
 
 void Source::Draw(int x, int y, const Color &color) const
 {
@@ -14,18 +12,18 @@ void Source::Draw(int x, int y, const Color &color) const
     }
     else if (value == Mobile)
     {
-
+        Text("р.лна").Write(x, y, color);
     }
     else if (value == Intercom)
     {
-
+        Text("днлн").Write(x, y, color);
     }
     else if (value == Bell)
     {
-
+        Text("гбнм").Write(x, y, color);
     }
     else if (value == Sensor)
     {
-
+        Text("дюр").Write(x, y, color);
     }
 }

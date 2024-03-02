@@ -26,8 +26,6 @@ struct Source
 
     void Draw(int x, int y, const Color &color = Color::NUMBER) const;
 
-    static Source PHONE_HOME;
-
 private:
     E value;
 };

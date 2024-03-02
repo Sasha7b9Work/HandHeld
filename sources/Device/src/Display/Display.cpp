@@ -67,7 +67,10 @@ void Display::DrawScene(int num_part)
 {
     (void)num_part;
 
-    Source::PHONE_HOME.Draw(10, 10, Color::WHITE);
+    for (int i = 0; i < Source::Count; i++)
+    {
+        Source((Source::E)i).Draw(i * 33, 1, Color::WHITE);
+    }
 }
 
 
