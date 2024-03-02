@@ -2,6 +2,8 @@
 #include "defines.h"
 #include "Display/Display.h"
 #include "Modules/ST7735/ST7735.h"
+#include "Settings/Settings.h"
+#include "Display/Font/Font.h"
 #include <string>
 
 
@@ -65,7 +67,7 @@ void Display::DrawScene(int num_part)
 {
     (void)num_part;
 
-    Rect(50, 50).Draw(20, 20, Color::WHITE);
+    Source::PHONE_HOME.Draw(10, 10, Color::WHITE);
 }
 
 
@@ -118,4 +120,18 @@ void Pixel::Set(int x, int y, const Color &color) const
     }
 
     Display::Buffer::buffer[y * Display::WIDTH + x] = (uint8)Color::current.value;
+}
+
+
+void Text::Write(int x, int y, const Color &color) const
+{
+    color.SetAsCurrent();
+
+    pchar pointer = text;
+
+    while (*pointer)
+    {
+        x = Char(*pointer++).Write(x, y);
+        x++;
+    }
 }

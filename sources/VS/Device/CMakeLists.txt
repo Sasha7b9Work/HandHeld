@@ -27,6 +27,7 @@ if(WIN32)
     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /SUBSYSTEM:WINDOWS")
 
     add_compile_options(/wd4365)
+    add_compile_options(/wd4623)
     add_compile_options(/wd4625)
     add_compile_options(/wd4626)
     add_compile_options(/wd4774)
@@ -40,7 +41,8 @@ endif()
 
 file(GLOB GUI                                GUI/*.*)
 file(GLOB SRC                                *.h *.cpp
-                                ../../Device/src/Device.*)
+                                ../../Device/src/Device.*
+                                ../../Device/src/*.h)
 file(GLOB DISPLAY               ../../Device/src/Display/*.*)
 file(GLOB DISPLAY_FONT          ../../Device/src/Display/Font/*.*)
 file(GLOB HARDWARE              ../../Device/src/Hardware/Timer.h

@@ -48,3 +48,21 @@ private:
     const int width;
     const int height;
 };
+
+
+struct Char
+{
+    Char(char s) : symbol((uint8)s) { }
+    int Write(int x, int y, const Color &color = Color::NUMBER) const;
+private:
+    uint8 symbol;
+};
+
+
+struct Text
+{
+    Text(pchar _text) : text(_text) { }
+    void Write(int x, int y, const Color &color = Color::NUMBER) const;
+private:
+    pchar text;
+};

@@ -1,10 +1,35 @@
 // 2024/03/02 19:47:04 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
+#include "Display/Colors.h"
 
 
 struct PackedTime
 {
 
+};
+
+
+// Источинк сигнала
+struct Source
+{
+    enum E
+    {
+        PhoneHome,      // Домашний телефон
+        Mobile,         // Мобильный телефон
+        Intercom,       // Домофон
+        Bell,           // Дверной звонок
+        Sensor,         // Акстический датчик
+        Count
+    };
+
+    Source(E v) : value(v) { }
+
+    void Draw(int x, int y, const Color &color = Color::NUMBER) const;
+
+    static Source PHONE_HOME;
+
+private:
+    E value;
 };
 
 
