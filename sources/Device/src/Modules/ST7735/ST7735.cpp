@@ -139,7 +139,7 @@ void ST7735::Init()
     Write_Cmd_Data(0x0E);
 
     Write_Cmd(0xE0);
-    Write_Cmd_Data(0x10);
+    Write_Cmd_Data(0x10); 
     Write_Cmd_Data(0x0E);
     Write_Cmd_Data(0x02);
     Write_Cmd_Data(0x03);
