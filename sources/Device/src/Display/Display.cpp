@@ -40,12 +40,18 @@ void Display::Init()
 
 void Display::Update()
 {
-    for (int i = 0; i < NUMBER_PARTS_HEIGHT; i++)
-    {
-        BeginScene(i);
-        DrawScene(i);
-        EndScene(i);
-    }
+    ST7735::Fill(Color::colors[0]);
+    ST7735::Fill(Color::colors[1]);
+    ST7735::Fill(Color::colors[2]);
+    ST7735::Fill(Color::colors[3]);
+    ST7735::Fill(Color::colors[4]);
+
+//    for (int i = 0; i < NUMBER_PARTS_HEIGHT; i++)
+//    {
+//        BeginScene(i);
+//        DrawScene(i);
+//        EndScene(i);
+//    }
 }
 
 
