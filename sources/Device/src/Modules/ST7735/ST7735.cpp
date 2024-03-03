@@ -212,32 +212,47 @@ void ST7735::LCD_SetPos_Vertical(unsigned char x0, unsigned char x1, unsigned in
 }
 
 
+void ST7735::SetWindow(int x, int y, int width, int height)
+{
+    SendCommand(0x2A);      // CASET
+    SendData8(0x00);
+    SendData8((uint8)x);
+    SendData8(0x00);
+    SendData8((uint8)(x + width - 1));
+    SendCommand(0x2B);      // RASET
+    SendData8(0x00);
+    SendData8((uint8)y);
+    SendData8(0x00);
+    SendData8((uint8)(y + height));
+}
+
+
 void ST7735::Fill(uint16 color)
 {
     unsigned int w, u;
     LCD_SetPos_Vertical(0, 79, 0, 159);
 
-    for (w = 0; w < 80; w++)
-    {
-        SendData16((uint16)(~color));
-    }
+//    for (w = 0; w < 80; w++)
+//    {
+//        SendData16((uint16)(~color));
+//    }
 
-    for (w = 0; w < 158; w++)
+    for (w = 0; w < 160; w++)
     {
-        SendData16((uint16)(~color));
+//        SendData16((uint16)(~color));
 
-        for (u = 0; u < 78; u++)
+        for (u = 0; u < 80; u++)
         {
             SendData16(color);
         }
 
-        SendData16((uint16)(~color));
+//        SendData16((uint16)(~color));
     }
 
-    for (w = 0; w < 80; w++)
-    {
-        SendData16((uint16)(~color));
-    }
+//    for (w = 0; w < 80; w++)
+//    {
+//        SendData16((uint16)(~color));
+//    }
 }
 
 
@@ -256,19 +271,4 @@ void ST7735::WriteBuffer(int y0)
             SendData16(Color::colors[*points++]);
         }
     }
-}
-
-
-void ST7735::SetWindow(int x, int y, int width, int height)
-{
-    SendCommand(0x2A);      // CASET
-    SendData8(0x00);
-    SendData8((uint8)x);
-    SendData8(0x00);
-    SendData8((uint8)(x + width - 1));
-    SendCommand(0x2B);      // RASET
-    SendData8(0x00);
-    SendData8((uint8)y);
-    SendData8(0x00);
-    SendData8((uint8)(y + height));
 }
