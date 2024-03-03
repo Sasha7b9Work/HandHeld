@@ -232,27 +232,13 @@ void ST7735::Fill(uint16 color)
     unsigned int w, u;
     LCD_SetPos_Vertical(0, 79, 0, 159);
 
-//    for (w = 0; w < 80; w++)
-//    {
-//        SendData16((uint16)(~color));
-//    }
-
     for (w = 0; w < 160; w++)
     {
-//        SendData16((uint16)(~color));
-
         for (u = 0; u < 80; u++)
         {
             SendData16(color);
         }
-
-//        SendData16((uint16)(~color));
     }
-
-//    for (w = 0; w < 80; w++)
-//    {
-//        SendData16((uint16)(~color));
-//    }
 }
 
 
