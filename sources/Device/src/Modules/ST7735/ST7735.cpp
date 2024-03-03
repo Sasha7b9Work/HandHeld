@@ -90,21 +90,21 @@ void ST7735::Init()
 
     Write_Cmd(0x11);
 
-    Timer::Delay(120);                //ms                                                              
+    Timer::Delay(120);
 
-    Write_Cmd(0x21);
+    Write_Cmd(0x21);                // Display Inversion On
 
-    Write_Cmd(0xB1);
+    Write_Cmd(0xB1);                // Frame Rate Control (In normal mode/ Full colors)
     Write_Cmd_Data(0x05);
     Write_Cmd_Data(0x3A);
     Write_Cmd_Data(0x3A);
 
-    Write_Cmd(0xB2);
+    Write_Cmd(0xB2);                // Frame Rate Control (In Idle mode/ 8-colors) 
     Write_Cmd_Data(0x05);
     Write_Cmd_Data(0x3A);
     Write_Cmd_Data(0x3A);
 
-    Write_Cmd(0xB3);
+    Write_Cmd(0xB3);                // Frame Rate Control (In Partial mode/ full colors)
     Write_Cmd_Data(0x05);
     Write_Cmd_Data(0x3A);
     Write_Cmd_Data(0x3A);
@@ -112,33 +112,33 @@ void ST7735::Init()
     Write_Cmd_Data(0x3A);
     Write_Cmd_Data(0x3A);
 
-    Write_Cmd(0xB4);     //Dot inversion
+    Write_Cmd(0xB4);                // Display Inversion Control
     Write_Cmd_Data(0x03);
 
-    Write_Cmd(0xC0);
+    Write_Cmd(0xC0);                // Power Control 1 
     Write_Cmd_Data(0x62);
     Write_Cmd_Data(0x02);
     Write_Cmd_Data(0x04);
 
-    Write_Cmd(0xC1);
+    Write_Cmd(0xC1);                //  Power Control 2 
     Write_Cmd_Data(0xC0);
 
-    Write_Cmd(0xC2);
+    Write_Cmd(0xC2);                // Power Control 3 (in Normal mode/ Full colors)
     Write_Cmd_Data(0x0D);
     Write_Cmd_Data(0x00);
 
-    Write_Cmd(0xC3);
+    Write_Cmd(0xC3);                // Power Control 4 (in Idle mode/ 8-colors)
     Write_Cmd_Data(0x8D);
     Write_Cmd_Data(0x6A);
 
-    Write_Cmd(0xC4);
+    Write_Cmd(0xC4);                // Power Control 5 (in Partial mode/ full-colors)
     Write_Cmd_Data(0x8D);
     Write_Cmd_Data(0xEE);
 
-    Write_Cmd(0xC5);     //VCOM
+    Write_Cmd(0xC5);                // VCOM Control 1
     Write_Cmd_Data(0x0E);
 
-    Write_Cmd(0xE0);
+    Write_Cmd(0xE0);                //  Gamma (‘+’polarity) Correction Characteristics Setting
     Write_Cmd_Data(0x10); 
     Write_Cmd_Data(0x0E);
     Write_Cmd_Data(0x02);
@@ -157,7 +157,7 @@ void ST7735::Init()
     Write_Cmd_Data(0x10);
 
 
-    Write_Cmd(0xE1);
+    Write_Cmd(0xE1);                // Gamma ‘-’polarity Correction Characteristics Setting
     Write_Cmd_Data(0x10);
     Write_Cmd_Data(0x0E);
     Write_Cmd_Data(0x03);
@@ -175,15 +175,15 @@ void ST7735::Init()
     Write_Cmd_Data(0x0E);
     Write_Cmd_Data(0x10);
 
-    Write_Cmd(0x3A);
+    Write_Cmd(0x3A);                // Interface Pixel Format
     Write_Cmd_Data(0x05);
 
-    Write_Cmd(0x36);
-    Write_Cmd_Data(0xC8);
+    Write_Cmd(0x36);                // Memory Data Access Control
+    Write_Cmd_Data(0x08);
 
-    Write_Cmd(0x29);
+    Write_Cmd(0x29);                // Display On
 
-    Write_Cmd(0x2C);
+    Write_Cmd(0x2C);                // Memory Write
 }
 
 
