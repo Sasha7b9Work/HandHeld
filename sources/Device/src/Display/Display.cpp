@@ -40,7 +40,7 @@ void Display::Init()
 
 void Display::Update()
 {
-    ST7735::FastFill(Color::colors[0]);
+    ST7735::Fill(Color::colors[0]);
     ST7735::Fill(Color::colors[1]);
 
 //    for (int i = 0; i < NUMBER_PARTS_HEIGHT; i++)

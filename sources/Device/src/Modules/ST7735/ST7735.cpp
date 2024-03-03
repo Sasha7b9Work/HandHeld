@@ -179,7 +179,7 @@ void ST7735::Init()
     Write_Cmd_Data(0x05);
 
     Write_Cmd(0x36);                // Memory Data Access Control
-    Write_Cmd_Data(0x08);
+    Write_Cmd_Data(0x68);
 
     Write_Cmd(0x29);                // Display On
 
@@ -190,7 +190,7 @@ void ST7735::Init()
 void ST7735::LCD_SetPos_Vertical(unsigned char x0, unsigned char x1, unsigned int y0, unsigned int y1)
 {
     unsigned char YSH, YSL, YEH, YEL;
-    x0 += 26; x1 += 26; y0 += 1; y1 += 1;
+    x0 += 0; x1 += 26; y0 += 26; y1 += 26;
 
     YSH = (uint8)(y0 >> 8);
     YSL = (uint8)y0;
@@ -230,23 +230,7 @@ void ST7735::SetWindow(int x, int y, int width, int height)
 void ST7735::Fill(uint16 color)
 {
     unsigned int w, u;
-    LCD_SetPos_Vertical(0, 79, 0, 159);
-
-    for (w = 0; w < 160; w++)
-    {
-        for (u = 0; u < 80; u++)
-        {
-            SendData16(color);
-            Timer::Delay(10);
-        }
-    }
-}
-
-
-void ST7735::FastFill(uint16 color)
-{
-    unsigned int w, u;
-    LCD_SetPos_Vertical(0, 79, 0, 159);
+    LCD_SetPos_Vertical(0, 159, 0, 79);
 
     for (w = 0; w < 160; w++)
     {
