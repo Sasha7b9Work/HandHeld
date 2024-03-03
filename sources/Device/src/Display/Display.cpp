@@ -67,10 +67,7 @@ void Display::DrawScene(int num_part)
 {
     (void)num_part;
 
-    for (int i = 0; i < Source::Count; i++)
-    {
-        Source((Source::E)i).Draw(i * 33, 1, Color::WHITE);
-    }
+    Rect(20, 20).Draw(20, 20, Color::WHITE);
 }
 
 
