@@ -7,6 +7,7 @@
 #include "Hardware/HAL/HAL.h"
 #include "Modules/CMT2210AW/CMT2210AW.h"
 #include "Modules/PCF8563/PCF8563.h"
+#include "Hardware/Beeper.h"
 
 
 void Device::Init()
@@ -22,6 +23,10 @@ void Device::Init()
     CMT2210AW::Init();
 
     PCF8563::Init();
+
+    Beeper::Init();
+
+    Beeper::Beep();
 }
 
 
