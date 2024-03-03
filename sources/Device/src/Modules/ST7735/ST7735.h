@@ -6,6 +6,8 @@ namespace ST7735
 {
     void Init();
 
+    void FastFill(uint16);
+
     void Fill(uint16);
 
     // Записывает буфер дисплея в строки, начиная с y
