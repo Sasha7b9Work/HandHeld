@@ -76,7 +76,7 @@ static void WriteBitToControlRegister(uint8 ControlRegister, uint8 BitNumber, bo
     }
     else
     {
-        value |= (1 << BitNumber);
+        value &= ~(1 << BitNumber);
     }
 
 	if (ControlRegister == PCF8563_REG_CONTROL_STATUS1)				// Put zeros where zero is needed
@@ -109,28 +109,54 @@ void PCF8563::TESTCEnable(bool en)
 
 void PCF8563::InterruptEnable(bool en)
 {
-	WriteBitToControlRegister(PCF8563_REG_CONTROL_STATUS1, PCF8563_CONTROL2_TI_TP, en);
+	WriteBitToControlRegister(PCF8563_REG_CONTROL_STATUS2, PCF8563_CONTROL2_TI_TP, en);
 }
 
 void PCF8563::AlarmFlagEnable(bool en)
 {
-    WriteBitToControlRegister(PCF8563_REG_CONTROL_STATUS1, PCF8563_CONTROL2_AF, en);
+    WriteBitToControlRegister(PCF8563_REG_CONTROL_STATUS2, PCF8563_CONTROL2_AF, en);
 }
 
 void PCF8563::TimerFlagEnable(bool en)
 {
-    WriteBitToControlRegister(PCF8563_REG_CONTROL_STATUS1, PCF8563_CONTROL2_TF, en);
+    WriteBitToControlRegister(PCF8563_REG_CONTROL_STATUS2, PCF8563_CONTROL2_TF, en);
 }
 
 void PCF8563::AlarmInterruptEnable(bool en)
 {
-    WriteBitToControlRegister(PCF8563_REG_CONTROL_STATUS1, PCF8563_CONTROL2_AIE, en);
+    WriteBitToControlRegister(PCF8563_REG_CONTROL_STATUS2, PCF8563_CONTROL2_AIE, en);
 }
 
 void PCF8563::TimerInterruptEnable(bool en)
 {
-    WriteBitToControlRegister(PCF8563_REG_CONTROL_STATUS1, PCF8563_CONTROL2_TIE, en);
+    WriteBitToControlRegister(PCF8563_REG_CONTROL_STATUS2, PCF8563_CONTROL2_TIE, en);
 }
+
+
+void PCF8563::SetTimer(uint time_sec)
+{
+    uint8 control_2 = 0;
+
+    HAL_I2C::Read(PCF8563_REG_CONTROL_STATUS2, &control_2, 1);
+
+    control_2 &= ~(1 << 4);		// INT  - TF
+
+	control_2 |= (1 << 0);		// TIE - timer interrupt enabled
+
+	HAL_I2C::Write(PCF8563_REG_CONTROL_STATUS2, &control_2, 1);
+
+	uint8 timer_control = BINARY_U8(10000010);
+	//                              |     ++---- 1 Hz
+	//                              +----------- timer enabled
+
+	HAL_I2C::Write(PCF8563_REG_TIMER_CONTROL, &timer_control, 1);
+
+	uint8 timer_register = 1;								// 1 sec
+
+	HAL_I2C::Write(PCF8563_REG_TIMER, &timer_register, 1);
+
+}
+
 
 void PCF8563::ClkoutFrequency(CLKOUT_Freq Frequency)
 {

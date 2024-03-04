@@ -57,6 +57,8 @@ namespace PCF8563
 
     void TimerInterruptEnable(bool);
 
+    void SetTimer(uint time_sec);
+
     void ClkoutFrequency(CLKOUT_Freq Frequency);
 
     void GetDateTime(RTCDateTime *DateTime);        // Use in blocking/interrupt mode in PCF8563_INT EXTI handler
