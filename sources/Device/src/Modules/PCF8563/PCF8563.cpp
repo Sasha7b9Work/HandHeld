@@ -134,22 +134,27 @@ void PCF8563::TimerInterruptEnable(bool en)
 
 void PCF8563::ClkoutFrequency(CLKOUT_Freq Frequency)
 {
-    uint8 value;
+    uint8 value = 0;
 
 //    HAL_I2C_Mem_Read(hi2c_pcf8563, PCF8563::ADDRESS, PCF8563_REG_CLKOUT, 1, &tmp, 1, PCF8563::I2C_TIMEOUT);
-	if (HAL_I2C::Read(PCF8563_REG_CLKOUT, &value, 1))
-	{
-		value &= ~(3 << PCF8563_CLKOUT_CONTROL_FD0);
-		value |= (Frequency << PCF8563_CLKOUT_CONTROL_FD0);
+	HAL_I2C::Read(PCF8563_REG_CLKOUT, &value, 1);
+    value &= ~(3 << PCF8563_CLKOUT_CONTROL_FD0);
+    value |= (Frequency << PCF8563_CLKOUT_CONTROL_FD0);
 
-		//    HAL_I2C_Mem_Write(hi2c_pcf8563, PCF8563::ADDRESS, PCF8563_REG_CLKOUT, 1, &tmp, 1, PCF8563::I2C_TIMEOUT);
-		if (HAL_I2C::Write(PCF8563_REG_CLKOUT, &value, 1))
-		{
-			if (HAL_I2C::Read(PCF8563_REG_CLKOUT, &value, 1))
-			{
-				value = value;
-			}
-		}
+	//    HAL_I2C_Mem_Write(hi2c_pcf8563, PCF8563::ADDRESS, PCF8563_REG_CLKOUT, 1, &tmp, 1, PCF8563::I2C_TIMEOUT);
+	HAL_I2C::Write(PCF8563_REG_CLKOUT, &value, 1);
+
+	uint8 value2 = 0;
+
+	HAL_I2C::Read(PCF8563_REG_CLKOUT, &value2, 1);
+
+	if (value == value2)
+	{
+		value = value;
+	}
+	else
+	{
+		value = value;
 	}
 }
 
