@@ -153,3 +153,104 @@ bool HAL_I2C::Write(uint8 command, uint8 *data, int size)
 
     return result;
 }
+
+
+bool HAL_I2C::Read(uint8 reg, uint8 *buf, uint16 len)
+{
+    TimeMeterMS meter;
+
+    bool result = true;
+
+    i2c_stop_on_bus(I2C_ADDR);
+
+    /* wait until I2C bus is idle */
+    WaitFlagYes(I2C_FLAG_I2CBSY);
+
+    /* send a start condition to I2C bus */
+    i2c_start_on_bus(I2C_ADDR);
+
+    /* wait until SBSEND bit is set */
+    WaitFlagNo(I2C_FLAG_SBSEND);
+
+    /* send slave address to I2C bus */
+    i2c_master_addressing(I2C_ADDR, I2C_SLAVE_ADDRESS7, I2C_TRANSMITTER);
+
+    /* wait until ADDSEND bit is set */
+    WaitFlagNo(I2C_FLAG_ADDSEND);
+
+    /* clear ADDSEND bit */
+    i2c_flag_clear(I2C_ADDR, I2C_FLAG_ADDSEND);
+
+    /* send command */
+    i2c_data_transmit(I2C_ADDR, reg);
+
+    WaitFlagNo(I2C_FLAG_TBE);
+
+    i2c_start_on_bus(I2C_ADDR);
+
+    WaitFlagNo(I2C_FLAG_SBSEND);
+
+    i2c_master_addressing(I2C_ADDR, I2C_SLAVE_ADDRESS7, I2C_RECEIVER);
+
+    WaitFlagNo(I2C_FLAG_ADDSEND);
+
+    i2c_flag_clear(I2C_ADDR, I2C_FLAG_ADDSEND);
+
+    if (len == 1)
+    {
+        i2c_ack_config(I2C_ADDR, I2C_ACK_DISABLE);
+
+        i2c_stop_on_bus(I2C_ADDR);
+
+        while (!i2c_flag_get(I2C_ADDR, I2C_FLAG_RBNE))
+        {
+            if (meter.ElapsedTime() > TIMEOUT)
+            {
+                result = false;
+                break;
+            }
+        }
+
+        buf[0] = i2c_data_receive(I2C_ADDR);
+    }
+    else
+    {
+        for (int i = 0; i < len; i++)
+        {
+            if (i == len - 1)
+            {
+                i2c_ack_config(I2C_ADDR, I2C_ACK_DISABLE);
+                i2c_stop_on_bus(I2C_ADDR);
+            }
+
+            while (!i2c_flag_get(I2C_ADDR, I2C_FLAG_RBNE))
+            {
+                if (meter.ElapsedTime() > TIMEOUT)
+                {
+                    result = false;
+                    break;
+                }
+            }
+
+            buf[i] = i2c_data_receive(I2C_ADDR);
+        }
+    }
+
+    /* send a stop condition to I2C bus */
+    i2c_stop_on_bus(I2C_ADDR);
+
+    /* wait until stop condition generate */
+    while (I2C_CTL0(I2C_ADDR) & 0x0200)
+    {
+        if (meter.ElapsedTime() > TIMEOUT)
+        {
+            result = false;
+            break;
+        }
+    }
+
+    /* enable acknowledge */
+    i2c_ack_config(I2C_ADDR, I2C_ACK_ENABLE);
+
+    return result;
+}
