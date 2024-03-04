@@ -21,64 +21,73 @@ namespace PCF8563
 	static void CalculateDateTime(RTCDateTime *DateTime);
 }
 
-static void WriteBitToControlRegister(uint8 ControlRegister, uint8 BitNumber, uint8 Value)
+static void WriteBitToControlRegister(uint8 ControlRegister, uint8 BitNumber, bool bit)
 {
-    uint8 tmp;
-
-    if (Value > 1) Value = 1;
-    if (ControlRegister > 1) Value = 1;
-    if (BitNumber > 7) Value = 7;
+    uint8 value = 0;
 
     // HAL_I2C_Mem_Read(hi2c_pcf8563, PCF8563::ADDRESS, ControlRegister ? PCF8563_REG_CONTROL_STATUS1 : PCF8563_REG_CONTROL_STATUS2, 1, &tmp, 1, PCF8563::I2C_TIMEOUT);
-    HAL_I2C::Read(ControlRegister ? PCF8563_REG_CONTROL_STATUS1 : PCF8563_REG_CONTROL_STATUS2, &tmp, 1);
+    HAL_I2C::Read(ControlRegister ? PCF8563_REG_CONTROL_STATUS1 : PCF8563_REG_CONTROL_STATUS2, &value, 1);
 
-    tmp &= ~(1 << BitNumber);
-    tmp |= (Value << BitNumber);
+    if (bit)
+    {
+        value |= (1 << BitNumber);
+    }
+    else
+    {
+        value |= (1 << BitNumber);
+    }
 
-    ControlRegister ? (Value &= BINARY_U8(10101000)) : (Value &= BINARY_U8(00011111)); // Put zeros where zero is needed
+	if (ControlRegister == PCF8563_REG_CONTROL_STATUS1)				// Put zeros where zero is needed
+	{
+		value &= BINARY_U8(00011111);
+	}
+	else if (ControlRegister == PCF8563_REG_CONTROL_STATUS2)
+	{
+		value &= BINARY_U8(10101000);
+	}
 
 //    HAL_I2C_Mem_Write(hi2c_pcf8563, PCF8563::ADDRESS, ControlRegister ? PCF8563_REG_CONTROL_STATUS1 : PCF8563_REG_CONTROL_STATUS2, 1, &Value, 1, PCF8563::I2C_TIMEOUT);
-	HAL_I2C::Write(ControlRegister ? PCF8563_REG_CONTROL_STATUS1 : PCF8563_REG_CONTROL_STATUS2, &Value, 1);
+	HAL_I2C::Write(ControlRegister ? PCF8563_REG_CONTROL_STATUS1 : PCF8563_REG_CONTROL_STATUS2, &value, 1);
 }
 
-void PCF8563::TEST1Enable(uint8 Enable)
+void PCF8563::TEST1Enable(bool en)
 {
-	WriteBitToControlRegister(PCF8563_REG_CONTROL_STATUS1, PCF8563_CONTROL1_TEST1, Enable);
+	WriteBitToControlRegister(PCF8563_REG_CONTROL_STATUS1, PCF8563_CONTROL1_TEST1, en);
 }
 
-void PCF8563::STOPEnable(uint8 Enable)
+void PCF8563::STOPEnable(bool en)
 {
-	WriteBitToControlRegister(PCF8563_REG_CONTROL_STATUS1, PCF8563_CONTROL1_STOP, Enable);
+	WriteBitToControlRegister(PCF8563_REG_CONTROL_STATUS1, PCF8563_CONTROL1_STOP, en);
 }
 
-void PCF8563::TESTCEnable(uint8 Enable)
+void PCF8563::TESTCEnable(bool en)
 {
-	WriteBitToControlRegister(PCF8563_REG_CONTROL_STATUS1, PCF8563_CONTROL1_TESTC, Enable);
+	WriteBitToControlRegister(PCF8563_REG_CONTROL_STATUS1, PCF8563_CONTROL1_TESTC, en);
 }
 
-void PCF8563::InterruptEnable(uint8 Enable)
+void PCF8563::InterruptEnable(bool en)
 {
-	WriteBitToControlRegister(PCF8563_REG_CONTROL_STATUS1, PCF8563_CONTROL2_TI_TP, Enable);
+	WriteBitToControlRegister(PCF8563_REG_CONTROL_STATUS1, PCF8563_CONTROL2_TI_TP, en);
 }
 
-void PCF8563::AlarmFlagEnable(uint8 Enable)
+void PCF8563::AlarmFlagEnable(bool en)
 {
-    WriteBitToControlRegister(PCF8563_REG_CONTROL_STATUS1, PCF8563_CONTROL2_AF, Enable);
+    WriteBitToControlRegister(PCF8563_REG_CONTROL_STATUS1, PCF8563_CONTROL2_AF, en);
 }
 
-void PCF8563::TimerFlagEnable(uint8 Enable)
+void PCF8563::TimerFlagEnable(bool en)
 {
-    WriteBitToControlRegister(PCF8563_REG_CONTROL_STATUS1, PCF8563_CONTROL2_TF, Enable);
+    WriteBitToControlRegister(PCF8563_REG_CONTROL_STATUS1, PCF8563_CONTROL2_TF, en);
 }
 
-void PCF8563::AlarmInterruptEnable(uint8 Enable)
+void PCF8563::AlarmInterruptEnable(bool en)
 {
-    WriteBitToControlRegister(PCF8563_REG_CONTROL_STATUS1, PCF8563_CONTROL2_AIE, Enable);
+    WriteBitToControlRegister(PCF8563_REG_CONTROL_STATUS1, PCF8563_CONTROL2_AIE, en);
 }
 
-void PCF8563::TimerInterruptEnable(uint8 Enable)
+void PCF8563::TimerInterruptEnable(bool en)
 {
-    WriteBitToControlRegister(PCF8563_REG_CONTROL_STATUS1, PCF8563_CONTROL2_TIE, Enable);
+    WriteBitToControlRegister(PCF8563_REG_CONTROL_STATUS1, PCF8563_CONTROL2_TIE, en);
 }
 
 void PCF8563::ClkoutFrequency(CLKOUT_Freq Frequency)

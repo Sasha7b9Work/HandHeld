@@ -82,16 +82,27 @@ typedef struct
 
 namespace PCF8563
 {
-    void TEST1Enable(uint8 Enable);
-    void STOPEnable(uint8 Enable);
-    void TESTCEnable(uint8 Enable);
-    void InterruptEnable(uint8 Enable);
-    void AlarmFlagEnable(uint8 Enable);
-    void TimerFlagEnable(uint8 Enable);
-    void AlarmInterruptEnable(uint8 Enable);
-    void TimerInterruptEnable(uint8 Enable);
+    void TEST1Enable(bool);
+
+    void STOPEnable(bool);
+
+    void TESTCEnable(bool);
+
+    void InterruptEnable(bool);
+
+    void AlarmFlagEnable(bool);
+
+    void TimerFlagEnable(bool);
+
+    void AlarmInterruptEnable(bool);
+
+    void TimerInterruptEnable(bool);
+
     void ClkoutFrequency(CLKOUT_Freq Frequency);
+
     void GetDateTime(RTCDateTime *DateTime);        // Use in blocking/interrupt mode in PCF8563_INT EXTI handler
+
     void SetDateTime(RTCDateTime *DateTime);
+
     void Init();
 }
