@@ -24,6 +24,8 @@ void Device::Init()
 
     PCF8563::Init();
 
+    PCF8563::SetTimer(1);
+
     Beeper::Init();
 }
 
