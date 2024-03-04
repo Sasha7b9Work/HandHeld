@@ -25,8 +25,6 @@ void Device::Init()
     PCF8563::Init();
 
     Beeper::Init();
-
-    Beeper::Beep();
 }
 
 
