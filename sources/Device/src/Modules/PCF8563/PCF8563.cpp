@@ -135,26 +135,31 @@ void PCF8563::TimerInterruptEnable(bool en)
 
 void PCF8563::SetTimer(uint time_sec)
 {
-    uint8 control_2 = 0;
-
-    HAL_I2C::Read(PCF8563_REG_CONTROL_STATUS2, &control_2, 1);
-
-    control_2 &= ~(1 << 4);		// INT  - TF
-
-	control_2 |= (1 << 0);		// TIE - timer interrupt enabled
-
-	HAL_I2C::Write(PCF8563_REG_CONTROL_STATUS2, &control_2, 1);
-
 	uint8 timer_control = BINARY_U8(10000010);
 	//                              |     ++---- 1 Hz
 	//                              +----------- timer enabled
 
 	HAL_I2C::Write(PCF8563_REG_TIMER_CONTROL, &timer_control, 1);
 
+
+
+
 	uint8 timer_register = 1;								// 1 sec
 
 	HAL_I2C::Write(PCF8563_REG_TIMER, &timer_register, 1);
 
+
+
+
+    uint8 control_2 = 0;
+
+    HAL_I2C::Read(PCF8563_REG_CONTROL_STATUS2, &control_2, 1);
+
+    control_2 &= ~(1 << 4);		// INT  - TF
+
+    control_2 |= (1 << 0);		// TIE - timer interrupt enabled
+
+    HAL_I2C::Write(PCF8563_REG_CONTROL_STATUS2, &control_2, 1);
 }
 
 
