@@ -39,6 +39,8 @@ typedef struct
 
 namespace PCF8563
 {
+    void Init();
+
     void TEST1Enable(bool);
 
     void STOPEnable(bool);
@@ -60,6 +62,4 @@ namespace PCF8563
     void GetDateTime(RTCDateTime *DateTime);        // Use in blocking/interrupt mode in PCF8563_INT EXTI handler
 
     void SetDateTime(RTCDateTime *DateTime);
-
-    void Init();
 }
