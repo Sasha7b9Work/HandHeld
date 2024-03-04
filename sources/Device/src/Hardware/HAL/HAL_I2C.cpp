@@ -7,7 +7,7 @@
 #include <gd32e23x.h>
 
 
-#define I2C_SPEED              400000
+#define I2C_SPEED              100000
 #define I2C_SLAVE_ADDRESS7     (0xa2)   // Для часов
 #define I2C_PAGE_SIZE           8
 
