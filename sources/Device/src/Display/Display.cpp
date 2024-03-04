@@ -26,9 +26,9 @@ namespace Display
 
     static int current_part = 0;                            // Эту часть сейчас отрисовываем
 
-    static void BeginScene(int num_part);
-    static void DrawScene(int num_part);
-    static void EndScene(int num_parts);
+    void BeginScene(int num_part);
+    void DrawScene(int num_part);
+    void EndScene(int num_parts);
 }
 
 

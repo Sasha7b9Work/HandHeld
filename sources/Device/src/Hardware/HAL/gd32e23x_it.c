@@ -57,6 +57,10 @@ void PendSV_Handler(void)
 */
 void SysTick_Handler(void)
 {
+    extern uint timer_counter;
+
+    timer_counter++;
+
     delay_decrement();
 }
 

@@ -8,10 +8,11 @@ namespace HAL
 }
 
 
-struct I2C
+namespace HAL_I2C
 {
     void Init();
-};
 
+    bool Write(uint8 command, uint8 *data, int size);
 
-extern I2C i2cCOMMON;       // Для часов и приёмника
+    bool Read(uint8 *data, int size);
+}

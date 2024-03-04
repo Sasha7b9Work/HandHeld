@@ -4,7 +4,22 @@
 #include "Hardware/HAL/systick.h"
 
 
+uint timer_counter = 0;
+
+
 void Timer::Delay(uint timeMS)
 {
     delay_1ms(timeMS);
+}
+
+
+void TimeMeterMS::Reset()
+{
+    time_reset = timer_counter;
+}
+
+
+uint TimeMeterMS::ElapsedTime() const
+{
+    return timer_counter - time_reset;
 }
