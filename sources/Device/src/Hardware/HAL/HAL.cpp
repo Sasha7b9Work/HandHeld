@@ -14,5 +14,7 @@ void HAL::Init()
     rcu_periph_clock_enable(RCU_GPIOC);
     rcu_periph_clock_enable(RCU_GPIOF);
 
+    rcu_periph_clock_enable(RCU_I2C1);
+
     HAL_I2C::Init();
 }

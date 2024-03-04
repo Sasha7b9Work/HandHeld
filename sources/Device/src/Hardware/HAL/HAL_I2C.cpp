@@ -8,7 +8,7 @@
 
 
 #define I2C_SPEED              400000
-#define I2C_SLAVE_ADDRESS7     (0x3c << 1)
+#define I2C_SLAVE_ADDRESS7     (0xa2)   // Для часов
 #define I2C_PAGE_SIZE           8
 
 
@@ -55,11 +55,17 @@ bool HAL_I2C::WaitFlagNo(i2c_flag_enum flag)
 
 void HAL_I2C::Init()
 {
-    // SCL PB10 21 
-    // SDA PB11 22 
+    // SCL PB10 21 - alternate I2C1
+    // SDA PB11 22 - alternate I2C1
 
-//    pinI2C_SCL._Init(GPIOB, (gset.OnlyMeasure() ? GPIO_PIN_8 : GPIO_PIN_6));
-//    pinI2C_SDA._Init(GPIOB, (gset.OnlyMeasure() ? GPIO_PIN_9 : GPIO_PIN_7));
+    gpio_af_set(GPIOB, GPIO_AF_1, GPIO_PIN_10);
+    gpio_af_set(GPIOB, GPIO_AF_1, GPIO_PIN_11);
+
+    gpio_mode_set(GPIOB, GPIO_MODE_AF, GPIO_PUPD_PULLUP, GPIO_PIN_10);
+    gpio_output_options_set(GPIOB, GPIO_OTYPE_OD, GPIO_OSPEED_50MHZ, GPIO_PIN_10);
+
+    gpio_mode_set(GPIOB, GPIO_MODE_AF, GPIO_PUPD_PULLUP, GPIO_PIN_11);
+    gpio_output_options_set(GPIOB, GPIO_OTYPE_OD, GPIO_OSPEED_50MHZ, GPIO_PIN_11);
 
     /* configure I2C clock */
     i2c_clock_config(I2C_ADDR, I2C_SPEED, I2C_DTCY_2);

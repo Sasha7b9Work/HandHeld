@@ -4,7 +4,7 @@
 #include <gd32e23x.h>
 
 
-const uint I2C_ADDR = I2C0;
+const uint I2C_ADDR = I2C1;
 
 PinIn pinSW_LEFT(GPIOB, GPIO_PIN_0);       // PB0  18 
 PinIn pinSW_DOWN(GPIOB, GPIO_PIN_1);       // PB1  19
