@@ -69,6 +69,18 @@ void Display::DrawScene(int num_part)
     (void)num_part;
 
     Rect(20, 20).Draw(0, 0, Color::WHITE);
+
+    static int x = 0;
+    static int dx = 1;
+
+    Rect(20, 20).Draw(x, 0, Color::WHITE);
+
+    x += dx;
+
+    if (x == 140 || x == 0)
+    {
+        dx = -dx;
+    }
 }
 
 
