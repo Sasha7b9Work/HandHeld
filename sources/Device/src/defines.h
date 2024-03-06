@@ -1,5 +1,7 @@
 // 2024/03/02 09:33:12 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
+#define WIN32_LEAN_AND_MEAN
+#include "wx/wx.h"
 
 
 typedef unsigned char uint8;
@@ -33,3 +35,12 @@ typedef unsigned char uchar;
   (((uint8)((uint)bits / 010000000) % 010) << 7)))
 
 #define BINARY_U8( bits ) _bitset(0##bits)
+
+
+enum
+{
+    ID_BUTTON_MENU = wxID_HIGHEST + 1,
+    ID_BUTTON_CANCEL,
+    ID_BUTTON_UP,
+    ID_BUTTON_DOWN
+};

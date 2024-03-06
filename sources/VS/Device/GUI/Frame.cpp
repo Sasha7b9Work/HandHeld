@@ -67,7 +67,7 @@ Frame::Frame(const wxString &title)
     timerButton.SetOwner(this, TIMER_BUTTON_ID);
     timer.SetOwner(this, TIMER_ID);
 
-    SetClientSize(Display::WIDTH * IMAGE_SCALE + 100, Display::HEIGHT * IMAGE_SCALE);
+    SetClientSize(Display::WIDTH * IMAGE_SCALE + 180, Display::HEIGHT * IMAGE_SCALE);
 
     wxTopLevelWindowBase::SetMinSize(GetSize());
     wxTopLevelWindowBase::SetMaxSize(GetSize());
@@ -79,6 +79,23 @@ Frame::Frame(const wxString &title)
     int y = (maxHeight - GetSize().y) / 2;
 
     SetPosition({ x, y });
+
+    const wxSize SIZE_BUTTON = { 65, 25 };
+
+    int x1 = 330;
+    int x2 = 370;
+    int x3 = 420;
+    int y1 = 15;
+    int y2 = 50;
+    int y3 = 90;
+
+    new wxButton(this, ID_BUTTON_MENU, "Menu", { x1, y2 }, SIZE_BUTTON);
+
+    new wxButton(this, ID_BUTTON_CANCEL, "Cancel", { x3, y2 }, SIZE_BUTTON);
+
+    new wxButton(this, ID_BUTTON_UP, "Up", { x2, y1 }, SIZE_BUTTON);
+
+    new wxButton(this, ID_BUTTON_DOWN, "Down", { x2, y3 }, SIZE_BUTTON);
 
     timer.StartOnce(25);
 }
