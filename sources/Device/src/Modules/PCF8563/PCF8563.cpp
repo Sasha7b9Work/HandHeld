@@ -55,12 +55,14 @@
 #define PCF8563_CLKOUT_CONTROL_FD1				1
 #define PCF8563_CLKOUT_CONTROL_FD0				0
 
-static uint8 Pcf8563Buffer[7];
+
 
 
 namespace PCF8563
 {
 	static void CalculateDateTime(RTCDateTime *DateTime);
+
+    static uint8 buffer[7];
 }
 
 static void WriteBitToControlRegister(uint8 ControlRegister, uint8 BitNumber, bool bit)
@@ -226,19 +228,19 @@ void PCF8563::SetDateTime(RTCDateTime *DateTime)
 
 void PCF8563::CalculateDateTime(RTCDateTime *DateTime)
 {
-	DateTime->Second = bcd2dec((uint8)((Pcf8563Buffer[0]) & 0x7F));
-	DateTime->Minute = bcd2dec(Pcf8563Buffer[1]);
-	DateTime->Hour = bcd2dec(Pcf8563Buffer[2]);
-	DateTime->Day = Pcf8563Buffer[3];
-	DateTime->DayOfWeek = bcd2dec((uint8)(Pcf8563Buffer[4] + 1)); // too keep weekdays in 1-7 format
-	DateTime->Month = bcd2dec((uint8)(Pcf8563Buffer[5] & 0x1F));
-	DateTime->Year = (uint16)(2000 + bcd2dec(Pcf8563Buffer[6]));
+	DateTime->Second = bcd2dec((uint8)((buffer[0]) & 0x7F));
+	DateTime->Minute = bcd2dec(buffer[1]);
+	DateTime->Hour = bcd2dec(buffer[2]);
+	DateTime->Day = buffer[3];
+	DateTime->DayOfWeek = bcd2dec((uint8)(buffer[4] + 1)); // too keep weekdays in 1-7 format
+	DateTime->Month = bcd2dec((uint8)(buffer[5] & 0x1F));
+	DateTime->Year = (uint16)(2000 + bcd2dec(buffer[6]));
 }
 
 void PCF8563::GetDateTime(RTCDateTime *DateTime)
 {
 //	HAL_I2C_Mem_Read(hi2c_pcf8563, PCF8563::ADDRESS, PCF8563_REG_TIME, 1, Pcf8563Buffer, 7, PCF8563::I2C_TIMEOUT);
-	HAL_I2C::Read(PCF8563_REG_TIME, Pcf8563Buffer, 7);
+	HAL_I2C::Read(PCF8563_REG_TIME, buffer, 7);
 
 	PCF8563::CalculateDateTime(DateTime);
 }
