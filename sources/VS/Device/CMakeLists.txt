@@ -2,7 +2,7 @@
 
 project (Device)
 
-set(CMAKE_UNITY_BUILD OFF)
+#set(CMAKE_UNITY_BUILD OFF)
 
 set(CMAKE_UNITY_BUILD_BATCH_SIZE 16)
 
@@ -85,9 +85,11 @@ source_group(Utils              FILES ${UTILS})
 
 
 set_source_files_properties(
-    Application.cpp
-    Frame.cpp
-    main_win.cpp
+    Modules/PCF8563/PCF8563_win.cpp
+    ../../Device/src/Device.cpp
+#    Application.cpp
+#    Frame.cpp
+#    main_win.cpp
     PROPERTIES SKIP_UNITY_BUILD_INCLUSION ON
 )
 

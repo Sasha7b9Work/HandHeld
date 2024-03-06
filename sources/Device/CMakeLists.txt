@@ -2,7 +2,7 @@
 
 project (Device)
 
-set(CMAKE_UNITY_BUILD OFF)
+#set(CMAKE_UNITY_BUILD OFF)
 
 message("------------------------------------------------------------------------ ${PROJECT_NAME}")
 
@@ -58,6 +58,7 @@ source_group(Modules/ST7735    FILES ${MODULES_ST7735})
 
 set_source_files_properties(
     ${GD32E23x}
+    src/Hardware/Clock.cpp
     PROPERTIES HEADER_FILE_ONLY TRUE
 )
 
