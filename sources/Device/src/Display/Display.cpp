@@ -4,6 +4,7 @@
 #include "Modules/ST7735/ST7735.h"
 #include "Settings/Settings.h"
 #include "Display/Font/Font.h"
+#include "Hardware/Clock.h"
 #include <string>
 
 
@@ -40,15 +41,12 @@ void Display::Init()
 
 void Display::Update()
 {
-    ST7735::Fill(Color::colors[0]);
-    ST7735::Fill(Color::colors[1]);
-
-//    for (int i = 0; i < NUMBER_PARTS_HEIGHT; i++)
-//    {
-//        BeginScene(i);
-//        DrawScene(i);
-//        EndScene(i);
-//    }
+    for (int i = 0; i < NUMBER_PARTS_HEIGHT; i++)
+    {
+        BeginScene(i);
+        DrawScene(i);
+        EndScene(i);
+    }
 }
 
 
@@ -70,7 +68,9 @@ void Display::DrawScene(int num_part)
 {
     (void)num_part;
 
-    Rect(40, 20).Draw(20, 20, Color::WHITE);
+    Rect(20, 20).Draw(10, 10, Color::WHITE);
+
+    Clock::Draw(10, 40);
 }
 
 

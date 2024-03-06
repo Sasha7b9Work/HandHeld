@@ -38,7 +38,7 @@ namespace ST7735
 //    static void SendCommand(uint8);
 //    static void SendData8(uint8);
 //    static void SendData16(uint16);
-    static void SetWindow(int startX, int startY, int stopX, int stopY);
+    void SetWindow(int startX, int startY, int stopX, int stopY);
 
     static void Write_Cmd(unsigned char CMD)
     {
@@ -229,12 +229,11 @@ void ST7735::SetWindow(int x, int y, int width, int height)
 
 void ST7735::Fill(uint16 color)
 {
-    unsigned int w, u;
     LCD_SetPos_Vertical(0, 159, 0, 79);
 
-    for (w = 0; w < 160; w++)
+    for (uint w = 0; w < 160; w++)
     {
-        for (u = 0; u < 80; u++)
+        for (uint u = 0; u < 80; u++)
         {
             SendData16(color);
         }
@@ -244,9 +243,7 @@ void ST7735::Fill(uint16 color)
 
 void ST7735::WriteBuffer(int y0)
 {
-    SetWindow(0, y0, Display::WIDTH, Display::HEIGHT / Display::NUMBER_PARTS_HEIGHT);
-
-    SendCommand(0x2C);
+    LCD_SetPos_Vertical(0, Display::WIDTH - 1, (uint)y0, (uint)(y0 + Display::HEIGHT / Display::NUMBER_PARTS_HEIGHT - 1));
 
     for (int y = 0; y < Display::HEIGHT / Display::NUMBER_PARTS_HEIGHT; y++)
     {

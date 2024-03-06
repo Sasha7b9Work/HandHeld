@@ -1,6 +1,9 @@
 // 2024/03/01 22:45:47 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
 #include "Display/Colors.h"
+#include <cstdarg>
+#include <cstdio>
+#include <cstring>
 
 
 namespace Display
@@ -61,8 +64,31 @@ private:
 
 struct Text
 {
-    Text(pchar _text) : text(_text) { }
+    Text(char *format, ...) : text(nullptr)
+    {
+        char data[256];
+        std::va_list args;
+        va_start(args, format);
+        std::vsprintf(data, format, args);
+        va_end(args);
+        Set(data);
+    }
+    void Set(pchar string)
+    {
+        Clear();
+
+        text = new char[std::strlen(string) + 1];
+        std::strcpy(text, string);
+    }
+    void Clear()
+    {
+        if (text)
+        {
+            delete text;
+            text = nullptr;
+        }
+    }
     void Write(int x, int y, const Color &color = Color::NUMBER) const;
 private:
-    pchar text;
+    char *text;
 };

@@ -15,14 +15,17 @@
  //
 
 
-typedef enum
+struct CLKOUT_Freq
 {
-    CLKOUT_FREQ_32768HZ = 0,
-    CLKOUT_FREQ_1024HZ  = 1,
-    CLKOUT_FREQ_32HZ    = 2,
-    CLKOUT_FREQ_1HZ     = 3,
-    Count
-} CLKOUT_Freq;
+    enum E
+    {
+        CLKOUT_FREQ_32768HZ = 0,
+        CLKOUT_FREQ_1024HZ = 1,
+        CLKOUT_FREQ_32HZ = 2,
+        CLKOUT_FREQ_1HZ = 3,
+        Count
+    };
+};
 
 
 struct RTCDateTime
@@ -61,7 +64,7 @@ namespace PCF8563
 
     void SetTimer(uint time_sec);
 
-    void ClkoutFrequency(CLKOUT_Freq);
+    void ClkoutFrequency(CLKOUT_Freq::E);
 
     void GetDateTime(RTCDateTime *);        // Use in blocking/interrupt mode in PCF8563_INT EXTI handler
 
