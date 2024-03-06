@@ -134,17 +134,3 @@ void Pixel::Set(int x, int y, const Color &color) const
 
     Display::Buffer::buffer[y * Display::WIDTH + x] = (uint8)Color::current.value;
 }
-
-
-void Text::Write(int x, int y, const Color &color) const
-{
-    color.SetAsCurrent();
-
-    pchar pointer = text;
-
-    while (*pointer)
-    {
-        x = Char(*pointer++).Write(x, y);
-        x++;
-    }
-}

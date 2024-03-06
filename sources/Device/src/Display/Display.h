@@ -62,33 +62,28 @@ private:
 };
 
 
+template<int capacity = 64>
 struct Text
 {
-    Text(pchar format, ...) : text(nullptr)
+    Text(pchar format, ...)
     {
-        char data[256];
         std::va_list args;
         va_start(args, format);
-        std::vsprintf(data, format, args);
+        std::vsprintf(text, format, args);
         va_end(args);
-        Set(data);
     }
-    void Set(pchar string)
+    void Write(int x, int y, const Color &color = Color::NUMBER) const
     {
-        Clear();
+        color.SetAsCurrent();
 
-        text = new char[std::strlen(string) + 1];
-        std::strcpy(text, string);
-    }
-    void Clear()
-    {
-        if (text)
+        pchar pointer = text;
+
+        while (*pointer)
         {
-            delete text;
-            text = nullptr;
+            x = Char(*pointer++).Write(x, y);
+            x++;
         }
     }
-    void Write(int x, int y, const Color &color = Color::NUMBER) const;
 private:
-    char *text;
+    char text[capacity];
 };
