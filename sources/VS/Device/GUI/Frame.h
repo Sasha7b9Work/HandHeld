@@ -13,10 +13,6 @@ public:
     static Frame *Self() { return self; };
 
     void OnTimer(wxTimerEvent &);
-    void OnTimerButton(wxTimerEvent &);
-
-    void OnMouseDown(wxMouseEvent &);
-    void OnMouseUp(wxMouseEvent &);
 
     void BeginScene();
 

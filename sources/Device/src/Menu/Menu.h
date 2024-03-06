@@ -7,8 +7,4 @@ namespace Menu
     void Init();
 
     void Update();
-
-    void ShortPress();
-
-    void LongPress();
 }

@@ -32,8 +32,6 @@ public:
         SetMinSize({ Display::WIDTH * IMAGE_SCALE, Display::HEIGHT * IMAGE_SCALE });
         SetDoubleBuffered(true);
         Bind(wxEVT_PAINT, &Screen::OnPaint, this);
-        Bind(wxEVT_LEFT_DOWN, &Frame::OnMouseDown, Frame::Self());
-        Bind(wxEVT_LEFT_UP, &Frame::OnMouseUp, Frame::Self());
     }
 
     void OnPaint(wxPaintEvent &)
@@ -65,12 +63,11 @@ Frame::Frame(const wxString &title)
 
     Bind(wxEVT_PAINT, &Frame::OnPaint, this);
     Bind(wxEVT_TIMER, &Frame::OnTimer, this, TIMER_ID);
-    Bind(wxEVT_TIMER, &Frame::OnTimerButton, this, TIMER_BUTTON_ID);
 
     timerButton.SetOwner(this, TIMER_BUTTON_ID);
     timer.SetOwner(this, TIMER_ID);
 
-    SetClientSize(Display::WIDTH * IMAGE_SCALE, Display::HEIGHT * IMAGE_SCALE);
+    SetClientSize(Display::WIDTH * IMAGE_SCALE + 100, Display::HEIGHT * IMAGE_SCALE);
 
     wxTopLevelWindowBase::SetMinSize(GetSize());
     wxTopLevelWindowBase::SetMaxSize(GetSize());
@@ -105,29 +102,6 @@ void Frame::BeginScene()
 void Frame::EndScene()
 {
 
-}
-
-
-void Frame::OnMouseDown(wxMouseEvent &)
-{
-    meterButton.Reset();
-    timerButton.StartOnce(500);
-}
-
-
-void Frame::OnMouseUp(wxMouseEvent &)
-{
-    if (meterButton.ElapsedTime() < 500)
-    {
-        Menu::ShortPress();
-        timerButton.Stop();
-    }
-}
-
-
-void Frame::OnTimerButton(wxTimerEvent &)
-{
-    Menu::LongPress();
 }
 
 
