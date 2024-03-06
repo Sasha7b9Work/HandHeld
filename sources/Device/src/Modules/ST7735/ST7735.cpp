@@ -21,9 +21,13 @@ namespace ST7735
         {
             (byte & (1 << bit)) == 0 ? pinSDA.ToLow() : pinSDA.ToHi();
 
-            pinSCL.ToHi();
+            //pinSCL.ToHi();
+            //gpio_bit_set(GPIOA, GPIO_PIN_4);
+            GPIO_BOP(GPIOA) = (uint32_t)GPIO_PIN_4;
 
-            pinSCL.ToLow();
+            // pinSCL.ToLow();
+            //gpio_bit_reset(GPIOA, GPIO_PIN_4);
+            GPIO_BC(GPIOA) = (uint32_t)GPIO_PIN_4;
         }
     }
 
