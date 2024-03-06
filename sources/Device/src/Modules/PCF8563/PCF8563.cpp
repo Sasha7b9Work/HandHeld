@@ -178,15 +178,6 @@ void PCF8563::ClkoutFrequency(CLKOUT_Freq Frequency)
 	uint8 value2 = 0;
 
 	HAL_I2C::Read(PCF8563_REG_CLKOUT, &value2, 1);
-
-	if (value == value2)
-	{
-		value = value;
-	}
-	else
-	{
-		value = value;
-	}
 }
 
 static uint8 bcd2dec(uint8 BCD)
