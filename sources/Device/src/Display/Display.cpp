@@ -5,6 +5,8 @@
 #include "Settings/Settings.h"
 #include "Display/Font/Font.h"
 #include "Hardware/Clock.h"
+#include "Keyboard/Keyboard.h"
+
 #include <string>
 
 
@@ -74,6 +76,28 @@ void Display::DrawScene(int num_part)
     }
 
     Clock::Draw(5, 30, Color::WHITE);
+
+    using namespace Keyboard;
+
+    if (btnMenu.IsDown())
+    {
+        Text<>("MENU").Write(5, 60);
+    }
+
+    if (btnCancel.IsDown())
+    {
+        Text<>("CANCEL").Write(25, 60);
+    }
+
+    if (btnUp.IsDown())
+    {
+        Text<>("UP").Write(45, 60);
+    }
+
+    if (btnDown.IsDown())
+    {
+        Text<>("DOWN").Write(65, 60);
+    }
 }
 
 
