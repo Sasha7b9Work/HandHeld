@@ -19,7 +19,18 @@ namespace ST7735
     {
         for (int bit = 7; bit >= 0; bit--)
         {
-            (byte & (1 << bit)) == 0 ? pinSDA.ToLow() : pinSDA.ToHi();
+            if ((byte & (1 << bit)) == 0)
+            {
+                //pinSDA.ToLow();
+                //gpio_bit_reset(GPIOA, GPIO_PIN_6);
+                GPIO_BC(GPIOA) = (uint32_t)GPIO_PIN_6;
+            }
+            else
+            {
+                //pinSDA.ToHi();
+                //gpio_bit_set(GPIOA, GPIO_PIN_6);
+                GPIO_BOP(GPIOA) = (uint32_t)GPIO_PIN_6;
+            }
 
             //pinSCL.ToHi();
             //gpio_bit_set(GPIOA, GPIO_PIN_4);
