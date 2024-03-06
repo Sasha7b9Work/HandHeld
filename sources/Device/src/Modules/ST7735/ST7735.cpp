@@ -258,7 +258,9 @@ void ST7735::Fill(uint16 color)
 
 void ST7735::WriteBuffer(int y0)
 {
-    LCD_SetPos_Vertical(0, Display::WIDTH, (uint)y0, (uint)(y0 + Display::HEIGHT / Display::NUMBER_PARTS_HEIGHT - 1));
+//    LCD_SetPos_Vertical(0, Display::WIDTH, (uint)y0, (uint)(y0 + Display::HEIGHT / Display::NUMBER_PARTS_HEIGHT - 1));
+
+    SetWindow(0, y0, Display::WIDTH, Display::HEIGHT / Display::NUMBER_PARTS_HEIGHT);
 
     for (int y = 0; y < Display::HEIGHT / Display::NUMBER_PARTS_HEIGHT; y++)
     {
