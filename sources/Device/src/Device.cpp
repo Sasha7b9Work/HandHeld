@@ -36,7 +36,7 @@ void Device::Update()
 
     Menu::Update();
 
-    Display::Update();
-
     PCF8563::Update();
+
+    Display::Update();
 }
