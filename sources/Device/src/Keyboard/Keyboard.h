@@ -3,9 +3,24 @@
 #include <gd32e23x.h>
 
 
+struct Key
+{
+    enum E
+    {
+        Menu,
+        Cancel,
+        Up,
+        Down,
+        Count
+    };
+};
+
+
 namespace Keyboard
 {
     void Init();
 
     void Update();
+
+    bool IsDown(Key::E);
 }

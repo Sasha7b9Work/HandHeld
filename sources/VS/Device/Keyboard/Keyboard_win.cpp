@@ -13,3 +13,9 @@ void Keyboard::Update()
 {
 
 }
+
+
+bool Keyboard::IsDown(Key::E)
+{
+    return false;
+}
