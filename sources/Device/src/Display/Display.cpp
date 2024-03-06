@@ -4,7 +4,7 @@
 #include "Modules/ST7735/ST7735.h"
 #include "Settings/Settings.h"
 #include "Display/Font/Font.h"
-#include "Hardware/Clock.h"
+#include "Hardware/Watch.h"
 #include "Keyboard/Keyboard.h"
 #include <string>
 
@@ -71,7 +71,7 @@ void Display::DrawScene(int num_part)
 {
     (void)num_part;
 
-    Clock::Draw(35, 25, Color::WHITE);
+    Watch::Draw(35, 25, Color::WHITE);
 
     for (int i = 0; i < Source::Count; i++)
     {

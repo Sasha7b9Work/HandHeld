@@ -3,7 +3,7 @@
 #include "Display/Display.h"
 
 
-namespace Clock
+namespace Watch
 {
     void Draw(int x, int y, const Color & = Color::NUMBER);
 }

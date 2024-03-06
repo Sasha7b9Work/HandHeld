@@ -625,14 +625,14 @@
               <FilePath>.\src\Hardware\Beeper.h</FilePath>
             </File>
             <File>
-              <FileName>Clock.cpp</FileName>
+              <FileName>Watch.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Hardware\Clock.cpp</FilePath>
+              <FilePath>.\src\Hardware\Watch.cpp</FilePath>
             </File>
             <File>
-              <FileName>Clock.h</FileName>
+              <FileName>Watch.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Hardware\Clock.h</FilePath>
+              <FilePath>.\src\Hardware\Watch.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -818,6 +818,11 @@
               <FileName>Pages.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Menu\Pages\Pages.h</FilePath>
+            </File>
+            <File>
+              <FileName>PageWatch.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Menu\Pages\PageWatch.cpp</FilePath>
             </File>
           </Files>
         </Group>
