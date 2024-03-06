@@ -144,7 +144,7 @@ void PCF8563::SetTimer(uint time_sec)
 
 
 
-	uint8 timer_register = 1;								// 1 sec
+	uint8 timer_register = (uint8)time_sec;           // 1 sec
 
 	HAL_I2C::Write(PCF8563_REG_TIMER, &timer_register, 1);
 
@@ -256,4 +256,14 @@ void PCF8563::Init()
 {
 	PCF8563::ClkoutFrequency(CLKOUT_FREQ_1HZ);
 	PCF8563::STOPEnable(0);
+}
+
+
+void PCF8563::Update()
+{
+	RTCDateTime date_time;
+
+	GetDateTime(&date_time);
+
+	date_time = date_time;
 }

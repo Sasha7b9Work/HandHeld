@@ -10,9 +10,9 @@
  *      GitHub: https://github.com/lamik/PCF8563_RTC_STM32_HAL
  */
 
-//
-// Uncomment when you are using DMA reading
-//
+ //
+ // Uncomment when you are using DMA reading
+ //
 
 
 typedef enum
@@ -21,25 +21,27 @@ typedef enum
     CLKOUT_FREQ_1024HZ  = 1,
     CLKOUT_FREQ_32HZ    = 2,
     CLKOUT_FREQ_1HZ     = 3,
-	Count
+    Count
 } CLKOUT_Freq;
 
 
-typedef struct
+struct RTCDateTime
 {
-	uint16 	Year;
-	uint8  	Month;
-	uint8		Day;
-	uint8		Hour;
-	uint8		Minute;
-	uint8		Second;
-	uint8		DayOfWeek;
-}RTCDateTime;
+    uint16  Year;
+    uint8   Month;
+    uint8   Day;
+    uint8   Hour;
+    uint8   Minute;
+    uint8   Second;
+    uint8   DayOfWeek;
+};
 
 
 namespace PCF8563
 {
     void Init();
+
+    void Update();
 
     void TEST1Enable(bool);
 
@@ -59,9 +61,9 @@ namespace PCF8563
 
     void SetTimer(uint time_sec);
 
-    void ClkoutFrequency(CLKOUT_Freq Frequency);
+    void ClkoutFrequency(CLKOUT_Freq);
 
-    void GetDateTime(RTCDateTime *DateTime);        // Use in blocking/interrupt mode in PCF8563_INT EXTI handler
+    void GetDateTime(RTCDateTime *);        // Use in blocking/interrupt mode in PCF8563_INT EXTI handler
 
-    void SetDateTime(RTCDateTime *DateTime);
+    void SetDateTime(RTCDateTime *);
 }

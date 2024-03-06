@@ -24,7 +24,7 @@ void Device::Init()
 
     PCF8563::Init();
 
-    PCF8563::SetTimer(1);
+    PCF8563::SetTimer(1);       // Переводим INT в 0, чтобы питание не выключалось
 
     Beeper::Init();
 }
@@ -37,4 +37,6 @@ void Device::Update()
     Menu::Update();
 
     Display::Update();
+
+    PCF8563::Update();
 }
