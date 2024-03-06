@@ -19,6 +19,14 @@ static FontDef font_10x7 = { 7, 10, Font10x7 };
 namespace Font
 {
     TypeFont::E type = TypeFont::_7;
+
+    static int size = 1;
+}
+
+
+void Font::SetSize(int _size)
+{
+    size = _size;
 }
 
 
@@ -78,12 +86,12 @@ int Char::Write(int x, int y, const Color &color) const
             {
                 if (Font::GetBit(symbol, row, col))
                 {
-                    Pixel().Set(x + col, y + row);
+                    Rect(Font::size, Font::size).Fill(x + col * Font::size, y + row * Font::size);
                 }
             }
         }
 
-        return x + width;
+        return x + width * Font::size;
     }
     else if (Font::type == TypeFont::_10)
     {
@@ -91,11 +99,6 @@ int Char::Write(int x, int y, const Color &color) const
         {
             return 0;
         }
-
-//        if (WIDTH < (cursorX + font_10x7.width) || HEIGHT < (cursorY + font_10x7.height))
-//        {
-//            return 0;
-//        }
 
         for (int i = 0; i < font_10x7.height; i++)
         {
@@ -105,12 +108,12 @@ int Char::Write(int x, int y, const Color &color) const
             {
                 if ((b << j) & 0x8000)
                 {
-                    Pixel().Set(x + j, y + i);
+                    Rect(Font::size, Font::size).Fill(x + j * Font::size, y + i * Font::size);
                 }
             }
         }
 
-        return  x + font_10x7.width;
+        return x + font_10x7.width * Font::size;
     }
 
     return x;

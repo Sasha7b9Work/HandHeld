@@ -43,10 +43,20 @@ private:
 };
 
 
+struct VLine
+{
+    VLine(int h) : height(h) { }
+    void Draw(int x, int y, const Color &color = Color::NUMBER) const;
+private:
+    const int height;
+};
+
+
 struct Rect
 {
     Rect(int w, int h) : width(w), height(h) { }
     void Draw(int x, int y, const Color &color = Color::NUMBER) const;
+    void Fill(int x, int y, const Color &color = Color::NUMBER) const;
 private:
     const int width;
     const int height;

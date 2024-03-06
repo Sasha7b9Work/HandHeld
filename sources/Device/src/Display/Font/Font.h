@@ -80,6 +80,8 @@ namespace Font
 {
     void SetType(TypeFont::E);
 
+    void SetSize(int);
+
     int GetBit(uint8 symbol, int row, int col);
 
     int GetHeight();

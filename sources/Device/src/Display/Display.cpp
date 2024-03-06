@@ -100,7 +100,7 @@ void Display::DrawScene(int num_part)
 }
 
 
-void Rect::Draw(int x0, int y0, const Color &color) const
+void Rect::Fill(int x0, int y0, const Color &color) const
 {
     color.SetAsCurrent();
 
@@ -111,6 +111,17 @@ void Rect::Draw(int x0, int y0, const Color &color) const
 }
 
 
+void Rect::Draw(int x, int y, const Color &color) const
+{
+    color.SetAsCurrent();
+
+    HLine(width).Draw(x, y);
+    HLine(width).Draw(x, y + height);
+    VLine(height).Draw(x, y);
+    VLine(height).Draw(x + width, y);
+}
+
+
 void HLine::Draw(int x, int y, const Color &color) const
 {
     color.SetAsCurrent();
@@ -118,6 +129,17 @@ void HLine::Draw(int x, int y, const Color &color) const
     for (int i = 0; i < width; i++)
     {
         Pixel().Set(x++, y);
+    }
+}
+
+
+void VLine::Draw(int x, int y, const Color &color) const
+{
+    color.SetAsCurrent();
+
+    for (int i = 0; i < height; i++)
+    {
+        Pixel().Set(x, y++);
     }
 }
 
