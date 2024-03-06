@@ -71,31 +71,11 @@ void Display::DrawScene(int num_part)
 {
     (void)num_part;
 
+    Clock::Draw(35, 25, Color::WHITE);
+
     for (int i = 0; i < Source::Count; i++)
     {
-        Source((Source::E)i).Draw(i * (Display::WIDTH / Source::Count), 5, Color::WHITE);
-    }
-
-    Clock::Draw(5, 30, Color::WHITE);
-
-    if (Keyboard::IsDown(Key::Menu))
-    {
-        Text<>("MENU").Write(0, 60);
-    }
-
-    if (Keyboard::IsDown(Key::Cancel))
-    {
-        Text<>("CANCEL").Write(30, 60);
-    }
-
-    if (Keyboard::IsDown(Key::Up))
-    {
-        Text<>("UP").Write(60, 60);
-    }
-
-    if (Keyboard::IsDown(Key::Down))
-    {
-        Text<>("DOWN").Write(90, 60);
+        Source((Source::E)i).Draw(6 + i * 30, 65);
     }
 }
 

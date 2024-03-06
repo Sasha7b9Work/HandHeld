@@ -3,6 +3,7 @@
 #include "Hardware/Clock.h"
 #include "Modules/PCF8563/PCF8563.h"
 #include "Display/Display.h"
+#include "Display/Font/Font.h"
 
 
 void Clock::Draw(int x, int y, const Color &color)
@@ -11,5 +12,13 @@ void Clock::Draw(int x, int y, const Color &color)
 
     PCF8563::GetDateTime(&date_time);
 
+    date_time.Year = 2024;
+
+    Font::SetSize(2);
+
     Text<>("%02d:%02d:%02d", date_time.Hour, date_time.Minute, date_time.Second).Write(x, y, color);
+
+    Font::SetSize(1);
+
+    Text<>("%02d/%02d/%02d", date_time.Day, date_time.Month, date_time.Year).Write(x + 15, y + 20);
 }
