@@ -68,7 +68,7 @@ void Display::DrawScene(int num_part)
 {
     (void)num_part;
 
-    Rect(20, 20).Draw(10, 10, Color::WHITE);
+    Rect(20, 20).Draw(0, 0, Color::WHITE);
 }
 
 
