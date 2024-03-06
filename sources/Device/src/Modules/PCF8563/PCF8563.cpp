@@ -63,6 +63,8 @@ namespace PCF8563
 	static void CalculateDateTime(RTCDateTime *DateTime);
 
     static uint8 buffer[7];
+
+	static RTCDateTime date_time;           // Последнее считанное время
 }
 
 static void WriteBitToControlRegister(uint8 ControlRegister, uint8 BitNumber, bool bit)
@@ -239,24 +241,19 @@ void PCF8563::CalculateDateTime(RTCDateTime *DateTime)
 
 void PCF8563::GetDateTime(RTCDateTime *DateTime)
 {
-//	HAL_I2C_Mem_Read(hi2c_pcf8563, PCF8563::ADDRESS, PCF8563_REG_TIME, 1, Pcf8563Buffer, 7, PCF8563::I2C_TIMEOUT);
-	HAL_I2C::Read(PCF8563_REG_TIME, buffer, 7);
-
-	PCF8563::CalculateDateTime(DateTime);
+    *DateTime = date_time;
 }
 
 void PCF8563::Init()
 {
-	PCF8563::ClkoutFrequency(CLKOUT_FREQ_1HZ);
-	PCF8563::STOPEnable(0);
+    ClkoutFrequency(CLKOUT_FREQ_1HZ);
+    STOPEnable(0);
 }
 
 
 void PCF8563::Update()
 {
-	RTCDateTime date_time;
+    HAL_I2C::Read(PCF8563_REG_TIME, buffer, 7);
 
-	GetDateTime(&date_time);
-
-	date_time = date_time;
+    CalculateDateTime(&date_time);
 }
