@@ -6,6 +6,7 @@
 #include "Display/Font/Font.h"
 #include "Hardware/Watch.h"
 #include "Keyboard/Keyboard.h"
+#include "Menu/Menu.h"
 #include <string>
 
 
@@ -71,11 +72,18 @@ void Display::DrawScene(int num_part)
 {
     (void)num_part;
 
-    Watch::Draw(35, 25, Color::WHITE);
-
-    for (int i = 0; i < Source::Count; i++)
+    if (Menu::IsShown())
     {
-        Source((Source::E)i).Draw(6 + i * 30, 65);
+        Menu::Draw();
+    }
+    else
+    {
+        Watch::Draw(35, 25, Color::WHITE);
+
+        for (int i = 0; i < Source::Count; i++)
+        {
+            Source((Source::E)i).Draw(6 + i * 30, 65);
+        }
     }
 }
 

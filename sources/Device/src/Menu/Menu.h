@@ -7,4 +7,9 @@ namespace Menu
     void Init();
 
     void Update();
+
+    // Показывать ли меню
+    bool IsShown();
+
+    void Draw();
 }

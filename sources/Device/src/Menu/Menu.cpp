@@ -3,6 +3,12 @@
 #include "Menu/Menu.h"
 
 
+namespace Menu
+{
+    static bool is_shown = false;
+}
+
+
 void Menu::Init()
 {
 
@@ -12,4 +18,16 @@ void Menu::Init()
 void Menu::Update()
 {
 
+}
+
+
+void Menu::Draw()
+{
+
+}
+
+
+bool Menu::IsShown()
+{
+    return is_shown;
 }
