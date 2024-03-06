@@ -74,18 +74,13 @@ void Display::EndScene(int num_parts)
 }
 
 
-void Display::DrawScene(int num_part, int x)
+void Display::DrawScene(int num_part, int /*x*/)
 {
     (void)num_part;
 
     Rect(20, 20).Draw(0, 0, Color::BLUE);
 
-    Rect(20, 20).Draw(x, 0, Color::WHITE);
-
-    for (int i = 0; i < 80; i++)
-    {
-        Pixel().Set(i, i);
-    }
+    Clock::Draw(5, 30, Color::WHITE);
 }
 
 
