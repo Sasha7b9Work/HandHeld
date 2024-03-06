@@ -80,6 +80,8 @@ namespace ST7735
     }
 
     static void LCD_SetPos_Vertical(unsigned char x0, unsigned char x1, unsigned int y0, unsigned int y1);
+
+    static void LCD_SetPos_Horizontal(unsigned char x0, unsigned char x1, unsigned int y0, unsigned int y1);
 }
 
 
@@ -256,11 +258,38 @@ void ST7735::Fill(uint16 color)
 }
 
 
+void ST7735::LCD_SetPos_Horizontal(unsigned char x0, unsigned char x1, unsigned int y0, unsigned int y1)
+{
+    unsigned char YSH, YSL, YEH, YEL;
+    x0 += 1; x1 += 1; y0 += 26; y1 += 26;
+
+    YSH = (uint8)(y0 >> 8);
+    YSL = (uint8)y0;
+
+    YEH = (uint8)(y1 >> 8);
+    YEL = (uint8)y1;
+
+    Write_Cmd(0x2A);
+    Write_Cmd_Data(0x00);
+    Write_Cmd_Data(x0);
+    Write_Cmd_Data(0x00);
+    Write_Cmd_Data(x1);
+    Write_Cmd(0x2B);
+    Write_Cmd_Data(YSH);
+    Write_Cmd_Data(YSL);
+    Write_Cmd_Data(YEH);
+    Write_Cmd_Data(YEL);
+    Write_Cmd(0x2C);//LCD_WriteCMD(GRAMWR);
+}
+
+
 void ST7735::WriteBuffer(int y0)
 {
 //    LCD_SetPos_Vertical(0, Display::WIDTH, (uint)y0, (uint)(y0 + Display::HEIGHT / Display::NUMBER_PARTS_HEIGHT - 1));
 
-    SetWindow(0, y0, Display::WIDTH, Display::HEIGHT / Display::NUMBER_PARTS_HEIGHT);
+//    SetWindow(0, y0, Display::WIDTH, Display::HEIGHT / Display::NUMBER_PARTS_HEIGHT);
+
+    LCD_SetPos_Horizontal(0, Display::WIDTH - 1, (uint)y0, (uint)(y0 + Display::HEIGHT / Display::NUMBER_PARTS_HEIGHT - 1));
 
     for (int y = 0; y < Display::HEIGHT / Display::NUMBER_PARTS_HEIGHT; y++)
     {
