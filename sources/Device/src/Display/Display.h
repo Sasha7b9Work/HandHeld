@@ -64,7 +64,7 @@ private:
 
 struct Text
 {
-    Text(char *format, ...) : text(nullptr)
+    Text(pchar format, ...) : text(nullptr)
     {
         char data[256];
         std::va_list args;
