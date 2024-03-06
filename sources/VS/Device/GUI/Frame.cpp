@@ -6,6 +6,14 @@
 #include "Application.h"
 #include "Menu/Menu.h"
 #include "wx/statline.h"
+#include "Keyboard/Keyboard.h"
+
+
+namespace Keyboard
+{
+    void AppendAction(const Action &);
+}
+
 
 
 // Здесь нарисованная картинка
@@ -89,13 +97,13 @@ Frame::Frame(const wxString &title)
     int y2 = 50;
     int y3 = 90;
 
-    new wxButton(this, ID_BUTTON_MENU, "Menu", { x1, y2 }, SIZE_BUTTON);
+    (new wxButton(this, ID_BUTTON_MENU, "Menu", { x1, y2 }, SIZE_BUTTON))->Bind(wxEVT_LEFT_DOWN, &Frame::OnMouseEvent, this);
 
-    new wxButton(this, ID_BUTTON_CANCEL, "Cancel", { x3, y2 }, SIZE_BUTTON);
+    (new wxButton(this, ID_BUTTON_CANCEL, "Cancel", { x3, y2 }, SIZE_BUTTON))->Bind(wxEVT_LEFT_DOWN, &Frame::OnMouseEvent, this);
 
-    new wxButton(this, ID_BUTTON_UP, "Up", { x2, y1 }, SIZE_BUTTON);
+    (new wxButton(this, ID_BUTTON_UP, "Up", { x2, y1 }, SIZE_BUTTON))->Bind(wxEVT_LEFT_DOWN, &Frame::OnMouseEvent, this);
 
-    new wxButton(this, ID_BUTTON_DOWN, "Down", { x2, y3 }, SIZE_BUTTON);
+    (new wxButton(this, ID_BUTTON_DOWN, "Down", { x2, y3 }, SIZE_BUTTON))->Bind(wxEVT_LEFT_DOWN, &Frame::OnMouseEvent, this);
 
     timer.StartOnce(25);
 }
@@ -108,6 +116,35 @@ void Frame::OnTimer(wxTimerEvent &)
     Application::Self()->Update();
 
     timer.Start(25);
+}
+
+
+void Frame::OnMouseEvent(wxMouseEvent &event)
+{
+    int id = event.GetId();
+
+    Action action;
+
+    action.type = event.LeftIsDown() ? ActionType::Down : ActionType::Up;
+
+    if (id == ID_BUTTON_MENU)
+    {
+        action.key = Key::Menu;
+    }
+    else if (id == ID_BUTTON_CANCEL)
+    {
+        action.key = Key::Cancel;
+    }
+    else if (id == ID_BUTTON_UP)
+    {
+        action.key = Key::Up;
+    }
+    else if (id == ID_BUTTON_DOWN)
+    {
+        action.key = Key::Down;
+    }
+
+    Keyboard::AppendAction(action);
 }
 
 

@@ -24,4 +24,6 @@ private:
 
     TimeMeterMS meterButton;        // Для кнопки
     wxTimer timerButton;
+
+    void OnMouseEvent(wxMouseEvent &);
 };

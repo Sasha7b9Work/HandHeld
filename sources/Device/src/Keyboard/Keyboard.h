@@ -16,6 +16,24 @@ struct Key
 };
 
 
+struct ActionType
+{
+    enum E
+    {
+        Down,
+        Up,
+        Count
+    };
+};
+
+
+struct Action
+{
+    Key::E        key;
+    ActionType::E type;
+};
+
+
 namespace Keyboard
 {
     void Init();

@@ -3,6 +3,12 @@
 #include "Keyboard/Keyboard.h"
 
 
+namespace Keyboard
+{
+    void AppendAction(const Action &);
+}
+
+
 void Keyboard::Init()
 {
 
@@ -18,4 +24,10 @@ void Keyboard::Update()
 bool Keyboard::IsDown(Key::E)
 {
     return false;
+}
+
+
+void Keyboard::AppendAction(const Action &)
+{
+
 }
