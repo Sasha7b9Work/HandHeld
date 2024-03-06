@@ -28,7 +28,7 @@ namespace Display
     static int current_part = 0;                            // Эту часть сейчас отрисовываем
 
     void BeginScene(int num_part);
-    void DrawScene(int num_part, int x);
+    void DrawScene(int num_part);
     void EndScene(int num_parts);
 }
 
@@ -41,21 +41,11 @@ void Display::Init()
 
 void Display::Update()
 {
-    static int x = 0;
-    static int dx = 1;
-
     for (int i = 0; i < NUMBER_PARTS_HEIGHT; i++)
     {
         BeginScene(i);
-        DrawScene(i, x);
+        DrawScene(i);
         EndScene(i);
-    }
-
-    x += dx;
-
-    if (x == 140 || x == 0)
-    {
-        dx = -dx;
     }
 }
 
@@ -74,11 +64,14 @@ void Display::EndScene(int num_parts)
 }
 
 
-void Display::DrawScene(int num_part, int /*x*/)
+void Display::DrawScene(int num_part)
 {
     (void)num_part;
 
-    Rect(20, 20).Draw(0, 0, Color::BLUE);
+    for (int i = 0; i < Source::Count; i++)
+    {
+        Source((Source::E)i).Draw(i * (Display::WIDTH / Source::Count), 5, Color::WHITE);
+    }
 
     Clock::Draw(5, 30, Color::WHITE);
 }
