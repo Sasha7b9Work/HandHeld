@@ -13,10 +13,6 @@ public:
 
     void OnTimer(wxTimerEvent &);
 
-    void BeginScene();
-
-    void EndScene();
-
 private:
 
     wxTimer timer;

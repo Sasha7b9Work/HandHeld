@@ -37,6 +37,8 @@ namespace Display
 void Display::Init()
 {
     ST7735::Init();
+
+    Font::SetType(TypeFont::_7);
 }
 
 

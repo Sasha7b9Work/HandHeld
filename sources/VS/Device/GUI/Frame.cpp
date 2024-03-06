@@ -145,17 +145,8 @@ void Frame::OnMouseEvent(wxMouseEvent &event)
     }
 
     Keyboard::AppendAction(action);
-}
 
-
-void Frame::BeginScene()
-{
-}
-
-
-void Frame::EndScene()
-{
-
+    event.Skip();
 }
 
 
