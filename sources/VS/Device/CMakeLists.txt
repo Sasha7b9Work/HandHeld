@@ -2,7 +2,7 @@
 
 project (Device)
 
-#set(CMAKE_UNITY_BUILD OFF)
+set(CMAKE_UNITY_BUILD OFF)
 
 set(CMAKE_UNITY_BUILD_BATCH_SIZE 16)
 
@@ -11,7 +11,6 @@ include_directories(
     .
     Device
     ../../Device/src
-    ../../Device/src/Hardware/CDC
     ../../Device/src/Hardware/HAL
     ../../VS/ThirdParty/wxWidgets/include
     ../../generated/ThirdParty/lib/vc_dll/mswud
@@ -26,17 +25,24 @@ if(WIN32)
     SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -MP -Wall")
     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /SUBSYSTEM:WINDOWS")
 
-    add_compile_options(/wd4365)
-    add_compile_options(/wd4623)
-    add_compile_options(/wd4625)
-    add_compile_options(/wd4626)
-    add_compile_options(/wd4774)
-    add_compile_options(/wd4820)
-    add_compile_options(/wd5026)
-    add_compile_options(/wd5027)
-    add_compile_options(/wd5039)    # 'xxx': pointer or reference to potentially throwing function passed to extern C
+    add_compile_options(
+        /wd4310
+        /wd4365
+        /wd4514
+        /wd4623
+        /wd4625
+        /wd4626
+        /wd4710
+        /wd4774
+        /wd4820
+        /wd4996
+        /wd5026
+        /wd5027
+        /wd5039    # 'xxx': pointer or reference to potentially throwing function passed to extern C
                                     # function under -EHc.
-    add_compile_options(/wd5045)
+        /wd5045
+        /wd5267
+    )
 endif()
 
 file(GLOB GUI                                GUI/*.*)
@@ -45,14 +51,17 @@ file(GLOB SRC                                *.h *.cpp
                                 ../../Device/src/*.h)
 file(GLOB DISPLAY               ../../Device/src/Display/*.*)
 file(GLOB DISPLAY_FONT          ../../Device/src/Display/Font/*.*)
-file(GLOB HARDWARE              ../../Device/src/Hardware/Timer.h
+file(GLOB HARDWARE              ../../Device/src/Hardware/Beeper.h
+                                ../../Device/src/Hardware/Clock.*
+                                ../../Device/src/Hardware/Timer.h
                                                  Hardware/*.*)
 file(GLOB HARDWARE_HAL          ../../Device/src/Hardware/HAL/HAL.h
                                                  Hardware/HAL/*.*)
 file(GLOB KEYBOARD              ../../Device/src/Keyboard/Keyboard.h
                                                  Keyboard/*.*)
 file(GLOB MODULES_CMT2210AW     ../../Device/src/Modules/CMT2210AW/*.*)
-file(GLOB MODULES_PCF8563       ../../Device/src/Modules/PCF8563/*.*)
+file(GLOB MODULES_PCF8563       ../../Device/src/Modules/PCF8563/*.h
+                                                 Modules/PCF8563/*.*)
 file(GLOB MODULES_ST7735        ../../Device/src/Modules/ST7735/*.h)
 file(GLOB MENU                  ../../Device/src/Menu/*.*)
 file(GLOB MENU_PAGES            ../../Device/src/Menu/Pages/*.*)

@@ -6,10 +6,33 @@
 
 namespace Keyboard
 {
-    Button btnMenu(GPIOB, GPIO_PIN_0);
-    Button btnCancel(GPIOB, GPIO_PIN_2);
-    Button btnUp(GPIOA, GPIO_PIN_7);
-    Button btnDown(GPIOB, GPIO_PIN_1);
+    struct Button
+    {
+        Button(uint _port, uint16 _pin) : port(_port), pin(_pin) { }
+
+        void Init()
+        {
+            gpio_mode_set(port, GPIO_MODE_INPUT, GPIO_PUPD_PULLUP, pin);
+        }
+
+        bool IsDown()
+        {
+            return (gpio_input_bit_get(port, pin) == RESET);
+        }
+        bool IsUp()
+        {
+            return !IsDown();
+        }
+
+    private:
+        uint port;
+        uint16 pin;
+    };
+
+    static Button btnMenu(GPIOB, GPIO_PIN_0);
+    static Button btnCancel(GPIOB, GPIO_PIN_2);
+    static Button btnUp(GPIOA, GPIO_PIN_7);
+    static Button btnDown(GPIOB, GPIO_PIN_1);
 }
 
 
