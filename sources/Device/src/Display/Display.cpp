@@ -81,6 +81,11 @@ void Display::DrawScene(int num_part, int x)
     Rect(20, 20).Draw(0, 0, Color::BLUE);
 
     Rect(20, 20).Draw(x, 0, Color::WHITE);
+
+    for (int i = 0; i < 80; i++)
+    {
+        Pixel().Set(i, i);
+    }
 }
 
 
