@@ -90,7 +90,7 @@ void Display::DrawScene(int num_part)
             Source((Source::E)i).Draw(6 + i * 30, 65);
         }
 
-        FPS::DrawTimeFrame(0, 70);
+        FPS::DrawTimeFrame(0, 75);
     }
 }
 

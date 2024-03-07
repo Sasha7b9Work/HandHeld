@@ -2,7 +2,11 @@
 #pragma once
 
 
+#ifdef WIN32
+#define TIME_MS 1000
+#else
 #define TIME_MS timer_counter
+#endif
 
 
 namespace Timer
