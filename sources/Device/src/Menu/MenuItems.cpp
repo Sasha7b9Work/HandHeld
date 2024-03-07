@@ -251,15 +251,8 @@ void Time::ChangeCurrentField(int delta) const
         &data->date_time->Year
     };
 
-    int min[6] =
-    {
-        0, 0, 0, 1, 1, 0
-    };
-
-    int max[6] =
-    {
-        23, 59, 59, 31, 12, 99
-    };
+    int min[6] = { 0, 0, 0, 1, 1, 0 };
+    int max[6] = { 23, 59, 59, 31, 12, 99 };
 
     int value = *refs[field];
 
