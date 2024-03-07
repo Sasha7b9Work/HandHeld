@@ -52,6 +52,7 @@ struct Page
     void Draw() const;
     bool IsOpened() const;
     const DataItem *GetDataItem() const;
+    const Item *CurrentItem() const;
 };
 
 

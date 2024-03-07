@@ -1,6 +1,7 @@
 // 2024/03/02 13:56:13 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
 #include "Menu/MenuItems.h"
+#include "Display/Display.h"
 
 
 void Item::Draw() const
@@ -33,11 +34,11 @@ void Page::Draw() const
 {
     if (IsOpened())
     {
-
+        CurrentItem()->Draw();
     }
     else
     {
-
+        Text<>(GetDataItem()->title).Write(10, 10, Color::WHITE);
     }
 }
 
@@ -60,4 +61,10 @@ const DataItem *Page::GetDataItem() const
     address -= 4;
 
     return (const DataItem *)address;
+}
+
+
+const Item *Page::CurrentItem() const
+{
+    return data->items[*data->current_item];
 }
