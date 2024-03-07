@@ -34,10 +34,6 @@ const Page *Item::GetPage() const
 
 void Page::Draw() const
 {
-    pchar t = data->data_item->title;
-
-    t = t;
-
     if (IsOpened())
     {
         CurrentItem()->Draw();
