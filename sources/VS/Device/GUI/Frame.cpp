@@ -125,7 +125,7 @@ void Frame::OnMouseEvent(wxMouseEvent &event)
 
     Action action;
 
-    action.type = event.LeftIsDown() ? ActionType::Down : ActionType::Up;
+    action.type = ActionType::Down;
 
     if (id == ID_BUTTON_MENU)
     {

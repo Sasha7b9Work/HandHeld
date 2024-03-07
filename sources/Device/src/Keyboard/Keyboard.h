@@ -31,6 +31,8 @@ struct Action
 {
     Key::E        key;
     ActionType::E type;
+
+    bool IsRelease() const { return type == ActionType::Up; }
 };
 
 
@@ -41,4 +43,6 @@ namespace Keyboard
     void Update();
 
     bool IsDown(Key::E);
+
+    bool GetNextAction(Action &);
 }
