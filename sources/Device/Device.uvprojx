@@ -834,6 +834,21 @@
               <FileType>8</FileType>
               <FilePath>.\src\Menu\Pages\PageWatch.cpp</FilePath>
             </File>
+            <File>
+              <FileName>PageAlarm.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Menu\Pages\PageAlarm.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>PageCalls.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Menu\Pages\PageCalls.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>PageHistory.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Menu\Pages\PageHistory.cpp</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

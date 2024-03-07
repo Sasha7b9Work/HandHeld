@@ -4,7 +4,11 @@
 #include "Menu/MenuItemDef.h"
 
 
-
+//DEF_BUTTON(btnClose,
+//    PageWatch::self,
+//    "Закрыть",
+//
+//    )
 
 
 //DEF_PAGE_2(

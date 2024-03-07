@@ -2,7 +2,8 @@
 #pragma once
 
 
-#define DEF_BUTTON(name, keeper, title, x, y, width, height, funcPress)
+#define DEF_CUSTOM_BUTTON(name, keeper, title, x, y, width, height, funcPress)
 
+#define DEF_BUTTON
 
 #define DEF_PAGE_2(name, keeper, title, item0, item1)

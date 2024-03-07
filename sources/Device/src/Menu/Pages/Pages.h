@@ -3,7 +3,25 @@
 #include "Menu/MenuItems.h"
 
 
+namespace PageAlarm
+{
+    extern Page *self;
+}
+
+
 namespace PageWatch
+{
+    extern Page *self;
+}
+
+
+namespace PageCalls
+{
+    extern Page *self;
+}
+
+
+namespace PageHistory
 {
     extern Page *self;
 }
