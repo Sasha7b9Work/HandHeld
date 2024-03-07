@@ -45,6 +45,8 @@ struct Item
     void ApplyAction(const Action &) const;
     bool IsOpened() const;
     Text<> Title() const;
+    void Open() const;
+    void Close() const;
 };
 
 
@@ -69,8 +71,6 @@ struct Page
     // Сделать текущим предыдущий элемент
     void PrevCurrentItem() const;
     int NumItems() const;
-    void Open() const;
-    void Close() const;
 };
 
 
@@ -85,7 +85,6 @@ struct Time
 {
     const DataTime *data;
     void Draw() const;
-    void Open() const;
 };
 
 

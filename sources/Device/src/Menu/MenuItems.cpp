@@ -114,19 +114,12 @@ void Page::ApplyAction(const Action &action) const
     {
         if (NumItems())
         {
-            if (CurrentItem()->IsPage())
-            {
-                CurrentItem()->GetPage()->Open();
-            }
-            if (CurrentItem()->IsTime())
-            {
-                CurrentItem()->GetTime()->Open();
-            }
+            CurrentItem()->Open();
         }
     }
     else if (action.key == Key::Cancel)
     {
-        Close();
+        data->item->Close();
     }
 }
 
@@ -169,29 +162,23 @@ int Page::NumItems() const
 }
 
 
-void Page::Open() const
+void Item::Open() const
 {
-    *GetDataItem()->opened = 1;
+    *data->opened = 1;
 
-    Menu::SetCurrentItem(data->item);
+    Menu::SetCurrentItem(this);
 }
 
-void Page::Close() const
+void Item::Close() const
 {
-    *GetDataItem()->opened = 0;
+    *data->opened = 0;
 
-    if (GetDataItem()->keeper == nullptr)
+    if (data->keeper == nullptr)
     {
         Menu::Close();
     }
     else
     {
-        Menu::SetCurrentItem(GetDataItem()->keeper);
+        Menu::SetCurrentItem(data->keeper);
     }
-}
-
-
-void Time::Open() const
-{
-
 }
