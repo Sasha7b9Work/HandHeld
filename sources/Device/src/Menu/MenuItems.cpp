@@ -198,7 +198,12 @@ void Time::ApplyAction(const Action &action) const
         }
         else
         {
+            if (*data->field == 7)
+            {
+                PCF8563::SetDateTime(data->date_time);
+            }
 
+            data->item->Close();
         }
     }
     else if (action.key == Key::Cancel)
