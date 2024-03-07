@@ -20,7 +20,7 @@ void Item::Draw() const
 
 void Page::Draw() const
 {
-    if (GetSelfItem()->IsOpened())
+    if (data->item->IsOpened())
     {
         const Item *current_item = CurrentItem();
 
@@ -38,6 +38,14 @@ void Page::Draw() const
 
 void Time::Draw() const
 {
+    if (data->item->IsOpened())
+    {
+
+    }
+    else
+    {
+
+    }
 }
 
 
@@ -55,15 +63,9 @@ Text<> Page::Title() const
 }
 
 
-const Item *Page::GetSelfItem() const
-{
-    return data->item;
-}
-
-
 const DataItem *Page::GetDataItem() const
 {
-    return GetSelfItem()->data;
+    return data->item->data;
 }
 
 
@@ -167,7 +169,7 @@ void Page::Open() const
 {
     *GetDataItem()->opened = 1;
 
-    Menu::SetCurrentItem(GetSelfItem());
+    Menu::SetCurrentItem(data->item);
 }
 
 void Page::Close() const

@@ -61,8 +61,6 @@ struct Page
     const DataPage *data;
     void Draw() const;
     const Item *CurrentItem() const;
-    // Возвращает указатель на итем, содержащий данную страницу
-    const Item *GetSelfItem() const;
     const DataItem *GetDataItem() const;
     void ApplyAction(const Action &) const;
     // Сделать текущим следующий элемент
@@ -79,7 +77,7 @@ struct Page
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Time
 struct DataTime
 {
-
+    const Item *item;
 };
 
 
