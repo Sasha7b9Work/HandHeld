@@ -118,6 +118,10 @@ void Page::ApplyAction(const Action &action) const
             {
                 CurrentItem()->GetPage()->Open();
             }
+            if (CurrentItem()->IsTime())
+            {
+                CurrentItem()->GetTime()->Open();
+            }
         }
     }
     else if (action.key == Key::Cancel)
@@ -184,4 +188,10 @@ void Page::Close() const
     {
         Menu::SetCurrentItem(GetDataItem()->keeper);
     }
+}
+
+
+void Time::Open() const
+{
+
 }
