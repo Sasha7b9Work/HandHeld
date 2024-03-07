@@ -214,7 +214,7 @@ void PCF8563::SetDateTime(RTCDateTime *DateTime)
 	if (DateTime->Hour > 23) DateTime->Hour = 23;
 	if (DateTime->Day > 31) DateTime->Day = 31;
 	if (DateTime->Month > 12) DateTime->Month = 12;
-	if (DateTime->Year > 2099) DateTime->Year = 2099;
+	if (DateTime->Year > 99) DateTime->Year = 99;
 
 	tmp[0] = dec2bcd((uint8)((DateTime->Second) & 0x7F));
 	tmp[1] = dec2bcd(DateTime->Minute);
@@ -236,7 +236,7 @@ void PCF8563::CalculateDateTime(RTCDateTime *DateTime)
 	DateTime->Day = buffer[3];
 	DateTime->DayOfWeek = bcd2dec((uint8)(buffer[4] + 1)); // too keep weekdays in 1-7 format
 	DateTime->Month = bcd2dec((uint8)(buffer[5] & 0x1F));
-	DateTime->Year = (uint16)(2000 + bcd2dec(buffer[6]));
+	DateTime->Year = (uint8)(bcd2dec(buffer[6]));
 }
 
 void PCF8563::GetDateTime(RTCDateTime *DateTime)
