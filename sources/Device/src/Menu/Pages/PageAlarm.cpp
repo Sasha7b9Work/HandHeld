@@ -2,3 +2,6 @@
 #include "defines.h"
 #include "Menu/Pages/Pages.h"
 #include "Menu/MenuItemDef.h"
+
+
+const Item *PageAlarm::self = nullptr;

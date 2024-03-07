@@ -2,24 +2,10 @@
 #include "defines.h"
 #include "Menu/Pages/Pages.h"
 #include "Menu/MenuItems.h"
+#include "Menu/MenuItemDef.h"
 
 
-static const Item *items_main[] =
-{
-    PageAlarm::self,
-    nullptr
-};
+DEF_PAGE_1(pageMain, nullptr, "Μενώ", PageAlarm::self);
 
 
-static const DataPage dp_main{ items_main };
-
-
-static const Page page_main{ &dp_main };
-
-
-static const DataItem di_page_main{ ItemType::Page, nullptr, "Μενώ" };
-
-static const Item item_page_main{ &di_page_main, &page_main };
-
-
-const Item *PageMain::self = &item_page_main;
+const Item *PageMain::self = &pageMain;
