@@ -4,6 +4,6 @@
 #include "Menu/MenuItemDef.h"
 
 
-DEF_PAGE_0(pageAlarm, nullptr, "Будильник");
+DEF_PAGE_0(pageAlarm, PageMain::self, "Будильник");
 
 const Item * const PageAlarm::self = &pageAlarm;

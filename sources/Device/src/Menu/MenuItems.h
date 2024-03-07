@@ -50,6 +50,8 @@ struct Page
 {
     const DataPage *data;
     void Draw() const;
+    bool IsOpened() const;
+    const DataItem *GetDataItem() const;
 };
 
 

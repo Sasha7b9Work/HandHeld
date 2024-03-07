@@ -4,6 +4,6 @@
 #include "Menu/MenuItemDef.h"
 
 
-DEF_PAGE_0(pageHistory, nullptr, "Журнал вызовов");
+DEF_PAGE_0(pageHistory, PageMain::self, "Журнал вызовов");
 
 const Item *const PageHistory::self = &pageHistory;

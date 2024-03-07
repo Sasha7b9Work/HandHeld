@@ -4,6 +4,6 @@
 #include "Menu/MenuItemDef.h"
 
 
-DEF_PAGE_0(pageWatch, nullptr, "Часы");
+DEF_PAGE_0(pageWatch, PageMain::self, "Часы");
 
 const Item *const PageWatch::self = &pageWatch;

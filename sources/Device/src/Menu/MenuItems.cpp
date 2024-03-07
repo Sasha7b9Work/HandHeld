@@ -31,5 +31,33 @@ const Page *Item::GetPage() const
 
 void Page::Draw() const
 {
+    if (IsOpened())
+    {
 
+    }
+    else
+    {
+
+    }
+}
+
+
+bool Page::IsOpened() const
+{
+    if (GetDataItem()->keeper == nullptr)
+    {
+        return true;
+    }
+
+    return *data->opened != 0;
+}
+
+
+const DataItem *Page::GetDataItem() const
+{
+    uint address = (uint)this;
+
+    address -= 4;
+
+    return (const DataItem *)address;
 }
