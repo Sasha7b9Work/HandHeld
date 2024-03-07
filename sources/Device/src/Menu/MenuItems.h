@@ -44,8 +44,8 @@ struct DataPage
 {
     const DataItem *data_item;
     const Item **items;
-    const int8 *current_item;   // Текущий элемент страницы
-    const int8 *opened;         // Если не равно нулю, то страница открыта
+    int8 * const current_item;   // Текущий элемент страницы
+    int8 * const opened;         // Если не равно нулю, то страница открыта
 };
 
 
@@ -56,6 +56,11 @@ struct Page
     bool IsOpened() const;
     const Item *CurrentItem() const;
     void ApplyAction(const Action &) const;
+    // Сделать текущим следующий элемент
+    void NextCurrentItem() const;
+    // Сделать текущим предыдущий элемент
+    void PrevCurrentItem() const;
+    int NumItems() const;
 };
 
 

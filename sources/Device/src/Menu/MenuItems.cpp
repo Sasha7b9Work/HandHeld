@@ -2,6 +2,7 @@
 #include "defines.h"
 #include "Menu/MenuItems.h"
 #include "Display/Display.h"
+#include "Menu/Menu.h"
 
 
 void Item::Draw() const
@@ -80,4 +81,54 @@ void Page::ApplyAction(const Action &action) const
             Menu::Close();
         }
     }
+
+    if (action.key == Key::Up)
+    {
+        PrevCurrentItem();
+    }
+    else if (action.key == Key::Down)
+    {
+        NextCurrentItem();
+    }
+}
+
+
+void Page::NextCurrentItem() const
+{
+    int8 current = *data->current_item + 1;
+
+    if (current == NumItems())
+    {
+        current = 0;
+    }
+
+    *data->current_item = current;
+}
+
+
+void Page::PrevCurrentItem() const
+{
+    int8 current = *data->current_item - 1;
+
+    if (current < 0)
+    {
+        current = NumItems() - 1;
+    }
+
+    *data->current_item = current;
+}
+
+
+int Page::NumItems() const
+{
+    const Item *item = data->items[0];
+
+    int result = 0;
+
+    while (item++)
+    {
+        result++;
+    }
+
+    return result;
 }
