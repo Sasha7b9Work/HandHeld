@@ -2,6 +2,7 @@
 #pragma once
 #include "Keyboard/Keyboard.h"
 #include "Display/Display.h"
+#include "Modules/PCF8563/PCF8563.h"
 
 
 struct ItemType
@@ -79,6 +80,7 @@ struct DataTime
 {
     const Item *item;
     int8 *const field;      // јктивное поле 0 - часы, 1 - минуты, 2 - секунды, 3 - день, 4 - мес€ц, 5 - год, 6 - отмена, 7 - сохранить
+    RTCDateTime *date_time;
 };
 
 

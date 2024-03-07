@@ -1,21 +1,17 @@
-/*
- * PCF8563.h
- *
- *  The MIT License.
- *  Created on: 5.09.2019
- *      Author: Mateusz Salamon
- *      Contact: mateusz@msalamon.pl
- *
- *      Website: https://msalamon.pl/dalsze-zmagania-z-rtc-ds1307-i-pcf8563-na-stm32/
- *      GitHub: https://github.com/lamik/PCF8563_RTC_STM32_HAL
- */
-
+#pragma once
  //
- // Uncomment when you are using DMA reading
+ //PCF8563.h
+ //
+ // The MIT License.
+ // Created on: 5.09.2019
+ //     Author: Mateusz Salamon
+ //     Contact: mateusz@msalamon.pl
+ //
+ //     Website: https://msalamon.pl/dalsze-zmagania-z-rtc-ds1307-i-pcf8563-na-stm32/
+ //     GitHub: https://github.com/lamik/PCF8563_RTC_STM32_HAL
  //
 
-
-struct CLKOUT_Freq
+ struct CLKOUT_Freq
 {
     enum E
     {

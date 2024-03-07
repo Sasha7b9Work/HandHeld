@@ -177,6 +177,11 @@ void Item::Open() const
 {
     *data->opened = 1;
 
+    if (IsTime())
+    {
+        PCF8563::GetDateTime(GetTime()->data->date_time);
+    }
+
     Menu::SetCurrentItem(this);
 }
 

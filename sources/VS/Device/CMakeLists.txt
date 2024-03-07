@@ -84,14 +84,15 @@ source_group(Settings           FILES ${SETTINGS})
 source_group(Utils              FILES ${UTILS})
 
 
-set_source_files_properties(
-    Modules/PCF8563/PCF8563_win.cpp
-    ../../Device/src/Device.cpp
+#set_source_files_properties(
+#    Modules/PCF8563/PCF8563_win.cpp
+#    ../../Device/src/Device.cpp
+#    ../../Device/src/Menu/MenuItems.cpp
 #    Application.cpp
 #    Frame.cpp
 #    main_win.cpp
-    PROPERTIES SKIP_UNITY_BUILD_INCLUSION ON
-)
+#    PROPERTIES SKIP_UNITY_BUILD_INCLUSION ON
+#)
 
 
 #set_source_files_properties(

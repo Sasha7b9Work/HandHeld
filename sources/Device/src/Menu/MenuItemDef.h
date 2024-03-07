@@ -1,6 +1,6 @@
 // 2024/03/06 21:37:56 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
-
+#include "Modules/PCF8563/PCF8563.h"
 
 //#define DEF_CUSTOM_BUTTON(name, keeper, title, x, y, width, height, funcPress)
 
@@ -12,6 +12,7 @@ static int8 opened##name = 0;                                                   
 static int8 field##name = 0;                                                                        \
 static const DataItem name##data = { ItemType::Time, keeper, title, &opened##name };                \
 extern const Item name;                                                                             \
+static RTCDateTime name##date_time;                                                                 \
 static const DataTime name##datatime = { &name, &field##name };                                     \
 static const Time name##time = { &name##datatime };                                                 \
 const Item name = {&name##data, &name##time }
