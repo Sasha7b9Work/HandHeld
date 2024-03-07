@@ -929,6 +929,16 @@
               <FileType>5</FileType>
               <FilePath>.\src\Utils\Math.h</FilePath>
             </File>
+            <File>
+              <FileName>FPS.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Utils\FPS.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>FPS.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Utils\FPS.h</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>

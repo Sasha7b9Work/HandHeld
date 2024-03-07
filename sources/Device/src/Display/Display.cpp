@@ -7,6 +7,7 @@
 #include "Hardware/Watch.h"
 #include "Keyboard/Keyboard.h"
 #include "Menu/Menu.h"
+#include "Utils/FPS.h"
 #include <string>
 
 
@@ -45,12 +46,16 @@ void Display::Init()
 
 void Display::Update()
 {
+    FPS::BeginFrame();
+
     for (int i = 0; i < NUMBER_PARTS_HEIGHT; i++)
     {
         BeginScene(i);
         DrawScene(i);
         EndScene(i);
     }
+
+    FPS::EndFrame();
 }
 
 
@@ -84,6 +89,8 @@ void Display::DrawScene(int num_part)
         {
             Source((Source::E)i).Draw(6 + i * 30, 65);
         }
+
+        FPS::DrawTimeFrame(0, 70);
     }
 }
 

@@ -2,7 +2,7 @@
 #pragma once
 
 
-#define TIME_MS timer_counter;
+#define TIME_MS timer_counter
 
 
 namespace Timer
