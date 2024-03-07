@@ -85,6 +85,7 @@ struct Time
 {
     const DataTime *data;
     void Draw() const;
+    void ApplyAction(const Action &) const;
 };
 
 

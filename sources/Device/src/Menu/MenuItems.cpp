@@ -74,17 +74,12 @@ const DataItem *Page::GetDataItem() const
 
 bool Item::IsOpened() const
 {
-    if (IsPage())
+    if (data->keeper == nullptr)
     {
-        if (data->keeper == nullptr)
-        {
-            return true;
-        }
-
-        return *data->opened != 0;
+        return true;
     }
 
-    return false;
+    return *data->opened != 0;
 }
 
 
@@ -99,6 +94,10 @@ void Item::ApplyAction(const Action &action) const
     if (IsPage())
     {
         GetPage()->ApplyAction(action);
+    }
+    else if (IsTime())
+    {
+        GetTime()->ApplyAction(action);
     }
 }
 
@@ -121,6 +120,15 @@ void Page::ApplyAction(const Action &action) const
         }
     }
     else if (action.key == Key::Cancel)
+    {
+        data->item->Close();
+    }
+}
+
+
+void Time::ApplyAction(const Action &action) const
+{
+    if (action.key == Key::Cancel)
     {
         data->item->Close();
     }
