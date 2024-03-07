@@ -41,7 +41,8 @@ struct Item
 struct DataPage
 {
     const Item **items;
-    const int8 *current_item;    // Текущий элемент страницы
+    const int8 *current_item;   // Текущий элемент страницы
+    const int8 *opened;         // Если не равно нулю, то страница открыта
 };
 
 
