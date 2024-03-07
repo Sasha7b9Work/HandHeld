@@ -14,11 +14,12 @@ enum
 #endif
 
 
-typedef unsigned char uint8;
+typedef signed char    int8;
+typedef unsigned char  uint8;
 typedef unsigned short uint16;
-typedef unsigned int uint;
-typedef const char *pchar;
-typedef unsigned char uchar;
+typedef unsigned int   uint;
+typedef const char    *pchar;
+typedef unsigned char  uchar;
 
 
 #if defined(__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050)

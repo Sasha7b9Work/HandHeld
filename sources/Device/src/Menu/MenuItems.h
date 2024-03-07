@@ -37,6 +37,7 @@ struct Item
 struct DataPage
 {
     const Item **items;
+    const int8 *current_item;    // Текущий элемент страницы
 };
 
 
