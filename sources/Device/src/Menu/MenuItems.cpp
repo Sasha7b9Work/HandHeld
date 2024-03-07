@@ -7,6 +7,9 @@
 #include "Display/Font/Font.h"
 
 
+int8 DataTime::in_edit_mode = false;
+
+
 void Item::Draw() const
 {
     if (IsPage())
@@ -51,12 +54,12 @@ void Time::Draw() const
             data->date_time->Year - 2000
         };
 
-        int x0 = 10;
-        int x1 = 40;
-        int x2 = 70;
+        int x0 = 20;
+        int x1 = 50;
+        int x2 = 80;
 
-        int y0 = 10;
-        int y1 = 35;
+        int y0 = 15;
+        int y1 = 45;
 
         int x[6] = { x0, x1, x2, x0, x1, x2 };
         int y[6] = { y0, y0, y0, y1, y1, y1 };
@@ -79,6 +82,12 @@ void Time::Draw() const
             if (i == *data->field)
             {
                 Rect(width + 2, height + 2).Draw(x[i] - 1, y[i] - 1, backbround);
+
+                if (data->in_edit_mode != 0)
+                {
+                    Text<>("+").Write(x[i] + 9, y[i] - 13, backbround);
+                    Text<>("+").Write(x[i] + 9, y[i] + 18, backbround);
+                }
             }
 
             Font::SetSize(1);
@@ -169,9 +178,38 @@ void Page::ApplyAction(const Action &action) const
 
 void Time::ApplyAction(const Action &action) const
 {
-    if (action.key == Key::Cancel)
+    if (action.key == Key::Menu)
+    {
+        if (data->in_edit_mode == 0)
+        {
+            data->in_edit_mode = 1;
+        }
+        else
+        {
+            data->in_edit_mode = 0;
+        }
+    }
+    else if (action.key == Key::Cancel)
     {
         data->item->Close();
+    }
+    else if (action.key == Key::Up)
+    {
+        *data->field = *data->field + 1;
+
+        if (*data->field == 8)
+        {
+            *data->field = 0;
+        }
+    }
+    else if (action.key == Key::Down)
+    {
+        *data->field = *data->field - 1;
+
+        if (*data->field < 0)
+        {
+            *data->field = 7;
+        }
     }
 }
 

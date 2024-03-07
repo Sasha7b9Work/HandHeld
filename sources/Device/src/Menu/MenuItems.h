@@ -79,8 +79,9 @@ struct Page
 struct DataTime
 {
     const Item *item;
-    int8 *const field;      // јктивное поле 0 - часы, 1 - минуты, 2 - секунды, 3 - день, 4 - мес€ц, 5 - год, 6 - отмена, 7 - сохранить
+    int8 *const field;          // јктивное поле 0 - часы, 1 - минуты, 2 - секунды, 3 - день, 4 - мес€ц, 5 - год, 6 - отмена, 7 - сохранить
     RTCDateTime *date_time;
+    static int8 in_edit_mode;
 };
 
 
