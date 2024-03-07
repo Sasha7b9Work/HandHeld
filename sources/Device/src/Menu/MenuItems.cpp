@@ -3,6 +3,7 @@
 #include "Menu/MenuItems.h"
 #include "Display/Display.h"
 #include "Menu/Menu.h"
+#include "Hardware/Watch.h"
 
 
 void Item::Draw() const
@@ -45,6 +46,8 @@ void Time::Draw() const
     else
     {
         data->item->Title().Write(10, 10, Color::WHITE);
+
+        Watch::Draw(30, 30, Color::GREEN);
     }
 }
 
