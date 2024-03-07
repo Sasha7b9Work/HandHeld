@@ -42,6 +42,16 @@ void Page::Draw() const
 }
 
 
+void Time::DrawField(int x, int y, int width, int height, const Text<> &text, bool selected) const
+{
+    Rect(width, height).Draw(x, y, selected ? Color::BLACK : Color::WHITE);
+    Rect(width - 2, height - 2).Fill(x + 1, y + 1, selected ? Color::WHITE : Color::BLACK);
+    Font::SetSize(2);
+    text.Write(x + 3, y + 3, selected ? Color::BLACK : Color::WHITE);
+    Font::SetSize(1);
+}
+
+
 void Time::Draw() const
 {
     if (data->item->IsOpened())
@@ -73,12 +83,7 @@ void Time::Draw() const
             int width = 23;
             int height = 20;
 
-            Rect(width, height).Draw(x[i], y[i], fill);
-            Rect(width - 2, height - 2).Fill(x[i] + 1, y[i] + 1, backbround);
-
-            Font::SetSize(2);
-
-            Text<>("%02d", values[i]).Write(x[i] + 3, y[i] + 3, fill);
+            DrawField(x[i], y[i], width, height, Text<>("%02d", values[i]), i == *data->field);
 
             if (i == *data->field)
             {
@@ -86,12 +91,12 @@ void Time::Draw() const
 
                 if (data->in_edit_mode != 0)
                 {
+                    Font::SetSize(2);
                     Text<>("+").Write(x[i] + 9, y[i] - 13, backbround);
                     Text<>("+").Write(x[i] + 9, y[i] + 18, backbround);
+                    Font::SetSize(1);
                 }
             }
-
-            Font::SetSize(1);
         }
     }
     else
@@ -194,7 +199,7 @@ void Time::ApplyAction(const Action &action) const
         }
         else
         {
-            int i = 0;
+
         }
     }
     else if (action.key == Key::Cancel)

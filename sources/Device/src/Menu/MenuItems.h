@@ -91,6 +91,7 @@ struct Time
     void Draw() const;
     void ApplyAction(const Action &) const;
     void ChangeCurrentField(int delta) const;
+    void DrawField(int x, int y, int width, int height, const Text<> &, bool selected) const;
 };
 
 
