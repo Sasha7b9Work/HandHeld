@@ -234,7 +234,9 @@ void Time::ApplyAction(const Action &action) const
 
 void Time::ChangeCurrentField(int delta) const
 {
-    if (*data->field > 5)
+    int field = *data->field;
+
+    if (field > 5)
     {
         return;
     }
@@ -259,11 +261,11 @@ void Time::ChangeCurrentField(int delta) const
         23, 59, 59, 31, 12, 99
     };
 
-    int value = *refs[*data->field];
+    int value = *refs[field];
 
-    Math::CircleChange(&value, min[*data->field], max[*data->field], (delta < 0) ? -1 : 1);
+    Math::CircleChange(&value, min[field], max[field], (delta < 0) ? -1 : 1);
 
-    *refs[*data->field] = (uint8)value;
+    *refs[field] = (uint8)value;
 }
 
 
