@@ -82,6 +82,8 @@ namespace Font
 
     void SetSize(int);
 
+    int GetSize();
+
     int GetBit(uint8 symbol, int row, int col);
 
     int GetHeight();

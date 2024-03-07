@@ -30,6 +30,12 @@ void Font::SetSize(int _size)
 }
 
 
+int Font::GetSize()
+{
+    return size;
+}
+
+
 void Font::SetType(TypeFont::E _type)
 {
     type = _type;

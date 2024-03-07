@@ -46,6 +46,10 @@ void Time::DrawField(int x, int y, int width, int height, const Text<> &text, bo
 {
     Rect(width, height).Draw(x, y, selected ? Color::BLACK : Color::WHITE);
     Rect(width - 2, height - 2).Fill(x + 1, y + 1, selected ? Color::WHITE : Color::BLACK);
+    if (selected)
+    {
+        Rect(width + 2, height + 2).Draw(x - 1, y - 1, Color::WHITE);
+    }
     Font::SetSize(2);
     text.Write(x + 3, y + 3, selected ? Color::BLACK : Color::WHITE);
     Font::SetSize(1);
@@ -77,27 +81,22 @@ void Time::Draw() const
 
         for (int i = 0; i < 6; i++)
         {
-            Color backbround = (i == *data->field) ? Color::WHITE : Color::BLACK;
-            Color fill = (i == *data->field) ?  Color::BLACK : Color::WHITE;
+            DrawField(x[i], y[i], 23, 20, Text<>("%02d", values[i]), i == *data->field);
 
-            int width = 23;
-            int height = 20;
-
-            DrawField(x[i], y[i], width, height, Text<>("%02d", values[i]), i == *data->field);
-
-            if (i == *data->field)
+            if (i == *data->field && data->in_edit_mode != 0)
             {
-                Rect(width + 2, height + 2).Draw(x[i] - 1, y[i] - 1, backbround);
+                Color backbround = (i == *data->field) ? Color::WHITE : Color::BLACK;
 
-                if (data->in_edit_mode != 0)
-                {
-                    Font::SetSize(2);
-                    Text<>("+").Write(x[i] + 9, y[i] - 13, backbround);
-                    Text<>("+").Write(x[i] + 9, y[i] + 18, backbround);
-                    Font::SetSize(1);
-                }
+                Font::SetSize(2);
+                Text<>("+").Write(x[i] + 9, y[i] - 13, backbround);
+                Text<>("+").Write(x[i] + 9, y[i] + 18, backbround);
+                Font::SetSize(1);
             }
         }
+
+        DrawField(110, 15, 40, 20, Text<>("0тм"), 6 == *data->field);
+
+        DrawField(110, 45, 40, 20, Text<>("Сох"), 7 == *data->field);
     }
     else
     {

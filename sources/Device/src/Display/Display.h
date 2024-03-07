@@ -1,6 +1,7 @@
 // 2024/03/01 22:45:47 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
 #include "Display/Colors.h"
+#include "Display/Font/Font.h"
 #include <cstdarg>
 #include <cstdio>
 #include <cstring>
@@ -91,7 +92,7 @@ struct Text
         while (*pointer)
         {
             x = Char(*pointer++).Write(x, y);
-            x++;
+            x += Font::GetSize();
         }
     }
 private:
