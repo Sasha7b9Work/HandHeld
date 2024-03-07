@@ -4,4 +4,4 @@
 #include "Menu/MenuItemDef.h"
 
 
-const Item *PageAlarm::self = nullptr;
+const Item * const PageAlarm::self = nullptr;

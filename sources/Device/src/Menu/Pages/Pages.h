@@ -5,29 +5,29 @@
 
 namespace PageMain
 {
-    extern const Item *self;
+    extern const Item *const self;
 }
 
 
 namespace PageAlarm
 {
-    extern const Item *self;
+    extern const Item *const self;
 }
 
 
 namespace PageWatch
 {
-    extern const Item *self;
+    extern const Item *const self;
 }
 
 
 namespace PageCalls
 {
-    extern const Item *self;
+    extern const Item *const self;
 }
 
 
 namespace PageHistory
 {
-    extern const Item *self;
+    extern const Item *const self;
 }

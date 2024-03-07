@@ -8,4 +8,4 @@
 DEF_PAGE_1(pageMain, nullptr, "Μενώ", PageAlarm::self);
 
 
-const Item *PageMain::self = &pageMain;
+const Item * const PageMain::self = &pageMain;
