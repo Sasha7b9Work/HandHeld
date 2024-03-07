@@ -44,9 +44,9 @@ struct Item
 struct DataPage
 {
     const DataItem *data_item;
-    const Item **items;
-    int8 * const current_item;   // Текущий элемент страницы
-    int8 * const opened;         // Если не равно нулю, то страница открыта
+    const Item   **items;
+    int8 * const   current_item;   // Текущий элемент страницы
+    int8 * const   opened;         // Если не равно нулю, то страница открыта
 };
 
 
@@ -58,6 +58,7 @@ struct Page
     const Item *CurrentItem() const;
     // Возвращает указатель на итем, содержащий данную страницу
     const Item *GetSelfItem() const;
+    const DataItem *GetDataItem() const;
     void ApplyAction(const Action &) const;
     // Сделать текущим следующий элемент
     void NextCurrentItem() const;

@@ -53,13 +53,13 @@ void Page::Draw() const
 
 Text<> Page::Title() const
 {
-    const Page *page_keeper = data->data_item->keeper->GetPage();
+    const Page *page_keeper = GetDataItem()->keeper->GetPage();
 
     for (int i = 0; ; i++)
     {
         if (page_keeper->data->items[i]->item == this)
         {
-            return Text<>("%d/%d %s", i + 1, page_keeper->NumItems(), data->data_item->title);
+            return Text<>("%d/%d %s", i + 1, page_keeper->NumItems(), GetDataItem()->title);
         }
     }
 }
@@ -67,13 +67,19 @@ Text<> Page::Title() const
 
 const Item *Page::GetSelfItem() const
 {
-    return (const Item *)data->data_item;
+    return (const Item *)GetDataItem();
+}
+
+
+const DataItem *Page::GetDataItem() const
+{
+    return data->data_item;
 }
 
 
 bool Page::IsOpened() const
 {
-    if (data->data_item->keeper == nullptr)
+    if (GetDataItem()->keeper == nullptr)
     {
         return true;
     }
@@ -170,12 +176,12 @@ void Page::Close() const
 {
     *data->opened = 0;
 
-    if (data->data_item->keeper == nullptr)
+    if (GetDataItem()->keeper == nullptr)
     {
         Menu::Close();
     }
     else
     {
-        Menu::SetCurrentItem(data->data_item->keeper);
+        Menu::SetCurrentItem(GetDataItem()->keeper);
     }
 }
