@@ -3,6 +3,21 @@
 #include "Modules/PCF8563/PCF8563.h"
 
 
+namespace PCF8563
+{
+    static RTCDateTime time =
+    {
+        6,
+        5,
+        4,
+        1,
+        2,
+        3,
+        0
+    };
+}
+
+
 void PCF8563::Init()
 {
 
@@ -23,10 +38,11 @@ void PCF8563::SetTimer(uint /*time_sec*/)
 
 void PCF8563::GetDateTime(RTCDateTime *date_time)
 {
-    date_time->Hour = 1;
-    date_time->Minute = 2;
-    date_time->Second = 3;
-    date_time->Day = 4;
-    date_time->Month = 5;
-    date_time->Year = 6;
+    *date_time = time;
+}
+
+
+void PCF8563::SetDateTime(RTCDateTime *date_time)
+{
+    time = *date_time;
 }
