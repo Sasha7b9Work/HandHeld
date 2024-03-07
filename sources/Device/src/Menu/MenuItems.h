@@ -15,6 +15,7 @@ struct ItemType
 
 
 struct Item;
+struct Page;
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Item
@@ -30,6 +31,9 @@ struct Item
 {
     const DataItem *data;
     const void     *item;     // Указатель на структуру типа ItemType
+    void Draw() const;
+    bool IsPage() const;
+    const Page *GetPage() const;    // Возвращает указатель на объект типа Page, если возможно. Иначе возвращает nullptr
 };
 
 
@@ -44,8 +48,7 @@ struct DataPage
 struct Page
 {
     const DataPage *data;
-
-    const Item *CastToItem() { return (const Item *)((uint)this - 4); }
+    void Draw() const;
 };
 
 

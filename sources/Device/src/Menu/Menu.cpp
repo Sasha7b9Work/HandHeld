@@ -8,7 +8,7 @@
 namespace Menu
 {
     static bool is_shown = false;
-    static const Item *item = PageMain::self;
+    static const Item *current_item = PageMain::self;
 }
 
 
@@ -26,7 +26,7 @@ void Menu::Update()
 
 void Menu::Draw()
 {
-
+    current_item->Draw();
 }
 
 
