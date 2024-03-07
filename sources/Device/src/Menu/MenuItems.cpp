@@ -63,11 +63,23 @@ void Time::Draw() const
 
         for (int i = 0; i < 6; i++)
         {
-            Rect(23, 20).Draw(x[i], y[i], Color::WHITE);
+            Color backbround = (i == *data->field) ? Color::WHITE : Color::BLACK;
+            Color fill = (i == *data->field) ?  Color::BLACK : Color::WHITE;
+
+            int width = 23;
+            int height = 20;
+
+            Rect(width, height).Draw(x[i], y[i], fill);
+            Rect(width - 2, height - 2).Fill(x[i] + 1, y[i] + 1, backbround);
 
             Font::SetSize(2);
 
-            Text<>("%02d", values[i]).Write(x[i] + 3, y[i] + 3);
+            Text<>("%02d", values[i]).Write(x[i] + 3, y[i] + 3, fill);
+
+            if (i == *data->field)
+            {
+                Rect(width + 2, height + 2).Draw(x[i] - 1, y[i] - 1, backbround);
+            }
 
             Font::SetSize(1);
         }
