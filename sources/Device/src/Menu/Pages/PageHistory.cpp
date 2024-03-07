@@ -2,3 +2,8 @@
 #include "defines.h"
 #include "Menu/Pages/Pages.h"
 #include "Menu/MenuItemDef.h"
+
+
+DEF_PAGE_0(pageHistory, nullptr, "Журнал вызовов");
+
+const Item *const PageHistory::self = &pageHistory;

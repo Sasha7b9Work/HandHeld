@@ -5,10 +5,11 @@
 #include "Menu/MenuItemDef.h"
 
 
-DEF_PAGE_3(pageMain, nullptr, "Μενώ",
+DEF_PAGE_4(pageMain, nullptr, "Μενώ",
     PageAlarm::self,
     PageWatch::self,
-    PageCalls::self
+    PageCalls::self,
+    PageHistory::self
 );
 
 
