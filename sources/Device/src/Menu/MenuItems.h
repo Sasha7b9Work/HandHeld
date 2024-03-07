@@ -43,7 +43,7 @@ struct Item
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Page
 struct DataPage
 {
-    const DataItem *data_item;
+    const Item     *item;           // В этом итеме хранится данная структура
     const Item   **items;
     int8 * const   current_item;   // Текущий элемент страницы
     int8 * const   opened;         // Если не равно нулю, то страница открыта

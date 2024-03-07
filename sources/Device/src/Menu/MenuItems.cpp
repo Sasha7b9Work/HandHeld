@@ -67,13 +67,13 @@ Text<> Page::Title() const
 
 const Item *Page::GetSelfItem() const
 {
-    return (const Item *)GetDataItem();
+    return data->item;
 }
 
 
 const DataItem *Page::GetDataItem() const
 {
-    return data->data_item;
+    return GetSelfItem()->data;
 }
 
 
@@ -115,9 +115,12 @@ void Page::ApplyAction(const Action &action) const
     }
     else if (action.key == Key::Menu)
     {
-        if (CurrentItem()->IsPage())
+        if (NumItems())
         {
-            CurrentItem()->GetPage()->Open();
+            if (CurrentItem()->IsPage())
+            {
+                CurrentItem()->GetPage()->Open();
+            }
         }
     }
     else if (action.key == Key::Cancel)
