@@ -4,16 +4,6 @@
 #include "Menu/MenuItemDef.h"
 
 
-//DEF_BUTTON(btnClose,
-//    PageWatch::self,
-//    "Закрыть",
-//
-//    )
+DEF_PAGE_0(pageWatch, nullptr, "Часы");
 
-
-//DEF_PAGE_2(
-//    pageWatch,
-//    nullptr,
-//    "Настройки часов",
-//
-//)
+const Item *const PageWatch::self = &pageWatch;

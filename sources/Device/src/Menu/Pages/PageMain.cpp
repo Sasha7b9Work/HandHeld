@@ -5,7 +5,11 @@
 #include "Menu/MenuItemDef.h"
 
 
-DEF_PAGE_1(pageMain, nullptr, "Μενώ", PageAlarm::self);
+DEF_PAGE_3(pageMain, nullptr, "Μενώ",
+    PageAlarm::self,
+    PageWatch::self,
+    PageCalls::self
+);
 
 
 const Item * const PageMain::self = &pageMain;

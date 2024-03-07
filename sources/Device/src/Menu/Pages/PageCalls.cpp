@@ -3,3 +3,7 @@
 #include "Menu/Pages/Pages.h"
 #include "Menu/MenuItemDef.h"
 
+
+DEF_PAGE_0(pageCalls, nullptr, "Настройки вызовов");
+
+const Item *const PageCalls::self = &pageCalls;
