@@ -7,6 +7,14 @@
 
 //#define DEF_BUTTON
 
+#define DEF_TIME(name, keeper, title)                                                               \
+static int8 opened##name = 0;                                                                       \
+static const DataItem name##data = { ItemType::Time, keeper, title, &opened##name };                \
+extern const Item name;                                                                             \
+static const DataTime name##datatime = { &name };                                                   \
+static const Time name##time = { &name##datatime };                                                 \
+const Item name = {&name##data, &name##time }
+
 #define DEF_PAGE_0(name, keeper, title)                                                             \
 static const Item *items##name[] = { nullptr };                                                     \
 static int8 current_item##name = 0;                                                                 \

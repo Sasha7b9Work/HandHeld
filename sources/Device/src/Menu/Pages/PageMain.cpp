@@ -5,8 +5,11 @@
 #include "Menu/MenuItemDef.h"
 
 
+DEF_TIME(timeWatch, PageMain::self, "Часы");
+
+
 DEF_PAGE_4(pageMain, nullptr, "Меню",
-    PageWatch::self,
+    &timeWatch,
     PageAlarm::self,
     PageCalls::self,
     PageHistory::self
