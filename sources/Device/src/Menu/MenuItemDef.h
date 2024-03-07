@@ -9,9 +9,10 @@
 
 #define DEF_TIME(name, keeper, title)                                                               \
 static int8 opened##name = 0;                                                                       \
+static int8 field##name = 0;                                                                        \
 static const DataItem name##data = { ItemType::Time, keeper, title, &opened##name };                \
 extern const Item name;                                                                             \
-static const DataTime name##datatime = { &name };                                                   \
+static const DataTime name##datatime = { &name, &field##name };                                     \
 static const Time name##time = { &name##datatime };                                                 \
 const Item name = {&name##data, &name##time }
 
