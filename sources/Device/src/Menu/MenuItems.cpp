@@ -4,6 +4,7 @@
 #include "Display/Display.h"
 #include "Menu/Menu.h"
 #include "Hardware/Watch.h"
+#include "Display/Font/Font.h"
 
 
 void Item::Draw() const
@@ -41,7 +42,35 @@ void Time::Draw() const
 {
     if (data->item->IsOpened())
     {
+        int values[6] = {
+            data->date_time->Hour,
+            data->date_time->Minute,
+            data->date_time->Second,
+            data->date_time->Day,
+            data->date_time->Month,
+            data->date_time->Year - 2000
+        };
 
+        int x0 = 10;
+        int x1 = 40;
+        int x2 = 70;
+
+        int y0 = 10;
+        int y1 = 35;
+
+        int x[6] = { x0, x1, x2, x0, x1, x2 };
+        int y[6] = { y0, y0, y0, y1, y1, y1 };
+
+        for (int i = 0; i < 6; i++)
+        {
+            Rect(23, 20).Draw(x[i], y[i], Color::WHITE);
+
+            Font::SetSize(2);
+
+            Text<>("%02d", values[i]).Write(x[i] + 3, y[i] + 3);
+
+            Font::SetSize(1);
+        }
     }
     else
     {

@@ -21,7 +21,12 @@ void PCF8563::SetTimer(uint /*time_sec*/)
 }
 
 
-void PCF8563::GetDateTime(RTCDateTime *)
+void PCF8563::GetDateTime(RTCDateTime *date_time)
 {
-
+    date_time->Hour = 1;
+    date_time->Minute = 2;
+    date_time->Second = 3;
+    date_time->Day = 4;
+    date_time->Month = 5;
+    date_time->Year = 2006;
 }

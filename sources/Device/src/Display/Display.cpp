@@ -104,9 +104,9 @@ void Rect::Draw(int x, int y, const Color &color) const
     color.SetAsCurrent();
 
     HLine(width).Draw(x, y);
-    HLine(width).Draw(x, y + height);
+    HLine(width).Draw(x, y + height - 1);
     VLine(height).Draw(x, y);
-    VLine(height).Draw(x + width, y);
+    VLine(height).Draw(x + width - 1, y);
 }
 
 
