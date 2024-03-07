@@ -34,37 +34,29 @@ const Page *Item::GetPage() const
 
 void Page::Draw() const
 {
+    pchar t = data->data_item->title;
+
+    t = t;
+
     if (IsOpened())
     {
         CurrentItem()->Draw();
     }
     else
     {
-        const DataItem *di = GetDataItem();
-
-        Text<>(di->title).Write(10, 10, Color::WHITE);
+        Text<>(data->data_item->title).Write(10, 10, Color::WHITE);
     }
 }
 
 
 bool Page::IsOpened() const
 {
-    if (GetDataItem()->keeper == nullptr)
+    if (data->data_item->keeper == nullptr)
     {
         return true;
     }
 
     return *data->opened != 0;
-}
-
-
-const DataItem *Page::GetDataItem() const
-{
-    uint address = (uint)this;
-
-    address -= 4;
-
-    return (const DataItem *)address;
 }
 
 

@@ -40,6 +40,7 @@ struct Item
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Page
 struct DataPage
 {
+    const DataItem *data_item;
     const Item **items;
     const int8 *current_item;   // Текущий элемент страницы
     const int8 *opened;         // Если не равно нулю, то страница открыта
@@ -51,7 +52,6 @@ struct Page
     const DataPage *data;
     void Draw() const;
     bool IsOpened() const;
-    const DataItem *GetDataItem() const;
     const Item *CurrentItem() const;
 };
 
