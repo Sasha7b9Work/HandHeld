@@ -41,7 +41,21 @@ void Page::Draw() const
     }
     else
     {
-        Text<>(data->data_item->title).Write(10, 10, Color::WHITE);
+        Title().Write(10, 10, Color::WHITE);
+    }
+}
+
+
+Text<> Page::Title() const
+{
+    const Page *page_keeper = data->data_item->keeper->GetPage();
+
+    for (int i = 0; ; i++)
+    {
+        if (page_keeper->data->items[i]->item == this)
+        {
+            return Text<>("%d/%d %s", i + 1, page_keeper->NumItems(), data->data_item->title);
+        }
     }
 }
 
@@ -112,7 +126,7 @@ void Page::PrevCurrentItem() const
 
     if (current < 0)
     {
-        current = NumItems() - 1;
+        current = (int8)(NumItems() - 1);
     }
 
     *data->current_item = current;
@@ -121,14 +135,11 @@ void Page::PrevCurrentItem() const
 
 int Page::NumItems() const
 {
-    const Item *item = data->items[0];
-
-    int result = 0;
-
-    while (item++)
+    for(int i = 0; ; i++)
     {
-        result++;
+        if (data->items[i] == nullptr)
+        {
+            return i;
+        }
     }
-
-    return result;
 }

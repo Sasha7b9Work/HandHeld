@@ -36,7 +36,10 @@ void Menu::Update()
         }
         else
         {
-            is_shown = true;
+            if (action.key == Key::Menu)
+            {
+                is_shown = true;
+            }
         }
     }
 }
