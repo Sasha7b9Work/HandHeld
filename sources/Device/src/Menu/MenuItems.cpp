@@ -8,7 +8,9 @@ void Item::Draw() const
 {
     if (IsPage())
     {
-        GetPage()->Draw();
+        const Page *page = GetPage();
+
+        page->Draw();
     }
 }
 
@@ -38,7 +40,9 @@ void Page::Draw() const
     }
     else
     {
-        Text<>(GetDataItem()->title).Write(10, 10, Color::WHITE);
+        const DataItem *di = GetDataItem();
+
+        Text<>(di->title).Write(10, 10, Color::WHITE);
     }
 }
 
