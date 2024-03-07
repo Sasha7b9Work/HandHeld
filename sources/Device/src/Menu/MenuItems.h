@@ -11,6 +11,7 @@ struct ItemType
         Page,
         Button,
         CustomButton,
+        Time,
         Count
     };
 };
@@ -18,6 +19,7 @@ struct ItemType
 
 struct Item;
 struct Page;
+struct Time;
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Item
@@ -26,6 +28,8 @@ struct DataItem
     ItemType::E type;
     const Item *keeper;     // Предок итема
     pchar       title;
+    int8 *const opened;     // Если не равно нулю, то итем раскрыт
+
 };
 
 
@@ -34,9 +38,12 @@ struct Item
     const DataItem *data;
     const void     *item;     // Указатель на структуру типа ItemType
     void Draw() const;
-    bool IsPage() const;
-    const Page *GetPage() const;    // Возвращает указатель на объект типа Page, если возможно. Иначе возвращает nullptr
+    bool IsPage() const { return data->type == ItemType::Page; }
+    bool IsTime() const { return data->type == ItemType::Time; }
+    const Page *GetPage() const { if (IsPage()) { return (const Page *)item; } return nullptr; }
+    const Time *GetTime() const { if (IsTime()) { return (const Time *)item; } return nullptr; }
     void ApplyAction(const Action &) const;
+    bool IsOpened() const;
 };
 
 
@@ -45,8 +52,7 @@ struct DataPage
 {
     const Item     *item;           // В этом итеме хранится данная структура
     const Item   **items;
-    int8 * const   current_item;   // Текущий элемент страницы
-    int8 * const   opened;         // Если не равно нулю, то страница открыта
+    int8 * const   current_item;    // Текущий элемент страницы
 };
 
 
@@ -54,7 +60,6 @@ struct Page
 {
     const DataPage *data;
     void Draw() const;
-    bool IsOpened() const;
     const Item *CurrentItem() const;
     // Возвращает указатель на итем, содержащий данную страницу
     const Item *GetSelfItem() const;
@@ -68,6 +73,20 @@ struct Page
     Text<> Title() const;
     void Open() const;
     void Close() const;
+};
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Time
+struct DataTime
+{
+
+};
+
+
+struct Time
+{
+    const DataTime *data;
+    void Draw() const;
 };
 
 

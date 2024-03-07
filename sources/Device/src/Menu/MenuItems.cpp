@@ -9,33 +9,18 @@ void Item::Draw() const
 {
     if (IsPage())
     {
-        const Page *page = GetPage();
-
-        page->Draw();
+        GetPage()->Draw();
     }
-}
-
-
-bool Item::IsPage() const
-{
-    return data->type == ItemType::Page;
-}
-
-
-const Page *Item::GetPage() const
-{
-    if (IsPage())
+    else if (IsTime())
     {
-        return (const Page *)item;
+        GetTime()->Draw();
     }
-
-    return nullptr;
 }
 
 
 void Page::Draw() const
 {
-    if (IsOpened())
+    if (GetSelfItem()->IsOpened())
     {
         const Item *current_item = CurrentItem();
 
@@ -48,6 +33,11 @@ void Page::Draw() const
     {
         Title().Write(10, 10, Color::WHITE);
     }
+}
+
+
+void Time::Draw() const
+{
 }
 
 
@@ -77,14 +67,19 @@ const DataItem *Page::GetDataItem() const
 }
 
 
-bool Page::IsOpened() const
+bool Item::IsOpened() const
 {
-    if (GetDataItem()->keeper == nullptr)
+    if (IsPage())
     {
-        return true;
+        if (data->keeper == nullptr)
+        {
+            return true;
+        }
+
+        return *data->opened != 0;
     }
 
-    return *data->opened != 0;
+    return false;
 }
 
 
@@ -170,14 +165,14 @@ int Page::NumItems() const
 
 void Page::Open() const
 {
-    *data->opened = 1;
+    *GetDataItem()->opened = 1;
 
     Menu::SetCurrentItem(GetSelfItem());
 }
 
 void Page::Close() const
 {
-    *data->opened = 0;
+    *GetDataItem()->opened = 0;
 
     if (GetDataItem()->keeper == nullptr)
     {

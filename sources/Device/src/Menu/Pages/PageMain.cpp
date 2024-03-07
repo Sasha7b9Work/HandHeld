@@ -6,8 +6,8 @@
 
 
 DEF_PAGE_4(pageMain, nullptr, "Μενώ",
-    PageAlarm::self,
     PageWatch::self,
+    PageAlarm::self,
     PageCalls::self,
     PageHistory::self
 );
