@@ -28,5 +28,5 @@ void PCF8563::GetDateTime(RTCDateTime *date_time)
     date_time->Second = 3;
     date_time->Day = 4;
     date_time->Month = 5;
-    date_time->Year = 2006;
+    date_time->Year = 6;
 }

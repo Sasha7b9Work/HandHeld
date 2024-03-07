@@ -12,8 +12,6 @@ void Watch::Draw(int x, int y, const Color &color)
 
     PCF8563::GetDateTime(&date_time);
 
-    date_time.Year = 2024;
-
     Font::SetSize(2);
 
     Text<>("%02d:%02d:%02d", date_time.Hour, date_time.Minute, date_time.Second).Write(x, y, color);

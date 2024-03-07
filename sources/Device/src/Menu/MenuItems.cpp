@@ -5,6 +5,7 @@
 #include "Menu/Menu.h"
 #include "Hardware/Watch.h"
 #include "Display/Font/Font.h"
+#include "Utils/Math.h"
 
 
 int8 DataTime::in_edit_mode = false;
@@ -51,7 +52,7 @@ void Time::Draw() const
             data->date_time->Second,
             data->date_time->Day,
             data->date_time->Month,
-            data->date_time->Year - 2000
+            data->date_time->Year
         };
 
         int x0 = 20;
@@ -233,27 +234,36 @@ void Time::ApplyAction(const Action &action) const
 
 void Time::ChangeCurrentField(int delta) const
 {
-    delta = (delta < 0) ? -1 : 1;
-
-    if (*data->field == 0)
+    if (*data->field > 5)
     {
-        int hour = (int)data->date_time->Hour + delta;
-
-        if (hour < 0)
-        {
-            hour = 23;
-        }
-        else if (hour == 24)
-        {
-            hour = 0;
-        }
-
-        data->date_time->Hour = (uint8)hour;
+        return;
     }
-    else if(*data->field == 5)
+
+    uint8 *refs[6] =
     {
+        &data->date_time->Hour,
+        &data->date_time->Minute,
+        &data->date_time->Second,
+        &data->date_time->Day,
+        &data->date_time->Month,
+        &data->date_time->Year
+    };
 
-    }
+    int min[6] =
+    {
+        0, 0, 0, 1, 1, 0
+    };
+
+    int max[6] =
+    {
+        23, 59, 59, 31, 12, 99
+    };
+
+    int value = *refs[*data->field];
+
+    Math::CircleChange(&value, min[*data->field], max[*data->field], (delta < 0) ? -1 : 1);
+
+    *refs[*data->field] = (uint8)value;
 }
 
 

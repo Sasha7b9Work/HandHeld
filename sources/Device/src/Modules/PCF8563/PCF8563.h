@@ -26,13 +26,13 @@
 
 struct RTCDateTime
 {
-    uint16  Year;
-    uint8   Month;
-    uint8   Day;
-    uint8   Hour;
-    uint8   Minute;
-    uint8   Second;
-    uint8   DayOfWeek;
+    uint8  Year;            // Год от 2000-го
+    uint8  Month;
+    uint8  Day;
+    uint8  Hour;
+    uint8  Minute;
+    uint8  Second;
+    uint8  DayOfWeek;
 };
 
 
