@@ -19,6 +19,12 @@ void Menu::Init()
 }
 
 
+void Menu::SetCurrentItem(const Item *item)
+{
+    current_item = item;
+}
+
+
 void Menu::Update()
 {
     Action action;

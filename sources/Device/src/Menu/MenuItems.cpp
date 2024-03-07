@@ -60,6 +60,12 @@ Text<> Page::Title() const
 }
 
 
+const Item *Page::GetSelfItem() const
+{
+    return (const Item *)data->data_item;
+}
+
+
 bool Page::IsOpened() const
 {
     if (data->data_item->keeper == nullptr)
@@ -88,14 +94,6 @@ void Item::ApplyAction(const Action &action) const
 
 void Page::ApplyAction(const Action &action) const
 {
-    if (data->data_item->keeper == nullptr)
-    {
-        if (action.key == Key::Cancel)
-        {
-            Menu::Close();
-        }
-    }
-
     if (action.key == Key::Up)
     {
         PrevCurrentItem();
@@ -103,6 +101,17 @@ void Page::ApplyAction(const Action &action) const
     else if (action.key == Key::Down)
     {
         NextCurrentItem();
+    }
+    else if (action.key == Key::Menu)
+    {
+        if (CurrentItem()->IsPage())
+        {
+            CurrentItem()->GetPage()->Open();
+        }
+    }
+    else if (action.key == Key::Cancel)
+    {
+        Close();
     }
 }
 
@@ -141,5 +150,27 @@ int Page::NumItems() const
         {
             return i;
         }
+    }
+}
+
+
+void Page::Open() const
+{
+    *data->opened = 1;
+
+    Menu::SetCurrentItem(GetSelfItem());
+}
+
+void Page::Close() const
+{
+    *data->opened = 0;
+
+    if (data->data_item->keeper == nullptr)
+    {
+        Menu::Close();
+    }
+    else
+    {
+        Menu::SetCurrentItem(data->data_item->keeper);
     }
 }

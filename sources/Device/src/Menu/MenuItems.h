@@ -56,6 +56,8 @@ struct Page
     void Draw() const;
     bool IsOpened() const;
     const Item *CurrentItem() const;
+    // Возвращает указатель на итем, содержащий данную страницу
+    const Item *GetSelfItem() const;
     void ApplyAction(const Action &) const;
     // Сделать текущим следующий элемент
     void NextCurrentItem() const;
@@ -63,6 +65,8 @@ struct Page
     void PrevCurrentItem() const;
     int NumItems() const;
     Text<> Title() const;
+    void Open() const;
+    void Close() const;
 };
 
 
