@@ -44,6 +44,7 @@ struct Item
     const Time *GetTime() const { if (IsTime()) { return (const Time *)item; } return nullptr; }
     void ApplyAction(const Action &) const;
     bool IsOpened() const;
+    Text<> Title() const;
 };
 
 
@@ -68,7 +69,6 @@ struct Page
     // Сделать текущим предыдущий элемент
     void PrevCurrentItem() const;
     int NumItems() const;
-    Text<> Title() const;
     void Open() const;
     void Close() const;
 };

@@ -31,7 +31,7 @@ void Page::Draw() const
     }
     else
     {
-        Title().Write(10, 10, Color::WHITE);
+        data->item->Title().Write(10, 10, Color::WHITE);
     }
 }
 
@@ -44,20 +44,20 @@ void Time::Draw() const
     }
     else
     {
-
+        data->item->Title().Write(10, 10, Color::WHITE);
     }
 }
 
 
-Text<> Page::Title() const
+Text<> Item::Title() const
 {
-    const Page *page_keeper = GetDataItem()->keeper->GetPage();
+    const Page *page_keeper = data->keeper->GetPage();
 
     for (int i = 0; ; i++)
     {
-        if (page_keeper->data->items[i]->item == this)
+        if (page_keeper->data->items[i] == this)
         {
-            return Text<>("%d/%d %s", i + 1, page_keeper->NumItems(), GetDataItem()->title);
+            return Text<>("%d/%d %s", i + 1, page_keeper->NumItems(), data->title);
         }
     }
 }
