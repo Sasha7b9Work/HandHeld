@@ -195,7 +195,14 @@ void Time::ApplyAction(const Action &action) const
     }
     else if (action.key == Key::Cancel)
     {
-        data->item->Close();
+        if (data->in_edit_mode != 0)
+        {
+            data->in_edit_mode = 0;
+        }
+        else
+        {
+            data->item->Close();
+        }
     }
     else if (action.key == Key::Up)
     {
