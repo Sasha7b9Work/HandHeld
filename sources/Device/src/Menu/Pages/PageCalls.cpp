@@ -4,6 +4,6 @@
 #include "Menu/MenuItemDef.h"
 
 
-DEF_PAGE_0(pageCalls, PageMain::self, "Настройки вызовов");
+DEF_PAGE_0(pageCalls, PageMain::self, "НАСТРОЙКИ ВЫЗОВОВ");
 
 const Item *const PageCalls::self = &pageCalls;

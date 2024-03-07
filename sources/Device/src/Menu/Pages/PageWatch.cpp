@@ -4,6 +4,6 @@
 #include "Menu/MenuItemDef.h"
 
 
-DEF_PAGE_0(pageWatch, PageMain::self, "×àñû");
+DEF_PAGE_0(pageWatch, PageMain::self, "×ÀÑÛ");
 
 const Item *const PageWatch::self = &pageWatch;

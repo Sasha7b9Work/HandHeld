@@ -22,7 +22,7 @@ struct Page;
 struct DataItem
 {
     ItemType::E type;
-    Item       *keeper;     // Предок итема
+    const Item *keeper;     // Предок итема
     pchar       title;
 };
 

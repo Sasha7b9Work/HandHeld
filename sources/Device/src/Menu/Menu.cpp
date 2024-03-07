@@ -7,7 +7,7 @@
 
 namespace Menu
 {
-    static bool is_shown = true;
+    static bool is_shown = false;
     static const Item *current_item = PageMain::self;
 }
 
