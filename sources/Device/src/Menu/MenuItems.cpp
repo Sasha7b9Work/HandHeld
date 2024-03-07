@@ -37,7 +37,12 @@ void Page::Draw() const
 {
     if (IsOpened())
     {
-        CurrentItem()->Draw();
+        const Item *current_item = CurrentItem();
+
+        if (current_item)
+        {
+            current_item->Draw();
+        }
     }
     else
     {
