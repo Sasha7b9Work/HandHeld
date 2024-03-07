@@ -849,6 +849,11 @@
               <FileType>8</FileType>
               <FilePath>.\src\Menu\Pages\PageHistory.cpp</FilePath>
             </File>
+            <File>
+              <FileName>PageMain.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Menu\Pages\PageMain.cpp</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

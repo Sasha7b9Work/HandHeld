@@ -3,25 +3,31 @@
 #include "Menu/MenuItems.h"
 
 
+namespace PageMain
+{
+    extern const Item *self;
+}
+
+
 namespace PageAlarm
 {
-    extern Page *self;
+    extern const Item *self;
 }
 
 
 namespace PageWatch
 {
-    extern Page *self;
+    extern const Item *self;
 }
 
 
 namespace PageCalls
 {
-    extern Page *self;
+    extern const Item *self;
 }
 
 
 namespace PageHistory
 {
-    extern Page *self;
+    extern const Item *self;
 }

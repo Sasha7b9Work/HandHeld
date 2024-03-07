@@ -28,21 +28,23 @@ struct DataItem
 
 struct Item
 {
-    DataItem *data;
-    void     *item;     // ”казатель на структуру типа ItemType
+    const DataItem *data;
+    const void     *item;     // ”казатель на структуру типа ItemType
 };
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Page
 struct DataPage
 {
-    Item **items;
+    const Item **items;
 };
 
 
 struct Page
 {
-    DataPage *data;
+    const DataPage *data;
+
+    const Item *CastToItem() { return (const Item *)((uint)this - 4); }
 };
 
 
