@@ -1,5 +1,6 @@
 // 2024/03/02 13:56:04 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
+#include "Keyboard/Keyboard.h"
 
 
 struct ItemType
@@ -34,6 +35,7 @@ struct Item
     void Draw() const;
     bool IsPage() const;
     const Page *GetPage() const;    // Возвращает указатель на объект типа Page, если возможно. Иначе возвращает nullptr
+    void ApplyAction(const Action &) const;
 };
 
 
@@ -53,6 +55,7 @@ struct Page
     void Draw() const;
     bool IsOpened() const;
     const Item *CurrentItem() const;
+    void ApplyAction(const Action &) const;
 };
 
 

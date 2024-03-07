@@ -12,4 +12,6 @@ namespace Menu
     bool IsShown();
 
     void Draw();
+
+    void Close();
 }

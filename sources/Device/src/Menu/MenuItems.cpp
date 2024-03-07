@@ -60,3 +60,24 @@ const Item *Page::CurrentItem() const
 {
     return data->items[*data->current_item];
 }
+
+
+void Item::ApplyAction(const Action &action) const
+{
+    if (IsPage())
+    {
+        GetPage()->ApplyAction(action);
+    }
+}
+
+
+void Page::ApplyAction(const Action &action) const
+{
+    if (data->data_item->keeper == nullptr)
+    {
+        if (action.key == Key::Cancel)
+        {
+            Menu::Close();
+        }
+    }
+}

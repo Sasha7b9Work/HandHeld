@@ -28,15 +28,15 @@ void Menu::Update()
         return;
     }
 
-    if (!action.IsRelease())
+    if (action.IsDown())
     {
-        if (action.key == Key::Menu)
+        if (is_shown)
+        {
+            current_item->ApplyAction(action);
+        }
+        else
         {
             is_shown = true;
-        }
-        else if (action.key == Key::Cancel)
-        {
-            is_shown = false;
         }
     }
 }
@@ -51,4 +51,10 @@ void Menu::Draw()
 bool Menu::IsShown()
 {
     return is_shown;
+}
+
+
+void Menu::Close()
+{
+    is_shown = false;
 }
