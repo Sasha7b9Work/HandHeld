@@ -180,13 +180,16 @@ void Time::ApplyAction(const Action &action) const
 {
     if (action.key == Key::Menu)
     {
-        if (data->in_edit_mode == 0)
+        if (*data->field < 6)
         {
-            data->in_edit_mode = 1;
-        }
-        else
-        {
-            data->in_edit_mode = 0;
+            if (data->in_edit_mode == 0)
+            {
+                data->in_edit_mode = 1;
+            }
+            else
+            {
+                data->in_edit_mode = 0;
+            }
         }
     }
     else if (action.key == Key::Cancel)
@@ -195,21 +198,61 @@ void Time::ApplyAction(const Action &action) const
     }
     else if (action.key == Key::Up)
     {
-        *data->field = *data->field + 1;
-
-        if (*data->field == 8)
+        if (data->in_edit_mode)
         {
-            *data->field = 0;
+            ChangeCurrentField(+1);
+        }
+        else
+        {
+            *data->field = *data->field + 1;
+
+            if (*data->field == 8)
+            {
+                *data->field = 0;
+            }
         }
     }
     else if (action.key == Key::Down)
     {
-        *data->field = *data->field - 1;
-
-        if (*data->field < 0)
+        if (data->in_edit_mode)
         {
-            *data->field = 7;
+            ChangeCurrentField(-1);
         }
+        else
+        {
+            *data->field = *data->field - 1;
+
+            if (*data->field < 0)
+            {
+                *data->field = 7;
+            }
+        }
+    }
+}
+
+
+void Time::ChangeCurrentField(int delta) const
+{
+    delta = (delta < 0) ? -1 : 1;
+
+    if (*data->field == 0)
+    {
+        int hour = (int)data->date_time->Hour + delta;
+
+        if (hour < 0)
+        {
+            hour = 23;
+        }
+        else if (hour == 24)
+        {
+            hour = 0;
+        }
+
+        data->date_time->Hour = (uint8)hour;
+    }
+    else if(*data->field == 5)
+    {
+
     }
 }
 
