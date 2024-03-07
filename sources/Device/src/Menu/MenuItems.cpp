@@ -192,6 +192,10 @@ void Time::ApplyAction(const Action &action) const
                 data->in_edit_mode = 0;
             }
         }
+        else
+        {
+            int i = 0;
+        }
     }
     else if (action.key == Key::Cancel)
     {
