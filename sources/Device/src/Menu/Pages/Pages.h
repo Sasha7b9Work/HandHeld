@@ -24,6 +24,31 @@ namespace PageWatch
 namespace PageCalls
 {
     extern const Item *const self;
+
+    namespace PageDoorBell
+    {
+        extern const Item *const self;
+    }
+
+    namespace PageMobile
+    {
+        extern const Item *const self;
+    }
+
+    namespace PageHomePhone
+    {
+        extern const Item *const self;
+    }
+
+    namespace PageIntercom
+    {
+        extern const Item *const self;
+    }
+
+    namespace PageSoundSensor
+    {
+        extern const Item *const self;
+    }
 }
 
 

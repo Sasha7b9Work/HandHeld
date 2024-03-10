@@ -4,6 +4,12 @@
 #include "Menu/MenuItemDef.h"
 
 
-DEF_PAGE_0(pageCalls, PageMain::self, "ÍÀÑÒĞÎÉÊÈ ÂÛÇÎÂÎÂ");
+DEF_PAGE_5(pageCalls, PageMain::self, "ÍÀÑÒĞÎÉÊÈ ÂÛÇÎÂÎÂ",
+    PageCalls::PageDoorBell::self,
+    PageCalls::PageMobile::self,
+    PageCalls::PageHomePhone::self,
+    PageCalls::PageIntercom::self,
+    PageCalls::PageSoundSensor::self
+);
 
 const Item *const PageCalls::self = &pageCalls;
