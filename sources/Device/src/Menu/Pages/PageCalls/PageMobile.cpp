@@ -9,7 +9,7 @@ namespace PageCalls
 {
     namespace PageMobile
     {
-        DEF_CHOICE_10(choiceMelody, PageCalls::PageMobile::self, "Мелодия", &gset.sources[Source::Mobile].melody,
+        DEF_CHOICE_10(choiceMelody, self, "Мелодия", &gset.sources[Source::Mobile].melody,
             "1",
             "2",
             "3",
@@ -22,7 +22,7 @@ namespace PageCalls
             "10"
         );
 
-        DEF_CHOICE_10(choiceVolume, PageCalls::PageMobile::self, "Громкость", &gset.sources[Source::Mobile].volume,
+        DEF_CHOICE_10(choiceVolume, self, "Громкость", &gset.sources[Source::Mobile].volume,
             "1",
             "2",
             "3",
@@ -35,17 +35,17 @@ namespace PageCalls
             "10"
         );
 
-        DEF_CHOICE_2(choiceEnableLED, PageCalls::PageMobile::self, "Светодиод", &gset.sources[Source::Mobile].enabled_led,
+        DEF_CHOICE_2(choiceEnableLED, self, "Светодиод", &gset.sources[Source::Mobile].enabled_led,
             "Откл",
             "Вкл"
         );
 
-        DEF_CHOICE_2(choiceEnableMelody, PageCalls::PageMobile::self, "Звук", &gset.sources[Source::Mobile].enabled_melody,
+        DEF_CHOICE_2(choiceEnableMelody, self, "Звук", &gset.sources[Source::Mobile].enabled_melody,
             "Откл",
             "Вкл"
         );
 
-        DEF_CHOICE_2(choiceEnabledVibro, PageCalls::PageMobile::self, "Вибрация", &gset.sources[Source::Mobile].enabled_vibrato,
+        DEF_CHOICE_2(choiceEnabledVibro, self, "Вибрация", &gset.sources[Source::Mobile].enabled_vibrato,
             "Откл",
             "Вкл"
         );
@@ -58,7 +58,7 @@ namespace PageCalls
             &choiceEnableMelody,
             &choiceEnabledVibro
         );
+
+        const Item *const self = &pageMobile;
     }
 }
-
-const Item *const PageCalls::PageMobile::self = &PageCalls::PageMobile::pageMobile;
