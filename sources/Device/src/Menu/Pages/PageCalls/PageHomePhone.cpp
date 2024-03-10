@@ -2,9 +2,64 @@
 #include "defines.h"
 #include "Menu/Pages/Pages.h"
 #include "Menu/MenuItemDef.h"
+#include "Menu/MenuItemDef.h"
+#include "Settings/Settings.h"
 
 
-DEF_PAGE_0(pageHomePhone, PageCalls::self, "Домашний телефон");
+namespace PageCalls
+{
+    namespace PageHomePhone
+    {
+        DEF_CHOICE_10(choiceMelody, PageCalls::PageHomePhone::self, "Мелодия", &gset.sources[Source::PhoneHome].melody,
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10"
+        );
+
+        DEF_CHOICE_10(choiceVolume, PageCalls::PageHomePhone::self, "Громкость", &gset.sources[Source::PhoneHome].volume,
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10"
+        );
+
+        DEF_CHOICE_2(choiceEnableLED, PageCalls::PageHomePhone::self, "Светодиод", &gset.sources[Source::PhoneHome].enabled_led,
+            "Откл",
+            "Вкл"
+        );
+
+        DEF_CHOICE_2(choiceEnableMelody, PageCalls::PageHomePhone::self, "Звук", &gset.sources[Source::PhoneHome].enabled_melody,
+            "Откл",
+            "Вкл"
+        );
+
+        DEF_CHOICE_2(choiceEnabledVibro, PageCalls::PageHomePhone::self, "Вибрация", &gset.sources[Source::PhoneHome].enabled_vibrato,
+            "Откл",
+            "Вкл"
+        );
 
 
-const Item *const PageCalls::PageHomePhone::self = &pageHomePhone;
+        DEF_PAGE_5(pageHomePhone, PageCalls::self, "Домашний телефон",
+            &choiceMelody,
+            &choiceVolume,
+            &choiceEnableLED,
+            &choiceEnableMelody,
+            &choiceEnabledVibro
+        );
+
+        const Item *const self = &pageHomePhone;
+    }
+}
