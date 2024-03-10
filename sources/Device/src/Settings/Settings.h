@@ -1,12 +1,7 @@
 // 2024/03/02 19:47:04 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
 #include "Display/Colors.h"
-
-
-struct PackedTime
-{
-
-};
+#include "Modules/PCF8563/PCF8563.h"
 
 
 // Источинк сигнала
@@ -44,7 +39,7 @@ struct SettingsSource
 struct Settings
 {
     SettingsSource sources[Source::Count];
-    PackedTime time_alarm;                      // Время будильника
+    RTCDateTime    time_alarm;                      // Время будильника
 };
 
 
