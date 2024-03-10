@@ -41,7 +41,7 @@ void Page::Draw() const
     }
     else
     {
-        data->item->Title().Write(10, 10, Color::WHITE);
+        data->item->Title().Write(10, 10, Color::BLUE);
     }
 }
 
@@ -123,7 +123,7 @@ void Time::Draw() const
     }
     else
     {
-        data->item->Title().Write(10, 10, Color::WHITE);
+        data->item->Title().Write(10, 10, Color::BLUE);
 
         Watch::Draw(30, 30, Color::GREEN);
     }

@@ -5,7 +5,7 @@
 #include "Menu/MenuItemDef.h"
 
 
-DEF_TIME(timeWatch, PageMain::self, "Χΰρϋ");
+DEF_TIME(timeWatch, PageMain::self, "ΧΐΡΫ", false);
 
 
 DEF_PAGE_4(pageMain, nullptr, "Μενώ",
