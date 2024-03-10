@@ -104,7 +104,7 @@ struct DataChoice
 {
     const Item *item;
     uint8 *const value;
-    const uint8 max_value;
+    const pchar * const names;
 };
 
 
