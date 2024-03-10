@@ -88,11 +88,7 @@ void Keyboard::Update()
 
         if (buttons[i].prev_down != is_down)
         {
-            Action action;
-            action.key = (Key::E)i;
-            action.type = is_down ? ActionType::Down : ActionType::Up;
-
-            AppendAction(action);
+            AppendAction({ (Key::E)i , is_down ? ActionType::Down : ActionType::Up });
 
             buttons[i].prev_time = time;
             buttons[i].prev_down = is_down;
