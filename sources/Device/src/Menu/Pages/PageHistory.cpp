@@ -4,6 +4,6 @@
 #include "Menu/MenuItemDef.h"
 
 
-DEF_PAGE_0(pageHistory, PageMain::self, "ÆÓĞÍÀË ÂÛÇÎÂÎÂ");
+DEF_PAGE_0(pageHistory, PageMain::self, "ÆÓĞÍÀË ÂÛÇÎÂÎÂ", nullptr);
 
 const Item *const PageHistory::self = &pageHistory;

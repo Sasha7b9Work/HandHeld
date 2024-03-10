@@ -17,13 +17,13 @@ static const DataTime name##datatime = { &name, &field##name, &name##date_time, 
 static const Time name##time = { &name##datatime };                                                 \
 const Item name = {&name##data, &name##time }
 
-#define DEF_PAGE_0(name, keeper, title)                                                             \
+#define DEF_PAGE_0(name, keeper, title, func_draw_closed)                                           \
 static const Item *items##name[] = { nullptr };                                                     \
 static int8 current_item##name = 0;                                                                 \
 static int8 opened##name = 0;                                                                       \
 static const DataItem di##name{ItemType::Page, keeper, title, &opened##name};                       \
 extern const Item name;                                                                             \
-static const DataPage dp##name{&name, items##name, &current_item##name};                            \
+static const DataPage dp##name{&name, items##name, &current_item##name, func_draw_closed};          \
 static const Page page##name{&dp##name};                                                            \
 const Item name{&di##name, &page##name}
 
