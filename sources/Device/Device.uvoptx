@@ -911,24 +911,24 @@
     <File>
       <GroupNumber>5</GroupNumber>
       <FileNumber>59</FileNumber>
-      <FileType>1</FileType>
+      <FileType>8</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Hardware\HAL\gd32e23x_it.c</PathWithFileName>
-      <FilenameWithoutPath>gd32e23x_it.c</FilenameWithoutPath>
+      <PathWithFileName>.\src\Hardware\HAL\gd32e23x_it.cpp</PathWithFileName>
+      <FilenameWithoutPath>gd32e23x_it.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
     <File>
       <GroupNumber>5</GroupNumber>
       <FileNumber>60</FileNumber>
-      <FileType>1</FileType>
+      <FileType>8</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Hardware\HAL\systick.c</PathWithFileName>
-      <FilenameWithoutPath>systick.c</FilenameWithoutPath>
+      <PathWithFileName>.\src\Hardware\HAL\systick.cpp</PathWithFileName>
+      <FilenameWithoutPath>systick.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
