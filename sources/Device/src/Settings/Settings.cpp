@@ -28,11 +28,11 @@ void Source::Draw(int x, int y, const Color &color) const
     {
         Text<>("днлн").Write(x, y, color);
     }
-    else if (value == Bell)
+    else if (value == DoorBell)
     {
         Text<>("гбнм").Write(x, y, color);
     }
-    else if (value == Sensor)
+    else if (value == SoundSensor)
     {
         Text<>("дюр").Write(x, y, color);
     }

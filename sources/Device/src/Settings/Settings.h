@@ -14,11 +14,11 @@ struct Source
 {
     enum E
     {
-        PhoneHome,      // Домашний телефон
+        DoorBell,       // Дверной звонок
         Mobile,         // Мобильный телефон
+        PhoneHome,      // Домашний телефон
         Intercom,       // Домофон
-        Bell,           // Дверной звонок
-        Sensor,         // Акстический датчик
+        SoundSensor,    // Акстический датчик
         Count
     };
 
