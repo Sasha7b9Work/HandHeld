@@ -6,6 +6,7 @@
 #include "Hardware/Watch.h"
 #include "Display/Font/Font.h"
 #include "Utils/Math.h"
+#include "Settings/Settings.h"
 
 
 int8 DataTime::in_edit_mode = false;
@@ -125,7 +126,14 @@ void Time::Draw() const
     {
         data->item->Title().Write(10, 10, Color::BLUE);
 
-        Watch::Draw(30, 30, Color::GREEN);
+        if (data->is_alarm)
+        {
+            gset.time_alarm.Draw(30, 30, Color::GREEN);
+        }
+        else
+        {
+            Watch::Draw(30, 30, Color::GREEN);
+        }
     }
 }
 

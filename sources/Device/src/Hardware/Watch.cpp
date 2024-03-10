@@ -12,11 +12,5 @@ void Watch::Draw(int x, int y, const Color &color)
 
     PCF8563::GetDateTime(&date_time);
 
-    Font::SetSize(2);
-
-    Text<>("%02d:%02d:%02d", date_time.Hour, date_time.Minute, date_time.Second).Write(x, y, color);
-
-    Font::SetSize(1);
-
-    Text<>("%02d/%02d/%02d", date_time.Day, date_time.Month, date_time.Year).Write(x + 15, y + 20);
+    date_time.Draw(x, y, color);
 }

@@ -176,3 +176,15 @@ void Pixel::Set(int x, int y, const Color &color) const
 
     Display::Buffer::buffer[y * Display::WIDTH + x] = (uint8)Color::current.value;
 }
+
+
+void RTCDateTime::Draw(int x, int y, const Color &color) const
+{
+    Font::SetSize(2);
+
+    Text<>("%02d:%02d:%02d", Hour, Minute, Second).Write(x, y, color);
+
+    Font::SetSize(1);
+
+    Text<>("%02d/%02d/%02d", Day, Month, Year).Write(x + 15, y + 20);
+}
