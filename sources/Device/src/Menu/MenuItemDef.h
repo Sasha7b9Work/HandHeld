@@ -27,23 +27,23 @@ static const DataPage dp##name{&name, items##name, &current_item##name};        
 static const Page page##name{&dp##name};                                                            \
 const Item name{&di##name, &page##name}
 
-#define DEF_PAGE_4(name, keeper, title, item0, item1, item2, item3)                                 \
+#define DEF_PAGE_4(name, keeper, title, item0, item1, item2, item3, func_draw_closed)               \
 static const Item *items##name[] = { item0, item1, item2, item3, nullptr };                         \
 static int8 current_item##name = 0;                                                                 \
 static int8 opened##name = 0;                                                                       \
 static const DataItem di##name{ItemType::Page, keeper, title, &opened##name};                       \
 extern const Item name;                                                                             \
-static const DataPage dp##name{&name, items##name, &current_item##name};                            \
+static const DataPage dp##name{&name, items##name, &current_item##name, func_draw_closed};          \
 static const Page page##name{&dp##name};                                                            \
 const Item name{&di##name, &page##name}
 
-#define DEF_PAGE_5(name, keeper, title, item0, item1, item2, item3, item4)                          \
+#define DEF_PAGE_5(name, keeper, title, item0, item1, item2, item3, item4, func_draw_closed)        \
 static const Item *items##name[] = { item0, item1, item2, item3, item4, nullptr };                  \
 static int8 current_item##name = 0;                                                                 \
 static int8 opened##name = 0;                                                                       \
 static const DataItem di##name{ItemType::Page, keeper, title, &opened##name};                       \
 extern const Item name;                                                                             \
-static const DataPage dp##name{&name, items##name, &current_item##name};                            \
+static const DataPage dp##name{&name, items##name, &current_item##name, func_draw_closed};          \
 static const Page page##name{&dp##name};                                                            \
 const Item name{&di##name, &page##name}
 

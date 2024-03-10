@@ -13,6 +13,8 @@ namespace PageCalls
 {
     extern const Item *const self;
 
+    void DrawParameters(Source::E);
+
     namespace PageDoorBell
     {
         extern const Item *const self;

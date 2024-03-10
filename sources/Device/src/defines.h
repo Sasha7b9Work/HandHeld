@@ -46,3 +46,6 @@ typedef unsigned char  uchar;
   (((uint8)((uint)bits / 010000000) % 010) << 7)))
 
 #define BINARY_U8( bits ) _bitset(0##bits)
+
+#define ENABLED_RU "Âêë"
+#define DISABLED_RU "Îòêë"

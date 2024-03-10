@@ -3,6 +3,7 @@
 #include "Menu/Pages/Pages.h"
 #include "Menu/MenuItemDef.h"
 #include "Settings/Settings.h"
+#include "Display/Display.h"
 
 
 namespace PageCalls
@@ -36,8 +37,8 @@ namespace PageCalls
         );
 
         DEF_CHOICE_2(choiceEnableLED, self, "яберндхнд", &gset.sources[Source::DoorBell].enabled_led,
-            "нРЙК",
-            "бЙК"
+            DISABLED_RU,
+            ENABLED_RU
         );
 
         DEF_CHOICE_2(choiceEnableMelody, self, "гбсй", &gset.sources[Source::DoorBell].enabled_melody,
@@ -51,12 +52,19 @@ namespace PageCalls
         );
 
 
+        static void OnDraw_DoorBell()
+        {
+            PageCalls::DrawParameters(Source::DoorBell);
+        }
+
+
         DEF_PAGE_5(pageDoorBell, PageCalls::self, "дбепмни гбнмнй",
             &choiceMelody,
             &choiceVolume,
             &choiceEnableLED,
             &choiceEnableMelody,
-            &choiceEnabledVibro
+            &choiceEnabledVibro,
+            OnDraw_DoorBell
         );
 
         const Item *const self = &pageDoorBell;

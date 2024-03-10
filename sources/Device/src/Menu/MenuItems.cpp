@@ -43,6 +43,11 @@ void Page::Draw() const
     else
     {
         data->item->Title().Write(10, 10, Color::BLUE);
+
+        if (data->func_draw_closed)
+        {
+            data->func_draw_closed();
+        }
     }
 }
 

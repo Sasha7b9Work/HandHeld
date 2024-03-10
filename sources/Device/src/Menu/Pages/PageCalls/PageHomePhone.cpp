@@ -57,7 +57,8 @@ namespace PageCalls
             &choiceVolume,
             &choiceEnableLED,
             &choiceEnableMelody,
-            &choiceEnabledVibro
+            &choiceEnabledVibro,
+            nullptr
         );
 
         const Item *const self = &pageHomePhone;

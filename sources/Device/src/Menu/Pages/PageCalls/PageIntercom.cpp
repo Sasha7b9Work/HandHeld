@@ -55,7 +55,8 @@ namespace PageCalls
             &choiceVolume,
             &choiceEnableLED,
             &choiceEnableMelody,
-            &choiceEnabledVibro
+            &choiceEnabledVibro,
+            nullptr
         );
 
 

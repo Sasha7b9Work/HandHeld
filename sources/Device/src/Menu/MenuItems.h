@@ -61,6 +61,7 @@ struct DataPage
     const Item     *item;           // В этом итеме хранится данная структура
     const Item   **items;
     int8 * const   current_item;    // Текущий элемент страницы
+    void (*func_draw_closed)();
 };
 
 
