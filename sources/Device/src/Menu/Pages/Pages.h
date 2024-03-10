@@ -9,12 +9,6 @@ namespace PageMain
 }
 
 
-namespace PageAlarm
-{
-    extern const Item *const self;
-}
-
-
 namespace PageCalls
 {
     extern const Item *const self;
