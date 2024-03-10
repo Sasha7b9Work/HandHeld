@@ -10,7 +10,7 @@ namespace PageCalls
 {
     namespace PageHomePhone
     {
-        DEF_CHOICE_10(choiceMelody, PageCalls::PageHomePhone::self, "Мелодия", &gset.sources[Source::PhoneHome].melody,
+        DEF_CHOICE_10(choiceMelody, self, "Мелодия", &gset.sources[Source::PhoneHome].melody,
             "1",
             "2",
             "3",
@@ -23,7 +23,7 @@ namespace PageCalls
             "10"
         );
 
-        DEF_CHOICE_10(choiceVolume, PageCalls::PageHomePhone::self, "Громкость", &gset.sources[Source::PhoneHome].volume,
+        DEF_CHOICE_10(choiceVolume, self, "Громкость", &gset.sources[Source::PhoneHome].volume,
             "1",
             "2",
             "3",
@@ -36,17 +36,17 @@ namespace PageCalls
             "10"
         );
 
-        DEF_CHOICE_2(choiceEnableLED, PageCalls::PageHomePhone::self, "Светодиод", &gset.sources[Source::PhoneHome].enabled_led,
+        DEF_CHOICE_2(choiceEnableLED, self, "Светодиод", &gset.sources[Source::PhoneHome].enabled_led,
             "Откл",
             "Вкл"
         );
 
-        DEF_CHOICE_2(choiceEnableMelody, PageCalls::PageHomePhone::self, "Звук", &gset.sources[Source::PhoneHome].enabled_melody,
+        DEF_CHOICE_2(choiceEnableMelody, self, "Звук", &gset.sources[Source::PhoneHome].enabled_melody,
             "Откл",
             "Вкл"
         );
 
-        DEF_CHOICE_2(choiceEnabledVibro, PageCalls::PageHomePhone::self, "Вибрация", &gset.sources[Source::PhoneHome].enabled_vibrato,
+        DEF_CHOICE_2(choiceEnabledVibro, self, "Вибрация", &gset.sources[Source::PhoneHome].enabled_vibrato,
             "Откл",
             "Вкл"
         );
