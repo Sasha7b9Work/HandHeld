@@ -45,43 +45,45 @@ if(WIN32)
     )
 endif()
 
-file(GLOB GUI                                GUI/*.*)
-file(GLOB SRC                                *.h *.cpp
-                                ../../Device/src/Device.*
-                                ../../Device/src/*.h)
-file(GLOB DISPLAY               ../../Device/src/Display/*.*)
-file(GLOB DISPLAY_FONT          ../../Device/src/Display/Font/*.*)
-file(GLOB HARDWARE              ../../Device/src/Hardware/Beeper.h
-                                ../../Device/src/Hardware/Watch.*
-                                ../../Device/src/Hardware/Timer.h
-                                                 Hardware/*.*)
-file(GLOB HARDWARE_HAL          ../../Device/src/Hardware/HAL/HAL.h
-                                                 Hardware/HAL/*.*)
-file(GLOB KEYBOARD              ../../Device/src/Keyboard/Keyboard.h
-                                                 Keyboard/*.*)
-file(GLOB MODULES_CMT2210AW     ../../Device/src/Modules/CMT2210AW/*.*)
-file(GLOB MODULES_PCF8563       ../../Device/src/Modules/PCF8563/*.h
-                                                 Modules/PCF8563/*.*)
-file(GLOB MODULES_ST7735        ../../Device/src/Modules/ST7735/*.h)
-file(GLOB MENU                  ../../Device/src/Menu/*.*)
-file(GLOB MENU_PAGES            ../../Device/src/Menu/Pages/*.*)
-file(GLOB SETTINGS              ../../Device/src/Settings/*.*)
-file(GLOB UTILS                 ../../Device/src/Utils/*.*)
+file(GLOB GUI                                  GUI/*.*)
+file(GLOB SRC                                  *.h *.cpp
+                                  ../../Device/src/Device.*
+                                  ../../Device/src/*.h)
+file(GLOB DISPLAY                 ../../Device/src/Display/*.*)
+file(GLOB DISPLAY_FONT            ../../Device/src/Display/Font/*.*)
+file(GLOB HARDWARE                ../../Device/src/Hardware/Beeper.h
+                                  ../../Device/src/Hardware/Watch.*
+                                  ../../Device/src/Hardware/Timer.h
+                                                   Hardware/*.*)
+file(GLOB HARDWARE_HAL            ../../Device/src/Hardware/HAL/HAL.h
+                                                   Hardware/HAL/*.*)
+file(GLOB KEYBOARD                ../../Device/src/Keyboard/Keyboard.h
+                                                   Keyboard/*.*)
+file(GLOB MODULES_CMT2210AW       ../../Device/src/Modules/CMT2210AW/*.*)
+file(GLOB MODULES_PCF8563         ../../Device/src/Modules/PCF8563/*.h
+                                                   Modules/PCF8563/*.*)
+file(GLOB MODULES_ST7735          ../../Device/src/Modules/ST7735/*.h)
+file(GLOB MENU                    ../../Device/src/Menu/*.*)
+file(GLOB MENU_PAGES              ../../Device/src/Menu/Pages/*.*)
+file(GLOB MENU_PAGES_CALLS        ../../Device/src/Menu/Pages/PageCalls/*.*)
+file(GLOB SETTINGS                ../../Device/src/Settings/*.*)
+file(GLOB UTILS                   ../../Device/src/Utils/*.*)
 
-source_group(GUI                FILES ${GUI})
-source_group(src                FILES ${SRC})
-source_group(Display            FILES ${DISPLAY})
-source_group(Display/Font       FILES ${DISPLAY_FONT})
-source_group(Hardware           FILES ${HARDWARE})
-source_group(Hardware/HAL       FILES ${HARDWARE_HAL})
-source_group(Keyboard           FILES ${KEYBOARD})
-source_group(Modules/CMT2210AW  FILES ${MODULES_CMT2210AW})
-source_group(Modules/PCF8563    FILES ${MODULES_PCF8563})
-source_group(Modules/ST7735     FILES ${MODULES_ST7735})
-source_group(Menu               FILES ${MENU})
-source_group(Menu/Pages         FILES ${MENU_PAGES})
-source_group(Settings           FILES ${SETTINGS})
-source_group(Utils              FILES ${UTILS})
+source_group(GUI                  FILES ${GUI})
+source_group(src                  FILES ${SRC})
+source_group(Display              FILES ${DISPLAY})
+source_group(Display/Font         FILES ${DISPLAY_FONT})
+source_group(Hardware             FILES ${HARDWARE})
+source_group(Hardware/HAL         FILES ${HARDWARE_HAL})
+source_group(Keyboard             FILES ${KEYBOARD})
+source_group(Modules/CMT2210AW    FILES ${MODULES_CMT2210AW})
+source_group(Modules/PCF8563      FILES ${MODULES_PCF8563})
+source_group(Modules/ST7735       FILES ${MODULES_ST7735})
+source_group(Menu                 FILES ${MENU})
+source_group(Menu/Pages           FILES ${MENU_PAGES})
+source_group(Menu/Pages/PageCalls FILES ${MENU_PAGES_CALLS})
+source_group(Settings             FILES ${SETTINGS})
+source_group(Utils                FILES ${UTILS})
 
 
 #set_source_files_properties(
@@ -112,6 +114,7 @@ add_executable(${PROJECT_NAME}
     ${MODULES_ST7735}
     ${MENU}
     ${MENU_PAGES}
+    ${MENU_PAGES_CALLS}
     ${SETTINGS}
     ${UTILS}
 )

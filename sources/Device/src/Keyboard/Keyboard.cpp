@@ -59,7 +59,8 @@ namespace Keyboard
 
     static void AppendAction(const Action &action)
     {
-        actions[num_actions++] = action;
+        actions[num_actions] = action;
+        num_actions++;
     }
 }
 
