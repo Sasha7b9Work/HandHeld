@@ -48,7 +48,14 @@ void Page::Draw() const
 
 void Choice::Draw() const
 {
+    if (data->item->IsOpened())
+    {
 
+    }
+    else
+    {
+        data->item->Title().Write(10, 10, Color::WHITE);
+    }
 }
 
 
