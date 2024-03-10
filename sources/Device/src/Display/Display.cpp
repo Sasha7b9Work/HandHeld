@@ -30,10 +30,17 @@ namespace Display
 
     static int current_part = 0;                            // Эту часть сейчас отрисовываем
     static uint time_interrupt = 0;
+    static uint receiver_value = 0;
 
     void BeginScene(int num_part);
     void DrawScene(int num_part);
     void EndScene(int num_parts);
+}
+
+
+void Display::SetReceiverValue(uint value)
+{
+    receiver_value = value;
 }
 
 
@@ -98,6 +105,8 @@ void Display::DrawScene(int num_part)
         Text<>("%u ms", time_interrupt).Write(80, 75, Color::WHITE);
 
         Font::SetType(TypeFont::_7);
+
+        Text<>("%u", receiver_value).Write(0, 0, Color::WHITE);
     }
 }
 

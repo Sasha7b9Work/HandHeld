@@ -11,7 +11,7 @@ PinIn pinSW_DOWN(GPIOB, GPIO_PIN_1);       // PB1  19
 PinIn pinSW_RIGHT(GPIOB, GPIO_PIN_2);      // PB2  20
 PinIn pinSW_UP(GPIOA, GPIO_PIN_7);         // PA7  17
 
-PinOut pinDOUT(GPIOB, GPIO_PIN_12);            // PB12 25
+PinOut pinIn(GPIOB, GPIO_PIN_12);            // PB12 25
 PinOut pinSCK(GPIOB, GPIO_PIN_13);             // PB13 26
 
 PinIn  pinPWR_CTRL(GPIOA, GPIO_PIN_0);     // PA0  10
@@ -39,7 +39,13 @@ void PinOut::Init()
 
 void PinIn::Init()
 {
+    gpio_mode_set(port, GPIO_MODE_INPUT, GPIO_PUPD_NONE, pin);
+}
 
+
+bool PinIn::IsHi() const
+{
+    return gpio_input_bit_get(port, pin) != RESET;
 }
 
 

@@ -28,6 +28,7 @@ struct PinIn : public Pin
 {
     PinIn(uint _port, uint _pin) : Pin(_port, _pin, ModePin::Input) {}
     void Init();
+    bool IsHi() const;
 };
 
 
@@ -45,7 +46,7 @@ extern PinIn pinSW_DOWN;
 extern PinIn pinSW_RIGHT;
 extern PinIn pinSW_UP;
 
-extern PinOut pinDOUT;
+extern PinIn  pinDOUT;
 extern PinOut pinSCK;
 
 extern PinIn  pinPWR_CTRL;

@@ -5,4 +5,6 @@
 namespace CMT2210AW
 {
     void Init();
+
+    void CallbackOn1MS();
 }

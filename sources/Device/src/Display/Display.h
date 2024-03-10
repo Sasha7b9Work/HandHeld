@@ -21,6 +21,8 @@ namespace Display
 
     void SetTimeInterrupt(uint);
 
+    void SetReceiverValue(uint);
+
     namespace Buffer
     {
         static const uint SIZE = WIDTH * HEIGHT / NUMBER_PARTS_HEIGHT;

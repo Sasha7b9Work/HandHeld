@@ -2,6 +2,7 @@
 #include "gd32e23x_it.h"
 #include "systick.h"
 #include "Display/Display.h"
+#include "Modules/CMT2210AW/CMT2210AW.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -82,6 +83,8 @@ void TIMER2_IRQHandler(void)
         Display::SetTimeInterrupt(time - prev_time);
 
         prev_time = time;
+
+        CMT2210AW::CallbackOn1MS();
     }
 }
 
