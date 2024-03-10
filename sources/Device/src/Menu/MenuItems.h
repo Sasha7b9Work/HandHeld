@@ -84,7 +84,7 @@ struct DataTime
 {
     const Item *item;
     int8 *const field;          // Активное поле 0 - часы, 1 - минуты, 2 - секунды, 3 - день, 4 - месяц, 5 - год, 6 - отмена, 7 - сохранить
-    RTCDateTime * const _date_time;
+    RTCDateTime * const date_time;
     static int8 in_edit_mode;
     const bool is_alarm;        // Если true - то настройка будильника
 };
