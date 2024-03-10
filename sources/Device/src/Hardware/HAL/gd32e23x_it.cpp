@@ -66,26 +66,8 @@ void SysTick_Handler(void)
     timer_counter++;
 
     delay_decrement();
-}
 
-
-void TIMER2_IRQHandler(void)
-{
-    static uint prev_time = 0;
-
-    if (SET == timer_interrupt_flag_get(TIMER2, TIMER_INT_FLAG_UP))
-    {
-        /* clear channel 0 interrupt bit */
-        timer_interrupt_flag_clear(TIMER2, TIMER_INT_FLAG_UP);
-
-        uint time = timer_counter;
-
-        Display::SetTimeInterrupt(time - prev_time);
-
-        prev_time = time;
-
-        CMT2210AW::CallbackOn1MS();
-    }
+    CMT2210AW::CallbackOn1MS();
 }
 
 
