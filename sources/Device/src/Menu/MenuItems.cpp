@@ -55,6 +55,12 @@ void Choice::Draw() const
     else
     {
         data->item->Title().Write(10, 10, Color::WHITE);
+
+        int index = (int)(*data->value);
+
+        pchar text = data->names[index];
+
+        Text<>(text).Write(10, 40, Color::WHITE);
     }
 }
 

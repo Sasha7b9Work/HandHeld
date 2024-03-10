@@ -6,16 +6,16 @@
 
 
 DEF_CHOICE_10(choiceMelody, PageCalls::PageDoorBell::self, "Мелодия", &gset.sources[Source::Bell].melody,
-    "Мелодия 1",
-    "Мелодия 2",
-    "Мелодия 3", 
-    "Мелодия 4", 
-    "Мелодия 5", 
-    "Мелодия 6", 
-    "Мелодия 7", 
-    "Мелодия 8", 
-    "Мелодия 9", 
-    "Мелодия 10"
+    "1",
+    "2",
+    "3", 
+    "4", 
+    "5", 
+    "6", 
+    "7", 
+    "8", 
+    "9", 
+    "10"
 );
 
 DEF_CHOICE_10(choiceVolume, PageCalls::PageDoorBell::self, "Громкость", &gset.sources[Source::Bell].volume,
