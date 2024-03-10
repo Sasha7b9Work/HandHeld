@@ -27,7 +27,7 @@ void CMT2210AW::CallbackOn1MS()
     }
     else
     {
-        value &= 0xFFFE;
+        value &= 0xFFFFFFFE;
     }
 
     Display::SetReceiverValue(value);
