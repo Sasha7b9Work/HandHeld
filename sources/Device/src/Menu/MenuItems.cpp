@@ -85,12 +85,12 @@ void Time::Draw() const
     if (data->item->IsOpened())
     {
         int values[6] = {
-            data->date_time->Hour,
-            data->date_time->Minute,
-            data->date_time->Second,
-            data->date_time->Day,
-            data->date_time->Month,
-            data->date_time->Year
+            data->_date_time->Hour,
+            data->_date_time->Minute,
+            data->_date_time->Second,
+            data->_date_time->Day,
+            data->_date_time->Month,
+            data->_date_time->Year
         };
 
         int x0 = 20;
@@ -270,7 +270,14 @@ void Time::ApplyAction(const Action &action) const
         {
             if (*data->field == 7)
             {
-                PCF8563::SetDateTime(data->date_time);
+                if (data->is_alarm)
+                {
+                    PCF8563::SetAlarm(data->_date_time);
+                }
+                else
+                {
+                    PCF8563::SetDateTime(data->_date_time);
+                }
             }
 
             data->item->Close();
@@ -333,12 +340,12 @@ void Time::ChangeCurrentField(int delta) const
 
     uint8 *refs[6] =
     {
-        &data->date_time->Hour,
-        &data->date_time->Minute,
-        &data->date_time->Second,
-        &data->date_time->Day,
-        &data->date_time->Month,
-        &data->date_time->Year
+        &data->_date_time->Hour,
+        &data->_date_time->Minute,
+        &data->_date_time->Second,
+        &data->_date_time->Day,
+        &data->_date_time->Month,
+        &data->_date_time->Year
     };
 
     int min[6] = { 0, 0, 0, 1, 1, 0 };
@@ -396,7 +403,14 @@ void Item::Open() const
 
     if (IsTime())
     {
-        PCF8563::GetDateTime(GetTime()->data->date_time);
+        if (GetTime()->data->is_alarm)
+        {
+            *GetTime()->data->_date_time = gset.time_alarm;
+        }
+        else
+        {
+            PCF8563::GetDateTime(GetTime()->data->_date_time);
+        }
     }
 
     Menu::SetCurrentItem(this);

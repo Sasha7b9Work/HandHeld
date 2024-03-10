@@ -1,4 +1,5 @@
 #pragma once
+#include "Display/Colors.h"
  //
  //PCF8563.h
  //
@@ -67,4 +68,6 @@ namespace PCF8563
     void GetDateTime(RTCDateTime *);        // Use in blocking/interrupt mode in PCF8563_INT EXTI handler
 
     void SetDateTime(RTCDateTime *);
+
+    void SetAlarm(RTCDateTime *);
 }

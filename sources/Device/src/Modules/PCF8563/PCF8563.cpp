@@ -251,6 +251,12 @@ void PCF8563::Init()
 }
 
 
+void PCF8563::SetAlarm(RTCDateTime *)
+{
+
+}
+
+
 void PCF8563::Update()
 {
     HAL_I2C::Read(PCF8563_REG_TIME, buffer, 7);

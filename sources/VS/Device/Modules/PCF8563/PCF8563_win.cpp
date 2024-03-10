@@ -46,3 +46,9 @@ void PCF8563::SetDateTime(RTCDateTime *date_time)
 {
     time = *date_time;
 }
+
+
+void PCF8563::SetAlarm(RTCDateTime *)
+{
+
+}
