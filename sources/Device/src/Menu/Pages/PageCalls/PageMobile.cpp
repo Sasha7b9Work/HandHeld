@@ -50,6 +50,11 @@ namespace PageCalls
             "бЙК"
         );
 
+        static void OnDraw_Mobile()
+        {
+            PageCalls::DrawParameters(Source::Mobile);
+        }
+
 
         DEF_PAGE_5(pageMobile, PageCalls::self, "лнахкэмши рекетнм",
             &choiceMelody,
@@ -57,7 +62,7 @@ namespace PageCalls
             &choiceEnableLED,
             &choiceEnableMelody,
             &choiceEnabledVibro,
-            nullptr
+            OnDraw_Mobile
         );
 
         const Item *const self = &pageMobile;

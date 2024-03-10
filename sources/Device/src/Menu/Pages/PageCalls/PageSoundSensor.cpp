@@ -51,13 +51,19 @@ namespace PageCalls
         );
 
 
+        static void OnDraw_SoundSensor()
+        {
+            PageCalls::DrawParameters(Source::SoundSensor);
+        }
+
+
         DEF_PAGE_5(pageSoundSensor, PageCalls::self, "ÄÀÒ×ÈÊ ÇÂÓÊÀ",
             &choiceMelody,
             &choiceVolume,
             &choiceEnableLED,
             &choiceEnableMelody,
             &choiceEnabledVibro,
-            nullptr
+            OnDraw_SoundSensor
         );
 
         const Item *const self = &pageSoundSensor;

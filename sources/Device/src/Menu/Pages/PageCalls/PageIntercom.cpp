@@ -49,6 +49,10 @@ namespace PageCalls
             "бЙК"
         );
 
+        static void OnDraw_Intercom()
+        {
+            PageCalls::DrawParameters(Source::Intercom);
+        }
 
         DEF_PAGE_5(pageIntercom, PageCalls::self, "днлнтнм",
             &choiceMelody,
@@ -56,7 +60,7 @@ namespace PageCalls
             &choiceEnableLED,
             &choiceEnableMelody,
             &choiceEnabledVibro,
-            nullptr
+            OnDraw_Intercom
         );
 
 

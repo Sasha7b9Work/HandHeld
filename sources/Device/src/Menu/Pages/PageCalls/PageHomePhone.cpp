@@ -51,6 +51,11 @@ namespace PageCalls
             "бЙК"
         );
 
+        static void OnDraw_HomePhone()
+        {
+            PageCalls::DrawParameters(Source::PhoneHome);
+        }
+
 
         DEF_PAGE_5(pageHomePhone, PageCalls::self, "днлюьмхи рекетнм",
             &choiceMelody,
@@ -58,7 +63,7 @@ namespace PageCalls
             &choiceEnableLED,
             &choiceEnableMelody,
             &choiceEnabledVibro,
-            nullptr
+            OnDraw_HomePhone
         );
 
         const Item *const self = &pageHomePhone;
