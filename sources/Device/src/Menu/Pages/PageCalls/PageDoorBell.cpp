@@ -5,55 +5,61 @@
 #include "Settings/Settings.h"
 
 
-DEF_CHOICE_10(choiceMelody, PageCalls::PageDoorBell::self, "Мелодия", &gset.sources[Source::Bell].melody,
-    "1",
-    "2",
-    "3", 
-    "4", 
-    "5", 
-    "6", 
-    "7", 
-    "8", 
-    "9", 
-    "10"
-);
+namespace PageCalls
+{
+    namespace PageDoorBell
+    {
+        DEF_CHOICE_10(choiceMelody, PageCalls::PageDoorBell::self, "Мелодия", &gset.sources[Source::Bell].melody,
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10"
+        );
 
-DEF_CHOICE_10(choiceVolume, PageCalls::PageDoorBell::self, "Громкость", &gset.sources[Source::Bell].volume,
-    "1",
-    "2",
-    "3",
-    "4",
-    "5",
-    "6",
-    "7",
-    "8",
-    "9",
-    "10"
-);
+        DEF_CHOICE_10(choiceVolume, PageCalls::PageDoorBell::self, "Громкость", &gset.sources[Source::Bell].volume,
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10"
+        );
 
-DEF_CHOICE_2(choiceEnableLED, PageCalls::PageDoorBell::self, "Светодиод", &gset.sources[Source::Bell].enabled_led,
-    "Откл",
-    "Вкл"
-);
+        DEF_CHOICE_2(choiceEnableLED, PageCalls::PageDoorBell::self, "Светодиод", &gset.sources[Source::Bell].enabled_led,
+            "Откл",
+            "Вкл"
+        );
 
-DEF_CHOICE_2(choiceEnableMelody, PageCalls::PageDoorBell::self, "Звук", &gset.sources[Source::Bell].enabled_melody,
-    "Откл",
-    "Вкл"
-);
+        DEF_CHOICE_2(choiceEnableMelody, PageCalls::PageDoorBell::self, "Звук", &gset.sources[Source::Bell].enabled_melody,
+            "Откл",
+            "Вкл"
+        );
 
-DEF_CHOICE_2(choiceEnabledVibro, PageCalls::PageDoorBell::self, "Вибрация", &gset.sources[Source::Bell].enabled_vibrato,
-    "Откл",
-    "Вкл"
-);
-
-
-DEF_PAGE_5(pageDoorBell, PageCalls::self, "Дверной звонок",
-    &choiceMelody,
-    &choiceVolume,
-    &choiceEnableLED,
-    &choiceEnableMelody,
-    &choiceEnabledVibro
-);
+        DEF_CHOICE_2(choiceEnabledVibro, PageCalls::PageDoorBell::self, "Вибрация", &gset.sources[Source::Bell].enabled_vibrato,
+            "Откл",
+            "Вкл"
+        );
 
 
-const Item *const PageCalls::PageDoorBell::self = &pageDoorBell;
+        DEF_PAGE_5(pageDoorBell, PageCalls::self, "Дверной звонок",
+            &choiceMelody,
+            &choiceVolume,
+            &choiceEnableLED,
+            &choiceEnableMelody,
+            &choiceEnabledVibro
+        );
+    }
+}
+
+
+const Item *const PageCalls::PageDoorBell::self = &PageCalls::PageDoorBell::pageDoorBell;
