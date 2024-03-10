@@ -62,6 +62,8 @@ namespace Keyboard
         actions[num_actions] = action;
         num_actions++;
     }
+
+    static bool is_busy = false;
 }
 
 
@@ -76,6 +78,11 @@ void Keyboard::Init()
 
 void Keyboard::Update()
 {
+    if (is_busy)
+    {
+        return;
+    }
+
     uint time = TIME_MS;
 
     for (int i = 0; i < Key::Count; i++)
@@ -111,6 +118,8 @@ bool Keyboard::GetNextAction(Action &action)
         return false;
     }
 
+    is_busy = true;
+
     action = actions[0];
 
     if (num_actions == 1)
@@ -123,6 +132,8 @@ bool Keyboard::GetNextAction(Action &action)
 
         num_actions--;
     }
+
+    is_busy = false;
 
     return true;
 }
