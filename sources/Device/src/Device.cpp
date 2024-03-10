@@ -32,8 +32,6 @@ void Device::Init()
 
 void Device::Update()
 {
-    Keyboard::Update();
-
     Menu::Update();
 
     PCF8563::Update();

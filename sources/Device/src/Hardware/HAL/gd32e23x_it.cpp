@@ -3,6 +3,8 @@
 #include "systick.h"
 #include "Display/Display.h"
 #include "Modules/CMT2210AW/CMT2210AW.h"
+#include "Keyboard/Keyboard.h"
+
 
 #ifdef __cplusplus
 extern "C" {
@@ -68,6 +70,8 @@ void SysTick_Handler(void)
     delay_decrement();
 
     CMT2210AW::CallbackOn1MS();
+
+    Keyboard::Update();
 }
 
 

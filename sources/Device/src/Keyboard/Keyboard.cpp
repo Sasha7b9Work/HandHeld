@@ -1,6 +1,7 @@
 // 2024/03/01 23:01:40 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
 #include "Keyboard/Keyboard.h"
+#include "Hardware/Timer.h"
 #include <cstring>
 #include <gd32e23x.h>
 
@@ -35,20 +36,19 @@ namespace Keyboard
     static Button btnUp(GPIOA, GPIO_PIN_7);
     static Button btnDown(GPIOB, GPIO_PIN_1);
 
-    static Button *buttons[Key::Count] =
+    struct ButtonStruct
     {
-        &btnMenu,
-        &btnCancel,
-        &btnUp,
-        &btnDown
+        Button *button;
+        bool prev_down;
+        uint prev_time;     // Будем обрабатывать кнопку только если прошло более определённого времени - антидребезг
     };
 
-    static bool prev_down[Key::Count] =
+    static ButtonStruct buttons[Key::Count] =
     {
-        false,
-        false,
-        false,
-        false
+        {&btnMenu, false, 0},
+        {&btnCancel, false, 0},
+        {&btnUp, false, 0},
+        {&btnDown, false, 0}
     };
 
     static const int MAX_ACTIONS = 10;
@@ -57,7 +57,7 @@ namespace Keyboard
 
     static int num_actions = 0;
 
-    static void AppendAction(Action &action)
+    static void AppendAction(const Action &action)
     {
         actions[num_actions++] = action;
     }
@@ -75,17 +75,27 @@ void Keyboard::Init()
 
 void Keyboard::Update()
 {
+    uint time = TIME_MS;
+
     for (int i = 0; i < Key::Count; i++)
     {
-        bool is_down = buttons[i]->IsDown();
+        if (time - buttons[i].prev_time < 100)
+        {
+            continue;
+        }
 
-        if (prev_down[i] != is_down)
+        bool is_down = buttons[i].button->IsDown();
+
+        if (buttons[i].prev_down != is_down)
         {
             Action action;
             action.key = (Key::E)i;
             action.type = is_down ? ActionType::Down : ActionType::Up;
 
             AppendAction(action);
+
+            buttons[i].prev_time = time;
+            buttons[i].prev_down = is_down;
         }
     }
 }
@@ -93,7 +103,7 @@ void Keyboard::Update()
 
 bool Keyboard::IsDown(Key::E key)
 {
-    return buttons[key]->IsDown();
+    return buttons[key].button->IsDown();
 }
 
 
