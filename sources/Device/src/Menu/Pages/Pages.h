@@ -15,12 +15,6 @@ namespace PageAlarm
 }
 
 
-namespace PageWatch
-{
-    extern const Item *const self;
-}
-
-
 namespace PageCalls
 {
     extern const Item *const self;
