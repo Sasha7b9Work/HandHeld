@@ -839,40 +839,10 @@
               <FileType>8</FileType>
               <FilePath>.\src\Menu\Pages\PageMain.cpp</FilePath>
             </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>Menu/Pages/PageCalls</GroupName>
-          <Files>
             <File>
               <FileName>PageCalls.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageCalls\PageCalls.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>PageDoorBell.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageCalls\PageDoorBell.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>PageHomePhone.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageCalls\PageHomePhone.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>PageIntercom.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageCalls\PageIntercom.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>PageMobile.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageCalls\PageMobile.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>PageSoundSensor.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageCalls\PageSoundSensor.cpp</FilePath>
+              <FilePath>.\src\Menu\Pages\PageCalls.cpp</FilePath>
             </File>
           </Files>
         </Group>
