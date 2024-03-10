@@ -31,12 +31,21 @@ private:
 };
 
 
-struct Settings
+struct SettingsSource
 {
     uint8 melody;           // Текущая мелодия
     uint8 volume;           // Громкость текущей мелодии
     uint8 enabled_led;      // Оповещение светодиодом
     uint8 enabled_melody;   // Оповещение звуком
     uint8 enabled_vibrato;  // Оповещение вибрацией
-    PackedTime time_alarm;  // Время будильника
 };
+
+
+struct Settings
+{
+    SettingsSource sources[Source::Count];
+    PackedTime time_alarm;                      // Время будильника
+};
+
+
+extern Settings gset;

@@ -103,7 +103,8 @@ struct Time
 struct DataChoice
 {
     const Item *item;
-    int8 *const value;
+    uint8 *const value;
+    const uint8 max_value;
 };
 
 

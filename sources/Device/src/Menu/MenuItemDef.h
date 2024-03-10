@@ -46,3 +46,11 @@ extern const Item name;                                                         
 static const DataPage dp##name{&name, items##name, &current_item##name};                            \
 static const Page page##name{&dp##name};                                                            \
 const Item name{&di##name, &page##name}
+
+#define DEF_CHOICE(name, keeper, title, value, max_value)                                           \
+static int8 opened##name = 0;                                                                       \
+static const DataItem di##name{ItemType::Choice, keeper, title, &opened##name};                     \
+extern const Item name;                                                                             \
+static const DataChoice dc##name{&name, value, max_value};                                          \
+static const Choice choice##name{&dc##name};                                                        \
+const Item name{&di##name, &choice##name}

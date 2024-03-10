@@ -2,9 +2,19 @@
 #include "defines.h"
 #include "Menu/Pages/Pages.h"
 #include "Menu/MenuItemDef.h"
+#include "Settings/Settings.h"
 
 
-DEF_PAGE_0(pageDoorBell, PageCalls::self, "Дверной звонок");
+DEF_CHOICE(choiceMelody, PageCalls::PageDoorBell::self, "Мелодия", &gset.sources[Source::Bell].melody, 10);
+
+
+DEF_PAGE_5(pageDoorBell, PageCalls::self, "Дверной звонок",
+    &choiceMelody,
+    &choiceMelody,
+    &choiceMelody,
+    &choiceMelody,
+    &choiceMelody
+);
 
 
 const Item *const PageCalls::PageDoorBell::self = &pageDoorBell;

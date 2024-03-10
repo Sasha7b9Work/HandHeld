@@ -4,6 +4,16 @@
 #include "Display/Display.h"
 
 
+Settings gset =
+{
+    {{0, 0, 0, 0, 0},
+    {0, 0, 0, 0, 0},
+    {0, 0, 0, 0, 0},
+    {0, 0, 0, 0, 0},
+    {0, 0, 0, 0, 0}}
+};
+
+
 void Source::Draw(int x, int y, const Color &color) const
 {
     if (value == PhoneHome)
