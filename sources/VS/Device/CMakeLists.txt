@@ -26,16 +26,12 @@ if(WIN32)
     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /SUBSYSTEM:WINDOWS")
 
     add_compile_options(
-        /wd4310
         /wd4365
-        /wd4514
         /wd4623
         /wd4625
         /wd4626
-        /wd4710
         /wd4774
         /wd4820
-        /wd4996
         /wd5026
         /wd5027
         /wd5039    # 'xxx': pointer or reference to potentially throwing function passed to extern C
