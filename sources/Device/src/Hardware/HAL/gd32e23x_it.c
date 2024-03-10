@@ -6,6 +6,10 @@
 extern "C" {
 #endif
 
+
+extern uint timer_counter;
+
+
 /*!
     \brief      this function handles NMI exception
     \param[in]  none
@@ -57,11 +61,29 @@ void PendSV_Handler(void)
 */
 void SysTick_Handler(void)
 {
-    extern uint timer_counter;
-
     timer_counter++;
 
     delay_decrement();
+}
+
+
+void TIMER2_IRQHandler(void)
+{
+    static uint prev_time = 0;
+
+    if (SET == timer_interrupt_flag_get(TIMER2, TIMER_INT_FLAG_UP))
+    {
+        /* clear channel 0 interrupt bit */
+        timer_interrupt_flag_clear(TIMER2, TIMER_INT_FLAG_UP);
+
+        uint time = timer_counter;
+
+        uint d_time = time - prev_time;
+
+        d_time = d_time;
+
+        prev_time = time;
+    }
 }
 
 
