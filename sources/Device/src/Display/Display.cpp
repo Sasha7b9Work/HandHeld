@@ -29,6 +29,7 @@ namespace Display
     }
 
     static int current_part = 0;                            // Эту часть сейчас отрисовываем
+    static uint time_interrupt = 0;
 
     void BeginScene(int num_part);
     void DrawScene(int num_part);
@@ -91,7 +92,19 @@ void Display::DrawScene(int num_part)
         }
 
         FPS::DrawTimeFrame(0, 75);
+
+        Font::SetType(TypeFont::_5);
+
+        Text<>("%u ms", time_interrupt).Write(80, 75, Color::WHITE);
+
+        Font::SetType(TypeFont::_7);
     }
+}
+
+
+void Display::SetTimeInterrupt(uint time)
+{
+    time_interrupt = time;
 }
 
 

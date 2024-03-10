@@ -1,6 +1,7 @@
 #include "defines.h"
 #include "gd32e23x_it.h"
 #include "systick.h"
+#include "Display/Display.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -78,9 +79,7 @@ void TIMER2_IRQHandler(void)
 
         uint time = timer_counter;
 
-        uint d_time = time - prev_time;
-
-        d_time = d_time;
+        Display::SetTimeInterrupt(time - prev_time);
 
         prev_time = time;
     }
