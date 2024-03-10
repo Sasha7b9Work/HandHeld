@@ -198,7 +198,14 @@ void Page::ApplyAction(const Action &action) const
     {
         if (NumItems())
         {
-            CurrentItem()->Open();
+            if (CurrentItem()->IsChoice())
+            {
+                CurrentItem()->ApplyAction(action);
+            }
+            else
+            {
+                CurrentItem()->Open();
+            }
         }
     }
     else if (action.key == Key::Cancel)
@@ -208,9 +215,31 @@ void Page::ApplyAction(const Action &action) const
 }
 
 
-void Choice::ApplyAction(const Action &) const
+void Choice::ApplyAction(const Action &action) const
 {
+    if (action.key == Key::Menu)
+    {
+        int value = (int)(*data->value) + 1;
 
+        if (value == NumChoices())
+        {
+            value = 0;
+        }
+
+        *data->value = (uint8)value;
+    }
+}
+
+
+int Choice::NumChoices() const
+{
+    for (int i = 0; ; i++)
+    {
+        if (data->names[i] == nullptr)
+        {
+            return i;
+        }
+    }
 }
 
 

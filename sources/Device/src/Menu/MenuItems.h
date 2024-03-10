@@ -113,6 +113,7 @@ struct Choice
     const DataChoice *data;
     void Draw() const;
     void ApplyAction(const Action &) const;
+    int NumChoices() const;
 };
 
 
