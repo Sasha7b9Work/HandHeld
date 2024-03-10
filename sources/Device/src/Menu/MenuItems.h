@@ -13,6 +13,7 @@ struct ItemType
         Button,
         CustomButton,
         Time,
+        Choice,
         Count
     };
 };
@@ -21,6 +22,7 @@ struct ItemType
 struct Item;
 struct Page;
 struct Time;
+struct Choice;
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Item
@@ -41,8 +43,10 @@ struct Item
     void Draw() const;
     bool IsPage() const { return data->type == ItemType::Page; }
     bool IsTime() const { return data->type == ItemType::Time; }
+    bool IsChoice() const { return data->type == ItemType::Choice; }
     const Page *GetPage() const { if (IsPage()) { return (const Page *)item; } return nullptr; }
     const Time *GetTime() const { if (IsTime()) { return (const Time *)item; } return nullptr; }
+    const Choice *GetChoice() const { if (IsChoice()) { return (const Choice *)item; } return nullptr; }
     void ApplyAction(const Action &) const;
     bool IsOpened() const;
     Text<> Title() const;
@@ -92,6 +96,22 @@ struct Time
     void ApplyAction(const Action &) const;
     void ChangeCurrentField(int delta) const;
     void DrawField(int x, int y, int width, int height, const Text<> &, bool selected) const;
+};
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Choice
+struct DataChoice
+{
+    const Item *item;
+    int8 *const value;
+};
+
+
+struct Choice
+{
+    const DataChoice *data;
+    void Draw() const;
+    void ApplyAction(const Action &) const;
 };
 
 

@@ -21,6 +21,10 @@ void Item::Draw() const
     {
         GetTime()->Draw();
     }
+    else if (IsChoice())
+    {
+        GetChoice()->Draw();
+    }
 }
 
 
@@ -39,6 +43,12 @@ void Page::Draw() const
     {
         data->item->Title().Write(10, 10, Color::WHITE);
     }
+}
+
+
+void Choice::Draw() const
+{
+
 }
 
 
@@ -154,6 +164,10 @@ void Item::ApplyAction(const Action &action) const
     {
         GetTime()->ApplyAction(action);
     }
+    else if (IsChoice())
+    {
+        GetChoice()->ApplyAction(action);
+    }
 }
 
 
@@ -178,6 +192,12 @@ void Page::ApplyAction(const Action &action) const
     {
         data->item->Close();
     }
+}
+
+
+void Choice::ApplyAction(const Action &) const
+{
+
 }
 
 
