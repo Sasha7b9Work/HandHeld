@@ -58,8 +58,7 @@ namespace PageCalls
             &choiceEnableMelody,
             &choiceEnabledVibro
         );
+
+        const Item *const self = &PageCalls::PageDoorBell::pageDoorBell;
     }
 }
-
-
-const Item *const PageCalls::PageDoorBell::self = &PageCalls::PageDoorBell::pageDoorBell;
