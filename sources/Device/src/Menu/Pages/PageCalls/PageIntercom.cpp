@@ -8,7 +8,7 @@ namespace PageCalls
 {
     namespace PageIntercom
     {
-        DEF_CHOICE_10(choiceMelody, self, "Мелодия", &gset.sources[Source::Intercom].melody,
+        DEF_CHOICE_10(choiceMelody, self, "МЕЛОДИЯ", &gset.sources[Source::Intercom].melody,
             "1",
             "2",
             "3",
@@ -21,7 +21,7 @@ namespace PageCalls
             "10"
         );
 
-        DEF_CHOICE_10(choiceVolume, self, "Громкость", &gset.sources[Source::Intercom].volume,
+        DEF_CHOICE_10(choiceVolume, self, "ГРОМКОСТЬ", &gset.sources[Source::Intercom].volume,
             "1",
             "2",
             "3",
@@ -34,23 +34,23 @@ namespace PageCalls
             "10"
         );
 
-        DEF_CHOICE_2(choiceEnableLED, self, "Светодиод", &gset.sources[Source::Intercom].enabled_led,
+        DEF_CHOICE_2(choiceEnableLED, self, "СВЕТОДИОД", &gset.sources[Source::Intercom].enabled_led,
             "Откл",
             "Вкл"
         );
 
-        DEF_CHOICE_2(choiceEnableMelody, self, "Звук", &gset.sources[Source::Intercom].enabled_melody,
+        DEF_CHOICE_2(choiceEnableMelody, self, "ЗВУК", &gset.sources[Source::Intercom].enabled_melody,
             "Откл",
             "Вкл"
         );
 
-        DEF_CHOICE_2(choiceEnabledVibro, self, "Вибрация", &gset.sources[Source::Intercom].enabled_vibrato,
+        DEF_CHOICE_2(choiceEnabledVibro, self, "ВИБРАЦИЯ", &gset.sources[Source::Intercom].enabled_vibrato,
             "Откл",
             "Вкл"
         );
 
 
-        DEF_PAGE_5(pageIntercom, PageCalls::self, "Домофон",
+        DEF_PAGE_5(pageIntercom, PageCalls::self, "ДОМОФОН",
             &choiceMelody,
             &choiceVolume,
             &choiceEnableLED,

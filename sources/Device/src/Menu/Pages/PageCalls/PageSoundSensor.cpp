@@ -9,7 +9,7 @@ namespace PageCalls
 {
     namespace PageSoundSensor
     {
-        DEF_CHOICE_10(choiceMelody, self, "Мелодия", &gset.sources[Source::SoundSensor].melody,
+        DEF_CHOICE_10(choiceMelody, self, "МЕЛОДИЯ", &gset.sources[Source::SoundSensor].melody,
             "1",
             "2",
             "3",
@@ -22,7 +22,7 @@ namespace PageCalls
             "10"
         );
 
-        DEF_CHOICE_10(choiceVolume, self, "Громкость", &gset.sources[Source::SoundSensor].volume,
+        DEF_CHOICE_10(choiceVolume, self, "ГРОМКОСТЬ", &gset.sources[Source::SoundSensor].volume,
             "1",
             "2",
             "3",
@@ -35,23 +35,23 @@ namespace PageCalls
             "10"
         );
 
-        DEF_CHOICE_2(choiceEnableLED, self, "Светодиод", &gset.sources[Source::SoundSensor].enabled_led,
+        DEF_CHOICE_2(choiceEnableLED, self, "СВЕТОДИОД", &gset.sources[Source::SoundSensor].enabled_led,
             "Откл",
             "Вкл"
         );
 
-        DEF_CHOICE_2(choiceEnableMelody, self, "Звук", &gset.sources[Source::SoundSensor].enabled_melody,
+        DEF_CHOICE_2(choiceEnableMelody, self, "ЗВУК", &gset.sources[Source::SoundSensor].enabled_melody,
             "Откл",
             "Вкл"
         );
 
-        DEF_CHOICE_2(choiceEnabledVibro, self, "Вибрация", &gset.sources[Source::SoundSensor].enabled_vibrato,
+        DEF_CHOICE_2(choiceEnabledVibro, self, "ВИБРАЦИЯ", &gset.sources[Source::SoundSensor].enabled_vibrato,
             "Откл",
             "Вкл"
         );
 
 
-        DEF_PAGE_5(pageSoundSensor, PageCalls::self, "Датчик звука",
+        DEF_PAGE_5(pageSoundSensor, PageCalls::self, "ДАТЧИК ЗВУКА",
             &choiceMelody,
             &choiceVolume,
             &choiceEnableLED,

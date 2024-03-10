@@ -10,7 +10,7 @@ DEF_TIME(timeWatch, PageMain::self, "×ÀÑÛ", false);
 DEF_TIME(timeAlarm, PageMain::self, "ÁÓÄÈËÜÍÈÊ", true);
 
 
-DEF_PAGE_4(pageMain, nullptr, "Ìåíş",
+DEF_PAGE_4(pageMain, nullptr, "ÌÅÍŞ",
     &timeWatch,
     &timeAlarm,
     PageCalls::self,
