@@ -6,19 +6,19 @@
 
 const uint I2C_ADDR = I2C1;
 
-PinIn pinSW_LEFT(GPIOB, GPIO_PIN_0);       // PB0  18 
-PinIn pinSW_DOWN(GPIOB, GPIO_PIN_1);       // PB1  19
-PinIn pinSW_RIGHT(GPIOB, GPIO_PIN_2);      // PB2  20
-PinIn pinSW_UP(GPIOA, GPIO_PIN_7);         // PA7  17
+PinIn pinSW_LEFT(GPIOB, GPIO_PIN_0);        // PB0  18 
+PinIn pinSW_DOWN(GPIOB, GPIO_PIN_1);        // PB1  19
+PinIn pinSW_RIGHT(GPIOB, GPIO_PIN_2);       // PB2  20
+PinIn pinSW_UP(GPIOA, GPIO_PIN_7);          // PA7  17
 
-PinIn  pinDOUT(GPIOB, GPIO_PIN_12);            // PB12 25
-PinOut pinSCK(GPIOB, GPIO_PIN_13);             // PB13 26
+PinIn  pinDOUT(GPIOB, GPIO_PIN_12);         // PB12 25
+PinIn pinSCK(GPIOB, GPIO_PIN_13);          // PB13 26
 
-PinIn  pinPWR_CTRL(GPIOA, GPIO_PIN_0);     // PA0  10
-PinOut pinADC(GPIOA, GPIO_PIN_1);          // PA1  11
+PinIn  pinPWR_CTRL(GPIOA, GPIO_PIN_0);      // PA0  10
+PinOut pinADC(GPIOA, GPIO_PIN_1);           // PA1  11
 
-PinOut pinLEDPWR(GPIOA, GPIO_PIN_2);       // PA2  12
-PinOut pinSOUND(GPIOA, GPIO_PIN_3);        // PA3  13
+PinOut pinLEDPWR(GPIOA, GPIO_PIN_2);        // PA2  12
+PinOut pinSOUND(GPIOA, GPIO_PIN_3);         // PA3  13
 PinOut pinVIBRO(GPIOA, GPIO_PIN_10);        // PA10 31
 
 PinIn pinPWR(GPIOA, GPIO_PIN_12);           // PA12 33

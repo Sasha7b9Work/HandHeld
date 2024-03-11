@@ -47,7 +47,7 @@ extern PinIn pinSW_RIGHT;
 extern PinIn pinSW_UP;
 
 extern PinIn  pinDOUT;
-extern PinOut pinSCK;
+extern PinIn  pinSCK;
 
 extern PinIn  pinPWR_CTRL;
 extern PinOut pinADC;

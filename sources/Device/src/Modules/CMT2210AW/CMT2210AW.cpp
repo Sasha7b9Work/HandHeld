@@ -14,6 +14,7 @@ namespace CMT2210AW
 void CMT2210AW::Init()
 {
     pinDOUT.Init();
+    pinSCK.Init();          // Этот пин будем использовать для определения начала посылки
 }
 
 
