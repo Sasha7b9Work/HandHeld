@@ -78,6 +78,15 @@ void Keyboard::Init()
 
 void Keyboard::Update()
 {
+    static uint counter = 0;
+
+    if (counter++ < 10)     // “ак как прерывание вызываетс€ каждую миллисекунду, будем пропускать
+    {
+        return;
+    }
+
+    counter = 0;
+
     if (is_busy)
     {
         return;

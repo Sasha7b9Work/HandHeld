@@ -9,6 +9,13 @@
 namespace CMT2210AW
 {
     static uint value = 0;
+    static bool clocks_is_run = false;          // Если true, то идёт частота - обрабатываем данные
+
+    // Включить прерывание по SCK
+    void EnableEXTI_SCK();
+
+    // Выкллючить прерывание по SCK
+    void DisableEXTI_SCK();
 }
 
 
@@ -25,6 +32,11 @@ void CMT2210AW::Init()
 
 void CMT2210AW::CallbackOn1MS()
 {
+    if (!clocks_is_run)
+    {
+        return;
+    }
+
     value <<= 1;
 
     if (pinDOUT.IsHi())
@@ -37,6 +49,14 @@ void CMT2210AW::CallbackOn1MS()
     }
 
     Display::SetReceiverValue(value);
+}
+
+
+void CMT2210AW::CallbackOnStartSCK()
+{
+    clocks_is_run = true;
+
+    DisableEXTI_SCK();
 }
 
 

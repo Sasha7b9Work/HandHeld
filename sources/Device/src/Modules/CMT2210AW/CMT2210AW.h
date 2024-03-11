@@ -6,11 +6,9 @@ namespace CMT2210AW
 {
     void Init();
 
-    // Включить прерывание по SCK
-    void EnableEXTI_SCK();
-
-    // Выкллючить прерывание по SCK
-    void DisableEXTI_SCK();
-
+    // Вызывается раз в 1мс
     void CallbackOn1MS();
+
+    // Вызывается после начала клоков
+    void CallbackOnStartSCK();
 }
