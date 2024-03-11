@@ -15,7 +15,9 @@ namespace CMT2210AW
 void CMT2210AW::Init()
 {
     pinDOUT.Init();
-    pinSCK.Init();          // Этот пин будем использовать для определения начала посылки
+//    pinSCK.Init();          // Этот пин будем использовать для определения начала посылки
+
+    gpio_mode_set(GPIOB, GPIO_MODE_INPUT, GPIO_PUPD_NONE, GPIO_PIN_13);
 
     EnableEXTI_SCK();
 }
