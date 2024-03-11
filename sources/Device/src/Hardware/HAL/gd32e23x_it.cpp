@@ -75,6 +75,15 @@ void SysTick_Handler(void)
 }
 
 
+void EXTI4_15_IRQHandler(void)
+{
+    if (RESET != exti_interrupt_flag_get(EXTI_13))
+    {
+        exti_interrupt_flag_clear(EXTI_13);
+    }
+}
+
+
 #ifdef __cplusplus
 }
 #endif

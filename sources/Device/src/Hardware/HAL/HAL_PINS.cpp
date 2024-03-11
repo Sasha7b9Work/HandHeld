@@ -11,8 +11,8 @@ PinIn pinSW_DOWN(GPIOB, GPIO_PIN_1);        // PB1  19
 PinIn pinSW_RIGHT(GPIOB, GPIO_PIN_2);       // PB2  20
 PinIn pinSW_UP(GPIOA, GPIO_PIN_7);          // PA7  17
 
-PinIn  pinDOUT(GPIOB, GPIO_PIN_12);         // PB12 25
-PinIn pinSCK(GPIOB, GPIO_PIN_13);          // PB13 26
+PinIn pinDOUT(GPIOB, GPIO_PIN_12);          // PB12 25
+PinIn pinSCK(GPIOB, GPIO_PIN_13);           // PB13 26
 
 PinIn  pinPWR_CTRL(GPIOA, GPIO_PIN_0);      // PA0  10
 PinOut pinADC(GPIOA, GPIO_PIN_1);           // PA1  11
