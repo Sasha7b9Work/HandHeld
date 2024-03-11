@@ -8,7 +8,18 @@
 
 namespace CMT2210AW
 {
-    static uint value = 0;
+    struct Data
+    {
+        int num_tick = 0;
+        uint64 bytes[2];
+
+        void Reset();
+
+        void AppendBit(bool);
+    };
+
+    static Data data;
+
     static bool clocks_is_run = false;          // Если true, то идёт частота - обрабатываем данные
 
     // Включить прерывание по SCK
@@ -37,24 +48,51 @@ void CMT2210AW::CallbackOn1MS()
         return;
     }
 
-    value <<= 1;
+    data.AppendBit(pinDOUT.IsHi());
 
-    if (pinDOUT.IsHi())
+    Display::SetReceiverValue((uint)data.bytes[0]);
+}
+
+
+void CMT2210AW::Data::AppendBit(bool bit)
+{
+    bytes[0] >>= 1;
+
+    if (bytes[1] & 1)
     {
-        value |= 1;
+        bytes[0] |= 0x8000000000000000;
     }
     else
     {
-        value &= 0xFFFFFFFE;
+        bytes[0] &= 0x7000000000000000;
     }
 
-    Display::SetReceiverValue(value);
+    bytes[1] >>= 1;
+
+    if (bit)
+    {
+        bytes[1] |= 0x8000000000000000;
+    }
+    else
+    {
+        bytes[1] &= 0x7000000000000000;
+    }
+}
+
+
+void CMT2210AW::Data::Reset()
+{
+    num_tick = 0;
+    bytes[0] = 0;
+    bytes[0] = 0;
 }
 
 
 void CMT2210AW::CallbackOnStartSCK()
 {
     clocks_is_run = true;
+
+    data.Reset();
 
     DisableEXTI_SCK();
 }
