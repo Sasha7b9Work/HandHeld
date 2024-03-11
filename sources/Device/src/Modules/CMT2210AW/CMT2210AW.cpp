@@ -5,17 +5,26 @@
 #include "Display/Display.h"
 #include <gd32e23x.h>
 
+/*
+*  Преамбула - 1111110000001100111100
+*  Повторённая пять раз
+*  Получается 0x3f033cfc0cf3 0xf033cfc0cf3f033c
+*/
+
 
 namespace CMT2210AW
 {
     struct Data
     {
         int num_tick = 0;
-        uint64 bytes[2];
+        uint64 words[2];
 
         void Reset();
 
         void AppendBit(bool);
+
+        // Возвращает количество правильных бит
+        int VerifyPreambule();
     };
 
     static Data data;
@@ -49,42 +58,70 @@ void CMT2210AW::CallbackOn1MS()
     }
 
     data.AppendBit(pinDOUT.IsHi());
-
-    Display::SetReceiverValue((uint)data.bytes[0]);
 }
 
 
 void CMT2210AW::Data::AppendBit(bool bit)
 {
-    bytes[0] >>= 1;
+    words[1] <<= 1;
 
-    if (bytes[1] & 1)
+    if (words[0] & 0x8000000000000000)
     {
-        bytes[0] |= 0x8000000000000000;
-    }
-    else
-    {
-        bytes[0] &= 0x7000000000000000;
+        words[1] |= 1;
     }
 
-    bytes[1] >>= 1;
+    words[0] <<= 1;
 
     if (bit)
     {
-        bytes[1] |= 0x8000000000000000;
+        words[0] |= 1;
     }
-    else
+
+    num_tick++;
+
+    if (num_tick == 110)
     {
-        bytes[1] &= 0x7000000000000000;
+        Display::SetPreambule(VerifyPreambule());
+
+        Reset();
     }
+}
+
+
+int CMT2210AW::Data::VerifyPreambule()
+{
+    uint64 word1 = 0x3f033cfc0cf3;
+    uint64 word0 = 0xf033cfc0cf3f033c;
+
+    uint64 xor0 = words[0] ^ word0;
+    uint64 xor1 = words[1] ^ word1;
+
+    int result = 0;
+
+    for (int i = 0; i < 64; i++)
+    {
+        if ((xor0 & (((uint64)1) << i)) != 0)
+        {
+            result++;
+        }
+
+        if ((xor1 & (((uint64)1) << i)) != 0)
+        {
+            result++;
+        }
+    }
+
+    result -= 18;           // Сравниваем 110 бит, откидываем лишние 18 из 128
+
+    return result;
 }
 
 
 void CMT2210AW::Data::Reset()
 {
     num_tick = 0;
-    bytes[0] = 0;
-    bytes[0] = 0;
+    words[0] = 0;
+    words[0] = 0;
 }
 
 

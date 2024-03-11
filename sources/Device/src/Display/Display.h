@@ -19,9 +19,7 @@ namespace Display
 
     void Update();
 
-    void SetTimeInterrupt(uint);
-
-    void SetReceiverValue(uint);
+    void SetPreambule(int);
 
     namespace Buffer
     {

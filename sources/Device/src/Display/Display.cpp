@@ -29,7 +29,7 @@ namespace Display
     }
 
     static int current_part = 0;                            // Эту часть сейчас отрисовываем
-    static uint receiver_value = 0;
+    static int preambule = 0;
 
     void BeginScene(int num_part);
     void DrawScene(int num_part);
@@ -37,9 +37,9 @@ namespace Display
 }
 
 
-void Display::SetReceiverValue(uint value)
+void Display::SetPreambule(int value)
 {
-    receiver_value = value;
+    preambule = value;
 }
 
 
@@ -99,7 +99,7 @@ void Display::DrawScene(int num_part)
 
         FPS::DrawTimeFrame(0, 75);
 
-        Text<>("%u", receiver_value).Write(0, 0, Color::WHITE);
+        Text<>("%d", preambule).Write(0, 0, Color::WHITE);
     }
 }
 
