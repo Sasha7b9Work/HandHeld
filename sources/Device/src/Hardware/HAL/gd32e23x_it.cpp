@@ -69,8 +69,6 @@ void SysTick_Handler(void)
 
     delay_decrement();
 
-    CMT2210AW::CallbackOn1MS();
-
     Keyboard::Update();
 }
 
@@ -92,6 +90,8 @@ void TIMER2_IRQHandler(void)
 
     if (SET == timer_interrupt_flag_get(TIMER2, TIMER_INT_FLAG_UP))
     {
+        CMT2210AW::CallbackOn1MS();
+
         /* clear channel 0 interrupt bit */
         timer_interrupt_flag_clear(TIMER2, TIMER_INT_FLAG_UP);
 
