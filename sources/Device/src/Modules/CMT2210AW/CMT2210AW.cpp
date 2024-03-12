@@ -78,7 +78,7 @@ int CMT2210AW::Data::VerifyPreambule()
     uint64 word0 =     0x3f033cfc0cf3;
     uint64 word1 = 0xf033cfc0cf3f033c;
 
-    word0 &= 0x00003ff33fffffff;
+    words[0] &= 0x00003ff33fffffff;
 
     uint64 xor0 = words[0] ^ word0;
     uint64 xor1 = words[1] ^ word1;
