@@ -85,20 +85,24 @@ int CMT2210AW::Data::VerifyPreambule()
 
     int result = 0;
 
+    uint64 bit = 1;
+
     for (int i = 0; i < 64; i++)
     {
         if (i < 46)
         {
-            if ((xor0 & (((uint64)1) << i)) == 0)
+            if ((xor0 & bit) == 0)
             {
                 result++;
             }
         }
 
-        if ((xor1 & (((uint64)1) << i)) == 0)
+        if ((xor1 & bit) == 0)
         {
             result++;
         }
+
+        bit <<= 1;
     }
 
     return result;
