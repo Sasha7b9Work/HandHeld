@@ -16,8 +16,7 @@ namespace CMT2210AW
 {
     struct Data
     {
-        int num_tick = 0;
-        uint64 words[2];
+        uint64 words[2] = { 0, 0 };
 
         void Reset();
 
@@ -77,21 +76,16 @@ void CMT2210AW::Data::AppendBit(bool bit)
         words[0] |= 1;
     }
 
-    num_tick++;
-
-    if (num_tick == 110)
-    {
-        Display::SetPreambule(VerifyPreambule());
-
-        Reset();
-    }
+    Display::SetPreambule(VerifyPreambule());
 }
 
 
 int CMT2210AW::Data::VerifyPreambule()
 {
-    uint64 word1 = 0x3f033cfc0cf3;
-    uint64 word0 = 0xf033cfc0cf3f033c;
+    uint64 word0 =     0x3f033cfc0cf3;
+    uint64 word1 = 0xf033cfc0cf3f033c;
+
+    word0 &= 0x00003ff33fffffff;
 
     uint64 xor0 = words[0] ^ word0;
     uint64 xor1 = words[1] ^ word1;
@@ -119,7 +113,6 @@ int CMT2210AW::Data::VerifyPreambule()
 
 void CMT2210AW::Data::Reset()
 {
-    num_tick = 0;
     words[0] = 0;
     words[0] = 0;
 }
