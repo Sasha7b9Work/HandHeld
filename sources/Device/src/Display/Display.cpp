@@ -39,7 +39,10 @@ namespace Display
 
 void Display::SetPreambule(int value)
 {
-    preambule = value;
+    if (value > preambule)
+    {
+        preambule = value;
+    }
 }
 
 
