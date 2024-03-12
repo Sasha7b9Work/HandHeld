@@ -22,11 +22,6 @@ void HAL::Init()
 
     HAL_I2C::Init();
 
-    // ----------------------------------------------------------------------------
-    // TIMER2 Configuration:
-    // TIMER2CLK = SystemCoreClock/7200 = 10KHz,the period is 1s(10000/10000 = 1s).
-    // ----------------------------------------------------------------------------
-
     timer_parameter_struct timer_initpara;
 
     /* enable the peripherals clock */
@@ -37,10 +32,10 @@ void HAL::Init()
     /* initialize TIMER init parameter struct */
     timer_struct_para_init(&timer_initpara);
     /* TIMER2 configuration */
-    timer_initpara.prescaler = 6702;                    // 1.024 мс
+    timer_initpara.prescaler = 36864;                    // F = 72e6 / 36864 = 1953.125√ц; T = 1 / F = 1 / 1953.125 * 2 = 0.001024 сек
     timer_initpara.alignedmode = TIMER_COUNTER_EDGE;
     timer_initpara.counterdirection = TIMER_COUNTER_UP;
-    timer_initpara.period = 10;                         // 1.024 мс
+    timer_initpara.period = 1;
     timer_initpara.clockdivision = TIMER_CKDIV_DIV1;
     timer_init(TIMER2, &timer_initpara);
 
