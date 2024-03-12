@@ -55,18 +55,18 @@ void CMT2210AW::CallbackOn1MS()
 
 void CMT2210AW::Data::AppendBit(bool bit)
 {
-    words[1] <<= 1;
+    words[0] <<= 1;
 
-    if (words[0] & 0x8000000000000000)
+    if (words[1] & 0x8000000000000000)
     {
-        words[1] |= 1;
+        words[0] |= 1;
     }
 
-    words[0] <<= 1;
+    words[1] <<= 1;
 
     if (bit)
     {
-        words[0] |= 1;
+        words[1] |= 1;
     }
 
     Display::SetPreambule(VerifyPreambule());
