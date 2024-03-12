@@ -86,22 +86,12 @@ void EXTI4_15_IRQHandler(void)
 
 void TIMER2_IRQHandler(void)
 {
-    static uint prev_time = 0;
-
     if (SET == timer_interrupt_flag_get(TIMER2, TIMER_INT_FLAG_UP))
     {
         CMT2210AW::CallbackOn1MS();
 
         /* clear channel 0 interrupt bit */
         timer_interrupt_flag_clear(TIMER2, TIMER_INT_FLAG_UP);
-
-        uint time = timer_counter;
-
-        uint d_time = time - prev_time;
-
-        d_time = d_time;
-
-        prev_time = time;
     }
 }
 

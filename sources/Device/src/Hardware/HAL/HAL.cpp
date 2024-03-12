@@ -37,10 +37,10 @@ void HAL::Init()
     /* initialize TIMER init parameter struct */
     timer_struct_para_init(&timer_initpara);
     /* TIMER2 configuration */
-    timer_initpara.prescaler = 719;
+    timer_initpara.prescaler = 6702;                    // 1.024 мс
     timer_initpara.alignedmode = TIMER_COUNTER_EDGE;
     timer_initpara.counterdirection = TIMER_COUNTER_UP;
-    timer_initpara.period = 99;
+    timer_initpara.period = 10;                         // 1.024 мс
     timer_initpara.clockdivision = TIMER_CKDIV_DIV1;
     timer_init(TIMER2, &timer_initpara);
 
