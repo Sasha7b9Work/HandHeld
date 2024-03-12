@@ -87,18 +87,19 @@ int CMT2210AW::Data::VerifyPreambule()
 
     for (int i = 0; i < 64; i++)
     {
-        if ((xor0 & (((uint64)1) << i)) != 0)
+        if (i < 46)
         {
-            result++;
+            if ((xor0 & (((uint64)1) << i)) == 0)
+            {
+                result++;
+            }
         }
 
-        if ((xor1 & (((uint64)1) << i)) != 0)
+        if ((xor1 & (((uint64)1) << i)) == 0)
         {
             result++;
         }
     }
-
-    result -= 18;           // Сравниваем 110 бит, откидываем лишние 18 из 128
 
     return result;
 }
