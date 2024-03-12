@@ -28,8 +28,6 @@ namespace CMT2210AW
 
     static Data data;
 
-    static bool clocks_is_run = false;          // Если true, то идёт частота - обрабатываем данные
-
     // Включить прерывание по SCK
     void EnableEXTI_SCK();
 
@@ -51,11 +49,6 @@ void CMT2210AW::Init()
 
 void CMT2210AW::CallbackOn1MS()
 {
-    if (!clocks_is_run)
-    {
-        return;
-    }
-
     data.AppendBit(pinDOUT.IsHi());
 }
 
@@ -120,8 +113,6 @@ void CMT2210AW::Data::Reset()
 
 void CMT2210AW::CallbackOnStartSCK()
 {
-    clocks_is_run = true;
-
     data.Reset();
 
     DisableEXTI_SCK();
