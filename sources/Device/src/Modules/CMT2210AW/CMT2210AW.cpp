@@ -143,18 +143,24 @@ void CMT2210AW::Data::VerifyPreambule()
 
 bool CMT2210AW::Data::GetBit(int num_bit) const
 {
-    if (num_bit < 37)           // В первом слове
+    int index = 0;
+    if (num_bit < 37)
     {
-        return (xors[0] & (((uint64)1) << (36 - num_bit))) != 0;
+        num_bit = 36 - num_bit;
+        index = 0;
     }
     else if (num_bit < 101)
     {
-        return (xors[1] & (((uint64)1) << (63 - (num_bit - 37)))) != 0;
+        num_bit = 63 - (num_bit - 37);
+        index = 1;
     }
     else
     {
-        return (xors[2] & (((uint64)1) << (63 - (num_bit - 37 - 64)))) != 0;
+        num_bit = 63 - (num_bit - 37 - 64);
+        index = 2;
     }
+
+    return (xors[index] & (((uint64)1) << num_bit)) != 0;
 }
 
 
