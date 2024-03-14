@@ -39,7 +39,7 @@ namespace Display
 
 void Display::SetReceivedData(const ReceivedData &data)
 {
-    if (data.IsValid())
+//    if (data.IsValid())
     {
         r_data = data;
     }

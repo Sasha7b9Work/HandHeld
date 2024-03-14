@@ -103,7 +103,7 @@ void CMT2210AW::Data::VerifyPreambule()
 
         if (r_data.values[i] < 8)
         {
-            return;
+//            return;
         }
     }
 
