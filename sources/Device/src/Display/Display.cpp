@@ -198,7 +198,7 @@ void RTCDateTime::Draw(int x, int y, const Color &color) const
 
 bool ReceivedData::IsValid() const
 {
-    const int valid_value = 8;
+    const int valid_value = 5;
 
     return values[0] >= valid_value &&
         values[1] >= valid_value &&
