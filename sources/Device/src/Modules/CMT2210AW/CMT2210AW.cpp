@@ -95,7 +95,7 @@ void CMT2210AW::Data::VerifyPreambule()
     {
         for (int bit = 0; bit < 11; bit++)
         {
-            if (!GetBit(i * 15 + bit))
+            if (!GetBit(i * 11 + bit))
             {
                 r_data.values[i]++;
             }
