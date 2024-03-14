@@ -32,7 +32,8 @@ void HAL::Init()
     /* initialize TIMER init parameter struct */
     timer_struct_para_init(&timer_initpara);
     /* TIMER2 configuration */
-    timer_initpara.prescaler = 36864;                    // F = 72e6 / 36864 = 1953.125√ц; T = 1 / F = 1 / 1953.125 * 2 = 0.001024 сек
+//    timer_initpara.prescaler = 36864;                    // F = 72e6 / 36864 = 1953.125√ц; T = 1 / F = 1 / 1953.125 * 2 = 0.001024 сек
+    timer_initpara.prescaler = 14745;                   // 409.6 мкс
     timer_initpara.alignedmode = TIMER_COUNTER_EDGE;
     timer_initpara.counterdirection = TIMER_COUNTER_UP;
     timer_initpara.period = 1;
