@@ -2,6 +2,7 @@
 #include "defines.h"
 #include "Settings/Settings.h"
 #include "Display/Display.h"
+#include "Hardware/Timer.h"
 
 
 Settings gset =
