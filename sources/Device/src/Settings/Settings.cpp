@@ -52,5 +52,5 @@ void Source::Receive(E type)
 
 bool Source::IsReceived(E type)
 {
-    return time_recv[type] + 1000 < TIME_MS;
+    return time_recv[type] + 1000 > TIME_MS;
 }
