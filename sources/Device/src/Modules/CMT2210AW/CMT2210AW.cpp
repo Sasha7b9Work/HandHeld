@@ -63,17 +63,17 @@ void CMT2210AW::Init()
 
 void CMT2210AW::CallbackOn1MS()
 {
-    static int counter = 0;
-    static bool value = false;
-
-    if (counter++ == 1000)
-    {
-        counter = 0;
-
-        value = !value;
-
-        value ? pinOUT.ToHi() : pinOUT.ToLow();
-    }
+//    static int counter = 0;
+//    static bool value = false;
+//
+//    if (counter++ == 1000)
+//    {
+//        counter = 0;
+//
+//        value = !value;
+//
+//        value ? pinOUT.ToHi() : pinOUT.ToLow();
+//    }
 
     data.AppendBit(pinDOUT.IsHi());
 }
@@ -145,15 +145,15 @@ bool CMT2210AW::Data::GetBit(int num_bit) const
 {
     if (num_bit < 37)           // В первом слове
     {
-        return (words[0] & (((uint64)1) << (36 - num_bit))) != 0;
+        return (xors[0] & (((uint64)1) << (36 - num_bit))) != 0;
     }
     else if (num_bit < 101)
     {
-        return (words[1] & (((uint64)1) << (63 - (num_bit - 37)))) != 0;
+        return (xors[1] & (((uint64)1) << (63 - (num_bit - 37)))) != 0;
     }
     else
     {
-        return (words[2] & (((uint64)1) << (63 - (num_bit - 37 - 64)))) != 0;
+        return (xors[2] & (((uint64)1) << (63 - (num_bit - 37 - 64)))) != 0;
     }
 }
 
