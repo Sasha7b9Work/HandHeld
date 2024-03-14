@@ -15,6 +15,9 @@ Settings gset =
 };
 
 
+uint Source::time_recv[Source::Count] = { 0, 0, 0, 0, 0 };
+
+
 void Source::Draw(int x, int y, const Color &color) const
 {
     if (value == PhoneHome)
@@ -37,4 +40,16 @@ void Source::Draw(int x, int y, const Color &color) const
     {
         Text<>("ÄÀÒ").Write(x, y, color);
     }
+}
+
+
+void Source::Receive(E type)
+{
+    time_recv[type] = TIME_MS;
+}
+
+
+bool Source::IsReceived(E type)
+{
+    return time_recv[type] + 1000 < TIME_MS;
 }

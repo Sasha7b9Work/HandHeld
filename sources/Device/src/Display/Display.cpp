@@ -29,20 +29,10 @@ namespace Display
     }
 
     static int current_part = 0;                            // Эту часть сейчас отрисовываем
-    static ReceivedData r_data;
 
     void BeginScene(int num_part);
     void DrawScene(int num_part);
     void EndScene(int num_parts);
-}
-
-
-void Display::SetReceivedData(const ReceivedData &data)
-{
-//    if (data.IsValid())
-    {
-        r_data = data;
-    }
 }
 
 
@@ -97,15 +87,13 @@ void Display::DrawScene(int num_part)
 
         for (int i = 0; i < Source::Count; i++)
         {
-            Source((Source::E)i).Draw(6 + i * 30, 65);
+            if (Source::IsReceived((Source::E)i))
+            {
+                Source((Source::E)i).Draw(6 + i * 30, 65);
+            }
         }
 
         FPS::DrawTimeFrame(0, 75);
-
-        for (int i = 0; i < 15; i++)
-        {
-            Text<>("%d", r_data.values[i]).Write(i * 11, 0, Color::WHITE);
-        }
     }
 }
 
@@ -193,26 +181,4 @@ void RTCDateTime::Draw(int x, int y, const Color &color) const
     Font::SetSize(1);
 
     Text<>("%02d/%02d/%02d", Day, Month, Year).Write(x + 15, y + 20);
-}
-
-
-bool ReceivedData::IsValid() const
-{
-    const int valid_value = 5;
-
-    return values[0] >= valid_value &&
-        values[1] >= valid_value &&
-        values[2] >= valid_value &&
-        values[3] >= valid_value &&
-        values[4] >= valid_value &&
-        values[5] >= valid_value &&
-        values[6] >= valid_value &&
-        values[7] >= valid_value &&
-        values[8] >= valid_value &&
-        values[9] >= valid_value &&
-        values[10] >= valid_value &&
-        values[11] >= valid_value &&
-        values[12] >= valid_value &&
-        values[13] >= valid_value &&
-        values[14] >= valid_value;
 }

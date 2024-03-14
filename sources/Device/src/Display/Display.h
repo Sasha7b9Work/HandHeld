@@ -7,21 +7,6 @@
 #include <cstring>
 
 
-struct ReceivedData
-{
-    ReceivedData()
-    {
-        for (int i = 0; i < 15; i++)
-        {
-            values[i] = 0;
-        }
-    }
-    int values[15];
-
-    bool IsValid() const;
-};
-
-
 namespace Display
 {
     static const int WIDTH = 160;
@@ -33,8 +18,6 @@ namespace Display
     void Init();
 
     void Update();
-
-    void SetReceivedData(const ReceivedData &);
 
     namespace Buffer
     {

@@ -3,11 +3,25 @@
 #include "Modules/CMT2210AW/CMT2210AW.h"
 #include "Hardware/HAL/HAL_PINS.h"
 #include "Display/Display.h"
+#include "Settings/Settings.h"
 #include <gd32e23x.h>
 
 
 namespace CMT2210AW
 {
+    struct ReceivedData
+    {
+        ReceivedData()
+        {
+            for (int i = 0; i < 15; i++)
+            {
+                values[i] = 0;
+            }
+        }
+        int values[15];
+    };
+
+
     struct Data
     {
         uint64 words[3] = { 0, 0, 0 };
@@ -107,7 +121,7 @@ void CMT2210AW::Data::VerifyPreambule()
         }
     }
 
-    Display::SetReceivedData(r_data);
+    Source::Receive(Source::DoorBell);
 }
 
 

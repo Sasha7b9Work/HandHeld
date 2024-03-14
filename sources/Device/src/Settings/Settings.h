@@ -21,8 +21,15 @@ struct Source
 
     void Draw(int x, int y, const Color &color = Color::NUMBER) const;
 
+    // Вызывается при получении сигнала
+    static void Receive(E);
+
+    // Возвращает true, если приём идёт
+    static bool IsReceived(E);
+
 private:
     E value;
+    static uint time_recv[Count];
 };
 
 
