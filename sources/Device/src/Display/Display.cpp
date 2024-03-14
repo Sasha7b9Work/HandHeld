@@ -104,7 +104,8 @@ void Display::DrawScene(int num_part)
 
         for (int i = 0; i < 15; i++)
         {
-            Text<>("%d", r_data.values[i]).Write(i * 10, 0, Color::WHITE);
+            Text<>("0").Write(i * 10, 0, Color::WHITE);
+//            Text<>("%d", r_data.values[i]).Write(i * 10, 0, Color::WHITE);
         }
     }
 }
