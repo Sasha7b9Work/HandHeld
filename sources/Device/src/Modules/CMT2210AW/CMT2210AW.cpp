@@ -43,11 +43,15 @@ namespace CMT2210AW
 
     // ¬ыкллючить прерывание по SCK
     void DisableEXTI_SCK();
+
+    static PinOut pinOUT(GPIOA, GPIO_PIN_2);
 }
 
 
 void CMT2210AW::Init()
 {
+    pinOUT.Init();
+
     pinDOUT.Init();
 //    pinSCK.Init();          // Ётот пин будем использовать дл€ определени€ начала посылки
 
@@ -59,6 +63,18 @@ void CMT2210AW::Init()
 
 void CMT2210AW::CallbackOn1MS()
 {
+    static int counter = 0;
+    static bool value = false;
+
+    if (counter++ == 1000)
+    {
+        counter = 0;
+
+        value = !value;
+
+        value ? pinOUT.ToHi() : pinOUT.ToLow();
+    }
+
     data.AppendBit(pinDOUT.IsHi());
 }
 
