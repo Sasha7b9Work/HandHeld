@@ -5,30 +5,21 @@
 #include "Display/Display.h"
 #include <gd32e23x.h>
 
-/*
-*  Преамбула - 1111110000001100111100
-*  Повторённая пять раз
-*  Получается 0x3f033cfc0cf3 0xf033cfc0cf3f033c
-*/
-
-
-// Посылка будет вот такая : 111111010001101 - 15 бит,
-// где каждая единица - это прямая последовательность баркера(11100010110),
-// а ноль - инверсная(00011101001)
-
 
 namespace CMT2210AW
 {
     struct Data
     {
-        uint64 words[2] = { 0, 0 };
+        uint64 words[3] = { 0, 0, 0 };
+        uint64 xors[3] = { 0, 0, 0 };
 
         void Reset();
 
         void AppendBit(bool);
 
-        // Возвращает количество правильных бит
-        int VerifyPreambule();
+        void VerifyPreambule();
+
+        bool GetBit(int num_bit) const;
     };
 
     static Data data;
@@ -69,55 +60,79 @@ void CMT2210AW::Data::AppendBit(bool bit)
 
     words[1] <<= 1;
 
-    if (bit)
+    if (words[2] & 0x8000000000000000)
     {
         words[1] |= 1;
     }
 
-    Display::SetPreambule(VerifyPreambule());
+    words[2] <<= 1;
+
+    if (bit)
+    {
+        words[2] |= 1;
+    }
+
+    VerifyPreambule();
 }
 
 
-int CMT2210AW::Data::VerifyPreambule()
+void CMT2210AW::Data::VerifyPreambule()
 {
-    uint64 word0 =     0x3f033cfc0cf3;
-    uint64 word1 = 0xf033cfc0cf3f033c;
+    // Посылка будет вот такая : 111111010001101 - 15 бит,
+    // где каждая единица - это прямая последовательность баркера(11100010110),
+    // а ноль - инверсная(00011101001)
+    // 0x1c5b8b716e 0x2dc5b8b0e9e2c3a4 0x748e9e2dc5874f16
 
-    words[0] &= 0x00003fffffffffff;
+    words[0] &= 0x1fffffffff;               // Здесь оствляем только 165 - 64 - 64 = 37 бит
 
-    uint64 xor0 = words[0] ^ word0;
-    uint64 xor1 = words[1] ^ word1;
+    xors[0] = words[0] ^ 0x0000001c5b8b716e;
+    xors[1] = words[1] ^ 0x2dc5b8b0e9e2c3a4;
+    xors[2] = words[2] ^ 0x748e9e2dc5874f16;
 
-    int result = 0;
+    ReceivedData r_data;
 
-    uint64 bit = 1;
-
-    for (int i = 0; i < 64; i++)
+    for (int i = 0; i < 15; i++)
     {
-        if (i < 46)
+        for (int bit = 0; bit < 11; bit++)
         {
-            if ((xor0 & bit) == 0)
+            if (!GetBit(i * 15 + bit))
             {
-                result++;
+                r_data.values[i]++;
             }
         }
 
-        if ((xor1 & bit) == 0)
+        if (r_data.values[i] < 8)
         {
-            result++;
+            return;
         }
-
-        bit <<= 1;
     }
 
-    return result;
+    Display::SetReceivedData(r_data);
+}
+
+
+bool CMT2210AW::Data::GetBit(int num_bit) const
+{
+    if (num_bit < 37)           // В первом слове
+    {
+        return (words[0] & (((uint64)1) << (36 - num_bit))) != 0;
+    }
+    else if (num_bit < 101)
+    {
+        return (words[1] & (((uint64)1) << (63 - (num_bit - 37)))) != 0;
+    }
+    else
+    {
+        return (words[2] & (((uint64)1) << (63 - (num_bit - 37 - 64)))) != 0;
+    }
 }
 
 
 void CMT2210AW::Data::Reset()
 {
-    words[0] = 0;
-    words[0] = 0;
+    words[0] = xors[0] = 0;
+    words[1] = xors[1] = 0;
+    words[2] = xors[2] = 0;
 }
 
 
