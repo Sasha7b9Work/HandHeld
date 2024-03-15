@@ -37,14 +37,6 @@ namespace CMT2210AW
     };
 
     static Data data;
-
-    // Включить прерывание по SCK
-    void EnableEXTI_SCK();
-
-    // Выкллючить прерывание по SCK
-    void DisableEXTI_SCK();
-
-    static PinOut pinOUT(GPIOA, GPIO_PIN_2);
 }
 
 
@@ -56,16 +48,16 @@ void CMT2210AW::Init()
 //    pinSCK.Init();          // Этот пин будем использовать для определения начала посылки
 
     gpio_mode_set(GPIOB, GPIO_MODE_INPUT, GPIO_PUPD_NONE, GPIO_PIN_13);
-
-    EnableEXTI_SCK();
 }
 
 
-void CMT2210AW::CallbackOn1MS()
+void CMT2210AW::CallbackOnBit()
 {
     pinOUT.ToHi();
 
     data.AppendBit(pinDOUT.IsHi());
+
+    pinOUT.ToLow();
 }
 
 
@@ -189,7 +181,7 @@ static const uint8_t BITSSETTABLEFF[2048] =
     uint packet = 0;
 
     //check out HEAD
-    if(/*(BITSSETTABLEFF[(xors[0] >> 26) & 0x07FF] < BARKERTRESHOLD) && */
+    if((BITSSETTABLEFF[(xors[0] >> 26) & 0x07FF] < BARKERTRESHOLD) &&
        (BITSSETTABLEFF[(xors[0] >> 15) & 0x07FF] < BARKERTRESHOLD) &&
        (BITSSETTABLEFF[(xors[0] >>  4) & 0x07FF] < BARKERTRESHOLD) &&
        ((BITSSETTABLEFF[xors[0] & 0x0F] + (BITSSETTABLEFF[(xors[1] >> 57) & 0x07FF])) < BARKERTRESHOLD) &&
@@ -202,7 +194,6 @@ static const uint8_t BITSSETTABLEFF[2048] =
         uint32_t bitlevel = 0;
 
         //check bit 0
-        pinOUT.ToLow();
         bitlevel = BITSSETTABLEFF[(uint16_t)xors[2] & 0x07FF];
         if(bitlevel < BARKERTRESHOLD)
             packet |= 0x0001;
@@ -323,32 +314,4 @@ void CMT2210AW::Data::Reset()
     words[0] = xors[0] = 0;
     words[1] = xors[1] = 0;
     words[2] = xors[2] = 0;
-}
-
-
-void CMT2210AW::CallbackOnStartSCK()
-{
-    data.Reset();
-
-    DisableEXTI_SCK();
-}
-
-
-void CMT2210AW::EnableEXTI_SCK()
-{
-    /* enable and set key EXTI interrupt to the lowest priority */
-    nvic_irq_enable(EXTI4_15_IRQn, 2U);
-
-    /* connect key EXTI line to key GPIO pin */
-    syscfg_exti_line_config(EXTI_SOURCE_GPIOB, EXTI_SOURCE_PIN13);
-
-    /* configure key EXTI line */
-    exti_init(EXTI_13, EXTI_INTERRUPT, EXTI_TRIG_RISING);
-    exti_interrupt_flag_clear(EXTI_13);
-}
-
-
-void CMT2210AW::DisableEXTI_SCK()
-{
-    nvic_irq_disable(EXTI4_15_IRQn);
 }

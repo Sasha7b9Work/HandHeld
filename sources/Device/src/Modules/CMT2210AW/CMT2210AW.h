@@ -7,8 +7,5 @@ namespace CMT2210AW
     void Init();
 
     // Вызывается раз в 1мс
-    void CallbackOn1MS();
-
-    // Вызывается после начала клоков
-    void CallbackOnStartSCK();
+    void CallbackOnBit();
 }

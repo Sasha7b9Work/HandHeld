@@ -61,8 +61,6 @@ void PendSV_Handler(void);
 /* this function handles SysTick exception */
 void SysTick_Handler(void);
 
-void EXTI4_15_IRQHandler(void);
-
 void TIMER2_IRQHandler(void);
 
 #ifdef __cplusplus

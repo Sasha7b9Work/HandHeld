@@ -69,18 +69,7 @@ void SysTick_Handler(void)
 
     delay_decrement();
 
-//    Keyboard::Update();
-}
-
-
-void EXTI4_15_IRQHandler(void)
-{
-    if (RESET != exti_interrupt_flag_get(EXTI_13))
-    {
-        exti_interrupt_flag_clear(EXTI_13);
-
-        CMT2210AW::CallbackOnStartSCK();
-    }
+    Keyboard::Update();
 }
 
 
@@ -88,7 +77,7 @@ void TIMER2_IRQHandler(void)
 {
     if (timer_interrupt_flag_get(TIMER2, TIMER_INT_FLAG_UP))
     {
-        CMT2210AW::CallbackOn1MS();
+        CMT2210AW::CallbackOnBit();
 
         /* clear channel 0 interrupt bit */
         timer_interrupt_flag_clear(TIMER2, TIMER_INT_FLAG_UP);
