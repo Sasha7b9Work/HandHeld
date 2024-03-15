@@ -74,8 +74,8 @@ void CMT2210AW::Data::AppendBit(bool bit)
 
     words[2] <<= 1;
 
-//    if (EmuRecv::NextBit())
-    if (bit)
+    if (EmuRecv::NextBit())
+//    if (bit)
     {
         words[2] |= 1;
     }
@@ -192,12 +192,12 @@ static const uint8_t BITSSETTABLEFF[2048] =
         uint32_t packet = 0;
         uint32_t bitlevel = 0;
 
-        //                    H6
-        const int index[] = { 0 };
-        const int shift[] = { 26 };
-        const uint bit[]  = { 0x4000 };
+        //                    H6      H5      H4
+        const int index[] = { 0,      0,      0 };
+        const int shift[] = { 26,     15,     4 };
+        const uint bit[]  = { 0x4000, 0x2000, 0x1000 };
 
-        for (int i = 0; i < 1; i++)
+        for (int i = 0; i < 2; i++)
         {
             uint level = BITSSETTABLEFF[(xors[index[i]] >> shift[i]) & 0x7FF];
             if (level < BARKERTRESHOLD)
@@ -209,22 +209,6 @@ static const uint8_t BITSSETTABLEFF[2048] =
                 return;
             }
         }
-
-        //check bit HEAD 5
-        bitlevel = BITSSETTABLEFF[(xors[0] >> 15) & 0x07FF];
-        if(bitlevel < BARKERTRESHOLD)
-            packet |= 0x2000;
-        else
-            if(bitlevel < (11 - BARKERTRESHOLD))
-                return;
-
-        //check bit HEAD 4
-        bitlevel = BITSSETTABLEFF[(xors[0] >> 4) & 0x07FF];
-        if(bitlevel < BARKERTRESHOLD)
-            packet |= 0x1000;
-        else
-            if(bitlevel < (11 - BARKERTRESHOLD))
-                return;
 
         //check bit HEAD 3
         bitlevel = (uint)(BITSSETTABLEFF[xors[0] & 0x0F] + BITSSETTABLEFF[(xors[1] >> 57) & 0x07FF]);
