@@ -77,10 +77,9 @@ void TIMER2_IRQHandler(void)
 {
     if (timer_interrupt_flag_get(TIMER2, TIMER_INT_FLAG_UP))
     {
-        CMT2210AW::CallbackOnBit();
-
-        /* clear channel 0 interrupt bit */
         timer_interrupt_flag_clear(TIMER2, TIMER_INT_FLAG_UP);
+
+        CMT2210AW::CallbackOnBit();
     }
 }
 

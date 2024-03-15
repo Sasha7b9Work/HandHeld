@@ -31,7 +31,9 @@ namespace CMT2210AW
 
         void AppendBit(bool);
 
-        void VerifyPreambule();
+        void VerifyPreambule1();
+
+        void VerifyPreambule2();
 
         bool GetBit(int num_bit) const;
     };
@@ -53,11 +55,7 @@ void CMT2210AW::Init()
 
 void CMT2210AW::CallbackOnBit()
 {
-    pinOUT.ToHi();
-
     data.AppendBit(pinDOUT.IsHi());
-
-    pinOUT.ToLow();
 }
 
 
@@ -84,11 +82,46 @@ void CMT2210AW::Data::AppendBit(bool bit)
         words[2] |= 1;
     }
 
-    VerifyPreambule();
+    // ѕосылка будет вот така€ : 111111010001101 - 15 бит,
+    // где кажда€ единица - это пр€ма€ последовательность баркера(11100010110),
+    // а ноль - инверсна€(00011101001)
+    // 0x1c5b8b716e 0x2dc5b8b0e9e2c3a4 0x748e9e2dc5874f16
+
+    words[0] &= 0x1fffffffff;               // «десь оствл€ем только 165 - 64 - 64 = 37 бит
+
+    xors[0] = words[0] ^ 0x0000001c5b8b716e;
+    xors[1] = words[1] ^ 0x2dc5b8b0e9e2c3a4;
+    xors[2] = words[2] ^ 0x748e9e2dc5874f16;
+
+    VerifyPreambule2();
 }
 
 
-void CMT2210AW::Data::VerifyPreambule()
+void CMT2210AW::Data::VerifyPreambule2()
+{
+    ReceivedData r_data;
+
+    for (int i = 0; i < 15; i++)
+    {
+        for (int bit = 0; bit < 11; bit++)
+        {
+            if (!GetBit(i * 11 + bit))
+            {
+                r_data.values[i]++;
+            }
+        }
+
+        if (r_data.values[i] < 8)
+        {
+            return;
+        }
+    }
+
+    Source::Receive(Source::DoorBell);
+}
+
+
+void CMT2210AW::Data::VerifyPreambule1()
 {
 #define BARKERTRESHOLD 3
 
@@ -166,17 +199,6 @@ static const uint8_t BITSSETTABLEFF[2048] =
     5, 6, 6, 7, 6, 7, 7, 8, 6, 7, 7, 8, 7, 8, 8, 9, 6, 7, 7, 8, 7, 8, 8, 9, 7, 8, 8, 9, 8, 9, 9,10,
     6, 7, 7, 8, 7, 8, 8, 9, 7, 8, 8, 9, 8, 9, 9,10, 7, 8, 8, 9, 8, 9, 9,10, 8, 9, 9,10, 9,10,10,11
 };
-
-    // ѕосылка будет вот така€ : 111111010001101 - 15 бит,
-    // где кажда€ единица - это пр€ма€ последовательность баркера(11100010110),
-    // а ноль - инверсна€(00011101001)
-    // 0x1c5b8b716e 0x2dc5b8b0e9e2c3a4 0x748e9e2dc5874f16
-
-    words[0] &= 0x1fffffffff;               // «десь оствл€ем только 165 - 64 - 64 = 37 бит
-
-    xors[0] = words[0] ^ 0x0000001c5b8b716e;
-    xors[1] = words[1] ^ 0x2dc5b8b0e9e2c3a4;
-    xors[2] = words[2] ^ 0x748e9e2dc5874f16;
 
     uint packet = 0;
 
@@ -262,27 +284,6 @@ static const uint8_t BITSSETTABLEFF[2048] =
             Source::Receive(Source::DoorBell);
         }
     }
-
-
-/*
-    ReceivedData r_data;
-
-    for (int i = 0; i < 15; i++)
-    {
-        for (int bit = 0; bit < 11; bit++)
-        {
-            if (!GetBit(i * 11 + bit))
-            {
-                r_data.values[i]++;
-            }
-        }
-
-        if (r_data.values[i] < 8)
-        {
-            return;
-        }
-    }
-*/
 }
 
 
