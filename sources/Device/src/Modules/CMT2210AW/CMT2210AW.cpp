@@ -192,13 +192,23 @@ static const uint8_t BITSSETTABLEFF[2048] =
         uint32_t packet = 0;
         uint32_t bitlevel = 0;
 
-        //check bit HEAD 6
-        bitlevel = BITSSETTABLEFF[(xors[0] >> 26) & 0x07FF];
-        if(bitlevel < BARKERTRESHOLD)
-            packet |= 0x4000;
-        else
-            if(bitlevel < (11 - BARKERTRESHOLD))
+        //                    H6
+        const int index[] = { 0 };
+        const int shift[] = { 26 };
+        const uint bit[]  = { 0x4000 };
+
+        for (int i = 0; i < 1; i++)
+        {
+            uint level = BITSSETTABLEFF[(xors[index[i]] >> shift[i]) & 0x7FF];
+            if (level < BARKERTRESHOLD)
+            {
+                packet |= bit[i];
+            }
+            else if (level < (11 - BARKERTRESHOLD))
+            {
                 return;
+            }
+        }
 
         //check bit HEAD 5
         bitlevel = BITSSETTABLEFF[(xors[0] >> 15) & 0x07FF];
