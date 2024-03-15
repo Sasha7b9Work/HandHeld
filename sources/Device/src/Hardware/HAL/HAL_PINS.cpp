@@ -3,8 +3,6 @@
 #include "Hardware/HAL/HAL_PINS.h"
 #include <gd32e23x.h>
 
-PinOut pinOUT(GPIOA, GPIO_PIN_2);
-
 const uint I2C_ADDR = I2C1;
 
 PinIn pinSW_LEFT(GPIOB, GPIO_PIN_0);        // PB0  18 
