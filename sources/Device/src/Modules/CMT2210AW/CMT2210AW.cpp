@@ -209,21 +209,9 @@ static const uint8_t BITSSETTABLEFF[2048] =
     6, 7, 7, 8, 7, 8, 8, 9, 7, 8, 8, 9, 8, 9, 9,10, 7, 8, 8, 9, 8, 9, 9,10, 8, 9, 9,10, 9,10,10,11
 };
 
-    //check out HEAD
-/*
-    if((BITSSETTABLEFF[(xors[0] >> 26) & 0x07FF] < BARKERTRESHOLD) &&
-       (BITSSETTABLEFF[(xors[0] >> 15) & 0x07FF] < BARKERTRESHOLD) &&
-       (BITSSETTABLEFF[(xors[0] >>  4) & 0x07FF] < BARKERTRESHOLD) &&
-       ((BITSSETTABLEFF[xors[0] & 0x0F] + (BITSSETTABLEFF[(xors[1] >> 57) & 0x07FF])) < BARKERTRESHOLD) &&
-       (BITSSETTABLEFF[(xors[1] >> 46) & 0x07FF] < BARKERTRESHOLD) &&
-       (BITSSETTABLEFF[(xors[1] >> 35) & 0x07FF] < BARKERTRESHOLD) &&
-       (BITSSETTABLEFF[(xors[1] >> 24) & 0x07FF] > (11 - BARKERTRESHOLD))
-      )
-    {
-*/
 
         uint32_t packet = 0;
-        uint32_t bitlevel;
+        uint32_t bitlevel = 0;
 
         //check bit HEAD 6
         bitlevel = BITSSETTABLEFF[(xors[0] >> 26) & 0x07FF];
