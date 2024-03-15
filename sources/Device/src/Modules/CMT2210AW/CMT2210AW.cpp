@@ -110,6 +110,10 @@ void CMT2210AW::Data::VerifyPreambule2()
         {
             return;
         }
+        else
+        {
+            i = i;
+        }
     }
 
     Source::Receive(Source::DoorBell);
