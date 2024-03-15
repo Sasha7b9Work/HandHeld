@@ -88,32 +88,14 @@ namespace CMT2210AW
     };
     */
 
-    struct ReceivedData
-    {
-        ReceivedData()
-        {
-            for (int i = 0; i < 15; i++)
-            {
-                values[i] = 0;
-            }
-        }
-        int values[15];
-    };
+    static uint64 words[3] = { 0, 0, 0 };
+    static uint64 xors[3] = { 0, 0, 0 };
 
+    static void AppendBit(bool);
 
-    struct Data
-    {
-        uint64 words[3] = { 0, 0, 0 };
-        uint64 xors[3] = { 0, 0, 0 };
+    static void VerifyPreambule1();
 
-        void AppendBit(bool);
-
-        void VerifyPreambule1();
-
-        uint GetBits(uint64);
-    };
-
-    static Data data;
+    static uint GetBits(uint64);
 }
 
 
@@ -125,11 +107,11 @@ void CMT2210AW::Init()
 
 void CMT2210AW::CallbackOnBit()
 {
-    data.AppendBit(pinDOUT.IsHi());
+    AppendBit(pinDOUT.IsHi());
 }
 
 
-void CMT2210AW::Data::AppendBit(bool bit)
+void CMT2210AW::AppendBit(bool bit)
 {
     words[0] <<= 1;
 
@@ -166,7 +148,7 @@ void CMT2210AW::Data::AppendBit(bool bit)
 }
 
 
-uint CMT2210AW::Data::GetBits(uint64 bits)
+uint CMT2210AW::GetBits(uint64 bits)
 {
     static const uint byte_count[256] =
     {
@@ -192,7 +174,7 @@ uint CMT2210AW::Data::GetBits(uint64 bits)
 }
 
 
-void CMT2210AW::Data::VerifyPreambule1()
+void CMT2210AW::VerifyPreambule1()
 {
 #define BARKERTRESHOLD 3
 
