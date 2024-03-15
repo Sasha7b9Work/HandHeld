@@ -52,10 +52,6 @@ namespace CMT2210AW
 
         void VerifyPreambule1();
 
-        void VerifyPreambule2();
-
-        void VerifyPreambule3();
-
         uint GetOnes(uint64);
 
         bool GetBit(int num_bit) const;
@@ -118,47 +114,6 @@ void CMT2210AW::Data::AppendBit(bool bit)
 }
 
 
-void CMT2210AW::Data::VerifyPreambule2()
-{
-    ReceivedData r_data;
-
-    for (int i = 0; i < 15; i++)
-    {
-        for (int bit = 0; bit < 11; bit++)
-        {
-            if (GetBit(i * 11 + bit))
-            {
-                r_data.values[i]++;
-            }
-        }
-
-        if (i < 6)
-        {
-            if (r_data.values[i] < 9)
-            {
-                return;
-            }
-        }
-        else if (i == 6)
-        {
-            if (r_data.values[i] > 2)
-            {
-                return;
-            }
-        }
-        else
-        {
-            if (r_data.values[i] < 3 || r_data.values[i] > 8)
-            {
-                return;
-            }
-        }
-    }
-
-    Source::Receive(Source::DoorBell);
-}
-
-
 uint CMT2210AW::Data::GetOnes(uint64 bit)
 {
     uint result = 0;
@@ -172,97 +127,6 @@ uint CMT2210AW::Data::GetOnes(uint64 bit)
     }
 
     return result;
-}
-
-
-void CMT2210AW::Data::VerifyPreambule3()
-{
-#define BARKERTRESHOLD 3
-
-    uint packet = 0;
-
-    //check out HEAD
-    if ((GetOnes((xors[0] >> 26) & 0x07FF) < BARKERTRESHOLD) &&
-        (GetOnes((xors[0] >> 15) & 0x07FF) < BARKERTRESHOLD) &&
-        (GetOnes((xors[0] >> 4) & 0x07FF) < BARKERTRESHOLD) &&
-        ((GetOnes(xors[0] & 0x0F) + (GetOnes((xors[1] >> 57) & 0x07FF))) < BARKERTRESHOLD) &&
-        (GetOnes((xors[1] >> 46) & 0x07FF) < BARKERTRESHOLD) &&
-        (GetOnes((xors[1] >> 35) & 0x07FF) < BARKERTRESHOLD) &&
-        (GetOnes((xors[1] >> 24) & 0x07FF) > (11 - BARKERTRESHOLD))
-        )
-    {
-        //HEAD 1111110 received, now need to check out PAYLOAD
-        uint32_t bitlevel = 0;
-
-        //check bit 0
-        bitlevel = GetOnes(xors[2] & 0x07FF);
-        if (bitlevel < BARKERTRESHOLD)
-            packet |= 0x0001;
-        else
-            if (bitlevel < (11 - BARKERTRESHOLD))
-                return;
-
-        //check bit 1
-        bitlevel = GetOnes((uint16_t)((xors[2] >> 11) & 0x07FF));
-        if (bitlevel < BARKERTRESHOLD)
-            packet |= 0x0002;
-        else
-            if (bitlevel < (11 - BARKERTRESHOLD))
-                return;
-
-        //check bit 2
-        bitlevel = GetOnes((uint16_t)((xors[2] >> 22) & 0x07FF));
-        if (bitlevel < BARKERTRESHOLD)
-            packet |= 0x0004;
-        else
-            if (bitlevel < (11 - BARKERTRESHOLD))
-                return;
-
-        //check bit 3
-        bitlevel = GetOnes((uint16_t)((xors[2] >> 33) & 0x07FF));
-        if (bitlevel < BARKERTRESHOLD)
-            packet |= 0x0008;
-        else
-            if (bitlevel < (11 - BARKERTRESHOLD))
-                return;
-
-        //check bit 4
-        bitlevel = GetOnes((uint16_t)((xors[2] >> 44) & 0x07FF));
-        if (bitlevel < BARKERTRESHOLD)
-            packet |= 0x0010;
-        else
-            if (bitlevel < (11 - BARKERTRESHOLD))
-                return;
-
-        //check bit 5
-        bitlevel = (uint)(GetOnes((uint16_t)((xors[2] >> 55) & 0x07FF)) + GetOnes((uint16_t)(xors[1] & 0x03)));
-        if (bitlevel < BARKERTRESHOLD)
-            packet |= 0x0020;
-        else
-            if (bitlevel < (11 - BARKERTRESHOLD))
-                return;
-
-        //check bit 6
-        bitlevel = GetOnes((uint16_t)((xors[1] >> 2) & 0x07FF));
-        if (bitlevel < BARKERTRESHOLD)
-            packet |= 0x0040;
-        else
-            if (bitlevel < (11 - BARKERTRESHOLD))
-                return;
-
-        //check bit 7
-        bitlevel = GetOnes((uint16_t)((xors[1] >> 13) & 0x07FF));
-        if (bitlevel < BARKERTRESHOLD)
-            packet |= 0x0080;
-        else
-            if (bitlevel < (11 - BARKERTRESHOLD))
-                return;
-
-        if (packet == 0x8D)
-        {
-            Source::Receive(Source::DoorBell);
-        }
-    }
 }
 
 
@@ -386,7 +250,7 @@ static const uint8_t BITSSETTABLEFF[2048] =
                 return;
 
         //check bit HEAD 3
-        bitlevel = BITSSETTABLEFF[xors[0] & 0x0F] + BITSSETTABLEFF[(xors[1] >> 57) & 0x07FF];
+        bitlevel = (uint)(BITSSETTABLEFF[xors[0] & 0x0F] + BITSSETTABLEFF[(xors[1] >> 57) & 0x07FF]);
         if(bitlevel < BARKERTRESHOLD)
             packet |= 0x0800;
         else
