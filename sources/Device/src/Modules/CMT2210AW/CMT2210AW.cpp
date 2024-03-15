@@ -11,23 +11,6 @@
 
 namespace CMT2210AW
 {
-    static const int MAX_BITS = 330;
-    static char bits[MAX_BITS];
-    static int p_bit = 0;
-
-    static void AddBit(bool b)
-    {
-        if (p_bit < MAX_BITS)
-        {
-            bits[p_bit++] = b ? 1 : 0;
-        }
-        else
-        {
-            std::memcpy(bits, bits + 1, MAX_BITS - 1);
-            bits[MAX_BITS - 1] = b ? 1 : 0;
-        }
-    }
-
     struct ReceivedData
     {
         ReceivedData()
@@ -75,8 +58,6 @@ void CMT2210AW::CallbackOnBit()
 
 void CMT2210AW::Data::AppendBit(bool bit)
 {
-    //!!AddBit(bit);
-
     words[0] <<= 1;
 
     if (words[1] & 0x8000000000000000)
@@ -101,10 +82,8 @@ void CMT2210AW::Data::AppendBit(bool bit)
 
     // ѕосылка будет вот така€ : 1111110 10001101 - 15 бит,
     // где кажда€ единица - это пр€ма€ последовательность баркера(11100010110),
-    // а ноль - инверсна€(00011101001)
-    // 0x1c5b8b716e 0x2dc5b8b0e9e2c3a4 0x748e9e2dc5874f16
-
-    //words[0] &= 0x1fffffffff;               // «десь оставл€ем только 165 - 64 - 64 = 37 бит
+    // а ноль - тоже пр€ма€ последовательность, а не инверсна€ инверсна€(00011101001)
+    // 0x1c5b8b716e2dc5b8b716e2dc5b8b716e2dc5b8b716
 
     xors[0] = words[0] ^ 0x0000001C5B8B716E;
     xors[1] = words[1] ^ 0x2DC5B8B716E2DC5B;
