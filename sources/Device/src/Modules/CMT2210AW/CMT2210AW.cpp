@@ -36,6 +36,8 @@ namespace CMT2210AW
         void VerifyPreambule2();
 
         bool GetBit(int num_bit) const;
+
+        void Log();
     };
 
     static Data data;
@@ -81,6 +83,7 @@ void CMT2210AW::Data::AppendBit(bool bit)
     // где кажда€ единица - это пр€ма€ последовательность баркера(11100010110),
     // а ноль - инверсна€(00011101001)
     // 0x1c5b8b716e 0x2dc5b8b0e9e2c3a4 0x748e9e2dc5874f16
+    // 0x1c5b8b716e 0x2dc5b8b0e9e2c3a4 0x748e9e2dc5874f16
 
     words[0] &= 0x1fffffffff;               // «десь оствл€ем только 165 - 64 - 64 = 37 бит
 
@@ -112,11 +115,28 @@ void CMT2210AW::Data::VerifyPreambule2()
         }
         else
         {
-            i = i;
+            if (i == 4)
+            {
+                Log();
+            }
         }
     }
 
     Source::Receive(Source::DoorBell);
+}
+
+
+void CMT2210AW::Data::Log()
+{
+    char buffer[165];
+
+    for (int i = 0; i < 165; i++)
+    {
+        buffer[i] = GetBit(i) ? 1 : 0;
+    }
+
+    char *pointer = buffer;
+    pointer = pointer;
 }
 
 
