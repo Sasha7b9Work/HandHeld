@@ -192,12 +192,20 @@ static const uint8_t BITSSETTABLEFF[2048] =
         uint32_t packet = 0;
         uint32_t bitlevel = 0;
 
-        //                    H6      H5      H4
-        const int index[] = { 0,      0,      0 };
-        const int shift[] = { 26,     15,     4 };
-        const uint bit[]  = { 0x4000, 0x2000, 0x1000 };
+        //check bit HEAD 3
+        bitlevel = (uint)(BITSSETTABLEFF[xors[0] & 0x0F] + BITSSETTABLEFF[(xors[1] >> 57) & 0x07FF]);
+        if (bitlevel < BARKERTRESHOLD)
+            packet |= 0x0800;
+        else
+            if (bitlevel < (11 - BARKERTRESHOLD))
+                return;
 
-        for (int i = 0; i < 2; i++)
+        //                    H6      H5      H4      H2    H1     H0     P0
+        const int index[] = { 0,      0,      0,      1,    1,     1,     2 };
+        const int shift[] = { 26,     15,     4,      46,   35,    24,    0};
+        const uint bit[] = { 0x4000, 0x2000, 0x1000, 0x400, 0x200, 0x100, 0x1 };
+
+        for (int i = 0; i < 4; i++)
         {
             uint level = BITSSETTABLEFF[(xors[index[i]] >> shift[i]) & 0x7FF];
             if (level < BARKERTRESHOLD)
@@ -209,46 +217,6 @@ static const uint8_t BITSSETTABLEFF[2048] =
                 return;
             }
         }
-
-        //check bit HEAD 3
-        bitlevel = (uint)(BITSSETTABLEFF[xors[0] & 0x0F] + BITSSETTABLEFF[(xors[1] >> 57) & 0x07FF]);
-        if(bitlevel < BARKERTRESHOLD)
-            packet |= 0x0800;
-        else
-            if(bitlevel < (11 - BARKERTRESHOLD))
-                return;
-
-        //check bit HEAD 2
-        bitlevel = BITSSETTABLEFF[(xors[1] >> 46) & 0x07FF];
-        if(bitlevel < BARKERTRESHOLD)
-            packet |= 0x0400;
-        else
-            if(bitlevel < (11 - BARKERTRESHOLD))
-                return;
-
-        //check bit HEAD 1
-        bitlevel = BITSSETTABLEFF[(xors[1] >> 35) & 0x07FF];
-        if(bitlevel < BARKERTRESHOLD)
-            packet |= 0x0200;
-        else
-            if(bitlevel < (11 - BARKERTRESHOLD))
-                return;
-
-        //check bit HEAD 0
-        bitlevel = BITSSETTABLEFF[(xors[1] >> 24) & 0x07FF];
-        if(bitlevel < BARKERTRESHOLD)
-            packet |= 0x0100;
-        else
-            if(bitlevel < (11 - BARKERTRESHOLD))
-                return;
-
-        //check bit PAYLOAD 0
-        bitlevel = BITSSETTABLEFF[(uint16_t)xors[2] & 0x07FF];
-        if(bitlevel < BARKERTRESHOLD)
-            packet |= 0x0001;
-        else
-            if(bitlevel < (11 - BARKERTRESHOLD))
-                return;
 
         //check bit PAYLOAD 1
         bitlevel = BITSSETTABLEFF[(uint16_t)((xors[2] >> 11) & 0x07FF)];
