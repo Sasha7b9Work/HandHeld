@@ -103,7 +103,7 @@ void CMT2210AW::Data::AppendBit(bool bit)
         words[2] |= 1;
     }
 
-    // ѕосылка будет вот така€ : 111111010001101 - 15 бит,
+    // ѕосылка будет вот така€ : 1111110 10001101 - 15 бит,
     // где кажда€ единица - это пр€ма€ последовательность баркера(11100010110),
     // а ноль - инверсна€(00011101001)
     // 0x1c5b8b716e 0x2dc5b8b0e9e2c3a4 0x748e9e2dc5874f16
@@ -132,16 +132,22 @@ void CMT2210AW::Data::VerifyPreambule2()
             }
         }
 
-        if (r_data.values[i] < 8)
+        if (i < 7)
         {
-            return;
+            if (r_data.values[i] < 9)
+            {
+                return;
+            }
         }
         else
         {
-            if (i == 4)
+            if (r_data.values[i] > 3)
             {
-                char *pointer_bit = bits;
-                pointer_bit = pointer_bit;
+                return;
+            }
+            if (r_data.values[i] < 9)
+            {
+                return;
             }
         }
     }
