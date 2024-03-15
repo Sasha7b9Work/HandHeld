@@ -4,6 +4,7 @@
 #include "Hardware/HAL/HAL_PINS.h"
 #include "Display/Display.h"
 #include "Settings/Settings.h"
+#include "Modules/CMT2210AW/EmulatorReceiver.h"
 #include <gd32e23x.h>
 
 
@@ -60,7 +61,7 @@ void CMT2210AW::CallbackOnBit()
 }
 
 
-void CMT2210AW::Data::AppendBit(bool bit)
+void CMT2210AW::Data::AppendBit(bool /*bit*/)
 {
     words[0] <<= 1;
 
@@ -78,7 +79,7 @@ void CMT2210AW::Data::AppendBit(bool bit)
 
     words[2] <<= 1;
 
-    if (bit)
+    if (EmuRecv::NextBit())
     {
         words[2] |= 1;
     }
