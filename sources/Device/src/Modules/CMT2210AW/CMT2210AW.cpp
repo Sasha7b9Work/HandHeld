@@ -41,8 +41,6 @@ namespace CMT2210AW
         uint GetOnes(uint64);
 
         bool GetBit(int num_bit) const;
-
-        void Log();
     };
 
     static Data data;
@@ -118,30 +116,9 @@ void CMT2210AW::Data::VerifyPreambule2()
         {
             return;
         }
-        else
-        {
-            if (i == 4)
-            {
-                Log();
-            }
-        }
     }
 
     Source::Receive(Source::DoorBell);
-}
-
-
-void CMT2210AW::Data::Log()
-{
-    char buffer[165];
-
-    for (int i = 0; i < 165; i++)
-    {
-        buffer[i] = GetBit(i) ? 1 : 0;
-    }
-
-    char *pointer = buffer;
-    pointer = pointer;
 }
 
 
