@@ -185,7 +185,7 @@ uint CMT2210AW::Data::GetBits(uint64 bits)
     while (bits != 0)
     {
         result += byte_count[bits & 0xFF];
-        bits >>= 4;
+        bits >>= 8;
     }
 
     return result;
