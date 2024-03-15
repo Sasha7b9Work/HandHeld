@@ -106,15 +106,11 @@ namespace CMT2210AW
         uint64 words[3] = { 0, 0, 0 };
         uint64 xors[3] = { 0, 0, 0 };
 
-        void Reset();
-
         void AppendBit(bool);
 
         void VerifyPreambule1();
 
         uint GetBits(uint64);
-
-        bool GetBit(int num_bit) const;
     };
 
     static Data data;
@@ -241,35 +237,4 @@ void CMT2210AW::Data::VerifyPreambule1()
     {
         Source::Receive(Source::DoorBell);
     }
-}
-
-
-bool CMT2210AW::Data::GetBit(int num_bit) const
-{
-    int index = 0;
-    if (num_bit < 37)
-    {
-        num_bit = 36 - num_bit;
-        index = 0;
-    }
-    else if (num_bit < 101)
-    {
-        num_bit = 63 - (num_bit - 37);
-        index = 1;
-    }
-    else
-    {
-        num_bit = 63 - (num_bit - 37 - 64);
-        index = 2;
-    }
-
-    return (xors[index] & (((uint64)1) << num_bit)) != 0;
-}
-
-
-void CMT2210AW::Data::Reset()
-{
-    words[0] = xors[0] = 0;
-    words[1] = xors[1] = 0;
-    words[2] = xors[2] = 0;
 }
