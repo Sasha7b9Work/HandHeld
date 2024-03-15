@@ -208,9 +208,9 @@ void CMT2210AW::Data::VerifyPreambule1()
         if (bitlevel < (11 - BARKERTRESHOLD))
             return;
 
-    //                           H6      H5      H4      H2    H1     H0     P0   P1   P2   P3   P4    P6    P7
-    static const int index[] = { 0,      0,      0,      1,    1,     1,     2,   2,   2,   2,   2,    1,    1 };
-    static const int shift[] = { 26,     15,     4,      46,   35,    24,    0,   11,  22,  33,  44,   2,    13 };
+    //                           H6      H5      H4      H2     H1     H0     P0   P1   P2   P3   P4    P6    P7
+    static const int index[] = { 0,      0,      0,      1,     1,     1,     2,   2,   2,   2,   2,    1,    1 };
+    static const int shift[] = { 26,     15,     4,      46,    35,    24,    0,   11,  22,  33,  44,   2,    13 };
     static const uint bit[]  = { 0x4000, 0x2000, 0x1000, 0x400, 0x200, 0x100, 0x1, 0x2, 0x4, 0x8, 0x10, 0x40, 0x80 };
 
     for (int i = 0; i < 13; i++)
