@@ -132,9 +132,16 @@ void CMT2210AW::Data::VerifyPreambule2()
             }
         }
 
-        if (i < 7)
+        if (i < 6)
         {
             if (r_data.values[i] < 9)
+            {
+                return;
+            }
+        }
+        else if (i == 6)
+        {
+            if (r_data.values[i] > 2)
             {
                 return;
             }
