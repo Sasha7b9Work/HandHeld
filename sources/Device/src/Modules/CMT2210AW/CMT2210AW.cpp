@@ -205,7 +205,7 @@ static const uint8_t BITSSETTABLEFF[2048] =
         const int shift[] = { 26,     15,     4,      46,   35,    24,    0};
         const uint bit[] = { 0x4000, 0x2000, 0x1000, 0x400, 0x200, 0x100, 0x1 };
 
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 7; i++)
         {
             uint level = BITSSETTABLEFF[(xors[index[i]] >> shift[i]) & 0x7FF];
             if (level < BARKERTRESHOLD)
