@@ -11,6 +11,7 @@
 
 namespace CMT2210AW
 {
+    /*
     static const uint8_t BITSSETTABLEFF[2048] =
     {
         0, 1, 1, 2, 1, 2, 2, 3, 1, 2, 2, 3, 2, 3, 3, 4, 1, 2, 2, 3, 2, 3, 3, 4, 2, 3, 3, 4, 3, 4, 4, 5,
@@ -85,6 +86,7 @@ namespace CMT2210AW
         5, 6, 6, 7, 6, 7, 7, 8, 6, 7, 7, 8, 7, 8, 8, 9, 6, 7, 7, 8, 7, 8, 8, 9, 7, 8, 8, 9, 8, 9, 9,10,
         6, 7, 7, 8, 7, 8, 8, 9, 7, 8, 8, 9, 8, 9, 9,10, 7, 8, 8, 9, 8, 9, 9,10, 8, 9, 9,10, 9,10,10,11
     };
+    */
 
     struct ReceivedData
     {
@@ -110,7 +112,7 @@ namespace CMT2210AW
 
         void VerifyPreambule1();
 
-        uint GetOnes(uint64);
+        uint GetBits(uint64);
 
         bool GetBit(int num_bit) const;
     };
@@ -168,16 +170,26 @@ void CMT2210AW::Data::AppendBit(bool bit)
 }
 
 
-uint CMT2210AW::Data::GetOnes(uint64 bit)
+uint CMT2210AW::Data::GetBits(uint64 bits)
 {
+    static const unsigned byte_count[256] =
+    {
+        0, 1, 1, 2, 1, 2, 2, 3, 1, 2, 2, 3, 2, 3, 3, 4, 1, 2, 2, 3, 2, 3, 3, 4, 2, 3, 3, 4, 3, 4, 4, 5,
+        1, 2, 2, 3, 2, 3, 3, 4, 2, 3, 3, 4, 3, 4, 4, 5, 2, 3, 3, 4, 3, 4, 4, 5, 3, 4, 4, 5, 4, 5, 5, 6,
+        1, 2, 2, 3, 2, 3, 3, 4, 2, 3, 3, 4, 3, 4, 4, 5, 2, 3, 3, 4, 3, 4, 4, 5, 3, 4, 4, 5, 4, 5, 5, 6,
+        2, 3, 3, 4, 3, 4, 4, 5, 3, 4, 4, 5, 4, 5, 5, 6, 3, 4, 4, 5, 4, 5, 5, 6, 4, 5, 5, 6, 5, 6, 6, 7,
+        1, 2, 2, 3, 2, 3, 3, 4, 2, 3, 3, 4, 3, 4, 4, 5, 2, 3, 3, 4, 3, 4, 4, 5, 3, 4, 4, 5, 4, 5, 5, 6,
+        2, 3, 3, 4, 3, 4, 4, 5, 3, 4, 4, 5, 4, 5, 5, 6, 3, 4, 4, 5, 4, 5, 5, 6, 4, 5, 5, 6, 5, 6, 6, 7,
+        2, 3, 3, 4, 3, 4, 4, 5, 3, 4, 4, 5, 4, 5, 5, 6, 3, 4, 4, 5, 4, 5, 5, 6, 4, 5, 5, 6, 5, 6, 6, 7,
+        3, 4, 4, 5, 4, 5, 5, 6, 4, 5, 5, 6, 5, 6, 6, 7, 4, 5, 5, 6, 5, 6, 6, 7, 5, 6, 6, 7, 6, 7, 7, 8
+    };
+
     uint result = 0;
 
-    for (uint64 i = 0; i < 11; i++)
+    while (bits != 0)
     {
-        if ((bit & (((uint64)1) << i)) != 0)
-        {
-            result++;
-        }
+        result += byte_count[bits & 0xFF];
+        bits >>= 4;
     }
 
     return result;
@@ -192,7 +204,7 @@ void CMT2210AW::Data::VerifyPreambule1()
     uint32_t bitlevel = 0;
 
     //check bit HEAD 3
-    bitlevel = (uint)(BITSSETTABLEFF[xors[0] & 0x0F] + BITSSETTABLEFF[(xors[1] >> 57) & 0x07FF]);
+    bitlevel = (uint)(GetBits(xors[0] & 0x0F) + GetBits((xors[1] >> 57) & 0x07FF));
     if (bitlevel < BARKERTRESHOLD)
         packet |= 0x0800;
     else
@@ -200,7 +212,7 @@ void CMT2210AW::Data::VerifyPreambule1()
             return;
 
     //check bit PAYLOAD 5
-    bitlevel = (uint)(BITSSETTABLEFF[(uint16_t)((xors[2] >> 55) & 0x07FF)] + BITSSETTABLEFF[(uint16_t)(xors[1] & 0x03)]);
+    bitlevel = (uint)(GetBits((uint16_t)((xors[2] >> 55) & 0x07FF)) + GetBits((uint16_t)(xors[1] & 0x03)));
     if (bitlevel < BARKERTRESHOLD)
         packet |= 0x0020;
     else
@@ -214,7 +226,7 @@ void CMT2210AW::Data::VerifyPreambule1()
 
     for (int i = 0; i < 13; i++)
     {
-        uint level = BITSSETTABLEFF[(xors[index[i]] >> shift[i]) & 0x7FF];
+        uint level = GetBits((xors[index[i]] >> shift[i]) & 0x7FF);
         if (level < BARKERTRESHOLD)
         {
             packet |= bit[i];
