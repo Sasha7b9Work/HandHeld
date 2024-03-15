@@ -6,10 +6,28 @@
 #include "Settings/Settings.h"
 #include "Modules/CMT2210AW/EmulatorReceiver.h"
 #include <gd32e23x.h>
+#include <cstring>
 
 
 namespace CMT2210AW
 {
+    static const int MAX_BITS = 330;
+    static char bits[MAX_BITS];
+    static int p_bit = 0;
+
+    static void AddBit(bool b)
+    {
+        if (p_bit < MAX_BITS)
+        {
+            bits[p_bit++] = b ? 1 : 0;
+        }
+        else
+        {
+            std::memcpy(bits, bits + 1, MAX_BITS - 1);
+            bits[MAX_BITS - 1] = b ? 1 : 0;
+        }
+    }
+
     struct ReceivedData
     {
         ReceivedData()
@@ -61,6 +79,8 @@ void CMT2210AW::CallbackOnBit()
 
 void CMT2210AW::Data::AppendBit(bool bit)
 {
+    AddBit(bit);
+
     words[0] <<= 1;
 
     if (words[1] & 0x8000000000000000)
@@ -94,7 +114,7 @@ void CMT2210AW::Data::AppendBit(bool bit)
     xors[1] = words[1] ^ 0x2dc5b8b0e9e2c3a4;
     xors[2] = words[2] ^ 0x748e9e2dc5874f16;
 
-    VerifyPreambule3();
+    VerifyPreambule2();
 }
 
 
@@ -115,6 +135,14 @@ void CMT2210AW::Data::VerifyPreambule2()
         if (r_data.values[i] < 8)
         {
             return;
+        }
+        else
+        {
+            if (i == 4)
+            {
+                char *pointer_bit = bits;
+                pointer_bit = pointer_bit;
+            }
         }
     }
 
