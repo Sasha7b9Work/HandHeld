@@ -69,7 +69,7 @@ void SysTick_Handler(void)
 
     delay_decrement();
 
-    Keyboard::Update();
+//    Keyboard::Update();
 }
 
 
