@@ -38,8 +38,6 @@ namespace CMT2210AW
 
     static Data data;
 
-    static uint32_t packet = 0;
-
     // ¬ключить прерывание по SCK
     void EnableEXTI_SCK();
 
@@ -112,7 +110,7 @@ void CMT2210AW::Data::VerifyPreambule()
 {
 #define BARKERTRESHOLD 3
 
-const uint8_t BITSSETTABLEFF[2048] =
+static const uint8_t BITSSETTABLEFF[2048] =
 {
     0, 1, 1, 2, 1, 2, 2, 3, 1, 2, 2, 3, 2, 3, 3, 4, 1, 2, 2, 3, 2, 3, 3, 4, 2, 3, 3, 4, 3, 4, 4, 5,
     1, 2, 2, 3, 2, 3, 3, 4, 2, 3, 3, 4, 3, 4, 4, 5, 2, 3, 3, 4, 3, 4, 4, 5, 3, 4, 4, 5, 4, 5, 5, 6,
@@ -198,6 +196,8 @@ const uint8_t BITSSETTABLEFF[2048] =
     xors[1] = words[1] ^ 0x2dc5b8b0e9e2c3a4;
     xors[2] = words[2] ^ 0x748e9e2dc5874f16;
 
+    uint packet = 0;
+
     //check out HEAD
     if((BITSSETTABLEFF[(xors[0] >> 26) & 0x07FF] < BARKERTRESHOLD) &&
        (BITSSETTABLEFF[(xors[0] >> 15) & 0x07FF] < BARKERTRESHOLD) &&
@@ -209,7 +209,7 @@ const uint8_t BITSSETTABLEFF[2048] =
       )
     {
         //HEAD 1111110 received, now need to check out PAYLOAD
-        uint32_t bitlevel;
+        uint32_t bitlevel = 0;
 
         //check bit 0
         bitlevel = BITSSETTABLEFF[(uint16_t)xors[2] & 0x07FF];
@@ -252,7 +252,7 @@ const uint8_t BITSSETTABLEFF[2048] =
                 return;
 
         //check bit 5
-        bitlevel = BITSSETTABLEFF[(uint16_t)((xors[2] >> 55) & 0x07FF)] + BITSSETTABLEFF[(uint16_t)(xors[1] & 0x03)];
+        bitlevel = (uint)(BITSSETTABLEFF[(uint16_t)((xors[2] >> 55) & 0x07FF)] + BITSSETTABLEFF[(uint16_t)(xors[1] & 0x03)]);
         if(bitlevel < BARKERTRESHOLD)
             packet |= 0x0020;
         else
