@@ -63,17 +63,7 @@ void CMT2210AW::Init()
 
 void CMT2210AW::CallbackOn1MS()
 {
-//    static int counter = 0;
-//    static bool value = false;
-//
-//    if (counter++ == 1000)
-//    {
-//        counter = 0;
-//
-//        value = !value;
-//
-//        value ? pinOUT.ToHi() : pinOUT.ToLow();
-//    }
+    pinOUT.ToHi();
 
     data.AppendBit(pinDOUT.IsHi());
 }
@@ -199,19 +189,20 @@ static const uint8_t BITSSETTABLEFF[2048] =
     uint packet = 0;
 
     //check out HEAD
-    if((BITSSETTABLEFF[(xors[0] >> 26) & 0x07FF] < BARKERTRESHOLD) &&
+    if(/*(BITSSETTABLEFF[(xors[0] >> 26) & 0x07FF] < BARKERTRESHOLD) && */
        (BITSSETTABLEFF[(xors[0] >> 15) & 0x07FF] < BARKERTRESHOLD) &&
        (BITSSETTABLEFF[(xors[0] >>  4) & 0x07FF] < BARKERTRESHOLD) &&
-       ((BITSSETTABLEFF[xors[0] & 0x0F] + BITSSETTABLEFF[(xors[1] >> 57) & 0x07FF]) < BARKERTRESHOLD) &&
+       ((BITSSETTABLEFF[xors[0] & 0x0F] + (BITSSETTABLEFF[(xors[1] >> 57) & 0x07FF])) < BARKERTRESHOLD) &&
        (BITSSETTABLEFF[(xors[1] >> 46) & 0x07FF] < BARKERTRESHOLD) &&
        (BITSSETTABLEFF[(xors[1] >> 35) & 0x07FF] < BARKERTRESHOLD) &&
-       (BITSSETTABLEFF[(xors[1] >> 24) & 0x07FF] > (11 - BARKERTRESHOLD)) 
+       (BITSSETTABLEFF[(xors[1] >> 24) & 0x07FF] > (11 - BARKERTRESHOLD))
       )
     {
         //HEAD 1111110 received, now need to check out PAYLOAD
         uint32_t bitlevel = 0;
 
         //check bit 0
+        pinOUT.ToLow();
         bitlevel = BITSSETTABLEFF[(uint16_t)xors[2] & 0x07FF];
         if(bitlevel < BARKERTRESHOLD)
             packet |= 0x0001;
