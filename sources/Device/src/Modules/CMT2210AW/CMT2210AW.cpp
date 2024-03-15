@@ -61,7 +61,7 @@ void CMT2210AW::CallbackOnBit()
 }
 
 
-void CMT2210AW::Data::AppendBit(bool /*bit*/)
+void CMT2210AW::Data::AppendBit(bool bit)
 {
     words[0] <<= 1;
 
@@ -79,7 +79,8 @@ void CMT2210AW::Data::AppendBit(bool /*bit*/)
 
     words[2] <<= 1;
 
-    if (EmuRecv::NextBit())
+//    if (EmuRecv::NextBit())
+    if (bit)
     {
         words[2] |= 1;
     }
