@@ -28,7 +28,7 @@ void Beeper::Init()
     // TIMER2 configuration : generate 3 PWM signals with 3 different duty cycles :
     // TIMER2CLK = SystemCoreClock / 72 = 1MHz, the PWM frequency is 62.5Hz.
 
-    timer_initpara.prescaler = 71;
+    timer_initpara.prescaler = 199;
     timer_initpara.alignedmode = TIMER_COUNTER_EDGE;
     timer_initpara.counterdirection = TIMER_COUNTER_UP;
     timer_initpara.period = 15999;
