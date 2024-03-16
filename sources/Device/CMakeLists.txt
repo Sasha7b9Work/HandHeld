@@ -44,7 +44,9 @@ file(GLOB MENU_PAGES        src/Menu/Pages/*.*)
 file(GLOB MODULES_CMT2210AW src/Modules/CMT2210AW/*.*)
 file(GLOB MODULES_PCF8563   src/Modules/PCF8563/*.*)
 file(GLOB MODULES_ST7735    src/Modules/ST7735/*.*)
+file(GLOB PLAYER            src/Player/*.*)
 file(GLOB SETTINGS          src/Settings/*.*)
+file(GLOB UTILS             src/Utils/*.*)
 
 source_group(GD32E23x             FILES ${GD32E23x})
 source_group(src                  FILES ${SRC})
@@ -58,7 +60,9 @@ source_group(Menu/Pages           FILES ${MENU_PAGES})
 source_group(Modules/CMT2210AW    FILES ${MODULES_CMT2210AW})
 source_group(Modules/PCF8563      FILES ${MODULES_PCF8563})
 source_group(Modules/ST7735       FILES ${MODULES_ST7735})
+source_group(Player               FILES ${PLAYER})
 source_group(Settings             FILES ${SETTINGS})
+source_group(Utils                FILES ${UTILS})
 
 set_source_files_properties(
     ${GD32E23x}
@@ -79,5 +83,7 @@ add_library(${PROJECT_NAME}
     ${MODULES_CMT2210AW}
     ${MODULES_PCF8563}
     ${MODULES_ST7735}
+    ${PLAYER}
     ${SETTINGS}
+    ${UTILS}
 )

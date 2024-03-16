@@ -61,6 +61,9 @@ file(GLOB MODULES_PCF8563         ../../Device/src/Modules/PCF8563/*.h
 file(GLOB MODULES_ST7735          ../../Device/src/Modules/ST7735/*.h)
 file(GLOB MENU                    ../../Device/src/Menu/*.*)
 file(GLOB MENU_PAGES              ../../Device/src/Menu/Pages/*.*)
+file(GLOB PLAYER                  ../../Device/src/Player/*.h
+                                  ../../Device/src/Player/Player.cpp
+                                                   Player/*.*)
 file(GLOB SETTINGS                ../../Device/src/Settings/*.*)
 file(GLOB UTILS                   ../../Device/src/Utils/*.*)
 
@@ -76,6 +79,7 @@ source_group(Modules/PCF8563      FILES ${MODULES_PCF8563})
 source_group(Modules/ST7735       FILES ${MODULES_ST7735})
 source_group(Menu                 FILES ${MENU})
 source_group(Menu/Pages           FILES ${MENU_PAGES})
+source_group(Player               FILES ${PLAYER})
 source_group(Settings             FILES ${SETTINGS})
 source_group(Utils                FILES ${UTILS})
 
@@ -108,6 +112,7 @@ add_executable(${PROJECT_NAME}
     ${MODULES_ST7735}
     ${MENU}
     ${MENU_PAGES}
+    ${PLAYER}
     ${SETTINGS}
     ${UTILS}
 )
