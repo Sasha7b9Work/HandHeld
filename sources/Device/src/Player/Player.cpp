@@ -61,8 +61,14 @@ namespace Player
         ChannelState channelState[HXMIDIPLAYER_CHANNELS_COUNT];
     };
 
-    // Called by player to output data to DAC/pwm
-    static void Output(uint8 /*sample*/);
+    // Вывод отсчёта
+    static void CallbackOutput(uint8 sample);
+
+    // Вызывается плеером, когда игрок мелодия стартует (из StartMelody()). Может использоваться для настройки таймера/ШИМ.
+    static void CallbackStarted();
+
+    // Вызывается проигрывателем после завершения мелодии (из TimerFunc(), прерывания отключены). Может использоваться для настройки таймера/ШИМ.
+    static void CallbackFinished();
 
     // Timer event function, should be called by user with fixed frequency HXMIDIPLAYER_SAMPLING_RATE
     void TimerFunc();
@@ -79,16 +85,6 @@ namespace Player
     void WaitFinish();
 
     void Stop();
-
-    // Called by player when player starts to play 
-    // ( from Player_StartMelody() )
-    // Can be used to configure timer/pwm
-    static void Started();
-
-    // Called by player when melody is finished 
-    // ( from Player_TimerFunc(), interrupts disabled )
-    // Can be used to configure timer/pwm
-    static void Finished();
 
     static void ProcessEvents();
 
@@ -139,18 +135,18 @@ void Player::Play(TypeMelody::E type)
 }
 
 
-void Player::Output(uint8 /*sample*/)
+void Player::CallbackOutput(uint8 /*sample*/)
 {
 }
 
 
-void Player::Started()
+void Player::CallbackStarted()
 {
 
 }
 
 
-void Player::Finished()
+void Player::CallbackFinished()
 {
 
 }
@@ -269,7 +265,7 @@ void Player::ProcessEvents()
     {
         //        #asm("cli")
         s_playerState.stream1.pData = nullptr;
-        Finished();
+        CallbackFinished();
         return;
     }
 
@@ -360,7 +356,7 @@ void Player::TimerFunc()
         pState++;
     }
 
-    Output(sample);
+    CallbackOutput(sample);
 }
 
 
@@ -368,7 +364,7 @@ void Player::StartMelody(const Melody *_pMelody, uint16 _delay)
 {
     Stop();
 
-    Started();
+    CallbackStarted();
 
     memset(s_playerState.channelState, 0, sizeof(ChannelState) * HXMIDIPLAYER_CHANNELS_COUNT);
 
@@ -422,6 +418,6 @@ void Player::Stop()
 
 //        #asm("sei")
 
-        Finished();
+        CallbackFinished();
     }
 }
