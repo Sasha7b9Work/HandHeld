@@ -362,13 +362,13 @@ void Player::TimerFunc()
         pState++;
     }
 
-    Player::Output(sample);
+    Output(sample);
 }
 
 
 void Player::StartMelody(const TMelody *_pMelody, uint16 _delay)
 {
-    Player::Stop();
+    Stop();
 
     Started();
 
