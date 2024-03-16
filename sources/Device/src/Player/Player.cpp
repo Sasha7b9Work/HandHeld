@@ -414,11 +414,7 @@ void Player::TimerFunc()
 
     //create sample
 
-#ifdef HXMIDIPLAYER_WAVEFORM_SQUARE    
-    sample = 0;
-#else
     sample = 0x80;
-#endif     
 
     pState = &s_playerState.m_channelState[0];
 
@@ -427,25 +423,15 @@ void Player::TimerFunc()
 #ifdef HXMIDIPLAYER_ENABLE_DRUMS_SYNTEZER    
         if (pState->m_counterAdd == 1)
         {
-
-#ifdef HXMIDIPLAYER_WAVEFORM_SQUARE    
-            sample += Player_GetWhiteNoise() & 1;
-#else
             if ((Player_GetWhiteNoise() & 1) != 0)
             {
                 sample += 127 / HXMIDIPLAYER_CHANNELS_COUNT / 4;
             }
-#endif     
-
         }
         else
 #endif //drums syntezer        
         {
 
-#ifdef HXMIDIPLAYER_WAVEFORM_SQUARE    
-            pState->m_counter += pState->m_counterAdd;
-            sample += (pState->m_counter >> PLAYER_FREQ_SHR) & 1;
-#endif
 
 #ifdef HXMIDIPLAYER_WAVEFORM_SINE    
             pState->m_counter += pState->m_counterAdd;
