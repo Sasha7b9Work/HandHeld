@@ -53,7 +53,7 @@ void Beeper::Init()
     timer_channel_output_shadow_config(TIMER14, TIMER_CH_1, TIMER_OC_SHADOW_DISABLE);
 
     /* auto-reload preload enable */
-    timer_auto_reload_shadow_enable(TIMER14);
+//    timer_auto_reload_shadow_enable(TIMER14);
 
     timer_interrupt_flag_clear(TIMER14, TIMER_INT_FLAG_CH1);
     timer_interrupt_enable(TIMER14, TIMER_INT_CH1);
