@@ -57,9 +57,6 @@ namespace Player
         ChannelState channelState[HXMIDIPLAYER_CHANNELS_COUNT];
     };
 
-    // Timer event function, should be called by user with fixed frequency HXMIDIPLAYER_SAMPLING_RATE
-    void TimerFunc();
-
     // Start playing melody
     // Previously played melody is stoped, Player_Finished callback is called.
     // Player_Started() callback is called on start.

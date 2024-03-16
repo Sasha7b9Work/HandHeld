@@ -46,4 +46,7 @@ namespace Player
     // Player_Finished() callback is called if was playing.
     // If melody is not playing - call is ignored completely.
     void Stop();
+
+    // Функция события таймера должна вызываться пользователем с фиксированной частотой HXMIDIPLAYER_SAMPLING_RATE
+    void TimerFunc();
 }
