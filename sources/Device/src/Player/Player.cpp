@@ -17,13 +17,13 @@
 namespace Player
 {
     // Single syntezer channel state  
-    struct TChannelState
+    struct ChannelState
     {
-        uint16    m_counter;      //square wave, sine or waveform generator counter
+        uint16 counter;      //square wave, sine or waveform generator counter
 
-        uint16    m_counterAdd;   //0 - off, 1 - drum, >0 - add value for counter
+        uint16 counterAdd;   //0 - off, 1 - drum, >0 - add value for counter
 
-        uint8     m_envelopeCounter;
+        uint8  envelopeCounter;
     };
 
 
@@ -60,7 +60,7 @@ namespace Player
         uint8           m_envelopeSkipCounter;
 
         // Syntezer channels states
-        TChannelState   m_channelState[HXMIDIPLAYER_CHANNELS_COUNT];
+        ChannelState   m_channelState[HXMIDIPLAYER_CHANNELS_COUNT];
     };
 
     // Called by player to output data to DAC/pwm
@@ -295,10 +295,10 @@ void Player::ProcessEvents()
 
 //    #asm("cli")
 
-    s_playerState.m_channelState[channelIndex].m_counter = 0;
-    s_playerState.m_channelState[channelIndex].m_counterAdd = cadd;
+    s_playerState.m_channelState[channelIndex].counter = 0;
+    s_playerState.m_channelState[channelIndex].counterAdd = cadd;
 
-    s_playerState.m_channelState[channelIndex].m_envelopeCounter = 0;
+    s_playerState.m_channelState[channelIndex].envelopeCounter = 0;
 
     s_playerState.m_eventCounter = delta;
 }
@@ -308,7 +308,7 @@ void Player::TimerFunc()
 {
     uint8 sample;
     uint8 i;
-    TChannelState *pState;
+    ChannelState *pState;
 
     if (s_playerState.m_stream1.m_pData == nullptr)
     {
@@ -322,9 +322,9 @@ void Player::TimerFunc()
 
         for (i = 0; i < HXMIDIPLAYER_CHANNELS_COUNT; i++)
         {
-            if (s_playerState.m_channelState[i].m_envelopeCounter < 255)
+            if (s_playerState.m_channelState[i].envelopeCounter < 255)
             {
-                s_playerState.m_channelState[i].m_envelopeCounter++;
+                s_playerState.m_channelState[i].envelopeCounter++;
             }
         }
 
@@ -347,11 +347,11 @@ void Player::TimerFunc()
         {
             uint8 sineVal;
             uint8 envelopeVal;
-            pState->m_counter += pState->m_counterAdd;
+            pState->counter += pState->counterAdd;
             //sineVal is unsigned value, biased by 0x80 ( 0 -> 0x80 )
-            sineVal = s_sineTable[(pState->m_counter >> (PLAYER_FREQ_SHR - 5)) & 63];
+            sineVal = s_sineTable[(pState->counter >> (PLAYER_FREQ_SHR - 5)) & 63];
             //envelopeVal is volume value 0..255
-            envelopeVal = s_envelope[pState->m_envelopeCounter >> 1];
+            envelopeVal = s_envelope[pState->envelopeCounter >> 1];
             //scale sineVal as unsigned value using simple mul/shift. We divide by 256, not 255 for simplicity.
             sineVal = (uint8_t)((((uint16_t)sineVal) * envelopeVal) >> 8);
             //after scaling, 0x80 (biased zero ) became m_envelopeVal / 2
@@ -372,7 +372,7 @@ void Player::StartMelody(const TMelody *_pMelody, uint16 _delay)
 
     Started();
 
-    memset(s_playerState.m_channelState, 0, sizeof(TChannelState) * HXMIDIPLAYER_CHANNELS_COUNT);
+    memset(s_playerState.m_channelState, 0, sizeof(ChannelState) * HXMIDIPLAYER_CHANNELS_COUNT);
 
     s_playerState.m_eventCounter = (uint16)(1 + _delay);
     s_playerState.m_envelopeSkipCounter = 0;
