@@ -914,6 +914,21 @@
               <FileType>5</FileType>
               <FilePath>.\src\Player\Player.h</FilePath>
             </File>
+            <File>
+              <FileName>hxMidiPlayer.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Player\hxMidiPlayer.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>hxMidiPlayer.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Player\hxMidiPlayer.h</FilePath>
+            </File>
+            <File>
+              <FileName>hxMidiPlayer_Config.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Player\hxMidiPlayer_Config.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1865,6 +1880,21 @@
               <FileName>Player.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Player\Player.h</FilePath>
+            </File>
+            <File>
+              <FileName>hxMidiPlayer.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Player\hxMidiPlayer.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>hxMidiPlayer.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Player\hxMidiPlayer.h</FilePath>
+            </File>
+            <File>
+              <FileName>hxMidiPlayer_Config.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Player\hxMidiPlayer_Config.h</FilePath>
             </File>
           </Files>
         </Group>
