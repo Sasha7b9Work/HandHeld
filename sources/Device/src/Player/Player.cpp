@@ -56,7 +56,7 @@ namespace Player
 
     // Начать воспроизведение мелодии. Ранее проигрывавшаяся мелодия останавливается, вызывается обратный вызов Player_Finished.
     // Обратный вызов Player_Started() вызывается при запуске. _delay - задержка запуска с частотой 255 Гц, максимум 65534
-    void StartMelody(const Melody *_pMelody, uint16 _delay);
+    void StartMelody(const Melody *, uint16 _delay);
 
     bool IsPlaying();
 
@@ -65,14 +65,14 @@ namespace Player
     static void ProcessEvents();
 
     // продвигать поток вперед по количеству битов
-    static void Advance(CompressedStreamState *_state, uint16 _bitsCount);
+    static void Advance(CompressedStreamState *, uint16 _bitsCount);
 
-    static uint16 ReadBits(CompressedStreamState *_state, uint8 _bitsCount, uint16 _mask);
+    static uint16 ReadBits(CompressedStreamState *, uint8 _bitsCount, uint16 _mask);
 
     // продвигать поток к фактическим данным
-    static void StartStream(CompressedStreamState *_state, uint8 _numberOfBits);
+    static void StartStream(CompressedStreamState *, uint8 _numberOfBits);
 
-    static uint16 Decompress(CompressedStreamState *_state, const uint8 *_streamBase, uint8 _bitsCount, uint16 _mask);
+    static uint16 Decompress(CompressedStreamState *, const uint8 *_streamBase, uint8 _bitsCount, uint16 _mask);
 
     static PlayerState playerState =
     {
@@ -112,11 +112,8 @@ void Player::Play(TypeMelody::E type)
 
 uint16 inline Player_GetNoteFreqAdd(uint8 _noteNumber)
 {
-    uint8 noteIndex;
-    uint8 noteDiv;
-
-    noteIndex = (uint8)(132 - 1 - _noteNumber);
-    noteDiv = (uint8)(noteIndex / 12);                          //how many octaves down
+    uint8 noteIndex = (uint8)(132 - 1 - _noteNumber);
+    uint8 noteDiv = (uint8)(noteIndex / 12);                          //how many octaves down
     noteIndex = (uint8)(noteIndex - 12 * noteDiv);
     return (uint16)(s_noteFreqEx[noteIndex] >> noteDiv);
 }
@@ -202,16 +199,11 @@ uint16 Player::Decompress(CompressedStreamState *_state, const uint8 *_streamBas
 
 void Player::ProcessEvents()
 {
-    uint8 channelIndex;
-    uint8 noteNumber;
-    uint16 delta;
-    uint16 cadd;
-
     playerState.eventCounter = (uint16)0xffff;
 
-    delta = Decompress(&playerState.stream1, playerState.stream1_start, 11, 0x7ff);
-    noteNumber = (uint8)(delta & 0x7f);
-    channelIndex = (uint8)(delta >> 7);
+    uint16 delta = Decompress(&playerState.stream1, playerState.stream1_start, 11, 0x7ff);
+    uint8 noteNumber = (uint8)(delta & 0x7f);
+    uint8 channelIndex = (uint8)(delta >> 7);
 
     delta = Decompress(&playerState.stream2, playerState.stream2_start, 13, 0x1fff);
 
@@ -221,6 +213,8 @@ void Player::ProcessEvents()
         Beeper::StopMelody();
         return;
     }
+
+    uint16 cadd = 0;
 
     if (noteNumber == 0)
     {
@@ -248,10 +242,6 @@ void Player::ProcessEvents()
 
 void Player::TimerFunc()
 {
-    uint8 sample;
-    uint8 i;
-    ChannelState *pState;
-
     if (playerState.stream1.pData == nullptr)
     {
         return;
@@ -262,7 +252,7 @@ void Player::TimerFunc()
     {
         playerState.envelopeSkipCounter = ENVELOPE_SKIP_MAX;
 
-        for (i = 0; i < HXMIDIPLAYER_CHANNELS_COUNT; i++)
+        for (uint8 i = 0; i < HXMIDIPLAYER_CHANNELS_COUNT; i++)
         {
             if (playerState.channelState[i].envelopeCounter < 255)
             {
@@ -282,11 +272,11 @@ void Player::TimerFunc()
 
     // create sample
 
-    sample = 0x80;
+    uint8 sample = 0x80;
 
-    pState = &playerState.channelState[0];
+    ChannelState *pState = &playerState.channelState[0];
 
-    for (i = 0; i < HXMIDIPLAYER_CHANNELS_COUNT; i++)
+    for (uint8 i = 0; i < HXMIDIPLAYER_CHANNELS_COUNT; i++)
     {
         {
             uint8 sineVal;
