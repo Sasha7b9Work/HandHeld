@@ -2,5 +2,7 @@ archive.zip
 
 sources/Device/Listings-Debug/*
 sources/Device/Objects-Debug/*
+sources/Device/Listings/*
+sources/Device/Objects/*
 sources/generated/*
 sources/ThirdParty/wxWidgets/generated/*

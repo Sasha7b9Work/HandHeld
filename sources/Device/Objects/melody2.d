@@ -1,8 +1,0 @@
-./objects/melody2.o: src\Player\melodies\melody2.cpp src\defines.h \
-  src\Player\Player.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\libcxx\stdint.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\libcxx\__config \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdint.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\libcxx\stdbool.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdbool.h \
-  src\Player\PlayerConfig.h src\Player\Melodies\melody2.h
