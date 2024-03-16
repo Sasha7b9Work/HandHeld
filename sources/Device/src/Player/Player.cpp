@@ -69,14 +69,11 @@ typedef struct
 
     uint16    m_counterAdd;   //0 - off, 1 - drum, >0 - add value for counter
 
-#ifdef HXMIDIPLAYER_WAVEFORM_SINE_ENVELOPE
     uint8     m_envelopeCounter;
-#endif    
 
 } TChannelState;
 
 
-#ifdef HXMIDIPLAYER_USE_COMPRESSION
 // TCompressedStreamState
 typedef struct
 {
@@ -85,13 +82,11 @@ typedef struct
     // number of bits still used in byte m_pData points to
     uint8                 m_bitsUsed;
 } TCompressedStreamState;
-#endif
 
 
 // TPlayerState
 typedef struct
 {
-#ifdef HXMIDIPLAYER_USE_COMPRESSION
     //noteNumber stream, 11 bits
     TCompressedStreamState              m_stream1;
     //pause stream, 13 bits
@@ -99,10 +94,6 @@ typedef struct
 
     const uint8 *m_stream1_start;
     const uint8 *m_stream2_start;
-#else
-    // pointer to next event in melody        
-    const flash TPlayerStateChange *m_pMelody;
-#endif
 
     // This value is decreased on every timer event.
     // Initially is writeln from m_delta value of StateChangeEvent.
@@ -123,20 +114,18 @@ typedef struct
 // Player state
 static TPlayerState s_playerState =
 {
-#ifdef HXMIDIPLAYER_USE_COMPRESSION
-        { nullptr, 0 },
-        { nullptr, 0 },
-        nullptr,
-        nullptr,
-#else
-        nullptr,
-#endif
-        0,
-        0,
-        { { 0, 0, 0 },
-          { 0, 0, 0 },
-          { 0, 0, 0 },
-          { 0, 0, 0 } }
+    { nullptr, 0 },
+    { nullptr, 0 },
+    nullptr,
+    nullptr,
+    0,
+    0,
+    {
+      { 0, 0, 0 },
+      { 0, 0, 0 },
+      { 0, 0, 0 },
+      { 0, 0, 0 }
+    }
 };
 
 
@@ -151,7 +140,6 @@ uint16 inline Player_GetNoteFreqAdd(uint8 _noteNumber)
     return (uint16)(s_noteFreqEx[noteIndex] >> noteDiv);
 }
 
-#ifdef HXMIDIPLAYER_USE_COMPRESSION
 
 //advance stream by number of bits
 static void Player_Advance(TCompressedStreamState *_state, uint16 _bitsCount)
@@ -234,7 +222,6 @@ static uint16 Player_Decompress(TCompressedStreamState *_state, const uint8 *_st
     Player_Advance(&state, (uint16)(5 + 16 + ((uint16)code) * _bitsCount));
     return Player_ReadBits(&state, _bitsCount, _mask); //review: doen't need advance
 }
-#endif
 
 
 void Player::ProcessEvents()
@@ -245,10 +232,9 @@ void Player::ProcessEvents()
     uint16 cadd;
 
     s_playerState.m_eventCounter = (uint16)0xffffffff;
-//    #asm("sei")
+    //    #asm("sei")
 
-#ifdef HXMIDIPLAYER_USE_COMPRESSION
-        delta = Player_Decompress(&s_playerState.m_stream1, s_playerState.m_stream1_start, 11, 0x7ff);
+    delta = Player_Decompress(&s_playerState.m_stream1, s_playerState.m_stream1_start, 11, 0x7ff);
     noteNumber = (uint8)(delta & 0x7f);
     channelIndex = (uint8)(delta >> 7);
 
@@ -256,31 +242,11 @@ void Player::ProcessEvents()
 
     if (delta == 0)
     {
-//        #asm("cli")
-            s_playerState.m_stream1.m_pData = nullptr;
+        //        #asm("cli")
+        s_playerState.m_stream1.m_pData = nullptr;
         Finished();
         return;
     }
-
-#else    
-        delta = s_playerState.m_pMelody->m_delta;
-    noteNumber = s_playerState.m_pMelody->m_noteNumber;
-
-    channelIndex = delta & 0x7;
-    delta >>= 3;
-
-    if (delta == 0)
-    {
-        #asm("cli")
-            s_playerState.m_pMelody = NULL;
-        Finished();
-        return;
-    }
-
-    channelIndex |= (noteNumber >> (7 - 3)) & 8;
-
-    noteNumber &= 0x7f;
-#endif
 
     if (noteNumber == 0)
     {
@@ -295,10 +261,6 @@ void Player::ProcessEvents()
         cadd = Player_GetNoteFreqAdd(noteNumber);
     }
 
-#ifndef HXMIDIPLAYER_USE_COMPRESSION            
-    s_playerState.m_pMelody++;
-#endif    
-
     //mid delta is 1:
     //do not hold interrupt for a long time:
     //process next event on next tick event it should be processed immediatelly       
@@ -306,12 +268,10 @@ void Player::ProcessEvents()
 
 //    #asm("cli")
 
-        s_playerState.m_channelState[channelIndex].m_counter = 0;
+    s_playerState.m_channelState[channelIndex].m_counter = 0;
     s_playerState.m_channelState[channelIndex].m_counterAdd = cadd;
 
-#ifdef HXMIDIPLAYER_WAVEFORM_SINE_ENVELOPE
     s_playerState.m_channelState[channelIndex].m_envelopeCounter = 0;
-#endif    
 
     s_playerState.m_eventCounter = delta;
 }
@@ -402,10 +362,10 @@ void Player::StartMelody(const TMelody *_pMelody, uint16 _delay)
     s_playerState.m_eventCounter = (uint16)(1 + _delay);
     s_playerState.m_envelopeSkipCounter = 0;
 
-//    #asm("cli")
+    //    #asm("cli")
 
 #ifdef HXMIDIPLAYER_USE_COMPRESSION
-        s_playerState.m_stream1.m_pData = _pMelody->m_pStream1;
+    s_playerState.m_stream1.m_pData = _pMelody->m_pStream1;
     s_playerState.m_stream2.m_pData = _pMelody->m_pStream2;
     s_playerState.m_stream1.m_bitsUsed = 0;
     s_playerState.m_stream2.m_bitsUsed = 0;
@@ -416,16 +376,16 @@ void Player::StartMelody(const TMelody *_pMelody, uint16 _delay)
     Player_StartStream(&s_playerState.m_stream1, 11);
     Player_StartStream(&s_playerState.m_stream2, 13);
 #else
-        s_playerState.m_pMelody = _pMelody->m_pEvents;
+    s_playerState.m_pMelody = _pMelody->m_pEvents;
 #endif 
 
-//    #asm("sei")
+    //    #asm("sei")
 
-        ///Set initial values for white noise generator
-        //s_playerState.m_wngState.m_nze = 0;
-        //s_playerState.m_wngState.m_t1 = 45;
-        //s_playerState.m_wngState.m_t2 = 34;
-        //s_playerState.m_wngState.m_t3 = 53;
+            ///Set initial values for white noise generator
+            //s_playerState.m_wngState.m_nze = 0;
+            //s_playerState.m_wngState.m_t1 = 45;
+            //s_playerState.m_wngState.m_t2 = 34;
+            //s_playerState.m_wngState.m_t3 = 53;
 }
 
 
@@ -451,16 +411,16 @@ void Player::Stop()
 {
     if (IsPlaying())
     {
-//        #asm("cli")
+        //        #asm("cli")
 
 #ifdef HXMIDIPLAYER_USE_COMPRESSION
-            s_playerState.m_stream1.m_pData = nullptr;
+        s_playerState.m_stream1.m_pData = nullptr;
 #else          
-            s_playerState.m_pMelody = NULL;
+        s_playerState.m_pMelody = NULL;
 #endif        
 
-//        #asm("sei")
+        //        #asm("sei")
 
-            Finished();
+        Finished();
     }
 }
