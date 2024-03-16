@@ -3,25 +3,54 @@
 #include "hxMidiPlayer.h"
 
 
-// Called by player to output data to DAC/pwm
-static void Player_Output(uint8_t /*sample*/)
+
+namespace Player
+{
+    // Called by player to output data to DAC/pwm
+    static void Output(uint8 /*sample*/);
+
+    // Timer event function, should be called by user with fixed frequency HXMIDIPLAYER_SAMPLING_RATE
+    void TimerFunc();
+
+    // Start playing melody
+    // Previously played melody is stoped, Player_Finished callback is called.
+    // Player_Started() callback is called on start.
+    // _delay - start delay in 255Hz ticks, max is 65534
+    void StartMelody(const TMelody *_pMelody, uint16 _delay);
+
+    bool IsPlaying();
+
+    // Wait untill player finishes playing
+    void WaitFinish();
+
+    void Stop();
+
+    // Called by player when player starts to play 
+    // ( from Player_StartMelody() )
+    // Can be used to configure timer/pwm
+    static void Started();
+
+    // Called by player when melody is finished 
+    // ( from Player_TimerFunc(), interrupts disabled )
+    // Can be used to configure timer/pwm
+    static void Finished();
+
+    static void ProcessEvents();
+}
+
+
+void Player::Output(uint8 /*sample*/)
 {
 }
 
 
-// Called by player when player starts to play 
-// ( from Player_StartMelody() )
-// Can be used to configure timer/pwm
-static void Player_Started()
+void Player::Started()
 {
 
 }
 
 
-// Called by player when melody is finished 
-// ( from Player_TimerFunc(), interrupts disabled )
-// Can be used to configure timer/pwm
-static void Player_Finished()
+void Player::Finished()
 {
 
 }
@@ -257,7 +286,7 @@ static uint16 Player_Decompress(TCompressedStreamState *_state, const uint8 *_st
 #endif
 
 
-void inline Player_ProcessEvents()
+void Player::ProcessEvents()
 {
     uint8 channelIndex;
     uint8 noteNumber;
@@ -278,7 +307,7 @@ void inline Player_ProcessEvents()
     {
 //        #asm("cli")
             s_playerState.m_stream1.m_pData = nullptr;
-        Player_Finished();
+        Finished();
         return;
     }
 
@@ -293,7 +322,7 @@ void inline Player_ProcessEvents()
     {
         #asm("cli")
             s_playerState.m_pMelody = NULL;
-        Player_Finished();
+        Finished();
         return;
     }
 
@@ -337,7 +366,7 @@ void inline Player_ProcessEvents()
 }
 
 
-void Player_TimerFunc()
+void Player::TimerFunc()
 {
     uint8 sample;
     uint8 i;
@@ -372,7 +401,7 @@ void Player_TimerFunc()
         s_playerState.m_eventCounter--;
         if (s_playerState.m_eventCounter == 0)
         {
-            Player_ProcessEvents();
+            ProcessEvents();
         }
     }
     s_playerState.m_envelopeSkipCounter--;
@@ -447,15 +476,15 @@ void Player_TimerFunc()
         pState++;
     }
 
-    Player_Output(sample);
+    Player::Output(sample);
 }
 
 
-void Player_StartMelody(const TMelody *_pMelody, uint16 _delay)
+void Player::StartMelody(const TMelody *_pMelody, uint16 _delay)
 {
-    Player_Stop();
+    Player::Stop();
 
-    Player_Started();
+    Started();
 
     memset(s_playerState.m_channelState, 0, sizeof(TChannelState) * HXMIDIPLAYER_CHANNELS_COUNT);
 
@@ -489,7 +518,7 @@ void Player_StartMelody(const TMelody *_pMelody, uint16 _delay)
 }
 
 
-bool Player_IsPlaying()
+bool Player::IsPlaying()
 {
 #ifdef HXMIDIPLAYER_USE_COMPRESSION
     return s_playerState.m_stream1.m_pData != nullptr;
@@ -498,17 +527,18 @@ bool Player_IsPlaying()
 #endif    
 }
 
-// Wait untill player finishes playing
-void Player_WaitFinish()
+
+void Player::WaitFinish()
 {
-    while (Player_IsPlaying() == true)
-        ;
+    while (IsPlaying() == true)
+    {
+    }
 }
 
 
-void Player_Stop()
+void Player::Stop()
 {
-    if (Player_IsPlaying())
+    if (IsPlaying())
     {
 //        #asm("cli")
 
@@ -520,6 +550,6 @@ void Player_Stop()
 
 //        #asm("sei")
 
-            Player_Finished();
+            Finished();
     }
 }

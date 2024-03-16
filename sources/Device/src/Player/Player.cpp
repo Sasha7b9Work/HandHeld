@@ -14,9 +14,3 @@ void Player::Play(TypeSound::E)
 {
 
 }
-
-
-void Player::Stop()
-{
-
-}

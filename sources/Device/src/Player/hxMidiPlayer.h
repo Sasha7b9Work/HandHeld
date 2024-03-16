@@ -5,60 +5,43 @@
 
 
 #ifdef HXMIDIPLAYER_USE_COMPRESSION
-    
-///=====================================================
-///=====================================================
-typedef struct 
+
+struct TMelody
 {
-    const uint8_t* m_pStream1;          
-    const uint8_t* m_pStream2;              
-} TMelody;
-    
+    const uint8 *m_pStream1;
+    const uint8 *m_pStream2;
+};
+
 #else
 
-///=====================================================
-///=====================================================
-typedef struct 
+struct TPlayerStateChange
 {
     //highest bit is highest for channel index        
-    uint8_t     m_noteNumber;
-    
-    ///15-3 bits - Delta value, 2,1,0 bits - channel index  
-    uint16_t    m_delta;          
-} TPlayerStateChange;
+    uint8     m_noteNumber;
 
-///=====================================================
-///=====================================================
-typedef struct 
+    ///15-3 bits - Delta value, 2,1,0 bits - channel index  
+    uint16    m_delta;
+};
+
+struct TMelody
 {
-    const flash TPlayerStateChange*  m_pEvents;              
-} TMelody;
-    
+    const TPlayerStateChange *m_pEvents;
+};
+
 #endif
 
-//======== Timer function ===========
 
-///Timer event function, should be called by user with fixed frequency HXMIDIPLAYER_SAMPLING_RATE
-extern void Player_TimerFunc();
+namespace Player
+{
+    // Is player currently playing ?
+    bool IsPlaying();
 
-// ======== Control functions ===========
+    // Wait untill player finish playing
+    // If not playing currently, returns immediatelly.
+    void WaitFinish();
 
-///Start playing melody
-//Previously played melody is stoped, Player_Finished callback is called.
-//Player_Started() callback is called on start.
-//_delay - start delay in 255Hz ticks, max is 65534
-extern void Player_StartMelody( const TMelody* _pMelody, uint16_t _delay );
-
-/// ======== Misc functions ===========
-
-///Is player currently playing ?
-extern bool Player_IsPlaying();  
-
-///Wait untill player finish playing
-//If not playing currently, returns immediatelly.
-extern void Player_WaitFinish();  
-
-//Stop currently played melody.
-//Player_Finished() callback is called if was playing.
-//If melody is not playing - call is ignored completely.
-void Player_Stop();
+    // Stop currently played melody.
+    // Player_Finished() callback is called if was playing.
+    // If melody is not playing - call is ignored completely.
+    void Stop();
+}

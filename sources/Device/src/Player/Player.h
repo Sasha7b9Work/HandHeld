@@ -26,6 +26,4 @@ namespace Player
     void Init();
 
     void Play(TypeSound::E);
-
-    void Stop();
 }
