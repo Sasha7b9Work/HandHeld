@@ -1,0 +1,13 @@
+RAM Allocation
+Variable                                                          Address   Size
+--------------------------------------------------------------------------------
+s_playerState                                                     0x00B0      25
+
+EEPROM Allocation
+Variable                                                          Address   Size
+--------------------------------------------------------------------------------
+s_envelope                                                        0x0000     128
+
+Register Allocation
+Variable                                                          Register  Size
+--------------------------------------------------------------------------------

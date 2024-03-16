@@ -1,0 +1,11 @@
+main DSTACK_USAGE:0 DSTACK_LEVEL:0 FILE:"main.c" LINE:65
+Player_StartMelody DSTACK_USAGE:4 DSTACK_LEVEL:4 FILE:"..\Common\hxMidiPlayer.c" LINE:446
+Player_StartStream DSTACK_USAGE:5 DSTACK_LEVEL:9 FILE:"..\Common\hxMidiPlayer.c" LINE:196
+Player_ReadBits DSTACK_USAGE:10 DSTACK_LEVEL:19 FILE:"..\Common\hxMidiPlayer.c" LINE:168
+Player_Advance DSTACK_USAGE:6 DSTACK_LEVEL:25 FILE:"..\Common\hxMidiPlayer.c" LINE:157
+timer1_compa_isr DSTACK_USAGE:12 DSTACK_LEVEL:37 FILE:"main.c" LINE:10
+Player_TimerFunc DSTACK_USAGE:4 DSTACK_LEVEL:41 FILE:"..\Common\hxMidiPlayer.c" LINE:331
+Player_ProcessEvents DSTACK_USAGE:6 DSTACK_LEVEL:47 FILE:"..\Common\hxMidiPlayer.c" LINE:250
+Player_Decompress DSTACK_USAGE:11 DSTACK_LEVEL:58 FILE:"..\Common\hxMidiPlayer.c" LINE:206
+Player_ReadBits DSTACK_USAGE:10 DSTACK_LEVEL:68 FILE:"..\Common\hxMidiPlayer.c" LINE:168
+Player_Advance DSTACK_USAGE:6 DSTACK_LEVEL:74 FILE:"..\Common\hxMidiPlayer.c" LINE:157
