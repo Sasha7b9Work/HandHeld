@@ -45,8 +45,6 @@ namespace Player
 void Player::Init()
 {
     Beeper::Init();
-
-    volatile uint8 sample = s_melody1.m_pStream1[0];
 }
 
 
