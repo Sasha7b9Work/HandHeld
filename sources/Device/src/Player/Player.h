@@ -4,6 +4,24 @@
 #include "Player/PlayerConfig.h"
 
 
+struct TypeMelody
+{
+    enum E
+    {
+        _1,
+        _2,
+        _3,
+        _4,
+        _5,
+        _6,
+        _7,
+        _8,
+        _9,
+        _10,
+        Count
+    };
+};
+
 struct TMelody
 {
     const uint8 *m_pStream1;
@@ -13,6 +31,8 @@ struct TMelody
 
 namespace Player
 {
+    void Play(TypeMelody::E);
+
     void Init();
 
     // Is player currently playing ?

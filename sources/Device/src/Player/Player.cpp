@@ -4,6 +4,13 @@
 #include "Player/Melodies/melody1.h"
 #include "Player/Melodies/melody2.h"
 #include "Player/Melodies/melody3.h"
+#include "Player/Melodies/melody4.h"
+#include "Player/Melodies/melody5.h"
+#include "Player/Melodies/melody6.h"
+#include "Player/Melodies/melody7.h"
+#include "Player/Melodies/melody8.h"
+#include "Player/Melodies/melody9.h"
+#include "Player/Melodies/melody10.h"
 #include <string.h>
 
 
@@ -45,6 +52,18 @@ namespace Player
 void Player::Init()
 {
     Beeper::Init();
+}
+
+
+void Player::Play(TypeMelody::E type)
+{
+    static const TMelody *melodies[TypeMelody::Count] =
+    {
+        &s_melody1, &s_melody2, &s_melody3, &s_melody4, &s_melody5,
+        &s_melody6, &s_melody7, &s_melody8, &s_melody9, &s_melody10,
+    };
+
+    StartMelody(melodies[type], 3 * 255);
 }
 
 

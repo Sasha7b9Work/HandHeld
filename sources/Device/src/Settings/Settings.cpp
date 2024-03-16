@@ -3,6 +3,8 @@
 #include "Settings/Settings.h"
 #include "Display/Display.h"
 #include "Hardware/Timer.h"
+#include "Player/Player.h"
+#include <cstdlib>
 
 
 Settings gset =
@@ -47,6 +49,8 @@ void Source::Draw(int x, int y, const Color &color) const
 void Source::Receive(E type)
 {
     time_recv[type] = TIME_MS;
+
+    Player::Play((TypeMelody::E)(std::rand() % TypeMelody::Count));
 }
 
 
