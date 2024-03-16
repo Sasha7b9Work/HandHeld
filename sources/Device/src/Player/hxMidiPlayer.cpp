@@ -2,15 +2,13 @@
 #include <string.h>
 #include "hxMidiPlayer.h"
 
-///=====================================================
-// ChannelState
-///=====================================================
-///Single syntezer channel state  
+
+// Single syntezer channel state  
 typedef struct
 {
 #ifdef HXMIDIPLAYER_WAVEFORM_SAMPLE
     //can be 24 bit uint
-    uint32_t    m_counter;      //sample index counter
+    uint    m_counter;      //sample index counter
 #else
     uint16    m_counter;      //square wave, sine or waveform generator counter
 #endif
@@ -22,10 +20,9 @@ typedef struct
 
 } TChannelState;
 
+
 #ifdef HXMIDIPLAYER_ENABLE_DRUMS_SYNTEZER
-///=====================================================
 // WhiteNoiseGeneratorState
-///=====================================================
 typedef struct
 {
     uint8     m_nze;
@@ -35,10 +32,9 @@ typedef struct
 } WhiteNoiseGeneratorState;
 #endif 
 
+
 #ifdef HXMIDIPLAYER_USE_COMPRESSION
-///=====================================================
-/// TCompressedStreamState
-///=====================================================
+// TCompressedStreamState
 typedef struct
 {
     const uint8 *m_pData;
@@ -48,9 +44,8 @@ typedef struct
 } TCompressedStreamState;
 #endif
 
-///=====================================================
-/// TPlayerState
-///=====================================================
+
+// TPlayerState
 typedef struct
 {
 #ifdef HXMIDIPLAYER_USE_COMPRESSION
@@ -70,24 +65,23 @@ typedef struct
     WhiteNoiseGeneratorState            m_wngState;
 #endif
 
-    ///This value is decreased on every timer event.
-    ///Initially is writeln from m_delta value of StateChangeEvent.
-    ///When it reaches 0, it's time to process state change events.
-    uint16                            m_eventCounter;
+    // This value is decreased on every timer event.
+    // Initially is writeln from m_delta value of StateChangeEvent.
+    // When it reaches 0, it's time to process state change events.
+    uint16          m_eventCounter;
 
-    //255Hz counter    
-    //initally writeln ENVELOPE_SKIP_MAX
-    //decreased every tick
-    //when reaches 0, envelope index on all channels should increase
-    uint8                             m_envelopeSkipCounter;
+    // 255Hz counter    
+    // initally writeln ENVELOPE_SKIP_MAX
+    // decreased every tick
+    // when reaches 0, envelope index on all channels should increase
+    uint8           m_envelopeSkipCounter;
 
-    ///Syntezer channels states
-    TChannelState                       m_channelState[HXMIDIPLAYER_CHANNELS_COUNT];
+    // Syntezer channels states
+    TChannelState   m_channelState[HXMIDIPLAYER_CHANNELS_COUNT];
 } TPlayerState;
 
-///=====================================================
-///=====================================================
-///Player state
+
+// Player state
 static TPlayerState s_playerState =
 {
 #ifdef HXMIDIPLAYER_USE_COMPRESSION
@@ -100,12 +94,17 @@ static TPlayerState s_playerState =
 #endif    
 #ifdef HXMIDIPLAYER_ENABLE_DRUMS_SYNTEZER
         { 0, 45, 34, 53 }
-#endif         
+#endif
+        0,
+        0,
+        { { 0, 0, 0 },
+          { 0, 0, 0 },
+          { 0, 0, 0 },
+          { 0, 0, 0 } }
 };
 
+
 #ifdef HXMIDIPLAYER_ENABLE_DRUMS_SYNTEZER
-///=====================================================
-///=====================================================
 uint8 inline Player_GetWhiteNoise()
 {
     uint8 b;
@@ -136,8 +135,7 @@ uint8 inline Player_GetWhiteNoise()
 }
 #endif
 
-///=====================================================
-///=====================================================
+
 uint16 inline Player_GetNoteFreqAdd(uint8 _noteNumber)
 {
     uint8 noteIndex;
@@ -151,10 +149,8 @@ uint16 inline Player_GetNoteFreqAdd(uint8 _noteNumber)
 
 #ifdef HXMIDIPLAYER_USE_COMPRESSION
 
-///=====================================================
-///=====================================================
 //advance stream by number of bits
-void Player_Advance(TCompressedStreamState *_state, uint16 _bitsCount)
+static void Player_Advance(TCompressedStreamState *_state, uint16 _bitsCount)
 {
     uint16 s = (uint16)(_state->m_bitsUsed + _bitsCount);
 
@@ -162,17 +158,13 @@ void Player_Advance(TCompressedStreamState *_state, uint16 _bitsCount)
     _state->m_bitsUsed = (uint8)(s & 0x7);
 }
 
-///=====================================================
-///=====================================================
-uint16 Player_ReadBits(TCompressedStreamState *_state, uint8 _bitsCount, uint16 _mask)
+
+static uint16 Player_ReadBits(TCompressedStreamState *_state, uint8 _bitsCount, uint16 _mask)
 {
     //this procedure is optimized for _bitsCount 1..16
     //(value can be spread at most by 3 bytes)
 
-    uint32_t r;
-    int8_t s;
-
-    r = _state->m_pData[0];
+    uint r = _state->m_pData[0];
 
     r <<= 8;
     r |= _state->m_pData[1];
@@ -180,7 +172,7 @@ uint16 Player_ReadBits(TCompressedStreamState *_state, uint8 _bitsCount, uint16 
     r <<= 8;
     r |= _state->m_pData[2];
 
-    s = 24 - _bitsCount - _state->m_bitsUsed;
+    int8 s = (int8)(24 - _bitsCount - _state->m_bitsUsed);
 
     r >>= s;
 
@@ -189,10 +181,9 @@ uint16 Player_ReadBits(TCompressedStreamState *_state, uint8 _bitsCount, uint16 
     return r & _mask;
 }
 
-///=====================================================
-///=====================================================
-//advance stream to actual data
-void Player_StartStream(TCompressedStreamState *_state, uint8 _numberOfBits)
+
+// advance stream to actual data
+static void Player_StartStream(TCompressedStreamState *_state, uint8 _numberOfBits)
 {
     uint16 s;
 
@@ -200,9 +191,8 @@ void Player_StartStream(TCompressedStreamState *_state, uint8 _numberOfBits)
     Player_Advance(_state, (uint16)(16 + s * _numberOfBits));
 }
 
-///=====================================================
-///=====================================================
-uint16 Player_Decompress(TCompressedStreamState *_state, const uint8 *_streamBase, uint8 _bitsCount, uint16 _mask)
+
+static uint16 Player_Decompress(TCompressedStreamState *_state, const uint8 *_streamBase, uint8 _bitsCount, uint16 _mask)
 {
     uint8 code = (uint8)Player_ReadBits(_state, 3, 0x7);
 
@@ -242,8 +232,7 @@ uint16 Player_Decompress(TCompressedStreamState *_state, const uint8 *_streamBas
 }
 #endif
 
-///=====================================================
-///=====================================================
+
 void inline Player_ProcessEvents()
 {
     uint8 channelIndex;
@@ -264,7 +253,7 @@ void inline Player_ProcessEvents()
     if (delta == 0)
     {
 //        #asm("cli")
-            s_playerState.m_stream1.m_pData = NULL;
+            s_playerState.m_stream1.m_pData = nullptr;
         Player_Finished();
         return;
     }
@@ -323,8 +312,7 @@ void inline Player_ProcessEvents()
     s_playerState.m_eventCounter = delta;
 }
 
-///=====================================================
-///=====================================================
+
 void Player_TimerFunc()
 {
     uint8 sample;
@@ -332,7 +320,7 @@ void Player_TimerFunc()
     TChannelState *pState;
 
 #ifdef HXMIDIPLAYER_USE_COMPRESSION
-    if (s_playerState.m_stream1.m_pData == NULL)
+    if (s_playerState.m_stream1.m_pData == nullptr)
     {
         return;
     }
@@ -398,12 +386,12 @@ void Player_TimerFunc()
 #ifdef HXMIDIPLAYER_WAVEFORM_SQUARE    
             pState->m_counter += pState->m_counterAdd;
             sample += (pState->m_counter >> PLAYER_FREQ_SHR) & 1;
-#endif HXMIDIPLAYER_WAVEFORM_SQUARE
+#endif
 
 #ifdef HXMIDIPLAYER_WAVEFORM_SINE    
             pState->m_counter += pState->m_counterAdd;
             sample += s_sineTable[(pState->m_counter >> (PLAYER_FREQ_SHR - 5)) & 63];
-#endif HXMIDIPLAYER_WAVEFORM_SINE    
+#endif
 
 #ifdef HXMIDIPLAYER_WAVEFORM_SINE_ENVELOPE    
             {
@@ -421,7 +409,7 @@ void Player_TimerFunc()
                 sineVal -= envelopeVal >> 1;
                 sample += sineVal;
             }
-#endif HXMIDIPLAYER_WAVEFORM_SINE_ENVELOPE    
+#endif
 
 #ifdef HXMIDIPLAYER_WAVEFORM_SAMPLE
             if (pState->m_counter < PLAYER_COUNTER_MAX_VAL)
@@ -429,7 +417,7 @@ void Player_TimerFunc()
                 pState->m_counter += pState->m_counterAdd;
             }
             sample += s_sample[pState->m_counter >> (PLAYER_FREQ_SHR - 3)];
-#endif HXMIDIPLAYER_WAVEFORM_SAMPLE    
+#endif
 
         }
         pState++;
@@ -438,8 +426,7 @@ void Player_TimerFunc()
     Player_Output(sample);
 }
 
-///=====================================================
-///=====================================================
+
 void Player_StartMelody(const TMelody *_pMelody, uint16 _delay)
 {
     Player_Stop();
@@ -477,20 +464,17 @@ void Player_StartMelody(const TMelody *_pMelody, uint16 _delay)
         //s_playerState.m_wngState.m_t3 = 53;
 }
 
-///=====================================================
-///=====================================================
+
 bool Player_IsPlaying()
 {
 #ifdef HXMIDIPLAYER_USE_COMPRESSION
-    return s_playerState.m_stream1.m_pData != NULL;
+    return s_playerState.m_stream1.m_pData != nullptr;
 #else
     return s_playerState.m_pMelody != NULL;
 #endif    
 }
 
-///=====================================================
-///=====================================================
-//Wait untill player finishes playing
+// Wait untill player finishes playing
 void Player_WaitFinish()
 {
     while (Player_IsPlaying() == true)
@@ -498,8 +482,6 @@ void Player_WaitFinish()
 }
 
 
-///=====================================================
-///=====================================================
 void Player_Stop()
 {
     if (Player_IsPlaying())
@@ -507,7 +489,7 @@ void Player_Stop()
 //        #asm("cli")
 
 #ifdef HXMIDIPLAYER_USE_COMPRESSION
-            s_playerState.m_stream1.m_pData = NULL;
+            s_playerState.m_stream1.m_pData = nullptr;
 #else          
             s_playerState.m_pMelody = NULL;
 #endif        
