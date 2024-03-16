@@ -42,9 +42,8 @@ namespace Player
     // If not playing currently, returns immediatelly.
     void WaitFinish();
 
-    // Stop currently played melody.
-    // Player_Finished() callback is called if was playing.
-    // If melody is not playing - call is ignored completely.
+    // Остановить воспроизводимую в данный момент мелодию. Обратный вызов Player_Finished() вызывается, если игра
+    // воспроизводилась. Если мелодия не звучит - звонок полностью игнорируется.
     void Stop();
 
     // Функция события таймера должна вызываться пользователем с фиксированной частотой HXMIDIPLAYER_SAMPLING_RATE

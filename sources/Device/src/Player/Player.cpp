@@ -34,56 +34,47 @@ namespace Player
 
     struct PlayerState
     {
-        //noteNumber stream, 11 bits
+        // noteNumber stream, 11 bits
         CompressedStreamState stream1;
-        //pause stream, 13 bits
+        // pause stream, 13 bits
         CompressedStreamState stream2;
 
         const uint8 *stream1_start;
         const uint8 *stream2_start;
 
-        // This value is decreased on every timer event.
-        // Initially is writeln from m_delta value of StateChangeEvent.
-        // When it reaches 0, it's time to process state change events.
+        // Ёто значение уменьшаетс€ при каждом событии таймера. ѕервоначально записываетс€ из значени€ m_delta StateChangeEvent.
+        //  огда оно достигает 0, пришло врем€ обрабатывать событи€ изменени€ состо€ни€.
         uint16       eventCounter;
 
-        // 255Hz counter    
-        // initally writeln ENVELOPE_SKIP_MAX
-        // decreased every tick
-        // when reaches 0, envelope index on all channels should increase
+        // —четчик 255 √ц изначально записывает ENVELOPE_SKIP_MAX, уменьша€ каждый такт, когда достигает 0, индекс огибающей
+        // на всех каналах должен увеличиватьс€
         uint8        envelopeSkipCounter;
 
-        // Syntezer channels states
+        // —осто€ние каналов синтезатора
         ChannelState channelState[HXMIDIPLAYER_CHANNELS_COUNT];
     };
 
-    // Start playing melody
-    // Previously played melody is stoped, Player_Finished callback is called.
-    // Player_Started() callback is called on start.
-    // _delay - start delay in 255Hz ticks, max is 65534
+    // Ќачать воспроизведение мелодии. –анее проигрывавша€с€ мелоди€ останавливаетс€, вызываетс€ обратный вызов Player_Finished.
+    // ќбратный вызов Player_Started() вызываетс€ при запуске. _delay - задержка запуска с частотой 255 √ц, максимум 65534
     void StartMelody(const Melody *_pMelody, uint16 _delay);
 
     bool IsPlaying();
-
-    // Wait untill player finishes playing
-    void WaitFinish();
 
     void Stop();
 
     static void ProcessEvents();
 
-    //advance stream by number of bits
+    // продвигать поток вперед по количеству битов
     static void Advance(CompressedStreamState *_state, uint16 _bitsCount);
 
     static uint16 ReadBits(CompressedStreamState *_state, uint8 _bitsCount, uint16 _mask);
 
-    // advance stream to actual data
+    // продвигать поток к фактическим данным
     static void StartStream(CompressedStreamState *_state, uint8 _numberOfBits);
 
     static uint16 Decompress(CompressedStreamState *_state, const uint8 *_streamBase, uint8 _bitsCount, uint16 _mask);
 
-    // Player state
-    static PlayerState s_playerState =
+    static PlayerState playerState =
     {
         { nullptr, 0 },
         { nullptr, 0 },
@@ -142,8 +133,7 @@ void Player::Advance(CompressedStreamState *_state, uint16 _bitsCount)
 
 uint16 Player::ReadBits(CompressedStreamState *_state, uint8 _bitsCount, uint16 _mask)
 {
-    //this procedure is optimized for _bitsCount 1..16
-    //(value can be spread at most by 3 bytes)
+    // эта процедура оптимизирована дл€ _bitsCount 1..16 (значение может распростран€тьс€ максимум на 3 байта)
 
     uint r = _state->pData[0];
 
@@ -165,9 +155,7 @@ uint16 Player::ReadBits(CompressedStreamState *_state, uint8 _bitsCount, uint16 
 
 void Player::StartStream(CompressedStreamState *_state, uint8 _numberOfBits)
 {
-    uint16 s;
-
-    s = ReadBits(_state, 5, 0x1f);
+    uint16 s = ReadBits(_state, 5, 0x1f);
     Advance(_state, (uint16)(16 + s * _numberOfBits));
 }
 
@@ -219,19 +207,17 @@ void Player::ProcessEvents()
     uint16 delta;
     uint16 cadd;
 
-    s_playerState.eventCounter = (uint16)0xffff;
-    //    #asm("sei")
+    playerState.eventCounter = (uint16)0xffff;
 
-    delta = Decompress(&s_playerState.stream1, s_playerState.stream1_start, 11, 0x7ff);
+    delta = Decompress(&playerState.stream1, playerState.stream1_start, 11, 0x7ff);
     noteNumber = (uint8)(delta & 0x7f);
     channelIndex = (uint8)(delta >> 7);
 
-    delta = Decompress(&s_playerState.stream2, s_playerState.stream2_start, 13, 0x1fff);
+    delta = Decompress(&playerState.stream2, playerState.stream2_start, 13, 0x1fff);
 
     if (delta == 0)
     {
-        //        #asm("cli")
-        s_playerState.stream1.pData = nullptr;
+        playerState.stream1.pData = nullptr;
         Beeper::StopMelody();
         return;
     }
@@ -249,19 +235,14 @@ void Player::ProcessEvents()
         cadd = Player_GetNoteFreqAdd(noteNumber);
     }
 
-    //mid delta is 1:
-    //do not hold interrupt for a long time:
-    //process next event on next tick event it should be processed immediatelly       
-    //it wan't be noticable
+    // средн€€ дельта равна 1: не удерживать прерывание в течение длительного времени: обрабатывать следующее событие при
+    // следующем тиковом событии, оно должно быть обработано немедленно, оно не будет заметно
+    playerState.channelState[channelIndex].counter = 0;
+    playerState.channelState[channelIndex].counterAdd = cadd;
 
-//    #asm("cli")
+    playerState.channelState[channelIndex].envelopeCounter = 0;
 
-    s_playerState.channelState[channelIndex].counter = 0;
-    s_playerState.channelState[channelIndex].counterAdd = cadd;
-
-    s_playerState.channelState[channelIndex].envelopeCounter = 0;
-
-    s_playerState.eventCounter = delta;
+    playerState.eventCounter = delta;
 }
 
 
@@ -271,37 +252,39 @@ void Player::TimerFunc()
     uint8 i;
     ChannelState *pState;
 
-    if (s_playerState.stream1.pData == nullptr)
+    if (playerState.stream1.pData == nullptr)
     {
         return;
     }
 
-    //advance envelopeCounter    
-    if (s_playerState.envelopeSkipCounter == 0)
+    // advance envelopeCounter
+    if (playerState.envelopeSkipCounter == 0)
     {
-        s_playerState.envelopeSkipCounter = ENVELOPE_SKIP_MAX;
+        playerState.envelopeSkipCounter = ENVELOPE_SKIP_MAX;
 
         for (i = 0; i < HXMIDIPLAYER_CHANNELS_COUNT; i++)
         {
-            if (s_playerState.channelState[i].envelopeCounter < 255)
+            if (playerState.channelState[i].envelopeCounter < 255)
             {
-                s_playerState.channelState[i].envelopeCounter++;
+                playerState.channelState[i].envelopeCounter++;
             }
         }
 
-        s_playerState.eventCounter--;
-        if (s_playerState.eventCounter == 0)
+        playerState.eventCounter--;
+
+        if (playerState.eventCounter == 0)
         {
             ProcessEvents();
         }
     }
-    s_playerState.envelopeSkipCounter--;
 
-    //create sample
+    playerState.envelopeSkipCounter--;
+
+    // create sample
 
     sample = 0x80;
 
-    pState = &s_playerState.channelState[0];
+    pState = &playerState.channelState[0];
 
     for (i = 0; i < HXMIDIPLAYER_CHANNELS_COUNT; i++)
     {
@@ -333,37 +316,27 @@ void Player::StartMelody(const Melody *_pMelody, uint16 _delay)
 
     Beeper::StartMelody();
 
-    memset(s_playerState.channelState, 0, sizeof(ChannelState) * HXMIDIPLAYER_CHANNELS_COUNT);
+    memset(playerState.channelState, 0, sizeof(ChannelState) * HXMIDIPLAYER_CHANNELS_COUNT);
 
-    s_playerState.eventCounter = (uint16)(1 + _delay);
-    s_playerState.envelopeSkipCounter = 0;
+    playerState.eventCounter = (uint16)(1 + _delay);
+    playerState.envelopeSkipCounter = 0;
 
-    //    #asm("cli")
+    playerState.stream1.pData = _pMelody->pStream1;
+    playerState.stream2.pData = _pMelody->pStream2;
+    playerState.stream1.bitsUsed = 0;
+    playerState.stream2.bitsUsed = 0;
 
-    s_playerState.stream1.pData = _pMelody->pStream1;
-    s_playerState.stream2.pData = _pMelody->pStream2;
-    s_playerState.stream1.bitsUsed = 0;
-    s_playerState.stream2.bitsUsed = 0;
+    playerState.stream1_start = _pMelody->pStream1;
+    playerState.stream2_start = _pMelody->pStream2;
 
-    s_playerState.stream1_start = _pMelody->pStream1;
-    s_playerState.stream2_start = _pMelody->pStream2;
-
-    StartStream(&s_playerState.stream1, 11);
-    StartStream(&s_playerState.stream2, 13);
-
-    //    #asm("sei")
-
-    ///Set initial values for white noise generator
-    //s_playerState.m_wngState.m_nze = 0;
-    //s_playerState.m_wngState.m_t1 = 45;
-    //s_playerState.m_wngState.m_t2 = 34;
-    //s_playerState.m_wngState.m_t3 = 53;
+    StartStream(&playerState.stream1, 11);
+    StartStream(&playerState.stream2, 13);
 }
 
 
 bool Player::IsPlaying()
 {
-    return s_playerState.stream1.pData != nullptr;
+    return playerState.stream1.pData != nullptr;
 }
 
 
@@ -379,11 +352,7 @@ void Player::Stop()
 {
     if (IsPlaying())
     {
-//        #asm("cli")
-
-        s_playerState.stream1.pData = nullptr;
-
-//        #asm("sei")
+        playerState.stream1.pData = nullptr;
 
         Beeper::StopMelody();
     }
