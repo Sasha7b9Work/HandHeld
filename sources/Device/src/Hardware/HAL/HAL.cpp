@@ -13,15 +13,12 @@ void HAL::Init()
     rcu_periph_clock_enable(RCU_GPIOB);
     rcu_periph_clock_enable(RCU_GPIOC);
     rcu_periph_clock_enable(RCU_GPIOF);
-    rcu_periph_clock_enable(RCU_TIMER14);
 
     rcu_periph_clock_enable(RCU_CFGCMP);
 
     rcu_periph_clock_enable(RCU_I2C1);
 
     nvic_irq_enable(TIMER2_IRQn, 0);            // Таймер на приёмник
-
-    nvic_irq_enable(TIMER14_IRQn, 1);           // Таймер на ШИМ звука
 
     HAL_I2C::Init();
 
