@@ -1,29 +1,49 @@
-// 2024/03/16 09:07:47 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
+#include <stdint.h>
+#include <stdbool.h>
+#include "Player/PlayerConfig.h"
 
 
-struct TypeSound
+#ifdef HXMIDIPLAYER_USE_COMPRESSION
+
+struct TMelody
 {
-    enum E
-    {
-        _1,
-        _2,
-        _3,
-        _4,
-        _5,
-        _6,
-        _7,
-        _8,
-        _9,
-        _10,
-        Count
-    };
+    const uint8 *m_pStream1;
+    const uint8 *m_pStream2;
 };
+
+#else
+
+struct TPlayerStateChange
+{
+    //highest bit is highest for channel index        
+    uint8     m_noteNumber;
+
+    ///15-3 bits - Delta value, 2,1,0 bits - channel index  
+    uint16    m_delta;
+};
+
+struct TMelody
+{
+    const TPlayerStateChange *m_pEvents;
+};
+
+#endif
 
 
 namespace Player
 {
     void Init();
 
-    void Play(TypeSound::E);
+    // Is player currently playing ?
+    bool IsPlaying();
+
+    // Wait untill player finish playing
+    // If not playing currently, returns immediatelly.
+    void WaitFinish();
+
+    // Stop currently played melody.
+    // Player_Finished() callback is called if was playing.
+    // If melody is not playing - call is ignored completely.
+    void Stop();
 }
