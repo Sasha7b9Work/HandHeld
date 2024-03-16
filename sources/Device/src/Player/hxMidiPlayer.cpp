@@ -3,6 +3,30 @@
 #include "hxMidiPlayer.h"
 
 
+// Called by player to output data to DAC/pwm
+static void Player_Output(uint8_t /*sample*/)
+{
+}
+
+
+// Called by player when player starts to play 
+// ( from Player_StartMelody() )
+// Can be used to configure timer/pwm
+static void Player_Started()
+{
+
+}
+
+
+// Called by player when melody is finished 
+// ( from Player_TimerFunc(), interrupts disabled )
+// Can be used to configure timer/pwm
+static void Player_Finished()
+{
+
+}
+
+
 // Single syntezer channel state  
 typedef struct
 {
@@ -39,7 +63,7 @@ typedef struct
 {
     const uint8 *m_pData;
 
-    //number of bits still used in byte m_pData points to
+    // number of bits still used in byte m_pData points to
     uint8                 m_bitsUsed;
 } TCompressedStreamState;
 #endif
@@ -57,7 +81,7 @@ typedef struct
     const uint8 *m_stream1_start;
     const uint8 *m_stream2_start;
 #else
-    ///pointer to next event in melody        
+    // pointer to next event in melody        
     const flash TPlayerStateChange *m_pMelody;
 #endif
 

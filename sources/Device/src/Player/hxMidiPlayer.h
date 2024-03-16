@@ -41,21 +41,6 @@ typedef struct
 ///Timer event function, should be called by user with fixed frequency HXMIDIPLAYER_SAMPLING_RATE
 extern void Player_TimerFunc();
 
-//======== Callbacks ===========
-
-///Called by player to output data to DAC/pwm
-extern void Player_Output( uint8_t sample );
-
-///Called by player when player starts to play 
-///( from Player_StartMelody() )
-///Can be used to configure timer/pwm
-extern void Player_Started();
-
-///Called by player when melody is finished 
-///( from Player_TimerFunc(), interrupts disabled )
-///Can be used to configure timer/pwm
-extern void Player_Finished();
-
 // ======== Control functions ===========
 
 ///Start playing melody
