@@ -1922,7 +1922,7 @@ static const uint8_t s_melody9_stream2[593] = {
     32
   };
 
-const TMelody s_melody9 =
+const Melody melody9 =
 {
     s_melody9_stream1,
     s_melody9_stream2

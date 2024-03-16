@@ -3,4 +3,4 @@
 #include "Player/Player.h"
 
 
-extern const TMelody s_melody2;
+extern const Melody melody2;

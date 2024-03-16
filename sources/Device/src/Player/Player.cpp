@@ -71,7 +71,7 @@ namespace Player
     // Previously played melody is stoped, Player_Finished callback is called.
     // Player_Started() callback is called on start.
     // _delay - start delay in 255Hz ticks, max is 65534
-    void StartMelody(const TMelody *_pMelody, uint16 _delay);
+    void StartMelody(const Melody *_pMelody, uint16 _delay);
 
     bool IsPlaying();
 
@@ -129,10 +129,10 @@ void Player::Init()
 
 void Player::Play(TypeMelody::E type)
 {
-    static const TMelody *melodies[TypeMelody::Count] =
+    static const Melody *melodies[TypeMelody::Count] =
     {
-        &s_melody1, &s_melody2, &s_melody3, &s_melody4, &s_melody5,
-        &s_melody6, &s_melody7, &s_melody8, &s_melody9, &s_melody10,
+        &melody1, &melody2, &melody3, &melody4, &melody5,
+        &melody6, &melody7, &melody8, &melody9, &melody10,
     };
 
     StartMelody(melodies[type], 3 * 255);
@@ -364,7 +364,7 @@ void Player::TimerFunc()
 }
 
 
-void Player::StartMelody(const TMelody *_pMelody, uint16 _delay)
+void Player::StartMelody(const Melody *_pMelody, uint16 _delay)
 {
     Stop();
 
@@ -377,13 +377,13 @@ void Player::StartMelody(const TMelody *_pMelody, uint16 _delay)
 
     //    #asm("cli")
 
-    s_playerState.stream1.pData = _pMelody->m_pStream1;
-    s_playerState.stream2.pData = _pMelody->m_pStream2;
+    s_playerState.stream1.pData = _pMelody->pStream1;
+    s_playerState.stream2.pData = _pMelody->pStream2;
     s_playerState.stream1.bitsUsed = 0;
     s_playerState.stream2.bitsUsed = 0;
 
-    s_playerState.stream1_start = _pMelody->m_pStream1;
-    s_playerState.stream2_start = _pMelody->m_pStream2;
+    s_playerState.stream1_start = _pMelody->pStream1;
+    s_playerState.stream2_start = _pMelody->pStream2;
 
     StartStream(&s_playerState.stream1, 11);
     StartStream(&s_playerState.stream2, 13);

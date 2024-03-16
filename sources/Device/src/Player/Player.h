@@ -22,10 +22,10 @@ struct TypeMelody
     };
 };
 
-struct TMelody
+struct Melody
 {
-    const uint8 *m_pStream1;
-    const uint8 *m_pStream2;
+    const uint8 *pStream1;
+    const uint8 *pStream2;
 };
 
 

@@ -1589,7 +1589,7 @@ static const uint8 s_melody8_stream2[433] = {
     32
   };
 
-const TMelody s_melody8 = {
+const Melody melody8 = {
     s_melody8_stream1,
     s_melody8_stream2
   };
