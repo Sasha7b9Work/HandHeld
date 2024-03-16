@@ -23,19 +23,19 @@ void Beeper::Beep()
 }
 
 
-void Beeper::OutputSample(uint8)
+void Beeper::CallbackOnOutputSample(uint8)
 {
 
 }
 
 
-void Beeper::StartMelody()
+void Beeper::CallbackOnStartMelody()
 {
 
 }
 
 
-void Beeper::StopMelody()
+void Beeper::CallbackOnStopMelody()
 {
 
 }

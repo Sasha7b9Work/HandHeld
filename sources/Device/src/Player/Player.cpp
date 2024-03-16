@@ -210,7 +210,7 @@ void Player::ProcessEvents()
     if (delta == 0)
     {
         playerState.stream1.pData = nullptr;
-        Beeper::StopMelody();
+        Beeper::CallbackOnStopMelody();
         return;
     }
 
@@ -278,25 +278,21 @@ void Player::TimerFunc()
 
     for (uint8 i = 0; i < HXMIDIPLAYER_CHANNELS_COUNT; i++)
     {
-        {
-            uint8 sineVal;
-            uint8 envelopeVal;
-            pState->counter += pState->counterAdd;
-            //sineVal is unsigned value, biased by 0x80 ( 0 -> 0x80 )
-            sineVal = s_sineTable[(pState->counter >> (PLAYER_FREQ_SHR - 5)) & 63];
-            //envelopeVal is volume value 0..255
-            envelopeVal = s_envelope[pState->envelopeCounter >> 1];
-            //scale sineVal as unsigned value using simple mul/shift. We divide by 256, not 255 for simplicity.
-            sineVal = (uint8_t)((((uint16_t)sineVal) * envelopeVal) >> 8);
-            //after scaling, 0x80 (biased zero ) became m_envelopeVal / 2
-            //create unsigned value by biasing back    
-            sineVal -= envelopeVal >> 1;
-            sample += sineVal;
-        }
+        pState->counter += pState->counterAdd;
+        //sineVal is unsigned value, biased by 0x80 ( 0 -> 0x80 )
+        uint8 sineVal = s_sineTable[(pState->counter >> (PLAYER_FREQ_SHR - 5)) & 63];
+        //envelopeVal is volume value 0..255
+        uint8 envelopeVal = s_envelope[pState->envelopeCounter >> 1];
+        //scale sineVal as unsigned value using simple mul/shift. We divide by 256, not 255 for simplicity.
+        sineVal = (uint8_t)((((uint16_t)sineVal) * envelopeVal) >> 8);
+        //after scaling, 0x80 (biased zero ) became m_envelopeVal / 2
+        //create unsigned value by biasing back    
+        sineVal -= envelopeVal >> 1;
+        sample += sineVal;
         pState++;
     }
 
-    Beeper::OutputSample(sample);
+    Beeper::CallbackOnOutputSample(sample);
 }
 
 
@@ -304,7 +300,7 @@ void Player::StartMelody(const Melody *_pMelody, uint16 _delay)
 {
     Stop();
 
-    Beeper::StartMelody();
+    Beeper::CallbackOnStartMelody();
 
     memset(playerState.channelState, 0, sizeof(ChannelState) * HXMIDIPLAYER_CHANNELS_COUNT);
 
@@ -344,6 +340,6 @@ void Player::Stop()
     {
         playerState.stream1.pData = nullptr;
 
-        Beeper::StopMelody();
+        Beeper::CallbackOnStopMelody();
     }
 }
