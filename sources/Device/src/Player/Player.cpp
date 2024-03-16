@@ -16,6 +16,53 @@
 
 namespace Player
 {
+    // Single syntezer channel state  
+    struct TChannelState
+    {
+        uint16    m_counter;      //square wave, sine or waveform generator counter
+
+        uint16    m_counterAdd;   //0 - off, 1 - drum, >0 - add value for counter
+
+        uint8     m_envelopeCounter;
+    };
+
+
+    // TCompressedStreamState
+    struct TCompressedStreamState
+    {
+        const uint8 *m_pData;
+
+        // number of bits still used in byte m_pData points to
+        uint8        m_bitsUsed;
+    };
+
+
+    // TPlayerState
+    struct TPlayerState
+    {
+        //noteNumber stream, 11 bits
+        TCompressedStreamState              m_stream1;
+        //pause stream, 13 bits
+        TCompressedStreamState              m_stream2;
+
+        const uint8 *m_stream1_start;
+        const uint8 *m_stream2_start;
+
+        // This value is decreased on every timer event.
+        // Initially is writeln from m_delta value of StateChangeEvent.
+        // When it reaches 0, it's time to process state change events.
+        uint16          m_eventCounter;
+
+        // 255Hz counter    
+        // initally writeln ENVELOPE_SKIP_MAX
+        // decreased every tick
+        // when reaches 0, envelope index on all channels should increase
+        uint8           m_envelopeSkipCounter;
+
+        // Syntezer channels states
+        TChannelState   m_channelState[HXMIDIPLAYER_CHANNELS_COUNT];
+    };
+
     // Called by player to output data to DAC/pwm
     static void Output(uint8 /*sample*/);
 
@@ -46,6 +93,33 @@ namespace Player
     static void Finished();
 
     static void ProcessEvents();
+
+    //advance stream by number of bits
+    static void Advance(TCompressedStreamState *_state, uint16 _bitsCount);
+
+    static uint16 ReadBits(TCompressedStreamState *_state, uint8 _bitsCount, uint16 _mask);
+
+    // advance stream to actual data
+    static void StartStream(TCompressedStreamState *_state, uint8 _numberOfBits);
+
+    static uint16 Decompress(TCompressedStreamState *_state, const uint8 *_streamBase, uint8 _bitsCount, uint16 _mask);
+
+    // Player state
+    static TPlayerState s_playerState =
+    {
+        { nullptr, 0 },
+        { nullptr, 0 },
+        nullptr,
+        nullptr,
+        0,
+        0,
+        {
+          { 0, 0, 0 },
+          { 0, 0, 0 },
+          { 0, 0, 0 },
+          { 0, 0, 0 }
+        }
+    };
 }
 
 
@@ -84,73 +158,6 @@ void Player::Finished()
 }
 
 
-// Single syntezer channel state  
-typedef struct
-{
-    uint16    m_counter;      //square wave, sine or waveform generator counter
-
-    uint16    m_counterAdd;   //0 - off, 1 - drum, >0 - add value for counter
-
-    uint8     m_envelopeCounter;
-
-} TChannelState;
-
-
-// TCompressedStreamState
-typedef struct
-{
-    const uint8 *m_pData;
-
-    // number of bits still used in byte m_pData points to
-    uint8                 m_bitsUsed;
-} TCompressedStreamState;
-
-
-// TPlayerState
-typedef struct
-{
-    //noteNumber stream, 11 bits
-    TCompressedStreamState              m_stream1;
-    //pause stream, 13 bits
-    TCompressedStreamState              m_stream2;
-
-    const uint8 *m_stream1_start;
-    const uint8 *m_stream2_start;
-
-    // This value is decreased on every timer event.
-    // Initially is writeln from m_delta value of StateChangeEvent.
-    // When it reaches 0, it's time to process state change events.
-    uint16          m_eventCounter;
-
-    // 255Hz counter    
-    // initally writeln ENVELOPE_SKIP_MAX
-    // decreased every tick
-    // when reaches 0, envelope index on all channels should increase
-    uint8           m_envelopeSkipCounter;
-
-    // Syntezer channels states
-    TChannelState   m_channelState[HXMIDIPLAYER_CHANNELS_COUNT];
-} TPlayerState;
-
-
-// Player state
-static TPlayerState s_playerState =
-{
-    { nullptr, 0 },
-    { nullptr, 0 },
-    nullptr,
-    nullptr,
-    0,
-    0,
-    {
-      { 0, 0, 0 },
-      { 0, 0, 0 },
-      { 0, 0, 0 },
-      { 0, 0, 0 }
-    }
-};
-
-
 uint16 inline Player_GetNoteFreqAdd(uint8 _noteNumber)
 {
     uint8 noteIndex;
@@ -163,8 +170,7 @@ uint16 inline Player_GetNoteFreqAdd(uint8 _noteNumber)
 }
 
 
-//advance stream by number of bits
-static void Player_Advance(TCompressedStreamState *_state, uint16 _bitsCount)
+void Player::Advance(TCompressedStreamState *_state, uint16 _bitsCount)
 {
     uint16 s = (uint16)(_state->m_bitsUsed + _bitsCount);
 
@@ -173,7 +179,7 @@ static void Player_Advance(TCompressedStreamState *_state, uint16 _bitsCount)
 }
 
 
-static uint16 Player_ReadBits(TCompressedStreamState *_state, uint8 _bitsCount, uint16 _mask)
+uint16 Player::ReadBits(TCompressedStreamState *_state, uint8 _bitsCount, uint16 _mask)
 {
     //this procedure is optimized for _bitsCount 1..16
     //(value can be spread at most by 3 bytes)
@@ -190,25 +196,24 @@ static uint16 Player_ReadBits(TCompressedStreamState *_state, uint8 _bitsCount, 
 
     r >>= s;
 
-    Player_Advance(_state, _bitsCount);
+    Advance(_state, _bitsCount);
 
     return r & _mask;
 }
 
 
-// advance stream to actual data
-static void Player_StartStream(TCompressedStreamState *_state, uint8 _numberOfBits)
+void Player::StartStream(TCompressedStreamState *_state, uint8 _numberOfBits)
 {
     uint16 s;
 
-    s = Player_ReadBits(_state, 5, 0x1f);
-    Player_Advance(_state, (uint16)(16 + s * _numberOfBits));
+    s = ReadBits(_state, 5, 0x1f);
+    Advance(_state, (uint16)(16 + s * _numberOfBits));
 }
 
 
-static uint16 Player_Decompress(TCompressedStreamState *_state, const uint8 *_streamBase, uint8 _bitsCount, uint16 _mask)
+uint16 Player::Decompress(TCompressedStreamState *_state, const uint8 *_streamBase, uint8 _bitsCount, uint16 _mask)
 {
-    uint8 code = (uint8)Player_ReadBits(_state, 3, 0x7);
+    uint8 code = (uint8)ReadBits(_state, 3, 0x7);
 
     switch (code)
     {
@@ -219,30 +224,30 @@ static uint16 Player_Decompress(TCompressedStreamState *_state, const uint8 *_st
         break;
 
     case 3:
-        code = (uint8)(3 + Player_ReadBits(_state, 1, 1));
+        code = (uint8)(3 + ReadBits(_state, 1, 1));
         break;
 
     case 4:
-        code = (uint8)(5 + Player_ReadBits(_state, 2, 3));
+        code = (uint8)(5 + ReadBits(_state, 2, 3));
         break;
 
     case 5:
-        code = (uint8)(9 + Player_ReadBits(_state, 3, 7));
+        code = (uint8)(9 + ReadBits(_state, 3, 7));
         break;
 
     case 6:
-        code = (uint8)(17 + Player_ReadBits(_state, 3, 7));
+        code = (uint8)(17 + ReadBits(_state, 3, 7));
         break;
 
     case 7:
-        return Player_ReadBits(_state, _bitsCount, _mask);
+        return ReadBits(_state, _bitsCount, _mask);
     }
 
     TCompressedStreamState state;
     state.m_pData = _streamBase;
     state.m_bitsUsed = 0;
-    Player_Advance(&state, (uint16)(5 + 16 + ((uint16)code) * _bitsCount));
-    return Player_ReadBits(&state, _bitsCount, _mask); //review: doen't need advance
+    Advance(&state, (uint16)(5 + 16 + ((uint16)code) * _bitsCount));
+    return ReadBits(&state, _bitsCount, _mask); //review: doen't need advance
 }
 
 
@@ -256,11 +261,11 @@ void Player::ProcessEvents()
     s_playerState.m_eventCounter = (uint16)0xffff;
     //    #asm("sei")
 
-    delta = Player_Decompress(&s_playerState.m_stream1, s_playerState.m_stream1_start, 11, 0x7ff);
+    delta = Decompress(&s_playerState.m_stream1, s_playerState.m_stream1_start, 11, 0x7ff);
     noteNumber = (uint8)(delta & 0x7f);
     channelIndex = (uint8)(delta >> 7);
 
-    delta = Player_Decompress(&s_playerState.m_stream2, s_playerState.m_stream2_start, 13, 0x1fff);
+    delta = Decompress(&s_playerState.m_stream2, s_playerState.m_stream2_start, 13, 0x1fff);
 
     if (delta == 0)
     {
@@ -382,8 +387,8 @@ void Player::StartMelody(const TMelody *_pMelody, uint16 _delay)
     s_playerState.m_stream1_start = _pMelody->m_pStream1;
     s_playerState.m_stream2_start = _pMelody->m_pStream2;
 
-    Player_StartStream(&s_playerState.m_stream1, 11);
-    Player_StartStream(&s_playerState.m_stream2, 13);
+    StartStream(&s_playerState.m_stream1, 11);
+    StartStream(&s_playerState.m_stream2, 13);
 
     //    #asm("sei")
 

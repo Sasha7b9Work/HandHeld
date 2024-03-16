@@ -63,8 +63,8 @@ file(GLOB MENU                    ../../Device/src/Menu/*.*)
 file(GLOB MENU_PAGES              ../../Device/src/Menu/Pages/*.*)
 file(GLOB PLAYER                  ../../Device/src/Player/*.h
                                   ../../Device/src/Player/Player.cpp
-                                  ../../Device/src/Player/melody*.cpp
                                                    Player/*.*)
+file(GLOB PLAYER_MELODIES         ../../Device/src/Player/Melodies/*.*)
 file(GLOB SETTINGS                ../../Device/src/Settings/*.*)
 file(GLOB UTILS                   ../../Device/src/Utils/*.*)
 
@@ -81,6 +81,7 @@ source_group(Modules/ST7735       FILES ${MODULES_ST7735})
 source_group(Menu                 FILES ${MENU})
 source_group(Menu/Pages           FILES ${MENU_PAGES})
 source_group(Player               FILES ${PLAYER})
+source_group(Player/Melodies      FILES ${PLAYER_MELODIES})
 source_group(Settings             FILES ${SETTINGS})
 source_group(Utils                FILES ${UTILS})
 
@@ -114,6 +115,7 @@ add_executable(${PROJECT_NAME}
     ${MENU}
     ${MENU_PAGES}
     ${PLAYER}
+    ${PLAYER_MELODIES}
     ${SETTINGS}
     ${UTILS}
 )
