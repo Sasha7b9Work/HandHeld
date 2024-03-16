@@ -65,12 +65,8 @@ void Player::Finished()
 // Single syntezer channel state  
 typedef struct
 {
-#ifdef HXMIDIPLAYER_WAVEFORM_SAMPLE
-    //can be 24 bit uint
-    uint    m_counter;      //sample index counter
-#else
     uint16    m_counter;      //square wave, sine or waveform generator counter
-#endif
+
     uint16    m_counterAdd;   //0 - off, 1 - drum, >0 - add value for counter
 
 #ifdef HXMIDIPLAYER_WAVEFORM_SINE_ENVELOPE
@@ -370,7 +366,6 @@ void Player::TimerFunc()
     for (i = 0; i < HXMIDIPLAYER_CHANNELS_COUNT; i++)
     {
         {
-
 #ifdef HXMIDIPLAYER_WAVEFORM_SINE_ENVELOPE    
             {
                 uint8 sineVal;
@@ -388,15 +383,6 @@ void Player::TimerFunc()
                 sample += sineVal;
             }
 #endif
-
-#ifdef HXMIDIPLAYER_WAVEFORM_SAMPLE
-            if (pState->m_counter < PLAYER_COUNTER_MAX_VAL)
-            {
-                pState->m_counter += pState->m_counterAdd;
-            }
-            sample += s_sample[pState->m_counter >> (PLAYER_FREQ_SHR - 3)];
-#endif
-
         }
         pState++;
     }
