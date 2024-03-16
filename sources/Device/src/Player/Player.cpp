@@ -16,13 +16,11 @@
 
 namespace Player
 {
-    // Single syntezer channel state  
+    // Состояние одного канала синтезатора
     struct ChannelState
     {
-        uint16 counter;      //square wave, sine or waveform generator counter
-
-        uint16 counterAdd;   //0 - off, 1 - drum, >0 - add value for counter
-
+        uint16 counter;      // счетчик генератора прямоугольных, синусоидальных или волновых сигналов
+        uint16 counterAdd;   // 0 — выкл., 1 — барабан, >0 — добавить значение счетчика.
         uint8  envelopeCounter;
     };
 
@@ -30,9 +28,7 @@ namespace Player
     struct CompressedStreamState
     {
         const uint8 *pData;
-
-        // number of bits still used in byte m_pData points to
-        uint8        bitsUsed;
+        uint8        bitsUsed;      // количество битов, которые все еще используются в байте, m_pData указывает на
     };
 
 
@@ -60,15 +56,6 @@ namespace Player
         // Syntezer channels states
         ChannelState channelState[HXMIDIPLAYER_CHANNELS_COUNT];
     };
-
-    // Вывод отсчёта
-    static void CallbackOutput(uint8 sample);
-
-    // Вызывается плеером, когда игрок мелодия стартует (из StartMelody()). Может использоваться для настройки таймера/ШИМ.
-    static void CallbackStarted();
-
-    // Вызывается проигрывателем после завершения мелодии (из TimerFunc(), прерывания отключены). Может использоваться для настройки таймера/ШИМ.
-    static void CallbackFinished();
 
     // Timer event function, should be called by user with fixed frequency HXMIDIPLAYER_SAMPLING_RATE
     void TimerFunc();
@@ -132,23 +119,6 @@ void Player::Play(TypeMelody::E type)
     };
 
     StartMelody(melodies[type], 3 * 255);
-}
-
-
-void Player::CallbackOutput(uint8 /*sample*/)
-{
-}
-
-
-void Player::CallbackStarted()
-{
-
-}
-
-
-void Player::CallbackFinished()
-{
-
 }
 
 
@@ -265,7 +235,7 @@ void Player::ProcessEvents()
     {
         //        #asm("cli")
         s_playerState.stream1.pData = nullptr;
-        CallbackFinished();
+        Beeper::StopMelody();
         return;
     }
 
@@ -356,7 +326,7 @@ void Player::TimerFunc()
         pState++;
     }
 
-    CallbackOutput(sample);
+    Beeper::OutputSample(sample);
 }
 
 
@@ -364,7 +334,7 @@ void Player::StartMelody(const Melody *_pMelody, uint16 _delay)
 {
     Stop();
 
-    CallbackStarted();
+    Beeper::StartMelody();
 
     memset(s_playerState.channelState, 0, sizeof(ChannelState) * HXMIDIPLAYER_CHANNELS_COUNT);
 
@@ -418,6 +388,6 @@ void Player::Stop()
 
 //        #asm("sei")
 
-        CallbackFinished();
+        Beeper::StopMelody();
     }
 }

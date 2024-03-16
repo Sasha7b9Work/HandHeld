@@ -21,3 +21,21 @@ void Beeper::Beep()
         Timer::Delay(1);
     }
 }
+
+
+void Beeper::OutputSample(uint8)
+{
+
+}
+
+
+void Beeper::StartMelody()
+{
+
+}
+
+
+void Beeper::StopMelody()
+{
+
+}
