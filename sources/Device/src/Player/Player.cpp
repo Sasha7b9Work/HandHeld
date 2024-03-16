@@ -43,22 +43,22 @@ namespace Player
         //pause stream, 13 bits
         CompressedStreamState stream2;
 
-        const uint8 *m_stream1_start;
-        const uint8 *m_stream2_start;
+        const uint8 *stream1_start;
+        const uint8 *stream2_start;
 
         // This value is decreased on every timer event.
         // Initially is writeln from m_delta value of StateChangeEvent.
         // When it reaches 0, it's time to process state change events.
-        uint16          m_eventCounter;
+        uint16       eventCounter;
 
         // 255Hz counter    
         // initally writeln ENVELOPE_SKIP_MAX
         // decreased every tick
         // when reaches 0, envelope index on all channels should increase
-        uint8           m_envelopeSkipCounter;
+        uint8        envelopeSkipCounter;
 
         // Syntezer channels states
-        ChannelState   m_channelState[HXMIDIPLAYER_CHANNELS_COUNT];
+        ChannelState channelState[HXMIDIPLAYER_CHANNELS_COUNT];
     };
 
     // Called by player to output data to DAC/pwm
@@ -256,14 +256,14 @@ void Player::ProcessEvents()
     uint16 delta;
     uint16 cadd;
 
-    s_playerState.m_eventCounter = (uint16)0xffff;
+    s_playerState.eventCounter = (uint16)0xffff;
     //    #asm("sei")
 
-    delta = Decompress(&s_playerState.stream1, s_playerState.m_stream1_start, 11, 0x7ff);
+    delta = Decompress(&s_playerState.stream1, s_playerState.stream1_start, 11, 0x7ff);
     noteNumber = (uint8)(delta & 0x7f);
     channelIndex = (uint8)(delta >> 7);
 
-    delta = Decompress(&s_playerState.stream2, s_playerState.m_stream2_start, 13, 0x1fff);
+    delta = Decompress(&s_playerState.stream2, s_playerState.stream2_start, 13, 0x1fff);
 
     if (delta == 0)
     {
@@ -293,12 +293,12 @@ void Player::ProcessEvents()
 
 //    #asm("cli")
 
-    s_playerState.m_channelState[channelIndex].counter = 0;
-    s_playerState.m_channelState[channelIndex].counterAdd = cadd;
+    s_playerState.channelState[channelIndex].counter = 0;
+    s_playerState.channelState[channelIndex].counterAdd = cadd;
 
-    s_playerState.m_channelState[channelIndex].envelopeCounter = 0;
+    s_playerState.channelState[channelIndex].envelopeCounter = 0;
 
-    s_playerState.m_eventCounter = delta;
+    s_playerState.eventCounter = delta;
 }
 
 
@@ -314,31 +314,31 @@ void Player::TimerFunc()
     }
 
     //advance envelopeCounter    
-    if (s_playerState.m_envelopeSkipCounter == 0)
+    if (s_playerState.envelopeSkipCounter == 0)
     {
-        s_playerState.m_envelopeSkipCounter = ENVELOPE_SKIP_MAX;
+        s_playerState.envelopeSkipCounter = ENVELOPE_SKIP_MAX;
 
         for (i = 0; i < HXMIDIPLAYER_CHANNELS_COUNT; i++)
         {
-            if (s_playerState.m_channelState[i].envelopeCounter < 255)
+            if (s_playerState.channelState[i].envelopeCounter < 255)
             {
-                s_playerState.m_channelState[i].envelopeCounter++;
+                s_playerState.channelState[i].envelopeCounter++;
             }
         }
 
-        s_playerState.m_eventCounter--;
-        if (s_playerState.m_eventCounter == 0)
+        s_playerState.eventCounter--;
+        if (s_playerState.eventCounter == 0)
         {
             ProcessEvents();
         }
     }
-    s_playerState.m_envelopeSkipCounter--;
+    s_playerState.envelopeSkipCounter--;
 
     //create sample
 
     sample = 0x80;
 
-    pState = &s_playerState.m_channelState[0];
+    pState = &s_playerState.channelState[0];
 
     for (i = 0; i < HXMIDIPLAYER_CHANNELS_COUNT; i++)
     {
@@ -370,10 +370,10 @@ void Player::StartMelody(const TMelody *_pMelody, uint16 _delay)
 
     Started();
 
-    memset(s_playerState.m_channelState, 0, sizeof(ChannelState) * HXMIDIPLAYER_CHANNELS_COUNT);
+    memset(s_playerState.channelState, 0, sizeof(ChannelState) * HXMIDIPLAYER_CHANNELS_COUNT);
 
-    s_playerState.m_eventCounter = (uint16)(1 + _delay);
-    s_playerState.m_envelopeSkipCounter = 0;
+    s_playerState.eventCounter = (uint16)(1 + _delay);
+    s_playerState.envelopeSkipCounter = 0;
 
     //    #asm("cli")
 
@@ -382,8 +382,8 @@ void Player::StartMelody(const TMelody *_pMelody, uint16 _delay)
     s_playerState.stream1.bitsUsed = 0;
     s_playerState.stream2.bitsUsed = 0;
 
-    s_playerState.m_stream1_start = _pMelody->m_pStream1;
-    s_playerState.m_stream2_start = _pMelody->m_pStream2;
+    s_playerState.stream1_start = _pMelody->m_pStream1;
+    s_playerState.stream2_start = _pMelody->m_pStream2;
 
     StartStream(&s_playerState.stream1, 11);
     StartStream(&s_playerState.stream2, 13);
