@@ -1,5 +1,6 @@
 #include "defines.h"
 #include "Player/Player.h"
+#include "Player/Melodies/melody3.h"
 
 //Player frequency=18000
 //Player minimum channels count =4
@@ -1921,7 +1922,7 @@ static const uint8_t s_melody3_stream2[593] = {
     32
   };
 
-static const TMelody s_melody3 = {
+const TMelody s_melody3 = {
     s_melody3_stream1,
     s_melody3_stream2
   };

@@ -45,6 +45,7 @@ file(GLOB MODULES_CMT2210AW src/Modules/CMT2210AW/*.*)
 file(GLOB MODULES_PCF8563   src/Modules/PCF8563/*.*)
 file(GLOB MODULES_ST7735    src/Modules/ST7735/*.*)
 file(GLOB PLAYER            src/Player/*.*)
+file(GLOB PLAYER_MELODIES   src/Player/Melodies/*.*)
 file(GLOB SETTINGS          src/Settings/*.*)
 file(GLOB UTILS             src/Utils/*.*)
 
@@ -61,6 +62,7 @@ source_group(Modules/CMT2210AW    FILES ${MODULES_CMT2210AW})
 source_group(Modules/PCF8563      FILES ${MODULES_PCF8563})
 source_group(Modules/ST7735       FILES ${MODULES_ST7735})
 source_group(Player               FILES ${PLAYER})
+source_group(Player/Melodies      FILES ${PLAYER_MELODIES})
 source_group(Settings             FILES ${SETTINGS})
 source_group(Utils                FILES ${UTILS})
 
@@ -84,6 +86,7 @@ add_library(${PROJECT_NAME}
     ${MODULES_PCF8563}
     ${MODULES_ST7735}
     ${PLAYER}
+    ${PLAYER_MELODIES}
     ${SETTINGS}
     ${UTILS}
 )

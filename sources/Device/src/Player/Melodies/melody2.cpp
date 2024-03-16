@@ -1,5 +1,6 @@
 #include "defines.h"
 #include "Player/Player.h"
+#include "Player/Melodies/melody2.h"
 
 
 //Player frequency=18000
@@ -1588,7 +1589,7 @@ static const uint8 s_melody2_stream2[433] = {
     32
   };
 
-static const TMelody s_melody2 = {
+const TMelody s_melody2 = {
     s_melody2_stream1,
     s_melody2_stream2
   };

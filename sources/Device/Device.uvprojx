@@ -919,20 +919,40 @@
               <FileType>5</FileType>
               <FilePath>.\src\Player\PlayerConfig.h</FilePath>
             </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Player/Melodies</GroupName>
+          <Files>
             <File>
-              <FileName>melody.cpp</FileName>
+              <FileName>melody1.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Player\melody.cpp</FilePath>
+              <FilePath>.\src\Player\melodies\melody1.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>melody1.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Player\melodies\melody1.h</FilePath>
             </File>
             <File>
               <FileName>melody2.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Player\melody2.cpp</FilePath>
+              <FilePath>.\src\Player\melodies\melody2.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>melody2.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Player\melodies\melody2.h</FilePath>
             </File>
             <File>
               <FileName>melody3.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Player\melody3.cpp</FilePath>
+              <FilePath>.\src\Player\melodies\melody3.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>melody3.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Player\melodies\melody3.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -1891,20 +1911,40 @@
               <FileType>5</FileType>
               <FilePath>.\src\Player\PlayerConfig.h</FilePath>
             </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Player/Melodies</GroupName>
+          <Files>
             <File>
-              <FileName>melody.cpp</FileName>
+              <FileName>melody1.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Player\melody.cpp</FilePath>
+              <FilePath>.\src\Player\melodies\melody1.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>melody1.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Player\melodies\melody1.h</FilePath>
             </File>
             <File>
               <FileName>melody2.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Player\melody2.cpp</FilePath>
+              <FilePath>.\src\Player\melodies\melody2.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>melody2.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Player\melodies\melody2.h</FilePath>
             </File>
             <File>
               <FileName>melody3.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Player\melody3.cpp</FilePath>
+              <FilePath>.\src\Player\melodies\melody3.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>melody3.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Player\melodies\melody3.h</FilePath>
             </File>
           </Files>
         </Group>
