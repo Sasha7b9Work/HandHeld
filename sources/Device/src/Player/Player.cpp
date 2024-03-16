@@ -432,12 +432,6 @@ void Player::TimerFunc()
 #endif //drums syntezer        
         {
 
-
-#ifdef HXMIDIPLAYER_WAVEFORM_SINE    
-            pState->m_counter += pState->m_counterAdd;
-            sample += s_sineTable[(pState->m_counter >> (PLAYER_FREQ_SHR - 5)) & 63];
-#endif
-
 #ifdef HXMIDIPLAYER_WAVEFORM_SINE_ENVELOPE    
             {
                 uint8 sineVal;
