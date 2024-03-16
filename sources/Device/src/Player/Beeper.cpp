@@ -48,13 +48,15 @@ void Beeper::Init()
     /* CH1 configuration in PWM mode0, duty cycle 50% */
     timer_channel_output_pulse_value_config(TIMER14, TIMER_CH_1, 125);
     timer_channel_output_mode_config(TIMER14, TIMER_CH_1, TIMER_OC_MODE_PWM1);
-    timer_channel_output_shadow_config(TIMER14, TIMER_CH_1, TIMER_OC_SHADOW_ENABLE);
+    timer_channel_output_shadow_config(TIMER14, TIMER_CH_1, TIMER_OC_SHADOW_DISABLE);
 
     /* auto-reload preload enable */
     timer_auto_reload_shadow_enable(TIMER14);
 
     timer_interrupt_flag_clear(TIMER14, TIMER_INT_FLAG_CH1);
     timer_interrupt_enable(TIMER14, TIMER_INT_CH1);
+
+    timer_primary_output_config(TIMER14, ENABLE);
 
     /* TIMER2 counter enable */
     timer_enable(TIMER14);
