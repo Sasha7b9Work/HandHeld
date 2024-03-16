@@ -27,7 +27,6 @@ namespace Player
     };
 
 
-    // TCompressedStreamState
     struct CompressedStreamState
     {
         const uint8 *pData;
@@ -37,8 +36,7 @@ namespace Player
     };
 
 
-    // TPlayerState
-    struct TPlayerState
+    struct PlayerState
     {
         //noteNumber stream, 11 bits
         CompressedStreamState stream1;
@@ -105,7 +103,7 @@ namespace Player
     static uint16 Decompress(CompressedStreamState *_state, const uint8 *_streamBase, uint8 _bitsCount, uint16 _mask);
 
     // Player state
-    static TPlayerState s_playerState =
+    static PlayerState s_playerState =
     {
         { nullptr, 0 },
         { nullptr, 0 },
