@@ -1,6 +1,9 @@
 #include "defines.h"
 #include "Player/Player.h"
 #include "Player/Beeper.h"
+#include "Player/Melodies/melody1.h"
+#include "Player/Melodies/melody2.h"
+#include "Player/Melodies/melody3.h"
 #include <string.h>
 
 
@@ -42,6 +45,8 @@ namespace Player
 void Player::Init()
 {
     Beeper::Init();
+
+    volatile uint8 sample = s_melody1.m_pStream1[0];
 }
 
 
