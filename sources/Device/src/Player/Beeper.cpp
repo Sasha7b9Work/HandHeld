@@ -41,11 +41,6 @@ void Beeper::Init()
     timer_channel_output_struct_para_init(&timer_ocinitpara);
     /* configure TIMER channel output function */
     timer_ocinitpara.outputstate = TIMER_CCX_ENABLE;
-    timer_ocinitpara.outputnstate = TIMER_CCXN_DISABLE;
-    timer_ocinitpara.ocpolarity = TIMER_OC_POLARITY_HIGH;
-    timer_ocinitpara.ocnpolarity = TIMER_OCN_POLARITY_HIGH;
-    timer_ocinitpara.ocidlestate = TIMER_OC_IDLE_STATE_LOW;
-    timer_ocinitpara.ocnidlestate = TIMER_OCN_IDLE_STATE_LOW;
     timer_channel_output_config(TIMER14, TIMER_CH_1, &timer_ocinitpara);
 
     /* CH1 configuration in PWM mode0, duty cycle 50% */
