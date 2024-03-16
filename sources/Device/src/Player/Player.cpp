@@ -231,7 +231,7 @@ void Player::ProcessEvents()
     uint16 delta;
     uint16 cadd;
 
-    s_playerState.m_eventCounter = (uint16)0xffffffff;
+    s_playerState.m_eventCounter = (uint16)0xffff;
     //    #asm("sei")
 
     delta = Player_Decompress(&s_playerState.m_stream1, s_playerState.m_stream1_start, 11, 0x7ff);

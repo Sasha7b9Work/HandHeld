@@ -919,6 +919,21 @@
               <FileType>5</FileType>
               <FilePath>.\src\Player\PlayerConfig.h</FilePath>
             </File>
+            <File>
+              <FileName>melody.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Player\melody.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>melody2.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Player\melody2.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>melody3.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Player\melody3.cpp</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1875,6 +1890,21 @@
               <FileName>PlayerConfig.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Player\PlayerConfig.h</FilePath>
+            </File>
+            <File>
+              <FileName>melody.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Player\melody.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>melody2.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Player\melody2.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>melody3.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Player\melody3.cpp</FilePath>
             </File>
           </Files>
         </Group>

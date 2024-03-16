@@ -2,7 +2,7 @@
 
 project (Device)
 
-#set(CMAKE_UNITY_BUILD OFF)
+set(CMAKE_UNITY_BUILD OFF)
 
 set(CMAKE_UNITY_BUILD_BATCH_SIZE 16)
 
@@ -63,6 +63,7 @@ file(GLOB MENU                    ../../Device/src/Menu/*.*)
 file(GLOB MENU_PAGES              ../../Device/src/Menu/Pages/*.*)
 file(GLOB PLAYER                  ../../Device/src/Player/*.h
                                   ../../Device/src/Player/Player.cpp
+                                  ../../Device/src/Player/melody*.cpp
                                                    Player/*.*)
 file(GLOB SETTINGS                ../../Device/src/Settings/*.*)
 file(GLOB UTILS                   ../../Device/src/Utils/*.*)
