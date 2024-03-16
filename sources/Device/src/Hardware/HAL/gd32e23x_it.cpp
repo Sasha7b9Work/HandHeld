@@ -84,6 +84,15 @@ void TIMER2_IRQHandler(void)
 }
 
 
+void TIMER14_IRQHandler(void)
+{
+    if (timer_interrupt_flag_get(TIMER14, TIMER_INT_FLAG_CH1))
+    {
+        timer_interrupt_flag_clear(TIMER14, TIMER_INT_FLAG_CH1);
+    }
+}
+
+
 #ifdef __cplusplus
 }
 #endif

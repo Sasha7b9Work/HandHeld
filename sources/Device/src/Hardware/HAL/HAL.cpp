@@ -20,6 +20,8 @@ void HAL::Init()
 
     nvic_irq_enable(TIMER2_IRQn, 0);            // Таймер на приёмник
 
+    nvic_irq_enable(TIMER14_IRQn, 1);           // Таймер на ШИМ звука
+
     HAL_I2C::Init();
 
     timer_parameter_struct timer_initpara;

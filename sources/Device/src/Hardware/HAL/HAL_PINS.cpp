@@ -17,7 +17,6 @@ PinIn  pinPWR_CTRL(GPIOA, GPIO_PIN_0);      // PA0  10
 PinOut pinADC(GPIOA, GPIO_PIN_1);           // PA1  11
 
 PinOut pinLEDPWR(GPIOA, GPIO_PIN_2);        // PA2  12
-PinOut pinSOUND(GPIOA, GPIO_PIN_3);         // PA3  13
 PinOut pinVIBRO(GPIOA, GPIO_PIN_10);        // PA10 31
 
 PinIn pinPWR(GPIOA, GPIO_PIN_12);           // PA12 33

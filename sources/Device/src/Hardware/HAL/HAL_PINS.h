@@ -53,7 +53,6 @@ extern PinIn  pinPWR_CTRL;
 extern PinOut pinADC;
 
 extern PinOut pinLEDPWR;
-extern PinOut pinSOUND;
 extern PinOut pinVIBRO;
 
 extern PinIn pinPWR;
