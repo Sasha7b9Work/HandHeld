@@ -57,6 +57,8 @@ void Beeper::Init()
 
     timer_primary_output_config(TIMER14, ENABLE);
 
+    timer_auto_reload_shadow_enable(TIMER14);
+
     /* TIMER2 counter enable */
     timer_enable(TIMER14);
 }
