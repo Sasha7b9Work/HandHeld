@@ -283,24 +283,16 @@ void Player::TimerFunc()
     uint8 i;
     TChannelState *pState;
 
-#ifdef HXMIDIPLAYER_USE_COMPRESSION
     if (s_playerState.m_stream1.m_pData == nullptr)
     {
         return;
     }
-#else
-    if (s_playerState.m_pMelody == NULL)
-    {
-        return;
-    }
-#endif    
 
     //advance envelopeCounter    
     if (s_playerState.m_envelopeSkipCounter == 0)
     {
         s_playerState.m_envelopeSkipCounter = ENVELOPE_SKIP_MAX;
 
-#ifdef HXMIDIPLAYER_WAVEFORM_SINE_ENVELOPE
         for (i = 0; i < HXMIDIPLAYER_CHANNELS_COUNT; i++)
         {
             if (s_playerState.m_channelState[i].m_envelopeCounter < 255)
@@ -308,7 +300,7 @@ void Player::TimerFunc()
                 s_playerState.m_channelState[i].m_envelopeCounter++;
             }
         }
-#endif    
+
         s_playerState.m_eventCounter--;
         if (s_playerState.m_eventCounter == 0)
         {
@@ -326,23 +318,19 @@ void Player::TimerFunc()
     for (i = 0; i < HXMIDIPLAYER_CHANNELS_COUNT; i++)
     {
         {
-#ifdef HXMIDIPLAYER_WAVEFORM_SINE_ENVELOPE    
-            {
-                uint8 sineVal;
-                uint8 envelopeVal;
-                pState->m_counter += pState->m_counterAdd;
-                //sineVal is unsigned value, biased by 0x80 ( 0 -> 0x80 )
-                sineVal = s_sineTable[(pState->m_counter >> (PLAYER_FREQ_SHR - 5)) & 63];
-                //envelopeVal is volume value 0..255
-                envelopeVal = s_envelope[pState->m_envelopeCounter >> 1];
-                //scale sineVal as unsigned value using simple mul/shift. We divide by 256, not 255 for simplicity.
-                sineVal = (uint8_t)((((uint16_t)sineVal) * envelopeVal) >> 8);
-                //after scaling, 0x80 (biased zero ) became m_envelopeVal / 2
-                //create unsigned value by biasing back    
-                sineVal -= envelopeVal >> 1;
-                sample += sineVal;
-            }
-#endif
+            uint8 sineVal;
+            uint8 envelopeVal;
+            pState->m_counter += pState->m_counterAdd;
+            //sineVal is unsigned value, biased by 0x80 ( 0 -> 0x80 )
+            sineVal = s_sineTable[(pState->m_counter >> (PLAYER_FREQ_SHR - 5)) & 63];
+            //envelopeVal is volume value 0..255
+            envelopeVal = s_envelope[pState->m_envelopeCounter >> 1];
+            //scale sineVal as unsigned value using simple mul/shift. We divide by 256, not 255 for simplicity.
+            sineVal = (uint8_t)((((uint16_t)sineVal) * envelopeVal) >> 8);
+            //after scaling, 0x80 (biased zero ) became m_envelopeVal / 2
+            //create unsigned value by biasing back    
+            sineVal -= envelopeVal >> 1;
+            sample += sineVal;
         }
         pState++;
     }
@@ -364,7 +352,6 @@ void Player::StartMelody(const TMelody *_pMelody, uint16 _delay)
 
     //    #asm("cli")
 
-#ifdef HXMIDIPLAYER_USE_COMPRESSION
     s_playerState.m_stream1.m_pData = _pMelody->m_pStream1;
     s_playerState.m_stream2.m_pData = _pMelody->m_pStream2;
     s_playerState.m_stream1.m_bitsUsed = 0;
@@ -375,27 +362,20 @@ void Player::StartMelody(const TMelody *_pMelody, uint16 _delay)
 
     Player_StartStream(&s_playerState.m_stream1, 11);
     Player_StartStream(&s_playerState.m_stream2, 13);
-#else
-    s_playerState.m_pMelody = _pMelody->m_pEvents;
-#endif 
 
     //    #asm("sei")
 
-            ///Set initial values for white noise generator
-            //s_playerState.m_wngState.m_nze = 0;
-            //s_playerState.m_wngState.m_t1 = 45;
-            //s_playerState.m_wngState.m_t2 = 34;
-            //s_playerState.m_wngState.m_t3 = 53;
+    ///Set initial values for white noise generator
+    //s_playerState.m_wngState.m_nze = 0;
+    //s_playerState.m_wngState.m_t1 = 45;
+    //s_playerState.m_wngState.m_t2 = 34;
+    //s_playerState.m_wngState.m_t3 = 53;
 }
 
 
 bool Player::IsPlaying()
 {
-#ifdef HXMIDIPLAYER_USE_COMPRESSION
     return s_playerState.m_stream1.m_pData != nullptr;
-#else
-    return s_playerState.m_pMelody != NULL;
-#endif    
 }
 
 
@@ -411,15 +391,11 @@ void Player::Stop()
 {
     if (IsPlaying())
     {
-        //        #asm("cli")
+//        #asm("cli")
 
-#ifdef HXMIDIPLAYER_USE_COMPRESSION
         s_playerState.m_stream1.m_pData = nullptr;
-#else          
-        s_playerState.m_pMelody = NULL;
-#endif        
 
-        //        #asm("sei")
+//        #asm("sei")
 
         Finished();
     }
