@@ -80,18 +80,6 @@ typedef struct
 } TChannelState;
 
 
-#ifdef HXMIDIPLAYER_ENABLE_DRUMS_SYNTEZER
-// WhiteNoiseGeneratorState
-typedef struct
-{
-    uint8     m_nze;
-    uint8     m_t1;
-    uint8     m_t2;
-    uint8     m_t3;
-} WhiteNoiseGeneratorState;
-#endif 
-
-
 #ifdef HXMIDIPLAYER_USE_COMPRESSION
 // TCompressedStreamState
 typedef struct
@@ -120,10 +108,6 @@ typedef struct
     const flash TPlayerStateChange *m_pMelody;
 #endif
 
-#ifdef HXMIDIPLAYER_ENABLE_DRUMS_SYNTEZER
-    WhiteNoiseGeneratorState            m_wngState;
-#endif
-
     // This value is decreased on every timer event.
     // Initially is writeln from m_delta value of StateChangeEvent.
     // When it reaches 0, it's time to process state change events.
@@ -150,9 +134,6 @@ static TPlayerState s_playerState =
         nullptr,
 #else
         nullptr,
-#endif    
-#ifdef HXMIDIPLAYER_ENABLE_DRUMS_SYNTEZER
-        { 0, 45, 34, 53 }
 #endif
         0,
         0,
@@ -161,38 +142,6 @@ static TPlayerState s_playerState =
           { 0, 0, 0 },
           { 0, 0, 0 } }
 };
-
-
-#ifdef HXMIDIPLAYER_ENABLE_DRUMS_SYNTEZER
-uint8 inline Player_GetWhiteNoise()
-{
-    uint8 b;
-    uint8 b1;
-
-    s_playerState.m_wngState.m_t1 = s_playerState.m_wngState.m_nze;
-    s_playerState.m_wngState.m_t1 &= 66;
-
-    if ((s_playerState.m_wngState.m_t1 != 0) && (s_playerState.m_wngState.m_t1 < 66))
-    {
-        b = 1;
-    }
-    else
-    {
-        b = 0;
-    }
-
-    b1 = s_playerState.m_wngState.m_t2 >> 7;
-    s_playerState.m_wngState.m_t2 <<= 1;
-    s_playerState.m_wngState.m_t2 |= b;
-    b = s_playerState.m_wngState.m_t3 >> 7;
-    s_playerState.m_wngState.m_t3 <<= 1;
-    s_playerState.m_wngState.m_t3 |= b1;
-    s_playerState.m_wngState.m_nze <<= 1;
-    s_playerState.m_wngState.m_nze |= b;
-
-    return s_playerState.m_wngState.m_nze;
-}
-#endif
 
 
 uint16 inline Player_GetNoteFreqAdd(uint8 _noteNumber)
@@ -420,16 +369,6 @@ void Player::TimerFunc()
 
     for (i = 0; i < HXMIDIPLAYER_CHANNELS_COUNT; i++)
     {
-#ifdef HXMIDIPLAYER_ENABLE_DRUMS_SYNTEZER    
-        if (pState->m_counterAdd == 1)
-        {
-            if ((Player_GetWhiteNoise() & 1) != 0)
-            {
-                sample += 127 / HXMIDIPLAYER_CHANNELS_COUNT / 4;
-            }
-        }
-        else
-#endif //drums syntezer        
         {
 
 #ifdef HXMIDIPLAYER_WAVEFORM_SINE_ENVELOPE    
