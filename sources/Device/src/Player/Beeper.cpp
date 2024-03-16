@@ -25,13 +25,11 @@ void Beeper::Init()
 
     timer_struct_para_init(&timer_initpara);
 
-    // TIMER2 configuration : generate 3 PWM signals with 3 different duty cycles :
-    // TIMER2CLK = SystemCoreClock / 72 = 1MHz, the PWM frequency is 62.5Hz.
-
-    timer_initpara.prescaler = 199;
+    // TIMER14CLK = SystemCoreClock / 72 = 1MHz, the PWM frequency is 4000 Hz
+    timer_initpara.prescaler = 71;
     timer_initpara.alignedmode = TIMER_COUNTER_EDGE;
     timer_initpara.counterdirection = TIMER_COUNTER_UP;
-    timer_initpara.period = 15999;
+    timer_initpara.period = 249;
     timer_initpara.clockdivision = TIMER_CKDIV_DIV1;
     timer_initpara.repetitioncounter = 0;
     timer_init(TIMER14, &timer_initpara);
@@ -48,7 +46,7 @@ void Beeper::Init()
     timer_channel_output_config(TIMER14, TIMER_CH_1, &timer_ocinitpara);
 
     /* CH1 configuration in PWM mode0, duty cycle 50% */
-    timer_channel_output_pulse_value_config(TIMER14, TIMER_CH_1, 8000);
+    timer_channel_output_pulse_value_config(TIMER14, TIMER_CH_1, 125);
     timer_channel_output_mode_config(TIMER14, TIMER_CH_1, TIMER_OC_MODE_INACTIVE);
     timer_channel_output_shadow_config(TIMER14, TIMER_CH_1, TIMER_OC_SHADOW_DISABLE);
 
