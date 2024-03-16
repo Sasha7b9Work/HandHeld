@@ -1,7 +1,0 @@
-VERSION:3 SOURCE_TIMESTAMP:4301611D
-NODE:I LEVEL:0 LINE:1 "C:\Research\_AVR\AVRMusic\ATMega8Example\melody.h"
-NODE:C LEVEL:0 LINE:5 "s_melody_stream1 -> FLASH"
-NODE:C LEVEL:0 LINE:2920 "s_melody_stream2 -> FLASH"
-NODE:C LEVEL:0 LINE:4768 "s_melody -> FLASH"
-LEVEL:1 LINE:15 ICON:T "m_pStream1"
-LEVEL:1 LINE:16 ICON:T "m_pStream2"

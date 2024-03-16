@@ -1,7 +1,0 @@
-main DSTACK_USAGE:0 DSTACK_LEVEL:0 FILE:"main.c" LINE:39
-Player_StartMelody DSTACK_USAGE:4 DSTACK_LEVEL:4 FILE:"..\Common\hxMidiPlayer.c" LINE:446
-memset DSTACK_USAGE:5 DSTACK_LEVEL:9 FILE:"C:\Program Files (x86)\CVAVR\lib\string.lib" LINE:662
-timer1_compa_isr DSTACK_USAGE:12 DSTACK_LEVEL:21 FILE:"main.c" LINE:8
-Player_TimerFunc DSTACK_USAGE:4 DSTACK_LEVEL:25 FILE:"..\Common\hxMidiPlayer.c" LINE:331
-Player_ProcessEvents DSTACK_USAGE:6 DSTACK_LEVEL:31 FILE:"..\Common\hxMidiPlayer.c" LINE:250
-Player_GetNoteFreqAdd DSTACK_USAGE:3 DSTACK_LEVEL:34 FILE:"..\Common\hxMidiPlayer.c" LINE:141
