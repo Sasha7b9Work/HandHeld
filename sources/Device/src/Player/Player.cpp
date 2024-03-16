@@ -28,12 +28,12 @@ namespace Player
 
 
     // TCompressedStreamState
-    struct TCompressedStreamState
+    struct CompressedStreamState
     {
-        const uint8 *m_pData;
+        const uint8 *pData;
 
         // number of bits still used in byte m_pData points to
-        uint8        m_bitsUsed;
+        uint8        bitsUsed;
     };
 
 
@@ -41,9 +41,9 @@ namespace Player
     struct TPlayerState
     {
         //noteNumber stream, 11 bits
-        TCompressedStreamState              m_stream1;
+        CompressedStreamState stream1;
         //pause stream, 13 bits
-        TCompressedStreamState              m_stream2;
+        CompressedStreamState stream2;
 
         const uint8 *m_stream1_start;
         const uint8 *m_stream2_start;
@@ -95,14 +95,14 @@ namespace Player
     static void ProcessEvents();
 
     //advance stream by number of bits
-    static void Advance(TCompressedStreamState *_state, uint16 _bitsCount);
+    static void Advance(CompressedStreamState *_state, uint16 _bitsCount);
 
-    static uint16 ReadBits(TCompressedStreamState *_state, uint8 _bitsCount, uint16 _mask);
+    static uint16 ReadBits(CompressedStreamState *_state, uint8 _bitsCount, uint16 _mask);
 
     // advance stream to actual data
-    static void StartStream(TCompressedStreamState *_state, uint8 _numberOfBits);
+    static void StartStream(CompressedStreamState *_state, uint8 _numberOfBits);
 
-    static uint16 Decompress(TCompressedStreamState *_state, const uint8 *_streamBase, uint8 _bitsCount, uint16 _mask);
+    static uint16 Decompress(CompressedStreamState *_state, const uint8 *_streamBase, uint8 _bitsCount, uint16 _mask);
 
     // Player state
     static TPlayerState s_playerState =
@@ -170,29 +170,29 @@ uint16 inline Player_GetNoteFreqAdd(uint8 _noteNumber)
 }
 
 
-void Player::Advance(TCompressedStreamState *_state, uint16 _bitsCount)
+void Player::Advance(CompressedStreamState *_state, uint16 _bitsCount)
 {
-    uint16 s = (uint16)(_state->m_bitsUsed + _bitsCount);
+    uint16 s = (uint16)(_state->bitsUsed + _bitsCount);
 
-    _state->m_pData += s >> 3;
-    _state->m_bitsUsed = (uint8)(s & 0x7);
+    _state->pData += s >> 3;
+    _state->bitsUsed = (uint8)(s & 0x7);
 }
 
 
-uint16 Player::ReadBits(TCompressedStreamState *_state, uint8 _bitsCount, uint16 _mask)
+uint16 Player::ReadBits(CompressedStreamState *_state, uint8 _bitsCount, uint16 _mask)
 {
     //this procedure is optimized for _bitsCount 1..16
     //(value can be spread at most by 3 bytes)
 
-    uint r = _state->m_pData[0];
+    uint r = _state->pData[0];
 
     r <<= 8;
-    r |= _state->m_pData[1];
+    r |= _state->pData[1];
 
     r <<= 8;
-    r |= _state->m_pData[2];
+    r |= _state->pData[2];
 
-    int8 s = (int8)(24 - _bitsCount - _state->m_bitsUsed);
+    int8 s = (int8)(24 - _bitsCount - _state->bitsUsed);
 
     r >>= s;
 
@@ -202,7 +202,7 @@ uint16 Player::ReadBits(TCompressedStreamState *_state, uint8 _bitsCount, uint16
 }
 
 
-void Player::StartStream(TCompressedStreamState *_state, uint8 _numberOfBits)
+void Player::StartStream(CompressedStreamState *_state, uint8 _numberOfBits)
 {
     uint16 s;
 
@@ -211,7 +211,7 @@ void Player::StartStream(TCompressedStreamState *_state, uint8 _numberOfBits)
 }
 
 
-uint16 Player::Decompress(TCompressedStreamState *_state, const uint8 *_streamBase, uint8 _bitsCount, uint16 _mask)
+uint16 Player::Decompress(CompressedStreamState *_state, const uint8 *_streamBase, uint8 _bitsCount, uint16 _mask)
 {
     uint8 code = (uint8)ReadBits(_state, 3, 0x7);
 
@@ -243,9 +243,9 @@ uint16 Player::Decompress(TCompressedStreamState *_state, const uint8 *_streamBa
         return ReadBits(_state, _bitsCount, _mask);
     }
 
-    TCompressedStreamState state;
-    state.m_pData = _streamBase;
-    state.m_bitsUsed = 0;
+    CompressedStreamState state;
+    state.pData = _streamBase;
+    state.bitsUsed = 0;
     Advance(&state, (uint16)(5 + 16 + ((uint16)code) * _bitsCount));
     return ReadBits(&state, _bitsCount, _mask); //review: doen't need advance
 }
@@ -261,16 +261,16 @@ void Player::ProcessEvents()
     s_playerState.m_eventCounter = (uint16)0xffff;
     //    #asm("sei")
 
-    delta = Decompress(&s_playerState.m_stream1, s_playerState.m_stream1_start, 11, 0x7ff);
+    delta = Decompress(&s_playerState.stream1, s_playerState.m_stream1_start, 11, 0x7ff);
     noteNumber = (uint8)(delta & 0x7f);
     channelIndex = (uint8)(delta >> 7);
 
-    delta = Decompress(&s_playerState.m_stream2, s_playerState.m_stream2_start, 13, 0x1fff);
+    delta = Decompress(&s_playerState.stream2, s_playerState.m_stream2_start, 13, 0x1fff);
 
     if (delta == 0)
     {
         //        #asm("cli")
-        s_playerState.m_stream1.m_pData = nullptr;
+        s_playerState.stream1.pData = nullptr;
         Finished();
         return;
     }
@@ -310,7 +310,7 @@ void Player::TimerFunc()
     uint8 i;
     ChannelState *pState;
 
-    if (s_playerState.m_stream1.m_pData == nullptr)
+    if (s_playerState.stream1.pData == nullptr)
     {
         return;
     }
@@ -379,16 +379,16 @@ void Player::StartMelody(const TMelody *_pMelody, uint16 _delay)
 
     //    #asm("cli")
 
-    s_playerState.m_stream1.m_pData = _pMelody->m_pStream1;
-    s_playerState.m_stream2.m_pData = _pMelody->m_pStream2;
-    s_playerState.m_stream1.m_bitsUsed = 0;
-    s_playerState.m_stream2.m_bitsUsed = 0;
+    s_playerState.stream1.pData = _pMelody->m_pStream1;
+    s_playerState.stream2.pData = _pMelody->m_pStream2;
+    s_playerState.stream1.bitsUsed = 0;
+    s_playerState.stream2.bitsUsed = 0;
 
     s_playerState.m_stream1_start = _pMelody->m_pStream1;
     s_playerState.m_stream2_start = _pMelody->m_pStream2;
 
-    StartStream(&s_playerState.m_stream1, 11);
-    StartStream(&s_playerState.m_stream2, 13);
+    StartStream(&s_playerState.stream1, 11);
+    StartStream(&s_playerState.stream2, 13);
 
     //    #asm("sei")
 
@@ -402,7 +402,7 @@ void Player::StartMelody(const TMelody *_pMelody, uint16 _delay)
 
 bool Player::IsPlaying()
 {
-    return s_playerState.m_stream1.m_pData != nullptr;
+    return s_playerState.stream1.pData != nullptr;
 }
 
 
@@ -420,7 +420,7 @@ void Player::Stop()
     {
 //        #asm("cli")
 
-        s_playerState.m_stream1.m_pData = nullptr;
+        s_playerState.stream1.pData = nullptr;
 
 //        #asm("sei")
 
