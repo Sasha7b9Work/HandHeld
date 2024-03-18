@@ -85,9 +85,9 @@ void TIMER2_IRQHandler(void)
 
 void TIMER14_IRQHandler(void)
 {
-    static TimeMeterUS meter;
+    uint time = TimerUS::ElaplsedTime();
 
-    Display::SetTimePlayer(meter.ElapsedUS());
+    time = time;
 
     if (timer_interrupt_flag_get(TIMER14, TIMER_INT_FLAG_CH1))
     {
@@ -96,7 +96,7 @@ void TIMER14_IRQHandler(void)
         PlayerMIDI::CallbackOnTimer();
     }
 
-    meter.Reset();
+    TimerUS::ElaplsedTime();
 }
 
 

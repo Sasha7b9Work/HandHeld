@@ -17,6 +17,16 @@ namespace Timer
 }
 
 
+namespace TimerUS
+{
+    void Init();
+
+    void Reset();
+
+    uint ElaplsedTime();
+}
+
+
 struct TimeMeterMS
 {
     TimeMeterMS()
@@ -31,19 +41,6 @@ struct TimeMeterMS
 private:
 
     uint time_reset;
-};
-
-
-struct TimeMeterUS
-{
-    TimeMeterUS()
-    {
-        Reset();
-    }
-
-    void Reset();
-
-    uint ElapsedUS() const;
 };
 
 

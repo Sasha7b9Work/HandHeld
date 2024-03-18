@@ -11,11 +11,11 @@ uint timer_counter = 0;
 void Timer::Init()
 {
     rcu_periph_clock_enable(RCU_TIMER13);
-    timer_deinit(TIMER13);
+    timer_deinit(TIMER13);                          // Будем использовать для подсчёта микросекунд
 
     timer_parameter_struct timer_initpara =
     {
-        0,
+        71,
         TIMER_COUNTER_EDGE,
         TIMER_COUNTER_UP,
         TIMER_CKDIV_DIV1,
@@ -45,13 +45,14 @@ uint TimeMeterMS::ElapsedTime() const
 }
 
 
-void TimeMeterUS::Reset()
+uint TimerUS::ElaplsedTime()
+{
+    return TIMER_CNT(TIMER13);
+}
+
+
+void TimerUS::Reset()
 {
     TIMER_CNT(TIMER13) = 0;
     TIMER_CTL0(TIMER13) |= (uint32_t)TIMER_CTL0_CEN;
-}
-
-uint TimeMeterUS::ElapsedUS() const
-{
-    return TIMER_CNT(TIMER13) / 72;
 }
