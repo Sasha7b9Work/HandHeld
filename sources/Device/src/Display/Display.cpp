@@ -33,6 +33,14 @@ namespace Display
     void BeginScene(int num_part);
     void DrawScene(int num_part);
     void EndScene(int num_parts);
+
+    static uint time_player = 0;
+}
+
+
+void Display::SetTimePlayer(uint time)
+{
+    time_player = time;
 }
 
 
@@ -92,6 +100,8 @@ void Display::DrawScene(int num_part)
                 Source((Source::E)i).Draw(6 + i * 30, 65);
             }
         }
+
+        Text<>("%u us", time_player).Write(0, 0, Color::WHITE);
 
         FPS::DrawTimeFrame(0, 75);
     }

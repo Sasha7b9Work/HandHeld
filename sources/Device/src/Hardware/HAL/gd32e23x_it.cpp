@@ -87,9 +87,7 @@ void TIMER14_IRQHandler(void)
 {
     static TimeMeterUS meter;
 
-    uint time = meter.ElapsedUS();
-
-    time = time;
+    Display::SetTimePlayer(meter.ElapsedUS());
 
     if (timer_interrupt_flag_get(TIMER14, TIMER_INT_FLAG_CH1))
     {
