@@ -11,6 +11,8 @@
 
 namespace Timer
 {
+    void Init();
+
     void Delay(uint timeMS);
 }
 
@@ -29,6 +31,19 @@ struct TimeMeterMS
 private:
 
     uint time_reset;
+};
+
+
+struct TimeMeterUS
+{
+    TimeMeterUS()
+    {
+        Reset();
+    }
+
+    void Reset();
+
+    uint ElapsedUS() const;
 };
 
 

@@ -11,6 +11,7 @@
 #include "Player/Melodies/melody8.h"
 #include "Player/Melodies/melody9.h"
 #include "Player/Melodies/melody10.h"
+#include "Hardware/Timer.h"
 #include <string.h>
 
 
@@ -247,6 +248,8 @@ void Player::CallbackOnTimer()
         return;
     }
 
+    TimeMeterUS meter;
+
     // advance envelopeCounter
     if (playerState.envelopeSkipCounter == 0)
     {
@@ -293,6 +296,10 @@ void Player::CallbackOnTimer()
     }
 
     Beeper::CallbackOnOutputSample(sample);
+
+    uint time = meter.ElapsedUS();
+
+    time = time;
 }
 
 
