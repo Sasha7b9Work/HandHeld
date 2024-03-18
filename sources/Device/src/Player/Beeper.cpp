@@ -16,7 +16,7 @@ namespace Beeper
 void Beeper::Init()
 {
     rcu_periph_clock_enable(RCU_TIMER14);
-    nvic_irq_enable(TIMER14_IRQn, 1);
+    nvic_irq_enable(TIMER14_IRQn, 0);
 
     gpio_mode_set(GPIOA, GPIO_MODE_AF, GPIO_PUPD_NONE, GPIO_PIN_3);
     gpio_output_options_set(GPIOA, GPIO_OTYPE_PP, GPIO_OSPEED_50MHZ, GPIO_PIN_3);
