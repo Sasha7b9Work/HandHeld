@@ -13,9 +13,6 @@ extern "C" {
 #endif
 
 
-extern uint timer_counter;
-
-
 /*!
     \brief      this function handles NMI exception
     \param[in]  none
