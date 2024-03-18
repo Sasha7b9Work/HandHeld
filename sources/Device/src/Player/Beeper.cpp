@@ -54,6 +54,8 @@ void Beeper::Init()
 
     /* auto-reload preload enable */
     timer_auto_reload_shadow_enable(TIMER14);
+    timer_interrupt_enable(TIMER14, TIMER_INT_CH1);
+    timer_enable(TIMER14);
 }
 
 
@@ -65,8 +67,7 @@ void Beeper::CallbackOnOutputSample(uint8 sample)
 
 void Beeper::CallbackOnStartMelody()
 {
-    timer_interrupt_enable(TIMER14, TIMER_INT_CH1);
-    timer_enable(TIMER14);
+
 }
 
 
