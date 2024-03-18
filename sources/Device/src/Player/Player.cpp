@@ -299,7 +299,12 @@ void Player::CallbackOnTimer()
 
     uint time = meter.ElapsedUS();
 
-    time = time;
+    static uint max_time = 0;
+
+    if (time > max_time)
+    {
+        max_time = time;
+    }
 }
 
 
