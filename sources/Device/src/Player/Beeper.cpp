@@ -14,9 +14,6 @@ namespace Beeper
 
 void Beeper::Init()
 {
-    rcu_periph_clock_enable(RCU_TIMER14);
-    nvic_irq_enable(TIMER14_IRQn, 1);
-
     gpio_mode_set(GPIOA, GPIO_MODE_AF, GPIO_PUPD_NONE, GPIO_PIN_3);
     gpio_output_options_set(GPIOA, GPIO_OTYPE_PP, GPIO_OSPEED_50MHZ, GPIO_PIN_3);
     gpio_af_set(GPIOA, GPIO_AF_0, GPIO_PIN_3);
@@ -41,6 +38,11 @@ void Beeper::Init()
     timer_channel_output_struct_para_init(&timer_ocinitpara);
     /* configure TIMER channel output function */
     timer_ocinitpara.outputstate = TIMER_CCX_ENABLE;
+    timer_ocinitpara.outputnstate = TIMER_CCXN_DISABLE;
+    timer_ocinitpara.ocpolarity = TIMER_OC_POLARITY_HIGH;
+    timer_ocinitpara.ocnpolarity = TIMER_OCN_POLARITY_HIGH;
+    timer_ocinitpara.ocidlestate = TIMER_OC_IDLE_STATE_LOW;
+    timer_ocinitpara.ocnidlestate = TIMER_OCN_IDLE_STATE_LOW;
     timer_channel_output_config(TIMER14, TIMER_CH_1, &timer_ocinitpara);
 
     /* CH1 configuration in PWM mode0, duty cycle 50% */
@@ -48,11 +50,13 @@ void Beeper::Init()
     timer_channel_output_mode_config(TIMER14, TIMER_CH_1, TIMER_OC_MODE_PWM1);
     timer_channel_output_shadow_config(TIMER14, TIMER_CH_1, TIMER_OC_SHADOW_DISABLE);
 
-    timer_interrupt_enable(TIMER14, TIMER_INT_CH1);
-
     timer_primary_output_config(TIMER14, ENABLE);
 
+    /* auto-reload preload enable */
     timer_auto_reload_shadow_enable(TIMER14);
+
+    timer_interrupt_flag_clear(TIMER14, TIMER_INT_FLAG_CH1);
+    timer_interrupt_enable(TIMER14, TIMER_INT_CH1);
 
     /* TIMER2 counter enable */
     timer_enable(TIMER14);
