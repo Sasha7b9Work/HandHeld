@@ -7,13 +7,13 @@
 #include <gd32e23x.h>
 
 
-namespace Beeper
+namespace BeeperMIDI
 {
     // PA3 - Alternate TIMER14_CH1 AF0
 }
 
 
-void Beeper::Init()
+void BeeperMIDI::Init()
 {
     rcu_periph_clock_enable(RCU_TIMER14);
     nvic_irq_enable(TIMER14_IRQn, 0);
@@ -62,19 +62,19 @@ void Beeper::Init()
 }
 
 
-void Beeper::CallbackOnOutputSample(uint8 sample)
+void BeeperMIDI::CallbackOnOutputSample(uint8 sample)
 {
     TIMER_CH1CV(TIMER14) = (uint32_t)sample;
 }
 
 
-void Beeper::CallbackOnStartMelody()
+void BeeperMIDI::CallbackOnStartMelody()
 {
 
 }
 
 
-void Beeper::CallbackOnStopMelody()
+void BeeperMIDI::CallbackOnStopMelody()
 {
     PlayerMIDI::Play(TypeMelody::_1);
 }

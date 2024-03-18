@@ -95,7 +95,7 @@ namespace PlayerMIDI
 
 void PlayerMIDI::Init()
 {
-    Beeper::Init();
+    BeeperMIDI::Init();
 }
 
 
@@ -211,7 +211,7 @@ void PlayerMIDI::ProcessEvents()
     if (delta == 0)
     {
         playerState.stream1.pData = nullptr;
-        Beeper::CallbackOnStopMelody();
+        BeeperMIDI::CallbackOnStopMelody();
         return;
     }
 
@@ -295,7 +295,7 @@ void PlayerMIDI::CallbackOnTimer()
         pState++;
     }
 
-    Beeper::CallbackOnOutputSample(sample);
+    BeeperMIDI::CallbackOnOutputSample(sample);
 
 //    uint time = meter.ElapsedUS();
 //
@@ -312,7 +312,7 @@ void PlayerMIDI::StartMelody(const Melody *_pMelody, uint16 _delay)
 {
     Stop();
 
-    Beeper::CallbackOnStartMelody();
+    BeeperMIDI::CallbackOnStartMelody();
 
     memset(playerState.channelState, 0, sizeof(ChannelState) * HXMIDIPLAYER_CHANNELS_COUNT);
 
@@ -352,6 +352,6 @@ void PlayerMIDI::Stop()
     {
         playerState.stream1.pData = nullptr;
 
-        Beeper::CallbackOnStopMelody();
+        BeeperMIDI::CallbackOnStopMelody();
     }
 }

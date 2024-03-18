@@ -2,7 +2,7 @@
 #pragma once
 
 
-namespace Beeper
+namespace BeeperMIDI
 {
     void Init();
 
