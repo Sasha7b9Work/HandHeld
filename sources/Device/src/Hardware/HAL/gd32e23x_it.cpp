@@ -85,18 +85,12 @@ void TIMER2_IRQHandler(void)
 
 void TIMER14_IRQHandler(void)
 {
-    uint time = TimerUS::ElaplsedTime();
-
-    time = time;
-
     if (timer_interrupt_flag_get(TIMER14, TIMER_INT_FLAG_CH1))
     {
         timer_interrupt_flag_clear(TIMER14, TIMER_INT_FLAG_CH1);
 
         PlayerMIDI::CallbackOnTimer();
     }
-
-    TimerUS::Reset();
 }
 
 
