@@ -248,7 +248,7 @@ void Player::CallbackOnTimer()
         return;
     }
 
-    TimeMeterUS meter;
+//    TimeMeterUS meter;
 
     // advance envelopeCounter
     if (playerState.envelopeSkipCounter == 0)
@@ -297,14 +297,14 @@ void Player::CallbackOnTimer()
 
     Beeper::CallbackOnOutputSample(sample);
 
-    uint time = meter.ElapsedUS();
-
-    static uint max_time = 0;
-
-    if (time > max_time)
-    {
-        max_time = time;
-    }
+//    uint time = meter.ElapsedUS();
+//
+//    static uint max_time = 0;
+//
+//    if (time > max_time)
+//    {
+//        max_time = time;
+//    }
 }
 
 
