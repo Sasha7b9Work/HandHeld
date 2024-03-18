@@ -35,6 +35,7 @@ void Timer::Delay(uint timeMS)
 
 void TimeMeterMS::Reset()
 {
+    timer_enable(TIMER13);
     time_reset = timer_counter;
 }
 
