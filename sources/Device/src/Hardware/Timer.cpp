@@ -35,7 +35,6 @@ void Timer::Delay(uint timeMS)
 
 void TimeMeterMS::Reset()
 {
-    timer_enable(TIMER13);
     time_reset = timer_counter;
 }
 
@@ -48,6 +47,7 @@ uint TimeMeterMS::ElapsedTime() const
 
 void TimeMeterUS::Reset()
 {
+    timer_enable(TIMER13);
     timer_counter_value_config(TIMER13, 0);
 }
 
