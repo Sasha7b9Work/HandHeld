@@ -53,5 +53,5 @@ void TimeMeterUS::Reset()
 
 uint TimeMeterUS::ElapsedUS() const
 {
-    return timer_counter_read(TIMER13);
+    return timer_counter_read(TIMER13) / 72;
 }
