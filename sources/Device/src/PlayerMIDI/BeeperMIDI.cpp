@@ -76,5 +76,5 @@ void Beeper::CallbackOnStartMelody()
 
 void Beeper::CallbackOnStopMelody()
 {
-    Player::Play(TypeMelody::_1);
+    PlayerMIDI::Play(TypeMelody::_1);
 }

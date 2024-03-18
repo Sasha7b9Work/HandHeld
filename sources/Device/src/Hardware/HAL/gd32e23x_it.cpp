@@ -93,7 +93,7 @@ void TIMER14_IRQHandler(void)
     {
         timer_interrupt_flag_clear(TIMER14, TIMER_INT_FLAG_CH1);
 
-        Player::CallbackOnTimer();
+        PlayerMIDI::CallbackOnTimer();
     }
 
     meter.Reset();

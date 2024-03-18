@@ -29,7 +29,7 @@ struct Melody
 };
 
 
-namespace Player
+namespace PlayerMIDI
 {
     void Play(TypeMelody::E);
 

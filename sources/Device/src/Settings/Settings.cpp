@@ -50,7 +50,7 @@ void Source::Receive(E type)
 {
     time_recv[type] = TIME_MS;
 
-    Player::Play((TypeMelody::E)(std::rand() % TypeMelody::Count));
+    PlayerMIDI::Play((TypeMelody::E)(std::rand() % TypeMelody::Count));
 }
 
 

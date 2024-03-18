@@ -15,7 +15,7 @@
 #include <string.h>
 
 
-namespace Player
+namespace PlayerMIDI
 {
     // Состояние одного канала синтезатора
     struct ChannelState
@@ -93,13 +93,13 @@ namespace Player
 }
 
 
-void Player::Init()
+void PlayerMIDI::Init()
 {
     Beeper::Init();
 }
 
 
-void Player::Play(TypeMelody::E type)
+void PlayerMIDI::Play(TypeMelody::E type)
 {
     static const Melody *melodies[TypeMelody::Count] =
     {
@@ -120,7 +120,7 @@ uint16 inline Player_GetNoteFreqAdd(uint8 _noteNumber)
 }
 
 
-void Player::Advance(CompressedStreamState *_state, uint16 _bitsCount)
+void PlayerMIDI::Advance(CompressedStreamState *_state, uint16 _bitsCount)
 {
     uint16 s = (uint16)(_state->bitsUsed + _bitsCount);
 
@@ -129,7 +129,7 @@ void Player::Advance(CompressedStreamState *_state, uint16 _bitsCount)
 }
 
 
-uint16 Player::ReadBits(CompressedStreamState *_state, uint8 _bitsCount, uint16 _mask)
+uint16 PlayerMIDI::ReadBits(CompressedStreamState *_state, uint8 _bitsCount, uint16 _mask)
 {
     // эта процедура оптимизирована для _bitsCount 1..16 (значение может распространяться максимум на 3 байта)
 
@@ -151,14 +151,14 @@ uint16 Player::ReadBits(CompressedStreamState *_state, uint8 _bitsCount, uint16 
 }
 
 
-void Player::StartStream(CompressedStreamState *_state, uint8 _numberOfBits)
+void PlayerMIDI::StartStream(CompressedStreamState *_state, uint8 _numberOfBits)
 {
     uint16 s = ReadBits(_state, 5, 0x1f);
     Advance(_state, (uint16)(16 + s * _numberOfBits));
 }
 
 
-uint16 Player::Decompress(CompressedStreamState *_state, const uint8 *_streamBase, uint8 _bitsCount, uint16 _mask)
+uint16 PlayerMIDI::Decompress(CompressedStreamState *_state, const uint8 *_streamBase, uint8 _bitsCount, uint16 _mask)
 {
     uint8 code = (uint8)ReadBits(_state, 3, 0x7);
 
@@ -198,7 +198,7 @@ uint16 Player::Decompress(CompressedStreamState *_state, const uint8 *_streamBas
 }
 
 
-void Player::ProcessEvents()
+void PlayerMIDI::ProcessEvents()
 {
     playerState.eventCounter = (uint16)0xffff;
 
@@ -241,7 +241,7 @@ void Player::ProcessEvents()
 }
 
 
-void Player::CallbackOnTimer()
+void PlayerMIDI::CallbackOnTimer()
 {
     if (playerState.stream1.pData == nullptr)
     {
@@ -308,7 +308,7 @@ void Player::CallbackOnTimer()
 }
 
 
-void Player::StartMelody(const Melody *_pMelody, uint16 _delay)
+void PlayerMIDI::StartMelody(const Melody *_pMelody, uint16 _delay)
 {
     Stop();
 
@@ -332,13 +332,13 @@ void Player::StartMelody(const Melody *_pMelody, uint16 _delay)
 }
 
 
-bool Player::IsPlaying()
+bool PlayerMIDI::IsPlaying()
 {
     return playerState.stream1.pData != nullptr;
 }
 
 
-void Player::WaitFinish()
+void PlayerMIDI::WaitFinish()
 {
     while (IsPlaying() == true)
     {
@@ -346,7 +346,7 @@ void Player::WaitFinish()
 }
 
 
-void Player::Stop()
+void PlayerMIDI::Stop()
 {
     if (IsPlaying())
     {
