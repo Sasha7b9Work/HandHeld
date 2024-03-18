@@ -3,7 +3,7 @@
 #include "Settings/Settings.h"
 #include "Display/Display.h"
 #include "Hardware/Timer.h"
-#include "Player/Player.h"
+#include "PlayerMIDI/PlayerMIDI.h"
 #include <cstdlib>
 
 

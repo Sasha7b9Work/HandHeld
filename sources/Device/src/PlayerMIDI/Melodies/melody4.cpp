@@ -1,10 +1,10 @@
 #include "defines.h"
-#include "Player/Melodies/melody1.h"
-#include "Player/Player.h"
+#include "PlayerMIDI/Melodies/melody4.h"
+#include "PlayerMIDI/PlayerMIDI.h"
 
 //Player frequency=18000
 //Player minimum channels count =4
-static const uint8 s_melody_stream1[956] = {
+static const uint8 s_melody4_stream1[956] = {
     120,
     20,
     216,
@@ -963,7 +963,7 @@ static const uint8 s_melody_stream1[956] = {
     0
   };
 
-static const uint8 s_melody_stream2[629] = {
+static const uint8 s_melody4_stream2[629] = {
     144,
     20,
     216,
@@ -1595,9 +1595,9 @@ static const uint8 s_melody_stream2[629] = {
     0
   };
 
-const Melody melody1 =
+const Melody melody4 =
 {
-    s_melody_stream1,
-    s_melody_stream2
+    s_melody4_stream1,
+    s_melody4_stream2
 };
 

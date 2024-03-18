@@ -7,7 +7,7 @@
 #include "Hardware/HAL/HAL.h"
 #include "Modules/CMT2210AW/CMT2210AW.h"
 #include "Modules/PCF8563/PCF8563.h"
-#include "Player/Player.h"
+#include "PlayerMIDI/PlayerMIDI.h"
 #include "Hardware/Timer.h"
 
 

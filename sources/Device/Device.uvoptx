@@ -75,7 +75,7 @@
       <OPTFL>
         <tvExp>1</tvExp>
         <tvExpOptDlg>0</tvExpOptDlg>
-        <IsCurrentTarget>1</IsCurrentTarget>
+        <IsCurrentTarget>0</IsCurrentTarget>
       </OPTFL>
       <CpuCode>255</CpuCode>
       <DebugOpt>
@@ -228,7 +228,7 @@
       <OPTFL>
         <tvExp>1</tvExp>
         <tvExpOptDlg>0</tvExpOptDlg>
-        <IsCurrentTarget>0</IsCurrentTarget>
+        <IsCurrentTarget>1</IsCurrentTarget>
       </OPTFL>
       <CpuCode>255</CpuCode>
       <DebugOpt>
@@ -905,7 +905,7 @@
 
   <Group>
     <GroupName>Hardware/CMSIS</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -937,7 +937,7 @@
 
   <Group>
     <GroupName>Hardware/HAL</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -1500,8 +1500,8 @@
   </Group>
 
   <Group>
-    <GroupName>Player</GroupName>
-    <tvExp>1</tvExp>
+    <GroupName>PlayerMIDI</GroupName>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -1512,8 +1512,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Player\Beeper.cpp</PathWithFileName>
-      <FilenameWithoutPath>Beeper.cpp</FilenameWithoutPath>
+      <PathWithFileName>.\src\PlayerMIDI\BeeperMIDI.cpp</PathWithFileName>
+      <FilenameWithoutPath>BeeperMIDI.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1524,32 +1524,32 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Player\Beeper.h</PathWithFileName>
-      <FilenameWithoutPath>Beeper.h</FilenameWithoutPath>
+      <PathWithFileName>.\src\PlayerMIDI\BeeperMIDI.h</PathWithFileName>
+      <FilenameWithoutPath>BeeperMIDI.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
     <File>
       <GroupNumber>14</GroupNumber>
       <FileNumber>92</FileNumber>
-      <FileType>8</FileType>
+      <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Player\Player.cpp</PathWithFileName>
-      <FilenameWithoutPath>Player.cpp</FilenameWithoutPath>
+      <PathWithFileName>.\src\PlayerMIDI\PlayerConfigMIDI.h</PathWithFileName>
+      <FilenameWithoutPath>PlayerConfigMIDI.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
     <File>
       <GroupNumber>14</GroupNumber>
       <FileNumber>93</FileNumber>
-      <FileType>5</FileType>
+      <FileType>8</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Player\Player.h</PathWithFileName>
-      <FilenameWithoutPath>Player.h</FilenameWithoutPath>
+      <PathWithFileName>.\src\PlayerMIDI\PlayerMIDI.cpp</PathWithFileName>
+      <FilenameWithoutPath>PlayerMIDI.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1560,15 +1560,15 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Player\PlayerConfig.h</PathWithFileName>
-      <FilenameWithoutPath>PlayerConfig.h</FilenameWithoutPath>
+      <PathWithFileName>.\src\PlayerMIDI\PlayerMIDI.h</PathWithFileName>
+      <FilenameWithoutPath>PlayerMIDI.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
   </Group>
 
   <Group>
-    <GroupName>Player/Melodies</GroupName>
+    <GroupName>PlayerMIDI/Melodies</GroupName>
     <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
@@ -1580,7 +1580,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Player\melodies\melody1.cpp</PathWithFileName>
+      <PathWithFileName>.\src\PlayerMIDI\Melodies\melody1.cpp</PathWithFileName>
       <FilenameWithoutPath>melody1.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1592,7 +1592,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Player\melodies\melody1.h</PathWithFileName>
+      <PathWithFileName>.\src\PlayerMIDI\Melodies\melody1.h</PathWithFileName>
       <FilenameWithoutPath>melody1.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1604,7 +1604,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Player\melodies\melody2.cpp</PathWithFileName>
+      <PathWithFileName>.\src\PlayerMIDI\Melodies\melody2.cpp</PathWithFileName>
       <FilenameWithoutPath>melody2.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1616,7 +1616,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Player\melodies\melody2.h</PathWithFileName>
+      <PathWithFileName>.\src\PlayerMIDI\Melodies\melody2.h</PathWithFileName>
       <FilenameWithoutPath>melody2.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1628,7 +1628,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Player\melodies\melody3.cpp</PathWithFileName>
+      <PathWithFileName>.\src\PlayerMIDI\Melodies\melody3.cpp</PathWithFileName>
       <FilenameWithoutPath>melody3.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1640,7 +1640,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Player\melodies\melody3.h</PathWithFileName>
+      <PathWithFileName>.\src\PlayerMIDI\Melodies\melody3.h</PathWithFileName>
       <FilenameWithoutPath>melody3.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1652,7 +1652,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Player\Melodies\melody4.cpp</PathWithFileName>
+      <PathWithFileName>.\src\PlayerMIDI\Melodies\melody4.cpp</PathWithFileName>
       <FilenameWithoutPath>melody4.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1664,7 +1664,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Player\Melodies\melody4.h</PathWithFileName>
+      <PathWithFileName>.\src\PlayerMIDI\Melodies\melody4.h</PathWithFileName>
       <FilenameWithoutPath>melody4.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1676,7 +1676,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Player\Melodies\melody5.cpp</PathWithFileName>
+      <PathWithFileName>.\src\PlayerMIDI\Melodies\melody5.cpp</PathWithFileName>
       <FilenameWithoutPath>melody5.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1688,7 +1688,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Player\Melodies\melody5.h</PathWithFileName>
+      <PathWithFileName>.\src\PlayerMIDI\Melodies\melody5.h</PathWithFileName>
       <FilenameWithoutPath>melody5.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1700,7 +1700,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Player\Melodies\melody6.cpp</PathWithFileName>
+      <PathWithFileName>.\src\PlayerMIDI\Melodies\melody6.cpp</PathWithFileName>
       <FilenameWithoutPath>melody6.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1712,7 +1712,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Player\Melodies\melody6.h</PathWithFileName>
+      <PathWithFileName>.\src\PlayerMIDI\Melodies\melody6.h</PathWithFileName>
       <FilenameWithoutPath>melody6.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1724,7 +1724,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Player\Melodies\melody7.cpp</PathWithFileName>
+      <PathWithFileName>.\src\PlayerMIDI\Melodies\melody7.cpp</PathWithFileName>
       <FilenameWithoutPath>melody7.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1736,7 +1736,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Player\Melodies\melody7.h</PathWithFileName>
+      <PathWithFileName>.\src\PlayerMIDI\Melodies\melody7.h</PathWithFileName>
       <FilenameWithoutPath>melody7.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1748,7 +1748,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Player\Melodies\melody8.cpp</PathWithFileName>
+      <PathWithFileName>.\src\PlayerMIDI\Melodies\melody8.cpp</PathWithFileName>
       <FilenameWithoutPath>melody8.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1760,7 +1760,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Player\Melodies\melody8.h</PathWithFileName>
+      <PathWithFileName>.\src\PlayerMIDI\Melodies\melody8.h</PathWithFileName>
       <FilenameWithoutPath>melody8.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1772,7 +1772,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Player\Melodies\melody9.cpp</PathWithFileName>
+      <PathWithFileName>.\src\PlayerMIDI\Melodies\melody9.cpp</PathWithFileName>
       <FilenameWithoutPath>melody9.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1784,7 +1784,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Player\Melodies\melody9.h</PathWithFileName>
+      <PathWithFileName>.\src\PlayerMIDI\Melodies\melody9.h</PathWithFileName>
       <FilenameWithoutPath>melody9.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1796,7 +1796,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Player\Melodies\melody10.cpp</PathWithFileName>
+      <PathWithFileName>.\src\PlayerMIDI\Melodies\melody10.cpp</PathWithFileName>
       <FilenameWithoutPath>melody10.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1808,7 +1808,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Player\Melodies\melody10.h</PathWithFileName>
+      <PathWithFileName>.\src\PlayerMIDI\Melodies\melody10.h</PathWithFileName>
       <FilenameWithoutPath>melody10.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>

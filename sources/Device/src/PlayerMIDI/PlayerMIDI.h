@@ -1,7 +1,7 @@
 #pragma once
 #include <stdint.h>
 #include <stdbool.h>
-#include "Player/PlayerConfig.h"
+#include "PlayerMIDI/PlayerConfigMIDI.h"
 
 
 struct TypeMelody

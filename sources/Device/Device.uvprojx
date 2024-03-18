@@ -892,137 +892,137 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Player</GroupName>
+          <GroupName>PlayerMIDI</GroupName>
           <Files>
             <File>
-              <FileName>Beeper.cpp</FileName>
+              <FileName>BeeperMIDI.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Player\Beeper.cpp</FilePath>
+              <FilePath>.\src\PlayerMIDI\BeeperMIDI.cpp</FilePath>
             </File>
             <File>
-              <FileName>Beeper.h</FileName>
+              <FileName>BeeperMIDI.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Player\Beeper.h</FilePath>
+              <FilePath>.\src\PlayerMIDI\BeeperMIDI.h</FilePath>
             </File>
             <File>
-              <FileName>Player.cpp</FileName>
+              <FileName>PlayerConfigMIDI.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\PlayerMIDI\PlayerConfigMIDI.h</FilePath>
+            </File>
+            <File>
+              <FileName>PlayerMIDI.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Player\Player.cpp</FilePath>
+              <FilePath>.\src\PlayerMIDI\PlayerMIDI.cpp</FilePath>
             </File>
             <File>
-              <FileName>Player.h</FileName>
+              <FileName>PlayerMIDI.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Player\Player.h</FilePath>
-            </File>
-            <File>
-              <FileName>PlayerConfig.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Player\PlayerConfig.h</FilePath>
+              <FilePath>.\src\PlayerMIDI\PlayerMIDI.h</FilePath>
             </File>
           </Files>
         </Group>
         <Group>
-          <GroupName>Player/Melodies</GroupName>
+          <GroupName>PlayerMIDI/Melodies</GroupName>
           <Files>
             <File>
               <FileName>melody1.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Player\melodies\melody1.cpp</FilePath>
+              <FilePath>.\src\PlayerMIDI\Melodies\melody1.cpp</FilePath>
             </File>
             <File>
               <FileName>melody1.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Player\melodies\melody1.h</FilePath>
+              <FilePath>.\src\PlayerMIDI\Melodies\melody1.h</FilePath>
             </File>
             <File>
               <FileName>melody2.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Player\melodies\melody2.cpp</FilePath>
+              <FilePath>.\src\PlayerMIDI\Melodies\melody2.cpp</FilePath>
             </File>
             <File>
               <FileName>melody2.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Player\melodies\melody2.h</FilePath>
+              <FilePath>.\src\PlayerMIDI\Melodies\melody2.h</FilePath>
             </File>
             <File>
               <FileName>melody3.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Player\melodies\melody3.cpp</FilePath>
+              <FilePath>.\src\PlayerMIDI\Melodies\melody3.cpp</FilePath>
             </File>
             <File>
               <FileName>melody3.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Player\melodies\melody3.h</FilePath>
+              <FilePath>.\src\PlayerMIDI\Melodies\melody3.h</FilePath>
             </File>
             <File>
               <FileName>melody4.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Player\Melodies\melody4.cpp</FilePath>
+              <FilePath>.\src\PlayerMIDI\Melodies\melody4.cpp</FilePath>
             </File>
             <File>
               <FileName>melody4.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Player\Melodies\melody4.h</FilePath>
+              <FilePath>.\src\PlayerMIDI\Melodies\melody4.h</FilePath>
             </File>
             <File>
               <FileName>melody5.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Player\Melodies\melody5.cpp</FilePath>
+              <FilePath>.\src\PlayerMIDI\Melodies\melody5.cpp</FilePath>
             </File>
             <File>
               <FileName>melody5.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Player\Melodies\melody5.h</FilePath>
+              <FilePath>.\src\PlayerMIDI\Melodies\melody5.h</FilePath>
             </File>
             <File>
               <FileName>melody6.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Player\Melodies\melody6.cpp</FilePath>
+              <FilePath>.\src\PlayerMIDI\Melodies\melody6.cpp</FilePath>
             </File>
             <File>
               <FileName>melody6.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Player\Melodies\melody6.h</FilePath>
+              <FilePath>.\src\PlayerMIDI\Melodies\melody6.h</FilePath>
             </File>
             <File>
               <FileName>melody7.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Player\Melodies\melody7.cpp</FilePath>
+              <FilePath>.\src\PlayerMIDI\Melodies\melody7.cpp</FilePath>
             </File>
             <File>
               <FileName>melody7.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Player\Melodies\melody7.h</FilePath>
+              <FilePath>.\src\PlayerMIDI\Melodies\melody7.h</FilePath>
             </File>
             <File>
               <FileName>melody8.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Player\Melodies\melody8.cpp</FilePath>
+              <FilePath>.\src\PlayerMIDI\Melodies\melody8.cpp</FilePath>
             </File>
             <File>
               <FileName>melody8.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Player\Melodies\melody8.h</FilePath>
+              <FilePath>.\src\PlayerMIDI\Melodies\melody8.h</FilePath>
             </File>
             <File>
               <FileName>melody9.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Player\Melodies\melody9.cpp</FilePath>
+              <FilePath>.\src\PlayerMIDI\Melodies\melody9.cpp</FilePath>
             </File>
             <File>
               <FileName>melody9.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Player\Melodies\melody9.h</FilePath>
+              <FilePath>.\src\PlayerMIDI\Melodies\melody9.h</FilePath>
             </File>
             <File>
               <FileName>melody10.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Player\Melodies\melody10.cpp</FilePath>
+              <FilePath>.\src\PlayerMIDI\Melodies\melody10.cpp</FilePath>
             </File>
             <File>
               <FileName>melody10.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Player\Melodies\melody10.h</FilePath>
+              <FilePath>.\src\PlayerMIDI\Melodies\melody10.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -1954,137 +1954,137 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Player</GroupName>
+          <GroupName>PlayerMIDI</GroupName>
           <Files>
             <File>
-              <FileName>Beeper.cpp</FileName>
+              <FileName>BeeperMIDI.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Player\Beeper.cpp</FilePath>
+              <FilePath>.\src\PlayerMIDI\BeeperMIDI.cpp</FilePath>
             </File>
             <File>
-              <FileName>Beeper.h</FileName>
+              <FileName>BeeperMIDI.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Player\Beeper.h</FilePath>
+              <FilePath>.\src\PlayerMIDI\BeeperMIDI.h</FilePath>
             </File>
             <File>
-              <FileName>Player.cpp</FileName>
+              <FileName>PlayerConfigMIDI.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\PlayerMIDI\PlayerConfigMIDI.h</FilePath>
+            </File>
+            <File>
+              <FileName>PlayerMIDI.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Player\Player.cpp</FilePath>
+              <FilePath>.\src\PlayerMIDI\PlayerMIDI.cpp</FilePath>
             </File>
             <File>
-              <FileName>Player.h</FileName>
+              <FileName>PlayerMIDI.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Player\Player.h</FilePath>
-            </File>
-            <File>
-              <FileName>PlayerConfig.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Player\PlayerConfig.h</FilePath>
+              <FilePath>.\src\PlayerMIDI\PlayerMIDI.h</FilePath>
             </File>
           </Files>
         </Group>
         <Group>
-          <GroupName>Player/Melodies</GroupName>
+          <GroupName>PlayerMIDI/Melodies</GroupName>
           <Files>
             <File>
               <FileName>melody1.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Player\melodies\melody1.cpp</FilePath>
+              <FilePath>.\src\PlayerMIDI\Melodies\melody1.cpp</FilePath>
             </File>
             <File>
               <FileName>melody1.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Player\melodies\melody1.h</FilePath>
+              <FilePath>.\src\PlayerMIDI\Melodies\melody1.h</FilePath>
             </File>
             <File>
               <FileName>melody2.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Player\melodies\melody2.cpp</FilePath>
+              <FilePath>.\src\PlayerMIDI\Melodies\melody2.cpp</FilePath>
             </File>
             <File>
               <FileName>melody2.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Player\melodies\melody2.h</FilePath>
+              <FilePath>.\src\PlayerMIDI\Melodies\melody2.h</FilePath>
             </File>
             <File>
               <FileName>melody3.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Player\melodies\melody3.cpp</FilePath>
+              <FilePath>.\src\PlayerMIDI\Melodies\melody3.cpp</FilePath>
             </File>
             <File>
               <FileName>melody3.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Player\melodies\melody3.h</FilePath>
+              <FilePath>.\src\PlayerMIDI\Melodies\melody3.h</FilePath>
             </File>
             <File>
               <FileName>melody4.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Player\Melodies\melody4.cpp</FilePath>
+              <FilePath>.\src\PlayerMIDI\Melodies\melody4.cpp</FilePath>
             </File>
             <File>
               <FileName>melody4.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Player\Melodies\melody4.h</FilePath>
+              <FilePath>.\src\PlayerMIDI\Melodies\melody4.h</FilePath>
             </File>
             <File>
               <FileName>melody5.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Player\Melodies\melody5.cpp</FilePath>
+              <FilePath>.\src\PlayerMIDI\Melodies\melody5.cpp</FilePath>
             </File>
             <File>
               <FileName>melody5.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Player\Melodies\melody5.h</FilePath>
+              <FilePath>.\src\PlayerMIDI\Melodies\melody5.h</FilePath>
             </File>
             <File>
               <FileName>melody6.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Player\Melodies\melody6.cpp</FilePath>
+              <FilePath>.\src\PlayerMIDI\Melodies\melody6.cpp</FilePath>
             </File>
             <File>
               <FileName>melody6.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Player\Melodies\melody6.h</FilePath>
+              <FilePath>.\src\PlayerMIDI\Melodies\melody6.h</FilePath>
             </File>
             <File>
               <FileName>melody7.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Player\Melodies\melody7.cpp</FilePath>
+              <FilePath>.\src\PlayerMIDI\Melodies\melody7.cpp</FilePath>
             </File>
             <File>
               <FileName>melody7.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Player\Melodies\melody7.h</FilePath>
+              <FilePath>.\src\PlayerMIDI\Melodies\melody7.h</FilePath>
             </File>
             <File>
               <FileName>melody8.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Player\Melodies\melody8.cpp</FilePath>
+              <FilePath>.\src\PlayerMIDI\Melodies\melody8.cpp</FilePath>
             </File>
             <File>
               <FileName>melody8.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Player\Melodies\melody8.h</FilePath>
+              <FilePath>.\src\PlayerMIDI\Melodies\melody8.h</FilePath>
             </File>
             <File>
               <FileName>melody9.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Player\Melodies\melody9.cpp</FilePath>
+              <FilePath>.\src\PlayerMIDI\Melodies\melody9.cpp</FilePath>
             </File>
             <File>
               <FileName>melody9.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Player\Melodies\melody9.h</FilePath>
+              <FilePath>.\src\PlayerMIDI\Melodies\melody9.h</FilePath>
             </File>
             <File>
               <FileName>melody10.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Player\Melodies\melody10.cpp</FilePath>
+              <FilePath>.\src\PlayerMIDI\Melodies\melody10.cpp</FilePath>
             </File>
             <File>
               <FileName>melody10.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Player\Melodies\melody10.h</FilePath>
+              <FilePath>.\src\PlayerMIDI\Melodies\melody10.h</FilePath>
             </File>
           </Files>
         </Group>

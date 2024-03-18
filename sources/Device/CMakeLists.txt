@@ -31,23 +31,23 @@ add_compile_options(
     /wd5045
 )
 
-file(GLOB GD32E23x          ../common/GD32E23x_Firmware_Library/Firmware/GD32E23x_standard_peripheral/Include/*.*
-                            ../common/GD32E23x_Firmware_Library/Firmware/GD32E23x_standard_peripheral/Source/*.*)
-file(GLOB SRC               src/*.*)
-file(GLOB DISPLAY           src/Display/*.*)
-file(GLOB HARDWARE          src/Hardware/*.*)
-file(GLOB HARDWARE_CMSIS    src/Hardware/CMSIS/*.*)
-file(GLOB HARDWARE_HAL      src/Hardware/HAL/*.*)
-file(GLOB KEYBOARD          src/Keyboard/*.*)
-file(GLOB MENU              src/Menu/*.*)
-file(GLOB MENU_PAGES        src/Menu/Pages/*.*)
-file(GLOB MODULES_CMT2210AW src/Modules/CMT2210AW/*.*)
-file(GLOB MODULES_PCF8563   src/Modules/PCF8563/*.*)
-file(GLOB MODULES_ST7735    src/Modules/ST7735/*.*)
-file(GLOB PLAYER            src/Player/*.*)
-file(GLOB PLAYER_MELODIES   src/Player/Melodies/*.*)
-file(GLOB SETTINGS          src/Settings/*.*)
-file(GLOB UTILS             src/Utils/*.*)
+file(GLOB GD32E23x              ../common/GD32E23x_Firmware_Library/Firmware/GD32E23x_standard_peripheral/Include/*.*
+                                ../common/GD32E23x_Firmware_Library/Firmware/GD32E23x_standard_peripheral/Source/*.*)
+file(GLOB SRC                   src/*.*)
+file(GLOB DISPLAY               src/Display/*.*)
+file(GLOB HARDWARE              src/Hardware/*.*)
+file(GLOB HARDWARE_CMSIS        src/Hardware/CMSIS/*.*)
+file(GLOB HARDWARE_HAL          src/Hardware/HAL/*.*)
+file(GLOB KEYBOARD              src/Keyboard/*.*)
+file(GLOB MENU                  src/Menu/*.*)
+file(GLOB MENU_PAGES            src/Menu/Pages/*.*)
+file(GLOB MODULES_CMT2210AW     src/Modules/CMT2210AW/*.*)
+file(GLOB MODULES_PCF8563       src/Modules/PCF8563/*.*)
+file(GLOB MODULES_ST7735        src/Modules/ST7735/*.*)
+file(GLOB PLAYERMIDI            src/PlayerMIDI/*.*)
+file(GLOB PLAYERMIDI_MELODIES   src/PlayerMIDI/Melodies/*.*)
+file(GLOB SETTINGS              src/Settings/*.*)
+file(GLOB UTILS                 src/Utils/*.*)
 
 source_group(GD32E23x             FILES ${GD32E23x})
 source_group(src                  FILES ${SRC})
@@ -61,8 +61,8 @@ source_group(Menu/Pages           FILES ${MENU_PAGES})
 source_group(Modules/CMT2210AW    FILES ${MODULES_CMT2210AW})
 source_group(Modules/PCF8563      FILES ${MODULES_PCF8563})
 source_group(Modules/ST7735       FILES ${MODULES_ST7735})
-source_group(Player               FILES ${PLAYER})
-source_group(Player/Melodies      FILES ${PLAYER_MELODIES})
+source_group(PlayerMIDI           FILES ${PLAYERMIDI})
+source_group(PlayerMIDI/Melodies  FILES ${PLAYERMIDI_MELODIES})
 source_group(Settings             FILES ${SETTINGS})
 source_group(Utils                FILES ${UTILS})
 
@@ -85,8 +85,8 @@ add_library(${PROJECT_NAME}
     ${MODULES_CMT2210AW}
     ${MODULES_PCF8563}
     ${MODULES_ST7735}
-    ${PLAYER}
-    ${PLAYER_MELODIES}
+    ${PLAYERMIDI}
+    ${PLAYERMIDI_MELODIES}
     ${SETTINGS}
     ${UTILS}
 )

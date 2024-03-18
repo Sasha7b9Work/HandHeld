@@ -1,9 +1,9 @@
 // 2024/03/03 17:06:40 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
-#include "Player/Beeper.h"
+#include "PlayerMIDI/BeeperMIDI.h"
 #include "Hardware/HAL/HAL_PINS.h"
 #include "Hardware/Timer.h"
-#include "Player/Player.h"
+#include "PlayerMIDI/PlayerMIDI.h"
 #include <gd32e23x.h>
 
 

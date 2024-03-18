@@ -4,7 +4,7 @@
 #include "Display/Display.h"
 #include "Modules/CMT2210AW/CMT2210AW.h"
 #include "Keyboard/Keyboard.h"
-#include "Player/Player.h"
+#include "PlayerMIDI/PlayerMIDI.h"
 #include "Hardware/Timer.h"
 
 

@@ -1,6 +1,6 @@
 // 2024/03/16 10:42:03 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
-#include "Player/Player.h"
+#include "PlayerMIDI/PlayerMIDI.h"
 
 
-extern const Melody melody4;
+extern const Melody melody1;

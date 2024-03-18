@@ -1,6 +1,6 @@
 #include "defines.h"
-#include "Player/Melodies/melody7.h"
-#include "Player/Player.h"
+#include "PlayerMIDI/Melodies/melody7.h"
+#include "PlayerMIDI/PlayerMIDI.h"
 
 //Player frequency=18000
 //Player minimum channels count =4
