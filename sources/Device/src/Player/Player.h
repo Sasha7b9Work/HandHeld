@@ -4,5 +4,7 @@
 
 namespace Player
 {
+    void Init();
+
     void CallbackOnTimer();
 }

@@ -7,7 +7,7 @@
 #include "Hardware/HAL/HAL.h"
 #include "Modules/CMT2210AW/CMT2210AW.h"
 #include "Modules/PCF8563/PCF8563.h"
-#include "PlayerMIDI/PlayerMIDI.h"
+#include "Player/Player.h"
 #include "Hardware/Timer.h"
 
 
@@ -29,9 +29,7 @@ void Device::Init()
 
     PCF8563::SetTimer(1);       // Переводим INT в 0, чтобы питание не выключалось
 
-    PlayerMIDI::Init();
-
-    PlayerMIDI::Play(TypeMelody::_1);
+    Player::Init();
 }
 
 

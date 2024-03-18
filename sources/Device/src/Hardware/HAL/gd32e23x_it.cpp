@@ -4,7 +4,7 @@
 #include "Display/Display.h"
 #include "Modules/CMT2210AW/CMT2210AW.h"
 #include "Keyboard/Keyboard.h"
-#include "PlayerMIDI/PlayerMIDI.h"
+#include "Player/Player.h"
 #include "Hardware/Timer.h"
 
 
@@ -89,7 +89,7 @@ void TIMER14_IRQHandler(void)
     {
         timer_interrupt_flag_clear(TIMER14, TIMER_INT_FLAG_CH1);
 
-        PlayerMIDI::CallbackOnTimer();
+        Player::CallbackOnTimer();
     }
 }
 
