@@ -8,11 +8,14 @@
 #include "Modules/CMT2210AW/CMT2210AW.h"
 #include "Modules/PCF8563/PCF8563.h"
 #include "Player/Player.h"
+#include "Hardware/Timer.h"
 
 
 void Device::Init()
 {
     HAL::Init();
+
+    Timer::Init();
 
     Keyboard::Init();
 
