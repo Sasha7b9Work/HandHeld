@@ -4,6 +4,7 @@
 #include "Display/Display.h"
 #include "Modules/CMT2210AW/CMT2210AW.h"
 #include "Keyboard/Keyboard.h"
+#include "Player/Player.h"
 
 
 #ifdef __cplusplus
@@ -89,6 +90,8 @@ void TIMER14_IRQHandler(void)
     if (timer_interrupt_flag_get(TIMER14, TIMER_INT_FLAG_CH1))
     {
         timer_interrupt_flag_clear(TIMER14, TIMER_INT_FLAG_CH1);
+
+        Player::CallbackOnTimer();
     }
 }
 

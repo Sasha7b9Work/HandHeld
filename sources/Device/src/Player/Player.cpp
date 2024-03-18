@@ -240,7 +240,7 @@ void Player::ProcessEvents()
 }
 
 
-void Player::TimerFunc()
+void Player::CallbackOnTimer()
 {
     if (playerState.stream1.pData == nullptr)
     {

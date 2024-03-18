@@ -47,5 +47,5 @@ namespace Player
     void Stop();
 
     // Функция события таймера должна вызываться пользователем с фиксированной частотой HXMIDIPLAYER_SAMPLING_RATE
-    void TimerFunc();
+    void CallbackOnTimer();
 }
