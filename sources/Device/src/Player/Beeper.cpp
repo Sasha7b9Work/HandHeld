@@ -64,15 +64,6 @@ void Beeper::Init()
 
 void Beeper::CallbackOnOutputSample(uint8 sample)
 {
-    if (sample < 10)
-    {
-        sample = sample;
-    }
-    else if (sample > 240)
-    {
-        sample = sample;
-    }
-
     TIMER_CH1CV(TIMER14) = (uint32_t)sample;
 }
 

@@ -20,7 +20,7 @@ void Player::Init()
 
 void Player::CallbackOnTimer()
 {
-    Beeper::CallbackOnOutputSample(NextSample(1e3f));
+    Beeper::CallbackOnOutputSample(NextSample(1234.0f));
 }
 
 
