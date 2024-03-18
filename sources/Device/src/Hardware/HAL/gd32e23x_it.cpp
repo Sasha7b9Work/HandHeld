@@ -96,7 +96,7 @@ void TIMER14_IRQHandler(void)
         PlayerMIDI::CallbackOnTimer();
     }
 
-    TimerUS::ElaplsedTime();
+    TimerUS::Reset();
 }
 
 
