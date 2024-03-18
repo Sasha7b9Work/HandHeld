@@ -19,7 +19,7 @@ void Timer::Init()
         TIMER_COUNTER_EDGE,
         TIMER_COUNTER_UP,
         TIMER_CKDIV_DIV1,
-        0,
+        65535,
         0
     };
 
