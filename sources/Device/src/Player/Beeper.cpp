@@ -18,31 +18,30 @@ void Beeper::Init()
     gpio_output_options_set(GPIOA, GPIO_OTYPE_PP, GPIO_OSPEED_50MHZ, GPIO_PIN_3);
     gpio_af_set(GPIOA, GPIO_AF_0, GPIO_PIN_3);
 
-    timer_oc_parameter_struct timer_ocinitpara;
-    timer_parameter_struct timer_initpara;
-
     timer_deinit(TIMER14);
 
-    timer_struct_para_init(&timer_initpara);
+    timer_parameter_struct timer_initpara =
+    {
+        // TIMER14CLK = SystemCoreClock / 36 = 1MHz, the PWM frequency is 4000 Hz
+        35,
+        TIMER_COUNTER_EDGE,
+        TIMER_COUNTER_UP,
+        TIMER_CKDIV_DIV1,
+        249,
+        0
+    };
 
-    // TIMER14CLK = SystemCoreClock / 36 = 1MHz, the PWM frequency is 4000 Hz
-    timer_initpara.prescaler = 35;
-    timer_initpara.alignedmode = TIMER_COUNTER_EDGE;
-    timer_initpara.counterdirection = TIMER_COUNTER_UP;
-    timer_initpara.period = 249;
-    timer_initpara.clockdivision = TIMER_CKDIV_DIV1;
-    timer_initpara.repetitioncounter = 0;
     timer_init(TIMER14, &timer_initpara);
 
-    /* initialize TIMER channel output parameter struct */
-    timer_channel_output_struct_para_init(&timer_ocinitpara);
-    /* configure TIMER channel output function */
-    timer_ocinitpara.outputstate = TIMER_CCX_ENABLE;
-    timer_ocinitpara.outputnstate = TIMER_CCXN_DISABLE;
-    timer_ocinitpara.ocpolarity = TIMER_OC_POLARITY_HIGH;
-    timer_ocinitpara.ocnpolarity = TIMER_OCN_POLARITY_HIGH;
-    timer_ocinitpara.ocidlestate = TIMER_OC_IDLE_STATE_LOW;
-    timer_ocinitpara.ocnidlestate = TIMER_OCN_IDLE_STATE_LOW;
+    timer_oc_parameter_struct timer_ocinitpara =
+    {
+        TIMER_CCX_ENABLE,
+        TIMER_CCXN_DISABLE,
+        TIMER_OC_POLARITY_HIGH,
+        TIMER_OCN_POLARITY_HIGH,
+        TIMER_OC_IDLE_STATE_LOW,
+        TIMER_OCN_IDLE_STATE_LOW
+    };
     timer_channel_output_config(TIMER14, TIMER_CH_1, &timer_ocinitpara);
 
     /* CH1 configuration in PWM mode0, duty cycle 50% */
