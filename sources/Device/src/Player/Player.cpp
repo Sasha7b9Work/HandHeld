@@ -26,5 +26,5 @@ void Player::CallbackOnTimer()
 
 uint8 Player::NextSample(float frequency)
 {
-    return (uint8)(125.0f + 125.0f * std::sinf(2.0f * 3.1415926f * frequency * TIME_MS / 1000.f));
+    return (uint8)(125.0f + 125.0f * std::sinf(2.0f * 3.1415926f * frequency * (float)TIME_MS / 1000.f));
 }

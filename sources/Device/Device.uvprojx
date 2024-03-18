@@ -892,6 +892,31 @@
           </Files>
         </Group>
         <Group>
+          <GroupName>Player</GroupName>
+          <Files>
+            <File>
+              <FileName>Beeper.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Player\Beeper.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Beeper.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Player\Beeper.h</FilePath>
+            </File>
+            <File>
+              <FileName>Player.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Player\Player.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Player.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Player\Player.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
           <GroupName>PlayerMIDI</GroupName>
           <Files>
             <File>
@@ -1950,6 +1975,31 @@
               <FileName>ST7735.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Modules\ST7735\ST7735.cpp</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Player</GroupName>
+          <Files>
+            <File>
+              <FileName>Beeper.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Player\Beeper.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Beeper.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Player\Beeper.h</FilePath>
+            </File>
+            <File>
+              <FileName>Player.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Player\Player.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Player.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Player\Player.h</FilePath>
             </File>
           </Files>
         </Group>
