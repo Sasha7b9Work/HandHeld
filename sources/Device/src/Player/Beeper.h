@@ -6,8 +6,6 @@ namespace Beeper
 {
     void Init();
 
-    void Beep();
-
     // Вызывается плеером, когда игрок мелодия стартует (из StartMelody()). Может использоваться для настройки таймера/ШИМ.
     void CallbackOnStartMelody();
 

@@ -3,6 +3,7 @@
 #include "Player/Beeper.h"
 #include "Hardware/HAL/HAL_PINS.h"
 #include "Hardware/Timer.h"
+#include "Player/Player.h"
 #include <gd32e23x.h>
 
 
@@ -53,38 +54,23 @@ void Beeper::Init()
 
     /* auto-reload preload enable */
     timer_auto_reload_shadow_enable(TIMER14);
-
-    timer_interrupt_flag_clear(TIMER14, TIMER_INT_FLAG_CH1);
-    timer_interrupt_enable(TIMER14, TIMER_INT_CH1);
-
-    /* TIMER2 counter enable */
-    timer_enable(TIMER14);
 }
 
 
-void Beeper::Beep()
+void Beeper::CallbackOnOutputSample(uint8 sample)
 {
-    while (true)
-    {
-        Timer::Delay(1);
-        Timer::Delay(1);
-    }
-}
-
-
-void Beeper::CallbackOnOutputSample(uint8)
-{
-
+    TIMER_CH1CV(TIMER14) = (uint32_t)sample;
 }
 
 
 void Beeper::CallbackOnStartMelody()
 {
-
+    timer_interrupt_enable(TIMER14, TIMER_INT_CH1);
+    timer_enable(TIMER14);
 }
 
 
 void Beeper::CallbackOnStopMelody()
 {
-
+    Player::Play(TypeMelody::_1);
 }
