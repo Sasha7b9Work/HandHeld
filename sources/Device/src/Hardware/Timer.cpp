@@ -47,11 +47,11 @@ uint TimeMeterMS::ElapsedTime() const
 
 void TimeMeterUS::Reset()
 {
-    timer_enable(TIMER13);
-    timer_counter_value_config(TIMER13, 0);
+    TIMER_CNT(TIMER13) = 0;
+    TIMER_CTL0(TIMER13) |= (uint32_t)TIMER_CTL0_CEN;
 }
 
 uint TimeMeterUS::ElapsedUS() const
 {
-    return timer_counter_read(TIMER13) / 72;
+    return TIMER_CNT(TIMER13) / 72;
 }
