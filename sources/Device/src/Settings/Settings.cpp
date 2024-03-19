@@ -3,7 +3,7 @@
 #include "Settings/Settings.h"
 #include "Display/Display.h"
 #include "Hardware/Timer.h"
-#include "PlayerMIDI/PlayerMIDI.h"
+#include "Player/Player.h"
 #include <cstdlib>
 
 
@@ -50,7 +50,7 @@ void Source::Receive(E type)
 {
     time_recv[type] = TIME_MS;
 
-    PlayerMIDI::Play((TypeMelody::E)(std::rand() % TypeMelody::Count));
+    Player::Play(TypeSound::_1);
 }
 
 
