@@ -64,6 +64,8 @@ void Beeper::Init()
 
 void Beeper::StartFrequency(float frequency)
 {
+    Stop();
+
     uint period = 250;
     uint16 prescaler = (uint16)(72000000 / period / (uint)(frequency + 0.5f));
 
