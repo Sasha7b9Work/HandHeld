@@ -88,6 +88,13 @@ void Beeper::StartFrequency(float frequency)
 }
 
 
+void Beeper::Stop()
+{
+    timer_interrupt_disable(TIMER14, TIMER_INT_CH1);
+    timer_disable(TIMER14);
+}
+
+
 void Beeper::CallbackOnOutputSample(uint8 sample)
 {
     TIMER_CH1CV(TIMER14) = (uint32_t)sample;

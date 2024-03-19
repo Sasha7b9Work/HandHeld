@@ -8,6 +8,8 @@ namespace Beeper
 
     void StartFrequency(float frequency);
 
+    void Stop();
+
     // Вывод отсчёта
     void CallbackOnOutputSample(uint8);
 }
