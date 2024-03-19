@@ -54,6 +54,8 @@ void Player::Play(TypeSound::E type)
 void Sound::Start(TypeSound::E type)
 {
     current = sounds[type];
+
+    Beeper::StartFrequency((float)current->notes[0].frequency);
 }
 
 

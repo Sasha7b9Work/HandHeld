@@ -66,9 +66,3 @@ void Beeper::CallbackOnOutputSample(uint8 sample)
 {
     TIMER_CH1CV(TIMER14) = (uint32_t)sample;
 }
-
-
-void Beeper::CallbackOnStartMelody()
-{
-
-}
