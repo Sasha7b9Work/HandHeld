@@ -18,12 +18,20 @@ struct Sound
 {
     const Note *const notes;        // В конце мелодии нулевые значения
     static int num_note;
-    static int time_note;           // В миллисекундах
+    static uint time_note_start;    // В миллисекундах
     static const Sound *current;
 
     static const Sound *sounds[TypeSound::Count];
 
     static void Start(TypeSound::E);
+
+    static void Update();
+
+    // Полное время звучания проигрываемой ноты
+    static uint TimeNoteFull();
+
+    // Столько нот в звуке
+    static int NumberNotes();
 };
 
 
@@ -37,6 +45,8 @@ const Sound *Sound::sounds[TypeSound::Count] =
 
 
 const Sound *Sound::current = nullptr;
+int Sound::num_note = 0;
+uint Sound::time_note_start = 0;
 
 
 void Player::Init()
@@ -55,10 +65,51 @@ void Sound::Start(TypeSound::E type)
 {
     current = sounds[type];
 
+    num_note = 0;
+
+    time_note_start = TIME_MS;
+
     Beeper::StartFrequency((float)current->notes[0].frequency);
+}
+
+
+void Sound::Update()
+{
+    if (TIME_MS - time_note_start >= TimeNoteFull())
+    {
+        num_note++;
+
+        if (num_note == NumberNotes())
+        {
+            Player::Play(TypeSound::_1);
+        }
+        else
+        {
+            Beeper::StartFrequency((float)current->notes[num_note].frequency);
+        }
+    }
+}
+
+
+uint Sound::TimeNoteFull()
+{
+    return current->notes[num_note].duration * 100U;
+}
+
+
+int Sound::NumberNotes()
+{
+    for (int i = 0; ; i++)
+    {
+        if (current->notes[i].frequency == 0)
+        {
+            return i;
+        }
+    }
 }
 
 
 void Player::CallbackOnTimer()
 {
+    Sound::Update();
 }
