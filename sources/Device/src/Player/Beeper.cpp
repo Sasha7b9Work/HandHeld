@@ -27,7 +27,7 @@ void Beeper::Init()
     timer_parameter_struct timer_initpara =
     {
         // TIMER14CLK = SystemCoreClock / 18 = 4MHz, the PWM frequency is 16000 Hz
-        17,
+        8,
         TIMER_COUNTER_EDGE,
         TIMER_COUNTER_UP,
         TIMER_CKDIV_DIV1,
