@@ -924,6 +924,16 @@
               <FileType>5</FileType>
               <FilePath>.\src\Player\Sounds\sound1.h</FilePath>
             </File>
+            <File>
+              <FileName>sound2.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Player\Sounds\sound2.h</FilePath>
+            </File>
+            <File>
+              <FileName>sound3.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Player\Sounds\sound3.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -2020,6 +2030,16 @@
               <FileName>sound1.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Player\Sounds\sound1.h</FilePath>
+            </File>
+            <File>
+              <FileName>sound2.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Player\Sounds\sound2.h</FilePath>
+            </File>
+            <File>
+              <FileName>sound3.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Player\Sounds\sound3.h</FilePath>
             </File>
           </Files>
         </Group>

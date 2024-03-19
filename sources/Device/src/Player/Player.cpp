@@ -36,11 +36,13 @@ struct Sound
 
 
 #include "Player/Sounds/sound1.h"
+#include "Player/Sounds/sound2.h"
+#include "Player/Sounds/sound3.h"
 
 
 const Sound *Sound::sounds[TypeSound::Count] =
 {
-    &sound1, &sound1, &sound1, &sound1, &sound1, &sound1, &sound1, &sound1, &sound1, &sound1
+    &sound1, &sound2, &sound3, &sound1, &sound1, &sound1, &sound1, &sound1, &sound1, &sound1
 };
 
 
@@ -81,7 +83,7 @@ void Sound::Update()
 
         if (num_note == NumberNotes())
         {
-            Player::Play(TypeSound::_1);
+            Beeper::Stop();
         }
         else
         {
