@@ -215,7 +215,7 @@ void CMT2210AW::VerifyPreambule1()
         }
     }
 
-    if (packet == 0x7E8D)
+    if (packet == 0x7E9E)
     {
         Source::Receive(Source::DoorBell);
     }
