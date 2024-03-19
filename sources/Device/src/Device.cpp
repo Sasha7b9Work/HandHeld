@@ -30,6 +30,8 @@ void Device::Init()
     PCF8563::SetTimer(1);       // Переводим INT в 0, чтобы питание не выключалось
 
     Player::Init();
+
+    Player::Play(TypeSound::_1);
 }
 
 

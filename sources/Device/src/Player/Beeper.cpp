@@ -53,6 +53,32 @@ void Beeper::Init()
     timer_channel_output_mode_config(TIMER14, TIMER_CH_1, TIMER_OC_MODE_PWM1);
     timer_channel_output_shadow_config(TIMER14, TIMER_CH_1, TIMER_OC_SHADOW_DISABLE);
 
+//    timer_primary_output_config(TIMER14, ENABLE);
+//
+//    /* auto-reload preload enable */
+//    timer_auto_reload_shadow_enable(TIMER14);
+//    timer_interrupt_enable(TIMER14, TIMER_INT_CH1);
+//    timer_enable(TIMER14);
+}
+
+
+void Beeper::StartFrequency(float frequency)
+{
+    uint period = 250;
+    uint16 prescaler = (uint16)(72000000 / period / (uint)(frequency + 0.5f));
+
+    timer_parameter_struct timer_initpara =
+    {
+        prescaler,
+        TIMER_COUNTER_EDGE,
+        TIMER_COUNTER_UP,
+        TIMER_CKDIV_DIV1,
+        period,
+        0
+    };
+
+    timer_init(TIMER14, &timer_initpara);
+
     timer_primary_output_config(TIMER14, ENABLE);
 
     /* auto-reload preload enable */
