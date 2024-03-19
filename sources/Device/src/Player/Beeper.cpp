@@ -64,16 +64,15 @@ void Beeper::Init()
 
 void Beeper::StartFrequency(float frequency)
 {
-    Stop();
-
     uint period = 250;
     uint16 prescaler = (uint16)(72000000 / period / (uint)(frequency + 0.5f));
 
     TIMER_PSC(TIMER14) = prescaler;
     TIMER_CAR(TIMER14) = period;
 
-    timer_interrupt_enable(TIMER14, TIMER_INT_CH1);
-    timer_enable(TIMER14);
+    TIMER_DMAINTEN(TIMER14) |= (uint32_t)TIMER_INT_CH1;
+
+    TIMER_CTL0(TIMER14) |= (uint32_t)TIMER_CTL0_CEN;
 }
 
 
