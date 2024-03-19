@@ -15,12 +15,12 @@ namespace PageCalls
         int y = 25;
 
         Text<>("Мелодия").Write(x0, y, Color::WHITE);
-        Text<>("%d", gset.sources[source].melody).Write(x1, y);
+        Text<>("%d", gset.sources[source].melody + 1).Write(x1, y);
 
         y += dy;
 
         Text<>("Громкость").Write(x0, y);
-        Text<>("%d", gset.sources[source].volume).Write(x1, y);
+        Text<>("%d", gset.sources[source].volume + 1).Write(x1, y);
 
         y += dy;
 
