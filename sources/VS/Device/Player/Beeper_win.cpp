@@ -7,3 +7,15 @@ void Beeper::Init()
 {
 
 }
+
+
+void Beeper::StartFrequency(float)
+{
+
+}
+
+
+void Beeper::Stop()
+{
+
+}

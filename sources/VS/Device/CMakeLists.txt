@@ -64,7 +64,7 @@ file(GLOB MENU_PAGES              ../../Device/src/Menu/Pages/*.*)
 file(GLOB PLAYER                  ../../Device/src/Player/*.h
                                   ../../Device/src/Player/Player.cpp
                                                    Player/*.*)
-file(GLOB PLAYER_MELODIES         ../../Device/src/Player/Melodies/*.*)
+file(GLOB PLAYER_SOUNDS           ../../Device/src/Player/Sounds/*.*)
 file(GLOB SETTINGS                ../../Device/src/Settings/*.*)
 file(GLOB UTILS                   ../../Device/src/Utils/*.*)
 
@@ -81,25 +81,10 @@ source_group(Modules/ST7735       FILES ${MODULES_ST7735})
 source_group(Menu                 FILES ${MENU})
 source_group(Menu/Pages           FILES ${MENU_PAGES})
 source_group(Player               FILES ${PLAYER})
-source_group(Player/Melodies      FILES ${PLAYER_MELODIES})
+source_group(Player/Sounds        FILES ${PLAYER_SOUNDS})
 source_group(Settings             FILES ${SETTINGS})
 source_group(Utils                FILES ${UTILS})
 
-
-#set_source_files_properties(
-#    Modules/PCF8563/PCF8563_win.cpp
-#    ../../Device/src/Device.cpp
-#    ../../Device/src/Menu/MenuItems.cpp
-#    Application.cpp
-#    Frame.cpp
-#    main_win.cpp
-#    PROPERTIES SKIP_UNITY_BUILD_INCLUSION ON
-#)
-
-
-#set_source_files_properties(
-#    PROPERTIES HEADER_FILE_ONLY TRUE
-#)
 
 add_executable(${PROJECT_NAME}
     ${GUI}
@@ -115,7 +100,7 @@ add_executable(${PROJECT_NAME}
     ${MENU}
     ${MENU_PAGES}
     ${PLAYER}
-    ${PLAYER_MELODIES}
+    ${PLAYER_SOUNDS}
     ${SETTINGS}
     ${UTILS}
 )

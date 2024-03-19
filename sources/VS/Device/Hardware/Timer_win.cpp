@@ -3,6 +3,12 @@
 #include "Hardware/Timer.h"
 
 
+void Timer::Init()
+{
+
+}
+
+
 void TimeMeterMS::Reset()
 {
 
