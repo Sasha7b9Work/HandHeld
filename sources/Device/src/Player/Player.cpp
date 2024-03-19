@@ -15,6 +15,22 @@ namespace Player
     static float frequency = 5274.0f;
 
     static uint prev_time = 0;
+
+    namespace Watch
+    {
+        static uint time_ms = 0;
+
+        static float CurrentTime()
+        {
+            if (time_ms != TIME_MS)
+            {
+                time_ms = TIME_MS;
+                TimerUS::Reset();
+            }
+
+            return (float)time_ms / 1000.f + (float)TimerUS::ElaplsedTime() * 1e-6f;
+        }
+    }
 }
 
 
@@ -48,5 +64,5 @@ void Player::CallbackOnTimer()
 
 uint8 Player::NextSample(float freq)
 {
-    return (uint8)(125.0f + 125.0f * std::sinf(2.0f * 3.1415926f * freq * (float)TIME_MS / 1000.f));
+    return (uint8)(125.0f + 125.0f * std::sinf(2.0f * 3.1415926f * freq * Watch::CurrentTime()));
 }

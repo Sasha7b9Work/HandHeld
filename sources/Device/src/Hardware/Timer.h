@@ -19,8 +19,6 @@ namespace Timer
 
 namespace TimerUS
 {
-    void Init();
-
     void Reset();
 
     uint ElaplsedTime();
