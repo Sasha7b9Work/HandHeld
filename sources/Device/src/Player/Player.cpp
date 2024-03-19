@@ -86,6 +86,8 @@ void Sound::Update()
         else
         {
             Beeper::StartFrequency((float)current->notes[num_note].frequency);
+
+            time_note_start = TIME_MS;
         }
     }
 }
