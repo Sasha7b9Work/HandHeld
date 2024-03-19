@@ -17,16 +17,26 @@ struct Note
 struct Sound
 {
     const Note *const notes;        // В конце мелодии нулевые значения
+    static int num_note;
+    static int time_note;           // В миллисекундах
+    static const Sound *current;
+
+    static const Sound *sounds[TypeSound::Count];
+
+    static void Start(TypeSound::E);
 };
 
 
 #include "Player/Sounds/sound1.h"
 
 
-namespace Player
+const Sound *Sound::sounds[TypeSound::Count] =
 {
+    &sound1, &sound1, &sound1, &sound1, &sound1, &sound1, &sound1, &sound1, &sound1, &sound1
+};
 
-}
+
+const Sound *Sound::current = nullptr;
 
 
 void Player::Init()
@@ -35,9 +45,15 @@ void Player::Init()
 }
 
 
-void Player::Play(TypeSound::E)
+void Player::Play(TypeSound::E type)
 {
+    Sound::Start(type);
+}
 
+
+void Sound::Start(TypeSound::E type)
+{
+    current = sounds[type];
 }
 
 

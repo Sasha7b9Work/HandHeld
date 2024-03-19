@@ -21,7 +21,7 @@ static const Note notes1[] =
 };
 
 
-static struct Sound sound1 =
+static const Sound sound1 =
 {
     notes1
 };
