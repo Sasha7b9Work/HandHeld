@@ -50,7 +50,10 @@ void Source::Receive(E type)
 {
     time_recv[type] = TIME_MS;
 
-    Player::Play(TypeSound::_1);
+    if (gset.sources[type].enabled_melody)
+    {
+        Player::Play((TypeSound::E)gset.sources[type].melody);
+    }
 }
 
 

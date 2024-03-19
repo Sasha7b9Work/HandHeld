@@ -19,8 +19,6 @@ namespace Display
 
     void Update();
 
-    void SetTimePlayer(uint);
-
     namespace Buffer
     {
         static const uint SIZE = WIDTH * HEIGHT / NUMBER_PARTS_HEIGHT;
