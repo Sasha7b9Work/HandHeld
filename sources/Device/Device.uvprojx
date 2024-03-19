@@ -917,6 +917,16 @@
           </Files>
         </Group>
         <Group>
+          <GroupName>Player/Sounds</GroupName>
+          <Files>
+            <File>
+              <FileName>sound1.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Player\Sounds\sound1.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
           <GroupName>PlayerMIDI</GroupName>
           <Files>
             <File>
@@ -2000,6 +2010,16 @@
               <FileName>Player.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Player\Player.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Player/Sounds</GroupName>
+          <Files>
+            <File>
+              <FileName>sound1.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Player\Sounds\sound1.h</FilePath>
             </File>
           </Files>
         </Group>

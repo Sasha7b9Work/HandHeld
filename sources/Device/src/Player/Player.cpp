@@ -6,31 +6,26 @@
 #include <cmath>
 
 
+struct Note
+{
+    uint16 frequency;       // В герцах
+    uint8  duration;        // В 100 мс
+    uint8  velocity;        // 10 градаций - от 0 до 9
+};
+
+
+struct Sound
+{
+    const Note *const notes;        // В конце мелодии нулевые значения
+};
+
+
+#include "Player/Sounds/sound1.h"
+
+
 namespace Player
 {
-    static uint8 NextSample(float frequency);
 
-    static float k = 0.5f;
-
-    static float frequency = 5274.0f;
-
-    static uint prev_time = 0;
-
-    namespace Watch
-    {
-        static uint time_ms = 0;
-
-        static float CurrentTime()
-        {
-            if (time_ms != TIME_MS)
-            {
-                time_ms = TIME_MS;
-                TimerUS::Reset();
-            }
-
-            return (float)time_ms / 1000.f + (float)TimerUS::ElaplsedTime() * 1e-6f;
-        }
-    }
 }
 
 
@@ -40,29 +35,12 @@ void Player::Init()
 }
 
 
-void Player::CallbackOnTimer()
+void Player::Play(TypeSound::E)
 {
-    Beeper::CallbackOnOutputSample(NextSample(frequency));
 
-    if (TIME_MS > prev_time + 1000)
-    {
-        prev_time = TIME_MS;
-
-        frequency *= k;
-
-        if (frequency > 6000.0f)
-        {
-            k = 0.5f;
-        }
-        else if (frequency < 60.0f)
-        {
-            k = 2.0f;
-        }
-    }
 }
 
 
-uint8 Player::NextSample(float freq)
+void Player::CallbackOnTimer()
 {
-    return (uint8)(125.0f + 125.0f * std::sinf(2.0f * 3.1415926f * freq * Watch::CurrentTime()));
 }
