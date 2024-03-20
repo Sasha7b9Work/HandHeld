@@ -52,14 +52,22 @@ void Source::Receive(E type)
 {
     time_recv[type] = TIME_MS;
 
-    if (gset.sources[type].enabled_melody)
+    const SettingsSource &source = gset.sources[type];
+
+    if (source.enabled_melody)
     {
-        Player::Play((TypeSound::E)gset.sources[type].melody);
+        Player::Play((TypeSound::E)source.melody, source.volume);
     }
 
-    Vibrato::Enable();
+    if (source.enabled_vibrato)
+    {
+        Vibrato::Enable();
+    }
 
-    LED::Enable();
+    if (source.enabled_led)
+    {
+        LED::Enable();
+    }
 }
 
 

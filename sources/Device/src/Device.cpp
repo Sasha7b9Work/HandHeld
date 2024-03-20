@@ -39,7 +39,7 @@ void Device::Init()
 
     Player::Init();
 
-    Player::Play(TypeSound::_2);
+    Player::Play(TypeSound::_2, 9);
 
     Storage::Init();
 }

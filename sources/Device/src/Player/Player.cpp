@@ -57,7 +57,7 @@ void Player::Init()
 }
 
 
-void Player::Play(TypeSound::E type)
+void Player::Play(TypeSound::E type, uint8 /*volume*/)
 {
     Sound::Start(type);
 }
