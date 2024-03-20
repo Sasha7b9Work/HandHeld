@@ -4,6 +4,8 @@
 #include "Display/Display.h"
 #include "Hardware/Timer.h"
 #include "Player/Player.h"
+#include "Hardware/LED.h"
+#include "Hardware/Vibrato.h"
 #include <cstdlib>
 
 
@@ -54,10 +56,34 @@ void Source::Receive(E type)
     {
         Player::Play((TypeSound::E)gset.sources[type].melody);
     }
+
+    Vibrato::Enable();
+
+    LED::Enable();
 }
 
 
 bool Source::IsReceived(E type)
 {
     return time_recv[type] + 1000 > TIME_MS;
+}
+
+
+void Source::Update()
+{
+    bool enabled = false;
+
+    for (int i = 0; i < Source::Count; i++)
+    {
+        if (IsReceived((Source::E)i))
+        {
+            enabled = true;
+        }
+    }
+
+    if (!enabled)
+    {
+        Vibrato::Disable();
+        LED::Disable();
+    }
 }

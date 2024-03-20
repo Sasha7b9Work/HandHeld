@@ -27,6 +27,8 @@ struct Source
     // Возвращает true, если приём идёт
     static bool IsReceived(E);
 
+    static void Update();
+
 private:
     E value;
     static uint time_recv[Count];

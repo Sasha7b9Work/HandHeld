@@ -9,6 +9,9 @@
 #include "Modules/PCF8563/PCF8563.h"
 #include "Player/Player.h"
 #include "Hardware/Timer.h"
+#include "Settings/Settings.h"
+#include "Hardware/LED.h"
+#include "Hardware/Vibrato.h"
 
 
 void Device::Init()
@@ -22,6 +25,10 @@ void Device::Init()
     Menu::Init();
 
     Display::Init();
+
+    LED::Init();
+
+    Vibrato::Init();
 
     CMT2210AW::Init();
 
@@ -42,4 +49,6 @@ void Device::Update()
     PCF8563::Update();
 
     Display::Update();
+
+    Source::Update();
 }

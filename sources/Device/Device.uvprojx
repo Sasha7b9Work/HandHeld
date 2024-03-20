@@ -624,6 +624,26 @@
               <FileType>5</FileType>
               <FilePath>.\src\Hardware\Watch.h</FilePath>
             </File>
+            <File>
+              <FileName>LED.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Hardware\LED.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>LED.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Hardware\LED.h</FilePath>
+            </File>
+            <File>
+              <FileName>Vibrato.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Hardware\Vibrato.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Vibrato.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Hardware\Vibrato.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1730,6 +1750,26 @@
               <FileName>Watch.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Hardware\Watch.h</FilePath>
+            </File>
+            <File>
+              <FileName>LED.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Hardware\LED.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>LED.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Hardware\LED.h</FilePath>
+            </File>
+            <File>
+              <FileName>Vibrato.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Hardware\Vibrato.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Vibrato.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Hardware\Vibrato.h</FilePath>
             </File>
           </Files>
         </Group>
