@@ -286,13 +286,20 @@ void ST7735::WriteBuffer(int y0)
 {
     LCD_SetPos_Horizontal(0, Display::WIDTH - 1, (uint)y0, (uint)(y0 + Display::HEIGHT / Display::NUMBER_PARTS_HEIGHT - 1));
 
+    GPIO_BOP(GPIOA) = (uint32_t)GPIO_PIN_5;
+
     for (int y = 0; y < Display::HEIGHT / Display::NUMBER_PARTS_HEIGHT; y++)
     {
         uint8 *points = Display::Buffer::GetLine(y);
 
         for (int i = 0; i < Display::WIDTH; i++)
         {
-            SendData16(Color::colors[*points++]);
+//            SendData16(Color::colors[*points++]);
+
+            uint16 data = Color::colors[*points++];
+
+            SendByte((uint8)(data >> 8));
+            SendByte((uint8)data);
         }
     }
 }
