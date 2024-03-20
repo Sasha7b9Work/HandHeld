@@ -55,9 +55,9 @@ void Display::Update()
 
     for (int i = 0; i < NUMBER_PARTS_HEIGHT; i++)
     {
-        BeginScene(i);
-        DrawScene(i);
-        EndScene(i);
+        BeginScene(i);      // 0 ms
+        DrawScene(i);       // 20 ms
+        EndScene(i);        // 68 ms
     }
 
     volatile uint time = TIME_MS - start_time;

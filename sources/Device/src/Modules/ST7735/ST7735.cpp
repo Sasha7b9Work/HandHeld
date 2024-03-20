@@ -50,9 +50,6 @@ namespace ST7735
         SendByte((uint8)word);
     }
 
-//    static void SendCommand(uint8);
-//    static void SendData8(uint8);
-//    static void SendData16(uint16);
     void SetWindow(int startX, int startY, int stopX, int stopY);
 
     static void Write_Cmd(unsigned char CMD)
@@ -285,10 +282,6 @@ void ST7735::LCD_SetPos_Horizontal(unsigned char x0, unsigned char x1, unsigned 
 
 void ST7735::WriteBuffer(int y0)
 {
-//    LCD_SetPos_Vertical(0, Display::WIDTH, (uint)y0, (uint)(y0 + Display::HEIGHT / Display::NUMBER_PARTS_HEIGHT - 1));
-
-//    SetWindow(0, y0, Display::WIDTH, Display::HEIGHT / Display::NUMBER_PARTS_HEIGHT);
-
     LCD_SetPos_Horizontal(0, Display::WIDTH - 1, (uint)y0, (uint)(y0 + Display::HEIGHT / Display::NUMBER_PARTS_HEIGHT - 1));
 
     for (int y = 0; y < Display::HEIGHT / Display::NUMBER_PARTS_HEIGHT; y++)
