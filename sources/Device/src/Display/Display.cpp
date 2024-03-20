@@ -6,6 +6,7 @@
 #include "Display/Font/Font.h"
 #include "Hardware/Watch.h"
 #include "Keyboard/Keyboard.h"
+#include "Hardware/HAL/HAL.h"
 #include "Menu/Menu.h"
 #include "Utils/FPS.h"
 #include <string>
@@ -92,6 +93,8 @@ void Display::DrawScene(int num_part)
                 Source((Source::E)i).Draw(6 + i * 30, 65);
             }
         }
+
+        Text<>("%f", (double)HAL_ADC::GetVoltage()).Write(0, 0, Color::WHITE);
 
         FPS::DrawTimeFrame(0, 75);
     }
