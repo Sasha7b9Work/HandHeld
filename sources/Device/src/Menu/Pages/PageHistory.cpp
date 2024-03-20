@@ -58,7 +58,7 @@ namespace PageHistory
             if (action.key == Key::Up)
             {
                 top_record--;
-                if (top_record == -1)
+                if (top_record < 0)
                 {
                     top_record = Storage::GetCountRecords() - 1;
                 }
@@ -66,7 +66,7 @@ namespace PageHistory
             else if (action.key == Key::Down)
             {
                 top_record++;
-                if (top_record == Storage::GetCountRecords())
+                if (top_record >= Storage::GetCountRecords())
                 {
                     top_record = 0;
                 }
