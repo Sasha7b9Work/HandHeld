@@ -25,11 +25,22 @@ namespace PageHistory
         HLine(160).Draw(0, 26, Color::WHITE);
         HLine(160).Draw(0, 53);
 
-        DrawRecord(0, 0, top_record);
+        const int num_records = Storage::GetCountRecords();
 
-        DrawRecord(0, 28, (top_record + 1) % Storage::GetCountRecords());
+        if (num_records > 0)
+        {
+            DrawRecord(0, 0, top_record);
 
-        DrawRecord(0, 55, (top_record + 2) % Storage::GetCountRecords());
+            if (num_records > 1)
+            {
+                DrawRecord(0, 28, (top_record + 1) % Storage::GetCountRecords());
+
+                if (num_records > 2)
+                {
+                    DrawRecord(0, 55, (top_record + 2) % Storage::GetCountRecords());
+                }
+            }
+        }
     }
 
     static bool Func_ActionKey(const Action &action)
