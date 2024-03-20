@@ -7,8 +7,6 @@
 
 namespace HAL_ADC
 {
-    static float voltage = 0.0f;
-
     static float ConversionRawToVoltageADC(uint);
 
     static float ConversionRawToVoltageBattery(uint);
@@ -49,15 +47,22 @@ void HAL_ADC::Init()
 
 float HAL_ADC::GetVoltage()
 {
-    adc_software_trigger_enable(ADC_REGULAR_CHANNEL);
+    static float voltage = 0.0f;
 
-    adc_flag_clear(ADC_FLAG_EOC);
+    static TimeMeterMS meter;
 
-    while (SET != adc_flag_get(ADC_FLAG_EOC)) { }
+    if (meter.ElapsedTime() > 1000)
+    {
+        adc_software_trigger_enable(ADC_REGULAR_CHANNEL);
 
-    //voltage = ConversionRawToVoltageBattery(ADC_RDATA);
+        adc_flag_clear(ADC_FLAG_EOC);
 
-    return (float)ADC_RDATA;
+        while (SET != adc_flag_get(ADC_FLAG_EOC)) {}
+
+        voltage = ConversionRawToVoltageBattery(ADC_RDATA);
+    }
+
+    return voltage;
 }
 
 
