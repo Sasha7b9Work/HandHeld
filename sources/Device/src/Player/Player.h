@@ -27,5 +27,9 @@ namespace Player
 
     void Play(TypeSound::E, uint8);
 
+    void Stop();
+
     void CallbackOnTimer();
+
+    bool IsRunning();
 }

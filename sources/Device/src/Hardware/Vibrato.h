@@ -9,4 +9,6 @@ namespace Vibrato
     void Enable();
 
     void Disable();
+
+    bool IsRunning();
 }

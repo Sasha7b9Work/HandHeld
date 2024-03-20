@@ -9,4 +9,6 @@ namespace LED
     void Enable();
 
     void Disable();
+
+    bool IsFired();
 }

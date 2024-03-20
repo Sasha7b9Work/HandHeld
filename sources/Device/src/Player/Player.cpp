@@ -51,6 +51,12 @@ int Sound::num_note = 0;
 uint Sound::time_note_start = 0;
 
 
+namespace Player
+{
+    static bool is_running = false;
+}
+
+
 void Player::Init()
 {
     Beeper::Init();
@@ -59,7 +65,23 @@ void Player::Init()
 
 void Player::Play(TypeSound::E type, uint8 /*volume*/)
 {
+    is_running = true;
+
     Sound::Start(type);
+}
+
+
+void Player::Stop()
+{
+    is_running = false;
+
+    Beeper::Stop();
+}
+
+
+bool Player::IsRunning()
+{
+    return is_running;
 }
 
 
@@ -83,7 +105,7 @@ void Sound::Update()
 
         if (num_note == NumberNotes())
         {
-            Beeper::Stop();
+            Player::Stop();
         }
         else
         {

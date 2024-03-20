@@ -23,3 +23,9 @@ void Vibrato::Disable()
 {
     gpio_bit_reset(GPIOA, GPIO_PIN_10);
 }
+
+
+bool Vibrato::IsRunning()
+{
+    return gpio_input_bit_get(GPIOA, GPIO_PIN_10) != RESET;
+}

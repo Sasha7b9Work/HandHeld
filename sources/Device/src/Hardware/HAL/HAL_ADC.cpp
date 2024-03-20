@@ -2,6 +2,9 @@
 #include "defines.h"
 #include "Hardware/HAL/HAL.h"
 #include "Hardware/Timer.h"
+#include "Hardware/LED.h"
+#include "Hardware/Vibrato.h"
+#include "Player/Player.h"
 #include <gd32e23x.h>
 
 
@@ -53,7 +56,7 @@ float HAL_ADC::GetVoltage()
 
     static TimeMeterMS meter;
 
-    if (meter.ElapsedTime() > 1000)
+    if (!LED::IsFired() && !Vibrato::IsRunning() && !Player::IsRunning() && meter.ElapsedTime() > 1000)
     {
         meter.Reset();
 

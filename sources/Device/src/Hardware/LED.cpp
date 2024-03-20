@@ -23,3 +23,9 @@ void LED::Disable()
 {
     gpio_bit_reset(GPIOA, GPIO_PIN_2);
 }
+
+
+bool LED::IsFired()
+{
+    return gpio_input_bit_get(GPIOA, GPIO_PIN_2) != RESET;
+}
