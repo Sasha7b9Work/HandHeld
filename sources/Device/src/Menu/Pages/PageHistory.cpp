@@ -78,8 +78,17 @@ namespace PageHistory
         return false;
     }
 
+    static void FuncDraw_Closed()
+    {
+        Font::SetSize(2);
+
+        Text<>("%d ÂÛÇÎÂÎÂ", Storage::GetCountRecords()).Write(10, 35, Color::WHITE);
+
+        Font::SetSize(1);
+    }
+
     DEF_PAGE_0(pageHistory, PageMain::self, "ÆÓĞÍÀË ÂÛÇÎÂÎÂ",
-        nullptr,
+        FuncDraw_Closed,
         FuncDraw_History,
         Func_ActionKey
     );
