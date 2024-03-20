@@ -7,6 +7,7 @@
 #include "Hardware/Watch.h"
 #include "Keyboard/Keyboard.h"
 #include "Hardware/HAL/HAL.h"
+#include "Hardware/Timer.h"
 #include "Menu/Menu.h"
 #include "Hardware/Battery.h"
 #include "Utils/FPS.h"
@@ -50,12 +51,18 @@ void Display::Update()
 {
     FPS::BeginFrame();
 
+    volatile uint start_time = TIME_MS;
+
     for (int i = 0; i < NUMBER_PARTS_HEIGHT; i++)
     {
         BeginScene(i);
         DrawScene(i);
         EndScene(i);
     }
+
+    volatile uint time = TIME_MS - start_time;
+
+    time = time;
 
     FPS::EndFrame();
 }
