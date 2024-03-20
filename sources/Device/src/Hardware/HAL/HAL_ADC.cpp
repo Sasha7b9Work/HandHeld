@@ -11,8 +11,6 @@ namespace HAL_ADC
 
     static float ConversionRawToVoltageADC(uint);
 
-    static float ConversionVoltageADCtoVoltageBattery(float);
-
     static float ConversionRawToVoltageBattery(uint);
 }
 
@@ -65,15 +63,9 @@ float HAL_ADC::GetVoltage()
 
 float HAL_ADC::ConversionRawToVoltageADC(uint raw)
 {
-    static const float MAX_VOLTAGE = 3.0f;
+    static const float MAX_VOLTAGE = 3.3f;
 
     return MAX_VOLTAGE / (1 << 12) * (float)raw;
-}
-
-
-float HAL_ADC::ConversionVoltageADCtoVoltageBattery(float adc)
-{
-    return -0.6f * adc + 4.36f;
 }
 
 
@@ -81,5 +73,5 @@ float HAL_ADC::ConversionRawToVoltageBattery(uint raw)
 {
     float voltageADC = ConversionRawToVoltageADC(raw);
 
-    return ConversionVoltageADCtoVoltageBattery(voltageADC) * 2.0f;
+    return voltageADC * 2.0f;
 }
