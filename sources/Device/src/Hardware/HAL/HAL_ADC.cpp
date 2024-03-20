@@ -19,7 +19,7 @@ void HAL_ADC::Init()
 
     rcu_adc_clock_config(RCU_ADCCK_APB2_DIV6);
 
-    gpio_mode_set(GPIOA, GPIO_MODE_ANALOG, GPIO_PUPD_NONE, GPIO_PIN_1);
+    gpio_mode_set(GPIOA, GPIO_MODE_ANALOG, GPIO_PUPD_PULLDOWN, GPIO_PIN_1);
 
     /* ADC contineous function enable */
     adc_special_function_config(ADC_CONTINUOUS_MODE, ENABLE);
