@@ -15,7 +15,7 @@ namespace ST7735
     static PinOut pinSCL(GPIOA, GPIO_PIN_4);      // PA4  14
     static PinOut pinSDA(GPIOA, GPIO_PIN_6);      // PA6  16
 
-    static void SendByte(uint8 byte)
+    void SendByte2(uint8 byte)
     {
         for (int bit = 7; bit >= 0; bit--)
         {
@@ -41,6 +41,98 @@ namespace ST7735
             GPIO_BC(GPIOA) = (uint32_t)GPIO_PIN_4;
         }
     }
+
+    static void SendByte(uint8 byte)
+    {
+        if ((byte & 0x80) == 0)
+        {
+            GPIO_BC(GPIOA) = (uint32_t)GPIO_PIN_6;
+        }
+        else
+        {
+            GPIO_BOP(GPIOA) = (uint32_t)GPIO_PIN_6;
+        }
+        GPIO_BOP(GPIOA) = (uint32_t)GPIO_PIN_4;
+        GPIO_BC(GPIOA) = (uint32_t)GPIO_PIN_4;
+
+        if ((byte & 0x40) == 0)
+        {
+            GPIO_BC(GPIOA) = (uint32_t)GPIO_PIN_6;
+        }
+        else
+        {
+            GPIO_BOP(GPIOA) = (uint32_t)GPIO_PIN_6;
+        }
+        GPIO_BOP(GPIOA) = (uint32_t)GPIO_PIN_4;
+        GPIO_BC(GPIOA) = (uint32_t)GPIO_PIN_4;
+
+        if ((byte & 0x20) == 0)
+        {
+            GPIO_BC(GPIOA) = (uint32_t)GPIO_PIN_6;
+        }
+        else
+        {
+            GPIO_BOP(GPIOA) = (uint32_t)GPIO_PIN_6;
+        }
+        GPIO_BOP(GPIOA) = (uint32_t)GPIO_PIN_4;
+        GPIO_BC(GPIOA) = (uint32_t)GPIO_PIN_4;
+
+        if ((byte & 0x10) == 0)
+        {
+            GPIO_BC(GPIOA) = (uint32_t)GPIO_PIN_6;
+        }
+        else
+        {
+            GPIO_BOP(GPIOA) = (uint32_t)GPIO_PIN_6;
+        }
+        GPIO_BOP(GPIOA) = (uint32_t)GPIO_PIN_4;
+        GPIO_BC(GPIOA) = (uint32_t)GPIO_PIN_4;
+
+        if ((byte & 0x08) == 0)
+        {
+            GPIO_BC(GPIOA) = (uint32_t)GPIO_PIN_6;
+        }
+        else
+        {
+            GPIO_BOP(GPIOA) = (uint32_t)GPIO_PIN_6;
+        }
+        GPIO_BOP(GPIOA) = (uint32_t)GPIO_PIN_4;
+        GPIO_BC(GPIOA) = (uint32_t)GPIO_PIN_4;
+
+        if ((byte & 0x04) == 0)
+        {
+            GPIO_BC(GPIOA) = (uint32_t)GPIO_PIN_6;
+        }
+        else
+        {
+            GPIO_BOP(GPIOA) = (uint32_t)GPIO_PIN_6;
+        }
+        GPIO_BOP(GPIOA) = (uint32_t)GPIO_PIN_4;
+        GPIO_BC(GPIOA) = (uint32_t)GPIO_PIN_4;
+
+        if ((byte & 0x02) == 0)
+        {
+            GPIO_BC(GPIOA) = (uint32_t)GPIO_PIN_6;
+        }
+        else
+        {
+            GPIO_BOP(GPIOA) = (uint32_t)GPIO_PIN_6;
+        }
+        GPIO_BOP(GPIOA) = (uint32_t)GPIO_PIN_4;
+        GPIO_BC(GPIOA) = (uint32_t)GPIO_PIN_4;
+
+        if ((byte & 0x01) == 0)
+        {
+            GPIO_BC(GPIOA) = (uint32_t)GPIO_PIN_6;
+        }
+        else
+        {
+            GPIO_BOP(GPIOA) = (uint32_t)GPIO_PIN_6;
+        }
+        GPIO_BOP(GPIOA) = (uint32_t)GPIO_PIN_4;
+        GPIO_BC(GPIOA) = (uint32_t)GPIO_PIN_4;
+    }
+
 
     void SendWord(uint16 word)
     {
