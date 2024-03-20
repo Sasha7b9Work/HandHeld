@@ -35,7 +35,7 @@ void HAL_ADC::Init()
     adc_external_trigger_config(ADC_REGULAR_CHANNEL, ENABLE);
 
     /* ADC resolusion 6B */
-    adc_resolution_config(ADC_RESOLUTION_12B);
+    adc_resolution_config(ADC_RESOLUTION_6B);
 
     /* enable ADC interface */
     adc_enable();
