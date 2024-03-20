@@ -15,7 +15,8 @@ namespace PageHistory
 
     DEF_PAGE_0(pageHistory, PageMain::self, "ÆÓĞÍÀË ÂÛÇÎÂÎÂ",
         nullptr,
-        FuncDraw_History
+        FuncDraw_History,
+        nullptr
     );
 
     const Item *const self = &pageHistory;

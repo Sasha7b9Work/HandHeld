@@ -96,6 +96,7 @@ namespace PageCalls
             &choiceEnableMelody,
             &choiceEnabledVibro,
             OnDraw_DoorBell,
+            nullptr,
             nullptr
         );
 
@@ -159,6 +160,7 @@ namespace PageCalls
             &choiceEnableMelody,
             &choiceEnabledVibro,
             OnDraw_Mobile,
+            nullptr,
             nullptr
         );
 
@@ -222,6 +224,7 @@ namespace PageCalls
             &choiceEnableMelody,
             &choiceEnabledVibro,
             OnDraw_HomePhone,
+            nullptr,
             nullptr
         );
 
@@ -284,6 +287,7 @@ namespace PageCalls
             &choiceEnableMelody,
             &choiceEnabledVibro,
             OnDraw_Intercom,
+            nullptr,
             nullptr
         );
 
@@ -349,6 +353,7 @@ namespace PageCalls
             &choiceEnableMelody,
             &choiceEnabledVibro,
             OnDraw_SoundSensor,
+            nullptr,
             nullptr
         );
 
@@ -363,6 +368,7 @@ DEF_PAGE_5(pageCalls, PageMain::self, "Õ¿—“–Œ… » ¬€«Œ¬Œ¬",
     PageCalls::PageHomePhone::self,
     PageCalls::PageIntercom::self,
     PageCalls::PageSoundSensor::self,
+    nullptr,
     nullptr,
     nullptr
 );

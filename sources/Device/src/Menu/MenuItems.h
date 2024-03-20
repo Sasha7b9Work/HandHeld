@@ -63,6 +63,7 @@ struct DataPage
     int8 * const   current_item;    // Текущий элемент страницы
     void (*func_draw_closed)();
     void (*func_draw_opened)();
+    bool (*func_action_key)(const Action &);
 };
 
 

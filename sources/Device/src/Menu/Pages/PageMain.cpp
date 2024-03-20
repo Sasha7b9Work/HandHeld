@@ -16,6 +16,7 @@ DEF_PAGE_4(pageMain, nullptr, "лемч",
     PageCalls::self,
     PageHistory::self,
     nullptr,
+    nullptr,
     nullptr
 );
 
