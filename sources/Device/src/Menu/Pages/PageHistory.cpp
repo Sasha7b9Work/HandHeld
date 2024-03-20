@@ -18,6 +18,14 @@ namespace PageHistory
         }
 
         Text<>("%d/%d", num_record + 1, Storage::GetCountRecords()).Write(x, y, Color::WHITE);
+
+        const Record rec = Storage::Get(num_record);
+        const RTCDateTime time = rec.time;
+
+        Text<>("%02d/%02d/%02d %02d:%02d:%02d",
+            time.Day, time.Month, time.Year, time.Hour, time.Minute, time.Second).Write(x + 5, y + 12);
+
+        Rect(10, 10).Draw(x + 120, y + 10);
     }
 
     static void FuncDraw_History()

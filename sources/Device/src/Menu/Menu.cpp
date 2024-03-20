@@ -42,7 +42,7 @@ void Menu::Update()
         }
         else
         {
-            if (action.key == Key::Menu)
+            if (action.key == Key::Menu || action.key == Key::Up || action.key == Key::Down)
             {
                 is_shown = true;
             }
