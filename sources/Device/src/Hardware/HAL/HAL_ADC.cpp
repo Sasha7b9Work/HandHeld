@@ -21,6 +21,8 @@ void HAL_ADC::Init()
 {
     rcu_periph_clock_enable(RCU_ADC);
 
+    rcu_adc_clock_config(RCU_ADCCK_APB2_DIV6);
+
     gpio_mode_set(GPIOA, GPIO_MODE_ANALOG, GPIO_PUPD_NONE, GPIO_PIN_1);
 
     /* ADC contineous function enable */
