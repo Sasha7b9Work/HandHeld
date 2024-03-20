@@ -97,6 +97,8 @@ void Display::DrawScene(int num_part)
 
         Text<>("%f", Battery::GetVoltage()).Write(0, 0, Color::WHITE);
 
+        Battery::Draw(121, 67);
+
         FPS::DrawTimeFrame(0, 75);
     }
 }

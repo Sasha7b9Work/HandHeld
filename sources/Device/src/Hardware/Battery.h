@@ -5,4 +5,6 @@
 namespace Battery
 {
     double GetVoltage();
+
+    void Draw(int x, int y);
 }
