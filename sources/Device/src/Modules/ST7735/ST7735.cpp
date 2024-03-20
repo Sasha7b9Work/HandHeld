@@ -17,21 +17,11 @@ namespace ST7735
 
     static void SendByte(uint8 byte)
     {
-        static const int mask[8] =
-        {
-            0x01,
-            0x02,
-            0x04,
-            0x08,
-            0x10,
-            0x20,
-            0x40,
-            0x80
-        };
+        uint8 mask = 0x80;
 
         for (int bit = 7; bit >= 0; bit--)
         {
-            if ((byte & mask[bit]) == 0)
+            if ((byte & mask) == 0)
             {
                 //pinSDA.ToLow();
                 //gpio_bit_reset(GPIOA, GPIO_PIN_6);
@@ -51,6 +41,8 @@ namespace ST7735
             // pinSCL.ToLow();
             //gpio_bit_reset(GPIOA, GPIO_PIN_4);
             GPIO_BC(GPIOA) = (uint32_t)GPIO_PIN_4;
+
+            mask >>= 1;
         }
     }
 
