@@ -13,10 +13,20 @@ namespace PageHistory
         HLine(160).Draw(0, 53);
     }
 
+    static bool Func_ActionKey(const Action &action)
+    {
+        if (action.key == Key::Up || action.key == Key::Down)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
     DEF_PAGE_0(pageHistory, PageMain::self, "ÆÓÐÍÀË ÂÛÇÎÂÎÂ",
         nullptr,
         FuncDraw_History,
-        nullptr
+        Func_ActionKey
     );
 
     const Item *const self = &pageHistory;

@@ -206,31 +206,44 @@ void Item::ApplyAction(const Action &action) const
 
 void Page::ApplyAction(const Action &action) const
 {
-    if (action.key == Key::Up)
+    bool need_apply = true;
+
+    if (data->func_action_key)
     {
-        PrevCurrentItem();
-    }
-    else if (action.key == Key::Down)
-    {
-        NextCurrentItem();
-    }
-    else if (action.key == Key::Menu)
-    {
-        if (NumItems())
+        if (data->func_action_key(action))
         {
-            if (CurrentItem()->IsChoice())
-            {
-                CurrentItem()->ApplyAction(action);
-            }
-            else
-            {
-                CurrentItem()->Open();
-            }
+            need_apply = false;
         }
     }
-    else if (action.key == Key::Cancel)
+
+    if (need_apply)
     {
-        data->item->Close();
+        if (action.key == Key::Up)
+        {
+            PrevCurrentItem();
+        }
+        else if (action.key == Key::Down)
+        {
+            NextCurrentItem();
+        }
+        else if (action.key == Key::Menu)
+        {
+            if (NumItems())
+            {
+                if (CurrentItem()->IsChoice())
+                {
+                    CurrentItem()->ApplyAction(action);
+                }
+                else
+                {
+                    CurrentItem()->Open();
+                }
+            }
+        }
+        else if (action.key == Key::Cancel)
+        {
+            data->item->Close();
+        }
     }
 }
 
