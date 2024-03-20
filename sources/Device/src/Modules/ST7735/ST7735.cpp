@@ -42,6 +42,26 @@ namespace ST7735
         }
     }
 
+    static void SendWord(uint16 word)
+    {
+        for (int bit = 15; bit >= 0; bit--)
+        {
+            if ((word & (1 << bit)) == 0)
+            {
+                GPIO_BC(GPIOA) = (uint32_t)GPIO_PIN_6;
+            }
+            else
+            {
+                GPIO_BOP(GPIOA) = (uint32_t)GPIO_PIN_6;
+            }
+
+            GPIO_BOP(GPIOA) = (uint32_t)GPIO_PIN_4;
+
+            GPIO_BC(GPIOA) = (uint32_t)GPIO_PIN_4;
+        }
+
+    }
+
     static void SendData16(uint16 word)
     {
         //pinDC.ToHi();
@@ -294,12 +314,7 @@ void ST7735::WriteBuffer(int y0)
 
         for (int i = 0; i < Display::WIDTH; i++)
         {
-//            SendData16(Color::colors[*points++]);
-
-            uint16 data = Color::colors[*points++];
-
-            SendByte((uint8)(data >> 8));
-            SendByte((uint8)data);
+            SendWord(Color::colors[*points++]);
         }
     }
 }
