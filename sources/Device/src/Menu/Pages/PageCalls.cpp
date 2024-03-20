@@ -95,7 +95,8 @@ namespace PageCalls
             &choiceEnableLED,
             &choiceEnableMelody,
             &choiceEnabledVibro,
-            OnDraw_DoorBell
+            OnDraw_DoorBell,
+            nullptr
         );
 
         const Item *const self = &pageDoorBell;
@@ -157,7 +158,8 @@ namespace PageCalls
             &choiceEnableLED,
             &choiceEnableMelody,
             &choiceEnabledVibro,
-            OnDraw_Mobile
+            OnDraw_Mobile,
+            nullptr
         );
 
         const Item *const self = &pageMobile;
@@ -219,7 +221,8 @@ namespace PageCalls
             &choiceEnableLED,
             &choiceEnableMelody,
             &choiceEnabledVibro,
-            OnDraw_HomePhone
+            OnDraw_HomePhone,
+            nullptr
         );
 
         const Item *const self = &pageHomePhone;
@@ -280,7 +283,8 @@ namespace PageCalls
             &choiceEnableLED,
             &choiceEnableMelody,
             &choiceEnabledVibro,
-            OnDraw_Intercom
+            OnDraw_Intercom,
+            nullptr
         );
 
 
@@ -344,7 +348,8 @@ namespace PageCalls
             &choiceEnableLED,
             &choiceEnableMelody,
             &choiceEnabledVibro,
-            OnDraw_SoundSensor
+            OnDraw_SoundSensor,
+            nullptr
         );
 
         const Item *const self = &pageSoundSensor;
@@ -358,6 +363,7 @@ DEF_PAGE_5(pageCalls, PageMain::self, "Õ¿—“–Œ… » ¬€«Œ¬Œ¬",
     PageCalls::PageHomePhone::self,
     PageCalls::PageIntercom::self,
     PageCalls::PageSoundSensor::self,
+    nullptr,
     nullptr
 );
 

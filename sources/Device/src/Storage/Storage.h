@@ -19,6 +19,5 @@ namespace Storage
 
     int GetCountRecords();
 
-
     Record Get(int);
 }

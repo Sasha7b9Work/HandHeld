@@ -33,11 +33,18 @@ void Page::Draw() const
 {
     if (data->item->IsOpened())
     {
-        const Item *current_item = CurrentItem();
-
-        if (current_item)
+        if (data->func_draw_opened)
         {
-            current_item->Draw();
+            data->func_draw_opened();
+        }
+        else
+        {
+            const Item *current_item = CurrentItem();
+
+            if (current_item)
+            {
+                current_item->Draw();
+            }
         }
     }
     else

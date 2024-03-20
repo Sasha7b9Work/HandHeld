@@ -15,6 +15,7 @@ DEF_PAGE_4(pageMain, nullptr, "лемч",
     &timeAlarm,
     PageCalls::self,
     PageHistory::self,
+    nullptr,
     nullptr
 );
 

@@ -2,8 +2,21 @@
 #include "defines.h"
 #include "Menu/Pages/Pages.h"
 #include "Menu/MenuItemDef.h"
+#include "Display/Display.h"
 
 
-DEF_PAGE_0(pageHistory, PageMain::self, "ÆÓĞÍÀË ÂÛÇÎÂÎÂ", nullptr);
+namespace PageHistory
+{
+    static void FuncDraw_History()
+    {
+        HLine(180).Draw(0, 26, Color::WHITE);
+        HLine(180).Draw(0, 53);
+    }
 
-const Item *const PageHistory::self = &pageHistory;
+    DEF_PAGE_0(pageHistory, PageMain::self, "ÆÓĞÍÀË ÂÛÇÎÂÎÂ",
+        nullptr,
+        FuncDraw_History
+    );
+
+    const Item *const self = &pageHistory;
+}
