@@ -33,3 +33,16 @@ namespace HAL_TIM2
 {
     void Init();
 }
+
+
+namespace HAL_ROM
+{
+    // Стиреть страницу от 0 до 63
+    void ErasePage(int);
+
+    // address должен быть кратен 4
+    void WriteBuffer(uint address, const void *buffer, int size);
+
+    // address должен быть кратен 4
+    void ReadBuffer(uint address, void *buffer, int size);
+}
