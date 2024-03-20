@@ -8,6 +8,7 @@
 #include "Keyboard/Keyboard.h"
 #include "Hardware/HAL/HAL.h"
 #include "Menu/Menu.h"
+#include "Hardware/Battery.h"
 #include "Utils/FPS.h"
 #include <string>
 
@@ -94,7 +95,7 @@ void Display::DrawScene(int num_part)
             }
         }
 
-        Text<>("%f", (double)HAL_ADC::GetVoltage()).Write(0, 0, Color::WHITE);
+        Text<>("%f", Battery::GetVoltage()).Write(0, 0, Color::WHITE);
 
         FPS::DrawTimeFrame(0, 75);
     }

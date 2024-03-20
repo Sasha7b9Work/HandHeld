@@ -48,6 +48,7 @@ file(GLOB SRC                                  *.h *.cpp
 file(GLOB DISPLAY                 ../../Device/src/Display/*.*)
 file(GLOB DISPLAY_FONT            ../../Device/src/Display/Font/*.*)
 file(GLOB HARDWARE                ../../Device/src/Hardware/Beeper.h
+                                  ../../Device/src/Hardware/Battery.*
                                   ../../Device/src/Hardware/Watch.*
                                   ../../Device/src/Hardware/Timer.h
                                                    Hardware/*.*)
