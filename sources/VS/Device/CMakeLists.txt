@@ -66,6 +66,7 @@ file(GLOB PLAYER                  ../../Device/src/Player/*.h
                                                    Player/*.*)
 file(GLOB PLAYER_SOUNDS           ../../Device/src/Player/Sounds/*.*)
 file(GLOB SETTINGS                ../../Device/src/Settings/*.*)
+file(GLOB STORAGE                 ../../Device/src/Storage/*.*)
 file(GLOB UTILS                   ../../Device/src/Utils/*.*)
 
 source_group(GUI                  FILES ${GUI})
@@ -83,6 +84,7 @@ source_group(Menu/Pages           FILES ${MENU_PAGES})
 source_group(Player               FILES ${PLAYER})
 source_group(Player/Sounds        FILES ${PLAYER_SOUNDS})
 source_group(Settings             FILES ${SETTINGS})
+source_group(Storage              FILES ${STORAGE})
 source_group(Utils                FILES ${UTILS})
 
 
@@ -102,6 +104,7 @@ add_executable(${PROJECT_NAME}
     ${PLAYER}
     ${PLAYER_SOUNDS}
     ${SETTINGS}
+    ${STORAGE}
     ${UTILS}
 )
 

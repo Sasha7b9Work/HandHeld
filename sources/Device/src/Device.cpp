@@ -12,6 +12,7 @@
 #include "Settings/Settings.h"
 #include "Hardware/LED.h"
 #include "Hardware/Vibrato.h"
+#include "Storage/Storage.h"
 
 
 void Device::Init()
@@ -38,7 +39,9 @@ void Device::Init()
 
     Player::Init();
 
-    Player::Play(TypeSound::_1);
+    Player::Play(TypeSound::_2);
+
+    Storage::Init();
 }
 
 
