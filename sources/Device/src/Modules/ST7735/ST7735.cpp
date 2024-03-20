@@ -44,7 +44,9 @@ namespace ST7735
 
     static void SendData16(uint16 word)
     {
-        pinDC.ToHi();
+        //pinDC.ToHi();
+        //gpio_bit_set(GPIOA, GPIO_PIN_5);
+        GPIO_BOP(GPIOA) = (uint32_t)GPIO_PIN_5;
 
         SendByte((uint8)(word >> 8));
         SendByte((uint8)word);
