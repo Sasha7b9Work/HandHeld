@@ -55,6 +55,8 @@ float HAL_ADC::GetVoltage()
 
     if (meter.ElapsedTime() > 1000)
     {
+        meter.Reset();
+
         adc_flag_clear(ADC_FLAG_EOC);
 
         while (SET != adc_flag_get(ADC_FLAG_EOC)) {}
