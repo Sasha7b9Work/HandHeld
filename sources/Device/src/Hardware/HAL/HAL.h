@@ -8,6 +8,16 @@ namespace HAL
 }
 
 
+// Уровень батареи
+namespace HAL_ADC
+{
+    void Init();
+
+    float GetVoltage();
+}
+
+
+// Для дисплея
 namespace HAL_I2C
 {
     void Init();
@@ -15,4 +25,11 @@ namespace HAL_I2C
     bool Write(uint8 command, uint8 *data, int size);
 
     bool Read(uint8 reg, uint8 *buf, uint16 len);
+}
+
+
+// Для приёмника
+namespace HAL_TIM2
+{
+    void Init();
 }
