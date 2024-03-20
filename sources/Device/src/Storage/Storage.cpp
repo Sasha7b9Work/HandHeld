@@ -7,3 +7,21 @@ void Storage::Init()
 {
 
 }
+
+
+void Storage::Append(const Record &)
+{
+
+}
+
+
+int Storage::GetCountRecords()
+{
+    return 10;
+}
+
+
+Record Storage::Get(int)
+{
+    return Record();
+}
