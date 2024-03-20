@@ -42,6 +42,8 @@ void HAL_ADC::Init()
     Timer::Delay(1U);
     /* ADC calibration and reset calibration */
     adc_calibration_enable();
+
+    adc_software_trigger_enable(ADC_REGULAR_CHANNEL);
 }
 
 
@@ -53,8 +55,6 @@ float HAL_ADC::GetVoltage()
 
     if (meter.ElapsedTime() > 1000)
     {
-        adc_software_trigger_enable(ADC_REGULAR_CHANNEL);
-
         adc_flag_clear(ADC_FLAG_EOC);
 
         while (SET != adc_flag_get(ADC_FLAG_EOC)) {}
