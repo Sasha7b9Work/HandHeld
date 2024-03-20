@@ -53,29 +53,29 @@ namespace PageHistory
 
     static bool Func_ActionKey(const Action &action)
     {
-        if (action.key == Key::Up || action.key == Key::Down)
+        if (action.key == Key::Menu || action.key == Key::Cancel)
         {
-            if (action.key == Key::Up)
-            {
-                top_record--;
-                if (top_record < 0)
-                {
-                    top_record = Storage::GetCountRecords() - 1;
-                }
-            }
-            else if (action.key == Key::Down)
-            {
-                top_record++;
-                if (top_record >= Storage::GetCountRecords())
-                {
-                    top_record = 0;
-                }
-            }
-
-            return true;
+            return false;
+        }
+        else if (action.key == Key::Up)
+        {
+            top_record--;
+        }
+        else if (action.key == Key::Down)
+        {
+            top_record++;
         }
 
-        return false;
+        if (top_record < 0)
+        {
+            top_record = Storage::GetCountRecords() - 1;
+        }
+        else if (top_record >= Storage::GetCountRecords())
+        {
+            top_record = 0;
+        }
+
+        return true;
     }
 
     static void FuncDraw_Closed()
