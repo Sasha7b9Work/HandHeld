@@ -51,6 +51,8 @@ void HAL_ADC::Init()
 
 float HAL_ADC::GetVoltage()
 {
+    adc_software_trigger_enable(ADC_REGULAR_CHANNEL);
+
     adc_flag_clear(ADC_FLAG_EOC);
 
     while (SET != adc_flag_get(ADC_FLAG_EOC)) { }
