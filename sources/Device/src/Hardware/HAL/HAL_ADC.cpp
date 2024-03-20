@@ -55,9 +55,9 @@ float HAL_ADC::GetVoltage()
 
     while (SET != adc_flag_get(ADC_FLAG_EOC)) { }
 
-    voltage = ConversionRawToVoltageBattery(ADC_RDATA);
+    //voltage = ConversionRawToVoltageBattery(ADC_RDATA);
 
-    return voltage;
+    return (float)ADC_RDATA;
 }
 
 
