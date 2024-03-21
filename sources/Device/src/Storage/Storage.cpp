@@ -192,20 +192,27 @@ int Storage::GetCountRecords()
 
 Record Storage::Get(int num)
 {
-    Record result =
+    for (int i = 0; i < Page::Count(); i++)
     {
-        0,
-        { 0, 0, 0, 0, 0, 0 },
-        (uint8)(num % Source::Count),
-        0
-    };
+        Page page(i);
 
-    if (num % 2)
-    {
-        result.source |= 0x80;
+        if (num < page.GetCountRecords())
+        {
+            page.GetRecord(num);
+        }
+
+        num -= page.GetCountRecords();
+
+        if (num < 0)
+        {
+            break;
+        }
     }
 
-    return result;
+    Record record =
+    {
+
+    }
 }
 
 
