@@ -38,9 +38,9 @@ namespace HAL_TIM2
 namespace HAL_ROM
 {
     static const uint ADDRESS_BEGIN = 0x8000000;
-    static const uint SIZE_SECTOR = 1024;
-    static const uint PAGE_FIRST_JOURNAL = 61;        // Первый сектор журнала
-    static const uint PAGE_LAST_JOURNAL = 64;         // Последний сектор журнала (в нём настроек уже нет)
+    static const uint SIZE_PAGE = 1024;
+    static const int PAGE_FIRST_JOURNAL = 61;       // Первый сектор журнала
+    static const int PAGE_LAST_JOURNAL = 64;        // Последний сектор журнала (в нём настроек уже нет)
 
     // Стиреть страницу от 0 до 63
     void ErasePage(int);

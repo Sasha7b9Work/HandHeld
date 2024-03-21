@@ -5,12 +5,14 @@
 
 struct Record
 {
-    uint        crc;            // Если здесь ноль, то запись стёрта
-    RTCDateTime time;
-    uint8       source;         // В старшем бите - 1/0 - принято/непринято
-    uint8       control_bits;   // Сюда записываем ноль, чтобы убедиться, что запись прошла успешно. Не участвует в вычислении CRC
-    uint        CalculateCRC() const;
+    uint         crc;            // Если здесь ноль, то запись стёрта
+    RTCDateTime  time;
+    uint8        source;         // В старшем бите - 1/0 - принято/непринято
+    uint8        control_bits;   // Сюда записываем ноль, чтобы убедиться, что запись прошла успешно. Не участвует в вычислении CRC
+    uint         CalculateCRC() const;
     const uint8 *Begin() const;
+    const uint8 *End() const;
+    bool         IsEmpty() const;
 };
 
 
