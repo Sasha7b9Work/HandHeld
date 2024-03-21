@@ -31,8 +31,8 @@ namespace Keyboard
         uint16 pin;
     };
 
-    static Button btnMenu(GPIOB, GPIO_PIN_0);
-    static Button btnCancel(GPIOB, GPIO_PIN_2);
+    static Button btnMenu(GPIOB, GPIO_PIN_2);
+    static Button btnCancel(GPIOB, GPIO_PIN_0);
     static Button btnUp(GPIOA, GPIO_PIN_7);
     static Button btnDown(GPIOB, GPIO_PIN_1);
 
