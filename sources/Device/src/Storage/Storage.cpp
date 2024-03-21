@@ -12,7 +12,7 @@ namespace Storage
     {
         static const int RECORS_ON_PAGE = HAL_ROM::SIZE_PAGE / sizeof(Record);
 
-        Page(int i)
+        Page(int i) : num_page(i)
         {
             address = (uint)(HAL_ROM::ADDRESS_BEGIN + (uint)i * HAL_ROM::SIZE_PAGE);
         }
@@ -63,7 +63,28 @@ namespace Storage
             return nullptr;
         }
 
+        void Erase()
+        {
+            HAL_ROM::ErasePage(num_page);
+        }
+
+        void Write(const Record &record)
+        {
+            Record *place = FirstRecord();
+            Record *last = LastRecord();
+
+            while (place < last)
+            {
+                if (place->IsEmpty())
+                {
+                    HAL_ROM::WriteBuffer((uint)place, &record, sizeof(record));
+                    break;
+                }
+            }
+        }
+
     private:
+        int num_page;
         uint address;
     };
 }
@@ -114,6 +135,16 @@ void Storage::Append(const Record &rec)
             num_page = i;
         }
     }
+
+    Page page(num_page);
+
+    page.Erase();
+
+    Record record = rec;
+    record.crc = rec.CalculateCRC();
+    record.control_bits = 0;
+
+    page.Write(record);
 }
 
 
