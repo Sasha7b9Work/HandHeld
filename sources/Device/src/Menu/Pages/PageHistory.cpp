@@ -20,19 +20,17 @@ namespace PageHistory
         int x = 0;
         int y = 0;
 
-        Text<>("%d/%d", top_record + 1, Storage::GetCountRecords()).Write(x, y, Color::WHITE);
-
         const Record rec = Storage::Get(top_record);
         const RTCDateTime time = rec.time;
 
-        Color color = (rec.source & 0x80) ? Color::GREEN : Color::RED;
-
         Font::SetSize(2);
 
-        Text<>("%02d/%02d/%02d %02d:%02d:%02d",
-            time.Day, time.Month, time.Year, time.Hour, time.Minute, time.Second).Write(x + 5, y + 12, color);
+        Text<>("%d", top_record + 1).Write(x + 120, y + 12);
 
-        Text<>(Source::Name((Source::E)(rec.source & 0x7F))).Write(x + 5, y + 40);
+        Text<>("%02d/%02d %02d:%02d",
+            time.Day, time.Month, time.Hour, time.Minute).Write(x + 5, y + 12, (rec.source & 0x80) ? Color::GREEN : Color::RED);
+
+        Text<>(Source::Name((Source::E)(rec.source & 0x7F))).Write(x + 5, y + 50);
 
         Font::SetSize(1);
     }
