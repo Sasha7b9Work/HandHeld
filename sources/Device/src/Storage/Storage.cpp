@@ -101,6 +101,17 @@ namespace Storage
             return result;
         }
 
+        static Page FromEnd(int index)
+        {
+            return Page(HAL_ROM::PAGE_LAST_JOURNAL - index);
+        }
+
+        // Столько всего страниц
+        static int Count()
+        {
+            return HAL_ROM::PAGE_LAST_JOURNAL - HAL_ROM::PAGE_FIRST_JOURNAL;
+        }
+
     private:
         int num_page;
         uint address;
@@ -168,7 +179,14 @@ void Storage::Append(const Record &rec)
 
 int Storage::GetCountRecords()
 {
-    return 10;
+    int result = 0;
+
+    for (int i = 0; i < Page::Count(); i++)
+    {
+        result += Page::FromEnd(i).GetCountRecords();
+    }
+
+    return result;
 }
 
 
@@ -229,10 +247,4 @@ bool Record::IsEmpty() const
 bool Record::IsValidData() const
 {
     return control_bits == 0 && crc == CalculateCRC();
-}
-
-
-Record Storage::Get(int num)
-{
-
 }
