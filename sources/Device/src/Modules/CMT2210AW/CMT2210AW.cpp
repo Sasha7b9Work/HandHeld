@@ -138,8 +138,14 @@ void CMT2210AW::VerifyPreambule1()
         }
     }
 
-    if (packet == 0x7E9E)
+    static const uint packets[Source::Count] = { 0x7E9E, 0x7EA6, 0x7EA6, 0x7EA6, 0x7EA6 };
+
+    for (int i = 0; i < Source::Count; i++)
     {
-        Source::Receive(Source::DoorBell);
+        if (packet == packets[i])
+        {
+            Source::Receive((Source::E)i);
+            break;
+        }
     }
 }
