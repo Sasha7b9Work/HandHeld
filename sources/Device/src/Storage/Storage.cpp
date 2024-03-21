@@ -83,6 +83,24 @@ namespace Storage
             }
         }
 
+        int GetCountRecords()
+        {
+            Record *place = FirstRecord();
+            Record *last = LastRecord();
+
+            int result = 0;
+
+            while(place < last)
+            {
+                if (place->IsValidData())
+                {
+                    result++;
+                }
+            }
+
+            return result;
+        }
+
     private:
         int num_page;
         uint address;
@@ -211,4 +229,10 @@ bool Record::IsEmpty() const
 bool Record::IsValidData() const
 {
     return control_bits == 0 && crc == CalculateCRC();
+}
+
+
+Record Storage::Get(int num)
+{
+
 }
