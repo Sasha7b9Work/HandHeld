@@ -48,4 +48,23 @@ namespace Math
             *value = min;
         }
     }
+
+    inline uint Hash(uint hash, char byte)
+    {
+        return (uint8)byte + (hash << 6) + (hash << 16) - hash;
+    }
+
+    inline uint CalculateCRC(const void *address, int size)
+    {
+        uint crc = 0;
+
+        const uint8 *data = (const uint8 *)address;
+
+        for (int i = 0; i < size; i++)
+        {
+            crc = Math::Hash(crc, (char)*data++);
+        }
+
+        return crc;
+    }
 }

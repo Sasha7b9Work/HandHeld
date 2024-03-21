@@ -33,7 +33,6 @@ struct RTCDateTime
     uint8  Hour;
     uint8  Minute;
     uint8  Second;
-    uint8  DayOfWeek;
 
     void Draw(int x, int y, const Color &) const;
 };

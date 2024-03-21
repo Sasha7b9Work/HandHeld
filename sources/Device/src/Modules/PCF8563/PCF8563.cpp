@@ -234,7 +234,7 @@ void PCF8563::CalculateDateTime(RTCDateTime *DateTime)
 	DateTime->Minute = bcd2dec(buffer[1]);
 	DateTime->Hour = bcd2dec(buffer[2]);
 	DateTime->Day = buffer[3];
-	DateTime->DayOfWeek = bcd2dec((uint8)(buffer[4] + 1)); // too keep weekdays in 1-7 format
+//	DateTime->DayOfWeek = bcd2dec((uint8)(buffer[4] + 1)); // too keep weekdays in 1-7 format
 	DateTime->Month = bcd2dec((uint8)(buffer[5] & 0x1F));
 	DateTime->Year = (uint8)(bcd2dec(buffer[6]));
 }

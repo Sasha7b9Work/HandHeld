@@ -2,6 +2,7 @@
 #include "defines.h"
 #include "Storage/Storage.h"
 #include "Settings/Settings.h"
+#include "Utils/Math.h"
 
 
 void Storage::Init()
@@ -26,8 +27,10 @@ Record Storage::Get(int num)
 {
     Record result =
     {
-        { 0, 0, 0, 0, 0, 0, 0 },
-        (uint8)(num % Source::Count)
+        0,
+        { 0, 0, 0, 0, 0, 0 },
+        (uint8)(num % Source::Count),
+        0
     };
 
     if (num % 2)
@@ -36,4 +39,16 @@ Record Storage::Get(int num)
     }
 
     return result;
+}
+
+
+const uint8 *Record::Begin() const
+{
+    return (const uint8 *)this;
+}
+
+
+uint Record::CalculateCRC() const
+{
+    return Math::CalculateCRC(Begin(), &control_bits - Begin());
 }
