@@ -25,12 +25,12 @@ namespace PageHistory
 
         Font::SetSize(2);
 
-        Text<>("%d", top_record + 1).Write(x + 120, y + 12);
+        Text<>("%d", top_record + 1).Write(x + 120, y + 15);
 
         Text<>("%02d/%02d %02d:%02d",
-            time.Day, time.Month, time.Hour, time.Minute).Write(x + 5, y + 12, (rec.source & 0x80) ? Color::GREEN : Color::RED);
+            time.Day, time.Month, time.Hour, time.Minute).Write(x + 5, y + 15, (rec.source & 0x80) ? Color::GREEN : Color::RED);
 
-        Text<>(Source::Name((Source::E)(rec.source & 0x7F))).Write(x + 5, y + 50);
+        Text<>(Source::Name((Source::E)(rec.source & 0x7F))).WriteInCenter(x, y + 50, Display::WIDTH);
 
         Font::SetSize(1);
     }

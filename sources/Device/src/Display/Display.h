@@ -95,6 +95,29 @@ struct Text
             x += Font::GetSize();
         }
     }
+    void WriteInCenter(int x, int y, int width, const Color &color = Color::NUMBER) const
+    {
+        int length = GetLength();
+
+        x += width / 2 - length / 2;
+
+        Write(x, y, color);
+    }
+    int GetLength() const
+    {
+        int result = 0;
+
+        pchar pointer = text;
+
+        while (*pointer)
+        {
+            uint8 symbol = (uint8)*pointer++;
+            result += Font::GetWidth(symbol) * Font::GetSize();
+            result += Font::GetSize();
+        }
+
+        return result;
+    }
 private:
     char text[capacity];
 };
