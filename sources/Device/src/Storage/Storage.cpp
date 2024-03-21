@@ -45,15 +45,27 @@ namespace Storage
             return (Record *)(address + RECORS_ON_PAGE * sizeof(Record));
         }
 
+        // Последняя запись с существующими данными
+        Record *LastExistRecord()
+        {
+            Record *record = LastRecord() - 1;
+
+            while (record >= FirstRecord())
+            {
+                if (record->IsValidData())
+                {
+                    return record;
+                }
+
+                record++;
+            }
+
+            return nullptr;
+        }
+
     private:
         uint address;
     };
-}
-
-
-void Storage::Init()
-{
-
 }
 
 
@@ -74,6 +86,32 @@ void Storage::Append(const Record &rec)
             HAL_ROM::WriteBuffer((uint)place, &record, sizeof(record));
 
             return;
+        }
+    }
+
+    Record last_record =
+    {
+        0, { 0, 0, 0, 0, 0, 0 }, 0, 0
+    };
+
+    int num_page = 0;
+
+    for (int i = HAL_ROM::PAGE_FIRST_JOURNAL; i < HAL_ROM::PAGE_LAST_JOURNAL; i++)
+    {
+        Page page(i);
+
+        Record *record = page.LastExistRecord();
+
+        if (!record)
+        {
+            num_page = i;
+            break;
+        }
+
+        if (record->time < last_record.time)
+        {
+            last_record = *record;
+            num_page = i;
         }
     }
 }
@@ -136,4 +174,10 @@ bool Record::IsEmpty() const
     }
 
     return true;
+}
+
+
+bool Record::IsValidData() const
+{
+    return control_bits == 0 && crc == CalculateCRC();
 }

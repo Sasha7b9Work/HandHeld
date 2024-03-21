@@ -35,6 +35,8 @@ struct RTCDateTime
     uint8  Second;
 
     void Draw(int x, int y, const Color &) const;
+
+    bool operator<(const RTCDateTime &) const;
 };
 
 

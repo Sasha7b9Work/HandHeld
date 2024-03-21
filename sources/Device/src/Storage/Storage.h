@@ -13,14 +13,13 @@ struct Record
     const uint8 *Begin() const;
     const uint8 *End() const;
     bool         IsEmpty() const;
+    bool         IsValidData() const;
 };
 
 
 // Здесь будут храниться принятые и непринятые вызовы
 namespace Storage
 {
-    void Init();
-
     void Append(const Record &);
 
     int GetCountRecords();

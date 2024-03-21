@@ -263,3 +263,9 @@ void PCF8563::Update()
 
     CalculateDateTime(&date_time);
 }
+
+
+bool RTCDateTime::operator<(const RTCDateTime &) const
+{
+	return false;                  // \todo
+}
