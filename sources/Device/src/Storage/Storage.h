@@ -6,7 +6,7 @@
 struct Record
 {
     RTCDateTime time;
-    uint8       source;
+    uint8       source;     // В старшем бите - 1/0 - принято/непринято
 };
 
 

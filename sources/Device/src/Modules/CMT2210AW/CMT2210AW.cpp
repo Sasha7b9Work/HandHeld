@@ -101,8 +101,8 @@ void CMT2210AW::VerifyPreambule1()
 {
 #define BARKERTRESHOLD 3
 
-    uint32_t packet = 0;
-    uint32_t bitlevel = 0;
+    uint packet = 0;
+    uint bitlevel = 0;
 
     //check bit HEAD 3
     bitlevel = (uint)(GetBits(xors[0] & 0x0F) + GetBits((xors[1] >> 57) & 0x07FF));
@@ -113,7 +113,7 @@ void CMT2210AW::VerifyPreambule1()
             return;
 
     //check bit PAYLOAD 5
-    bitlevel = (uint)(GetBits((uint16_t)((xors[2] >> 55) & 0x07FF)) + GetBits((uint16_t)(xors[1] & 0x03)));
+    bitlevel = (uint)(GetBits((uint)((xors[2] >> 55) & 0x07FF)) + GetBits((uint)(xors[1] & 0x03)));
     if (bitlevel < BARKERTRESHOLD)
         packet |= 0x0020;
     else

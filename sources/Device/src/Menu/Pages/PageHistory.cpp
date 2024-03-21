@@ -10,16 +10,19 @@ namespace PageHistory
 {
     static int top_record = 0;
 
-    static void DrawRecord(int x, int y, int num_record)
+    static void DrawRecord()
     {
-        if (num_record >= Storage::GetCountRecords())
+        if (top_record >= Storage::GetCountRecords())
         {
             return;
         }
 
-        Text<>("%d/%d", num_record + 1, Storage::GetCountRecords()).Write(x, y, Color::WHITE);
+        int x = 0;
+        int y = 0;
 
-        const Record rec = Storage::Get(num_record);
+        Text<>("%d/%d", top_record + 1, Storage::GetCountRecords()).Write(x, y, Color::WHITE);
+
+        const Record rec = Storage::Get(top_record);
         const RTCDateTime time = rec.time;
 
         Text<>("%02d/%02d/%02d %02d:%02d:%02d",
@@ -30,24 +33,9 @@ namespace PageHistory
 
     static void FuncDraw_History()
     {
-        HLine(160).Draw(0, 26, Color::WHITE);
-        HLine(160).Draw(0, 53);
-
-        const int num_records = Storage::GetCountRecords();
-
-        if (num_records > 0)
+        if (Storage::GetCountRecords() > 0)
         {
-            DrawRecord(0, 0, top_record);
-
-            if (num_records > 1)
-            {
-                DrawRecord(0, 28, (top_record + 1) % Storage::GetCountRecords());
-
-                if (num_records > 2)
-                {
-                    DrawRecord(0, 55, (top_record + 2) % Storage::GetCountRecords());
-                }
-            }
+            DrawRecord();
         }
     }
 
