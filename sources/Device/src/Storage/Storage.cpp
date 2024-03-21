@@ -26,9 +26,9 @@ Record Storage::Get(int num)
 {
     Record result =
     {
-        { 0, 0, 0, 0, 0, 0, 0 }
+        { 0, 0, 0, 0, 0, 0, 0 },
+        (uint8)(num % Source::Count)
     };
-    result.source = num % Source::Count;
 
     if (num % 2)
     {
