@@ -19,7 +19,7 @@ struct Source
 
     Source(E v) : value(v) { }
 
-    void Draw(int x, int y, const Color &color = Color::NUMBER) const;
+    void DrawSmall(int x, int y, const Color &color = Color::NUMBER) const;
 
     // Вызывается при получении сигнала
     static void Receive(E);
@@ -28,6 +28,8 @@ struct Source
     static bool IsReceived(E);
 
     static void Update();
+
+    static pchar Name(E);
 
 private:
     E value;

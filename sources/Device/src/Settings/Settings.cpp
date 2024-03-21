@@ -23,7 +23,7 @@ Settings gset =
 uint Source::time_recv[Source::Count] = { 0, 0, 0, 0, 0 };
 
 
-void Source::Draw(int x, int y, const Color &color) const
+void Source::DrawSmall(int x, int y, const Color &color) const
 {
     if (value == PhoneHome)
     {
@@ -45,6 +45,21 @@ void Source::Draw(int x, int y, const Color &color) const
     {
         Text<>("дюр").Write(x, y, color);
     }
+}
+
+
+pchar Source::Name(E v)
+{
+    static const pchar names[Count] =
+    {
+        "дбепэ",
+        "р.лна",
+        "р.днл",
+        "днлн",
+        "дюр"
+    };
+
+    return names[v];
 }
 
 

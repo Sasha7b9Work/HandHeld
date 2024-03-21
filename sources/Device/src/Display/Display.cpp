@@ -98,7 +98,7 @@ void Display::DrawScene(int num_part)
         {
             if (Source::IsReceived((Source::E)i))
             {
-                Source((Source::E)i).Draw(6 + i * 30, 65);
+                Source((Source::E)i).DrawSmall(6 + i * 30, 65);
             }
         }
 

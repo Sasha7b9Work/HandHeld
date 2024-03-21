@@ -15,33 +15,6 @@ namespace ST7735
     static PinOut pinSCL(GPIOA, GPIO_PIN_4);      // PA4  14
     static PinOut pinSDA(GPIOA, GPIO_PIN_6);      // PA6  16
 
-    void SendByte2(uint8 byte)
-    {
-        for (int bit = 7; bit >= 0; bit--)
-        {
-            if ((byte & (1 << bit)) == 0)
-            {
-                //pinSDA.ToLow();
-                //gpio_bit_reset(GPIOA, GPIO_PIN_6);
-                GPIO_BC(GPIOA) = (uint32_t)GPIO_PIN_6;
-            }
-            else
-            {
-                //pinSDA.ToHi();
-                //gpio_bit_set(GPIOA, GPIO_PIN_6);
-                GPIO_BOP(GPIOA) = (uint32_t)GPIO_PIN_6;
-            }
-
-            //pinSCL.ToHi();
-            //gpio_bit_set(GPIOA, GPIO_PIN_4);
-            GPIO_BOP(GPIOA) = (uint32_t)GPIO_PIN_4;
-
-            // pinSCL.ToLow();
-            //gpio_bit_reset(GPIOA, GPIO_PIN_4);
-            GPIO_BC(GPIOA) = (uint32_t)GPIO_PIN_4;
-        }
-    }
-
     static void SendByte(uint8 byte)
     {
         if ((byte & 0x80) == 0)
@@ -133,26 +106,6 @@ namespace ST7735
         GPIO_BC(GPIOA) = (uint32_t)GPIO_PIN_4;
     }
 
-
-    void SendWord(uint16 word)
-    {
-        for (int bit = 15; bit >= 0; bit--)
-        {
-            if ((word & (1 << bit)) == 0)
-            {
-                GPIO_BC(GPIOA) = (uint32_t)GPIO_PIN_6;
-            }
-            else
-            {
-                GPIO_BOP(GPIOA) = (uint32_t)GPIO_PIN_6;
-            }
-
-            GPIO_BOP(GPIOA) = (uint32_t)GPIO_PIN_4;
-
-            GPIO_BC(GPIOA) = (uint32_t)GPIO_PIN_4;
-        }
-
-    }
 
     static void SendData16(uint16 word)
     {
