@@ -25,10 +25,16 @@ namespace PageHistory
         const Record rec = Storage::Get(top_record);
         const RTCDateTime time = rec.time;
 
-        Text<>("%02d/%02d/%02d %02d:%02d:%02d",
-            time.Day, time.Month, time.Year, time.Hour, time.Minute, time.Second).Write(x + 5, y + 12);
+        Color color = (rec.source & 0x80) ? Color::GREEN : Color::RED;
 
-        Rect(10, 10).Draw(x + 120, y + 10);
+        Font::SetSize(2);
+
+        Text<>("%02d/%02d/%02d %02d:%02d:%02d",
+            time.Day, time.Month, time.Year, time.Hour, time.Minute, time.Second).Write(x + 5, y + 12, color);
+
+        Text<>(Source::Name((Source::E)(rec.source & 0x7F))).Write(x + 5, y + 40);
+
+        Font::SetSize(1);
     }
 
     static void FuncDraw_History()

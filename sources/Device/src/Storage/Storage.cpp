@@ -1,6 +1,7 @@
 // 2024/03/20 20:05:55 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
 #include "Storage/Storage.h"
+#include "Settings/Settings.h"
 
 
 void Storage::Init()
@@ -21,7 +22,18 @@ int Storage::GetCountRecords()
 }
 
 
-Record Storage::Get(int)
+Record Storage::Get(int num)
 {
-    return Record();
+    Record result =
+    {
+        { 0, 0, 0, 0, 0, 0, 0 }
+    };
+    result.source = num % Source::Count;
+
+    if (num % 2)
+    {
+        result.source |= 0x80;
+    }
+
+    return result;
 }

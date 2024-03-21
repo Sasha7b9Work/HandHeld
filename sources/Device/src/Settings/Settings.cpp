@@ -53,10 +53,10 @@ pchar Source::Name(E v)
     static const pchar names[Count] =
     {
         "дбепэ",
-        "р.лна",
-        "р.днл",
-        "днлн",
-        "дюр"
+        "лна. рекетнм",
+        "днл. рекетнм",
+        "днлнтнм",
+        "дюрвхK"
     };
 
     return names[v];
