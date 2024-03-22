@@ -80,6 +80,8 @@ void Beeper::Stop()
 {
     timer_interrupt_disable(TIMER14, TIMER_INT_CH1);
     timer_disable(TIMER14);
+
+    gpio_bit_reset(GPIOA, GPIO_PIN_3);
 }
 
 
