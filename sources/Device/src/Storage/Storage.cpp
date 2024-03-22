@@ -190,29 +190,31 @@ int Storage::GetCountRecords()
 }
 
 
-Record Storage::Get(int num)
+Record Storage::Get(int /*num*/)
 {
-    for (int i = 0; i < Page::Count(); i++)
-    {
-        Page page(i);
+    return Record();
 
-        if (num < page.GetCountRecords())
-        {
-            page.GetRecord(num);
-        }
-
-        num -= page.GetCountRecords();
-
-        if (num < 0)
-        {
-            break;
-        }
-    }
-
-    Record record =
-    {
-
-    }
+//  for (int i = 0; i < Page::Count(); i++)
+//    {
+//        Page page(i);
+//
+//        if (num < page.GetCountRecords())
+//        {
+//            page.GetRecord(num);
+//        }
+//
+//        num -= page.GetCountRecords();
+//
+//        if (num < 0)
+//        {
+//            break;
+//        }
+//    }
+//
+//    Record record =
+//    {
+//
+//    }
 }
 
 
