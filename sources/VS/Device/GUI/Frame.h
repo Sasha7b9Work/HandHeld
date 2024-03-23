@@ -24,4 +24,8 @@ private:
     void OnMouseEvent(wxMouseEvent &);
 
     void CreateMenu();
+
+    void OnMenuOpenTransmitter(wxCommandEvent &);
+
+    void OnCloseWindow(wxCloseEvent &);
 };

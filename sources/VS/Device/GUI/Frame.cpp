@@ -7,6 +7,7 @@
 #include "Menu/Menu.h"
 #include "wx/statline.h"
 #include "Keyboard/Keyboard.h"
+#include "GUI/Dialogs/TransmitterDialog.h"
 
 
 namespace Keyboard
@@ -107,6 +108,10 @@ Frame::Frame(const wxString &title)
 
     (new wxButton(this, ID_BUTTON_DOWN, "Down", { x2, y3 }, SIZE_BUTTON))->Bind(wxEVT_LEFT_DOWN, &Frame::OnMouseEvent, this);
 
+    TransmitterDialog::Create();
+
+    Bind(wxEVT_CLOSE_WINDOW, &Frame::OnCloseWindow, this);
+
     timer.StartOnce(25);
 }
 
@@ -121,7 +126,17 @@ void Frame::CreateMenu()
 
     menuBar->Append(menuFile, _("Τΰιλ"));
 
+    Bind(wxEVT_MENU, &Frame::OnMenuOpenTransmitter, this, PANEL_TRANSMITTER);
+
     wxFrameBase::SetMenuBar(menuBar);
+}
+
+
+void Frame::OnMenuOpenTransmitter(wxCommandEvent &event)
+{
+    TransmitterDialog::self->Show();
+
+    event.Skip();
 }
 
 
@@ -231,4 +246,12 @@ void ST7735::WriteBuffer(int y0)
     memDC.SelectObject(wxNullBitmap);
 
     screen->Refresh();
+}
+
+
+void Frame::OnCloseWindow(wxCloseEvent &event)
+{
+    TransmitterDialog::self->Delete();
+
+    event.Skip();
 }
