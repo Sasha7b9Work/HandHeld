@@ -769,6 +769,16 @@
               <FileType>5</FileType>
               <FilePath>.\src\Display\Colors.h</FilePath>
             </File>
+            <File>
+              <FileName>Icons.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Display\Icons.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Icons.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Display\Icons.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1945,6 +1955,16 @@
               <FileName>Colors.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Display\Colors.h</FilePath>
+            </File>
+            <File>
+              <FileName>Icons.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Display\Icons.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Icons.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Display\Icons.h</FilePath>
             </File>
           </Files>
         </Group>

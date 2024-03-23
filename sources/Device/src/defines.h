@@ -26,6 +26,7 @@ enum
     #pragma clang diagnostic ignored "-Wc++98-compat"
     #pragma clang diagnostic ignored "-Wformat-nonliteral"
     #pragma clang diagnostic ignored "-Wc++98-compat-pedantic"
+    #pragma clang diagnostic ignored "-Wnon-virtual-dtor"
 #else
 #endif
 

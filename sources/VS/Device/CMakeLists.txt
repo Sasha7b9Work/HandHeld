@@ -37,6 +37,7 @@ if(WIN32)
         /wd5039    # 'xxx': pointer or reference to potentially throwing function passed to extern C
                                     # function under -EHc.
         /wd5045
+        /wd5204
         /wd5267
     )
 endif()

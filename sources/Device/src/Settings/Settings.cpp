@@ -6,6 +6,7 @@
 #include "Player/Player.h"
 #include "Hardware/LED.h"
 #include "Hardware/Vibrato.h"
+#include "Display/Icons.h"
 #include <cstdlib>
 
 
@@ -25,33 +26,7 @@ uint Source::time_recv[Source::Count] = { 0, 0, 0, 0, 0 };
 
 void Source::DrawIcon(int x, int y, const Color &color) const
 {
-    int size = 17;
-
-    Rect(size, size).Draw(x, y, color);
-
-    x += 3;
-    y += 4;
-
-    if (value == PhoneHome)
-    {
-        Text<>("“‰").Write(x, y, color);
-    }
-    else if (value == Mobile)
-    {
-        Text<>("“Ï").Write(x, y, color);
-    }
-    else if (value == Intercom)
-    {
-        Text<>("ƒÏ").Write(x, y, color);
-    }
-    else if (value == DoorBell)
-    {
-        Text<>("«‚").Write(x, y, color);
-    }
-    else if (value == SoundSensor)
-    {
-        Text<>("¿Í").Write(x, y, color);
-    }
+    sourceIcons[value]->Draw(x, y, color);
 }
 
 
