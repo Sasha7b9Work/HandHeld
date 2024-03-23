@@ -108,7 +108,7 @@ Frame::Frame(const wxString &title)
 
     (new wxButton(this, ID_BUTTON_DOWN, "Down", { x2, y3 }, SIZE_BUTTON))->Bind(wxEVT_LEFT_DOWN, &Frame::OnMouseEvent, this);
 
-    TransmitterDialog::Create();
+    TransmitterDialog::Create(this);
 
     Bind(wxEVT_CLOSE_WINDOW, &Frame::OnCloseWindow, this);
 

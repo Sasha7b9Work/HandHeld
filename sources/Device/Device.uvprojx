@@ -909,16 +909,6 @@
               <FileType>5</FileType>
               <FilePath>.\src\Modules\CMT2210AW\CMT2210AW.h</FilePath>
             </File>
-            <File>
-              <FileName>EmulatorReceiver.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Modules\CMT2210AW\EmulatorReceiver.h</FilePath>
-            </File>
-            <File>
-              <FileName>EmulatorReceiver.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Modules\CMT2210AW\EmulatorReceiver.cpp</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>
@@ -2095,16 +2085,6 @@
               <FileName>CMT2210AW.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Modules\CMT2210AW\CMT2210AW.h</FilePath>
-            </File>
-            <File>
-              <FileName>EmulatorReceiver.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Modules\CMT2210AW\EmulatorReceiver.h</FilePath>
-            </File>
-            <File>
-              <FileName>EmulatorReceiver.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Modules\CMT2210AW\EmulatorReceiver.cpp</FilePath>
             </File>
           </Files>
         </Group>

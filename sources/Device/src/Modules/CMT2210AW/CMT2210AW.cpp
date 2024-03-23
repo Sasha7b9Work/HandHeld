@@ -4,7 +4,9 @@
 #include "Hardware/HAL/HAL_PINS.h"
 #include "Display/Display.h"
 #include "Settings/Settings.h"
-#include "Modules/CMT2210AW/EmulatorReceiver.h"
+#ifdef ENABLE_EMULATOR
+    #include "Modules/CMT2210AW/EmulatorReceiver.h"
+#endif
 #include <gd32e23x.h>
 #include <cstring>
 
@@ -154,7 +156,7 @@ void CMT2210AW::VerifySequence()
 
 void CMT2210AW::ExecutePacket(uint packet)
 {
-    static const uint packets[Source::Count] = { 0x7E9E, 0x7EA6, 0x7EA6, 0x7EA6, 0x7EA6 };
+    static const uint packets[Source::Count] = { 0x7E9E, 0x7EA6, 1, 2, 3 };
 
     for (int i = 0; i < Source::Count; i++)
     {

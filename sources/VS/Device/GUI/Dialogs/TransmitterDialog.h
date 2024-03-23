@@ -8,11 +8,13 @@ public:
 
     static TransmitterDialog *self;
 
-    static void Create();
+    static void Create(wxWindow *parent);
 
     static void Delete();
 
 private:
 
-    TransmitterDialog();
+    TransmitterDialog(wxWindow *parent);
+
+    void OnEventButton(wxCommandEvent &);
 };
