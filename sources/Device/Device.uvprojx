@@ -1179,6 +1179,16 @@
               <FileType>5</FileType>
               <FilePath>.\src\Utils\FPS.h</FilePath>
             </File>
+            <File>
+              <FileName>Queue.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Utils\Queue.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Queue.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Utils\Queue.h</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>
@@ -2355,6 +2365,16 @@
               <FileName>FPS.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Utils\FPS.h</FilePath>
+            </File>
+            <File>
+              <FileName>Queue.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Utils\Queue.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Queue.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Utils\Queue.h</FilePath>
             </File>
           </Files>
         </Group>
