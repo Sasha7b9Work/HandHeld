@@ -30,9 +30,15 @@ struct Source
     // Возвращает true, если приём идёт
     static bool IsReceived(E);
 
+    // Возвращает первый принятый
+    static E GetFirstReceived();
+
+    // Есть звонки, требующие отработки
+    static int GetCountReceived();
+
     static void Update();
 
-    static pchar Name(E);
+    static Text<> Name(E);
 
 private:
     Source::E value;

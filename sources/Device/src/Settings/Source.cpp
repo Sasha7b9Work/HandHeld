@@ -21,7 +21,7 @@ void Source::DrawIcon(int x, int y, const Color &color) const
 }
 
 
-pchar Source::Name(E v)
+Text<> Source::Name(E v)
 {
     static const pchar names[Count] =
     {
@@ -32,7 +32,7 @@ pchar Source::Name(E v)
         "ÄÀÒ×ÈK"
     };
 
-    return names[v];
+    return Text<>(names[v]);
 }
 
 
@@ -196,4 +196,16 @@ void Source::Queue::PopFirst()
     {
         std::memmove(buffer, buffer + 1, (uint)size * sizeof(Source::E));
     }
+}
+
+
+int Source::GetCountReceived()
+{
+    return Queue::Size();
+}
+
+
+Source::E Source::GetFirstReceived()
+{
+    return Queue::At(0);
 }

@@ -86,25 +86,43 @@ void Display::DrawScene(int num_part)
 {
     (void)num_part;
 
-    if (Menu::IsShown())
+    if (Source::GetCountReceived())
     {
-        Menu::Draw();
+        if (Source::GetCountReceived() == 1)
+        {
+            Font::SetSize(2);
+
+            Source::Name(Source::GetFirstReceived()).WriteInCenter(0, 30, Display::WIDTH, Color::GREEN);
+
+            Font::SetSize(1);
+        }
+        else
+        {
+
+        }
     }
     else
     {
-        Watch::Draw(45, 30, Color::WHITE);
-
-        for (int i = 0; i < Source::Count; i++)
+        if (Menu::IsShown())
         {
-            if (Source::IsReceived((Source::E)i))
-            {
-                Source((Source::E)i).DrawIcon(11 + i * 30, 8);
-            }
+            Menu::Draw();
         }
+        else
+        {
+            Watch::Draw(45, 30, Color::WHITE);
 
-        Battery::Draw(121, 67);
+            for (int i = 0; i < Source::Count; i++)
+            {
+                if (Source::IsReceived((Source::E)i))
+                {
+                    Source((Source::E)i).DrawIcon(11 + i * 30, 8);
+                }
+            }
 
-        FPS::DrawTimeFrame(0, 75);
+            Battery::Draw(121, 67);
+
+            FPS::DrawTimeFrame(0, 75);
+        }
     }
 }
 
