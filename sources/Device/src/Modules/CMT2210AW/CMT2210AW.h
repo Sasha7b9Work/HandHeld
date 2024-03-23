@@ -6,6 +6,6 @@ namespace CMT2210AW
 {
     void Init();
 
-    // Вызывается раз в 1мс
-    void Update();
+    // Вызывается на приёме очередного бита
+    void CallbackOnBit();
 }

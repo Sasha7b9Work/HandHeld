@@ -28,7 +28,7 @@ void CMT2210AW::Init()
 }
 
 
-void CMT2210AW::Update()
+void CMT2210AW::CallbackOnBit()
 {
     AppendBit(pinDOUT.IsHi());
 }

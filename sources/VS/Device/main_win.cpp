@@ -5,6 +5,7 @@
 #include "GUI/Frame.h"
 #include "Device.h"
 #include "Hardware/Timer.h"
+#include "Modules/CMT2210AW/CMT2210AW.h"
 
 
 void Application::Init()
@@ -16,4 +17,6 @@ void Application::Init()
 void Application::Update()
 {
     Device::Update();
+
+    CMT2210AW::CallbackOnBit();
 }
