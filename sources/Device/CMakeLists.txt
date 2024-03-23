@@ -29,6 +29,7 @@ add_compile_options(
     /wd4996
     /wd5027
     /wd5045
+    /wd5204
 )
 
 file(GLOB GD32E23x                ../common/GD32E23x_Firmware_Library/Firmware/GD32E23x_standard_peripheral/Include/*.*
