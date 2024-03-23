@@ -182,7 +182,7 @@ void Source::Queue::Remove(int index, bool received)
 
         if (size)
         {
-            std::memmove(buffer + index, buffer + 1 + index, (uint)size * sizeof(Source::E));
+            std::memmove(buffer + index, buffer + index + 1, (uint)size * sizeof(Source::E));
         }
     }
 }
