@@ -1,5 +1,5 @@
 // 2022/04/27 11:11:56 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
-#include "defines.h"
+#include "defines_win.h"
 #include "Frame.h"
 #include "Display/Display.h"
 #include "Modules/ST7735/ST7735.h"
@@ -63,6 +63,8 @@ Frame::Frame(const wxString &title)
 
     self = this;
 
+    CreateMenu();
+
     screen = new Screen(this);
 
     wxBoxSizer *sizer = new wxBoxSizer(wxHORIZONTAL);
@@ -106,6 +108,20 @@ Frame::Frame(const wxString &title)
     (new wxButton(this, ID_BUTTON_DOWN, "Down", { x2, y3 }, SIZE_BUTTON))->Bind(wxEVT_LEFT_DOWN, &Frame::OnMouseEvent, this);
 
     timer.StartOnce(25);
+}
+
+
+void Frame::CreateMenu()
+{
+    wxMenuBar *menuBar = new wxMenuBar;
+
+    wxMenu *menuFile = new wxMenu;
+
+    menuFile->Append(PANEL_TRANSMITTER, _("Передатчик"), _("Открыть настройки передатчика"));
+
+    menuBar->Append(menuFile, _("Файл"));
+
+    wxFrameBase::SetMenuBar(menuBar);
 }
 
 

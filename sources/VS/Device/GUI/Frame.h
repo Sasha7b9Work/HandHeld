@@ -22,4 +22,6 @@ private:
     wxTimer timerButton;
 
     void OnMouseEvent(wxMouseEvent &);
+
+    void CreateMenu();
 };
