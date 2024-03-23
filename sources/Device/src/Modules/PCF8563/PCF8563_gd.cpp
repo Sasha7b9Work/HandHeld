@@ -239,9 +239,9 @@ void PCF8563::CalculateDateTime(RTCDateTime *DateTime)
 	DateTime->Year = (uint8)(bcd2dec(buffer[6]));
 }
 
-void PCF8563::GetDateTime(RTCDateTime *DateTime)
+RTCDateTime PCF8563::GetDateTime()
 {
-    *DateTime = date_time;
+    return date_time;
 }
 
 void PCF8563::Init()
