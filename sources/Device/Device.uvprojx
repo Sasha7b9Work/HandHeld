@@ -919,6 +919,11 @@
               <FileType>5</FileType>
               <FilePath>.\src\Modules\PCF8563\PCF8563.h</FilePath>
             </File>
+            <File>
+              <FileName>PCF8563_gd.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Modules\PCF8563\PCF8563_gd.cpp</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -2085,6 +2090,11 @@
               <FileName>PCF8563.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Modules\PCF8563\PCF8563.h</FilePath>
+            </File>
+            <File>
+              <FileName>PCF8563_gd.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Modules\PCF8563\PCF8563_gd.cpp</FilePath>
             </File>
           </Files>
         </Group>

@@ -57,7 +57,7 @@ file(GLOB HARDWARE_HAL            ../../Device/src/Hardware/HAL/HAL.h
 file(GLOB KEYBOARD                ../../Device/src/Keyboard/Keyboard.h
                                                    Keyboard/*.*)
 file(GLOB MODULES_CMT2210AW       ../../Device/src/Modules/CMT2210AW/*.*)
-file(GLOB MODULES_PCF8563         ../../Device/src/Modules/PCF8563/*.h
+file(GLOB MODULES_PCF8563         ../../Device/src/Modules/PCF8563/PCF8563.*
                                                    Modules/PCF8563/*.*)
 file(GLOB MODULES_ST7735          ../../Device/src/Modules/ST7735/*.h)
 file(GLOB MENU                    ../../Device/src/Menu/*.*)
