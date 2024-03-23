@@ -23,27 +23,34 @@ Settings gset =
 uint Source::time_recv[Source::Count] = { 0, 0, 0, 0, 0 };
 
 
-void Source::DrawSmall(int x, int y, const Color &color) const
+void Source::DrawIcon(int x, int y, const Color &color) const
 {
+    int size = 17;
+
+    Rect(size, size).Draw(x, y, color);
+
+    x += 3;
+    y += 4;
+
     if (value == PhoneHome)
     {
-        Text<>("Ò.ÄÎÌ").Write(x, y, color);
+        Text<>("Òä").Write(x, y, color);
     }
     else if (value == Mobile)
     {
-        Text<>("Ò.ÌÎÁ").Write(x, y, color);
+        Text<>("Òì").Write(x, y, color);
     }
     else if (value == Intercom)
     {
-        Text<>("ÄÎÌÎ").Write(x, y, color);
+        Text<>("Äì").Write(x, y, color);
     }
     else if (value == DoorBell)
     {
-        Text<>("ÇÂÎÍ").Write(x, y, color);
+        Text<>("Çâ").Write(x, y, color);
     }
     else if (value == SoundSensor)
     {
-        Text<>("ÄÀÒ").Write(x, y, color);
+        Text<>("Àê").Write(x, y, color);
     }
 }
 

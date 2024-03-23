@@ -11,12 +11,6 @@ namespace Battery
 }
 
 
-double Battery::GetVoltage()
-{
-    return (double)HAL_ADC::GetVoltage();
-}
-
-
 void Battery::Draw(int x, int y)
 {
     const int width = 38;
@@ -24,10 +18,14 @@ void Battery::Draw(int x, int y)
     Rect(width, 13).Draw(x, y, Color::GREEN);
     Rect(5, 7).Fill(x - 4, y + 3);
 
-    int width_rect = (int)(width * ConvertToCharge(HAL_ADC::GetVoltage()) / 100.0f + 0.5f);
+    float voltage = HAL_ADC::GetVoltage();
+
+    int width_rect = (int)(width * ConvertToCharge(voltage) / 100.0f + 0.5f);
 
     Rect rect(width_rect, 13);
     rect.Fill(x + width - width_rect, y);
+
+    Text<>("%.2f", (double)voltage).Write(121, 67, Color::WHITE);
 }
 
 

@@ -92,17 +92,15 @@ void Display::DrawScene(int num_part)
     }
     else
     {
-        Watch::Draw(35, 25, Color::WHITE);
+        Watch::Draw(45, 30, Color::WHITE);
 
         for (int i = 0; i < Source::Count; i++)
         {
             if (Source::IsReceived((Source::E)i))
             {
-                Source((Source::E)i).DrawSmall(6 + i * 30, 65);
+                Source((Source::E)i).DrawIcon(11 + i * 30, 8);
             }
         }
-
-        Text<>("%f", Battery::GetVoltage()).Write(0, 0, Color::WHITE);
 
         Battery::Draw(121, 67);
 

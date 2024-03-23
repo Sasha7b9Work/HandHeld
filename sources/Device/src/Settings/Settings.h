@@ -19,7 +19,8 @@ struct Source
 
     Source(E v) : value(v) { }
 
-    void DrawSmall(int x, int y, const Color &color = Color::NUMBER) const;
+    // Нарисовать иконку для оповещения
+    void DrawIcon(int x, int y, const Color &color = Color::NUMBER) const;
 
     // Вызывается при получении сигнала
     static void Receive(E);
