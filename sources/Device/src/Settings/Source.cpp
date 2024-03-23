@@ -155,18 +155,9 @@ void Source::Queue::DeleteOld()
     {
         for (int i = 0; i < size; i++)
         {
-            Source::E source = buffer[i];
-
-            if (TIME_MS > time_recv[source].GetMS() + TIME_ALARM)
+            if (TIME_MS > time_recv[buffer[i]].GetMS() + TIME_ALARM)
             {
-                Storage::Append(time_recv[source].GetRTC(), source, false);
-
-                size--;
-
-                if (size)
-                {
-                    std::memmove(buffer + i, buffer + i + 1, (uint)size * sizeof(Source::E));
-                }
+                Remove(i, false);
             }
         }
     }
@@ -181,21 +172,26 @@ void Source::CancelFirst()
 
 void Source::Queue::PopFirst()
 {
-    if (Size() == 0)
+    if (Size())
     {
-        return;
+        Remove(0, true);
     }
+}
 
-    Source::E source = buffer[0];
 
-    Storage::Append(time_recv[source].GetRTC(), source, true);
+void Source::Queue::Remove(int index, bool received)
+{
+    Source::E source = buffer[index];
+
+    Storage::Append(time_recv[source].GetRTC(), source, received);
 
     size--;
 
     if (size)
     {
-        std::memmove(buffer, buffer + 1, (uint)size * sizeof(Source::E));
+        std::memmove(buffer + index, buffer + 1 + index, (uint)size * sizeof(Source::E));
     }
+
 }
 
 

@@ -98,5 +98,7 @@ private:
 
         // Удалить те, срок действия которых истёк
         static void DeleteOld();
+
+        static void Remove(int index, bool received);
     };
 };
