@@ -14,11 +14,13 @@ namespace CMT2210AW
     static uint64 words[3] = { 0, 0, 0 };
     static uint64 xors[3] = { 0, 0, 0 };
 
-    static void AppendBit(bool);
+    void AppendBit(bool);
 
-    static void VerifyPreambule1();
+    static void VerifySequence();
 
     static uint GetBits(uint64);
+
+    static void ExecutePacket(uint);
 }
 
 
@@ -30,7 +32,11 @@ void CMT2210AW::Init()
 
 void CMT2210AW::CallbackOnBit()
 {
+#ifdef GUI
+    EmuRecv::NextBit();
+#else
     AppendBit(pinDOUT.IsHi());
+#endif
 }
 
 
@@ -67,7 +73,7 @@ void CMT2210AW::AppendBit(bool bit)
     xors[1] = words[1] ^ 0x2DC5B8B716E2DC5B;
     xors[2] = words[2] ^ 0x8B716E2DC5B8B716;
 
-    VerifyPreambule1();
+    VerifySequence();
 }
 
 
@@ -97,7 +103,7 @@ uint CMT2210AW::GetBits(uint64 bits)
 }
 
 
-void CMT2210AW::VerifyPreambule1()
+void CMT2210AW::VerifySequence()
 {
 #define BARKERTRESHOLD 3
 
@@ -138,6 +144,12 @@ void CMT2210AW::VerifyPreambule1()
         }
     }
 
+    ExecutePacket(packet);
+}
+
+
+void CMT2210AW::ExecutePacket(uint packet)
+{
     static const uint packets[Source::Count] = { 0x7E9E, 0x7EA6, 0x7EA6, 0x7EA6, 0x7EA6 };
 
     for (int i = 0; i < Source::Count; i++)
