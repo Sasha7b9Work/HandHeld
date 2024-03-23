@@ -98,6 +98,8 @@ namespace Storage
                 {
                     result++;
                 }
+
+                place++;
             }
 
             return result;

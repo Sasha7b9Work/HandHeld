@@ -19,7 +19,7 @@ add_definitions(-DGD32E230 -DTYPE_BOARD_799)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -MP -Wall")
 
 add_compile_options(
-    /wd4127
+#    /wd4127
     /wd4310
     /wd4514
     /wd4623
@@ -74,6 +74,7 @@ source_group(Utils                FILES ${UTILS})
 
 set_source_files_properties(
     ${GD32E23x}
+    ${HARDWARE_CMSIS}
     src/Hardware/Watch.cpp
     PROPERTIES HEADER_FILE_ONLY TRUE
 )
