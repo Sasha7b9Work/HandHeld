@@ -261,3 +261,9 @@ bool Record::IsValidData() const
 {
     return control_bits == 0 && crc == CalculateCRC();
 }
+
+
+void Storage::Append(uint /*time_ms*/, Source::E, bool)
+{
+
+}

@@ -6,6 +6,7 @@
 #include "Player/Player.h"
 #include "Hardware/Vibrato.h"
 #include "Hardware/LED.h"
+#include "Storage/Storage.h"
 #include <cstring>
 
 
@@ -82,6 +83,7 @@ void Source::Update()
     {
         Vibrato::Disable();
         LED::Disable();
+        Player::Stop();
     }
 }
 
@@ -157,13 +159,41 @@ void Source::Queue::DeleteOld()
 
             if (TIME_MS > time_recv[source] + TIME_ALARM)
             {
+                Storage::Append(time_recv[source], source, false);
+
                 size--;
 
                 if (size)
                 {
-                    std::memmove(buffer + i, buffer + i + 1, size * sizeof(Source::E));
+                    std::memmove(buffer + i, buffer + i + 1, (uint)size * sizeof(Source::E));
                 }
             }
         }
+    }
+}
+
+
+void Source::CancelFirst()
+{
+    Queue::PopFirst();
+}
+
+
+void Source::Queue::PopFirst()
+{
+    if (Size() == 0)
+    {
+        return;
+    }
+
+    Source::E source = buffer[0];
+
+    Storage::Append(time_recv[source], source, true);
+
+    size--;
+
+    if (size)
+    {
+        std::memmove(buffer, buffer + 1, (uint)size * sizeof(Source::E));
     }
 }

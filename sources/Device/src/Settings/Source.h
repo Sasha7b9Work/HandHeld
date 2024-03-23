@@ -24,6 +24,9 @@ struct Source
     // Вызывается при получении сигнала
     static void Receive(E);
 
+    // Отменить первый принятый вызов
+    static void CancelFirst();
+
     // Возвращает true, если приём идёт
     static bool IsReceived(E);
 
@@ -39,6 +42,9 @@ private:
     {
         // Добавить в хвост
         static void Push(Source::E);
+
+        // Удалить первый из очереди
+        static void PopFirst();
 
         static Source::E At(int);
 

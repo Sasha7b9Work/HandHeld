@@ -1,6 +1,7 @@
 // 2024/03/20 20:05:13 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
 #include "Modules/PCF8563/PCF8563.h"
+#include "Settings/Source.h"
 
 
 struct Record
@@ -20,6 +21,8 @@ struct Record
 // Здесь будут храниться принятые и непринятые вызовы
 namespace Storage
 {
+    void Append(uint time_ms, Source::E, bool);
+
     void Append(const Record &);
 
     int GetCountRecords();
