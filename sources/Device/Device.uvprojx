@@ -1139,6 +1139,16 @@
               <FileType>5</FileType>
               <FilePath>.\src\Settings\Settings.h</FilePath>
             </File>
+            <File>
+              <FileName>QueueSource.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Settings\QueueSource.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>QueueSource.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Settings\QueueSource.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1178,16 +1188,6 @@
               <FileName>FPS.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Utils\FPS.h</FilePath>
-            </File>
-            <File>
-              <FileName>Queue.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Utils\Queue.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Queue.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Utils\Queue.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -2326,6 +2326,16 @@
               <FileType>5</FileType>
               <FilePath>.\src\Settings\Settings.h</FilePath>
             </File>
+            <File>
+              <FileName>QueueSource.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Settings\QueueSource.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>QueueSource.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Settings\QueueSource.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -2365,16 +2375,6 @@
               <FileName>FPS.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Utils\FPS.h</FilePath>
-            </File>
-            <File>
-              <FileName>Queue.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Utils\Queue.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Queue.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Utils\Queue.h</FilePath>
             </File>
           </Files>
         </Group>

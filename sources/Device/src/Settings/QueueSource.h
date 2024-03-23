@@ -4,23 +4,19 @@
 
 
 // Который первый входит, тот первый и выходит
-struct Queue
+struct QueueSource
 {
     // Добавить в хвост
-    void Push(Source::E)
-    {
-
-    }
+    void Push(Source::E);
 
     // Извлечь из головы
-    void Pop()
-    {
+    void Pop();
 
-    }
+    bool IsConsist(Source::E) const;
 
     int Size() const
     {
-        return pointer;
+        return size;
     }
 
     bool IsEmpty() const
@@ -31,5 +27,5 @@ struct Queue
 private:
 
     Source::E buffer[Source::Count] = { Source::Count, Source::Count, Source::Count, Source::Count, Source::Count };
-    int pointer = 0;
+    int size = 0;
 };
