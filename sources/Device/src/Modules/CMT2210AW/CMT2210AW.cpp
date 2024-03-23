@@ -156,14 +156,22 @@ void CMT2210AW::VerifySequence()
 
 void CMT2210AW::ExecutePacket(uint packet)
 {
-    static const uint packets[Source::Count] = { 0x7E9E, 0x7EA6, 1, 2, 3 };
+    
 
     for (int i = 0; i < Source::Count; i++)
     {
-        if (packet == packets[i])
+        if (packet == GetCode((Source::E)i))
         {
             Source::Receive((Source::E)i);
             break;
         }
     }
+}
+
+
+uint CMT2210AW::GetCode(Source::E source)
+{
+    static const uint packets[Source::Count] = { 0x7E9E, 0x7EA6, 1, 2, 3 };
+
+    return packets[source];
 }

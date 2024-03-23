@@ -21,7 +21,7 @@ Settings gset =
 };
 
 
-uint Source::time_recv[Source::Count] = { 0, 0, 0, 0, 0 };
+uint Source::time_recv[Source::Count] = { (uint)-1, (uint)-1, (uint)-1, (uint)-1, (uint)-1 };
 
 
 void Source::DrawIcon(int x, int y, const Color &color) const
@@ -70,7 +70,12 @@ void Source::Receive(E type)
 
 bool Source::IsReceived(E type)
 {
-    return time_recv[type] + 1000 > TIME_MS;
+    if (time_recv[type] == (uint)-1)
+    {
+        return false;
+    }
+
+    return time_recv[type] + 10000 > TIME_MS;
 }
 
 

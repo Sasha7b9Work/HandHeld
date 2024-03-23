@@ -1,13 +1,12 @@
 // 2024/03/15 15:54:34 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
 #include "Modules/CMT2210AW/EmulatorReceiver.h"
+#include "Modules/CMT2210AW/CMT2210AW.h"
 #include <cstdlib>
 
 
 namespace EmuRecv
 {
-    static const uint codes[Source::Count] = { 0x7E9E, 0x7EA6, 1, 2, 3 };
-
     static uint code = 0;
 }
 
@@ -24,5 +23,5 @@ uint EmuRecv::NextPacket()
 
 void EmuRecv::EmulateSignal(Source::E source)
 {
-    code = codes[source];
+    code = CMT2210AW::GetCode(source);
 }
