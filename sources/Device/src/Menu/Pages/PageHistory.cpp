@@ -37,7 +37,16 @@ namespace PageHistory
 
     static void FuncDraw_History()
     {
-        if (Storage::GetCountRecords() > 0)
+        if (Storage::GetCountRecords() == 0)
+        {
+            Font::SetSize(2);
+
+            Text<>("∆”–Õ¿À").WriteInCenter(0, 20, Display::WIDTH, Color::WHITE);
+            Text<>("œ”—“").WriteInCenter(0, 50, Display::WIDTH);
+
+            Font::SetSize(1);
+        }
+        else
         {
             DrawRecord();
         }
