@@ -10,6 +10,10 @@
 #include <cstdlib>
 
 
+Source::E Source::Queue::buffer[Source::Count] = { Source::Count, Source::Count, Source::Count, Source::Count, Source::Count };
+int Source::Queue::size = 0;
+
+
 Settings gset =
 {
     { {0, 9, 1, 1, 1},
@@ -96,4 +100,30 @@ void Source::Update()
         Vibrato::Disable();
         LED::Disable();
     }
+}
+
+
+void Source::Queue::Push(Source::E)
+{
+
+}
+
+
+void Source::Queue::Pop()
+{
+
+}
+
+
+bool Source::Queue::IsConsist(Source::E source)
+{
+    for (int i = 0; i < size; i++)
+    {
+        if (buffer[i] == source)
+        {
+            return true;
+        }
+    }
+
+    return false;
 }

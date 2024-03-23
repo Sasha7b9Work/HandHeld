@@ -1139,16 +1139,6 @@
               <FileType>5</FileType>
               <FilePath>.\src\Settings\Settings.h</FilePath>
             </File>
-            <File>
-              <FileName>QueueSource.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Settings\QueueSource.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>QueueSource.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Settings\QueueSource.h</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>
@@ -2325,16 +2315,6 @@
               <FileName>Settings.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Settings\Settings.h</FilePath>
-            </File>
-            <File>
-              <FileName>QueueSource.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Settings\QueueSource.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>QueueSource.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Settings\QueueSource.h</FilePath>
             </File>
           </Files>
         </Group>

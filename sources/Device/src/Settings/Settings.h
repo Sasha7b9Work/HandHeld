@@ -3,7 +3,6 @@
 #include "Display/Colors.h"
 #include "Modules/PCF8563/PCF8563.h"
 
-
 // Источинк сигнала
 struct Source
 {
@@ -35,6 +34,33 @@ struct Source
 private:
     E value;
     static uint time_recv[Count];
+
+    // Который первый входит, тот первый и выходит
+    struct Queue
+    {
+        // Добавить в хвост
+        static void Push(Source::E);
+
+        // Извлечь из головы
+        static void Pop();
+
+        static bool IsConsist(Source::E);
+
+        static int Size()
+        {
+            return size;
+        }
+
+        static bool IsEmpty()
+        {
+            return Size() == 0;
+        }
+
+    private:
+
+        static Source::E buffer[Source::Count];
+        static int size;
+    };
 };
 
 
