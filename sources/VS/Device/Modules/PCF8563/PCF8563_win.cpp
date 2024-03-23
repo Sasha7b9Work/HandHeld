@@ -35,9 +35,9 @@ void PCF8563::SetTimer(uint /*time_sec*/)
 }
 
 
-void PCF8563::GetDateTime(RTCDateTime *date_time)
+RTCDateTime PCF8563::GetDateTime()
 {
-    *date_time = time;
+    return time;
 }
 
 

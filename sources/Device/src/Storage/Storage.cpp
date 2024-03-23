@@ -120,6 +120,8 @@ namespace Storage
         int num_page;
         uint address;
     };
+
+    static void Append(const Record &);
 }
 
 
@@ -263,7 +265,20 @@ bool Record::IsValidData() const
 }
 
 
-void Storage::Append(uint /*time_ms*/, Source::E, bool)
+void Storage::Append(const RTCDateTime &time, Source::E source, bool received)
 {
+    Record record =
+    {
+        0,
+        time,
+        (uint8)source,
+        0
+    };
 
+    if (received)
+    {
+        record.source |= 0x80;
+    }
+
+    Append(record);
 }

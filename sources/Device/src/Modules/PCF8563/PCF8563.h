@@ -66,7 +66,7 @@ namespace PCF8563
 
     void ClkoutFrequency(CLKOUT_Freq::E);
 
-    void GetDateTime(RTCDateTime *);        // Use in blocking/interrupt mode in PCF8563_INT EXTI handler
+    RTCDateTime GetDateTime();        // Use in blocking/interrupt mode in PCF8563_INT EXTI handler
 
     void SetDateTime(RTCDateTime *);
 

@@ -13,7 +13,7 @@
 Source::E Source::Queue::buffer[Source::Count] = { Source::Count, Source::Count, Source::Count, Source::Count, Source::Count };
 int Source::Queue::size = 0;
 
-uint Source::Queue::time_recv[Source::Count] = { 0, 0, 0, 0, 0 };
+Source::Queue::Time Source::Queue::time_recv[Source::Count];
 
 void Source::DrawIcon(int x, int y, const Color &color) const
 {
@@ -96,7 +96,7 @@ void Source::Queue::Push(Source::E type)
         {
             if (buffer[i] == type)
             {
-                time_recv[type] = TIME_MS;
+                time_recv[type].Set(TIME_MS, PCF8563::GetDateTime());
                 break;
             }
         }
@@ -104,7 +104,7 @@ void Source::Queue::Push(Source::E type)
     else
     {
         buffer[size++] = type;
-        time_recv[type] = TIME_MS;
+        time_recv[type].Set(TIME_MS, PCF8563::GetDateTime());
     }
 
     const SettingsSource &source = gset.sources[type];
@@ -157,9 +157,9 @@ void Source::Queue::DeleteOld()
         {
             Source::E source = buffer[i];
 
-            if (TIME_MS > time_recv[source] + TIME_ALARM)
+            if (TIME_MS > time_recv[source].GetMS() + TIME_ALARM)
             {
-                Storage::Append(time_recv[source], source, false);
+                Storage::Append(time_recv[source].GetRTC(), source, false);
 
                 size--;
 
@@ -188,7 +188,7 @@ void Source::Queue::PopFirst()
 
     Source::E source = buffer[0];
 
-    Storage::Append(time_recv[source], source, true);
+    Storage::Append(time_recv[source].GetRTC(), source, true);
 
     size--;
 

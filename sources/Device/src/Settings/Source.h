@@ -1,6 +1,7 @@
 // 2024/03/23 17:28:12 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
 #include "Display/Display.h"
+#include "Modules/PCF8563/PCF8563.h"
 
 
 // Источинк сигнала
@@ -68,8 +69,31 @@ private:
 
     private:
 
+        struct Time
+        {
+        private:
+            uint        ms = 0;
+            RTCDateTime rtc;
+        public:
+            void Set(uint _ms, const RTCDateTime &_rtc)
+            {
+                ms = _ms;
+                rtc = _rtc;
+            }
+
+            uint GetMS() const
+            {
+                return ms;
+            }
+
+            RTCDateTime GetRTC() const
+            {
+                return rtc;
+            }
+        };
+
         static Source::E buffer[Source::Count];         // Здесь принятые события в том порядке, как принимались
-        static uint time_recv[Source::Count];           // Время начала аларма
+        static Time time_recv[Source::Count];           // Время начала аларма
         static int size;
 
         // Удалить те, срок действия которых истёк

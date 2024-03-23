@@ -8,9 +8,5 @@
 
 void Watch::Draw(int x, int y, const Color &color)
 {
-    RTCDateTime date_time;
-
-    PCF8563::GetDateTime(&date_time);
-
-    date_time.Draw(x, y, color);
+    PCF8563::GetDateTime().Draw(x, y, color);
 }

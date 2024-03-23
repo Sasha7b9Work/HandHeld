@@ -21,9 +21,7 @@ struct Record
 // Здесь будут храниться принятые и непринятые вызовы
 namespace Storage
 {
-    void Append(uint time_ms, Source::E, bool);
-
-    void Append(const Record &);
+    void Append(const RTCDateTime &, Source::E, bool);
 
     int GetCountRecords();
 

@@ -436,7 +436,7 @@ void Item::Open() const
         }
         else
         {
-            PCF8563::GetDateTime(GetTime()->data->date_time);
+            *GetTime()->data->date_time = PCF8563::GetDateTime();
         }
     }
 
