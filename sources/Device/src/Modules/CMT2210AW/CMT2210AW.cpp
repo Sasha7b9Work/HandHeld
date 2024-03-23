@@ -32,7 +32,7 @@ void CMT2210AW::Init()
 
 void CMT2210AW::CallbackOnBit()
 {
-#ifdef GUI
+#ifdef ENABLE_AMULATOR
 
     ExecutePacket(EmuRecv::NextPacket());
 
