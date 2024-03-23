@@ -6,14 +6,13 @@
 #include "Player/Player.h"
 #include "Hardware/Vibrato.h"
 #include "Hardware/LED.h"
+#include <cstring>
 
 
 Source::E Source::Queue::buffer[Source::Count] = { Source::Count, Source::Count, Source::Count, Source::Count, Source::Count };
 int Source::Queue::size = 0;
 
-
-uint Source::time_recv[Source::Count] = { (uint)-1, (uint)-1, (uint)-1, (uint)-1, (uint)-1 };
-
+uint Source::Queue::time_recv[Source::Count] = { 0, 0, 0, 0, 0 };
 
 void Source::DrawIcon(int x, int y, const Color &color) const
 {
@@ -38,35 +37,30 @@ pchar Source::Name(E v)
 
 void Source::Receive(E type)
 {
-    time_recv[type] = TIME_MS;
+    // Время предыдущего приёма сигнала
+    static uint time_prev_signal[Source::Count] = { 0, 0, 0, 0, 0 };
 
-    const SettingsSource &source = gset.sources[type];
-
-    if (source.enabled_melody)
+    // Время, в течение которого не нужно повторно принимать событие
+    static const uint time_pause[Source::Count] =
     {
-        Player::Play((TypeSound::E)source.melody, source.volume);
-    }
+        1000,
+        10000,
+        10000,
+        10000,
+        15000
+    };
 
-    if (source.enabled_vibrato)
+    if (time_prev_signal[type] == 0 ||
+        (TIME_MS > time_prev_signal[type] + time_pause[type]))
     {
-        Vibrato::Enable();
-    }
-
-    if (source.enabled_led)
-    {
-        LED::Enable();
+        Queue::Push(type);
     }
 }
 
 
 bool Source::IsReceived(E type)
 {
-    if (time_recv[type] == (uint)-1)
-    {
-        return false;
-    }
-
-    return time_recv[type] + TIME_ALARM > TIME_MS;
+    return Queue::IsConsist(type);
 }
 
 
@@ -90,20 +84,55 @@ void Source::Update()
 }
 
 
-void Source::Queue::Push(Source::E)
+void Source::Queue::Push(Source::E type)
 {
+    if (IsConsist(type))
+    {
+        for (int i = 0; i < size; i++)
+        {
+            if (buffer[i] == type)
+            {
+                time_recv[type] = TIME_MS;
+                break;
+            }
+        }
+    }
+    else
+    {
+        buffer[size++] = type;
+        time_recv[type] = TIME_MS;
+    }
+
+    const SettingsSource &source = gset.sources[type];
+
+    if (source.enabled_melody)
+    {
+        Player::Play((TypeSound::E)source.melody, source.volume);
+    }
+
+    if (source.enabled_vibrato)
+    {
+        Vibrato::Enable();
+    }
+
+    if (source.enabled_led)
+    {
+        LED::Enable();
+    }
 
 }
 
 
-void Source::Queue::Pop()
+Source::E Source::Queue::At(int i)
 {
-
+    return buffer[i];
 }
 
 
 bool Source::Queue::IsConsist(Source::E source)
 {
+    DeleteOld();
+
     for (int i = 0; i < size; i++)
     {
         if (buffer[i] == source)
@@ -113,4 +142,26 @@ bool Source::Queue::IsConsist(Source::E source)
     }
 
     return false;
+}
+
+
+void Source::Queue::DeleteOld()
+{
+    if (size)
+    {
+        for (int i = 0; i < size; i++)
+        {
+            Source::E source = buffer[i];
+
+            if (TIME_MS > time_recv[source] + TIME_ALARM)
+            {
+                size--;
+
+                if (size)
+                {
+                    std::memmove(buffer, buffer + 1, size * sizeof(Source::E));
+                }
+            }
+        }
+    }
 }
