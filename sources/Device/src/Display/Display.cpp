@@ -88,18 +88,30 @@ void Display::DrawScene(int num_part)
 
     if (Source::GetCountReceived())
     {
+        int y = 40;
+
         if (Source::GetCountReceived() == 1)
         {
-            Font::SetSize(2);
-
-            Source::Name(Source::GetFirstReceived()).WriteInCenter(0, 30, Display::WIDTH, Color::GREEN);
-
-            Font::SetSize(1);
+            y = 30;
         }
         else
         {
-
+            for (int i = 0; i < Source::Count; i++)
+            {
+                if (Source::IsReceived((Source::E)i))
+                {
+                    Source((Source::E)i).DrawIcon(11 + i * 30, 8);
+                }
+            }
         }
+
+        Font::SetSize(2);
+
+        Source::Name(Source::GetFirstReceived()).WriteInCenter(0, y, Display::WIDTH, Color::GREEN);
+
+        Font::SetSize(1);
+
+        FPS::DrawTimeFrame(0, 75);
     }
     else
     {
@@ -110,14 +122,6 @@ void Display::DrawScene(int num_part)
         else
         {
             Watch::Draw(45, 30, Color::WHITE);
-
-            for (int i = 0; i < Source::Count; i++)
-            {
-                if (Source::IsReceived((Source::E)i))
-                {
-                    Source((Source::E)i).DrawIcon(11 + i * 30, 8);
-                }
-            }
 
             Battery::Draw(121, 67);
 
