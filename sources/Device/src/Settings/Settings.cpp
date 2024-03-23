@@ -75,7 +75,7 @@ bool Source::IsReceived(E type)
         return false;
     }
 
-    return time_recv[type] + 10000 > TIME_MS;
+    return time_recv[type] + TIME_ALARM > TIME_MS;
 }
 
 

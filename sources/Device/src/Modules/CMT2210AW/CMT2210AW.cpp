@@ -4,6 +4,7 @@
 #include "Hardware/HAL/HAL_PINS.h"
 #include "Display/Display.h"
 #include "Settings/Settings.h"
+#include "Hardware/Timer.h"
 #ifdef ENABLE_EMULATOR
     #include "Modules/CMT2210AW/EmulatorReceiver.h"
 #endif
@@ -156,14 +157,28 @@ void CMT2210AW::VerifySequence()
 
 void CMT2210AW::ExecutePacket(uint packet)
 {
-    
+    // Время, в течение которого не нужно повторно принимать событие
+    static const uint time_pause[Source::Count] =
+    {
+        1000,
+        10000,
+        10000,
+        10000,
+        15000
+    };
+
+    static uint prev_time[Source::Count] = { 0, 0, 0, 0, 0 };
 
     for (int i = 0; i < Source::Count; i++)
     {
         if (packet == GetCode((Source::E)i))
         {
-            Source::Receive((Source::E)i);
-            break;
+            if (prev_time[i] == 0 || 
+                (TIME_MS > prev_time[i] + time_pause[i]))
+            {
+                Source::Receive((Source::E)i);
+                break;
+            }
         }
     }
 }
