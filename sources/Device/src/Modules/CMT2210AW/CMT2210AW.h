@@ -7,5 +7,5 @@ namespace CMT2210AW
     void Init();
 
     // Вызывается раз в 1мс
-    void CallbackOnBit();
+    void Update();
 }

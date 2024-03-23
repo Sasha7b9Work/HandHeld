@@ -52,4 +52,10 @@ void Device::Update()
     Display::Update();
 
     Source::Update();
+
+#ifdef GUI
+
+    CMT2210AW::Update();
+
+#endif
 }

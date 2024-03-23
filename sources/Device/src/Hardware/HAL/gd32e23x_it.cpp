@@ -78,7 +78,7 @@ void TIMER2_IRQHandler(void)
     {
         timer_interrupt_flag_clear(TIMER2, TIMER_INT_FLAG_UP);
 
-        CMT2210AW::CallbackOnBit();
+        CMT2210AW::Update();
     }
 }
 
