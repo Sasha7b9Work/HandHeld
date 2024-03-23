@@ -32,7 +32,10 @@ TransmitterDialog::TransmitterDialog(wxWindow *parent) : wxDialog(nullptr, wxID_
 
     Bind(wxEVT_BUTTON, &TransmitterDialog::OnEventButton, this);
 
-    SetPosition( parent->GetPosition() );
+    wxPoint position = parent->GetPosition();
+    position.x -= client_size.x;
+
+    SetPosition( position );
 }
 
 
