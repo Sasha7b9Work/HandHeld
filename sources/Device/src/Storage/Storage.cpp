@@ -85,6 +85,8 @@ namespace Storage
 
         int GetCountRecords()
         {
+            return 0;
+
             Record *place = FirstRecord();
             Record *last = LastRecord();
 
