@@ -33,7 +33,7 @@ void CMT2210AW::Init()
 void CMT2210AW::CallbackOnBit()
 {
 #ifdef GUI
-    EmuRecv::NextBit();
+    ExecutePacket(EmuRecv::NextPacket());
 #else
     AppendBit(pinDOUT.IsHi());
 #endif
