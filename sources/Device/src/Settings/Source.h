@@ -50,9 +50,6 @@ private:
         // Добавить в хвост
         static void Push(Source::E);
 
-        // Удалить первый из очереди
-        static void PopFirst();
-
         static Source::E At(int);
 
         static bool IsConsist(Source::E);
@@ -66,6 +63,8 @@ private:
         {
             return Size() == 0;
         }
+
+        static void Remove(int index, bool received);
 
     private:
 
@@ -98,7 +97,5 @@ private:
 
         // Удалить те, срок действия которых истёк
         static void DeleteOld();
-
-        static void Remove(int index, bool received);
     };
 };
