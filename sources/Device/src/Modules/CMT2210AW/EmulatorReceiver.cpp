@@ -6,5 +6,5 @@
 
 uint EmuRecv::NextPacket()
 {
-    return 0;
+    return 0x7E9E;
 }
