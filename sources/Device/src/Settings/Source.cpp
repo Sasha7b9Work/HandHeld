@@ -53,6 +53,8 @@ void Source::Receive(E type)
     if (time_prev_signal[type] == 0 ||
         (TIME_MS > time_prev_signal[type] + time_pause[type]))
     {
+        time_prev_signal[type] = TIME_MS;
+
         Queue::Push(type);
     }
 }
@@ -159,7 +161,7 @@ void Source::Queue::DeleteOld()
 
                 if (size)
                 {
-                    std::memmove(buffer, buffer + 1, size * sizeof(Source::E));
+                    std::memmove(buffer + i, buffer + i + 1, size * sizeof(Source::E));
                 }
             }
         }
