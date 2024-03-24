@@ -267,6 +267,8 @@ bool Record::IsValidData() const
 
 void Storage::Append(const RTCDateTime &time, Source::E source, bool received)
 {
+    return;
+
     Record record =
     {
         0,
