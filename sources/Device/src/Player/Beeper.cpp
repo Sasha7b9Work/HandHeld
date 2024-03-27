@@ -64,6 +64,10 @@ void Beeper::Init()
 
 void Beeper::StartFrequency(float frequency)
 {
+    gpio_mode_set(GPIOA, GPIO_MODE_AF, GPIO_PUPD_NONE, GPIO_PIN_3);
+    gpio_output_options_set(GPIOA, GPIO_OTYPE_PP, GPIO_OSPEED_50MHZ, GPIO_PIN_3);
+    gpio_af_set(GPIOA, GPIO_AF_0, GPIO_PIN_3);
+
     uint period = 250;
     uint16 prescaler = (uint16)(72000000 / period / (uint)(frequency + 0.5f));
 
@@ -80,6 +84,9 @@ void Beeper::Stop()
 {
     timer_interrupt_disable(TIMER14, TIMER_INT_CH1);
     timer_disable(TIMER14);
+
+    gpio_mode_set(GPIOA, GPIO_MODE_OUTPUT, GPIO_PUPD_NONE, GPIO_PIN_3);
+    gpio_output_options_set(GPIOA, GPIO_OTYPE_PP, GPIO_OSPEED_50MHZ, GPIO_PIN_3);
 
     gpio_bit_reset(GPIOA, GPIO_PIN_3);                  // Переводим в ноль, чтобы не палить динамик
 }
