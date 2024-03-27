@@ -15,7 +15,7 @@ void Timer::Init()
 
     timer_parameter_struct timer_initpara =
     {
-        71,
+        77,
         TIMER_COUNTER_EDGE,
         TIMER_COUNTER_UP,
         TIMER_CKDIV_DIV1,
