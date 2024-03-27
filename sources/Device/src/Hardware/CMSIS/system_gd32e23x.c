@@ -225,7 +225,7 @@ static void system_clock_72m_hxtal(void)
     /* APB1 = AHB */
     RCU_CFG0 |= RCU_APB1_CKAHB_DIV1;
 
-    /* PLL = HXTAL * 9 = 78 MHz */
+    /* PLL = HXTAL * 3 = 78 MHz */
     RCU_CFG0 &= ~(RCU_CFG0_PLLSEL | RCU_CFG0_PLLMF | RCU_CFG0_PLLDV);
     RCU_CFG0 |= (RCU_PLLSRC_HXTAL | RCU_PLL_MUL3);
 
@@ -333,53 +333,55 @@ static void system_clock_8m_irc8m(void)
     \param[out] none
     \retval     none
 */
-void SystemCoreClockUpdate (void)
-{
-    uint32_t sws = 0U;
-    uint32_t pllmf = 0U, pllmf4 = 0U, pllsel = 0U, prediv = 0U, idx = 0U, clk_exp = 0U;
-    /* exponent of AHB clock divider */
-    const uint8_t ahb_exp[16] = {0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 6, 7, 8, 9};
 
-    sws = GET_BITS(RCU_CFG0, 2, 3);
-    switch(sws){
-    /* IRC8M is selected as CK_SYS */
-    case SEL_IRC8M:
-        SystemCoreClock = IRC8M_VALUE;
-        break;
-    /* HXTAL is selected as CK_SYS */
-    case SEL_HXTAL:
-        SystemCoreClock = HXTAL_VALUE;
-        break;
-    /* PLL is selected as CK_SYS */
-    case SEL_PLL:
-        /* get the value of PLLMF[3:0] */
-        pllmf = GET_BITS(RCU_CFG0, 18, 21);
-        pllmf4 = GET_BITS(RCU_CFG0, 27, 27);
-        /* high 16 bits */
-        if(1U == pllmf4){
-            pllmf += 17U;
-        }else if(15U == pllmf){
-            pllmf = 16U;
-        }else{
-            pllmf += 2U;
-        }
-        
-        /* PLL clock source selection, HXTAL or IRC8M/2 */
-        pllsel = GET_BITS(RCU_CFG0, 16, 16);
-        if(0U != pllsel){
-            prediv = (GET_BITS(RCU_CFG1, 0, 3) + 1U);
-            SystemCoreClock = (HXTAL_VALUE / prediv) * pllmf;
-        }else{
-            SystemCoreClock = (IRC8M_VALUE >> 1) * pllmf;
-        }
-        break;
-    /* IRC8M is selected as CK_SYS */
-    default:
-        SystemCoreClock = IRC8M_VALUE;
-        break;
-    }
-    /* calculate AHB clock frequency */
-    idx = GET_BITS(RCU_CFG0, 4, 7);
-    clk_exp = ahb_exp[idx];
-    SystemCoreClock >>= clk_exp;
-}
+//void SystemCoreClockUpdate (void)
+//{
+//    uint32_t sws = 0U;
+//    uint32_t pllmf = 0U, pllmf4 = 0U, pllsel = 0U, prediv = 0U, idx = 0U, clk_exp = 0U;
+//    /* exponent of AHB clock divider */
+//    const uint8_t ahb_exp[16] = {0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 6, 7, 8, 9};
+//
+//    sws = GET_BITS(RCU_CFG0, 2, 3);
+//    switch(sws){
+//    /* IRC8M is selected as CK_SYS */
+//    case SEL_IRC8M:
+//        SystemCoreClock = IRC8M_VALUE;
+//        break;
+//    /* HXTAL is selected as CK_SYS */
+//    case SEL_HXTAL:
+//        SystemCoreClock = HXTAL_VALUE;
+//        break;
+//    /* PLL is selected as CK_SYS */
+//    case SEL_PLL:
+//        /* get the value of PLLMF[3:0] */
+//        pllmf = GET_BITS(RCU_CFG0, 18, 21);
+//        pllmf4 = GET_BITS(RCU_CFG0, 27, 27);
+//        /* high 16 bits */
+//        if(1U == pllmf4){
+//            pllmf += 17U;
+//        }else if(15U == pllmf){
+//            pllmf = 16U;
+//        }else{
+//            pllmf += 2U;
+//        }
+//        
+//        /* PLL clock source selection, HXTAL or IRC8M/2 */
+//        pllsel = GET_BITS(RCU_CFG0, 16, 16);
+//        if(0U != pllsel){
+//            prediv = (GET_BITS(RCU_CFG1, 0, 3) + 1U);
+//            SystemCoreClock = (HXTAL_VALUE / prediv) * pllmf;
+//        }else{
+//            SystemCoreClock = (IRC8M_VALUE >> 1) * pllmf;
+//        }
+//        break;
+//    /* IRC8M is selected as CK_SYS */
+//    default:
+//        SystemCoreClock = IRC8M_VALUE;
+//        break;
+//    }
+//    /* calculate AHB clock frequency */
+//    idx = GET_BITS(RCU_CFG0, 4, 7);
+//    clk_exp = ahb_exp[idx];
+//    SystemCoreClock >>= clk_exp;
+//}
+
