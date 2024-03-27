@@ -16,11 +16,15 @@ void HAL_TIM2::Init()
     /* initialize TIMER init parameter struct */
     timer_struct_para_init(&timer_initpara);
     /* TIMER2 configuration */
-//    timer_initpara.prescaler = 36864;                    // F = 72e6 / 36864 = 1953.125√ц; T = 1 / F = 1 / 1953.125 * 2 = 0.001024 сек
-    timer_initpara.prescaler = 15600;                   // 409.6 мкс
+
+    // prescaler = 400e-6 / (1 / 78000000) / 2
+    // prescaler = 400e-6 * 78000000 / 2
+    // prescaler = 400 * 78 / 2
+
+    timer_initpara.prescaler = 400 * (SystemCoreClock / 1000000) / 2;   // 400 мкс
     timer_initpara.alignedmode = TIMER_COUNTER_EDGE;
     timer_initpara.counterdirection = TIMER_COUNTER_UP;
-    timer_initpara.period = 1;
+    timer_initpara.period = 2 - 1;
     timer_initpara.clockdivision = TIMER_CKDIV_DIV1;
     timer_init(TIMER2, &timer_initpara);
 
