@@ -52,7 +52,7 @@
 
 /* define value of high speed crystal oscillator (HXTAL) in Hz */
 #if !defined  (HXTAL_VALUE)
-#define HXTAL_VALUE    ((uint32_t)8000000)
+#define HXTAL_VALUE    ((uint32_t)26000000)
 #endif /* high speed crystal oscillator value */
 
 /* define startup timeout value of high speed crystal oscillator (HXTAL) */
