@@ -21,7 +21,7 @@ void HAL_TIM2::Init()
     // prescaler = 400e-6 * 78000000 / 2
     // prescaler = 400 * 78 / 2
 
-    timer_initpara.prescaler = 400 * (SystemCoreClock / 1000000) / 2;   // 400 ìêñ
+    timer_initpara.prescaler = (uint16)(SystemCoreClock / 1000000 * 400 / 2);   // 400 ìêñ
     timer_initpara.alignedmode = TIMER_COUNTER_EDGE;
     timer_initpara.counterdirection = TIMER_COUNTER_UP;
     timer_initpara.period = 2 - 1;
