@@ -15,7 +15,7 @@ void Timer::Init()
 
     timer_parameter_struct timer_initpara =
     {
-        77,
+        (uint16)((SystemCoreClock / 1000000) - 1),
         TIMER_COUNTER_EDGE,
         TIMER_COUNTER_UP,
         TIMER_CKDIV_DIV1,
