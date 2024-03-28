@@ -9,7 +9,7 @@
 #include "Settings/Settings.h"
 
 
-int8 DataTime::in_edit_mode = false;
+int8 DataTime::in_edit_mode = 0;
 
 
 void Item::Draw() const
@@ -121,7 +121,7 @@ void Time::Draw() const
 
             if (i == *data->field && data->in_edit_mode != 0)
             {
-                Color backbround = (i == *data->field) ? Color::WHITE : Color::BLACK;
+                Color backbround = Color::WHITE;
 
                 Font::SetSize(2);
                 Text<>("+").Write(x[i] + 9, y[i] - 13, backbround);

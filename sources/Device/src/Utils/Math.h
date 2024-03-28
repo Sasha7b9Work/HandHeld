@@ -7,7 +7,7 @@ namespace Math
     template<class T>
     void CircleIncrease(T *value, T min, T max)
     {
-        *value++;
+        (*value)++;
 
         if (*value < min)
         {
@@ -22,7 +22,7 @@ namespace Math
     template<class T>
     void CircleDecrease(T *value, T min, T max)
     {
-        *value--;
+        (*value)--;
 
         if (*value < min)
         {

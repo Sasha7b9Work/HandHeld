@@ -83,7 +83,7 @@ struct Text
         std::vsprintf(text, format, args);
         va_end(args);
     }
-    void Write(int x, int y, const Color &color = Color::NUMBER) const
+    int Write(int x, int y, const Color &color = Color::NUMBER) const
     {
         color.SetAsCurrent();
 
@@ -92,8 +92,10 @@ struct Text
         while (*pointer)
         {
             x = Char(*pointer++).Write(x, y);
-            x += Font::GetSize();
+            x += Font::GetSize(); //-V1026
         }
+
+        return x;
     }
     void WriteInCenter(int x, int y, int width, const Color &color = Color::NUMBER) const
     {
@@ -112,8 +114,8 @@ struct Text
         while (*pointer)
         {
             uint8 symbol = (uint8)*pointer++;
-            result += Font::GetWidth(symbol) * Font::GetSize();
-            result += Font::GetSize();
+            result += Font::GetWidth(symbol) * Font::GetSize(); //-V1026
+            result += Font::GetSize(); //-V1026
         }
 
         return result;
