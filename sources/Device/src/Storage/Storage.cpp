@@ -87,22 +87,22 @@ namespace Storage
         {
             return 0;
 
-            Record *place = FirstRecord();
-            Record *last = LastRecord();
-
-            int result = 0;
-
-            while(place < last)
-            {
-                if (place->IsValidData())
-                {
-                    result++;
-                }
-
-                place++;
-            }
-
-            return result;
+//            Record *place = FirstRecord();
+//            Record *last = LastRecord();
+//
+//            int result = 0;
+//
+//            while(place < last)
+//            {
+//                if (place->IsValidData())
+//                {
+//                    result++;
+//                }
+//
+//                place++;
+//            }
+//
+//            return result;
         }
 
         static Page FromEnd(int index)
@@ -121,10 +121,11 @@ namespace Storage
         uint address;
     };
 
-    static void Append(const Record &);
+//    static void Append(const Record &);
 }
 
 
+/*
 void Storage::Append(const Record &rec)
 {
     for (int i = HAL_ROM::PAGE_FIRST_JOURNAL; i < HAL_ROM::PAGE_LAST_JOURNAL; i++)
@@ -181,6 +182,7 @@ void Storage::Append(const Record &rec)
 
     page.Write(record);
 }
+*/
 
 
 int Storage::GetCountRecords()
@@ -265,22 +267,22 @@ bool Record::IsValidData() const
 }
 
 
-void Storage::Append(const RTCDateTime &time, Source::E source, bool received)
+void Storage::Append(const RTCDateTime & /*time*/, Source::E /*source*/, bool /*received*/)
 {
     return;
 
-    Record record =
-    {
-        0,
-        time,
-        (uint8)source,
-        0
-    };
-
-    if (received)
-    {
-        record.source |= 0x80;
-    }
-
-    Append(record);
+//    Record record =
+//    {
+//        0,
+//        time,
+//        (uint8)source,
+//        0
+//    };
+//
+//    if (received)
+//    {
+//        record.source |= 0x80;
+//    }
+//
+//    Append(record);
 }
