@@ -91,8 +91,6 @@ Frame::Frame(const wxString &title)
 
     SetPosition({ x, y });
 
-    const wxSize SIZE_BUTTON = { 65, 25 };
-
     int x1 = 330;
     int x2 = 370;
     int x3 = 420;
@@ -100,19 +98,30 @@ Frame::Frame(const wxString &title)
     int y2 = 50;
     int y3 = 90;
 
-    (new wxButton(this, ID_BUTTON_MENU, "Menu", { x1, y2 }, SIZE_BUTTON))->Bind(wxEVT_LEFT_DOWN, &Frame::OnMouseEvent, this);
+    CreateButton(ID_BUTTON_MENU, "Menu", { x1, y2 });
 
-    (new wxButton(this, ID_BUTTON_CANCEL, "Cancel", { x3, y2 }, SIZE_BUTTON))->Bind(wxEVT_LEFT_DOWN, &Frame::OnMouseEvent, this);
+    CreateButton(ID_BUTTON_CANCEL, "Cancel", { x3, y2 });
 
-    (new wxButton(this, ID_BUTTON_UP, "Up", { x2, y1 }, SIZE_BUTTON))->Bind(wxEVT_LEFT_DOWN, &Frame::OnMouseEvent, this);
+    CreateButton(ID_BUTTON_UP, "Up", { x2, y1 });
 
-    (new wxButton(this, ID_BUTTON_DOWN, "Down", { x2, y3 }, SIZE_BUTTON))->Bind(wxEVT_LEFT_DOWN, &Frame::OnMouseEvent, this);
+    CreateButton(ID_BUTTON_DOWN, "Down", { x2, y3 });
 
     TransmitterDialog::Create(this);
 
     Bind(wxEVT_CLOSE_WINDOW, &Frame::OnCloseWindow, this);
 
     timer.StartOnce(25);
+}
+
+
+void Frame::CreateButton(int id, pchar title, const wxPoint &coord)
+{
+    const wxSize SIZE_BUTTON = { 65, 25 };
+
+    wxButton *button = new wxButton(this, id, title, coord , SIZE_BUTTON);
+
+    button->Connect(id, wxEVT_LEFT_DOWN, wxCommandEventHandler(Frame::OnButtonDownEvent));
+    button->Connect(id, wxEVT_LEFT_UP, wxCommandEventHandler(Frame::OnButtonUpEvent));
 }
 
 
@@ -150,13 +159,44 @@ void Frame::OnTimer(wxTimerEvent &)
 }
 
 
-void Frame::OnMouseEvent(wxMouseEvent &event)
+void Frame::OnButtonDownEvent(wxCommandEvent &event)
 {
     int id = event.GetId();
 
     Action action;
 
     action.type = ActionType::Down;
+
+    if (id == ID_BUTTON_MENU)
+    {
+        action.key = Key::Menu;
+    }
+    else if (id == ID_BUTTON_CANCEL)
+    {
+        action.key = Key::Cancel;
+    }
+    else if (id == ID_BUTTON_UP)
+    {
+        action.key = Key::Up;
+    }
+    else if (id == ID_BUTTON_DOWN)
+    {
+        action.key = Key::Down;
+    }
+
+    Keyboard::AppendAction(action);
+
+    event.Skip();
+}
+
+
+void Frame::OnButtonUpEvent(wxCommandEvent &event)
+{
+    int id = event.GetId();
+
+    Action action;
+
+    action.type = ActionType::Up;
 
     if (id == ID_BUTTON_MENU)
     {

@@ -21,11 +21,15 @@ private:
     TimeMeterMS meterButton;        // Для кнопки
     wxTimer timerButton;
 
-    void OnMouseEvent(wxMouseEvent &);
+    void OnButtonDownEvent(wxCommandEvent &);
+
+    void OnButtonUpEvent(wxCommandEvent &);
 
     void CreateMenu();
 
     void OnMenuOpenTransmitter(wxCommandEvent &);
 
     void OnCloseWindow(wxCloseEvent &);
+
+    void CreateButton(int, pchar title, const wxPoint &);
 };

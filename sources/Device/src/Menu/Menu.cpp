@@ -34,7 +34,14 @@ void Menu::Update()
         return;
     }
 
-    if (action.IsDown())
+    if (Source::GetCountReceived() != 0)
+    {
+        if (action.IsRelease())
+        {
+            Source::CancelFirst();
+        }
+    }
+    else if (action.IsDown())
     {
         if (is_shown)
         {
