@@ -9,7 +9,7 @@
 #include "Keyboard/Keyboard.h"
 #include "Settings/Source.h"
 #include "Modules/CMT2210AW/EmulatorReceiver.h"
-#include "GUI/Controls/Screen.h"
+#include "GUI/Controls/Painter.h"
 
 
 namespace Keyboard
@@ -27,7 +27,7 @@ enum
 };
 
 
-static Screen *screen = nullptr;
+static Painter *screen = nullptr;
 
 
 Frame::Frame(const wxString &title)
@@ -39,7 +39,7 @@ Frame::Frame(const wxString &title)
 
     CreateMenu();
 
-    screen = new Screen(this, Display::WIDTH, Display::HEIGHT, IMAGE_SCALE);
+    screen = new Painter(this, Display::WIDTH, Display::HEIGHT, IMAGE_SCALE);
 
     wxBoxSizer *sizer = new wxBoxSizer(wxHORIZONTAL);
     sizer->Add(screen);

@@ -1,20 +1,20 @@
 // 2024/03/29 11:28:50 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines_win.h"
-#include "GUI/Controls/Screen.h"
+#include "GUI/Controls/Painter.h"
 
 
-Screen::Screen(wxWindow *parent, int _width, int _height, int _scale) :
+Painter::Painter(wxWindow *parent, int _width, int _height, int _scale) :
     wxPanel(parent), width(_width), height(_height), scale(_scale)
 {
     bitmap = new wxBitmap(width, height);
 
     SetMinSize({ width * scale, height * scale });
     SetDoubleBuffered(true);
-    Bind(wxEVT_PAINT, &Screen::OnPaint, this);
+    Bind(wxEVT_PAINT, &Painter::OnPaint, this);
 }
 
 
-void Screen::OnPaint(wxPaintEvent &)
+void Painter::OnPaint(wxPaintEvent &)
 {
     wxPaintDC dc(this);
 

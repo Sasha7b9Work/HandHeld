@@ -3,12 +3,12 @@
 #include "Display/Display.h"
 
 
-class Screen : public wxPanel
+class Painter : public wxPanel
 {
 public:
-    Screen(wxWindow *parent, int width, int height, int scale);
+    Painter(wxWindow *parent, int width, int height, int scale);
 
-    ~Screen() { delete bitmap; }
+    ~Painter() { delete bitmap; }
 
     void OnPaint(wxPaintEvent &);
 
