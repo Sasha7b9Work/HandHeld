@@ -52,4 +52,6 @@ void Device::Update()
     Display::Update();
 
     Source::Update();
+
+    Player::Update();
 }

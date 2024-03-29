@@ -139,3 +139,9 @@ void Player::CallbackOnTimer()
 {
     Sound::Update();
 }
+
+
+void Player::Update()
+{
+
+}

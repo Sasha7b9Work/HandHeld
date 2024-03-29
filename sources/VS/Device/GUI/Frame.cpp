@@ -8,6 +8,8 @@
 #include "wx/statline.h"
 #include "Keyboard/Keyboard.h"
 #include "GUI/Dialogs/TransmitterDialog.h"
+#include "Settings/Source.h"
+#include "Modules/CMT2210AW/EmulatorReceiver.h"
 
 
 namespace Keyboard
@@ -78,7 +80,7 @@ Frame::Frame(const wxString &title)
     timerButton.SetOwner(this, TIMER_BUTTON_ID);
     timer.SetOwner(this, TIMER_ID);
 
-    SetClientSize(Display::WIDTH * IMAGE_SCALE + 180, Display::HEIGHT * IMAGE_SCALE);
+    SetClientSize(Display::WIDTH * IMAGE_SCALE + 300, Display::HEIGHT * IMAGE_SCALE);
 
     wxTopLevelWindowBase::SetMinSize(GetSize());
     wxTopLevelWindowBase::SetMaxSize(GetSize());
@@ -91,20 +93,36 @@ Frame::Frame(const wxString &title)
 
     SetPosition({ x, y });
 
+    const int dy = 10;
+
     int x1 = 330;
-    int x2 = 370;
-    int x3 = 420;
-    int y1 = 15;
-    int y2 = 50;
-    int y3 = 90;
+    int x2 = 355;
+    int x3 = 380;
+    int y1 = 15 + dy;
+    int y2 = 50 + dy;
+    int y3 = 85 + dy;
 
-    CreateButton(ID_BUTTON_MENU, "Menu", { x1, y2 });
+    CreateButton(ID_BUTTON_MENU, "Menu", { x1, y2 }, 45);
 
-    CreateButton(ID_BUTTON_CANCEL, "Cancel", { x3, y2 });
+    CreateButton(ID_BUTTON_CANCEL, "Cancel", { x3, y2 }, 45);
 
-    CreateButton(ID_BUTTON_UP, "Up", { x2, y1 });
+    CreateButton(ID_BUTTON_UP, "Up", { x2, y1 }, 45);
 
-    CreateButton(ID_BUTTON_DOWN, "Down", { x2, y3 });
+    CreateButton(ID_BUTTON_DOWN, "Down", { x2, y3 }, 45);
+
+    pchar names[Source::Count] =
+    {
+        "Звонок",
+        "Мобильный",
+        "Телефон",
+        "Домофон",
+        "Датчик"
+    };
+
+    for (int i = 0; i < 5; i++)
+    {
+        CreateButton(ID_BUTTON_SIGNAL_1 + i, names[i], { 440, 5 + i * 30 }, 90);
+    }
 
     TransmitterDialog::Create(this);
 
@@ -114,14 +132,15 @@ Frame::Frame(const wxString &title)
 }
 
 
-void Frame::CreateButton(int id, pchar title, const wxPoint &coord)
+void Frame::CreateButton(int id, pchar title, const wxPoint &coord, int width)
 {
-    const wxSize SIZE_BUTTON = { 65, 25 };
+    const wxSize SIZE_BUTTON = { width, 25 };
 
     wxButton *button = new wxButton(this, id, title, coord , SIZE_BUTTON);
 
     button->Connect(id, wxEVT_LEFT_DOWN, wxCommandEventHandler(Frame::OnButtonDownEvent));
     button->Connect(id, wxEVT_LEFT_UP, wxCommandEventHandler(Frame::OnButtonUpEvent));
+    button->Connect(id, wxEVT_BUTTON, wxCommandEventHandler(Frame::OnButtonEvent));
 }
 
 
@@ -159,6 +178,14 @@ void Frame::OnTimer(wxTimerEvent &)
 }
 
 
+void Frame::OnButtonEvent(wxCommandEvent &event)
+{
+    EmuRecv::EmulateSignal((Source::E)(event.GetId() - ID_BUTTON_SIGNAL_1));
+
+    event.Skip();
+}
+
+
 void Frame::OnButtonDownEvent(wxCommandEvent &event)
 {
     int id = event.GetId();
@@ -167,24 +194,33 @@ void Frame::OnButtonDownEvent(wxCommandEvent &event)
 
     action.type = ActionType::Down;
 
+    bool execute = false;
+
     if (id == ID_BUTTON_MENU)
     {
         action.key = Key::Menu;
+        execute = true;
     }
     else if (id == ID_BUTTON_CANCEL)
     {
         action.key = Key::Cancel;
+        execute = true;
     }
     else if (id == ID_BUTTON_UP)
     {
         action.key = Key::Up;
+        execute = true;
     }
     else if (id == ID_BUTTON_DOWN)
     {
         action.key = Key::Down;
+        execute = true;
     }
 
-    Keyboard::AppendAction(action);
+    if (execute)
+    {
+        Keyboard::AppendAction(action);
+    }
 
     event.Skip();
 }
@@ -198,24 +234,33 @@ void Frame::OnButtonUpEvent(wxCommandEvent &event)
 
     action.type = ActionType::Up;
 
+    bool execute = false;
+
     if (id == ID_BUTTON_MENU)
     {
         action.key = Key::Menu;
+        execute = true;
     }
     else if (id == ID_BUTTON_CANCEL)
     {
         action.key = Key::Cancel;
+        execute = true;
     }
     else if (id == ID_BUTTON_UP)
     {
         action.key = Key::Up;
+        execute = true;
     }
     else if (id == ID_BUTTON_DOWN)
     {
         action.key = Key::Down;
+        execute = true;
     }
 
-    Keyboard::AppendAction(action);
+    if (execute)
+    {
+        Keyboard::AppendAction(action);
+    }
 
     event.Skip();
 }

@@ -6,14 +6,6 @@
 #ifdef GUI
     #define WIN32_LEAN_AND_MEAN
     #include "wx/wx.h"
-
-enum
-{
-    ID_BUTTON_MENU = wxID_HIGHEST + 1,
-    ID_BUTTON_CANCEL,
-    ID_BUTTON_UP,
-    ID_BUTTON_DOWN
-};
 #endif
 
 
