@@ -29,8 +29,6 @@ private:
 
     void CreateMenu();
 
-    void OnMenuOpenTransmitter(wxCommandEvent &);
-
     void OnCloseWindow(wxCloseEvent &);
 
     void CreateButton(int, pchar title, const wxPoint &, int width);

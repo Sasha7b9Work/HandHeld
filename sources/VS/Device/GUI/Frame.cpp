@@ -7,7 +7,6 @@
 #include "Menu/Menu.h"
 #include "wx/statline.h"
 #include "Keyboard/Keyboard.h"
-#include "GUI/Dialogs/TransmitterDialog.h"
 #include "Settings/Source.h"
 #include "Modules/CMT2210AW/EmulatorReceiver.h"
 
@@ -124,8 +123,6 @@ Frame::Frame(const wxString &title)
         CreateButton(ID_BUTTON_SIGNAL_1 + i, names[i], { 440, 5 + i * 30 }, 90);
     }
 
-    TransmitterDialog::Create(this);
-
     Bind(wxEVT_CLOSE_WINDOW, &Frame::OnCloseWindow, this);
 
     timer.StartOnce(25);
@@ -150,21 +147,9 @@ void Frame::CreateMenu()
 
     wxMenu *menuFile = new wxMenu;
 
-    menuFile->Append(PANEL_TRANSMITTER, _("Передатчик"), _("Открыть настройки передатчика"));
-
     menuBar->Append(menuFile, _("Файл"));
 
-    Bind(wxEVT_MENU, &Frame::OnMenuOpenTransmitter, this, PANEL_TRANSMITTER);
-
     wxFrameBase::SetMenuBar(menuBar);
-}
-
-
-void Frame::OnMenuOpenTransmitter(wxCommandEvent &event)
-{
-    TransmitterDialog::self->Show();
-
-    event.Skip();
 }
 
 
@@ -336,7 +321,5 @@ void ST7735::WriteBuffer(int y0)
 
 void Frame::OnCloseWindow(wxCloseEvent &event)
 {
-    TransmitterDialog::self->Delete();
-
     event.Skip();
 }
