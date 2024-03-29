@@ -46,8 +46,8 @@ static wxColour ConvertColor(Color::E e)
 class Screen : public Painter
 {
 public:
-    Screen(wxWindow *parent, int width, int height, int scale) :
-        Painter(parent, width, height, scale)
+    Screen(wxWindow *parent) :
+        Painter(parent, Display::WIDTH, Display::HEIGHT, IMAGE_SCALE)
     {
     }
 
@@ -110,7 +110,7 @@ Frame::Frame(const wxString &title)
 
     CreateMenu();
 
-    screen = new Screen(this, Display::WIDTH, Display::HEIGHT, IMAGE_SCALE);
+    screen = new Screen(this);
 
     wxBoxSizer *sizer = new wxBoxSizer(wxHORIZONTAL);
     sizer->Add(screen);
