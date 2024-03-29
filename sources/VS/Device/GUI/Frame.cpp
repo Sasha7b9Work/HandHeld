@@ -18,9 +18,6 @@ namespace Keyboard
 }
 
 
-// Здесь будем рисовать
-static wxMemoryDC memDC;
-
 Frame *Frame::self = nullptr;
 
 enum
@@ -264,7 +261,7 @@ void ST7735::WriteBuffer(int y0)
         ConvertColor((Color::E)9)
     };
 
-    memDC.SelectObject(*screen->GetBitmap());
+    screen->GetMemoryDC().SelectObject(*screen->GetBitmap());
 
     static wxPen pen = *wxWHITE_PEN;
 
@@ -280,15 +277,15 @@ void ST7735::WriteBuffer(int y0)
         {
             pen.SetColour(colors[value]);
 
-            memDC.SetPen(pen);
+            screen->GetMemoryDC().SetPen(pen);
 
-            memDC.DrawPoint(x + 1, y);
+            screen->GetMemoryDC().DrawPoint(x + 1, y);
 
             value = *(++points);
         }
     }
 
-    memDC.SelectObject(wxNullBitmap);
+    screen->GetMemoryDC().SelectObject(wxNullBitmap);
 
     screen->Refresh();
 }
