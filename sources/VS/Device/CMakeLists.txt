@@ -43,7 +43,7 @@ if(WIN32)
 endif()
 
 file(GLOB GUI                                  GUI/*.*)
-file(GLOB GUI_DIALOGS                          GUI/Dialogs/*.*)
+file(GLOB GUI_CONTROLS                         GUI/Controls/*.*)
 file(GLOB SRC                                  *.h *.cpp
                                   ../../Device/src/Device.*
                                   ../../Device/src/*.h)
@@ -74,7 +74,7 @@ file(GLOB STORAGE                 ../../Device/src/Storage/*.*)
 file(GLOB UTILS                   ../../Device/src/Utils/*.*)
 
 source_group(GUI                  FILES ${GUI})
-source_group(GUI/Dialogs          FILES ${GUI_DIALOGS})
+source_group(GUI/Controls         FILES ${GUI_CONTROLS})
 source_group(src                  FILES ${SRC})
 source_group(Display              FILES ${DISPLAY})
 source_group(Display/Font         FILES ${DISPLAY_FONT})
@@ -95,7 +95,7 @@ source_group(Utils                FILES ${UTILS})
 
 add_executable(${PROJECT_NAME}
     ${GUI}
-    ${GUI_DIALOGS}
+    ${GUI_CONTROLS}
     ${SRC}
     ${DISPLAY}
     ${DISPLAY_FONT}

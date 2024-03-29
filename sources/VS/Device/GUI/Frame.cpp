@@ -9,6 +9,7 @@
 #include "Keyboard/Keyboard.h"
 #include "Settings/Source.h"
 #include "Modules/CMT2210AW/EmulatorReceiver.h"
+#include "GUI/Controls/Screen.h"
 
 
 namespace Keyboard
@@ -17,41 +18,15 @@ namespace Keyboard
 }
 
 
-
-// Здесь нарисованная картинка
-static wxBitmap bitmap(Display::WIDTH, Display::HEIGHT);
-
 // Здесь будем рисовать
 static wxMemoryDC memDC;
 
 Frame *Frame::self = nullptr;
 
-static const int IMAGE_SCALE = 2;
-
 enum
 {
     TIMER_ID = 111,
     TIMER_BUTTON_ID
-};
-
-class Screen : public wxPanel
-{
-public:
-    Screen(wxWindow *parent) : wxPanel(parent)
-    {
-        SetMinSize({ Display::WIDTH * IMAGE_SCALE, Display::HEIGHT * IMAGE_SCALE });
-        SetDoubleBuffered(true);
-        Bind(wxEVT_PAINT, &Screen::OnPaint, this);
-    }
-
-    void OnPaint(wxPaintEvent &)
-    {
-        wxPaintDC dc(this);
-
-        wxImage image = bitmap.ConvertToImage().Rescale(Display::WIDTH * IMAGE_SCALE, Display::HEIGHT * IMAGE_SCALE);
-
-        dc.DrawBitmap(wxBitmap(image), 0, 0);
-    }
 };
 
 
@@ -289,7 +264,7 @@ void ST7735::WriteBuffer(int y0)
         ConvertColor((Color::E)9)
     };
 
-    memDC.SelectObject(bitmap);
+    memDC.SelectObject(*screen->GetBitmap());
 
     static wxPen pen = *wxWHITE_PEN;
 

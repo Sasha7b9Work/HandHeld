@@ -2,6 +2,7 @@
 #pragma once
 #include "defines.h"
 
+
 enum
 {
     ID_BUTTON_SIGNAL_1 = wxID_HIGHEST + 1,
@@ -14,3 +15,5 @@ enum
     ID_BUTTON_DOWN,
     ID_BUTTON_MENU
 };
+
+static const int IMAGE_SCALE = 2;
