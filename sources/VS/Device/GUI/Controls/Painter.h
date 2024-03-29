@@ -14,17 +14,13 @@ public:
 
 protected:
 
-    wxBitmap *GetBitmap() { return bitmap; }
-
-    wxMemoryDC &GetMemoryDC() { return memDC; }
-
-private:
-
     // Здесь нарисованная картинка
     wxBitmap *bitmap = nullptr;
 
     // Здесь будем рисовать
     wxMemoryDC memDC;
+
+private:
 
     const int width;
     const int height;

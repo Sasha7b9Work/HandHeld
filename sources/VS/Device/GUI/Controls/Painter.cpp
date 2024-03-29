@@ -9,6 +9,7 @@ Painter::Painter(wxWindow *parent, int _width, int _height, int _scale) :
     bitmap = new wxBitmap(width, height);
 
     SetMinSize({ width * scale, height * scale });
+    SetSize({ width * scale, height * scale });
     SetDoubleBuffered(true);
     Bind(wxEVT_PAINT, &Painter::OnPaint, this);
 }
@@ -19,6 +20,8 @@ void Painter::OnPaint(wxPaintEvent &)
     wxPaintDC dc(this);
 
     wxImage image = bitmap->ConvertToImage().Rescale(width * scale, height * scale);
+
+//    wxImage image = bitmap->ConvertToImage();
 
     dc.DrawBitmap(wxBitmap(image), 0, 0);
 }

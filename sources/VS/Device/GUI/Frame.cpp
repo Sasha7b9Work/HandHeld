@@ -10,6 +10,7 @@
 #include "Settings/Source.h"
 #include "Modules/CMT2210AW/EmulatorReceiver.h"
 #include "GUI/Controls/Painter.h"
+#include "GUI/Controls/PainterMelody.h"
 
 
 namespace Keyboard
@@ -67,7 +68,7 @@ public:
             ConvertColor((Color::E)9)
         };
 
-        GetMemoryDC().SelectObject(*GetBitmap());
+        memDC.SelectObject(*bitmap);
 
         static wxPen pen = *wxWHITE_PEN;
 
@@ -83,15 +84,15 @@ public:
             {
                 pen.SetColour(colors[value]);
 
-                GetMemoryDC().SetPen(pen);
+                memDC.SetPen(pen);
 
-                GetMemoryDC().DrawPoint(x + 1, y);
+                memDC.DrawPoint(x + 1, y);
 
                 value = *(++points);
             }
         }
 
-        GetMemoryDC().SelectObject(wxNullBitmap);
+        memDC.SelectObject(wxNullBitmap);
 
         Refresh();
     }
@@ -167,6 +168,10 @@ Frame::Frame(const wxString &title)
     }
 
     Bind(wxEVT_CLOSE_WINDOW, &Frame::OnCloseWindow, this);
+
+    PainterMelody::Create(this, 30, 30);
+
+    PainterMelody::self->SetPosition({ 550, 10 });
 
     timer.StartOnce(25);
 }
