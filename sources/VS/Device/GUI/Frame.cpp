@@ -27,7 +27,78 @@ enum
 };
 
 
-static Painter *screen = nullptr;
+static wxColour ConvertColor(Color::E e)
+{
+    uint16 value = Color::colors[e];
+
+    float b = (float)BLUE_FROM_COLOR(value);
+    float g = (float)GREEN_FROM_COLOR(value);
+    float r = (float)RED_FROM_COLOR(value);
+
+    uint8 blue = (uint8)((b / 31.0f) * 255);
+    uint8 green = (uint8)((g / 63.0f) * 255);
+    uint8 red = (uint8)((r / 31.0f) * 255);
+
+    return wxColour(red, green, blue);
+}
+
+
+class Screen : public Painter
+{
+public:
+    Screen(wxWindow *parent, int width, int height, int scale) :
+        Painter(parent, width, height, scale)
+    {
+    }
+
+    void WriteBuffer(int y0)
+    {
+        static const wxColour colors[Color::Count] =
+        {
+            ConvertColor((Color::E)0),
+            ConvertColor((Color::E)1),
+            ConvertColor((Color::E)2),
+            ConvertColor((Color::E)3),
+            ConvertColor((Color::E)4),
+            ConvertColor((Color::E)5),
+            ConvertColor((Color::E)6),
+            ConvertColor((Color::E)7),
+            ConvertColor((Color::E)8),
+            ConvertColor((Color::E)9)
+        };
+
+        GetMemoryDC().SelectObject(*GetBitmap());
+
+        static wxPen pen = *wxWHITE_PEN;
+
+        int line = 0;
+
+        for (int y = y0; y < y0 + Display::HEIGHT / Display::NUMBER_PARTS_HEIGHT; y++)
+        {
+            uint8 *points = Display::Buffer::GetLine(line++);
+
+            uint8 value = *points;
+
+            for (int x = 0; x < Display::WIDTH; x++)
+            {
+                pen.SetColour(colors[value]);
+
+                GetMemoryDC().SetPen(pen);
+
+                GetMemoryDC().DrawPoint(x + 1, y);
+
+                value = *(++points);
+            }
+        }
+
+        GetMemoryDC().SelectObject(wxNullBitmap);
+
+        Refresh();
+    }
+};
+
+
+static Screen *screen = nullptr;
 
 
 Frame::Frame(const wxString &title)
@@ -39,7 +110,7 @@ Frame::Frame(const wxString &title)
 
     CreateMenu();
 
-    screen = new Painter(this, Display::WIDTH, Display::HEIGHT, IMAGE_SCALE);
+    screen = new Screen(this, Display::WIDTH, Display::HEIGHT, IMAGE_SCALE);
 
     wxBoxSizer *sizer = new wxBoxSizer(wxHORIZONTAL);
     sizer->Add(screen);
@@ -223,22 +294,6 @@ void Frame::OnButtonUpEvent(wxCommandEvent &event)
 }
 
 
-static wxColour ConvertColor(Color::E e)
-{
-    uint16 value = Color::colors[e];
-
-    float b = (float)BLUE_FROM_COLOR(value);
-    float g = (float)GREEN_FROM_COLOR(value);
-    float r = (float)RED_FROM_COLOR(value);
-
-    uint8 blue  = (uint8)((b / 31.0f) * 255);
-    uint8 green = (uint8)((g / 63.0f) * 255);
-    uint8 red   = (uint8)((r / 31.0f) * 255);
-
-    return wxColour(red, green, blue);
-}
-
-
 void ST7735::Init()
 {
 
@@ -247,47 +302,7 @@ void ST7735::Init()
 
 void ST7735::WriteBuffer(int y0)
 {
-    static const wxColour colors[Color::Count] =
-    {
-        ConvertColor((Color::E)0),
-        ConvertColor((Color::E)1),
-        ConvertColor((Color::E)2),
-        ConvertColor((Color::E)3),
-        ConvertColor((Color::E)4),
-        ConvertColor((Color::E)5),
-        ConvertColor((Color::E)6),
-        ConvertColor((Color::E)7),
-        ConvertColor((Color::E)8),
-        ConvertColor((Color::E)9)
-    };
-
-    screen->GetMemoryDC().SelectObject(*screen->GetBitmap());
-
-    static wxPen pen = *wxWHITE_PEN;
-
-    int line = 0;
-
-    for (int y = y0; y < y0 + Display::HEIGHT / Display::NUMBER_PARTS_HEIGHT; y++)
-    {
-        uint8 *points = Display::Buffer::GetLine(line++);
-
-        uint8 value = *points;
-
-        for (int x = 0; x < Display::WIDTH; x++)
-        {
-            pen.SetColour(colors[value]);
-
-            screen->GetMemoryDC().SetPen(pen);
-
-            screen->GetMemoryDC().DrawPoint(x + 1, y);
-
-            value = *(++points);
-        }
-    }
-
-    screen->GetMemoryDC().SelectObject(wxNullBitmap);
-
-    screen->Refresh();
+    screen->WriteBuffer(y0);
 }
 
 

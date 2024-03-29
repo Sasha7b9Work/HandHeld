@@ -12,6 +12,8 @@ public:
 
     void OnPaint(wxPaintEvent &);
 
+protected:
+
     wxBitmap *GetBitmap() { return bitmap; }
 
     wxMemoryDC &GetMemoryDC() { return memDC; }
