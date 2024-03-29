@@ -6,7 +6,7 @@
 class Screen : public wxPanel
 {
 public:
-    Screen(wxWindow *parent);
+    Screen(wxWindow *parent, int width, int height, int scale);
 
     ~Screen() { delete bitmap; }
 
@@ -23,4 +23,8 @@ private:
 
     // Здесь будем рисовать
     wxMemoryDC memDC;
+
+    const int width;
+    const int height;
+    const int scale;
 };

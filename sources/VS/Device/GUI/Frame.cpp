@@ -39,7 +39,7 @@ Frame::Frame(const wxString &title)
 
     CreateMenu();
 
-    screen = new Screen(this);
+    screen = new Screen(this, Display::WIDTH, Display::HEIGHT, IMAGE_SCALE);
 
     wxBoxSizer *sizer = new wxBoxSizer(wxHORIZONTAL);
     sizer->Add(screen);

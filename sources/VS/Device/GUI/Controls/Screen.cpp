@@ -3,11 +3,12 @@
 #include "GUI/Controls/Screen.h"
 
 
-Screen::Screen(wxWindow *parent) : wxPanel(parent)
+Screen::Screen(wxWindow *parent, int _width, int _height, int _scale) :
+    wxPanel(parent), width(_width), height(_height), scale(_scale)
 {
-    bitmap = new wxBitmap(Display::WIDTH, Display::HEIGHT);
+    bitmap = new wxBitmap(width, height);
 
-    SetMinSize({ Display::WIDTH * IMAGE_SCALE, Display::HEIGHT * IMAGE_SCALE });
+    SetMinSize({ width * scale, height * scale });
     SetDoubleBuffered(true);
     Bind(wxEVT_PAINT, &Screen::OnPaint, this);
 }
@@ -17,7 +18,7 @@ void Screen::OnPaint(wxPaintEvent &)
 {
     wxPaintDC dc(this);
 
-    wxImage image = bitmap->ConvertToImage().Rescale(Display::WIDTH * IMAGE_SCALE, Display::HEIGHT * IMAGE_SCALE);
+    wxImage image = bitmap->ConvertToImage().Rescale(width * scale, height * scale);
 
     dc.DrawBitmap(wxBitmap(image), 0, 0);
 }
