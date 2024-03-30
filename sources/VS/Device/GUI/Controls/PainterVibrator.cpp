@@ -30,6 +30,11 @@ void PainterVibrator::SetDisabled()
 
 void PainterVibrator::Update()
 {
+    if (!enabled)
+    {
+        return;
+    }
+
     BeginScene();
 
     memDC.SetBrush(*wxBLACK_BRUSH);

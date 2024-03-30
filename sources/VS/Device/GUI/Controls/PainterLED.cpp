@@ -9,8 +9,6 @@ PainterLED *PainterLED::self = nullptr;
 void PainterLED::Create(wxWindow *parent, const wxSize &_size)
 {
     self = new PainterLED(parent, _size);
-
-    self->SetEnabled();
 }
 
 
