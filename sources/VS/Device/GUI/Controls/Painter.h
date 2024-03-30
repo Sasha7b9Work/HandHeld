@@ -6,7 +6,7 @@
 class Painter : public wxPanel
 {
 public:
-    Painter(wxWindow *parent, int width, int height, int scale);
+    Painter(wxWindow *parent, const wxSize &, int scale);
 
     ~Painter() { delete bitmap; }
 
@@ -22,7 +22,6 @@ protected:
 
 private:
 
-    const int width;
-    const int height;
+    const wxSize size;
     const int scale;
 };

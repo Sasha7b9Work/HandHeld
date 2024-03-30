@@ -6,9 +6,9 @@
 PainterMelody *PainterMelody::self = nullptr;
 
 
-void PainterMelody::Create(wxWindow *parent, int width, int height)
+void PainterMelody::Create(wxWindow *parent, const wxSize &_size)
 {
-    self = new PainterMelody(parent, width, height);
+    self = new PainterMelody(parent, _size);
 }
 
 

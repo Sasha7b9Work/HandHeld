@@ -7,7 +7,7 @@ class PainterLED : public Painter
 {
 public:
 
-    static void Create(wxWindow *parent, int width, int height);
+    static void Create(wxWindow *parent, const wxSize &);
 
     static PainterLED *self;
 
@@ -17,6 +17,6 @@ public:
 
 private:
 
-    PainterLED(wxWindow *parent, int width, int height) :
-        Painter(parent, width, height, 1) { };
+    PainterLED(wxWindow *parent, const wxSize &_size) :
+        Painter(parent, _size, 1) { };
 };

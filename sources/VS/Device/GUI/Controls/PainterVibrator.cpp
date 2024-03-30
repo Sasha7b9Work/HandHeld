@@ -6,9 +6,9 @@
 PainterVibrator *PainterVibrator::self = nullptr;
 
 
-void PainterVibrator::Create(wxWindow *parent, int width, int height)
+void PainterVibrator::Create(wxWindow *parent, const wxSize &_size)
 {
-    self = new PainterVibrator(parent, width, height);
+    self = new PainterVibrator(parent, _size);
 }
 
 

@@ -7,7 +7,7 @@ class PainterVibrator : public Painter
 {
 public:
 
-    static void Create(wxWindow *parent, int width, int height);
+    static void Create(wxWindow *parent, const wxSize &);
 
     static PainterVibrator *self;
 
@@ -17,6 +17,6 @@ public:
 
 private:
 
-    PainterVibrator(wxWindow *parent, int width, int height) :
-        Painter(parent, width, height, 1) { };
+    PainterVibrator(wxWindow *parent, const wxSize &_size) :
+        Painter(parent, _size, 1) { };
 };

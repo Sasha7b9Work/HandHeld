@@ -3,13 +3,13 @@
 #include "GUI/Controls/Painter.h"
 
 
-Painter::Painter(wxWindow *parent, int _width, int _height, int _scale) :
-    wxPanel(parent), width(_width), height(_height), scale(_scale)
+Painter::Painter(wxWindow *parent, const wxSize &_size, int _scale) :
+    wxPanel(parent), size(_size), scale(_scale)
 {
-    bitmap = new wxBitmap(width, height);
+    bitmap = new wxBitmap(size);
 
-    SetMinSize({ width * scale, height * scale });
-    SetSize({ width * scale, height * scale });
+    SetMinSize(size * scale);
+    SetSize(size * scale);
     SetDoubleBuffered(true);
     Bind(wxEVT_PAINT, &Painter::OnPaint, this);
 }
@@ -19,7 +19,7 @@ void Painter::OnPaint(wxPaintEvent &)
 {
     wxPaintDC dc(this);
 
-    wxImage image = bitmap->ConvertToImage().Rescale(width * scale, height * scale);
+    wxImage image = bitmap->ConvertToImage().Rescale(size.x * scale, size.y * scale);
 
 //    wxImage image = bitmap->ConvertToImage();
 

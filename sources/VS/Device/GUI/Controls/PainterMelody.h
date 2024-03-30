@@ -7,7 +7,7 @@ class PainterMelody : public Painter
 {
 public:
 
-    static void Create(wxWindow *parent, int width, int height);
+    static void Create(wxWindow *parent, const wxSize &_size);
 
     static PainterMelody *self;
 
@@ -17,6 +17,6 @@ public:
 
 private:
 
-    PainterMelody(wxWindow *parent, int width, int height) :
-        Painter(parent, width, height, 1) { };
+    PainterMelody(wxWindow *parent, const wxSize &_size) :
+        Painter(parent, _size, 1) { };
 };

@@ -11,6 +11,8 @@
 #include "Modules/CMT2210AW/EmulatorReceiver.h"
 #include "GUI/Controls/Painter.h"
 #include "GUI/Controls/PainterMelody.h"
+#include "GUI/Controls/PainterLED.h"
+#include "GUI/Controls/PainterVibrator.h"
 
 
 namespace Keyboard
@@ -48,7 +50,7 @@ class Screen : public Painter
 {
 public:
     Screen(wxWindow *parent) :
-        Painter(parent, Display::WIDTH, Display::HEIGHT, IMAGE_SCALE)
+        Painter(parent, { Display::WIDTH, Display::HEIGHT }, IMAGE_SCALE)
     {
     }
 
@@ -169,9 +171,21 @@ Frame::Frame(const wxString &title)
 
     Bind(wxEVT_CLOSE_WINDOW, &Frame::OnCloseWindow, this);
 
-    PainterMelody::Create(this, 30, 30);
+    x = 550;
 
-    PainterMelody::self->SetPosition({ 550, 10 });
+    wxSize size(30, 30);
+
+    PainterMelody::Create(this, size);
+
+    PainterMelody::self->SetPosition({ x, 10 });
+
+    PainterLED::Create(this, size);
+
+    PainterLED::self->SetPosition({ x, 50 });
+
+    PainterVibrator::Create(this, size);
+
+    PainterVibrator::self->SetPosition({ x, 90 });
 
     timer.StartOnce(25);
 }

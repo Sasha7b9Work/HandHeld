@@ -6,9 +6,9 @@
 PainterLED *PainterLED::self = nullptr;
 
 
-void PainterLED::Create(wxWindow *parent, int width, int height)
+void PainterLED::Create(wxWindow *parent, const wxSize &_size)
 {
-    self = new PainterLED(parent, width, height);
+    self = new PainterLED(parent, _size);
 }
 
 
