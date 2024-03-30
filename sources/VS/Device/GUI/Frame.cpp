@@ -175,17 +175,27 @@ Frame::Frame(const wxString &title)
 
     wxSize size(30, 30);
 
+    wxSize size_label(50, 20);
+
+    const int x_label = 540;
+
+    new wxStaticText(this, wxID_ANY, _("Звук"), { x_label, 0 }, size_label, wxALIGN_CENTRE_HORIZONTAL);
+
     PainterMelody::Create(this, size);
 
-    PainterMelody::self->SetPosition({ x, 10 });
+    PainterMelody::self->SetPosition({ x, 18 });
+
+    new wxStaticText(this, wxID_ANY, _("LED"), { x_label, 50 }, size_label, wxALIGN_CENTRE_HORIZONTAL);
 
     PainterLED::Create(this, size);
 
-    PainterLED::self->SetPosition({ x, 50 });
+    PainterLED::self->SetPosition({ x, 68 });
+
+    new wxStaticText(this, wxID_ANY, _("Вибро"), { x_label, 100 }, size_label, wxALIGN_CENTRE_HORIZONTAL);
 
     PainterVibrator::Create(this, size);
 
-    PainterVibrator::self->SetPosition({ x, 90 });
+    PainterVibrator::self->SetPosition({ x, 120 });
 
     timer.StartOnce(25);
 }
