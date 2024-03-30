@@ -10,7 +10,7 @@ void PainterMelody::Create(wxWindow *parent, const wxSize &_size)
 {
     self = new PainterMelody(parent, _size);
 
-    self->EnableMelody(2);
+    self->EnableMelody(5);
 }
 
 
@@ -20,17 +20,20 @@ void PainterMelody::EnableMelody(int number)
 
     wxPen pen = *wxWHITE_PEN;
 
-    wxBrush brush = *wxBLUE_BRUSH;
+    wxBrush brush = *wxWHITE_BRUSH;
 
-    wxFont font = wxFont(wxFontInfo(8).Family(wxFONTFAMILY_ROMAN));
+    wxFont font = wxFont(wxFontInfo(12).Family(wxFONTFAMILY_ROMAN));
 
     memDC.SetPen(pen);
     memDC.SetBrush(brush);
     memDC.SetFont(font);
 
-    memDC.DrawText("T", 1, 1);
+    memDC.DrawText("T", 1, 20);
 
-    memDC.DrawRectangle(20, 20, 10, 10);
+    for (int i = 0; i < number; i++)
+    {
+        memDC.DrawRectangle(3 + i * 5, 5, 4, 20);
+    }
 
     memDC.SelectObject(wxNullBitmap);
 
