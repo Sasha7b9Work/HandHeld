@@ -11,9 +11,9 @@ public:
 
     static PainterMelody *self;
 
-    void SetEnabled();
+    void EnableMelody(int);
 
-    void SetDisabled();
+    void Disable();
 
 private:
 

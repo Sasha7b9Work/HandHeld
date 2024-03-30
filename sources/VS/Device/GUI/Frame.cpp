@@ -72,7 +72,7 @@ public:
 
         memDC.SelectObject(*bitmap);
 
-        static wxPen pen = *wxWHITE_PEN;
+        wxPen pen = *wxWHITE_PEN;
 
         int line = 0;
 
