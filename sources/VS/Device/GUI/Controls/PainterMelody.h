@@ -15,8 +15,12 @@ public:
 
     void Disable();
 
+    virtual void Update() override;
+
 private:
 
     PainterMelody(wxWindow *parent, const wxSize &_size) :
         Painter(parent, _size, 1) { };
+
+    int melody = -1;
 };
