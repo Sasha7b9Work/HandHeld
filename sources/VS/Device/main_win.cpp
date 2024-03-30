@@ -6,6 +6,9 @@
 #include "Device.h"
 #include "Hardware/Timer.h"
 #include "Modules/CMT2210AW/CMT2210AW.h"
+#include "GUI/Controls/PainterLED.h"
+#include "GUI/Controls/PainterMelody.h"
+#include "GUI/Controls/PainterVibrator.h"
 
 
 void Application::Init()
@@ -19,4 +22,10 @@ void Application::Update()
     Device::Update();
 
     CMT2210AW::CallbackOnBit();
+
+    PainterLED::self->Update();
+
+    PainterMelody::self->Update();
+
+    PainterVibrator::self->Update();
 }

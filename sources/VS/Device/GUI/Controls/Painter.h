@@ -12,6 +12,8 @@ public:
 
     void OnPaint(wxPaintEvent &);
 
+    virtual void Update() { };
+
 protected:
 
     // Здесь нарисованная картинка
