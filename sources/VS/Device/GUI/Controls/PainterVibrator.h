@@ -15,8 +15,14 @@ public:
 
     void SetDisabled();
 
+    virtual void Update() override;
+
 private:
 
     PainterVibrator(wxWindow *parent, const wxSize &_size) :
         Painter(parent, _size, 1) { };
+
+    bool enabled = false;
+
+    int radius = 0;
 };

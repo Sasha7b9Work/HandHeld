@@ -14,11 +14,35 @@ void PainterVibrator::Create(wxWindow *parent, const wxSize &_size)
 
 void PainterVibrator::SetEnabled()
 {
+    enabled = true;
 
+    radius = 0;
 }
 
 
 void PainterVibrator::SetDisabled()
 {
+    enabled = false;
+}
 
+
+void PainterVibrator::Update()
+{
+    BeginScene();
+
+    memDC.SetBrush(*wxBLACK_BRUSH);
+
+    memDC.Clear();
+
+    memDC.SetBrush(*wxYELLOW_BRUSH);
+    memDC.SetPen(*wxYELLOW_PEN);
+
+    memDC.DrawCircle(15, 15, radius++);
+
+    if (radius == 15)
+    {
+        radius = 0;
+    }
+
+    EndScene();
 }
