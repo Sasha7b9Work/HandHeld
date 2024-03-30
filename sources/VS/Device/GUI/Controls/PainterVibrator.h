@@ -24,5 +24,8 @@ private:
 
     bool enabled = false;
 
-    int radius = 0;
+    int radius = min;
+    int delta = 1;
+    static const int min = 8;
+    static const int max = 10;
 };

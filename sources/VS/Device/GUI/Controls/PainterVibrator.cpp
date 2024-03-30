@@ -16,7 +16,9 @@ void PainterVibrator::SetEnabled()
 {
     enabled = true;
 
-    radius = 0;
+    radius = min;
+
+    delta = 1;
 }
 
 
@@ -37,11 +39,13 @@ void PainterVibrator::Update()
     memDC.SetBrush(*wxYELLOW_BRUSH);
     memDC.SetPen(*wxYELLOW_PEN);
 
-    memDC.DrawCircle(15, 15, radius++);
+    memDC.DrawCircle(15, 15, radius);
 
-    if (radius == 15)
+    radius += delta;
+
+    if (radius > max || radius < min)
     {
-        radius = 0;
+        delta = -delta;
     }
 
     EndScene();
