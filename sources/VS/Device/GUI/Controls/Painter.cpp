@@ -25,3 +25,17 @@ void Painter::OnPaint(wxPaintEvent &)
 
     dc.DrawBitmap(wxBitmap(image), 0, 0);
 }
+
+
+void Painter::BeginScene()
+{
+    memDC.SelectObject(*bitmap);
+}
+
+
+void Painter::EndScene()
+{
+    memDC.SelectObject(wxNullBitmap);
+
+    Refresh();
+}

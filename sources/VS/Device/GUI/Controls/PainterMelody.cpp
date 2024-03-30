@@ -16,7 +16,7 @@ void PainterMelody::Create(wxWindow *parent, const wxSize &_size)
 
 void PainterMelody::EnableMelody(int number)
 {
-    memDC.SelectObject(*bitmap);
+    BeginScene();
 
     wxPen pen = *wxWHITE_PEN;
 
@@ -35,9 +35,7 @@ void PainterMelody::EnableMelody(int number)
         memDC.DrawRectangle(3 + i * 5, 5, 4, 20);
     }
 
-    memDC.SelectObject(wxNullBitmap);
-
-    Refresh();
+    EndScene();
 }
 
 

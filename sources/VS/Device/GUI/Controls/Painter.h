@@ -20,6 +20,10 @@ protected:
     // Здесь будем рисовать
     wxMemoryDC memDC;
 
+    void BeginScene();
+
+    void EndScene();
+
 private:
 
     const wxSize size;

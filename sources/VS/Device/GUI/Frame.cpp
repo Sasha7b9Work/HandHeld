@@ -70,7 +70,7 @@ public:
             ConvertColor((Color::E)9)
         };
 
-        memDC.SelectObject(*bitmap);
+        BeginScene();
 
         wxPen pen = *wxWHITE_PEN;
 
@@ -94,9 +94,7 @@ public:
             }
         }
 
-        memDC.SelectObject(wxNullBitmap);
-
-        Refresh();
+        EndScene();
     }
 };
 
