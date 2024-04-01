@@ -56,4 +56,6 @@ void Device::Update()
     Beeper::Update();
 
     LED::Update();
+
+    Beeper::Update();
 }

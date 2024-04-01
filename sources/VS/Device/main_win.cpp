@@ -23,7 +23,5 @@ void Application::Update()
 
     CMT2210AW::CallbackOnBit();
 
-    PainterMelody::self->Update();
-
     PainterVibrator::self->Update();
 }

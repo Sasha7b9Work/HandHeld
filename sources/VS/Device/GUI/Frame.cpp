@@ -10,7 +10,6 @@
 #include "Settings/Source.h"
 #include "Modules/CMT2210AW/EmulatorReceiver.h"
 #include "GUI/Controls/Painter.h"
-#include "GUI/Controls/PainterMelody.h"
 #include "GUI/Controls/PainterVibrator.h"
 
 
