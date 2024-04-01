@@ -13,7 +13,7 @@ public:
 
     void EnableMelody(int);
 
-    void Disable();
+    void DisableMelody();
 
     virtual void Update() override;
 

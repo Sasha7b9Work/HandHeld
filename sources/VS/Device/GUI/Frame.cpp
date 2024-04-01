@@ -175,10 +175,6 @@ Frame::Frame(const wxString &title)
 
     new wxStaticText(this, wxID_ANY, _("Звук"), { x_label, 0 }, size_label, wxALIGN_CENTRE_HORIZONTAL);
 
-    PainterMelody::Create(this, Painter::size_indicator);
-
-    PainterMelody::self->SetPosition({ x, 18 });
-
     new wxStaticText(this, wxID_ANY, _("LED"), { x_label, 50 }, size_label, wxALIGN_CENTRE_HORIZONTAL);
 
     new wxStaticText(this, wxID_ANY, _("Вибро"), { x_label, 100 }, size_label, wxALIGN_CENTRE_HORIZONTAL);

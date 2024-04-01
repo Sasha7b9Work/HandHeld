@@ -8,6 +8,8 @@ namespace Beeper
     {
         void Init();
 
+        void Update();
+
         void StartFrequency(float frequency);
 
         void Stop();

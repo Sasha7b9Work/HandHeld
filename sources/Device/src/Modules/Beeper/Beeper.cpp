@@ -143,5 +143,5 @@ void Beeper::CallbackOnTimer()
 
 void Beeper::Update()
 {
-
+    Beeper::Driver::Update();
 }

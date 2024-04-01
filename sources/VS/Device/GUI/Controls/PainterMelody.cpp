@@ -18,7 +18,7 @@ void PainterMelody::EnableMelody(int number)
 }
 
 
-void PainterMelody::Disable()
+void PainterMelody::DisableMelody()
 {
     melody = -1;
 }
