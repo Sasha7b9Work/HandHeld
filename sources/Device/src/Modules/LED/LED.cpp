@@ -1,7 +1,7 @@
 // 2024/03/20 08:59:33 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
-#include "Hardware/LED.h"
 #include "Hardware/Timer.h"
+#include "Modules/LED/LED.h"
 #include <gd32e23x.h>
 
 

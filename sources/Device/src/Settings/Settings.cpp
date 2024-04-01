@@ -4,7 +4,6 @@
 #include "Display/Display.h"
 #include "Hardware/Timer.h"
 #include "Player/Player.h"
-#include "Hardware/LED.h"
 #include "Hardware/Vibrato.h"
 #include "Display/Icons.h"
 #include <cstdlib>

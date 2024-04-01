@@ -5,8 +5,8 @@
 #include "Hardware/Timer.h"
 #include "Player/Player.h"
 #include "Hardware/Vibrato.h"
-#include "Hardware/LED.h"
 #include "Storage/Storage.h"
+#include "Modules/LED/LED.h"
 #include <cstring>
 
 

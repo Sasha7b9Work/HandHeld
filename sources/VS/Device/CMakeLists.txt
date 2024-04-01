@@ -2,7 +2,7 @@
 
 project (Device)
 
-set(CMAKE_UNITY_BUILD OFF)
+#set(CMAKE_UNITY_BUILD OFF)
 
 set(CMAKE_UNITY_BUILD_BATCH_SIZE 16)
 
@@ -53,7 +53,6 @@ file(GLOB HARDWARE                ../../Device/src/Hardware/Beeper.h
                                   ../../Device/src/Hardware/Battery.*
                                   ../../Device/src/Hardware/Watch.*
                                   ../../Device/src/Hardware/Timer.h
-                                  ../../Device/src/Hardware/LED.h
                                                    Hardware/*.*)
 file(GLOB HARDWARE_HAL            ../../Device/src/Hardware/HAL/HAL.h
                                                    Hardware/HAL/*.*)
@@ -61,6 +60,8 @@ file(GLOB KEYBOARD                ../../Device/src/Keyboard/Keyboard.h
                                                    Keyboard/*.*)
 file(GLOB MODULES_CMT2210AW       ../../Device/src/Modules/CMT2210AW/*.*
                                                    Modules/CMT2210AW/*.*)
+file(GLOB MODULES_LED             ../../Deivce/src/Modules/LED/LED.*
+                                                   Modules/LED/*.*)
 file(GLOB MODULES_PCF8563         ../../Device/src/Modules/PCF8563/PCF8563.*
                                                    Modules/PCF8563/*.*)
 file(GLOB MODULES_ST7735          ../../Device/src/Modules/ST7735/*.h)
@@ -83,6 +84,7 @@ source_group(Hardware             FILES ${HARDWARE})
 source_group(Hardware/HAL         FILES ${HARDWARE_HAL})
 source_group(Keyboard             FILES ${KEYBOARD})
 source_group(Modules/CMT2210AW    FILES ${MODULES_CMT2210AW})
+source_group(Modules/LED          FILES ${MODULES_LED})
 source_group(Modules/PCF8563      FILES ${MODULES_PCF8563})
 source_group(Modules/ST7735       FILES ${MODULES_ST7735})
 source_group(Menu                 FILES ${MENU})
@@ -104,6 +106,7 @@ add_executable(${PROJECT_NAME}
     ${HARDWARE_HAL}
     ${KEYBOARD}
     ${MODULES_CMT2210AW}
+    ${MODULES_LED}
     ${MODULES_PCF8563}
     ${MODULES_ST7735}
     ${MENU}

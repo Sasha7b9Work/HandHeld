@@ -2,9 +2,9 @@
 #include "defines.h"
 #include "Hardware/HAL/HAL.h"
 #include "Hardware/Timer.h"
-#include "Hardware/LED.h"
 #include "Hardware/Vibrato.h"
 #include "Player/Player.h"
+#include "Modules/LED/LED.h"
 #include <gd32e23x.h>
 
 

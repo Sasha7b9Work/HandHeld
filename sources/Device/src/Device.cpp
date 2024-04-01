@@ -10,9 +10,9 @@
 #include "Player/Player.h"
 #include "Hardware/Timer.h"
 #include "Settings/Settings.h"
-#include "Hardware/LED.h"
 #include "Hardware/Vibrato.h"
 #include "Storage/Storage.h"
+#include "Modules/LED/LED.h"
 
 
 void Device::Init()
