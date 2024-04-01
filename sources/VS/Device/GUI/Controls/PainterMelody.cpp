@@ -21,6 +21,14 @@ void PainterMelody::EnableMelody(int number)
 void PainterMelody::DisableMelody()
 {
     melody = -1;
+
+    BeginScene();
+
+    memDC.SetBrush(*wxBLACK_BRUSH);
+
+    memDC.Clear();
+
+    EndScene();
 }
 
 

@@ -67,7 +67,15 @@ void Beeper::Play(TypeSound::E type, uint8 /*volume*/)
 {
     is_running = true;
 
+#ifdef GUI
+
+
+
+#else
+
     Sound::Start(type);
+
+#endif
 }
 
 
