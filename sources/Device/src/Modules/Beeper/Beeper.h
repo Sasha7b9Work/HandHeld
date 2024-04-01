@@ -21,7 +21,7 @@ struct TypeSound
 };
 
 
-namespace Player
+namespace Beeper
 {
     void Init();
 

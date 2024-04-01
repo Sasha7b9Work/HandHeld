@@ -51,19 +51,19 @@ int Sound::num_note = 0;
 uint Sound::time_note_start = 0;
 
 
-namespace Player
+namespace Beeper
 {
     static bool is_running = false;
 }
 
 
-void Player::Init()
+void Beeper::Init()
 {
-    Beeper::Init();
+    Beeper::Driver::Init();
 }
 
 
-void Player::Play(TypeSound::E type, uint8 /*volume*/)
+void Beeper::Play(TypeSound::E type, uint8 /*volume*/)
 {
     is_running = true;
 
@@ -71,15 +71,15 @@ void Player::Play(TypeSound::E type, uint8 /*volume*/)
 }
 
 
-void Player::Stop()
+void Beeper::Stop()
 {
     is_running = false;
 
-    Beeper::Stop();
+    Beeper::Driver::Stop();
 }
 
 
-bool Player::IsRunning()
+bool Beeper::IsRunning()
 {
     return is_running;
 }
@@ -93,7 +93,7 @@ void Sound::Start(TypeSound::E type)
 
     time_note_start = TIME_MS;
 
-    Beeper::StartFrequency((float)current->notes[0].frequency);
+    Beeper::Driver::StartFrequency((float)current->notes[0].frequency);
 }
 
 
@@ -105,11 +105,11 @@ void Sound::Update()
 
         if (num_note == NumberNotes())
         {
-            Player::Stop();
+            Beeper::Stop();
         }
         else
         {
-            Beeper::StartFrequency((float)current->notes[num_note].frequency);
+            Beeper::Driver::StartFrequency((float)current->notes[num_note].frequency);
 
             time_note_start = TIME_MS;
         }
@@ -135,13 +135,13 @@ int Sound::NumberNotes()
 }
 
 
-void Player::CallbackOnTimer()
+void Beeper::CallbackOnTimer()
 {
     Sound::Update();
 }
 
 
-void Player::Update()
+void Beeper::Update()
 {
 
 }

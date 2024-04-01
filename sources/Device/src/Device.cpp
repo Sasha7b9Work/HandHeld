@@ -37,9 +37,9 @@ void Device::Init()
 
     PCF8563::SetTimer(1);       // Переводим INT в 0, чтобы питание не выключалось
 
-    Player::Init();
+    Beeper::Init();
 
-    Player::Play(TypeSound::_2, 9);
+    Beeper::Play(TypeSound::_2, 9);
 }
 
 
@@ -53,7 +53,7 @@ void Device::Update()
 
     Source::Update();
 
-    Player::Update();
+    Beeper::Update();
 
     LED::Update();
 }

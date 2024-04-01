@@ -8,11 +8,14 @@
 
 namespace Beeper
 {
-    // PA3 - Alternate TIMER14_CH1 AF0
+    namespace Driver
+    {
+        // PA3 - Alternate TIMER14_CH1 AF0
+    }
 }
 
 
-void Beeper::Init()
+void Beeper::Driver::Init()
 {
     rcu_periph_clock_enable(RCU_TIMER14);
     nvic_irq_enable(TIMER14_IRQn, 0);
@@ -61,7 +64,7 @@ void Beeper::Init()
 }
 
 
-void Beeper::StartFrequency(float frequency)
+void Beeper::Driver::StartFrequency(float frequency)
 {
     gpio_mode_set(GPIOA, GPIO_MODE_AF, GPIO_PUPD_NONE, GPIO_PIN_3);
     gpio_output_options_set(GPIOA, GPIO_OTYPE_PP, GPIO_OSPEED_50MHZ, GPIO_PIN_3);
@@ -79,7 +82,7 @@ void Beeper::StartFrequency(float frequency)
 }
 
 
-void Beeper::Stop()
+void Beeper::Driver::Stop()
 {
     timer_interrupt_disable(TIMER14, TIMER_INT_CH1);
     timer_disable(TIMER14);
@@ -91,7 +94,7 @@ void Beeper::Stop()
 }
 
 
-void Beeper::CallbackOnOutputSample(uint8 sample)
+void Beeper::Driver::CallbackOnOutputSample(uint8 sample)
 {
     TIMER_CH1CV(TIMER14) = (uint32_t)sample;
 }

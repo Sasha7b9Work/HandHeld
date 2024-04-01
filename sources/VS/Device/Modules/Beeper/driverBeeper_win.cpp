@@ -3,19 +3,19 @@
 #include "Modules/Beeper/driverBeeper.h"
 
 
-void Beeper::Init()
+void Beeper::Driver::Init()
 {
 
 }
 
 
-void Beeper::StartFrequency(float)
+void Beeper::Driver::StartFrequency(float)
 {
 
 }
 
 
-void Beeper::Stop()
+void Beeper::Driver::Stop()
 {
 
 }

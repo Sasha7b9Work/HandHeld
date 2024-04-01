@@ -4,12 +4,15 @@
 
 namespace Beeper
 {
-    void Init();
+    namespace Driver
+    {
+        void Init();
 
-    void StartFrequency(float frequency);
+        void StartFrequency(float frequency);
 
-    void Stop();
+        void Stop();
 
-    // Вывод отсчёта
-    void CallbackOnOutputSample(uint8);
+        // Вывод отсчёта
+        void CallbackOnOutputSample(uint8);
+    }
 }

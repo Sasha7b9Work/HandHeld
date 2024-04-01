@@ -83,7 +83,7 @@ void Source::Update()
     {
         Vibrato::Disable();
         LED::Disable();
-        Player::Stop();
+        Beeper::Stop();
     }
 }
 
@@ -111,7 +111,7 @@ void Source::Queue::Push(Source::E type)
 
     if (source.enabled_melody)
     {
-        Player::Play((TypeSound::E)source.melody, source.volume);
+        Beeper::Play((TypeSound::E)source.melody, source.volume);
     }
 
     if (source.enabled_vibrato)
