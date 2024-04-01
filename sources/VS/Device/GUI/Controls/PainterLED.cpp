@@ -14,6 +14,8 @@ void PainterLED::Create(wxWindow *parent, const wxSize &_size)
 
 void PainterLED::SetEnabled()
 {
+    is_enabled = true;
+
     BeginScene();
 
     memDC.SetPen(*wxYELLOW_PEN);
@@ -28,6 +30,8 @@ void PainterLED::SetEnabled()
 
 void PainterLED::SetDisabled()
 {
+    is_enabled = false;
+
     BeginScene();
 
     memDC.SetPen(*wxBLACK_PEN);

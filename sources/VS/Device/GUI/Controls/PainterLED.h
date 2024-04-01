@@ -15,8 +15,12 @@ public:
 
     void SetDisabled();
 
+    bool IsEnabled() const { return is_enabled; };
+
 private:
 
     PainterLED(wxWindow *parent, const wxSize &_size) :
         Painter(parent, _size, 1) { };
+
+    bool is_enabled = false;
 };

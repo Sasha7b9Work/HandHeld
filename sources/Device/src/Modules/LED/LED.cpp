@@ -2,7 +2,7 @@
 #include "defines.h"
 #include "Hardware/Timer.h"
 #include "Modules/LED/LED.h"
-#include <gd32e23x.h>
+#include "Modules/LED/driverLED.h"
 
 
 namespace LED
@@ -18,8 +18,7 @@ namespace LED
 
 void LED::Init()
 {
-    gpio_mode_set(GPIOA, GPIO_MODE_OUTPUT, GPIO_PUPD_PULLUP, GPIO_PIN_2);
-    gpio_output_options_set(GPIOA, GPIO_OTYPE_PP, GPIO_OSPEED_50MHZ, GPIO_PIN_2);
+    Driver::Init();
 
     Disable();
 }
@@ -36,11 +35,11 @@ void LED::Update()
 
     if ((time_passed % 2) == 0)
     {
-        gpio_bit_set(GPIOA, GPIO_PIN_2);
+        Driver::On();
     }
     else
     {
-        gpio_bit_reset(GPIOA, GPIO_PIN_2);
+        Driver::Off();
     }
 }
 
@@ -61,5 +60,5 @@ void LED::Disable()
 
 bool LED::IsFired()
 {
-    return gpio_input_bit_get(GPIOA, GPIO_PIN_2) != RESET;
+    return Driver::IsFired();
 }

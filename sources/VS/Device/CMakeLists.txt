@@ -60,7 +60,7 @@ file(GLOB KEYBOARD                ../../Device/src/Keyboard/Keyboard.h
                                                    Keyboard/*.*)
 file(GLOB MODULES_CMT2210AW       ../../Device/src/Modules/CMT2210AW/*.*
                                                    Modules/CMT2210AW/*.*)
-file(GLOB MODULES_LED             ../../Deivce/src/Modules/LED/LED.*
+file(GLOB MODULES_LED             ../../Device/src/Modules/LED/LED.*
                                                    Modules/LED/*.*)
 file(GLOB MODULES_PCF8563         ../../Device/src/Modules/PCF8563/PCF8563.*
                                                    Modules/PCF8563/*.*)
