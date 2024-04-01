@@ -21,11 +21,11 @@ void LED::Update()
 
 void LED::Enable()
 {
-
+    PainterLED::self->SetEnabled();
 }
 
 
 void LED::Disable()
 {
-
+    PainterLED::self->SetDisabled();
 }

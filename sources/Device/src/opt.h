@@ -8,4 +8,4 @@
 
 
 // Время звучания музыки
-#define TIME_ALARM 30000
+#define TIME_ALARM 10000

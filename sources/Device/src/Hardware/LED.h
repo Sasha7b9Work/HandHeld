@@ -12,5 +12,6 @@ namespace LED
 
     void Disable();
 
+    // true, если в данный момент черзе светодиод идёт ток (повышенное потребление)
     bool IsFired();
 }

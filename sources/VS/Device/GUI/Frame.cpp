@@ -201,7 +201,7 @@ void Frame::CreateButton(int id, pchar title, const wxPoint &coord, int width)
     button->Connect(id, wxEVT_LEFT_DOWN, wxCommandEventHandler(Frame::OnButtonDownEvent));
     button->Connect(id, wxEVT_LEFT_UP, wxCommandEventHandler(Frame::OnButtonUpEvent));
     button->Connect(id, wxEVT_BUTTON, wxCommandEventHandler(Frame::OnButtonEvent));
-}
+} //-V773
 
 
 void Frame::CreateMenu()
