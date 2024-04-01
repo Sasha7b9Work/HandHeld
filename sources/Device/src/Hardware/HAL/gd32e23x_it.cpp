@@ -4,8 +4,8 @@
 #include "Display/Display.h"
 #include "Modules/CMT2210AW/CMT2210AW.h"
 #include "Keyboard/Keyboard.h"
-#include "Player/Player.h"
 #include "Hardware/Timer.h"
+#include "Modules/Beeper/Beeper.h"
 
 
 #ifdef __cplusplus

@@ -42,58 +42,58 @@ if(WIN32)
     )
 endif()
 
-file(GLOB GUI                                  GUI/*.*)
-file(GLOB GUI_CONTROLS                         GUI/Controls/*.*)
-file(GLOB SRC                                  *.h *.cpp
-                                  ../../Device/src/Device.*
-                                  ../../Device/src/*.h)
-file(GLOB DISPLAY                 ../../Device/src/Display/*.*)
-file(GLOB DISPLAY_FONT            ../../Device/src/Display/Font/*.*)
-file(GLOB HARDWARE                ../../Device/src/Hardware/Beeper.h
-                                  ../../Device/src/Hardware/Battery.*
-                                  ../../Device/src/Hardware/Watch.*
-                                  ../../Device/src/Hardware/Timer.h
-                                                   Hardware/*.*)
-file(GLOB HARDWARE_HAL            ../../Device/src/Hardware/HAL/HAL.h
-                                                   Hardware/HAL/*.*)
-file(GLOB KEYBOARD                ../../Device/src/Keyboard/Keyboard.h
-                                                   Keyboard/*.*)
-file(GLOB MODULES_CMT2210AW       ../../Device/src/Modules/CMT2210AW/*.*
-                                                   Modules/CMT2210AW/*.*)
-file(GLOB MODULES_LED             ../../Device/src/Modules/LED/LED.*
-                                                   Modules/LED/*.*)
-file(GLOB MODULES_PCF8563         ../../Device/src/Modules/PCF8563/PCF8563.*
-                                                   Modules/PCF8563/*.*)
-file(GLOB MODULES_ST7735          ../../Device/src/Modules/ST7735/*.h)
-file(GLOB MENU                    ../../Device/src/Menu/*.*)
-file(GLOB MENU_PAGES              ../../Device/src/Menu/Pages/*.*)
-file(GLOB PLAYER                  ../../Device/src/Player/*.h
-                                  ../../Device/src/Player/Player.cpp
-                                                   Player/*.*)
-file(GLOB PLAYER_SOUNDS           ../../Device/src/Player/Sounds/*.*)
-file(GLOB SETTINGS                ../../Device/src/Settings/*.*)
-file(GLOB STORAGE                 ../../Device/src/Storage/*.*)
-file(GLOB UTILS                   ../../Device/src/Utils/*.*)
+file(GLOB GUI                                   GUI/*.*)
+file(GLOB GUI_CONTROLS                          GUI/Controls/*.*)
+file(GLOB SRC                                   *.h *.cpp
+                                   ../../Device/src/Device.*
+                                   ../../Device/src/*.h)
+file(GLOB DISPLAY                  ../../Device/src/Display/*.*)
+file(GLOB DISPLAY_FONT             ../../Device/src/Display/Font/*.*)
+file(GLOB HARDWARE                 ../../Device/src/Hardware/Beeper.h
+                                   ../../Device/src/Hardware/Battery.*
+                                   ../../Device/src/Hardware/Watch.*
+                                   ../../Device/src/Hardware/Timer.h
+                                                    Hardware/*.*)
+file(GLOB HARDWARE_HAL             ../../Device/src/Hardware/HAL/HAL.h
+                                                    Hardware/HAL/*.*)
+file(GLOB KEYBOARD                 ../../Device/src/Keyboard/Keyboard.h
+                                                    Keyboard/*.*)
+file(GLOB MODULES_BEEPER           ../../Device/src/Modules/Beeper/*.h
+                                   ../../Device/src/Modules/Beeper/Beeper.cpp
+                                                    Modules/Beeper/*.*)
+file(GLOB MODULES_BEEPER_SOUNDS    ../../Device/src/Modules/Beeper/Sounds/*.*)
+file(GLOB MODULES_CMT2210AW        ../../Device/src/Modules/CMT2210AW/*.*
+                                                    Modules/CMT2210AW/*.*)
+file(GLOB MODULES_LED              ../../Device/src/Modules/LED/LED.*
+                                                    Modules/LED/*.*)
+file(GLOB MODULES_PCF8563          ../../Device/src/Modules/PCF8563/PCF8563.*
+                                                    Modules/PCF8563/*.*)
+file(GLOB MODULES_ST7735           ../../Device/src/Modules/ST7735/*.h)
+file(GLOB MENU                     ../../Device/src/Menu/*.*)
+file(GLOB MENU_PAGES               ../../Device/src/Menu/Pages/*.*)
+file(GLOB SETTINGS                 ../../Device/src/Settings/*.*)
+file(GLOB STORAGE                  ../../Device/src/Storage/*.*)
+file(GLOB UTILS                    ../../Device/src/Utils/*.*)
 
-source_group(GUI                  FILES ${GUI})
-source_group(GUI/Controls         FILES ${GUI_CONTROLS})
-source_group(src                  FILES ${SRC})
-source_group(Display              FILES ${DISPLAY})
-source_group(Display/Font         FILES ${DISPLAY_FONT})
-source_group(Hardware             FILES ${HARDWARE})
-source_group(Hardware/HAL         FILES ${HARDWARE_HAL})
-source_group(Keyboard             FILES ${KEYBOARD})
-source_group(Modules/CMT2210AW    FILES ${MODULES_CMT2210AW})
-source_group(Modules/LED          FILES ${MODULES_LED})
-source_group(Modules/PCF8563      FILES ${MODULES_PCF8563})
-source_group(Modules/ST7735       FILES ${MODULES_ST7735})
-source_group(Menu                 FILES ${MENU})
-source_group(Menu/Pages           FILES ${MENU_PAGES})
-source_group(Player               FILES ${PLAYER})
-source_group(Player/Sounds        FILES ${PLAYER_SOUNDS})
-source_group(Settings             FILES ${SETTINGS})
-source_group(Storage              FILES ${STORAGE})
-source_group(Utils                FILES ${UTILS})
+source_group(GUI                   FILES ${GUI})
+source_group(GUI/Controls          FILES ${GUI_CONTROLS})
+source_group(src                   FILES ${SRC})
+source_group(Display               FILES ${DISPLAY})
+source_group(Display/Font          FILES ${DISPLAY_FONT})
+source_group(Hardware              FILES ${HARDWARE})
+source_group(Hardware/HAL          FILES ${HARDWARE_HAL})
+source_group(Keyboard              FILES ${KEYBOARD})
+source_group(Modules/Beeper        FILES ${MODULES_BEEPER})
+source_group(Modules/Beeper/Sounds FILES ${MODULES_BEEPER_SOUNDS})
+source_group(Modules/CMT2210AW     FILES ${MODULES_CMT2210AW})
+source_group(Modules/LED           FILES ${MODULES_LED})
+source_group(Modules/PCF8563       FILES ${MODULES_PCF8563})
+source_group(Modules/ST7735        FILES ${MODULES_ST7735})
+source_group(Menu                  FILES ${MENU})
+source_group(Menu/Pages            FILES ${MENU_PAGES})
+source_group(Settings              FILES ${SETTINGS})
+source_group(Storage               FILES ${STORAGE})
+source_group(Utils                 FILES ${UTILS})
 
 
 add_executable(${PROJECT_NAME}
@@ -105,14 +105,14 @@ add_executable(${PROJECT_NAME}
     ${HARDWARE}
     ${HARDWARE_HAL}
     ${KEYBOARD}
+    ${MODULES_BEEPER}
+    ${MODULES_BEEPER_SOUNDS}
     ${MODULES_CMT2210AW}
     ${MODULES_LED}
     ${MODULES_PCF8563}
     ${MODULES_ST7735}
     ${MENU}
     ${MENU_PAGES}
-    ${PLAYER}
-    ${PLAYER_SOUNDS}
     ${SETTINGS}
     ${STORAGE}
     ${UTILS}

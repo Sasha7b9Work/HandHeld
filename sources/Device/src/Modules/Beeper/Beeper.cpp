@@ -1,7 +1,7 @@
 // 2024/03/18 15:45:12 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
-#include "Player/Player.h"
-#include "Player/Beeper.h"
+#include "Modules/Beeper/driverBeeper.h"
+#include "Modules/Beeper/Beeper.h"
 #include "Hardware/Timer.h"
 #include <cmath>
 
@@ -35,9 +35,9 @@ struct Sound
 };
 
 
-#include "Player/Sounds/sound1.h"
-#include "Player/Sounds/sound2.h"
-#include "Player/Sounds/sound3.h"
+#include "Modules/Beeper/Sounds/sound1.h"
+#include "Modules/Beeper/Sounds/sound2.h"
+#include "Modules/Beeper/Sounds/sound3.h"
 
 
 const Sound *Sound::sounds[TypeSound::Count] =

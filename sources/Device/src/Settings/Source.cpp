@@ -3,10 +3,10 @@
 #include "Settings/Source.h"
 #include "Display/Icons.h"
 #include "Hardware/Timer.h"
-#include "Player/Player.h"
 #include "Hardware/Vibrato.h"
 #include "Storage/Storage.h"
 #include "Modules/LED/LED.h"
+#include "Modules/Beeper/Beeper.h"
 #include <cstring>
 
 

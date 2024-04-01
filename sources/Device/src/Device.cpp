@@ -7,12 +7,12 @@
 #include "Hardware/HAL/HAL.h"
 #include "Modules/CMT2210AW/CMT2210AW.h"
 #include "Modules/PCF8563/PCF8563.h"
-#include "Player/Player.h"
 #include "Hardware/Timer.h"
 #include "Settings/Settings.h"
 #include "Hardware/Vibrato.h"
 #include "Storage/Storage.h"
 #include "Modules/LED/LED.h"
+#include "Modules/Beeper/Beeper.h"
 
 
 void Device::Init()

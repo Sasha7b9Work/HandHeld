@@ -861,7 +861,7 @@
 
   <Group>
     <GroupName>Hardware</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -1500,7 +1500,7 @@
   </Group>
 
   <Group>
-    <GroupName>Modules/CMT2210AW</GroupName>
+    <GroupName>Modules/Beeper</GroupName>
     <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
@@ -1512,14 +1512,114 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Modules\CMT2210AW\CMT2210AW.cpp</PathWithFileName>
-      <FilenameWithoutPath>CMT2210AW.cpp</FilenameWithoutPath>
+      <PathWithFileName>.\src\Modules\Beeper\Beeper.cpp</PathWithFileName>
+      <FilenameWithoutPath>Beeper.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
     <File>
       <GroupNumber>11</GroupNumber>
       <FileNumber>93</FileNumber>
+      <FileType>5</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\src\Modules\Beeper\Beeper.h</PathWithFileName>
+      <FilenameWithoutPath>Beeper.h</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>11</GroupNumber>
+      <FileNumber>94</FileNumber>
+      <FileType>8</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\src\Modules\Beeper\driverBeeper.cpp</PathWithFileName>
+      <FilenameWithoutPath>driverBeeper.cpp</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>11</GroupNumber>
+      <FileNumber>95</FileNumber>
+      <FileType>5</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\src\Modules\Beeper\driverBeeper.h</PathWithFileName>
+      <FilenameWithoutPath>driverBeeper.h</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+  </Group>
+
+  <Group>
+    <GroupName>Modules/Beeper/Sounds</GroupName>
+    <tvExp>0</tvExp>
+    <tvExpOptDlg>0</tvExpOptDlg>
+    <cbSel>0</cbSel>
+    <RteFlg>0</RteFlg>
+    <File>
+      <GroupNumber>12</GroupNumber>
+      <FileNumber>96</FileNumber>
+      <FileType>5</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\src\Modules\Beeper\Sounds\sound1.h</PathWithFileName>
+      <FilenameWithoutPath>sound1.h</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>12</GroupNumber>
+      <FileNumber>97</FileNumber>
+      <FileType>5</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\src\Modules\Beeper\Sounds\sound2.h</PathWithFileName>
+      <FilenameWithoutPath>sound2.h</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>12</GroupNumber>
+      <FileNumber>98</FileNumber>
+      <FileType>5</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\src\Modules\Beeper\Sounds\sound3.h</PathWithFileName>
+      <FilenameWithoutPath>sound3.h</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+  </Group>
+
+  <Group>
+    <GroupName>Modules/CMT2210AW</GroupName>
+    <tvExp>0</tvExp>
+    <tvExpOptDlg>0</tvExpOptDlg>
+    <cbSel>0</cbSel>
+    <RteFlg>0</RteFlg>
+    <File>
+      <GroupNumber>13</GroupNumber>
+      <FileNumber>99</FileNumber>
+      <FileType>8</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\src\Modules\CMT2210AW\CMT2210AW.cpp</PathWithFileName>
+      <FilenameWithoutPath>CMT2210AW.cpp</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>13</GroupNumber>
+      <FileNumber>100</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -1538,8 +1638,8 @@
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
     <File>
-      <GroupNumber>12</GroupNumber>
-      <FileNumber>94</FileNumber>
+      <GroupNumber>14</GroupNumber>
+      <FileNumber>101</FileNumber>
       <FileType>8</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -1550,8 +1650,8 @@
       <bShared>0</bShared>
     </File>
     <File>
-      <GroupNumber>12</GroupNumber>
-      <FileNumber>95</FileNumber>
+      <GroupNumber>14</GroupNumber>
+      <FileNumber>102</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -1562,8 +1662,8 @@
       <bShared>0</bShared>
     </File>
     <File>
-      <GroupNumber>12</GroupNumber>
-      <FileNumber>96</FileNumber>
+      <GroupNumber>14</GroupNumber>
+      <FileNumber>103</FileNumber>
       <FileType>8</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -1574,8 +1674,8 @@
       <bShared>0</bShared>
     </File>
     <File>
-      <GroupNumber>12</GroupNumber>
-      <FileNumber>97</FileNumber>
+      <GroupNumber>14</GroupNumber>
+      <FileNumber>104</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -1594,8 +1694,8 @@
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
     <File>
-      <GroupNumber>13</GroupNumber>
-      <FileNumber>98</FileNumber>
+      <GroupNumber>15</GroupNumber>
+      <FileNumber>105</FileNumber>
       <FileType>8</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -1606,8 +1706,8 @@
       <bShared>0</bShared>
     </File>
     <File>
-      <GroupNumber>13</GroupNumber>
-      <FileNumber>99</FileNumber>
+      <GroupNumber>15</GroupNumber>
+      <FileNumber>106</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -1618,8 +1718,8 @@
       <bShared>0</bShared>
     </File>
     <File>
-      <GroupNumber>13</GroupNumber>
-      <FileNumber>100</FileNumber>
+      <GroupNumber>15</GroupNumber>
+      <FileNumber>107</FileNumber>
       <FileType>8</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -1638,8 +1738,8 @@
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
     <File>
-      <GroupNumber>14</GroupNumber>
-      <FileNumber>101</FileNumber>
+      <GroupNumber>16</GroupNumber>
+      <FileNumber>108</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -1650,114 +1750,14 @@
       <bShared>0</bShared>
     </File>
     <File>
-      <GroupNumber>14</GroupNumber>
-      <FileNumber>102</FileNumber>
+      <GroupNumber>16</GroupNumber>
+      <FileNumber>109</FileNumber>
       <FileType>8</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>.\src\Modules\ST7735\ST7735.cpp</PathWithFileName>
       <FilenameWithoutPath>ST7735.cpp</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-  </Group>
-
-  <Group>
-    <GroupName>Player</GroupName>
-    <tvExp>0</tvExp>
-    <tvExpOptDlg>0</tvExpOptDlg>
-    <cbSel>0</cbSel>
-    <RteFlg>0</RteFlg>
-    <File>
-      <GroupNumber>15</GroupNumber>
-      <FileNumber>103</FileNumber>
-      <FileType>8</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Player\Beeper.cpp</PathWithFileName>
-      <FilenameWithoutPath>Beeper.cpp</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>15</GroupNumber>
-      <FileNumber>104</FileNumber>
-      <FileType>5</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Player\Beeper.h</PathWithFileName>
-      <FilenameWithoutPath>Beeper.h</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>15</GroupNumber>
-      <FileNumber>105</FileNumber>
-      <FileType>8</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Player\Player.cpp</PathWithFileName>
-      <FilenameWithoutPath>Player.cpp</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>15</GroupNumber>
-      <FileNumber>106</FileNumber>
-      <FileType>5</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Player\Player.h</PathWithFileName>
-      <FilenameWithoutPath>Player.h</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-  </Group>
-
-  <Group>
-    <GroupName>Player/Sounds</GroupName>
-    <tvExp>0</tvExp>
-    <tvExpOptDlg>0</tvExpOptDlg>
-    <cbSel>0</cbSel>
-    <RteFlg>0</RteFlg>
-    <File>
-      <GroupNumber>16</GroupNumber>
-      <FileNumber>107</FileNumber>
-      <FileType>5</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Player\Sounds\sound1.h</PathWithFileName>
-      <FilenameWithoutPath>sound1.h</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>16</GroupNumber>
-      <FileNumber>108</FileNumber>
-      <FileType>5</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Player\Sounds\sound2.h</PathWithFileName>
-      <FilenameWithoutPath>sound2.h</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>16</GroupNumber>
-      <FileNumber>109</FileNumber>
-      <FileType>5</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Player\Sounds\sound3.h</PathWithFileName>
-      <FilenameWithoutPath>sound3.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>

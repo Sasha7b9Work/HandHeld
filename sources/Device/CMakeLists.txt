@@ -42,38 +42,38 @@ file(GLOB HARDWARE_HAL            src/Hardware/HAL/*.*)
 file(GLOB KEYBOARD                src/Keyboard/*.*)
 file(GLOB MENU                    src/Menu/*.*)
 file(GLOB MENU_PAGES              src/Menu/Pages/*.*)
+file(GLOB MODULES_BEEPER          src/Modules/Beeper/*.*)
+file(GLOB MODULES_BEEPER_SOUNDS   src/Moduels/Beeper/Sounds/*.*)
 file(GLOB MODULES_CMT2210AW       src/Modules/CMT2210AW/*.*)
 file(GLOB MODULES_LED             src/Modules/LED/*.*)
 file(GLOB MODULES_PCF8563         src/Modules/PCF8563/*.*)
 file(GLOB MODULES_ST7735          src/Modules/ST7735/*.*)
-file(GLOB PLAYER                  src/Player/*.*)
-file(GLOB PLAYER_SOUNDS           src/Player/Sounds/*.*)
 file(GLOB PLAYERMIDI              src/PlayerMIDI/*.*)
 file(GLOB PLAYERMIDI_MELODIES     src/PlayerMIDI/Melodies/*.*)
 file(GLOB SETTINGS                src/Settings/*.*)
 file(GLOB STORAGE                 src/Storage/*.*)
 file(GLOB UTILS                   src/Utils/*.*)
 
-source_group(GD32E23x             FILES ${GD32E23x})
-source_group(src                  FILES ${SRC})
-source_group(Display              FILES ${DISPLAY})
-source_group(Hardware             FILES ${HARDWARE})
-source_group(Hardware/CMSIS       FILES ${HARDWARE_CMSIS})
-source_group(Hardware/HAL         FILES ${HARDWARE_HAL})
-source_group(Keyboard             FILES ${KEYBOARD})
-source_group(Menu                 FILES ${MENU})
-source_group(Menu/Pages           FILES ${MENU_PAGES})
-source_group(Modules/CMT2210AW    FILES ${MODULES_CMT2210AW})
-source_group(Modules/LED          FILES ${MODULES_LED})
-source_group(Modules/PCF8563      FILES ${MODULES_PCF8563})
-source_group(Modules/ST7735       FILES ${MODULES_ST7735})
-source_group(Player               FILES ${PLAYER})
-source_group(Player/Sounds        FILES ${PLAYER_SOUNDS})
-source_group(PlayerMIDI           FILES ${PLAYERMIDI})
-source_group(PlayerMIDI/Melodies  FILES ${PLAYERMIDI_MELODIES})
-source_group(Settings             FILES ${SETTINGS})
-source_group(Storage              FILES ${STORAGE})
-source_group(Utils                FILES ${UTILS})
+source_group(GD32E23x               FILES ${GD32E23x})
+source_group(src                    FILES ${SRC})
+source_group(Display                FILES ${DISPLAY})
+source_group(Hardware               FILES ${HARDWARE})
+source_group(Hardware/CMSIS         FILES ${HARDWARE_CMSIS})
+source_group(Hardware/HAL           FILES ${HARDWARE_HAL})
+source_group(Keyboard               FILES ${KEYBOARD})
+source_group(Menu                   FILES ${MENU})
+source_group(Menu/Pages             FILES ${MENU_PAGES})
+source_group(Modules/Beeper         FILES ${MODULES_BEEPER})
+source_group(Modules/Beeper/Sounds  FILES ${MODULES_BEEPER_SOUNDS})
+source_group(Modules/CMT2210AW      FILES ${MODULES_CMT2210AW})
+source_group(Modules/LED            FILES ${MODULES_LED})
+source_group(Modules/PCF8563        FILES ${MODULES_PCF8563})
+source_group(Modules/ST7735         FILES ${MODULES_ST7735})
+source_group(PlayerMIDI             FILES ${PLAYERMIDI})
+source_group(PlayerMIDI/Melodies    FILES ${PLAYERMIDI_MELODIES})
+source_group(Settings               FILES ${SETTINGS})
+source_group(Storage                FILES ${STORAGE})
+source_group(Utils                  FILES ${UTILS})
 
 set_source_files_properties(
     ${GD32E23x}
@@ -92,12 +92,12 @@ add_library(${PROJECT_NAME}
     ${MENU}
     ${MENU_PAGES}
     ${KEYBOARD}
+    ${MODULES_BEEPER}
+    ${MODULES_BEEPER_SOUNDS}
     ${MODULES_CMT2210AW}
     ${MODULES_LED}
     ${MODULES_PCF8563}
     ${MODULES_ST7735}
-    ${PLAYER}
-    ${PLAYER_SOUNDS}
     ${PLAYERMIDI}
     ${PLAYERMIDI_MELODIES}
     ${SETTINGS}
