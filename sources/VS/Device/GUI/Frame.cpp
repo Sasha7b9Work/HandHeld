@@ -11,7 +11,6 @@
 #include "Modules/CMT2210AW/EmulatorReceiver.h"
 #include "GUI/Controls/Painter.h"
 #include "GUI/Controls/PainterMelody.h"
-#include "GUI/Controls/PainterLED.h"
 #include "GUI/Controls/PainterVibrator.h"
 
 
@@ -171,27 +170,21 @@ Frame::Frame(const wxString &title)
 
     x = 550;
 
-    wxSize size(30, 30);
-
     wxSize size_label(50, 20);
 
     const int x_label = 540;
 
     new wxStaticText(this, wxID_ANY, _("Звук"), { x_label, 0 }, size_label, wxALIGN_CENTRE_HORIZONTAL);
 
-    PainterMelody::Create(this, size);
+    PainterMelody::Create(this, Painter::size_indicator);
 
     PainterMelody::self->SetPosition({ x, 18 });
 
     new wxStaticText(this, wxID_ANY, _("LED"), { x_label, 50 }, size_label, wxALIGN_CENTRE_HORIZONTAL);
 
-    PainterLED::Create(this, size);
-
-    PainterLED::self->SetPosition({ x, 68 });
-
     new wxStaticText(this, wxID_ANY, _("Вибро"), { x_label, 100 }, size_label, wxALIGN_CENTRE_HORIZONTAL);
 
-    PainterVibrator::Create(this, size);
+    PainterVibrator::Create(this, Painter::size_indicator);
 
     PainterVibrator::self->SetPosition({ x, 120 });
 

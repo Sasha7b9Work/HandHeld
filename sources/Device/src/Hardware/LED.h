@@ -5,6 +5,8 @@
 namespace LED
 {
     void Init();
+    
+    void Update();
 
     void Enable();
 

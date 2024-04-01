@@ -3,6 +3,9 @@
 #include "GUI/Controls/Painter.h"
 
 
+wxSize Painter::size_indicator(30, 30);
+
+
 Painter::Painter(wxWindow *parent, const wxSize &_size, int _scale) :
     wxPanel(parent), size(_size), scale(_scale)
 {

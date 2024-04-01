@@ -2,7 +2,7 @@
 
 project (Device)
 
-#set(CMAKE_UNITY_BUILD OFF)
+set(CMAKE_UNITY_BUILD OFF)
 
 set(CMAKE_UNITY_BUILD_BATCH_SIZE 16)
 
@@ -53,6 +53,7 @@ file(GLOB HARDWARE                ../../Device/src/Hardware/Beeper.h
                                   ../../Device/src/Hardware/Battery.*
                                   ../../Device/src/Hardware/Watch.*
                                   ../../Device/src/Hardware/Timer.h
+                                  ../../Device/src/Hardware/LED.h
                                                    Hardware/*.*)
 file(GLOB HARDWARE_HAL            ../../Device/src/Hardware/HAL/HAL.h
                                                    Hardware/HAL/*.*)

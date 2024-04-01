@@ -14,6 +14,8 @@ public:
 
     virtual void Update() { };
 
+    static wxSize size_indicator;
+
 protected:
 
     // Здесь нарисованная картинка

@@ -13,6 +13,12 @@ void LED::Init()
 }
 
 
+void LED::Update()
+{
+
+}
+
+
 void LED::Enable()
 {
     gpio_bit_set(GPIOA, GPIO_PIN_2);

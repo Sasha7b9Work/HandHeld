@@ -9,14 +9,13 @@ class Frame : public wxFrame
 public:
     Frame(const wxString &title);
 
-    static Frame *Self() { return self; };
+    static Frame *self;
 
     void OnTimer(wxTimerEvent &);
 
 private:
 
     wxTimer timer;
-    static Frame *self;
 
     TimeMeterMS meterButton;        // Для кнопки
     wxTimer timerButton;

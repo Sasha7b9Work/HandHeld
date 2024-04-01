@@ -54,4 +54,6 @@ void Device::Update()
     Source::Update();
 
     Player::Update();
+
+    LED::Update();
 }
