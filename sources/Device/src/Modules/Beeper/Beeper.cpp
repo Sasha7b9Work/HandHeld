@@ -4,6 +4,9 @@
 #include "Modules/Beeper/Beeper.h"
 #include "Hardware/Timer.h"
 #include <cmath>
+#ifdef GUI
+    #include "GUI/Controls/PainterMelody.h"
+#endif
 
 
 struct Note
@@ -65,17 +68,15 @@ void Beeper::Init()
 
 void Beeper::Play(TypeSound::E type, uint8 /*volume*/)
 {
-    is_running = true;
-
 #ifdef GUI
 
-
-
-#else
-
-    Sound::Start(type);
+    PainterMelody::self->EnableMelody(type);
 
 #endif
+
+    is_running = true;
+
+    Sound::Start(type);
 }
 
 

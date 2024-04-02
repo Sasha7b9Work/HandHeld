@@ -82,6 +82,11 @@ void Beeper::Driver::StartFrequency(float frequency)
 }
 
 
+void Beeper::Driver::Update()
+{
+}
+
+
 void Beeper::Driver::Stop()
 {
     timer_interrupt_disable(TIMER14, TIMER_INT_CH1);

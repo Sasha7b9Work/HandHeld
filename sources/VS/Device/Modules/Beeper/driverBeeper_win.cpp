@@ -21,7 +21,6 @@ void Beeper::Driver::Update()
 
 void Beeper::Driver::StartFrequency(float)
 {
-    PainterMelody::self->EnableMelody(0);
 }
 
 
