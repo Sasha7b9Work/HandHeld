@@ -35,7 +35,18 @@ namespace PageIntercom
         "бшянйюъ"
     );
 
-    DEF_PAGE_3(pageIntercom, PageMain::self, "днлнтнм",
+    DEF_CHOICE_7(choiceColorBell, self, "жбер", (uint8 *const)&gset.sources[Source::Intercom].colorBell,
+        ColorBell::Name(ColorBell::White),
+        ColorBell::Name(ColorBell::Red),
+        ColorBell::Name(ColorBell::Orange),
+        ColorBell::Name(ColorBell::Yellow),
+        ColorBell::Name(ColorBell::Green),
+        ColorBell::Name(ColorBell::Blue),
+        ColorBell::Name(ColorBell::Fiolet)
+    );
+
+    DEF_PAGE_4(pageIntercom, PageMain::self, "днлнтнм",
+        &choiceColorBell,
         &choiceModeSource,
         &choiceMelody,
         &choiceVolume,

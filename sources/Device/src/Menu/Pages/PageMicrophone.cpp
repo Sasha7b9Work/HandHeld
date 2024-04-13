@@ -35,7 +35,18 @@ namespace PageMicrophone
         "¬€—Œ ¿ﬂ"
     );
 
-    DEF_PAGE_3(pageSoundSensor, PageMain::self, "Ã» –Œ‘ŒÕ",
+    DEF_CHOICE_7(choiceColorBell, self, "÷¬≈“", (uint8 *const)&gset.sources[Source::Microphone].colorBell,
+        ColorBell::Name(ColorBell::White),
+        ColorBell::Name(ColorBell::Red),
+        ColorBell::Name(ColorBell::Orange),
+        ColorBell::Name(ColorBell::Yellow),
+        ColorBell::Name(ColorBell::Green),
+        ColorBell::Name(ColorBell::Blue),
+        ColorBell::Name(ColorBell::Fiolet)
+    );
+
+    DEF_PAGE_4(pageSoundSensor, PageMain::self, "Ã» –Œ‘ŒÕ",
+        &choiceColorBell,
         &choiceModeSource,
         &choiceMelody,
         &choiceVolume,

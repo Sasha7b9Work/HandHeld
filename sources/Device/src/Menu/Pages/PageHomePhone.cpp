@@ -35,11 +35,21 @@ namespace PageHomePhone
         "бшянйюъ"
     );
 
+    DEF_CHOICE_7(choiceColorBell, self, "жбер", (uint8 *const)&gset.sources[Source::PhoneHome].colorBell,
+        ColorBell::Name(ColorBell::White),
+        ColorBell::Name(ColorBell::Red),
+        ColorBell::Name(ColorBell::Orange),
+        ColorBell::Name(ColorBell::Yellow),
+        ColorBell::Name(ColorBell::Green),
+        ColorBell::Name(ColorBell::Blue),
+        ColorBell::Name(ColorBell::Fiolet)
+    );
 
-    DEF_PAGE_3(pageHomePhone, PageMain::self, "днлюьмхи рекетнм",
+    DEF_PAGE_4(pageHomePhone, PageMain::self, "днлюьмхи рекетнм",
         &choiceModeSource,
         &choiceMelody,
         &choiceVolume,
+        &choiceColorBell,
         nullptr,
         nullptr,
         nullptr

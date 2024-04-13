@@ -6,7 +6,7 @@
 
 namespace PageTime
 {
-    DEF_TIME(timeTime, PageMain::self, "бпелъ", false);
+    DEF_TIME(timeTime, self, "бпелъ", false);
 
     DEF_PAGE_1(pageTime, PageMain::self, "бпелъ",
         &timeTime,

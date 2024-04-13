@@ -6,7 +6,7 @@
 
 namespace PageAlarm
 {
-    DEF_TIME(timeAlarm, PageAlarm::self, "ÁÓÄÈËÜÍÈÊ", true);
+    DEF_TIME(timeAlarm, self, "ÁÓÄÈËÜÍÈÊ", true);
 
     DEF_PAGE_1(pageAlarm, PageMain::self, "ÁÓÄÈËÜÍÈÊ",
         &timeAlarm,
