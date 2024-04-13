@@ -49,7 +49,11 @@ void Page::Draw() const
     }
     else
     {
-        data->item->Title().Write(10, 10, Color::BLUE);
+        Font::SetSize(2);
+
+        data->item->Title().WriteInCenter(0, 30, Display::WIDTH, Color::BLUE);
+
+        Font::SetSize(1);
 
         if (data->func_draw_closed)
         {
