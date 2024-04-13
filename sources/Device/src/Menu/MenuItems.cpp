@@ -79,8 +79,11 @@ void Choice::Draw() const
 }
 
 
-void Date::DrawField(int x, int y, int width, int height, const Text<> &text, bool selected) const
+void Date::DrawField(int x, int y, const Text<> &text, bool selected) const
 {
+    const int width = 42;
+    const int height = 35;
+
     Rect(width, height).Draw(x, y, selected ? Color::BLACK : Color::WHITE);
     Rect(width - 2, height - 2).Fill(x + 1, y + 1, selected ? Color::WHITE : Color::BLACK);
     if (selected)
@@ -109,13 +112,13 @@ void Date::Draw() const
             data->date_time->Year
         };
 
-        const int y = 35;
+        const int y = 32;
 
         const int x[3] = { 5, 58, 111 };
 
         for (int i = 0; i < 3; i++)
         {
-            DrawField(x[i], y, 23, 20, Text<>("%02d", values[i]), i == *data->field);
+            DrawField(x[i], y, Text<>("%02d", values[i]), i == *data->field);
         }
     }
     else

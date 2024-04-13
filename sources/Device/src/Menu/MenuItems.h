@@ -98,7 +98,7 @@ struct Date
     void Draw() const;
     void ApplyAction(const Action &) const;
     void ChangeValueInCurrentField(int delta) const;
-    void DrawField(int x, int y, int width, int height, const Text<> &, bool selected) const;
+    void DrawField(int x, int y, const Text<> &, bool selected) const;
 };
 
 
