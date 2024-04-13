@@ -191,7 +191,7 @@ DEF_CHOICE_7(choiceModeIndication, self, "ŒœŒ¬≈Ÿ≈Õ»≈", (uint8 *const)&set,      
     "¬—≈"                                                                                                   \
 );
 
-#define DEF_CHOICE_VOLUME(source)                                                                           \
+#define DEF_CHOICE_VOLUME_PAGE(source)                                                                      \
 DEF_CHOICE_3(choiceVolume, self, "√–ŒÃ Œ—“‹", (uint8 *const)&gset.sources[source].volume,                   \
     "Õ»« ¿ﬂ",                                                                                               \
     "—–≈ƒÕﬂﬂ",                                                                                              \
@@ -212,7 +212,7 @@ DEF_CHOICE_7(choiceColorBell, self, "÷¬≈“", (uint8 *const)&gset.sources[source].
 #define DEF_SOURCE_CHOICES(source)                  \
 DEF_CHOICE_MODE_INDICATION_PAGE(gset.sources[source].mode_indication);  \
 DEF_CHOICE_MELODY_PAGE(gset.sources[source].melody);\
-DEF_CHOICE_VOLUME(source);                          \
+DEF_CHOICE_VOLUME_PAGE(gset.sources[source].volume);                          \
 DEF_CHOICE_COLOR(source);
 
 #define DEF_PAGE_SOURCE(name, source)                   \

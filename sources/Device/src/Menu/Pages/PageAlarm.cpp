@@ -17,13 +17,9 @@ namespace PageAlarm
 
     DEF_CHOICE_MODE_INDICATION_PAGE(gset.alarm.mode_indication);
 
-    DEF_CHOICE_MELODY_PAGE(gset.alarm.melody)
+    DEF_CHOICE_MELODY_PAGE(gset.alarm.melody);
 
-    DEF_CHOICE_3(choiceVolume, self, "√–ŒÃ Œ—“‹", (uint8 *const)&gset.alarm.volume,
-        "Õ»« ¿ﬂ",
-        "—–≈ƒÕﬂﬂ",
-        "¬€—Œ ¿ﬂ"
-    );
+    DEF_CHOICE_VOLUME_PAGE(gset.alarm.volume);
 
     DEF_CHOICE_7(choiceColorBell, self, "÷¬≈“", (uint8 *const)&gset.alarm.colorBell,
         ColorBell::Name(ColorBell::White),
