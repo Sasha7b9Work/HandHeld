@@ -166,7 +166,7 @@ const Item name{&di##name, &choice##name}
 
 
 
-#define DEF_CHOICE_MELODY_PAGE(set)                                         \
+#define DEF_CHOICE_MELODY(set)                                              \
 DEF_CHOICE_10(choiceMelody, self, "Ã≈ÀŒƒ»ﬂ", (uint8 *const)&set,            \
     Melody::Name(Melody::_1),                                               \
     Melody::Name(Melody::_2),                                               \
@@ -180,7 +180,7 @@ DEF_CHOICE_10(choiceMelody, self, "Ã≈ÀŒƒ»ﬂ", (uint8 *const)&set,            \
     Melody::Name(Melody::_10)                                               \
 );
 
-#define DEF_CHOICE_MODE_INDICATION_PAGE(set)                                \
+#define DEF_CHOICE_MODE_INDICATION(set)                                     \
 DEF_CHOICE_7(choiceModeIndication, self, "ŒœŒ¬≈Ÿ≈Õ»≈", (uint8 *const)&set,  \
     "«¬” ",                                                                 \
     "—¬≈“",                                                                 \
@@ -191,14 +191,14 @@ DEF_CHOICE_7(choiceModeIndication, self, "ŒœŒ¬≈Ÿ≈Õ»≈", (uint8 *const)&set,  \
     "¬—≈"                                                                   \
 );
 
-#define DEF_CHOICE_VOLUME_PAGE(set)                                         \
+#define DEF_CHOICE_VOLUME(set)                                              \
 DEF_CHOICE_3(choiceVolume, self, "√–ŒÃ Œ—“‹", (uint8 *const)&set,           \
     "Õ»« ¿ﬂ",                                                               \
     "—–≈ƒÕﬂﬂ",                                                              \
     "¬€—Œ ¿ﬂ"                                                               \
 );
 
-#define DEF_CHOICE_COLOR_PAGE(set)                                          \
+#define DEF_CHOICE_COLOR(set)                                               \
 DEF_CHOICE_7(choiceColorBell, self, "÷¬≈“", (uint8 *const)&set,             \
     ColorBell::Name(ColorBell::White),                                      \
     ColorBell::Name(ColorBell::Red),                                        \
@@ -209,11 +209,11 @@ DEF_CHOICE_7(choiceColorBell, self, "÷¬≈“", (uint8 *const)&set,             \
     ColorBell::Name(ColorBell::Fiolet)                                      \
 );
 
-#define DEF_SOURCE_CHOICES(source)                                      \
-DEF_CHOICE_MODE_INDICATION_PAGE(gset.sources[source].mode_indication);  \
-DEF_CHOICE_MELODY_PAGE(gset.sources[source].melody);                    \
-DEF_CHOICE_VOLUME_PAGE(gset.sources[source].volume);                    \
-DEF_CHOICE_COLOR_PAGE(gset.sources[source].colorBell);
+#define DEF_SOURCE_CHOICES(source)                                  \
+DEF_CHOICE_MODE_INDICATION(gset.sources[source].mode_indication);   \
+DEF_CHOICE_MELODY(gset.sources[source].melody);                     \
+DEF_CHOICE_VOLUME(gset.sources[source].volume);                     \
+DEF_CHOICE_COLOR(gset.sources[source].colorBell);
 
 #define DEF_PAGE_SOURCE(name, source)                   \
 DEF_SOURCE_CHOICES(source);                             \

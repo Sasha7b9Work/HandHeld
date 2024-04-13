@@ -15,13 +15,13 @@ namespace PageAlarm
 
     DEF_DATE(date, self, "ƒ¿“¿", false);
 
-    DEF_CHOICE_MODE_INDICATION_PAGE(gset.alarm.mode_indication);
+    DEF_CHOICE_MODE_INDICATION(gset.alarm.mode_indication);
 
-    DEF_CHOICE_MELODY_PAGE(gset.alarm.melody);
+    DEF_CHOICE_MELODY(gset.alarm.melody);
 
-    DEF_CHOICE_VOLUME_PAGE(gset.alarm.volume);
+    DEF_CHOICE_VOLUME(gset.alarm.volume);
 
-    DEF_CHOICE_COLOR_PAGE(gset.alarm.colorBell);
+    DEF_CHOICE_COLOR(gset.alarm.colorBell);
 
     DEF_PAGE_7(pageAlarm, PageMain::self, "¡”ƒ»À‹Õ» ",
         &choiceEnabled,
