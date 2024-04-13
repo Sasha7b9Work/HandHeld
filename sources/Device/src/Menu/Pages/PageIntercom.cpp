@@ -16,17 +16,17 @@ namespace PageIntercom
         "бяе"
     );
 
-    DEF_CHOICE_10(choiceMelody, self, "лекндхъ", &gset.sources[Source::Intercom].melody,
-        "1",
-        "2",
-        "3",
-        "4",
-        "5",
-        "6",
-        "7",
-        "8",
-        "9",
-        "10"
+    DEF_CHOICE_10(choiceMelody, self, "лекндхъ", (uint8 *const)&gset.sources[Source::Intercom].melody,
+        Melody::Name(Melody::_1),
+        Melody::Name(Melody::_2),
+        Melody::Name(Melody::_3),
+        Melody::Name(Melody::_4),
+        Melody::Name(Melody::_5),
+        Melody::Name(Melody::_6),
+        Melody::Name(Melody::_7),
+        Melody::Name(Melody::_8),
+        Melody::Name(Melody::_9),
+        Melody::Name(Melody::_10)
     );
 
     DEF_CHOICE_3(choiceVolume, self, "цпнлйнярэ", (uint8 *const)&gset.sources[Source::Intercom].volume,

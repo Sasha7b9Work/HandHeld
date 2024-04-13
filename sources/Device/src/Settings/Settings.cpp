@@ -10,10 +10,30 @@
 
 Settings gset =
 {
-    { {0, Volume::Hi, ModeSource::All},
-      {1, Volume::Hi, ModeSource::All},
-      {2, Volume::Hi, ModeSource::All},
-      {3, Volume::Hi, ModeSource::All},
-      {4, Volume::Hi, ModeSource::All} },
+    { {Melody::_1, Volume::Hi, ModeSource::All},
+      {Melody::_2, Volume::Hi, ModeSource::All},
+      {Melody::_3, Volume::Hi, ModeSource::All},
+      {Melody::_4, Volume::Hi, ModeSource::All},
+      {Melody::_5, Volume::Hi, ModeSource::All} },
     { 0, 0, 0, 0, 0, 0 }
 };
+
+
+pchar Melody::Name(E v)
+{
+    static const pchar names[Count] =
+    {
+        "лекндхъ 1",
+        "лекндхъ 2",
+        "лекндхъ 3",
+        "лекндхъ 4",
+        "лекндхъ 5",
+        "лекндхъ 6",
+        "лекндхъ 7",
+        "лекндхъ 8",
+        "лекндхъ 9",
+        "лекндхъ 10"
+    };
+
+    return names[v];
+}

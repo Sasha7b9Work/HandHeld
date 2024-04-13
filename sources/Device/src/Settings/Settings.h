@@ -17,9 +17,30 @@ struct Volume
 };
 
 
+struct Melody
+{
+    enum E
+    {
+        _1,
+        _2,
+        _3,
+        _4,
+        _5,
+        _6,
+        _7,
+        _8,
+        _9,
+        _10,
+        Count
+    };
+
+    static pchar Name(E);
+};
+
+
 struct SettingsSource
 {
-    uint8 melody;               // Текущая мелодия
+    Melody::E melody;           // Текущая мелодия
     Volume::E volume;           // Громкость текущей мелодии
     ModeSource::E mode_source;  // Режим индикации
 };
