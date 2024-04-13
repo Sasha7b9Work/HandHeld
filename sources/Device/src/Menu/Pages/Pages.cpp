@@ -7,31 +7,31 @@
 
 namespace PageDoorBell
 {
-    DEF_PAGE_SOURCE(pageDoorBell, Source::DoorBell, "дбепмни гбнмнй");
+    DEF_PAGE_SOURCE(pageDoorBell, Source::DoorBell);
 }
 
 
 namespace PageMobile
 {
-    DEF_PAGE_SOURCE(pageMobile, Source::Mobile, "лнахкэмши рекетнм");
+    DEF_PAGE_SOURCE(pageMobile, Source::Mobile);
 }
 
 
 namespace PageHomePhone
 {
-    DEF_PAGE_SOURCE(pageHomePhone, Source::PhoneHome, "днлюьмхи рекетнм");
+    DEF_PAGE_SOURCE(pageHomePhone, Source::PhoneHome);
 }
 
 
 namespace PageIntercom
 {
-    DEF_PAGE_SOURCE(pageIntercom, Source::Intercom, "днлнтнм");
+    DEF_PAGE_SOURCE(pageIntercom, Source::Intercom);
 }
 
 
 namespace PageMicrophone
 {
-    DEF_PAGE_SOURCE(pageSoundSensor, Source::Microphone, "лхйпнтнм");
+    DEF_PAGE_SOURCE(pageSoundSensor, Source::Microphone);
 }
 
 

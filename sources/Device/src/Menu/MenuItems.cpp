@@ -265,7 +265,7 @@ void Choice::ApplyAction(const Action &action) const
 {
     if (action.key == Key::Menu)
     {
-        Math::CircleIncrease<uint8>(data->value, 0, NumChoices() - 1);
+        Math::CircleIncrease<uint8>(data->value, 0, (uint8)(NumChoices() - 1));
     }
 }
 
@@ -382,13 +382,13 @@ void DateTime::ChangeValueInCurrentField(int delta) const
 
 void Page::NextCurrentItem() const
 {
-    Math::CircleIncrease<int8>(data->current_item, 0, NumItems() - 1);
+    Math::CircleIncrease<int8>(data->current_item, 0, (int8)(NumItems() - 1));
 }
 
 
 void Page::PrevCurrentItem() const
 {
-    Math::CircleDecrease<int8>(data->current_item, 0, NumItems() - 1);
+    Math::CircleDecrease<int8>(data->current_item, 0, (int8)(NumItems() - 1));
 }
 
 
