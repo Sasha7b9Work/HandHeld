@@ -59,21 +59,22 @@ struct ColorBell
 
 struct SettingsSource
 {
-    Melody::E melody;           // Текущая мелодия
-    Volume::E volume;           // Громкость текущей мелодии
-    ColorBell::E colorBell;
-    ModeSource::E mode_source;  // Режим индикации
+    Melody::E         melody;           // Текущая мелодия
+    Volume::E         volume;           // Громкость текущей мелодии
+    ColorBell::E      colorBell;
+    ModeIndication::E mode_indication;  // Режим индикации
 };
 
 
 // Настройки будильника
 struct SettingsAlarm
 {
-    uint8        enabled;
-    Melody::E    melody;
-    Volume::E    volume;
-    ColorBell::E colorBell;
-    RTCDateTime  time;
+    uint8             enabled;
+    Melody::E         melody;
+    Volume::E         volume;
+    ColorBell::E      colorBell;
+    ModeIndication::E mode_indication;
+    RTCDateTime       time;
 };
 
 

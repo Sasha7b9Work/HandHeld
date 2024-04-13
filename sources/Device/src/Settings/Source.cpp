@@ -109,17 +109,17 @@ void Source::Queue::Push(Source::E type)
 
     const SettingsSource &source = gset.sources[type];
 
-    if (source.mode_source == ModeSource::All || source.mode_source == ModeSource::Sound || source.mode_source == ModeSource::Sound_LED || source.mode_source == ModeSource::Sound_Vibro)
+    if (source.mode_indication == ModeIndication::All || source.mode_indication == ModeIndication::Sound || source.mode_indication == ModeIndication::Sound_LED || source.mode_indication == ModeIndication::Sound_Vibro)
     {
         Beeper::Play((TypeSound::E)source.melody, source.volume);
     }
 
-    if (source.mode_source == ModeSource::All || source.mode_source == ModeSource::Vibro || source.mode_source == ModeSource::Sound_Vibro || source.mode_source == ModeSource::LED_Vibro)
+    if (source.mode_indication == ModeIndication::All || source.mode_indication == ModeIndication::Vibro || source.mode_indication == ModeIndication::Sound_Vibro || source.mode_indication == ModeIndication::LED_Vibro)
     {
         Vibrato::Enable();
     }
 
-    if (source.mode_source == ModeSource::All || source.mode_source == ModeSource::LED || source.mode_source == ModeSource::Sound_LED || source.mode_source == ModeSource::LED_Vibro)
+    if (source.mode_indication == ModeIndication::All || source.mode_indication == ModeIndication::LED || source.mode_indication == ModeIndication::Sound_LED || source.mode_indication == ModeIndication::LED_Vibro)
     {
         LED::Enable();
     }

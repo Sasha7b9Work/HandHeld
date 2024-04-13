@@ -15,6 +15,16 @@ namespace PageAlarm
 
     DEF_DATE(date, self, "дюрю", false);
 
+    DEF_CHOICE_7(choiceModeIndication, self, "нонбеыемхе", (uint8 *const)&gset.alarm.mode_indication,
+        "гбсй",
+        "ябер",
+        "бхапн",
+        "гбсй+ябер",
+        "гбсй+бхапн",
+        "ябер+бхапн",
+        "бяе"
+    );
+
     DEF_CHOICE_10(choiceMelody, self, "лекндхъ", (uint8 *const)&gset.alarm.melody,
         Melody::Name(Melody::_1),
         Melody::Name(Melody::_2),
@@ -44,10 +54,11 @@ namespace PageAlarm
         ColorBell::Name(ColorBell::Fiolet)
     );
 
-    DEF_PAGE_6(pageAlarm, PageMain::self, "асдхкэмхй",
+    DEF_PAGE_7(pageAlarm, PageMain::self, "асдхкэмхй",
         &choiceEnabled,
         &time,
         &date,
+        &choiceModeIndication,
         &choiceMelody,
         &choiceVolume,
         &choiceColorBell,

@@ -179,7 +179,7 @@ DEF_CHOICE_10(choiceMelody, self, "лекндхъ", (uint8 *const)&gset.sources[source]
 );
 
 #define DEF_CHOICE_MODE_SOURCE(source)                                                                      \
-DEF_CHOICE_7(choiceModeSource, self, "пефхл", (uint8 *const)&gset.sources[source].mode_source,              \
+DEF_CHOICE_7(choiceModeIndication, self, "нонбеыемхе", (uint8 *const)&gset.sources[source].mode_indication, \
     "гбсй",                                                                                                 \
     "ябер",                                                                                                 \
     "бхапн",                                                                                                \
@@ -216,7 +216,7 @@ DEF_CHOICE_COLOR(source);
 #define DEF_PAGE_SOURCE(name, source)                   \
 DEF_SOURCE_CHOICES(source);                             \
 DEF_PAGE_4(name, PageMain::self, Source::Name(source),  \
-    &choiceModeSource,                                  \
+    &choiceModeIndication,                              \
     &choiceMelody,                                      \
     &choiceVolume,                                      \
     &choiceColorBell,                                   \
