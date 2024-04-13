@@ -4,16 +4,19 @@
 #include "Menu/MenuItemDef.h"
 
 
-namespace PageTime
+namespace PageWatch
 {
-    DEF_TIME(timeTime, self, "ÂÐÅÌß", false);
+    namespace PageTime
+    {
+        DEF_TIME(timeTime, self, "ÂÐÅÌß", false);
 
-    DEF_PAGE_1(pageTime, PageMain::self, "ÂÐÅÌß",
-        &timeTime,
-        nullptr,
-        nullptr,
-        nullptr
-    );
+        DEF_PAGE_1(pageTime, PageMain::self, "ÂÐÅÌß",
+            &timeTime,
+            nullptr,
+            nullptr,
+            nullptr
+        );
 
-    const Item *const self = &pageTime;
+        const Item *const self = &pageTime;
+    }
 }

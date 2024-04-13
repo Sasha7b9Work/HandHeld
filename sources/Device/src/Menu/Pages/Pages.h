@@ -9,20 +9,22 @@ namespace PageMain
     extern const Item *const self;
 }
 
+namespace PageWatch
+{
+    namespace PageTime
+    {
+        extern const Item *const self;
+    }
+
+
+    namespace PageDate
+    {
+        extern const Item *const self;
+    }
+}
+
 
 namespace PageAlarm
-{
-    extern const Item *const self;
-}
-
-
-namespace PageTime
-{
-    extern const Item *const self;
-}
-
-
-namespace PageDate
 {
     extern const Item *const self;
 }

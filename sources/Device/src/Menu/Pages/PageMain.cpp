@@ -11,8 +11,8 @@
 
 DEF_PAGE_9(pageMain, nullptr, "лемч",
     PageAlarm::self,
-    PageTime::self,
-    PageDate::self,
+    PageWatch::PageTime::self,
+    PageWatch::PageDate::self,
     PageDoorBell::self,
     PageMobile::self,
     PageHomePhone::self,
