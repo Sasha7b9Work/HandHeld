@@ -102,21 +102,34 @@ void DateTime::Draw() const
     {
         Font::SetSize(2);
 
-        Text<>("”—“¿ÕŒ¬ ¿").Write(10, 5, Color::WHITE);
+        Text<>("”—“¿ÕŒ¬ ¿").WriteInCenter(0, 10, Display::WIDTH, Color::WHITE);
 
         Font::SetSize(1);
 
-        int values[3] = {
+        int values[3] =
+        {
             data->date_time->Day,
             data->date_time->Month,
             data->date_time->Year
         };
 
+        if (data->is_time)
+        {
+            values[0] = data->date_time->Hour;
+            values[1] = data->date_time->Minute;
+        }
+
         const int y = 32;
 
-        const int x[3] = { 5, 58, 111 };
+        int x[3] = { 5, 58, 111 };
 
-        for (int i = 0; i < 3; i++)
+        if (data->is_time)
+        {
+            x[0] = 30;
+            x[1] = 80;
+        }
+
+        for (int i = 0; i < NumFields(); i++)
         {
             DrawField(x[i], y, Text<>("%02d", values[i]), i == *data->field);
         }
@@ -264,13 +277,21 @@ void DateTime::ApplyAction(const Action &action) const
     {
         *data->field = *data->field + 1;
 
-        if (*data->field == 3)
+        if (*data->field == NumFields())
         {
             if (data->is_alarm)
             {
-                gset.time_alarm.Day = data->date_time->Day;
-                gset.time_alarm.Month = data->date_time->Month;
-                gset.time_alarm.Year = data->date_time->Year;
+                if (data->is_time)
+                {
+                    gset.time_alarm.Hour = data->date_time->Hour;
+                    gset.time_alarm.Minute = data->date_time->Minute;
+                }
+                else
+                {
+                    gset.time_alarm.Day = data->date_time->Day;
+                    gset.time_alarm.Month = data->date_time->Month;
+                    gset.time_alarm.Year = data->date_time->Year;
+                }
 
                 PCF8563::SetAlarm(&gset.time_alarm);
             }
@@ -278,9 +299,17 @@ void DateTime::ApplyAction(const Action &action) const
             {
                 RTCDateTime current_time = PCF8563::GetDateTime();
 
-                current_time.Day = data->date_time->Day;
-                current_time.Month = data->date_time->Month;
-                current_time.Year = data->date_time->Year;
+                if (data->is_time)
+                {
+                    current_time.Hour = data->date_time->Hour;
+                    current_time.Minute = data->date_time->Minute;
+                }
+                else
+                {
+                    current_time.Day = data->date_time->Day;
+                    current_time.Month = data->date_time->Month;
+                    current_time.Year = data->date_time->Year;
+                }
 
                 PCF8563::SetDateTime(&current_time);
             }
@@ -307,7 +336,7 @@ void DateTime::ChangeValueInCurrentField(int delta) const
 {
     int field = *data->field;
 
-    if (field > 2)
+    if (field > NumFields() - 1)
     {
         return;
     }
@@ -319,8 +348,18 @@ void DateTime::ChangeValueInCurrentField(int delta) const
         &data->date_time->Year
     };
 
-    int min[6] = { 1, 1, 0 };
-    int max[6] = { 31, 12, 99 };
+    int min[3] = { 1, 1, 0 };
+    int max[3] = { 31, 12, 99 };
+
+    if (data->is_time)
+    {
+        refs[0] = &data->date_time->Hour;
+        refs[1] = &data->date_time->Minute;
+        min[0] = 0;
+        min[1] = 0;
+        max[0] = 23;
+        max[1] = 59;
+    }
 
     int value = *refs[field];
 
