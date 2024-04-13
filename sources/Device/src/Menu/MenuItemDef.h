@@ -2,12 +2,8 @@
 #pragma once
 #include "Modules/PCF8563/PCF8563.h"
 
-//#define DEF_CUSTOM_BUTTON(name, keeper, title, x, y, width, height, funcPress)
 
-
-//#define DEF_BUTTON
-
-#define DEF_DATE_TIME(name, keeper, title, is_alarm)                                                                        \
+#define DEF_DATE(name, keeper, title, is_alarm)                                                                             \
 static int8 opened##name = 0;                                                                                               \
 static int8 field##name = 0;                                                                                                \
 static const DataItem name##data = { ItemType::Time, keeper, title, &opened##name };                                        \

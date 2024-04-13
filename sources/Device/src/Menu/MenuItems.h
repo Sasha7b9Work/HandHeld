@@ -103,27 +103,6 @@ struct StructTime
 };
 
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Date
-struct DataDate
-{
-    const Item *item;
-    int8 *const field;
-    RTCDateTime *const date_time;
-    static int8 in_edit_mode;
-    const bool is_alarm;
-};
-
-
-struct Date
-{
-    const DataDate *data;
-    void Draw() const;
-    void ApplyAction(const Action &) const;
-    void ChangeCurrentField(int delta) const;
-    void DrawField(int x, int y, int width, int height, const Text<> &, bool selected) const;
-};
-
-
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Choice
 struct DataChoice
 {

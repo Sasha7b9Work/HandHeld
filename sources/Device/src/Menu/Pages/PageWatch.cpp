@@ -8,7 +8,7 @@ namespace PageWatch
 {
     namespace PageTime
     {
-        DEF_DATE_TIME(timeTime, self, "ÂĞÅÌß", false);
+        DEF_DATE(timeTime, self, "ÂĞÅÌß", false);
 
         DEF_PAGE_1(pageTime, PageWatch::self, "ÂĞÅÌß",
             &timeTime,
@@ -23,7 +23,7 @@ namespace PageWatch
 
     namespace PageDate
     {
-        DEF_DATE_TIME(timeDate, self, "ÄÀÒÀ", false);
+        DEF_DATE(timeDate, self, "ÄÀÒÀ", false);
 
         DEF_PAGE_1(pageDate, PageWatch::self, "ÄÀÒÀ",
             &timeDate,
