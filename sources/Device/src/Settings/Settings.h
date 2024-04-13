@@ -38,10 +38,30 @@ struct Melody
 };
 
 
+// Цвет заливки экрана при вызове
+struct ColorBell
+{
+    enum E
+    {
+        White,
+        Red,
+        Orange,
+        Yellow,
+        Green,
+        Blue,
+        Fiolet,
+        Count
+    };
+
+    static pchar Name(E);
+};
+
+
 struct SettingsSource
 {
     Melody::E melody;           // Текущая мелодия
     Volume::E volume;           // Громкость текущей мелодии
+    ColorBell::E colorBell;
     ModeSource::E mode_source;  // Режим индикации
 };
 

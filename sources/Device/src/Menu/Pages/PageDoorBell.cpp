@@ -35,10 +35,21 @@ namespace PageDoorBell
         "бшянйюъ"
     );
 
-    DEF_PAGE_3(pageDoorBell, PageMain::self, "дбепмни гбнмнй",
+    DEF_CHOICE_7(choiceColorBell, self, "жбер", (uint8 *const)&gset.sources[Source::DoorBell].colorBell,
+        ColorBell::Name(ColorBell::White),
+        ColorBell::Name(ColorBell::Red),
+        ColorBell::Name(ColorBell::Orange),
+        ColorBell::Name(ColorBell::Yellow),
+        ColorBell::Name(ColorBell::Green),
+        ColorBell::Name(ColorBell::Blue),
+        ColorBell::Name(ColorBell::Fiolet)
+    );
+
+    DEF_PAGE_4(pageDoorBell, PageMain::self, "дбепмни гбнмнй",
         &choiceModeSource,
         &choiceMelody,
         &choiceVolume,
+        &choiceColorBell,
         nullptr,
         nullptr,
         nullptr
