@@ -97,35 +97,19 @@ void Date::Draw() const
 {
     if (data->item->IsOpened())
     {
-        int values[6] = {
-            data->date_time->Hour,
-            data->date_time->Minute,
-            data->date_time->Second,
+        int values[3] = {
             data->date_time->Day,
             data->date_time->Month,
             data->date_time->Year
         };
 
-        int x0 = 20;
-        int x1 = 50;
-        int x2 = 80;
+        const int y = 15;
 
-        int y0 = 15;
-        int y1 = 45;
+        const int x[3] = { 20, 50, 80 };
 
-        int x[6] = { x0, x1, x2, x0, x1, x2 };
-        int y[6] = { y0, y0, y0, y1, y1, y1 };
-
-        for (int i = 0; i < 6; i++)
+        for (int i = 0; i < 3; i++)
         {
-            DrawField(x[i], y[i], 23, 20, Text<>("%02d", values[i]), i == *data->field);
-
-            Color backbround = Color::WHITE;
-
-            Font::SetSize(2);
-            Text<>("+").Write(x[i] + 9, y[i] - 13, backbround);
-            Text<>("+").Write(x[i] + 9, y[i] + 18, backbround);
-            Font::SetSize(1);
+            DrawField(x[i], y, 23, 20, Text<>("%02d", values[i]), i == *data->field);
         }
 
         DrawField(110, 15, 40, 20, Text<>("0על"), 6 == *data->field);
@@ -331,23 +315,20 @@ void Date::ChangeValueInCurrentField(int delta) const
 {
     int field = *data->field;
 
-    if (field > 5)
+    if (field > 2)
     {
         return;
     }
 
-    uint8 *refs[6] =
+    uint8 *refs[3] =
     {
-        &data->date_time->Hour,
-        &data->date_time->Minute,
-        &data->date_time->Second,
         &data->date_time->Day,
         &data->date_time->Month,
         &data->date_time->Year
     };
 
-    int min[6] = { 0, 0, 0, 1, 1, 0 };
-    int max[6] = { 23, 59, 59, 31, 12, 99 };
+    int min[6] = { 1, 1, 0 };
+    int max[6] = { 31, 12, 99 };
 
     int value = *refs[field];
 
@@ -401,6 +382,8 @@ void Item::Open() const
 
     if (IsDate())
     {
+        *GetDate()->data->field = 0;
+
         if (GetDate()->data->is_alarm)
         {
             *GetDate()->data->date_time = gset.time_alarm;
