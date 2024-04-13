@@ -22,6 +22,12 @@ namespace PageTime
 }
 
 
+namespace PageDate
+{
+    extern const Item *const self;
+}
+
+
 namespace PageDoorBell
 {
     extern const Item *const self;

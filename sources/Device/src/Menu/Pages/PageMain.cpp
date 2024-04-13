@@ -9,13 +9,10 @@
 */
 
 
-
-DEF_TIME(timeDate, PageMain::self, "ƒ¿“¿", false);
-
 DEF_PAGE_9(pageMain, nullptr, "Ã≈Õﬁ",
     PageAlarm::self,
     PageTime::self,
-    &timeDate,
+    PageDate::self,
     PageDoorBell::self,
     PageMobile::self,
     PageHomePhone::self,
