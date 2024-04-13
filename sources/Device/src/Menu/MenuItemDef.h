@@ -11,10 +11,10 @@
 static int8 opened##name = 0;                                                                                               \
 static int8 field##name = 0;                                                                                                \
 static const DataItem name##data = { ItemType::Time, keeper, title, &opened##name };                                        \
-extern const Item name;                                                                                                     \
+extern const Item name;                                                                                               \
 static RTCDateTime name##date_time;                                                                                         \
-static const DataTime name##datatime = { &name, &field##name, &name##date_time, is_alarm };                                 \
-static const Time name##time = { &name##datatime };                                                                         \
+static const StructDataTime name##datatime = { &name, &field##name, &name##date_time, is_alarm };                           \
+static const StructTime name##time = { &name##datatime };                                                                   \
 const Item name = {&name##data, &name##time }
 
 #define DEF_PAGE_0(name, keeper, title, func_draw_closed, func_draw_opened, func_key)                                       \

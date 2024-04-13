@@ -9,7 +9,7 @@
 #include "Settings/Settings.h"
 
 
-int8 DataTime::in_edit_mode = 0;
+int8 StructDataTime::in_edit_mode = 0;
 
 
 void Item::Draw() const
@@ -82,7 +82,7 @@ void Choice::Draw() const
 }
 
 
-void Time::DrawField(int x, int y, int width, int height, const Text<> &text, bool selected) const
+void StructTime::DrawField(int x, int y, int width, int height, const Text<> &text, bool selected) const
 {
     Rect(width, height).Draw(x, y, selected ? Color::BLACK : Color::WHITE);
     Rect(width - 2, height - 2).Fill(x + 1, y + 1, selected ? Color::WHITE : Color::BLACK);
@@ -96,7 +96,7 @@ void Time::DrawField(int x, int y, int width, int height, const Text<> &text, bo
 }
 
 
-void Time::Draw() const
+void StructTime::Draw() const
 {
     if (data->item->IsOpened())
     {
@@ -280,7 +280,7 @@ int Choice::NumChoices() const
 }
 
 
-void Time::ApplyAction(const Action &action) const
+void StructTime::ApplyAction(const Action &action) const
 {
     if (action.key == Key::Menu)
     {
@@ -360,7 +360,7 @@ void Time::ApplyAction(const Action &action) const
 }
 
 
-void Time::ChangeCurrentField(int delta) const
+void StructTime::ChangeCurrentField(int delta) const
 {
     int field = *data->field;
 

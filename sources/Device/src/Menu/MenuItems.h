@@ -21,7 +21,7 @@ struct ItemType
 
 struct Item;
 struct Page;
-struct Time;
+struct StructTime;
 struct Choice;
 
 
@@ -45,7 +45,7 @@ struct Item
     bool IsTime() const { return data->type == ItemType::Time; }
     bool IsChoice() const { return data->type == ItemType::Choice; }
     const Page *GetPage() const { if (IsPage()) { return (const Page *)item; } return nullptr; }
-    const Time *GetTime() const { if (IsTime()) { return (const Time *)item; } return nullptr; }
+    const StructTime *GetTime() const { if (IsTime()) { return (const StructTime *)item; } return nullptr; }
     const Choice *GetChoice() const { if (IsChoice()) { return (const Choice *)item; } return nullptr; }
     void ApplyAction(const Action &) const;
     bool IsOpened() const;
@@ -83,7 +83,7 @@ struct Page
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Time
-struct DataTime
+struct StructDataTime
 {
     const Item *item;
     int8 *const field;          // јктивное поле 0 - часы, 1 - минуты, 2 - секунды, 3 - день, 4 - мес€ц, 5 - год, 6 - отмена, 7 - сохранить
@@ -93,14 +93,17 @@ struct DataTime
 };
 
 
-struct Time
+struct StructTime
 {
-    const DataTime *data;
+    const StructDataTime *data;
     void Draw() const;
     void ApplyAction(const Action &) const;
     void ChangeCurrentField(int delta) const;
     void DrawField(int x, int y, int width, int height, const Text<> &, bool selected) const;
 };
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Date
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Choice
