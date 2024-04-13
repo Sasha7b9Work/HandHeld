@@ -6,39 +6,13 @@
 
 namespace PageAlarm
 {
-    namespace PageTime
-    {
-        DEF_DATE(timeAlarm, self, "¬–≈Ãﬂ", true);
+    DEF_DATE(timeAlarm, self, "¬–≈Ãﬂ", true);
 
-        DEF_PAGE_1(pageTime, PageAlarm::self, "¬–≈Ãﬂ",
-            &timeAlarm,
-            nullptr,
-            nullptr,
-            nullptr
-        );
-
-        const Item *const self = &pageTime;
-    }
-
-
-    namespace PageDate
-    {
-        DEF_DATE(timeDate, self, "ƒ¿“¿", false);
-
-        DEF_PAGE_1(pageDate, PageAlarm::self, "ƒ¿“¿",
-            &timeDate,
-            nullptr,
-            nullptr,
-            nullptr
-        );
-
-        const Item *const self = &pageDate;
-    }
-
+    DEF_DATE(timeDate, self, "ƒ¿“¿", false);
 
     DEF_PAGE_2(pageAlarm, PageMain::self, "¡”ƒ»À‹Õ» ",
-        &PageTime::pageTime,
-        &PageDate::pageDate,
+        &timeAlarm,
+        &timeDate,
         nullptr,
         nullptr,
         nullptr

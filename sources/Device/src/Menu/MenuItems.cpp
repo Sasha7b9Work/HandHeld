@@ -140,6 +140,13 @@ void Date::Draw() const
     }
     else
     {
+        Font::SetSize(2);
+
+        data->item->Title().WriteInCenter(0, 30, Display::WIDTH, Color::BLUE);
+
+        Font::SetSize(1);
+
+        /*
         data->item->Title().Write(10, 10, Color::BLUE);
 
         if (data->is_alarm)
@@ -150,6 +157,7 @@ void Date::Draw() const
         {
             Watch::Draw(30, 30, Color::GREEN);
         }
+        */
     }
 }
 
