@@ -86,9 +86,8 @@ struct Page
 struct DataDate
 {
     const Item *item;
-    int8 *const field;          // јктивное поле 0 - часы, 1 - минуты, 2 - секунды, 3 - день, 4 - мес€ц, 5 - год, 6 - отмена, 7 - сохранить
+    int8 *const field;          // јктивное поле 0 - день, 1 - мес€ц, 2 - год
     RTCDateTime * const date_time;
-    static int8 in_edit_mode;
     const bool is_alarm;        // ≈сли true - то настройка будильника
 };
 
@@ -98,7 +97,7 @@ struct Date
     const DataDate *data;
     void Draw() const;
     void ApplyAction(const Action &) const;
-    void ChangeCurrentField(int delta) const;
+    void ChangeValueInCurrentField(int delta) const;
     void DrawField(int x, int y, int width, int height, const Text<> &, bool selected) const;
 };
 

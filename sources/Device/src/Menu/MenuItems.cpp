@@ -9,9 +9,6 @@
 #include "Settings/Settings.h"
 
 
-int8 DataDate::in_edit_mode = 0;
-
-
 void Item::Draw() const
 {
     if (IsPage())
@@ -123,15 +120,12 @@ void Date::Draw() const
         {
             DrawField(x[i], y[i], 23, 20, Text<>("%02d", values[i]), i == *data->field);
 
-            if (i == *data->field && data->in_edit_mode != 0)
-            {
-                Color backbround = Color::WHITE;
+            Color backbround = Color::WHITE;
 
-                Font::SetSize(2);
-                Text<>("+").Write(x[i] + 9, y[i] - 13, backbround);
-                Text<>("+").Write(x[i] + 9, y[i] + 18, backbround);
-                Font::SetSize(1);
-            }
+            Font::SetSize(2);
+            Text<>("+").Write(x[i] + 9, y[i] - 13, backbround);
+            Text<>("+").Write(x[i] + 9, y[i] + 18, backbround);
+            Font::SetSize(1);
         }
 
         DrawField(110, 15, 40, 20, Text<>("0על"), 6 == *data->field);
@@ -292,31 +286,27 @@ void Date::ApplyAction(const Action &action) const
 {
     if (action.key == Key::Menu)
     {
-        if (*data->field < 6)
+        *data->field = *data->field + 1;
+
+        if (*data->field == 3)
         {
-            if (data->in_edit_mode == 0)
+            if (data->is_alarm)
             {
-                data->in_edit_mode = 1;
+                gset.time_alarm.Day = data->date_time->Day;
+                gset.time_alarm.Month = data->date_time->Month;
+                gset.time_alarm.Year = data->date_time->Year;
+
+                PCF8563::SetAlarm(&gset.time_alarm);
             }
             else
             {
-                data->in_edit_mode = 0;
-            }
-        }
-        else
-        {
-            if (*data->field == 7)
-            {
-                if (data->is_alarm)
-                {
-                    gset.time_alarm = *data->date_time;
+                RTCDateTime current_time = PCF8563::GetDateTime();
 
-                    PCF8563::SetAlarm(&gset.time_alarm);
-                }
-                else
-                {
-                    PCF8563::SetDateTime(data->date_time);
-                }
+                current_time.Day = data->date_time->Day;
+                current_time.Month = data->date_time->Month;
+                current_time.Year = data->date_time->Year;
+
+                PCF8563::SetDateTime(&current_time);
             }
 
             data->item->Close();
@@ -324,51 +314,20 @@ void Date::ApplyAction(const Action &action) const
     }
     else if (action.key == Key::Cancel)
     {
-        if (data->in_edit_mode != 0)
-        {
-            data->in_edit_mode = 0;
-        }
-        else
-        {
-            data->item->Close();
-        }
+        data->item->Close();
     }
     else if (action.key == Key::Up)
     {
-        if (data->in_edit_mode)
-        {
-            ChangeCurrentField(+1);
-        }
-        else
-        {
-            *data->field = *data->field + 1;
-
-            if (*data->field == 8)
-            {
-                *data->field = 0;
-            }
-        }
+        ChangeValueInCurrentField(+1);
     }
     else if (action.key == Key::Down)
     {
-        if (data->in_edit_mode)
-        {
-            ChangeCurrentField(-1);
-        }
-        else
-        {
-            *data->field = *data->field - 1;
-
-            if (*data->field < 0)
-            {
-                *data->field = 7;
-            }
-        }
+        ChangeValueInCurrentField(-1);
     }
 }
 
 
-void Date::ChangeCurrentField(int delta) const
+void Date::ChangeValueInCurrentField(int delta) const
 {
     int field = *data->field;
 
