@@ -11,6 +11,7 @@
 #include "Menu/Menu.h"
 #include "Hardware/Battery.h"
 #include "Utils/FPS.h"
+#include "Utils/StringUtils.h"
 #include <string>
 
 
@@ -107,7 +108,22 @@ void Display::DrawScene(int num_part)
 
         Font::SetSize(2);
 
-        Text<>(Source::Name(Source::GetFirstReceived())).WriteInCenter(0, y, Display::WIDTH, Color::GREEN);
+        pchar name = Source::Name(Source::GetFirstReceived());
+
+        int num_words = SU::NumWordsInString(name);
+
+        if (num_words == 1)
+        {
+            Text<>(name).WriteInCenter(0, y, Display::WIDTH, Color::GREEN);
+        }
+        else if (num_words == 2)
+        {
+            char buffer[32];
+
+            Text<>(SU::GetWordFromString(name, 1, buffer)).WriteInCenter(0, y - 10, Display::WIDTH, Color::GREEN);
+
+            Text<>(SU::GetWordFromString(name, 2, buffer)).WriteInCenter(0, y + 15, Display::WIDTH, Color::GREEN);
+        }
 
         Font::SetSize(1);
 
