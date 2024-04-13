@@ -29,17 +29,10 @@ namespace PageHomePhone
         "10"
     );
 
-    DEF_CHOICE_10(choiceVolume, self, "√–ŒÃ Œ—“‹", &gset.sources[Source::PhoneHome].volume,
-        "1",
-        "2",
-        "3",
-        "4",
-        "5",
-        "6",
-        "7",
-        "8",
-        "9",
-        "10"
+    DEF_CHOICE_3(choiceVolume, self, "√–ŒÃ Œ—“‹", (uint8 *const)&gset.sources[Source::PhoneHome].volume,
+        "Õ»« ¿ﬂ",
+        "—–≈ƒÕﬂﬂ",
+        "¬€—Œ ¿ﬂ"
     );
 
 

@@ -5,10 +5,22 @@
 #include "Settings/Source.h"
 
 
+struct Volume
+{
+    enum E
+    {
+        Low,
+        Middle,
+        Hi,
+        Count
+    };
+};
+
+
 struct SettingsSource
 {
     uint8 melody;               // Текущая мелодия
-    uint8 volume;               // Громкость текущей мелодии
+    Volume::E volume;           // Громкость текущей мелодии
     ModeSource::E mode_source;  // Режим индикации
 };
 

@@ -29,17 +29,10 @@ namespace PageIntercom
         "10"
     );
 
-    DEF_CHOICE_10(choiceVolume, self, "цпнлйнярэ", &gset.sources[Source::Intercom].volume,
-        "1",
-        "2",
-        "3",
-        "4",
-        "5",
-        "6",
-        "7",
-        "8",
-        "9",
-        "10"
+    DEF_CHOICE_3(choiceVolume, self, "цпнлйнярэ", (uint8 *const)&gset.sources[Source::Intercom].volume,
+        "мхгйюъ",
+        "япедмъъ",
+        "бшянйюъ"
     );
 
     DEF_PAGE_3(pageIntercom, PageMain::self, "днлнтнм",

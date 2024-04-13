@@ -29,17 +29,10 @@ namespace PageDoorBell
         "10"
     );
 
-    DEF_CHOICE_10(choiceVolume, self, "цпнлйнярэ", &gset.sources[Source::DoorBell].volume,
-        "1",
-        "2",
-        "3",
-        "4",
-        "5",
-        "6",
-        "7",
-        "8",
-        "9",
-        "10"
+    DEF_CHOICE_3(choiceVolume, self, "цпнлйнярэ", (uint8 *const)&gset.sources[Source::DoorBell].volume,
+        "мхгйюъ",
+        "япедмъъ",
+        "бшянйюъ"
     );
 
     DEF_PAGE_3(pageDoorBell, PageMain::self, "дбепмни гбнмнй",

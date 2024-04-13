@@ -10,10 +10,10 @@
 
 Settings gset =
 {
-    { {0, 9, ModeSource::All},
-      {1, 9, ModeSource::All},
-      {2, 9, ModeSource::All},
-      {3, 9, ModeSource::All},
-      {4, 9, ModeSource::All} },
+    { {0, Volume::Hi, ModeSource::All},
+      {1, Volume::Hi, ModeSource::All},
+      {2, Volume::Hi, ModeSource::All},
+      {3, Volume::Hi, ModeSource::All},
+      {4, Volume::Hi, ModeSource::All} },
     { 0, 0, 0, 0, 0, 0 }
 };
