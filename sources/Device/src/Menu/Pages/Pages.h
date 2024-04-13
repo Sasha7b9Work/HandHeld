@@ -16,6 +16,12 @@ namespace PageAlarm
 }
 
 
+namespace PageTime
+{
+    extern const Item *const self;
+}
+
+
 namespace PageDoorBell
 {
     extern const Item *const self;

@@ -10,13 +10,11 @@
 
 
 
-DEF_TIME(timeTime, PageMain::self, "ÂĞÅÌß", false);
-
 DEF_TIME(timeDate, PageMain::self, "ÄÀÒÀ", false);
 
 DEF_PAGE_9(pageMain, nullptr, "ÌÅÍŞ",
     PageAlarm::self,
-    &timeTime,
+    PageTime::self,
     &timeDate,
     PageDoorBell::self,
     PageMobile::self,
