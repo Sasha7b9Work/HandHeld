@@ -6,18 +6,5 @@
 
 namespace PageIntercom
 {
-    DEF_SOURCE_CHOICES(Source::Intercom);
-
-    DEF_PAGE_4(pageIntercom, PageMain::self, "днлнтнм",
-        &choiceModeSource,
-        &choiceMelody,
-        &choiceVolume,
-        &choiceColorBell,
-        nullptr,
-        nullptr,
-        nullptr
-    );
-
-
-    const Item *const self = &pageIntercom;
+    DEF_PAGE_SOURCE(pageIntercom, Source::Intercom, "днлнтнм");
 }

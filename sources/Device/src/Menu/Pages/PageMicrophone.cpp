@@ -6,17 +6,5 @@
 
 namespace PageMicrophone
 {
-    DEF_SOURCE_CHOICES(Source::Microphone);
-
-    DEF_PAGE_4(pageSoundSensor, PageMain::self, "Ã» –Œ‘ŒÕ",
-        &choiceModeSource,
-        &choiceMelody,
-        &choiceVolume,
-        &choiceColorBell,
-        nullptr,
-        nullptr,
-        nullptr
-    );
-
-    const Item *const self = &pageSoundSensor;
+    DEF_PAGE_SOURCE(pageSoundSensor, Source::Microphone, "Ã» –Œ‘ŒÕ");
 }

@@ -6,17 +6,5 @@
 
 namespace PageMobile
 {
-    DEF_SOURCE_CHOICES(Source::Mobile);
-
-    DEF_PAGE_4(pageMobile, PageMain::self, "лнахкэмши рекетнм",
-        &choiceModeSource,
-        &choiceMelody,
-        &choiceVolume,
-        &choiceColorBell,
-        nullptr,
-        nullptr,
-        nullptr
-    );
-
-    const Item *const self = &pageMobile;
+    DEF_PAGE_SOURCE(pageMobile, Source::Mobile, "лнахкэмши рекетнм");
 }

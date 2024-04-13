@@ -212,3 +212,16 @@ DEF_CHOICE_MODE_SOURCE(source);         \
 DEF_CHOICE_MELODY(source);              \
 DEF_CHOICE_VOLUME(source);              \
 DEF_CHOICE_COLOR(source);
+
+#define DEF_PAGE_SOURCE(name, source, title)                \
+DEF_SOURCE_CHOICES(source);                                 \
+DEF_PAGE_4(name, PageMain::self, title,                     \
+    &choiceModeSource,                                      \
+    &choiceMelody,                                          \
+    &choiceVolume,                                          \
+    &choiceColorBell,                                       \
+    nullptr,                                                \
+    nullptr,                                                \
+    nullptr                                                 \
+);                                                          \
+const Item *const self = &name;

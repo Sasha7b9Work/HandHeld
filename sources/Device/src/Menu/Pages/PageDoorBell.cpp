@@ -6,17 +6,5 @@
 
 namespace PageDoorBell
 {
-    DEF_SOURCE_CHOICES(Source::DoorBell);
-
-    DEF_PAGE_4(pageDoorBell, PageMain::self, "дбепмни гбнмнй",
-        &choiceModeSource,
-        &choiceMelody,
-        &choiceVolume,
-        &choiceColorBell,
-        nullptr,
-        nullptr,
-        nullptr
-    );
-
-    const Item *const self = &pageDoorBell;
+    DEF_PAGE_SOURCE(pageDoorBell, Source::DoorBell, "дбепмни гбнмнй");
 }

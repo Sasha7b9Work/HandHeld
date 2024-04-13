@@ -6,17 +6,5 @@
 
 namespace PageHomePhone
 {
-    DEF_SOURCE_CHOICES(Source::PhoneHome);
-
-    DEF_PAGE_4(pageHomePhone, PageMain::self, "днлюьмхи рекетнм",
-        &choiceModeSource,
-        &choiceMelody,
-        &choiceVolume,
-        &choiceColorBell,
-        nullptr,
-        nullptr,
-        nullptr
-    );
-
-    const Item *const self = &pageHomePhone;
+    DEF_PAGE_SOURCE(pageHomePhone, Source::PhoneHome, "днлюьмхи рекетнм");
 }
