@@ -9,7 +9,7 @@
 #include "Settings/Settings.h"
 
 
-int8 StructDataTime::in_edit_mode = 0;
+int8 DataDate::in_edit_mode = 0;
 
 
 void Item::Draw() const
