@@ -7,6 +7,7 @@
 #include "Display/Font/Font.h"
 #include "Utils/Math.h"
 #include "Settings/Settings.h"
+#include "Utils/StringUtils.h"
 
 
 void Item::Draw() const
@@ -48,7 +49,20 @@ void Page::Draw() const
     {
         Font::SetSize(2);
 
-        data->item->Title().WriteInCenter(0, 30, Display::WIDTH, Color::BLUE);
+        int num_words = SU::NumWordsInString(data->item->Title().c_str());
+
+        if (num_words == 1)
+        {
+            data->item->Title().WriteInCenter(0, 30, Display::WIDTH, Color::GREEN);
+        }
+        else if(num_words == 2)
+        {
+            char buffer[32];
+
+            Text<>(SU::GetWordFromString(data->item->Title().c_str(), 1, buffer)).WriteInCenter(0, 15, Display::WIDTH, Color::GREEN);
+
+            Text<>(SU::GetWordFromString(data->item->Title().c_str(), 2, buffer)).WriteInCenter(0, 45, Display::WIDTH);
+        }
 
         Font::SetSize(1);
 

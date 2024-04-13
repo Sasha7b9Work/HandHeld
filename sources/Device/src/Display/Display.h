@@ -120,6 +120,10 @@ struct Text
 
         return result;
     }
+    const char *c_str() const
+    {
+        return &text[0];
+    }
 private:
     char text[capacity];
 };
