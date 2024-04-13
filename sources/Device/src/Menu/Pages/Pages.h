@@ -18,7 +18,6 @@ namespace PageWatch
         extern const Item *const self;
     }
 
-
     namespace PageDate
     {
         extern const Item *const self;
@@ -29,6 +28,16 @@ namespace PageWatch
 namespace PageAlarm
 {
     extern const Item *const self;
+
+    namespace PageTime
+    {
+        extern const Item *const self;
+    }
+
+    namespace PageDate
+    {
+        extern const Item *const self;
+    }
 }
 
 
