@@ -6,13 +6,7 @@
 
 namespace PageDoorBell
 {
-    DEF_CHOICE_MODE_SOURCE(Source::DoorBell);
-
-    DEF_CHOICE_MELODY(Source::DoorBell);
-
-    DEF_CHOICE_VOLUME(Source::DoorBell);
-
-    DEF_CHOICE_COLOR(Source::DoorBell);
+    DEF_SOURCE_CHOICES(Source::DoorBell);
 
     DEF_PAGE_4(pageDoorBell, PageMain::self, "дбепмни гбнмнй",
         &choiceModeSource,

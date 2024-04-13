@@ -6,13 +6,7 @@
 
 namespace PageMobile
 {
-    DEF_CHOICE_MODE_SOURCE(Source::Mobile);
-
-    DEF_CHOICE_MELODY(Source::Mobile);
-
-    DEF_CHOICE_VOLUME(Source::Mobile);
-
-    DEF_CHOICE_COLOR(Source::Mobile);
+    DEF_SOURCE_CHOICES(Source::Mobile);
 
     DEF_PAGE_4(pageMobile, PageMain::self, "лнахкэмши рекетнм",
         &choiceModeSource,

@@ -6,13 +6,7 @@
 
 namespace PageIntercom
 {
-    DEF_CHOICE_MODE_SOURCE(Source::Intercom);
-
-    DEF_CHOICE_MELODY(Source::Intercom);
-
-    DEF_CHOICE_VOLUME(Source::Intercom);
-
-    DEF_CHOICE_COLOR(Source::Intercom);
+    DEF_SOURCE_CHOICES(Source::Intercom);
 
     DEF_PAGE_4(pageIntercom, PageMain::self, "днлнтнм",
         &choiceModeSource,

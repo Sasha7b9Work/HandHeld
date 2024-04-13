@@ -6,13 +6,7 @@
 
 namespace PageHomePhone
 {
-    DEF_CHOICE_MODE_SOURCE(Source::PhoneHome);
-
-    DEF_CHOICE_MELODY(Source::PhoneHome);
-
-    DEF_CHOICE_VOLUME(Source::PhoneHome);
-
-    DEF_CHOICE_COLOR(Source::PhoneHome);
+    DEF_SOURCE_CHOICES(Source::PhoneHome);
 
     DEF_PAGE_4(pageHomePhone, PageMain::self, "днлюьмхи рекетнм",
         &choiceModeSource,
