@@ -10,7 +10,7 @@ namespace PageWatch
     {
         DEF_TIME(timeTime, self, "ÂÐÅÌß", false);
 
-        DEF_PAGE_1(pageTime, PageMain::self, "ÂÐÅÌß",
+        DEF_PAGE_1(pageTime, PageWatch::self, "ÂÐÅÌß",
             &timeTime,
             nullptr,
             nullptr,
@@ -25,7 +25,7 @@ namespace PageWatch
     {
         DEF_TIME(timeDate, PageDate::self, "ÄÀÒÀ", false);
 
-        DEF_PAGE_1(pageDate, PageMain::self, "ÄÀÒÀ",
+        DEF_PAGE_1(pageDate, PageWatch::self, "ÄÀÒÀ",
             &timeDate,
             nullptr,
             nullptr,
@@ -34,4 +34,15 @@ namespace PageWatch
 
         const Item *const self = &pageDate;
     }
+
+
+    DEF_PAGE_2(PageWatch, PageMain::self, "×ÀÑÛ",
+        &PageTime::pageTime,
+        &PageDate::pageDate,
+        nullptr,
+        nullptr,
+        nullptr
+    );
+
+    const Item *const self = &PageWatch;
 }

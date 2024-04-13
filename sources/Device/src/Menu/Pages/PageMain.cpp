@@ -9,10 +9,9 @@
 */
 
 
-DEF_PAGE_9(pageMain, nullptr, "лемч",
+DEF_PAGE_8(pageMain, nullptr, "лемч",
     PageAlarm::self,
-    PageWatch::PageTime::self,
-    PageWatch::PageDate::self,
+    PageWatch::self,
     PageDoorBell::self,
     PageMobile::self,
     PageHomePhone::self,
