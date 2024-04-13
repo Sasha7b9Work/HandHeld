@@ -21,15 +21,7 @@ namespace PageAlarm
 
     DEF_CHOICE_VOLUME_PAGE(gset.alarm.volume);
 
-    DEF_CHOICE_7(choiceColorBell, self, "÷¬≈“", (uint8 *const)&gset.alarm.colorBell,
-        ColorBell::Name(ColorBell::White),
-        ColorBell::Name(ColorBell::Red),
-        ColorBell::Name(ColorBell::Orange),
-        ColorBell::Name(ColorBell::Yellow),
-        ColorBell::Name(ColorBell::Green),
-        ColorBell::Name(ColorBell::Blue),
-        ColorBell::Name(ColorBell::Fiolet)
-    );
+    DEF_CHOICE_COLOR_PAGE(gset.alarm.colorBell);
 
     DEF_PAGE_7(pageAlarm, PageMain::self, "¡”ƒ»À‹Õ» ",
         &choiceEnabled,
