@@ -8,7 +8,7 @@ namespace PageAlarm
 {
     namespace PageTime
     {
-        DEF_TIME(timeAlarm, self, "ÂĞÅÌß", true);
+        DEF_DATE_TIME(timeAlarm, self, "ÂĞÅÌß", true);
 
         DEF_PAGE_1(pageTime, PageAlarm::self, "ÂĞÅÌß",
             &timeAlarm,
@@ -23,7 +23,7 @@ namespace PageAlarm
 
     namespace PageDate
     {
-        DEF_TIME(timeDate, self, "ÄÀÒÀ", false);
+        DEF_DATE_TIME(timeDate, self, "ÄÀÒÀ", false);
 
         DEF_PAGE_1(pageDate, PageAlarm::self, "ÄÀÒÀ",
             &timeDate,

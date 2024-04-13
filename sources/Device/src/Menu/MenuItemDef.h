@@ -7,11 +7,11 @@
 
 //#define DEF_BUTTON
 
-#define DEF_TIME(name, keeper, title, is_alarm)                                                                             \
+#define DEF_DATE_TIME(name, keeper, title, is_alarm)                                                                        \
 static int8 opened##name = 0;                                                                                               \
 static int8 field##name = 0;                                                                                                \
 static const DataItem name##data = { ItemType::Time, keeper, title, &opened##name };                                        \
-extern const Item name;                                                                                               \
+extern const Item name;                                                                                                     \
 static RTCDateTime name##date_time;                                                                                         \
 static const StructDataTime name##datatime = { &name, &field##name, &name##date_time, is_alarm };                           \
 static const StructTime name##time = { &name##datatime };                                                                   \
