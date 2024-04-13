@@ -164,8 +164,10 @@ static const DataChoice dc##name{&name, value, &names##name[0]};                
 static const Choice choice##name{&dc##name};                                                                                \
 const Item name{&di##name, &choice##name}
 
-#define DEF_CHOICE_MELODY(source)                                                                           \
-DEF_CHOICE_10(choiceMelody, self, "лекндхъ", (uint8 *const)&gset.sources[source].melody,                    \
+
+
+#define DEF_CHOICE_MELODY_PAGE(set)                                                                         \
+DEF_CHOICE_10(choiceMelody, self, "лекндхъ", (uint8 *const)&set,                                            \
     Melody::Name(Melody::_1),                                                                               \
     Melody::Name(Melody::_2),                                                                               \
     Melody::Name(Melody::_3),                                                                               \
@@ -207,10 +209,10 @@ DEF_CHOICE_7(choiceColorBell, self, "жбер", (uint8 *const)&gset.sources[source].
     ColorBell::Name(ColorBell::Fiolet)                                                                      \
 );
 
-#define DEF_SOURCE_CHOICES(source)      \
-DEF_CHOICE_MODE_SOURCE(source);         \
-DEF_CHOICE_MELODY(source);              \
-DEF_CHOICE_VOLUME(source);              \
+#define DEF_SOURCE_CHOICES(source)                  \
+DEF_CHOICE_MODE_SOURCE(source);                     \
+DEF_CHOICE_MELODY_PAGE(gset.sources[source].melody);\
+DEF_CHOICE_VOLUME(source);                          \
 DEF_CHOICE_COLOR(source);
 
 #define DEF_PAGE_SOURCE(name, source)                   \
