@@ -177,3 +177,14 @@ DEF_CHOICE_10(choiceMelody, self, "лекндхъ", (uint8 *const)&gset.sources[type].m
     Melody::Name(Melody::_9),                                                                               \
     Melody::Name(Melody::_10)                                                                               \
 );
+
+#define DEF_CHOICE_MODE_SOURCE(type)                                                                        \
+DEF_CHOICE_7(choiceModeSource, self, "пефхл", (uint8 *const)&gset.sources[type].mode_source,                \
+    "гбсй",                                                                                                 \
+    "ябер",                                                                                                 \
+    "бхапн",                                                                                                \
+    "гбсй+ябер",                                                                                            \
+    "гбсй+бхапн",                                                                                           \
+    "ябер+бхапн",                                                                                           \
+    "бяе"                                                                                                   \
+);

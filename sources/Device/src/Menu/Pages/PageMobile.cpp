@@ -6,15 +6,7 @@
 
 namespace PageMobile
 {
-    DEF_CHOICE_7(choiceModeSource, self, "пефхл", (uint8 *const)&gset.sources[Source::Mobile].mode_source,
-        "гбсй",
-        "ябер",
-        "бхапн",
-        "гбсй+ябер",
-        "гбсй+бхапн",
-        "ябер+бхапн",
-        "бяе"
-    );
+    DEF_CHOICE_MODE_SOURCE(Source::Mobile);
 
     DEF_CHOICE_MELODY(Source::Mobile);
 

@@ -6,15 +6,7 @@
 
 namespace PageDoorBell
 {
-    DEF_CHOICE_7(choiceModeSource, self, "пефхл", (uint8 *const)&gset.sources[Source::DoorBell].mode_source,
-        "гбсй",
-        "ябер",
-        "бхапн",
-        "гбсй+ябер",
-        "гбсй+бхапн",
-        "ябер+бхапн",
-        "бяе"
-    );
+    DEF_CHOICE_MODE_SOURCE(Source::DoorBell);
 
     DEF_CHOICE_MELODY(Source::DoorBell);
 
