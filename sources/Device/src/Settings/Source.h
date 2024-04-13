@@ -13,7 +13,7 @@ struct Source
         Mobile,         // Мобильный телефон
         PhoneHome,      // Домашний телефон
         Intercom,       // Домофон
-        Мicrophone,     // Акстический датчик
+        Microphone,     // Акстический датчик
         Count
     };
 

@@ -34,16 +34,14 @@ namespace PageIntercom
 }
 
 
-namespace PageCalls
+namespace PageSoundSensor
 {
     extern const Item *const self;
+}
 
+namespace PageCalls
+{
     void DrawParameters(Source::E);
-
-    namespace PageSoundSensor
-    {
-        extern const Item *const self;
-    }
 }
 
 
