@@ -15,9 +15,9 @@ void Item::Draw() const
     {
         GetPage()->Draw();
     }
-    else if (IsDate())
+    else if (IsDateTime())
     {
-        GetDate()->Draw();
+        GetDateTime()->Draw();
     }
     else if (IsChoice())
     {
@@ -79,7 +79,7 @@ void Choice::Draw() const
 }
 
 
-void Date::DrawField(int x, int y, const Text<> &text, bool selected) const
+void DateTime::DrawField(int x, int y, const Text<> &text, bool selected) const
 {
     const int width = 42;
     const int height = 35;
@@ -96,7 +96,7 @@ void Date::DrawField(int x, int y, const Text<> &text, bool selected) const
 }
 
 
-void Date::Draw() const
+void DateTime::Draw() const
 {
     if (data->item->IsOpened())
     {
@@ -175,9 +175,9 @@ void Item::ApplyAction(const Action &action) const
     {
         GetPage()->ApplyAction(action);
     }
-    else if (IsDate())
+    else if (IsDateTime())
     {
-        GetDate()->ApplyAction(action);
+        GetDateTime()->ApplyAction(action);
     }
     else if (IsChoice())
     {
@@ -258,7 +258,7 @@ int Choice::NumChoices() const
 }
 
 
-void Date::ApplyAction(const Action &action) const
+void DateTime::ApplyAction(const Action &action) const
 {
     if (action.key == Key::Menu)
     {
@@ -303,7 +303,7 @@ void Date::ApplyAction(const Action &action) const
 }
 
 
-void Date::ChangeValueInCurrentField(int delta) const
+void DateTime::ChangeValueInCurrentField(int delta) const
 {
     int field = *data->field;
 
@@ -372,17 +372,17 @@ void Item::Open() const
 {
     *data->opened = 1;
 
-    if (IsDate())
+    if (IsDateTime())
     {
-        *GetDate()->data->field = 0;
+        *GetDateTime()->data->field = 0;
 
-        if (GetDate()->data->is_alarm)
+        if (GetDateTime()->data->is_alarm)
         {
-            *GetDate()->data->date_time = gset.time_alarm;
+            *GetDateTime()->data->date_time = gset.time_alarm;
         }
         else
         {
-            *GetDate()->data->date_time = PCF8563::GetDateTime();
+            *GetDateTime()->data->date_time = PCF8563::GetDateTime();
         }
     }
 

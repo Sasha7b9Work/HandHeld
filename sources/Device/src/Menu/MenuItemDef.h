@@ -6,21 +6,21 @@
 #define DEF_TIME(name, keeper, title, is_alarm)                                                                             \
 static int8 opened##name = 0;                                                                                               \
 static int8 field##name = 0;                                                                                                \
-static const DataItem name##data = { ItemType::Date, keeper, title, &opened##name };                                        \
+static const DataItem name##data = { ItemType::DateTime, keeper, title, &opened##name };                                    \
 extern const Item name;                                                                                                     \
 static RTCDateTime name##date_time;                                                                                         \
-static const DataDate name##datatime = { &name, &field##name, &name##date_time, true, is_alarm };                           \
-static const Date name##time = { &name##datatime };                                                                         \
+static const DataDateTime name##datatime = { &name, &field##name, &name##date_time, true, is_alarm };                       \
+static const DateTime name##time = { &name##datatime };                                                                     \
 const Item name = {&name##data, &name##time }
 
 #define DEF_DATE(name, keeper, title, is_alarm)                                                                             \
 static int8 opened##name = 0;                                                                                               \
 static int8 field##name = 0;                                                                                                \
-static const DataItem name##data = { ItemType::Date, keeper, title, &opened##name };                                        \
+static const DataItem name##data = { ItemType::DateTime, keeper, title, &opened##name };                                    \
 extern const Item name;                                                                                                     \
 static RTCDateTime name##date_time;                                                                                         \
-static const DataDate name##datatime = { &name, &field##name, &name##date_time, false, is_alarm };                          \
-static const Date name##time = { &name##datatime };                                                                         \
+static const DataDateTime name##datatime = { &name, &field##name, &name##date_time, false, is_alarm };                      \
+static const DateTime name##time = { &name##datatime };                                                                     \
 const Item name = {&name##data, &name##time }
 
 #define DEF_PAGE_0(name, keeper, title, func_draw_closed, func_draw_opened, func_key)                                       \

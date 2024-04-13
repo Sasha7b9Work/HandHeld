@@ -12,7 +12,7 @@ struct ItemType
         Page,
         Button,
         CustomButton,
-        Date,
+        DateTime,
         Choice,
         Count
     };
@@ -21,7 +21,7 @@ struct ItemType
 
 struct Item;
 struct Page;
-struct Date;
+struct DateTime;
 struct Choice;
 
 
@@ -42,10 +42,10 @@ struct Item
     const void     *item;     // ”казатель на структуру типа ItemType
     void Draw() const;
     bool IsPage() const { return data->type == ItemType::Page; }
-    bool IsDate() const { return data->type == ItemType::Date; }
+    bool IsDateTime() const { return data->type == ItemType::DateTime; }
     bool IsChoice() const { return data->type == ItemType::Choice; }
     const Page *GetPage() const { if (IsPage()) { return (const Page *)item; } return nullptr; }
-    const Date *GetDate() const { if (IsDate()) { return (const Date *)item; } return nullptr; }
+    const DateTime *GetDateTime() const { if (IsDateTime()) { return (const DateTime *)item; } return nullptr; }
     const Choice *GetChoice() const { if (IsChoice()) { return (const Choice *)item; } return nullptr; }
     void ApplyAction(const Action &) const;
     bool IsOpened() const;
@@ -83,7 +83,7 @@ struct Page
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Date
-struct DataDate
+struct DataDateTime
 {
     const Item *item;
     int8 *const field;          // јктивное поле 0 - день, 1 - мес€ц, 2 - год
@@ -93,9 +93,9 @@ struct DataDate
 };
 
 
-struct Date
+struct DateTime
 {
-    const DataDate *data;
+    const DataDateTime *data;
     void Draw() const;
     void ApplyAction(const Action &) const;
 private:
