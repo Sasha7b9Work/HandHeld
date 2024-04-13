@@ -4,9 +4,35 @@
 #include "Menu/MenuItems.h"
 #include "Menu/MenuItemDef.h"
 
-/*
-  асдхкэмхй, бпелъ, дюрю, дбепмни гбнмнй, Mнахкэмши рекетнм, днлюьмхи рекетнм, днлнтнм, лхйпнтнм, фспмюк
-*/
+
+namespace PageDoorBell
+{
+    DEF_PAGE_SOURCE(pageDoorBell, Source::DoorBell, "дбепмни гбнмнй");
+}
+
+
+namespace PageMobile
+{
+    DEF_PAGE_SOURCE(pageMobile, Source::Mobile, "лнахкэмши рекетнм");
+}
+
+
+namespace PageHomePhone
+{
+    DEF_PAGE_SOURCE(pageHomePhone, Source::PhoneHome, "днлюьмхи рекетнм");
+}
+
+
+namespace PageIntercom
+{
+    DEF_PAGE_SOURCE(pageIntercom, Source::Intercom, "днлнтнм");
+}
+
+
+namespace PageMicrophone
+{
+    DEF_PAGE_SOURCE(pageSoundSensor, Source::Microphone, "лхйпнтнм");
+}
 
 
 DEF_PAGE_8(pageMain, nullptr, "лемч",

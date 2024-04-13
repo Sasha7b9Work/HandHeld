@@ -865,36 +865,6 @@
               <FilePath>.\src\Menu\Pages\Pages.h</FilePath>
             </File>
             <File>
-              <FileName>PageMain.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageMain.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>PageDoorBell.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageDoorBell.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>PageMobile.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageMobile.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>PageHomePhone.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageHomePhone.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>PageIntercom.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageIntercom.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>PageMicrophone.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageMicrophone.cpp</FilePath>
-            </File>
-            <File>
               <FileName>PageAlarm.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Menu\Pages\PageAlarm.cpp</FilePath>
@@ -908,6 +878,11 @@
               <FileName>PageWatch.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Menu\Pages\PageWatch.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Pages.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Menu\Pages\Pages.cpp</FilePath>
             </File>
           </Files>
         </Group>
@@ -2102,36 +2077,6 @@
               <FilePath>.\src\Menu\Pages\Pages.h</FilePath>
             </File>
             <File>
-              <FileName>PageMain.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageMain.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>PageDoorBell.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageDoorBell.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>PageMobile.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageMobile.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>PageHomePhone.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageHomePhone.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>PageIntercom.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageIntercom.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>PageMicrophone.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageMicrophone.cpp</FilePath>
-            </File>
-            <File>
               <FileName>PageAlarm.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Menu\Pages\PageAlarm.cpp</FilePath>
@@ -2145,6 +2090,11 @@
               <FileName>PageWatch.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Menu\Pages\PageWatch.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Pages.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Menu\Pages\Pages.cpp</FilePath>
             </File>
           </Files>
         </Group>
