@@ -48,19 +48,13 @@ namespace PageMicrophone
     );
 
 
-    static void OnDraw_SoundSensor()
-    {
-        Source::DrawParameters(Source::Microphone);
-    }
-
-
     DEF_PAGE_5(pageSoundSensor, PageMain::self, "Ã» –Œ‘ŒÕ",
         &choiceMelody,
         &choiceVolume,
         &choiceEnableLED,
         &choiceEnableMelody,
         &choiceEnabledVibro,
-        OnDraw_SoundSensor,
+        nullptr,
         nullptr,
         nullptr
     );

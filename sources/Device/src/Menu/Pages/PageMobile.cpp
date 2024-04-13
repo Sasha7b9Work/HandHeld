@@ -47,11 +47,6 @@ namespace PageMobile
         "бЙК"
     );
 
-    static void OnDraw_Mobile()
-    {
-        Source::DrawParameters(Source::Mobile);
-    }
-
 
     DEF_PAGE_5(pageMobile, PageMain::self, "лнахкэмши рекетнм",
         &choiceMelody,
@@ -59,7 +54,7 @@ namespace PageMobile
         &choiceEnableLED,
         &choiceEnableMelody,
         &choiceEnabledVibro,
-        OnDraw_Mobile,
+        nullptr,
         nullptr,
         nullptr
     );

@@ -47,19 +47,13 @@ namespace PageHomePhone
         "бЙК"
     );
 
-    static void OnDraw_HomePhone()
-    {
-        Source::DrawParameters(Source::PhoneHome);
-    }
-
-
     DEF_PAGE_5(pageHomePhone, PageMain::self, "днлюьмхи рекетнм",
         &choiceMelody,
         &choiceVolume,
         &choiceEnableLED,
         &choiceEnableMelody,
         &choiceEnabledVibro,
-        OnDraw_HomePhone,
+        nullptr,
         nullptr,
         nullptr
     );

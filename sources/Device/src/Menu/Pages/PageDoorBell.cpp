@@ -47,20 +47,13 @@ namespace PageDoorBell
         "бЙК"
     );
 
-
-    static void OnDraw_DoorBell()
-    {
-        Source::DrawParameters(Source::DoorBell);
-    }
-
-
     DEF_PAGE_5(pageDoorBell, PageMain::self, "дбепмни гбнмнй",
         &choiceMelody,
         &choiceVolume,
         &choiceEnableLED,
         &choiceEnableMelody,
         &choiceEnabledVibro,
-        OnDraw_DoorBell,
+        nullptr,
         nullptr,
         nullptr
     );

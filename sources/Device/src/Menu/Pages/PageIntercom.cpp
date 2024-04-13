@@ -47,18 +47,13 @@ namespace PageIntercom
         "бЙК"
     );
 
-    static void OnDraw_Intercom()
-    {
-        Source::DrawParameters(Source::Intercom);
-    }
-
     DEF_PAGE_5(pageIntercom, PageMain::self, "днлнтнм",
         &choiceMelody,
         &choiceVolume,
         &choiceEnableLED,
         &choiceEnableMelody,
         &choiceEnabledVibro,
-        OnDraw_Intercom,
+        nullptr,
         nullptr,
         nullptr
     );
