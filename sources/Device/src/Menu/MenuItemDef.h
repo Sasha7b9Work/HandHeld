@@ -207,7 +207,6 @@ DEF_CHOICE_7(choiceColorBell, self, "жбер", (uint8 *const)&gset.sources[source].
     ColorBell::Name(ColorBell::Fiolet)                                                                      \
 );
 
-
 #define DEF_SOURCE_CHOICES(source)      \
 DEF_CHOICE_MODE_SOURCE(source);         \
 DEF_CHOICE_MELODY(source);              \
