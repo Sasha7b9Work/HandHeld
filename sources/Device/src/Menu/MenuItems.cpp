@@ -158,7 +158,7 @@ Text<> Item::Title() const
     {
         if (page_keeper->data->items[i] == this)
         {
-            return Text<>("%d/%d %s", i + 1, page_keeper->NumItems(), data->title);
+            return Text<>(data->title);
         }
     }
 }
