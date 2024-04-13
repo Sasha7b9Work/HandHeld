@@ -27,16 +27,18 @@ namespace PageHomePhone
     extern const Item *const self;
 }
 
+
+namespace PageIntercom
+{
+    extern const Item *const self;
+}
+
+
 namespace PageCalls
 {
     extern const Item *const self;
 
     void DrawParameters(Source::E);
-
-    namespace PageIntercom
-    {
-        extern const Item *const self;
-    }
 
     namespace PageSoundSensor
     {

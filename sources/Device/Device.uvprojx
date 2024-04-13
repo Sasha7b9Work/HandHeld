@@ -899,6 +899,11 @@
               <FileType>8</FileType>
               <FilePath>.\src\Menu\Pages\PageHomePhone.cpp</FilePath>
             </File>
+            <File>
+              <FileName>PageIntercom.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Menu\Pages\PageIntercom.cpp</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -2115,6 +2120,11 @@
               <FileName>PageHomePhone.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Menu\Pages\PageHomePhone.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>PageIntercom.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Menu\Pages\PageIntercom.cpp</FilePath>
             </File>
           </Files>
         </Group>

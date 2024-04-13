@@ -39,70 +39,6 @@ namespace PageCalls
     }
 
 
-    namespace PageIntercom
-    {
-        DEF_CHOICE_10(choiceMelody, self, "лекндхъ", &gset.sources[Source::Intercom].melody,
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10"
-        );
-
-        DEF_CHOICE_10(choiceVolume, self, "цпнлйнярэ", &gset.sources[Source::Intercom].volume,
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10"
-        );
-
-        DEF_CHOICE_2(choiceEnableLED, self, "яберндхнд", &gset.sources[Source::Intercom].enabled_led,
-            "нРЙК",
-            "бЙК"
-        );
-
-        DEF_CHOICE_2(choiceEnableMelody, self, "гбсй", &gset.sources[Source::Intercom].enabled_melody,
-            "нРЙК",
-            "бЙК"
-        );
-
-        DEF_CHOICE_2(choiceEnabledVibro, self, "бхапюжхъ", &gset.sources[Source::Intercom].enabled_vibrato,
-            "нРЙК",
-            "бЙК"
-        );
-
-        static void OnDraw_Intercom()
-        {
-            PageCalls::DrawParameters(Source::Intercom);
-        }
-
-        DEF_PAGE_5(pageIntercom, PageCalls::self, "днлнтнм",
-            &choiceMelody,
-            &choiceVolume,
-            &choiceEnableLED,
-            &choiceEnableMelody,
-            &choiceEnabledVibro,
-            OnDraw_Intercom,
-            nullptr,
-            nullptr
-        );
-
-
-        const Item *const self = &pageIntercom;
-    }
-
-
     namespace PageSoundSensor
     {
         DEF_CHOICE_10(choiceMelody, self, "лекндхъ", &gset.sources[Source::SoundSensor].melody,
@@ -169,8 +105,7 @@ namespace PageCalls
 }
 
 
-DEF_PAGE_2(pageCalls, PageMain::self, "мюярпнийх бшгнбнб",
-    PageCalls::PageIntercom::self,
+DEF_PAGE_1(pageCalls, PageMain::self, "мюярпнийх бшгнбнб",
     PageCalls::PageSoundSensor::self,
     nullptr,
     nullptr,

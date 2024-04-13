@@ -6,7 +6,8 @@
 
 /*
   асдхкэмхй, бпелъ, дюрю, дбепмни гбнмнй, Mнахкэмши рекетнм,
-  днлюьмхи рекетнм, днлнтнм, лхйпнтнм, фспмюк
+  днлюьмхи рекетнм,
+  днлнтнм, лхйпнтнм, фспмюк
 */
 
 DEF_TIME(timeAlarm, PageMain::self, "асдхкэмхй", true);
@@ -15,13 +16,14 @@ DEF_TIME(timeTime, PageMain::self, "бпелъ", false);
 
 DEF_TIME(timeDate, PageMain::self, "дюрю", false);
 
-DEF_PAGE_8(pageMain, nullptr, "лемч",
+DEF_PAGE_9(pageMain, nullptr, "лемч",
     &timeAlarm,
     &timeTime,
     &timeDate,
     PageDoorBell::self,
     PageMobile::self,
     PageHomePhone::self,
+    PageIntercom::self,
 
     PageCalls::self,
     PageHistory::self,
