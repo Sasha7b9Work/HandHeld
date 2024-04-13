@@ -12,15 +12,7 @@ namespace PageDoorBell
 
     DEF_CHOICE_VOLUME(Source::DoorBell);
 
-    DEF_CHOICE_7(choiceColorBell, self, "жбер", (uint8 *const)&gset.sources[Source::DoorBell].colorBell,
-        ColorBell::Name(ColorBell::White),
-        ColorBell::Name(ColorBell::Red),
-        ColorBell::Name(ColorBell::Orange),
-        ColorBell::Name(ColorBell::Yellow),
-        ColorBell::Name(ColorBell::Green),
-        ColorBell::Name(ColorBell::Blue),
-        ColorBell::Name(ColorBell::Fiolet)
-    );
+    DEF_CHOICE_COLOR(Source::DoorBell);
 
     DEF_PAGE_4(pageDoorBell, PageMain::self, "дбепмни гбнмнй",
         &choiceModeSource,

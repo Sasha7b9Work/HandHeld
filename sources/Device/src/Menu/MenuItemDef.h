@@ -189,10 +189,20 @@ DEF_CHOICE_7(choiceModeSource, self, "–≈∆»Ã", (uint8 *const)&gset.sources[source
     "¬—≈"                                                                                                   \
 );
 
-
 #define DEF_CHOICE_VOLUME(source)                                                                           \
 DEF_CHOICE_3(choiceVolume, self, "√–ŒÃ Œ—“‹", (uint8 *const)&gset.sources[source].volume,                   \
     "Õ»« ¿ﬂ",                                                                                               \
     "—–≈ƒÕﬂﬂ",                                                                                              \
     "¬€—Œ ¿ﬂ"                                                                                               \
+);
+
+#define DEF_CHOICE_COLOR(source)                                                                            \
+DEF_CHOICE_7(choiceColorBell, self, "÷¬≈“", (uint8 *const)&gset.sources[source].colorBell,                  \
+    ColorBell::Name(ColorBell::White),                                                                      \
+    ColorBell::Name(ColorBell::Red),                                                                        \
+    ColorBell::Name(ColorBell::Orange),                                                                     \
+    ColorBell::Name(ColorBell::Yellow),                                                                     \
+    ColorBell::Name(ColorBell::Green),                                                                      \
+    ColorBell::Name(ColorBell::Blue),                                                                       \
+    ColorBell::Name(ColorBell::Fiolet)                                                                      \
 );
