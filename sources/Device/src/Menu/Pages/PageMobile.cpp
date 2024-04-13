@@ -46,10 +46,10 @@ namespace PageMobile
     );
 
     DEF_PAGE_4(pageMobile, PageMain::self, "лнахкэмши рекетнм",
-        &choiceColorBell,
         &choiceModeSource,
         &choiceMelody,
         &choiceVolume,
+        &choiceColorBell,
         nullptr,
         nullptr,
         nullptr

@@ -46,10 +46,10 @@ namespace PageIntercom
     );
 
     DEF_PAGE_4(pageIntercom, PageMain::self, "днлнтнм",
-        &choiceColorBell,
         &choiceModeSource,
         &choiceMelody,
         &choiceVolume,
+        &choiceColorBell,
         nullptr,
         nullptr,
         nullptr

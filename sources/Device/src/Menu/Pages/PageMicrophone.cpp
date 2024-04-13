@@ -46,10 +46,10 @@ namespace PageMicrophone
     );
 
     DEF_PAGE_4(pageSoundSensor, PageMain::self, "Ã» –Œ‘ŒÕ",
-        &choiceColorBell,
         &choiceModeSource,
         &choiceMelody,
         &choiceVolume,
+        &choiceColorBell,
         nullptr,
         nullptr,
         nullptr
