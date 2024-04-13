@@ -10,7 +10,7 @@ static const DataItem name##data = { ItemType::Time, keeper, title, &opened##nam
 extern const Item name;                                                                                                     \
 static RTCDateTime name##date_time;                                                                                         \
 static const DataDate name##datatime = { &name, &field##name, &name##date_time, is_alarm };                                 \
-static const StructTime name##time = { &name##datatime };                                                                   \
+static const Date name##time = { &name##datatime };                                                                         \
 const Item name = {&name##data, &name##time }
 
 #define DEF_PAGE_0(name, keeper, title, func_draw_closed, func_draw_opened, func_key)                                       \

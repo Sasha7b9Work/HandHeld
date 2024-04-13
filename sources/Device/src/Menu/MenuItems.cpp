@@ -82,7 +82,7 @@ void Choice::Draw() const
 }
 
 
-void StructTime::DrawField(int x, int y, int width, int height, const Text<> &text, bool selected) const
+void Date::DrawField(int x, int y, int width, int height, const Text<> &text, bool selected) const
 {
     Rect(width, height).Draw(x, y, selected ? Color::BLACK : Color::WHITE);
     Rect(width - 2, height - 2).Fill(x + 1, y + 1, selected ? Color::WHITE : Color::BLACK);
@@ -96,7 +96,7 @@ void StructTime::DrawField(int x, int y, int width, int height, const Text<> &te
 }
 
 
-void StructTime::Draw() const
+void Date::Draw() const
 {
     if (data->item->IsOpened())
     {
@@ -280,7 +280,7 @@ int Choice::NumChoices() const
 }
 
 
-void StructTime::ApplyAction(const Action &action) const
+void Date::ApplyAction(const Action &action) const
 {
     if (action.key == Key::Menu)
     {
@@ -360,7 +360,7 @@ void StructTime::ApplyAction(const Action &action) const
 }
 
 
-void StructTime::ChangeCurrentField(int delta) const
+void Date::ChangeCurrentField(int delta) const
 {
     int field = *data->field;
 

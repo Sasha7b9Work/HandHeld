@@ -21,7 +21,7 @@ struct ItemType
 
 struct Item;
 struct Page;
-struct StructTime;
+struct Date;
 struct Choice;
 
 
@@ -45,7 +45,7 @@ struct Item
     bool IsTime() const { return data->type == ItemType::Time; }
     bool IsChoice() const { return data->type == ItemType::Choice; }
     const Page *GetPage() const { if (IsPage()) { return (const Page *)item; } return nullptr; }
-    const StructTime *GetTime() const { if (IsTime()) { return (const StructTime *)item; } return nullptr; }
+    const Date *GetTime() const { if (IsTime()) { return (const Date *)item; } return nullptr; }
     const Choice *GetChoice() const { if (IsChoice()) { return (const Choice *)item; } return nullptr; }
     void ApplyAction(const Action &) const;
     bool IsOpened() const;
@@ -93,7 +93,7 @@ struct DataDate
 };
 
 
-struct StructTime
+struct Date
 {
     const DataDate *data;
     void Draw() const;
