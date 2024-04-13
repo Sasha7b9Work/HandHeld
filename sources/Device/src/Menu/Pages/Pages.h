@@ -40,7 +40,7 @@ namespace PageMicrophone
 }
 
 
-namespace PageHistory
+namespace PageJournal
 {
     extern const Item *const self;
 }

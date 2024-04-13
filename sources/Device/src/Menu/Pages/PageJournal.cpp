@@ -6,7 +6,7 @@
 #include "Storage/Storage.h"
 
 
-namespace PageHistory
+namespace PageJournal
 {
     static int top_record = 0;
 
@@ -88,7 +88,7 @@ namespace PageHistory
         Font::SetSize(1);
     }
 
-    DEF_PAGE_0(pageHistory, PageMain::self, "∆”–Õ¿À ¬€«Œ¬Œ¬",
+    DEF_PAGE_0(pageHistory, PageMain::self, "∆”–Õ¿À",
         FuncDraw_Closed,
         FuncDraw_History,
         Func_ActionKey

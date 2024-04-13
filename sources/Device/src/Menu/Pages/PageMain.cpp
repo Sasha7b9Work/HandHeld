@@ -23,7 +23,7 @@ DEF_PAGE_9(pageMain, nullptr, "лемч",
     PageHomePhone::self,
     PageIntercom::self,
     PageMicrophone::self,
-    PageHistory::self,
+    PageJournal::self,
     nullptr,
     nullptr,
     nullptr
