@@ -79,7 +79,7 @@ namespace PageJournal
         return true;
     }
 
-    static void FuncDraw_Closed()
+    void FuncDraw_Closed()
     {
         Font::SetSize(2);
 
@@ -89,7 +89,7 @@ namespace PageJournal
     }
 
     DEF_PAGE_0(pageHistory, PageMain::self, "∆”–Õ¿À",
-        FuncDraw_Closed,
+        nullptr, // FuncDraw_Closed,
         FuncDraw_History,
         Func_ActionKey
     );
