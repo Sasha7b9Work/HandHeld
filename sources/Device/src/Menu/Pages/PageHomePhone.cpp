@@ -10,11 +10,7 @@ namespace PageHomePhone
 
     DEF_CHOICE_MELODY(Source::PhoneHome);
 
-    DEF_CHOICE_3(choiceVolume, self, "√–ŒÃ Œ—“‹", (uint8 *const)&gset.sources[Source::PhoneHome].volume,
-        "Õ»« ¿ﬂ",
-        "—–≈ƒÕﬂﬂ",
-        "¬€—Œ ¿ﬂ"
-    );
+    DEF_CHOICE_VOLUME(Source::PhoneHome);
 
     DEF_CHOICE_7(choiceColorBell, self, "÷¬≈“", (uint8 *const)&gset.sources[Source::PhoneHome].colorBell,
         ColorBell::Name(ColorBell::White),

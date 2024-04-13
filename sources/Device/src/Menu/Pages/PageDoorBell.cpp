@@ -10,11 +10,7 @@ namespace PageDoorBell
 
     DEF_CHOICE_MELODY(Source::DoorBell);
 
-    DEF_CHOICE_3(choiceVolume, self, "√–ŒÃ Œ—“‹", (uint8 *const)&gset.sources[Source::DoorBell].volume,
-        "Õ»« ¿ﬂ",
-        "—–≈ƒÕﬂﬂ",
-        "¬€—Œ ¿ﬂ"
-    );
+    DEF_CHOICE_VOLUME(Source::DoorBell);
 
     DEF_CHOICE_7(choiceColorBell, self, "÷¬≈“", (uint8 *const)&gset.sources[Source::DoorBell].colorBell,
         ColorBell::Name(ColorBell::White),

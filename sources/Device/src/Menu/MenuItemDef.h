@@ -164,8 +164,8 @@ static const DataChoice dc##name{&name, value, &names##name[0]};                
 static const Choice choice##name{&dc##name};                                                                                \
 const Item name{&di##name, &choice##name}
 
-#define DEF_CHOICE_MELODY(type)                                                                             \
-DEF_CHOICE_10(choiceMelody, self, "Ã≈ÀŒƒ»ﬂ", (uint8 *const)&gset.sources[type].melody,                      \
+#define DEF_CHOICE_MELODY(source)                                                                           \
+DEF_CHOICE_10(choiceMelody, self, "Ã≈ÀŒƒ»ﬂ", (uint8 *const)&gset.sources[source].melody,                    \
     Melody::Name(Melody::_1),                                                                               \
     Melody::Name(Melody::_2),                                                                               \
     Melody::Name(Melody::_3),                                                                               \
@@ -178,8 +178,8 @@ DEF_CHOICE_10(choiceMelody, self, "Ã≈ÀŒƒ»ﬂ", (uint8 *const)&gset.sources[type].m
     Melody::Name(Melody::_10)                                                                               \
 );
 
-#define DEF_CHOICE_MODE_SOURCE(type)                                                                        \
-DEF_CHOICE_7(choiceModeSource, self, "–≈∆»Ã", (uint8 *const)&gset.sources[type].mode_source,                \
+#define DEF_CHOICE_MODE_SOURCE(source)                                                                      \
+DEF_CHOICE_7(choiceModeSource, self, "–≈∆»Ã", (uint8 *const)&gset.sources[source].mode_source,              \
     "«¬” ",                                                                                                 \
     "—¬≈“",                                                                                                 \
     "¬»¡–Œ",                                                                                                \
@@ -187,4 +187,12 @@ DEF_CHOICE_7(choiceModeSource, self, "–≈∆»Ã", (uint8 *const)&gset.sources[type].
     "«¬” +¬»¡–Œ",                                                                                           \
     "—¬≈“+¬»¡–Œ",                                                                                           \
     "¬—≈"                                                                                                   \
+);
+
+
+#define DEF_CHOICE_VOLUME(source)                                                                           \
+DEF_CHOICE_3(choiceVolume, self, "√–ŒÃ Œ—“‹", (uint8 *const)&gset.sources[source].volume,                   \
+    "Õ»« ¿ﬂ",                                                                                               \
+    "—–≈ƒÕﬂﬂ",                                                                                              \
+    "¬€—Œ ¿ﬂ"                                                                                               \
 );

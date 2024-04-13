@@ -10,11 +10,7 @@ namespace PageMobile
 
     DEF_CHOICE_MELODY(Source::Mobile);
 
-    DEF_CHOICE_3(choiceVolume, self, "√–ŒÃ Œ—“‹", (uint8 *const)&gset.sources[Source::Mobile].volume,
-        "Õ»« ¿ﬂ",
-        "—–≈ƒÕﬂﬂ",
-        "¬€—Œ ¿ﬂ"
-    );
+    DEF_CHOICE_VOLUME(Source::Mobile);
 
     DEF_CHOICE_7(choiceColorBell, self, "÷¬≈“", (uint8 *const)&gset.sources[Source::Mobile].colorBell,
         ColorBell::Name(ColorBell::White),

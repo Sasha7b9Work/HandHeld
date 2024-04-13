@@ -10,11 +10,7 @@ namespace PageIntercom
 
     DEF_CHOICE_MELODY(Source::Intercom);
 
-    DEF_CHOICE_3(choiceVolume, self, "√–ŒÃ Œ—“‹", (uint8 *const)&gset.sources[Source::Intercom].volume,
-        "Õ»« ¿ﬂ",
-        "—–≈ƒÕﬂﬂ",
-        "¬€—Œ ¿ﬂ"
-    );
+    DEF_CHOICE_VOLUME(Source::Intercom);
 
     DEF_CHOICE_7(choiceColorBell, self, "÷¬≈“", (uint8 *const)&gset.sources[Source::Intercom].colorBell,
         ColorBell::Name(ColorBell::White),
