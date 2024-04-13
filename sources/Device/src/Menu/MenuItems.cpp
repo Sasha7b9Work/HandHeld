@@ -265,14 +265,7 @@ void Choice::ApplyAction(const Action &action) const
 {
     if (action.key == Key::Menu)
     {
-        int value = (int)(*data->value) + 1;
-
-        if (value == NumChoices())
-        {
-            value = 0;
-        }
-
-        *data->value = (uint8)value;
+        Math::CircleIncrease<uint8>(data->value, 0, NumChoices() - 1);
     }
 }
 
