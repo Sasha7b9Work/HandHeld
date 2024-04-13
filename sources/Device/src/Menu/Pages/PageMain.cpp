@@ -15,12 +15,14 @@ DEF_TIME(timeTime, PageMain::self, "бпелъ", false);
 
 DEF_TIME(timeDate, PageMain::self, "дюрю", false);
 
-DEF_PAGE_7(pageMain, nullptr, "лемч",
+DEF_PAGE_8(pageMain, nullptr, "лемч",
     &timeAlarm,
     &timeTime,
     &timeDate,
     PageDoorBell::self,
     PageMobile::self,
+    PageHomePhone::self,
+
     PageCalls::self,
     PageHistory::self,
     nullptr,

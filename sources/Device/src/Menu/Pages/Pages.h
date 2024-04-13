@@ -22,16 +22,16 @@ namespace PageMobile
 }
 
 
+namespace PageHomePhone
+{
+    extern const Item *const self;
+}
+
 namespace PageCalls
 {
     extern const Item *const self;
 
     void DrawParameters(Source::E);
-
-    namespace PageHomePhone
-    {
-        extern const Item *const self;
-    }
 
     namespace PageIntercom
     {

@@ -894,6 +894,11 @@
               <FileType>8</FileType>
               <FilePath>.\src\Menu\Pages\PageMobile.cpp</FilePath>
             </File>
+            <File>
+              <FileName>PageHomePhone.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Menu\Pages\PageHomePhone.cpp</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -2105,6 +2110,11 @@
               <FileName>PageMobile.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Menu\Pages\PageMobile.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>PageHomePhone.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Menu\Pages\PageHomePhone.cpp</FilePath>
             </File>
           </Files>
         </Group>
