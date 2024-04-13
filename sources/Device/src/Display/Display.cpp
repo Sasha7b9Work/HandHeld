@@ -107,7 +107,7 @@ void Display::DrawScene(int num_part)
 
         Font::SetSize(2);
 
-        Source::Name(Source::GetFirstReceived()).WriteInCenter(0, y, Display::WIDTH, Color::GREEN);
+        Text<>(Source::Name(Source::GetFirstReceived())).WriteInCenter(0, y, Display::WIDTH, Color::GREEN);
 
         Font::SetSize(1);
 

@@ -39,7 +39,7 @@ struct Source
 
     static void Update();
 
-    static Text<> Name(E);
+    static pchar Name(E);
 
 private:
     Source::E value;

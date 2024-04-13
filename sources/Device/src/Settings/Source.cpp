@@ -21,18 +21,18 @@ void Source::DrawIcon(int x, int y, const Color &color) const
 }
 
 
-Text<> Source::Name(E v)
+pchar Source::Name(E v)
 {
     static const pchar names[Count] =
     {
-        "дбепэ",
-        "лна. рекетнм",
-        "днл. рекетнм",
+        "дбепмни гбнмнй",
+        "лнахкэмши рекетнм",
+        "днлюьмхи рекетнм",
         "днлнтнм",
-        "дюрвхK"
+        "лхйпнтнмK"
     };
 
-    return Text<>(names[v]);
+    return names[v];
 }
 
 
