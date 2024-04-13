@@ -27,6 +27,16 @@ static const DataPage dp##name{&name, items##name, &current_item##name, func_dra
 static const Page page##name{&dp##name};                                                                                    \
 const Item name{&di##name, &page##name}
 
+#define DEF_PAGE_3(name, keeper, title, item0, item1, item2, func_draw_closed, func_draw_opened, func_key)                  \
+static const Item *items##name[] = { item0, item1, item2, nullptr };                                                        \
+static int8 current_item##name = 0;                                                                                         \
+static int8 opened##name = 0;                                                                                               \
+static const DataItem di##name{ItemType::Page, keeper, title, &opened##name};                                               \
+extern const Item name;                                                                                                     \
+static const DataPage dp##name{&name, items##name, &current_item##name, func_draw_closed, func_draw_opened, func_key};      \
+static const Page page##name{&dp##name};                                                                                    \
+const Item name{&di##name, &page##name}
+
 #define DEF_PAGE_4(name, keeper, title, item0, item1, item2, item3, func_draw_closed, func_draw_opened, func_key)           \
 static const Item *items##name[] = { item0, item1, item2, item3, nullptr };                                                 \
 static int8 current_item##name = 0;                                                                                         \
@@ -58,6 +68,18 @@ extern const Item name;                                                         
 static const DataPage dp##name{&name, items##name, &current_item##name, func_draw_closed, func_draw_opened, func_key};      \
 static const Page page##name{&dp##name};                                                                                    \
 const Item name{&di##name, &page##name}
+
+#define DEF_PAGE_7(name, keeper, title, item0, item1, item2, item3, item4, item5, item6,                                    \
+    func_draw_closed, func_draw_opened, func_key)                                                                           \
+static const Item *items##name[] = { item0, item1, item2, item3, item4, item5, item6, nullptr };                            \
+static int8 current_item##name = 0;                                                                                         \
+static int8 opened##name = 0;                                                                                               \
+static const DataItem di##name{ItemType::Page, keeper, title, &opened##name};                                               \
+extern const Item name;                                                                                                     \
+static const DataPage dp##name{&name, items##name, &current_item##name, func_draw_closed, func_draw_opened, func_key};      \
+static const Page page##name{&dp##name};                                                                                    \
+const Item name{&di##name, &page##name}
+
 
 #define DEF_CHOICE_2(name, keeper, title, value, name0, name1)                                                              \
 static int8 opened##name = 0;                                                                                               \

@@ -38,71 +38,6 @@ namespace PageCalls
         Text<>(gset.sources[source].enabled_vibrato == 0 ? DISABLED_RU : ENABLED_RU).Write(x1, y);
     }
 
-
-    namespace PageMobile
-    {
-        DEF_CHOICE_10(choiceMelody, self, "лекндхъ", &gset.sources[Source::Mobile].melody,
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10"
-        );
-
-        DEF_CHOICE_10(choiceVolume, self, "цпнлйнярэ", &gset.sources[Source::Mobile].volume,
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10"
-        );
-
-        DEF_CHOICE_2(choiceEnableLED, self, "яберндхнд", &gset.sources[Source::Mobile].enabled_led,
-            "нРЙК",
-            "бЙК"
-        );
-
-        DEF_CHOICE_2(choiceEnableMelody, self, "гбсй", &gset.sources[Source::Mobile].enabled_melody,
-            "нРЙК",
-            "бЙК"
-        );
-
-        DEF_CHOICE_2(choiceEnabledVibro, self, "бхапюжхъ", &gset.sources[Source::Mobile].enabled_vibrato,
-            "нРЙК",
-            "бЙК"
-        );
-
-        static void OnDraw_Mobile()
-        {
-            PageCalls::DrawParameters(Source::Mobile);
-        }
-
-
-        DEF_PAGE_5(pageMobile, PageCalls::self, "лнахкэмши рекетнм",
-            &choiceMelody,
-            &choiceVolume,
-            &choiceEnableLED,
-            &choiceEnableMelody,
-            &choiceEnabledVibro,
-            OnDraw_Mobile,
-            nullptr,
-            nullptr
-        );
-
-        const Item *const self = &pageMobile;
-    }
-
-
     namespace PageHomePhone
     {
         DEF_CHOICE_10(choiceMelody, self, "лекндхъ", &gset.sources[Source::PhoneHome].melody,
@@ -297,8 +232,7 @@ namespace PageCalls
 }
 
 
-DEF_PAGE_4(pageCalls, PageMain::self, "мюярпнийх бшгнбнб",
-    PageCalls::PageMobile::self,
+DEF_PAGE_3(pageCalls, PageMain::self, "мюярпнийх бшгнбнб",
     PageCalls::PageHomePhone::self,
     PageCalls::PageIntercom::self,
     PageCalls::PageSoundSensor::self,

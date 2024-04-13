@@ -889,6 +889,11 @@
               <FileType>8</FileType>
               <FilePath>.\src\Menu\Pages\PageDoorBell.cpp</FilePath>
             </File>
+            <File>
+              <FileName>PageMobile.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Menu\Pages\PageMobile.cpp</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -2095,6 +2100,11 @@
               <FileName>PageDoorBell.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Menu\Pages\PageDoorBell.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>PageMobile.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Menu\Pages\PageMobile.cpp</FilePath>
             </File>
           </Files>
         </Group>

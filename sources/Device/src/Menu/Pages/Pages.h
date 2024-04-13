@@ -15,16 +15,18 @@ namespace PageDoorBell
     extern const Item *const self;
 }
 
+
+namespace PageMobile
+{
+    extern const Item *const self;
+}
+
+
 namespace PageCalls
 {
     extern const Item *const self;
 
     void DrawParameters(Source::E);
-
-    namespace PageMobile
-    {
-        extern const Item *const self;
-    }
 
     namespace PageHomePhone
     {
