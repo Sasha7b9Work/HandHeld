@@ -50,7 +50,7 @@ namespace PageSoundSensor
 
     static void OnDraw_SoundSensor()
     {
-        PageCalls::DrawParameters(Source::Microphone);
+        Source::DrawParameters(Source::Microphone);
     }
 
 

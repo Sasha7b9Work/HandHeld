@@ -860,11 +860,6 @@
           <GroupName>Menu/Pages</GroupName>
           <Files>
             <File>
-              <FileName>Pages.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\Pages.cpp</FilePath>
-            </File>
-            <File>
               <FileName>Pages.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Menu\Pages\Pages.h</FilePath>
@@ -878,11 +873,6 @@
               <FileName>PageMain.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Menu\Pages\PageMain.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>PageCalls.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageCalls.cpp</FilePath>
             </File>
             <File>
               <FileName>PageDoorBell.cpp</FileName>
@@ -2087,11 +2077,6 @@
           <GroupName>Menu/Pages</GroupName>
           <Files>
             <File>
-              <FileName>Pages.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\Pages.cpp</FilePath>
-            </File>
-            <File>
               <FileName>Pages.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Menu\Pages\Pages.h</FilePath>
@@ -2105,11 +2090,6 @@
               <FileName>PageMain.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Menu\Pages\PageMain.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>PageCalls.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageCalls.cpp</FilePath>
             </File>
             <File>
               <FileName>PageDoorBell.cpp</FileName>

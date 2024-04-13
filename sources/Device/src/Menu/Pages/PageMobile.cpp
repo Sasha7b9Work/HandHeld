@@ -49,7 +49,7 @@ namespace PageMobile
 
     static void OnDraw_Mobile()
     {
-        PageCalls::DrawParameters(Source::Mobile);
+        Source::DrawParameters(Source::Mobile);
     }
 
 

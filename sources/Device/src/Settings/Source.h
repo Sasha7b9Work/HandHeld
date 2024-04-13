@@ -41,6 +41,8 @@ struct Source
 
     static Text<> Name(E);
 
+    static void DrawParameters(Source::E);
+
 private:
     Source::E value;
 

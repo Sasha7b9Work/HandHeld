@@ -50,7 +50,7 @@ namespace PageDoorBell
 
     static void OnDraw_DoorBell()
     {
-        PageCalls::DrawParameters(Source::DoorBell);
+        Source::DrawParameters(Source::DoorBell);
     }
 
 

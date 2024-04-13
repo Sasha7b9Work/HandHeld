@@ -49,7 +49,7 @@ namespace PageIntercom
 
     static void OnDraw_Intercom()
     {
-        PageCalls::DrawParameters(Source::Intercom);
+        Source::DrawParameters(Source::Intercom);
     }
 
     DEF_PAGE_5(pageIntercom, PageMain::self, "днлнтнм",

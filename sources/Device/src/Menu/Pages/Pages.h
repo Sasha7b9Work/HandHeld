@@ -39,11 +39,6 @@ namespace PageSoundSensor
     extern const Item *const self;
 }
 
-namespace PageCalls
-{
-    void DrawParameters(Source::E);
-}
-
 
 namespace PageHistory
 {

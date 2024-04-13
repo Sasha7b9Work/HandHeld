@@ -49,7 +49,7 @@ namespace PageHomePhone
 
     static void OnDraw_HomePhone()
     {
-        PageCalls::DrawParameters(Source::PhoneHome);
+        Source::DrawParameters(Source::PhoneHome);
     }
 
 
