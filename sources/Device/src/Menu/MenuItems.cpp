@@ -20,7 +20,7 @@ void Item::Draw() const
     }
     else if (IsDate())
     {
-        GetTime()->Draw();
+        GetDate()->Draw();
     }
     else if (IsChoice())
     {
@@ -199,7 +199,7 @@ void Item::ApplyAction(const Action &action) const
     }
     else if (IsDate())
     {
-        GetTime()->ApplyAction(action);
+        GetDate()->ApplyAction(action);
     }
     else if (IsChoice())
     {
@@ -434,13 +434,13 @@ void Item::Open() const
 
     if (IsDate())
     {
-        if (GetTime()->data->is_alarm)
+        if (GetDate()->data->is_alarm)
         {
-            *GetTime()->data->date_time = gset.time_alarm;
+            *GetDate()->data->date_time = gset.time_alarm;
         }
         else
         {
-            *GetTime()->data->date_time = PCF8563::GetDateTime();
+            *GetDate()->data->date_time = PCF8563::GetDateTime();
         }
     }
 
