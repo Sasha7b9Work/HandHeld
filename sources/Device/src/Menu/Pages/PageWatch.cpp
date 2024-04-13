@@ -6,13 +6,13 @@
 
 namespace PageWatch
 {
-    DEF_DATE(timeTime, self, "ÂĞÅÌß", false);
+    DEF_TIME(time, self, "ÂĞÅÌß", false);
 
-    DEF_DATE(timeDate, self, "ÄÀÒÀ", false);
+    DEF_DATE(date, self, "ÄÀÒÀ", false);
 
     DEF_PAGE_2(pageWatch, PageMain::self, "×ÀÑÛ",
-        &timeTime,
-        &timeDate,
+        &time,
+        &date,
         nullptr,
         nullptr,
         nullptr

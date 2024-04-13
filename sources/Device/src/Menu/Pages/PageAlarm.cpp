@@ -6,13 +6,13 @@
 
 namespace PageAlarm
 {
-    DEF_DATE(timeAlarm, self, "ÂĞÅÌß", true);
+    DEF_TIME(time, self, "ÂĞÅÌß", true);
 
-    DEF_DATE(timeDate, self, "ÄÀÒÀ", false);
+    DEF_DATE(date, self, "ÄÀÒÀ", false);
 
     DEF_PAGE_2(pageAlarm, PageMain::self, "ÁÓÄÈËÜÍÈÊ",
-        &timeAlarm,
-        &timeDate,
+        &time,
+        &date,
         nullptr,
         nullptr,
         nullptr

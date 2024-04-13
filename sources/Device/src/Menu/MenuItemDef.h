@@ -3,13 +3,23 @@
 #include "Modules/PCF8563/PCF8563.h"
 
 
+#define DEF_TIME(name, keeper, title, is_alarm)                                                                             \
+static int8 opened##name = 0;                                                                                               \
+static int8 field##name = 0;                                                                                                \
+static const DataItem name##data = { ItemType::Date, keeper, title, &opened##name };                                        \
+extern const Item name;                                                                                                     \
+static RTCDateTime name##date_time;                                                                                         \
+static const DataDate name##datatime = { &name, &field##name, &name##date_time, true, is_alarm };                           \
+static const Date name##time = { &name##datatime };                                                                         \
+const Item name = {&name##data, &name##time }
+
 #define DEF_DATE(name, keeper, title, is_alarm)                                                                             \
 static int8 opened##name = 0;                                                                                               \
 static int8 field##name = 0;                                                                                                \
 static const DataItem name##data = { ItemType::Date, keeper, title, &opened##name };                                        \
 extern const Item name;                                                                                                     \
 static RTCDateTime name##date_time;                                                                                         \
-static const DataDate name##datatime = { &name, &field##name, &name##date_time, is_alarm };                                 \
+static const DataDate name##datatime = { &name, &field##name, &name##date_time, false, is_alarm };                          \
 static const Date name##time = { &name##datatime };                                                                         \
 const Item name = {&name##data, &name##time }
 
