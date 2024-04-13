@@ -41,7 +41,7 @@ namespace PageCalls
 
     namespace PageSoundSensor
     {
-        DEF_CHOICE_10(choiceMelody, self, "ÌÅËÎÄÈß", &gset.sources[Source::SoundSensor].melody,
+        DEF_CHOICE_10(choiceMelody, self, "ÌÅËÎÄÈß", &gset.sources[Source::Ìicrophone].melody,
             "1",
             "2",
             "3",
@@ -54,7 +54,7 @@ namespace PageCalls
             "10"
         );
 
-        DEF_CHOICE_10(choiceVolume, self, "ÃĞÎÌÊÎÑÒÜ", &gset.sources[Source::SoundSensor].volume,
+        DEF_CHOICE_10(choiceVolume, self, "ÃĞÎÌÊÎÑÒÜ", &gset.sources[Source::Ìicrophone].volume,
             "1",
             "2",
             "3",
@@ -67,17 +67,17 @@ namespace PageCalls
             "10"
         );
 
-        DEF_CHOICE_2(choiceEnableLED, self, "ÑÂÅÒÎÄÈÎÄ", &gset.sources[Source::SoundSensor].enabled_led,
+        DEF_CHOICE_2(choiceEnableLED, self, "ÑÂÅÒÎÄÈÎÄ", &gset.sources[Source::Ìicrophone].enabled_led,
             "Îòêë",
             "Âêë"
         );
 
-        DEF_CHOICE_2(choiceEnableMelody, self, "ÇÂÓÊ", &gset.sources[Source::SoundSensor].enabled_melody,
+        DEF_CHOICE_2(choiceEnableMelody, self, "ÇÂÓÊ", &gset.sources[Source::Ìicrophone].enabled_melody,
             "Îòêë",
             "Âêë"
         );
 
-        DEF_CHOICE_2(choiceEnabledVibro, self, "ÂÈÁĞÀÖÈß", &gset.sources[Source::SoundSensor].enabled_vibrato,
+        DEF_CHOICE_2(choiceEnabledVibro, self, "ÂÈÁĞÀÖÈß", &gset.sources[Source::Ìicrophone].enabled_vibrato,
             "Îòêë",
             "Âêë"
         );
@@ -85,7 +85,7 @@ namespace PageCalls
 
         static void OnDraw_SoundSensor()
         {
-            PageCalls::DrawParameters(Source::SoundSensor);
+            PageCalls::DrawParameters(Source::Ìicrophone);
         }
 
 
