@@ -4,15 +4,21 @@
 #include "Menu/MenuItems.h"
 #include "Menu/MenuItemDef.h"
 
-
-DEF_TIME(timeWatch, PageMain::self, "вюяш", false);
+/*
+* асдхкэмхй, бпелъ, дюрю, дбепмни гбнмнй, лнахкэмши рекетнм, днлюьмхи рекетнм, днлнтнм, лхйпнтнм, фспмюк
+*/
 
 DEF_TIME(timeAlarm, PageMain::self, "асдхкэмхй", true);
 
+DEF_TIME(timeTime, PageMain::self, "бпелъ", false);
 
-DEF_PAGE_4(pageMain, nullptr, "лемч",
-    &timeWatch,
+DEF_TIME(timeDate, PageMain::self, "дюрю", false);
+
+DEF_PAGE_6(pageMain, nullptr, "лемч",
     &timeAlarm,
+    &timeTime,
+    &timeDate,
+    PageDoorBell::self,
     PageCalls::self,
     PageHistory::self,
     nullptr,

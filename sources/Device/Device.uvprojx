@@ -884,6 +884,11 @@
               <FileType>8</FileType>
               <FilePath>.\src\Menu\Pages\PageCalls.cpp</FilePath>
             </File>
+            <File>
+              <FileName>PageDoorBell.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Menu\Pages\PageDoorBell.cpp</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -2085,6 +2090,11 @@
               <FileName>PageCalls.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Menu\Pages\PageCalls.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>PageDoorBell.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Menu\Pages\PageDoorBell.cpp</FilePath>
             </File>
           </Files>
         </Group>
