@@ -163,3 +163,17 @@ static const pchar names##name[] = {name0, name1, name2, name3, name4, name5, na
 static const DataChoice dc##name{&name, value, &names##name[0]};                                                            \
 static const Choice choice##name{&dc##name};                                                                                \
 const Item name{&di##name, &choice##name}
+
+#define DEF_CHOICE_MELODY(type)                                                                             \
+DEF_CHOICE_10(choiceMelody, self, "лекндхъ", (uint8 *const)&gset.sources[type].melody,                      \
+    Melody::Name(Melody::_1),                                                                               \
+    Melody::Name(Melody::_2),                                                                               \
+    Melody::Name(Melody::_3),                                                                               \
+    Melody::Name(Melody::_4),                                                                               \
+    Melody::Name(Melody::_5),                                                                               \
+    Melody::Name(Melody::_6),                                                                               \
+    Melody::Name(Melody::_7),                                                                               \
+    Melody::Name(Melody::_8),                                                                               \
+    Melody::Name(Melody::_9),                                                                               \
+    Melody::Name(Melody::_10)                                                                               \
+);

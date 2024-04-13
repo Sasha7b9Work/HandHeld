@@ -16,18 +16,7 @@ namespace PageDoorBell
         "¬—≈"
     );
 
-    DEF_CHOICE_10(choiceMelody, self, "Ã≈ÀŒƒ»ﬂ", (uint8 *const)&gset.sources[Source::DoorBell].melody,
-        Melody::Name(Melody::_1),
-        Melody::Name(Melody::_2),
-        Melody::Name(Melody::_3),
-        Melody::Name(Melody::_4),
-        Melody::Name(Melody::_5),
-        Melody::Name(Melody::_6),
-        Melody::Name(Melody::_7),
-        Melody::Name(Melody::_8),
-        Melody::Name(Melody::_9),
-        Melody::Name(Melody::_10)
-    );
+    DEF_CHOICE_MELODY(Source::DoorBell);
 
     DEF_CHOICE_3(choiceVolume, self, "√–ŒÃ Œ—“‹", (uint8 *const)&gset.sources[Source::DoorBell].volume,
         "Õ»« ¿ﬂ",
