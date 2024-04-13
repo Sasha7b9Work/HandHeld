@@ -4,7 +4,7 @@
 #include "Menu/MenuItemDef.h"
 
 
-namespace PageSoundSensor
+namespace PageMicrophone
 {
     DEF_CHOICE_10(choiceMelody, self, "лекндхъ", &gset.sources[Source::Microphone].melody,
         "1",

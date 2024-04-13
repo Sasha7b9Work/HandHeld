@@ -34,7 +34,7 @@ namespace PageIntercom
 }
 
 
-namespace PageSoundSensor
+namespace PageMicrophone
 {
     extern const Item *const self;
 }

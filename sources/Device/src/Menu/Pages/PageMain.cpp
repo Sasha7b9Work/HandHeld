@@ -5,8 +5,7 @@
 #include "Menu/MenuItemDef.h"
 
 /*
-  асдхкэмхй, бпелъ, дюрю, дбепмни гбнмнй, Mнахкэмши рекетнм, днлюьмхи рекетнм, днлнтнм, лхйпнтнм,
-  фспмюк
+  асдхкэмхй, бпелъ, дюрю, дбепмни гбнмнй, Mнахкэмши рекетнм, днлюьмхи рекетнм, днлнтнм, лхйпнтнм, фспмюк
 */
 
 DEF_TIME(timeAlarm, PageMain::self, "асдхкэмхй", true);
@@ -23,7 +22,7 @@ DEF_PAGE_9(pageMain, nullptr, "лемч",
     PageMobile::self,
     PageHomePhone::self,
     PageIntercom::self,
-    PageSoundSensor::self,
+    PageMicrophone::self,
     PageHistory::self,
     nullptr,
     nullptr,
