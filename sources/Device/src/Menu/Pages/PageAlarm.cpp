@@ -15,15 +15,7 @@ namespace PageAlarm
 
     DEF_DATE(date, self, "дюрю", false);
 
-    DEF_CHOICE_7(choiceModeIndication, self, "нонбеыемхе", (uint8 *const)&gset.alarm.mode_indication,
-        "гбсй",
-        "ябер",
-        "бхапн",
-        "гбсй+ябер",
-        "гбсй+бхапн",
-        "ябер+бхапн",
-        "бяе"
-    );
+    DEF_CHOICE_MODE_INDICATION_PAGE(gset.alarm.mode_indication);
 
     DEF_CHOICE_MELODY_PAGE(gset.alarm.melody)
 

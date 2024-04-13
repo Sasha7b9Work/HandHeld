@@ -180,8 +180,8 @@ DEF_CHOICE_10(choiceMelody, self, "лекндхъ", (uint8 *const)&set,                
     Melody::Name(Melody::_10)                                                                               \
 );
 
-#define DEF_CHOICE_MODE_SOURCE(source)                                                                      \
-DEF_CHOICE_7(choiceModeIndication, self, "нонбеыемхе", (uint8 *const)&gset.sources[source].mode_indication, \
+#define DEF_CHOICE_MODE_INDICATION_PAGE(set)                                                                \
+DEF_CHOICE_7(choiceModeIndication, self, "нонбеыемхе", (uint8 *const)&set,                                  \
     "гбсй",                                                                                                 \
     "ябер",                                                                                                 \
     "бхапн",                                                                                                \
@@ -210,7 +210,7 @@ DEF_CHOICE_7(choiceColorBell, self, "жбер", (uint8 *const)&gset.sources[source].
 );
 
 #define DEF_SOURCE_CHOICES(source)                  \
-DEF_CHOICE_MODE_SOURCE(source);                     \
+DEF_CHOICE_MODE_INDICATION_PAGE(gset.sources[source].mode_indication);  \
 DEF_CHOICE_MELODY_PAGE(gset.sources[source].melody);\
 DEF_CHOICE_VOLUME(source);                          \
 DEF_CHOICE_COLOR(source);
