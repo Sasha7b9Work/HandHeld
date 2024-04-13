@@ -389,25 +389,13 @@ void DateTime::ChangeValueInCurrentField(int delta) const
 
 void Page::NextCurrentItem() const
 {
-    *data->current_item = *data->current_item + 1;
-
-    if (*data->current_item == NumItems())
-    {
-        *data->current_item = 0;
-    }
+    Math::CircleIncrease<int8>(data->current_item, 0, NumItems() - 1);
 }
 
 
 void Page::PrevCurrentItem() const
 {
-    int8 current = *data->current_item - 1;
-
-    if (current < 0)
-    {
-        current = (int8)(NumItems() - 1);
-    }
-
-    *data->current_item = current;
+    Math::CircleDecrease<int8>(data->current_item, 0, NumItems() - 1);
 }
 
 
