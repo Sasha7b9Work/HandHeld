@@ -66,10 +66,20 @@ struct SettingsSource
 };
 
 
+// Настройки будильника
+struct SettingsAlarm
+{
+    Melody::E    melody;
+    Volume::E    volume;
+    ColorBell::E colorBell;
+    RTCDateTime  time;
+};
+
+
 struct Settings
 {
     SettingsSource sources[Source::Count];
-    RTCDateTime    time_alarm;                      // Время будильника
+    SettingsAlarm alarm;
 };
 
 

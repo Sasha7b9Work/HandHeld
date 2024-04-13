@@ -10,6 +10,8 @@ namespace PageAlarm
 
     DEF_DATE(date, self, "ÄÀÒÀ", false);
 
+
+
     DEF_PAGE_2(pageAlarm, PageMain::self, "ÁÓÄÈËÜÍÈÊ",
         &time,
         &date,

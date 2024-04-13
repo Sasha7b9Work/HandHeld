@@ -294,17 +294,17 @@ void DateTime::ApplyAction(const Action &action) const
             {
                 if (data->is_time)
                 {
-                    gset.time_alarm.Hour = data->date_time->Hour;
-                    gset.time_alarm.Minute = data->date_time->Minute;
+                    gset.alarm.time.Hour = data->date_time->Hour;
+                    gset.alarm.time.Minute = data->date_time->Minute;
                 }
                 else
                 {
-                    gset.time_alarm.Day = data->date_time->Day;
-                    gset.time_alarm.Month = data->date_time->Month;
-                    gset.time_alarm.Year = data->date_time->Year;
+                    gset.alarm.time.Day = data->date_time->Day;
+                    gset.alarm.time.Month = data->date_time->Month;
+                    gset.alarm.time.Year = data->date_time->Year;
                 }
 
-                PCF8563::SetAlarm(&gset.time_alarm);
+                PCF8563::SetAlarm(&gset.alarm.time);
             }
             else
             {
@@ -414,7 +414,7 @@ void Item::Open() const
 
         if (GetDateTime()->data->is_alarm)
         {
-            *GetDateTime()->data->date_time = gset.time_alarm;
+            *GetDateTime()->data->date_time = gset.alarm.time;
         }
         else
         {
