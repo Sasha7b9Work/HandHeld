@@ -156,7 +156,7 @@ void DateTime::Draw() const
     {
         Font::SetSize(2);
 
-        data->item->Title().WriteInCenter(0, 30, Display::WIDTH, Color::BLUE);
+        data->item->Title().WriteInCenter(0, 30, Display::WIDTH, Color::GREEN);
 
         Font::SetSize(1);
     }
@@ -366,7 +366,7 @@ void DateTime::ChangeValueInCurrentField(int delta) const
         &data->date_time->Year
     };
 
-    int min[3] = { 1, 1, 0 };
+    int min[3] = { 1, 1, 00 };
     int max[3] = { 31, 12, 99 };
 
     if (data->is_time)
@@ -389,14 +389,12 @@ void DateTime::ChangeValueInCurrentField(int delta) const
 
 void Page::NextCurrentItem() const
 {
-    int8 current = *data->current_item + 1;
+    *data->current_item = *data->current_item + 1;
 
-    if (current == NumItems())
+    if (*data->current_item == NumItems())
     {
-        current = 0;
+        *data->current_item = 0;
     }
-
-    *data->current_item = current;
 }
 
 
