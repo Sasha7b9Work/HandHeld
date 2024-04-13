@@ -6,6 +6,11 @@
 
 namespace PageAlarm
 {
+    DEF_CHOICE_2(choiceEnabled, self, "ÂÊËŞ×ÅÍÎ", &gset.alarm.enabled,
+        "ÍÅÒ",
+        "ÄÀ"
+    );
+
     DEF_TIME(time, self, "ÂĞÅÌß", true);
 
     DEF_DATE(date, self, "ÄÀÒÀ", false);
@@ -39,7 +44,8 @@ namespace PageAlarm
         ColorBell::Name(ColorBell::Fiolet)
     );
 
-    DEF_PAGE_5(pageAlarm, PageMain::self, "ÁÓÄÈËÜÍÈÊ",
+    DEF_PAGE_6(pageAlarm, PageMain::self, "ÁÓÄÈËÜÍÈÊ",
+        &choiceEnabled,
         &time,
         &date,
         &choiceMelody,

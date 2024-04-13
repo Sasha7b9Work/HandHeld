@@ -69,6 +69,7 @@ struct SettingsSource
 // Настройки будильника
 struct SettingsAlarm
 {
+    uint8        enabled;
     Melody::E    melody;
     Volume::E    volume;
     ColorBell::E colorBell;
