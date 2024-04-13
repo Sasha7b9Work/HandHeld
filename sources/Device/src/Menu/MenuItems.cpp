@@ -293,7 +293,7 @@ void DateTime::ApplyAction(const Action &action) const
 {
     if (action.key == Key::Menu)
     {
-        *data->field = *data->field + 1;
+        (*data->field)++;
 
         if (*data->field == NumFields())
         {
