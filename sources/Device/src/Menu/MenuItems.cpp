@@ -68,13 +68,17 @@ void Choice::Draw() const
     }
     else
     {
-        data->item->Title().Write(10, 10, Color::WHITE);
+        Font::SetSize(2);
+
+        data->item->Title().WriteInCenter(0, 15, Display::WIDTH, Color::GREEN);
 
         int index = (int)(*data->value);
 
         pchar text = data->names[index];
 
-        Text<>(text).Write(10, 40, Color::WHITE);
+        Text<>(text).WriteInCenter(0, 45, Display::WIDTH, Color::WHITE);
+
+        Font::SetSize(1);
     }
 }
 
