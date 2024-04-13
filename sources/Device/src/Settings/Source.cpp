@@ -109,17 +109,17 @@ void Source::Queue::Push(Source::E type)
 
     const SettingsSource &source = gset.sources[type];
 
-    if (source.enabled_melody)
+    if (source.mode_source == ModeSource::All || source.mode_source == ModeSource::Sound || source.mode_source == ModeSource::Sound_LED || source.mode_source == ModeSource::Sound_Vibro)
     {
         Beeper::Play((TypeSound::E)source.melody, source.volume);
     }
 
-    if (source.enabled_vibrato)
+    if (source.mode_source == ModeSource::All || source.mode_source == ModeSource::Vibro || source.mode_source == ModeSource::Sound_Vibro || source.mode_source == ModeSource::LED_Vibro)
     {
         Vibrato::Enable();
     }
 
-    if (source.enabled_led)
+    if (source.mode_source == ModeSource::All || source.mode_source == ModeSource::LED || source.mode_source == ModeSource::Sound_LED || source.mode_source == ModeSource::LED_Vibro)
     {
         LED::Enable();
     }
@@ -197,35 +197,4 @@ int Source::GetCountReceived()
 Source::E Source::GetFirstReceived()
 {
     return Queue::At(0);
-}
-
-void Source::DrawParameters(Source::E source)
-{
-    const int x0 = 10;
-    const int x1 = 80;
-    const int dy = 10;
-    int y = 25;
-
-    Text<>("Мелодия").Write(x0, y, Color::WHITE);
-    Text<>("%d", gset.sources[source].melody + 1).Write(x1, y);
-
-    y += dy;
-
-    Text<>("Громкость").Write(x0, y);
-    Text<>("%d", gset.sources[source].volume + 1).Write(x1, y);
-
-    y += dy;
-
-    Text<>("Свет").Write(x0, y);
-    Text<>(gset.sources[source].enabled_led == 0 ? DISABLED_RU : ENABLED_RU).Write(x1, y);
-
-    y += dy;
-
-    Text<>("Звук").Write(x0, y);
-    Text<>(gset.sources[source].enabled_melody == 0 ? DISABLED_RU : ENABLED_RU).Write(x1, y);
-
-    y += dy;
-
-    Text<>("Вибрация").Write(x0, y);
-    Text<>(gset.sources[source].enabled_vibrato == 0 ? DISABLED_RU : ENABLED_RU).Write(x1, y);
 }

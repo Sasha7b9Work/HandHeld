@@ -41,8 +41,6 @@ struct Source
 
     static Text<> Name(E);
 
-    static void DrawParameters(Source::E);
-
 private:
     Source::E value;
 
@@ -99,5 +97,21 @@ private:
 
         // Удалить те, срок действия которых истёк
         static void DeleteOld();
+    };
+};
+
+
+struct ModeSource
+{
+    enum E
+    {
+        Sound,
+        LED,
+        Vibro,
+        Sound_LED,
+        Sound_Vibro,
+        LED_Vibro,
+        All,
+        Count
     };
 };

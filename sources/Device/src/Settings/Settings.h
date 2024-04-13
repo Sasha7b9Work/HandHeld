@@ -7,11 +7,9 @@
 
 struct SettingsSource
 {
-    uint8 melody;           // Текущая мелодия
-    uint8 volume;           // Громкость текущей мелодии
-    uint8 enabled_led;      // Оповещение светодиодом
-    uint8 enabled_melody;   // Оповещение звуком
-    uint8 enabled_vibrato;  // Оповещение вибрацией
+    uint8 melody;               // Текущая мелодия
+    uint8 volume;               // Громкость текущей мелодии
+    ModeSource::E mode_source;  // Режим индикации
 };
 
 

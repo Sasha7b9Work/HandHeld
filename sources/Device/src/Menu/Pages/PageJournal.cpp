@@ -10,6 +10,8 @@ namespace PageJournal
 {
     static int top_record = 0;
 
+    void FuncDraw_Closed();
+
     static void DrawRecord()
     {
         if (top_record >= Storage::GetCountRecords())

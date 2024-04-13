@@ -6,6 +6,16 @@
 
 namespace PageDoorBell
 {
+    DEF_CHOICE_7(choiceModeSource, self, "пефхл", (uint8 *const)&gset.sources[Source::DoorBell].mode_source,
+        "гбсй",
+        "ябер",
+        "бхапн",
+        "гбсй+ябер",
+        "гбсй+бхапн",
+        "ябер+бхапн",
+        "бяе"
+    );
+
     DEF_CHOICE_10(choiceMelody, self, "лекндхъ", &gset.sources[Source::DoorBell].melody,
         "1",
         "2",
@@ -32,27 +42,10 @@ namespace PageDoorBell
         "10"
     );
 
-    DEF_CHOICE_2(choiceEnableLED, self, "яберндхнд", &gset.sources[Source::DoorBell].enabled_led,
-        DISABLED_RU,
-        ENABLED_RU
-    );
-
-    DEF_CHOICE_2(choiceEnableMelody, self, "гбсй", &gset.sources[Source::DoorBell].enabled_melody,
-        "нРЙК",
-        "бЙК"
-    );
-
-    DEF_CHOICE_2(choiceEnabledVibro, self, "бхапюжхъ", &gset.sources[Source::DoorBell].enabled_vibrato,
-        "нРЙК",
-        "бЙК"
-    );
-
-    DEF_PAGE_5(pageDoorBell, PageMain::self, "дбепмни гбнмнй",
+    DEF_PAGE_3(pageDoorBell, PageMain::self, "дбепмни гбнмнй",
+        &choiceModeSource,
         &choiceMelody,
         &choiceVolume,
-        &choiceEnableLED,
-        &choiceEnableMelody,
-        &choiceEnabledVibro,
         nullptr,
         nullptr,
         nullptr

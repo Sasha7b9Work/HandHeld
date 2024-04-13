@@ -6,6 +6,16 @@
 
 namespace PageIntercom
 {
+    DEF_CHOICE_7(choiceModeSource, self, "пефхл", (uint8 *const)&gset.sources[Source::Intercom].mode_source,
+        "гбсй",
+        "ябер",
+        "бхапн",
+        "гбсй+ябер",
+        "гбсй+бхапн",
+        "ябер+бхапн",
+        "бяе"
+    );
+
     DEF_CHOICE_10(choiceMelody, self, "лекндхъ", &gset.sources[Source::Intercom].melody,
         "1",
         "2",
@@ -32,27 +42,10 @@ namespace PageIntercom
         "10"
     );
 
-    DEF_CHOICE_2(choiceEnableLED, self, "яберндхнд", &gset.sources[Source::Intercom].enabled_led,
-        "нРЙК",
-        "бЙК"
-    );
-
-    DEF_CHOICE_2(choiceEnableMelody, self, "гбсй", &gset.sources[Source::Intercom].enabled_melody,
-        "нРЙК",
-        "бЙК"
-    );
-
-    DEF_CHOICE_2(choiceEnabledVibro, self, "бхапюжхъ", &gset.sources[Source::Intercom].enabled_vibrato,
-        "нРЙК",
-        "бЙК"
-    );
-
-    DEF_PAGE_5(pageIntercom, PageMain::self, "днлнтнм",
+    DEF_PAGE_3(pageIntercom, PageMain::self, "днлнтнм",
+        &choiceModeSource,
         &choiceMelody,
         &choiceVolume,
-        &choiceEnableLED,
-        &choiceEnableMelody,
-        &choiceEnabledVibro,
         nullptr,
         nullptr,
         nullptr

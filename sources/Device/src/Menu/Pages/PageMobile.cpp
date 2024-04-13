@@ -6,6 +6,16 @@
 
 namespace PageMobile
 {
+    DEF_CHOICE_7(choiceModeSource, self, "пефхл", (uint8 *const)&gset.sources[Source::Mobile].mode_source,
+        "гбсй",
+        "ябер",
+        "бхапн",
+        "гбсй+ябер",
+        "гбсй+бхапн",
+        "ябер+бхапн",
+        "бяе"
+    );
+
     DEF_CHOICE_10(choiceMelody, self, "лекндхъ", &gset.sources[Source::Mobile].melody,
         "1",
         "2",
@@ -32,28 +42,10 @@ namespace PageMobile
         "10"
     );
 
-    DEF_CHOICE_2(choiceEnableLED, self, "яберндхнд", &gset.sources[Source::Mobile].enabled_led,
-        "нРЙК",
-        "бЙК"
-    );
-
-    DEF_CHOICE_2(choiceEnableMelody, self, "гбсй", &gset.sources[Source::Mobile].enabled_melody,
-        "нРЙК",
-        "бЙК"
-    );
-
-    DEF_CHOICE_2(choiceEnabledVibro, self, "бхапюжхъ", &gset.sources[Source::Mobile].enabled_vibrato,
-        "нРЙК",
-        "бЙК"
-    );
-
-
-    DEF_PAGE_5(pageMobile, PageMain::self, "лнахкэмши рекетнм",
+    DEF_PAGE_3(pageMobile, PageMain::self, "лнахкэмши рекетнм",
+        &choiceModeSource,
         &choiceMelody,
         &choiceVolume,
-        &choiceEnableLED,
-        &choiceEnableMelody,
-        &choiceEnabledVibro,
         nullptr,
         nullptr,
         nullptr
