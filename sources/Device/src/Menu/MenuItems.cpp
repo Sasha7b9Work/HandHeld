@@ -87,7 +87,7 @@ void Date::DrawField(int x, int y, int width, int height, const Text<> &text, bo
     {
         Rect(width + 2, height + 2).Draw(x - 1, y - 1, Color::WHITE);
     }
-    Font::SetSize(2);
+    Font::SetSize(4);
     text.Write(x + 3, y + 3, selected ? Color::BLACK : Color::WHITE);
     Font::SetSize(1);
 }
@@ -97,24 +97,26 @@ void Date::Draw() const
 {
     if (data->item->IsOpened())
     {
+        Font::SetSize(2);
+
+        Text<>("ÓÑÒÀÍÎÂÊÀ").Write(10, 5, Color::WHITE);
+
+        Font::SetSize(1);
+
         int values[3] = {
             data->date_time->Day,
             data->date_time->Month,
             data->date_time->Year
         };
 
-        const int y = 15;
+        const int y = 35;
 
-        const int x[3] = { 20, 50, 80 };
+        const int x[3] = { 5, 58, 111 };
 
         for (int i = 0; i < 3; i++)
         {
             DrawField(x[i], y, 23, 20, Text<>("%02d", values[i]), i == *data->field);
         }
-
-        DrawField(110, 15, 40, 20, Text<>("0òì"), 6 == *data->field);
-
-        DrawField(110, 45, 40, 20, Text<>("Ñîõ"), 7 == *data->field);
     }
     else
     {
@@ -123,19 +125,6 @@ void Date::Draw() const
         data->item->Title().WriteInCenter(0, 30, Display::WIDTH, Color::BLUE);
 
         Font::SetSize(1);
-
-        /*
-        data->item->Title().Write(10, 10, Color::BLUE);
-
-        if (data->is_alarm)
-        {
-            gset.time_alarm.Draw(30, 30, Color::GREEN);
-        }
-        else
-        {
-            Watch::Draw(30, 30, Color::GREEN);
-        }
-        */
     }
 }
 
