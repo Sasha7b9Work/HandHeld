@@ -6,7 +6,7 @@
 #define DEF_DATE(name, keeper, title, is_alarm)                                                                             \
 static int8 opened##name = 0;                                                                                               \
 static int8 field##name = 0;                                                                                                \
-static const DataItem name##data = { ItemType::Time, keeper, title, &opened##name };                                        \
+static const DataItem name##data = { ItemType::Date, keeper, title, &opened##name };                                        \
 extern const Item name;                                                                                                     \
 static RTCDateTime name##date_time;                                                                                         \
 static const DataDate name##datatime = { &name, &field##name, &name##date_time, is_alarm };                                 \

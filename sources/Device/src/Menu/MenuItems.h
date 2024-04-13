@@ -12,7 +12,7 @@ struct ItemType
         Page,
         Button,
         CustomButton,
-        Time,
+        Date,
         Choice,
         Count
     };
@@ -42,10 +42,10 @@ struct Item
     const void     *item;     // ”казатель на структуру типа ItemType
     void Draw() const;
     bool IsPage() const { return data->type == ItemType::Page; }
-    bool IsTime() const { return data->type == ItemType::Time; }
+    bool IsDate() const { return data->type == ItemType::Date; }
     bool IsChoice() const { return data->type == ItemType::Choice; }
     const Page *GetPage() const { if (IsPage()) { return (const Page *)item; } return nullptr; }
-    const Date *GetTime() const { if (IsTime()) { return (const Date *)item; } return nullptr; }
+    const Date *GetTime() const { if (IsDate()) { return (const Date *)item; } return nullptr; }
     const Choice *GetChoice() const { if (IsChoice()) { return (const Choice *)item; } return nullptr; }
     void ApplyAction(const Action &) const;
     bool IsOpened() const;

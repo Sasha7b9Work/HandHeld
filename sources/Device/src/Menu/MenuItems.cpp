@@ -18,7 +18,7 @@ void Item::Draw() const
     {
         GetPage()->Draw();
     }
-    else if (IsTime())
+    else if (IsDate())
     {
         GetTime()->Draw();
     }
@@ -197,7 +197,7 @@ void Item::ApplyAction(const Action &action) const
     {
         GetPage()->ApplyAction(action);
     }
-    else if (IsTime())
+    else if (IsDate())
     {
         GetTime()->ApplyAction(action);
     }
@@ -432,7 +432,7 @@ void Item::Open() const
 {
     *data->opened = 1;
 
-    if (IsTime())
+    if (IsDate())
     {
         if (GetTime()->data->is_alarm)
         {
