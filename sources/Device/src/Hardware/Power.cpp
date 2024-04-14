@@ -38,11 +38,19 @@ void Power::Sleep(uint timeMS)
 
     in_sleep_mode = true;
 
+#ifndef WIN32
+
     SysTick->CTRL &= ~SysTick_CTRL_ENABLE_Msk;
+
+#endif
 
     pmu_to_sleepmode(WFI_CMD);
 
+#ifndef WIN32
+
     SysTick->CTRL |= SysTick_CTRL_ENABLE_Msk;
+
+#endif
 
     in_sleep_mode = false;
 }

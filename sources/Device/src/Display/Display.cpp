@@ -49,6 +49,20 @@ void Display::Init()
 
 void Display::Update()
 {
+    static uint time_prev = 0;
+
+    if (TIME_MS - time_prev > 5000)
+    {
+        time_prev = TIME_MS;
+
+        ST7735::IsEnabled() ? ST7735::Disable() : ST7735::Enable();
+    }
+
+    if (!ST7735::IsEnabled())
+    {
+        return;
+    }
+
     FPS::BeginFrame();
 
     volatile uint start_time = TIME_MS;
