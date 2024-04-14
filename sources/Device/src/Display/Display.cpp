@@ -146,7 +146,7 @@ void Display::DrawScene(int num_part)
 
             Font::SetSize(1);
 
-            Battery::Draw(121, 0);
+            Battery::Draw();
 
             FPS::DrawTimeFrame(0, 75);
         }

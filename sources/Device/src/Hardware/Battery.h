@@ -4,5 +4,5 @@
 
 namespace Battery
 {
-    void Draw(int x, int y);
+    void Draw();
 }

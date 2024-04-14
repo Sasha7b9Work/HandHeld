@@ -3,33 +3,55 @@
 #include "Hardware/Battery.h"
 #include "Hardware/HAL/HAL.h"
 #include "Display/Display.h"
-
+#include "Hardware/Timer.h"
 
 namespace Battery
 {
-    static float ConvertToCharge(float voltage);
+#define width 38
+#define height 14
 }
 
 
-void Battery::Draw(int x, int y)
+void Battery::Draw()
 {
-    const int width = 38;
-
-    Rect(width, 13).Draw(x, y, Color::GREEN);
-    Rect(5, 7).Fill(x - 4, y + 3);
+    int x = 121;
+    int y = 0;
 
     float voltage = HAL_ADC::GetVoltage();
 
-    int width_rect = (int)(width * ConvertToCharge(voltage) / 100.0f + 0.5f);
+    if (voltage > 4.3f)             // Идёт заряд
+    {
+        Rect(height + 4, height + 4).Draw(x + 20, y, Color::GREEN);
+        Font::SetSize(2);
+        Text<>("З").Write(x + 25, y + 2);
+        Font::SetSize(1);
+    }
+    else
+    {
+        Rect(width, height).Draw(x, y, Color::GREEN);
+        Rect(5, 7).Fill(x - 4, y + 3);
 
-    Rect rect(width_rect, 13);
-    rect.Fill(x + width - width_rect, y);
+        if (voltage > 3.9f)        // Полный заряд
+        {
 
-    Text<>("%.2f", (double)voltage).Write(x + 2, y + 2, Color::WHITE);
-}
+        }
+        else if (voltage > 3.8f)        // Две трети заряда
+        {
 
+        }
+        else if (voltage > 3.7f)        // Одна треть заряда
+        {
 
-float Battery::ConvertToCharge(float /*voltage*/)
-{
-    return 50.0f;
+        }
+        else if (voltage > 3.5f)        // Пустая батарея
+        {
+
+        }
+        else
+        {
+            // Здесь нужно отключиться
+        }
+    }
+
+    Text<>("%.2f", (double)voltage).Write(x + 2, y + 3, Color::WHITE);
 }
