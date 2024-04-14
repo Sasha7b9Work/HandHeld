@@ -58,5 +58,5 @@ void Device::Update()
 
     LED::Update();
 
-//    Power::Sleep(50);
+    Power::Sleep(50);
 }
