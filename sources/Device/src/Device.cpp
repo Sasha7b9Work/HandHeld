@@ -58,7 +58,5 @@ void Device::Update()
 
     LED::Update();
 
-    Beeper::Update();
-
 //    Power::Sleep(50);
 }
