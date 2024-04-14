@@ -5,5 +5,5 @@
 
 float HAL_ADC::GetVoltage()
 {
-    return 5.0f;
+    return 3.6f;
 }

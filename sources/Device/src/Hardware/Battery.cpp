@@ -7,8 +7,8 @@
 
 namespace Battery
 {
-#define width 38
-#define height 14
+#define WIDTH 38
+#define HEIGHT 14
 }
 
 
@@ -21,31 +21,38 @@ void Battery::Draw()
 
     if (voltage > 4.3f)             // Идёт заряд
     {
-        Rect(height + 4, height + 4).Draw(x + 20, y, Color::GREEN);
+        Rect(HEIGHT + 4, HEIGHT + 4).Draw(x + 20, y, Color::GREEN);
         Font::SetSize(2);
         Text<>("З").Write(x + 25, y + 2);
         Font::SetSize(1);
     }
     else
     {
-        Rect(width, height).Draw(x, y, Color::GREEN);
+        Color color = Color::GREEN;
+
+        Rect(WIDTH, HEIGHT).Draw(x, y, color);
         Rect(5, 7).Fill(x - 4, y + 3);
 
         if (voltage > 3.9f)        // Полный заряд
         {
-
+            Rect(WIDTH, HEIGHT).Fill(x, y);
         }
         else if (voltage > 3.8f)        // Две трети заряда
         {
+            int width = WIDTH * 2 / 3;
 
+            Rect(width, HEIGHT).Fill(x + WIDTH - width, y);
         }
         else if (voltage > 3.7f)        // Одна треть заряда
         {
+            int width = WIDTH / 3;
 
+            Rect(width, HEIGHT).Fill(x + WIDTH - width, y, Color::YELLOW);
         }
         else if (voltage > 3.5f)        // Пустая батарея
         {
-
+            Rect(WIDTH, HEIGHT).Draw(x, y, Color::RED);
+            Rect(5, 7).Fill(x - 4, y + 3);
         }
         else
         {

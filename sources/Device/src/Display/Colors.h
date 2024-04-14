@@ -12,6 +12,7 @@ struct Color
         Green,
         Blue,
         Gray,
+        Yellow,
         Count = 16
     };
 
@@ -25,6 +26,7 @@ struct Color
     static Color GREEN;
     static Color BLUE;
     static Color GRAY;
+    static Color YELLOW;
 
     static Color NUMBER;
 
@@ -39,6 +41,6 @@ struct Color
 
 #define MAKE_COLOR(r, g, b)  (uint16)((b) + ((g) << 5) + ((r) << 11))
 
-#define BLUE_FROM_COLOR(color)  ((color) & 0x1f)
-#define GREEN_FROM_COLOR(color) (((color) >> 5) & 0x3f)
 #define RED_FROM_COLOR(color)   (((color) >> 11) & 0x1f)
+#define GREEN_FROM_COLOR(color) (((color) >> 5) & 0x3f)
+#define BLUE_FROM_COLOR(color)  ((color) & 0x1f)
