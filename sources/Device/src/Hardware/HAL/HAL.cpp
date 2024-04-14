@@ -9,6 +9,7 @@ void HAL::Init()
 {
     systick_config();
 
+    rcu_periph_clock_enable(RCU_PMU);
     rcu_periph_clock_enable(RCU_GPIOA); 
     rcu_periph_clock_enable(RCU_GPIOB);
     rcu_periph_clock_enable(RCU_GPIOC);
