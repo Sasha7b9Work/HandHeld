@@ -3,7 +3,6 @@
 #include "Menu/MenuItems.h"
 #include "Display/Display.h"
 #include "Menu/Menu.h"
-#include "Hardware/Watch.h"
 #include "Display/Font/Font.h"
 #include "Utils/Math.h"
 #include "Settings/Settings.h"

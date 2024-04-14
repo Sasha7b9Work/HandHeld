@@ -620,16 +620,6 @@
               <FilePath>.\src\Hardware\Timer.h</FilePath>
             </File>
             <File>
-              <FileName>Watch.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Hardware\Watch.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Watch.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Hardware\Watch.h</FilePath>
-            </File>
-            <File>
               <FileName>Vibrato.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Hardware\Vibrato.cpp</FilePath>
@@ -1830,16 +1820,6 @@
               <FileName>Timer.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Hardware\Timer.h</FilePath>
-            </File>
-            <File>
-              <FileName>Watch.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Hardware\Watch.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Watch.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Hardware\Watch.h</FilePath>
             </File>
             <File>
               <FileName>Vibrato.cpp</FileName>

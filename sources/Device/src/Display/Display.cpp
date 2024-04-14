@@ -4,7 +4,6 @@
 #include "Modules/ST7735/ST7735.h"
 #include "Settings/Settings.h"
 #include "Display/Font/Font.h"
-#include "Hardware/Watch.h"
 #include "Keyboard/Keyboard.h"
 #include "Hardware/HAL/HAL.h"
 #include "Hardware/Timer.h"
@@ -137,9 +136,9 @@ void Display::DrawScene(int num_part)
         }
         else
         {
-            Watch::Draw(45, 30, Color::WHITE);
+            PCF8563::GetDateTime().Draw(45, 30, Color::WHITE);
 
-            Battery::Draw(121, 67);
+            Battery::Draw(121, 0);
 
             FPS::DrawTimeFrame(0, 75);
         }
