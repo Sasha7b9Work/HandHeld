@@ -25,7 +25,7 @@ void Battery::Draw(int x, int y)
     Rect rect(width_rect, 13);
     rect.Fill(x + width - width_rect, y);
 
-    Text<>("%.2f", (double)voltage).Write(121, 67, Color::WHITE);
+    Text<>("%.2f", (double)voltage).Write(x + 2, y + 2, Color::WHITE);
 }
 
 

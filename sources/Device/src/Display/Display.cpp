@@ -136,7 +136,11 @@ void Display::DrawScene(int num_part)
         }
         else
         {
-            PCF8563::GetDateTime().Draw(45, 30, Color::WHITE);
+            Font::SetSize(5);
+
+            PCF8563::GetDateTime().DrawTime(30, 23, Color::WHITE);
+
+            Font::SetSize(1);
 
             Battery::Draw(121, 0);
 
@@ -220,13 +224,13 @@ void Pixel::Set(int x, int y, const Color &color) const
 }
 
 
-void RTCDateTime::Draw(int x, int y, const Color &color) const
+void RTCDateTime::DrawTime(int x, int y, const Color &color) const
 {
-    Font::SetSize(2);
+    Text<>("%02d:%02d", Hour, Minute).Write(x, y, color);
+}
 
-    Text<>("%02d:%02d:%02d", Hour, Minute, Second).Write(x, y, color);
 
-    Font::SetSize(1);
-
-    Text<>("%02d/%02d/%02d", Day, Month, Year).Write(x + 15, y + 20);
+void RTCDateTime::DrawDate(int x, int y, const Color &color) const
+{
+    Text<>("%02d/%02d/%02d", Day, Month, Year).Write(x, y, color);
 }
