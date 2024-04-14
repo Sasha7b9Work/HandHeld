@@ -1,9 +1,9 @@
 // 2024/03/20 23:04:20 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
-#include "Hardware/Battery.h"
 #include "Hardware/HAL/HAL.h"
 #include "Display/Display.h"
 #include "Hardware/Timer.h"
+#include "Hardware/Power.h"
 
 namespace Battery
 {
@@ -12,7 +12,7 @@ namespace Battery
 }
 
 
-void Battery::Draw()
+void Power::Draw()
 {
     int x = 121;
     int y = 0;

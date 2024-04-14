@@ -920,8 +920,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Hardware\Battery.cpp</PathWithFileName>
-      <FilenameWithoutPath>Battery.cpp</FilenameWithoutPath>
+      <PathWithFileName>.\src\Hardware\Power.cpp</PathWithFileName>
+      <FilenameWithoutPath>Power.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -932,8 +932,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Hardware\Battery.h</PathWithFileName>
-      <FilenameWithoutPath>Battery.h</FilenameWithoutPath>
+      <PathWithFileName>.\src\Hardware\Power.h</PathWithFileName>
+      <FilenameWithoutPath>Power.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>

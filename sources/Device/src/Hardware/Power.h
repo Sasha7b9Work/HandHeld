@@ -2,7 +2,7 @@
 #pragma once
 
 
-namespace Battery
+namespace Power
 {
     void Draw();
 }

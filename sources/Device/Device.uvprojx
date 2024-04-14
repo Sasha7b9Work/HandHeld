@@ -630,14 +630,14 @@
               <FilePath>.\src\Hardware\Vibrato.h</FilePath>
             </File>
             <File>
-              <FileName>Battery.cpp</FileName>
+              <FileName>Power.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Hardware\Battery.cpp</FilePath>
+              <FilePath>.\src\Hardware\Power.cpp</FilePath>
             </File>
             <File>
-              <FileName>Battery.h</FileName>
+              <FileName>Power.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Hardware\Battery.h</FilePath>
+              <FilePath>.\src\Hardware\Power.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -1832,14 +1832,14 @@
               <FilePath>.\src\Hardware\Vibrato.h</FilePath>
             </File>
             <File>
-              <FileName>Battery.cpp</FileName>
+              <FileName>Power.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Hardware\Battery.cpp</FilePath>
+              <FilePath>.\src\Hardware\Power.cpp</FilePath>
             </File>
             <File>
-              <FileName>Battery.h</FileName>
+              <FileName>Power.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Hardware\Battery.h</FilePath>
+              <FilePath>.\src\Hardware\Power.h</FilePath>
             </File>
           </Files>
         </Group>
