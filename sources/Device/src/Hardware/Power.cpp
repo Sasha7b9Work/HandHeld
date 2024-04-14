@@ -38,11 +38,11 @@ void Power::Sleep(uint timeMS)
 
     in_sleep_mode = true;
 
-    SysTick->CTRL &= ~SYSTICK_CLKSOURCE_HCLK;
+    SysTick->CTRL &= ~SysTick_CTRL_ENABLE_Msk;
 
     pmu_to_sleepmode(WFI_CMD);
 
-    SysTick->CTRL |= SYSTICK_CLKSOURCE_HCLK;
+    SysTick->CTRL |= SysTick_CTRL_ENABLE_Msk;
 
     in_sleep_mode = false;
 }
