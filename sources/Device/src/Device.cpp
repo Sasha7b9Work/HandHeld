@@ -13,6 +13,7 @@
 #include "Storage/Storage.h"
 #include "Modules/LED/LED.h"
 #include "Modules/Beeper/Beeper.h"
+#include "Hardware/Power.h"
 
 
 void Device::Init()
@@ -40,6 +41,8 @@ void Device::Init()
     Beeper::Init();
 
     Beeper::Play(TypeSound::_2, 9);
+
+    Power::Sleep(50);
 }
 
 

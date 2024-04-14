@@ -41,6 +41,8 @@ namespace HAL_TIM5
     void Init();
 
     void Start(uint timeMS);
+
+    void Stop();
 }
 
 

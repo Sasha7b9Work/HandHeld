@@ -11,6 +11,9 @@ namespace Power
 {
     static const int WIDTH = 38;
     static const int HEIGHT = 14;
+
+    static uint time_start = 0;
+    static uint time = 0;
 }
 
 
@@ -26,15 +29,21 @@ void Power::Disable()
 }
 
 
-void Power::Sleep(uint)
+void Power::Sleep(uint timeMS)
 {
-//    pmu_to_deepsleepmode();
+    HAL_TIM5::Start(timeMS);
+
+    time_start = TIME_MS;
 }
 
 
 void Power::CallbackOnTimer()
 {
+    HAL_TIM5::Stop();
 
+    time = TIME_MS - time_start;
+
+    Sleep(50);
 }
 
 
