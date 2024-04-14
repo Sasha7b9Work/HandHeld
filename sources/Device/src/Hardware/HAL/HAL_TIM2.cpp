@@ -25,10 +25,23 @@ void HAL_TIM2::Init()
     timer_initpara.clockdivision = TIMER_CKDIV_DIV1;
     timer_init(TIMER2, &timer_initpara);
 
-    /* clear channel 0 interrupt bit */
+    Enable();
+}
+
+
+void HAL_TIM2::Enable()
+{
     timer_interrupt_flag_clear(TIMER2, TIMER_INT_FLAG_UP);
-    /* enable the TIMER interrupt */
+
     timer_interrupt_enable(TIMER2, TIMER_INT_UP);
-    /* enable a TIMER */
+
     timer_enable(TIMER2);
+}
+
+
+void HAL_TIM2::Disable()
+{
+    timer_disable(TIMER2);
+
+    timer_interrupt_disable(TIMER2, TIMER_INT_UP);
 }
