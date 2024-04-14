@@ -153,6 +153,8 @@ namespace ST7735
 
 void ST7735::Enable()
 {
+    Write_Cmd(0x10);            // Sleep In
+
     pinBKG.ToHi();
 
     is_enabled = true;
@@ -162,6 +164,8 @@ void ST7735::Enable()
 void ST7735::Disable()
 {
     pinBKG.ToLow();
+
+    Write_Cmd(0x11);            // Sleep Out
 
     is_enabled = false;
 }
@@ -183,7 +187,7 @@ void ST7735::Init()
 
     pinSCL.ToLow();
 
-    Enable();
+    pinBKG.ToHi();
 
     pinRES.ToLow();
     pinDC.ToLow();
@@ -289,6 +293,8 @@ void ST7735::Init()
     Write_Cmd(0x29);                // Display On
 
     Write_Cmd(0x2C);                // Memory Write
+
+    is_enabled = true;
 }
 
 
