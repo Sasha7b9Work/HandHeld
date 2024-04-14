@@ -5,10 +5,29 @@
 #include "Hardware/Timer.h"
 #include "Hardware/Power.h"
 
-namespace Battery
+
+namespace Power
 {
-#define WIDTH 38
-#define HEIGHT 14
+    static const int WIDTH = 38;
+    static const int HEIGHT = 14;
+}
+
+
+void Power::Enable()
+{
+
+}
+
+
+void Power::Disable()
+{
+
+}
+
+
+void Power::Sleep(uint)
+{
+
 }
 
 
