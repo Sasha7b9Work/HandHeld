@@ -41,8 +41,6 @@ void Device::Init()
     Beeper::Init();
 
     Beeper::Play(TypeSound::_2, 9);
-
-    Power::Sleep(50);
 }
 
 
@@ -61,4 +59,6 @@ void Device::Update()
     LED::Update();
 
     Beeper::Update();
+
+//    Power::Sleep(50);
 }
