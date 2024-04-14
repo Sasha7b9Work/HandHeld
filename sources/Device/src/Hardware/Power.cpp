@@ -4,6 +4,7 @@
 #include "Display/Display.h"
 #include "Hardware/Timer.h"
 #include "Hardware/Power.h"
+#include <gd32e23x.h>
 
 
 namespace Power
@@ -26,6 +27,12 @@ void Power::Disable()
 
 
 void Power::Sleep(uint)
+{
+//    pmu_to_deepsleepmode();
+}
+
+
+void Power::CallbackOnTimer()
 {
 
 }

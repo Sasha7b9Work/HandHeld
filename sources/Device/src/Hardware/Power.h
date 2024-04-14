@@ -12,4 +12,6 @@ namespace Power
     void Sleep(uint time = (uint)-1);
 
     void Draw();
+
+    void CallbackOnTimer();
 }

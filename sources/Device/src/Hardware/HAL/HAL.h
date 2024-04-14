@@ -35,6 +35,15 @@ namespace HAL_TIM2
 }
 
 
+// Для спящего режима
+namespace HAL_TIM5
+{
+    void Init();
+
+    void Start(uint timeMS);
+}
+
+
 namespace HAL_ROM
 {
     static const uint ADDRESS_BEGIN = 0x8000000;

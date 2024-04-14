@@ -8,9 +8,6 @@ void HAL_TIM2::Init()
 {
     timer_parameter_struct timer_initpara;
 
-    /* enable the peripherals clock */
-    rcu_periph_clock_enable(RCU_TIMER2);
-
     /* deinit a TIMER */
     timer_deinit(TIMER2);
     /* initialize TIMER init parameter struct */
