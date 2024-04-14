@@ -22,6 +22,8 @@ void Device::Init()
 
     Timer::Init();
 
+    Timer::Delay(1000);
+
     Keyboard::Init();
 
     Menu::Init();
