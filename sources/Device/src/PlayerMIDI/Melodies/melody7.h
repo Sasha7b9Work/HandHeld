@@ -3,4 +3,4 @@
 #include "PlayerMIDI/PlayerMIDI.h"
 
 
-extern const Melody melody7;
+extern const MelodyMIDI melody7;

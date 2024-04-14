@@ -1595,7 +1595,7 @@ static const uint8 s_melody_stream2[629] = {
     0
   };
 
-const Melody melody1 =
+const MelodyMIDI melody1 =
 {
     s_melody_stream1,
     s_melody_stream2

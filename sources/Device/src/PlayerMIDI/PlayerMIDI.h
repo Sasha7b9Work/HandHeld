@@ -22,7 +22,7 @@ struct TypeMelody
     };
 };
 
-struct Melody
+struct MelodyMIDI
 {
     const uint8 *pStream1;
     const uint8 *pStream2;

@@ -57,7 +57,7 @@ namespace PlayerMIDI
 
     // Начать воспроизведение мелодии. Ранее проигрывавшаяся мелодия останавливается, вызывается обратный вызов Player_Finished.
     // Обратный вызов Player_Started() вызывается при запуске. _delay - задержка запуска с частотой 255 Гц, максимум 65534
-    void StartMelody(const Melody *, uint16 _delay);
+    void StartMelody(const MelodyMIDI *, uint16 _delay);
 
     bool IsPlaying();
 
@@ -101,7 +101,7 @@ void PlayerMIDI::Init()
 
 void PlayerMIDI::Play(TypeMelody::E type)
 {
-    static const Melody *melodies[TypeMelody::Count] =
+    static const MelodyMIDI *melodies[TypeMelody::Count] =
     {
         &melody1, &melody2, &melody3, &melody4, &melody5,
         &melody6, &melody7, &melody8, &melody9, &melody10,
@@ -308,7 +308,7 @@ void PlayerMIDI::CallbackOnTimer()
 }
 
 
-void PlayerMIDI::StartMelody(const Melody *_pMelody, uint16 _delay)
+void PlayerMIDI::StartMelody(const MelodyMIDI *_pMelody, uint16 _delay)
 {
     Stop();
 
