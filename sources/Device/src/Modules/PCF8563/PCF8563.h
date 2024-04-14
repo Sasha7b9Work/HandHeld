@@ -34,9 +34,9 @@ struct RTCDateTime
     uint8  Minute;
     uint8  Second;
 
-    void DrawTime(int x, int y, const Color &) const;
+    void DrawTime(int x, int y, const Color & = Color::Count) const;
 
-    void DrawDate(int x, int y, const Color &) const;
+    void DrawDate(int x, int y, const Color & = Color::Count) const;
 
     bool operator<(const RTCDateTime &) const;
 };

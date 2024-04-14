@@ -140,6 +140,10 @@ void Display::DrawScene(int num_part)
 
             PCF8563::GetDateTime().DrawTime(30, 23, Color::WHITE);
 
+            Font::SetSize(2);
+
+            PCF8563::GetDateTime().DrawDate(46, 66);
+
             Font::SetSize(1);
 
             Battery::Draw(121, 0);
