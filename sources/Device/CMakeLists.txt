@@ -19,7 +19,6 @@ add_definitions(-DGD32E230 -DTYPE_BOARD_799)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -MP -Wall")
 
 add_compile_options(
-#    /wd4127
     /wd4310
     /wd4514
     /wd4623

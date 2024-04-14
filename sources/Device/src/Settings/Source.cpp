@@ -111,7 +111,7 @@ void Source::Queue::Push(Source::E type)
 
     if (source.mode_indication == ModeIndication::All || source.mode_indication == ModeIndication::Sound || source.mode_indication == ModeIndication::Sound_LED || source.mode_indication == ModeIndication::Sound_Vibro)
     {
-        Beeper::Play((TypeSound::E)source.melody, source.volume);
+        Beeper::Play((TypeSound::E)source.melody, (uint8)source.volume);
     }
 
     if (source.mode_indication == ModeIndication::All || source.mode_indication == ModeIndication::Vibro || source.mode_indication == ModeIndication::Sound_Vibro || source.mode_indication == ModeIndication::LED_Vibro)
