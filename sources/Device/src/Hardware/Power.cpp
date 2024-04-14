@@ -34,12 +34,16 @@ void Power::Sleep(uint timeMS)
 
     HAL_TIM5::Start(timeMS);
 
+    exti_event_disable(EXTI_15);
+
     pmu_to_sleepmode(WFI_CMD);
 }
 
 
 void Power::CallbackOnTimer()
 {
+    exti_event_enable(EXTI_15);
+
     HAL_TIM5::Stop();
 
     HAL_TIM2::Enable();
