@@ -62,5 +62,5 @@ void Device::Update()
 
     Beeper::Update();
 
-    Power::Sleep(50);
+//    Power::Sleep(50);
 }

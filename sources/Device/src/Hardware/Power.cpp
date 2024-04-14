@@ -34,7 +34,7 @@ void Power::Sleep(uint timeMS)
 
     HAL_TIM5::Start(timeMS);
 
-    pmu_to_deepsleepmode(PMU_LDO_LOWPOWER, WFI_CMD);
+    pmu_to_sleepmode(WFI_CMD);
 }
 
 
