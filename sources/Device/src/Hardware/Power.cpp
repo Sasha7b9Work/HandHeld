@@ -30,6 +30,8 @@ void Power::Sleep(uint timeMS)
 {
     HAL_TIM2::Disable();
 
+    Timer::Delay(10);
+
     pmu_to_sleepmode(WFI_CMD);
 
     HAL_TIM5::Start(timeMS);
