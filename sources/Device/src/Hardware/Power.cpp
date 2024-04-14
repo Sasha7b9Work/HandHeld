@@ -12,7 +12,7 @@ namespace Power
     static const int WIDTH = 38;
     static const int HEIGHT = 14;
 
-    static bool in_sleep_mode = false;
+    bool in_sleep_mode = false;
 }
 
 
@@ -38,7 +38,11 @@ void Power::Sleep(uint timeMS)
 
     in_sleep_mode = true;
 
+    SysTick->CTRL &= ~SYSTICK_CLKSOURCE_HCLK;
+
     pmu_to_sleepmode(WFI_CMD);
+
+    SysTick->CTRL |= SYSTICK_CLKSOURCE_HCLK;
 
     in_sleep_mode = false;
 }
@@ -46,8 +50,6 @@ void Power::Sleep(uint timeMS)
 
 void Power::CallbackOnTimer()
 {
-    exti_event_enable(EXTI_15);
- 
     HAL_TIM5::Stop();
     
     HAL_TIM2::Enable();
