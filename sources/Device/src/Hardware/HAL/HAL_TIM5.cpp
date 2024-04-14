@@ -21,7 +21,7 @@ void HAL_TIM5::Init()
     timer_initpara.prescaler = (uint16)(SystemCoreClock / 1000000 * 50 / 2);   // 50 мс
     timer_initpara.alignedmode = TIMER_COUNTER_EDGE;
     timer_initpara.counterdirection = TIMER_COUNTER_UP;
-    timer_initpara.period = 1000;
+    timer_initpara.period = 2000;
     timer_initpara.clockdivision = TIMER_CKDIV_DIV1;
     timer_init(TIMER5, &timer_initpara);
 }
