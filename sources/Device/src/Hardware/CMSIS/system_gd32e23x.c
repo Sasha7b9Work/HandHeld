@@ -230,6 +230,8 @@ static void system_clock_72m_hxtal(void)
     RCU_CFG0 |= (RCU_PLLSRC_HXTAL | RCU_PLL_MUL2);
     
     rcu_hxtal_prediv_config(RCU_PLL_PREDV2);
+    
+    RCU_CFG0 |= RCU_CFG0_PLLDV;         // Должно быть то же, что и в PREDV2[0]
 
     /* enable PLL */
     RCU_CTL0 |= RCU_CTL0_PLLEN;
