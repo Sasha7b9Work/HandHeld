@@ -227,7 +227,7 @@ static void system_clock_72m_hxtal(void)
 
     /* PLL = HXTAL * 3 = 78 MHz */
     RCU_CFG0 &= ~(RCU_CFG0_PLLSEL | RCU_CFG0_PLLMF | RCU_CFG0_PLLDV);
-    RCU_CFG0 |= (RCU_PLLSRC_HXTAL | RCU_PLL_MUL3);
+    RCU_CFG0 |= (RCU_PLLSRC_HXTAL | RCU_PLL_MUL2);
     
     rcu_hxtal_prediv_config(RCU_PLL_PREDV2);
 
