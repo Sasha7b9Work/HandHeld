@@ -163,6 +163,8 @@ void Display::DrawScene(int num_part)
             Power::Draw();
 
             FPS::DrawTimeFrame(0, 75);
+
+            Text<>("%u", TIME_MS / 1000).Write(0, 0, Color::WHITE);
         }
     }
 }
