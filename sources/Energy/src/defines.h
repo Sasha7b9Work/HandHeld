@@ -1,8 +1,6 @@
 // 2024/03/02 09:33:12 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
 
-#include "opt.h"
-
 #ifdef GUI
     #define WIN32_LEAN_AND_MEAN
     #include "wx/wx.h"

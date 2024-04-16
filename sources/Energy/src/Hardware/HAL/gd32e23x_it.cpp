@@ -1,12 +1,6 @@
 #include "defines.h"
 #include "gd32e23x_it.h"
 #include "systick.h"
-#include "Display/Display.h"
-#include "Modules/CMT2210AW/CMT2210AW.h"
-#include "Keyboard/Keyboard.h"
-#include "Hardware/Timer.h"
-#include "Modules/Beeper/Beeper.h"
-#include "Hardware/Power.h"
 
 
 #ifdef __cplusplus
@@ -65,44 +59,7 @@ void PendSV_Handler(void)
 */
 void SysTick_Handler(void)
 {
-    timer_counter++;
-
     delay_decrement();
-
-    Keyboard::Update();
-}
-
-
-void TIMER2_IRQHandler(void)
-{
-    if (timer_interrupt_flag_get(TIMER2, TIMER_INT_FLAG_UP))
-    {
-        timer_interrupt_flag_clear(TIMER2, TIMER_INT_FLAG_UP);
-
-        CMT2210AW::CallbackOnBit();
-    }
-}
-
-
-void TIMER5_IRQHandler(void)
-{
-    if (timer_interrupt_flag_get(TIMER5, TIMER_INT_FLAG_UP))
-    {
-        timer_interrupt_flag_clear(TIMER5, TIMER_INT_FLAG_UP);
-
-        Power::CallbackOnTimer();
-    }
-}
-
-
-void TIMER14_IRQHandler(void)
-{
-    if (timer_interrupt_flag_get(TIMER14, TIMER_INT_FLAG_CH1))
-    {
-        timer_interrupt_flag_clear(TIMER14, TIMER_INT_FLAG_CH1);
-
-        Beeper::CallbackOnTimer();
-    }
 }
 
 
