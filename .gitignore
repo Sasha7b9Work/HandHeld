@@ -4,5 +4,11 @@ sources/Device/Listings-Debug/*
 sources/Device/Objects-Debug/*
 sources/Device/Listings/*
 sources/Device/Objects/*
+
+sources/Energy/Listings-Debug/*
+sources/Energy/Objects-Debug/*
+sources/Energy/Listings/*
+sources/Energy/Objects/*
+
 sources/generated/*
 sources/ThirdParty/wxWidgets/generated/*

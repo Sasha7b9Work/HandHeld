@@ -12,4 +12,8 @@
     <NodeIsActive>1</NodeIsActive>
   </project>
 
+  <project>
+    <PathAndName>.\Energy\Energy.uvprojx</PathAndName>
+  </project>
+
 </ProjectWorkspace>
