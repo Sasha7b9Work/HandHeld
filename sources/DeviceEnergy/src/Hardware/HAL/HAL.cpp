@@ -11,10 +11,10 @@ void HAL::Init()
     systick_config();
 
 //    rcu_periph_clock_enable(RCU_PMU);
-//    rcu_periph_clock_enable(RCU_GPIOA); 
-//    rcu_periph_clock_enable(RCU_GPIOB);
-//    rcu_periph_clock_enable(RCU_GPIOC);
-//    rcu_periph_clock_enable(RCU_GPIOF);
+    rcu_periph_clock_enable(RCU_GPIOA); 
+    rcu_periph_clock_enable(RCU_GPIOB);
+    rcu_periph_clock_enable(RCU_GPIOC);
+    rcu_periph_clock_enable(RCU_GPIOF);
 //
 //    rcu_periph_clock_enable(RCU_CFGCMP);
 //
@@ -26,7 +26,7 @@ void HAL::Init()
 //    rcu_periph_clock_enable(RCU_TIMER5);        // Для спящего режима
 //    nvic_irq_enable(TIMER5_IRQn, 1);
 //
-//    HAL_PINS::Init();
+    HAL_PINS::Init();
 //
 //    HAL_I2C::Init();
 //
