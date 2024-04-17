@@ -13,12 +13,12 @@
 
   <project>
     <PathAndName>.\Energy\Energy.uvprojx</PathAndName>
-    <NodeIsActive>1</NodeIsActive>
     <NodeIsExpanded>1</NodeIsExpanded>
   </project>
 
   <project>
     <PathAndName>.\DeviceEnergy\DeviceEnergy.uvprojx</PathAndName>
+    <NodeIsActive>1</NodeIsActive>
   </project>
 
 </ProjectWorkspace>
