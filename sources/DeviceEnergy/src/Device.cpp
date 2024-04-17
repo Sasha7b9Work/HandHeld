@@ -20,43 +20,43 @@ void Device::Init()
 {
     HAL::Init();
 
-    Timer::Init();
-
-    Keyboard::Init();
-
-    Menu::Init();
-
-    Display::Init();
-
-    LED::Init();
-
-    Vibrato::Init();
-
-    CMT2210AW::Init();
-
-    PCF8563::Init();
-
-    PCF8563::SetTimer(1);       // Переводим INT в 0, чтобы питание не выключалось
-
-    Beeper::Init();
-
-    Beeper::Play(TypeSound::_2, 9);
+//    Timer::Init();
+//
+//    Keyboard::Init();
+//
+//    Menu::Init();
+//
+//    Display::Init();
+//
+//    LED::Init();
+//
+//    Vibrato::Init();
+//
+//    CMT2210AW::Init();
+//
+//    PCF8563::Init();
+//
+//    PCF8563::SetTimer(1);       // Переводим INT в 0, чтобы питание не выключалось
+//
+//    Beeper::Init();
+//
+//    Beeper::Play(TypeSound::_2, 9);
 }
 
 
 void Device::Update()
 {
-    Menu::Update();
-
-    PCF8563::Update();
-
-    Display::Update();
-
-    Source::Update();
-
-    Beeper::Update();
-
-    LED::Update();
-
-//    Power::Sleep(50);
+//    Menu::Update();
+//
+//    PCF8563::Update();
+//
+//    Display::Update();
+//
+//    Source::Update();
+//
+//    Beeper::Update();
+//
+//    LED::Update();
+//
+////    Power::Sleep(50);
 }
