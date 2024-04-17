@@ -2,6 +2,7 @@
 #include "defines.h"
 #include "Hardware/HAL/HAL.h"
 #include "Keyboard/Keyboard.h"
+#include "Hardware/Power.h"
 
 
 int main()
@@ -9,6 +10,8 @@ int main()
     HAL::Init();
 
     Keyboard::Init();
+
+    Power::DeepSleep();
 
     while(true)
     {
