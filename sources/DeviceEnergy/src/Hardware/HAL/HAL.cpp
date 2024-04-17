@@ -8,6 +8,12 @@
 
 void HAL::Init()
 {
+    rcu_deinit();
+    rcu_system_clock_source_config(RCU_CKSYSSRC_IRC8M);
+    rcu_ahb_clock_config(RCU_AHB_CKSYS_DIV1);
+    rcu_apb1_clock_config(RCU_APB1_CKAHB_DIV16);
+    rcu_apb2_clock_config(RCU_APB2_CKAHB_DIV16);
+
     systick_config();
 
 //    rcu_periph_clock_enable(RCU_PMU);
