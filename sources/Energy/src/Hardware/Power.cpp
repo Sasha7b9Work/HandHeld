@@ -6,5 +6,6 @@
 
 void Power::DeepSleep()
 {
+    rcu_periph_clock_enable(RCU_PMU);
     pmu_to_deepsleepmode(PMU_LDO_LOWPOWER, WFI_CMD);
 }

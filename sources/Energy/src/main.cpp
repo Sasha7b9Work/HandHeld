@@ -12,7 +12,7 @@ int main()
 
     Keyboard::Init();
 
-    delay_1ms(1000);
+    delay_1ms(3000);
 
     Power::DeepSleep();
 
