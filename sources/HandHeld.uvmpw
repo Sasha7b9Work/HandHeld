@@ -17,4 +17,8 @@
     <NodeIsExpanded>1</NodeIsExpanded>
   </project>
 
+  <project>
+    <PathAndName>.\DeviceEnergy\DeviceEnergy.uvprojx</PathAndName>
+  </project>
+
 </ProjectWorkspace>

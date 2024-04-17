@@ -12,3 +12,4 @@ endif()
 
 add_subdirectory(Device)
 add_subdirectory(Energy)
+add_subdirectory(DeviceEnergy)
