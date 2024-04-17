@@ -65,17 +65,36 @@ void SysTick_Handler(void)
 
 // PB0 LEFT
 // PB1 DOWN
-// PB2 RIGHT
 void EXTI0_1_IRQHandler(void)
 {
+    if (SET == exti_interrupt_flag_get(EXTI_0))
+    {
+        exti_interrupt_flag_clear(EXTI_0);
+    }
 
+    if (SET == exti_interrupt_flag_get(EXTI_1))
+    {
+        exti_interrupt_flag_clear(EXTI_1);
+    }
+}
+
+// PB2 RIGHT
+void EXTI2_3_IRQHandler(void)
+{
+    if (SET == exti_interrupt_flag_get(EXTI_2))
+    {
+        exti_interrupt_flag_clear(EXTI_2);
+    }
 }
 
 
 // PA7 UP
 void EXTI4_15_IRQHandler(void)
 {
-
+    if (SET == exti_interrupt_flag_get(EXTI_7))
+    {
+        exti_interrupt_flag_clear(EXTI_7);
+    }
 }
 
 

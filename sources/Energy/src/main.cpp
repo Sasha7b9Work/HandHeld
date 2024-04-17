@@ -3,6 +3,7 @@
 #include "Hardware/HAL/HAL.h"
 #include "Keyboard/Keyboard.h"
 #include "Hardware/Power.h"
+#include "systick.h"
 
 
 int main()
@@ -10,6 +11,8 @@ int main()
     HAL::Init();
 
     Keyboard::Init();
+
+    delay_1ms(1000);
 
     Power::DeepSleep();
 
