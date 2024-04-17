@@ -14,6 +14,8 @@
 #include "Modules/LED/LED.h"
 #include "Modules/Beeper/Beeper.h"
 #include "Hardware/Power.h"
+#include "Hardware/DeepSleep.h"
+#include <systick.h>
 
 
 void Device::Init()
@@ -41,6 +43,10 @@ void Device::Init()
 //    Beeper::Init();
 //
 //    Beeper::Play(TypeSound::_2, 9);
+
+    delay_1ms(3000);
+
+    DeepSleep::Enter();
 }
 
 

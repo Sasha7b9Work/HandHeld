@@ -639,6 +639,16 @@
               <FileType>5</FileType>
               <FilePath>.\src\Hardware\Power.h</FilePath>
             </File>
+            <File>
+              <FileName>DeepSleep.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Hardware\DeepSleep.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>DeepSleep.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Hardware\DeepSleep.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1845,6 +1855,16 @@
               <FileName>Power.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Hardware\Power.h</FilePath>
+            </File>
+            <File>
+              <FileName>DeepSleep.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Hardware\DeepSleep.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>DeepSleep.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Hardware\DeepSleep.h</FilePath>
             </File>
           </Files>
         </Group>
