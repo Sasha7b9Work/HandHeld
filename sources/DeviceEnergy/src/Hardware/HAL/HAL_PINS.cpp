@@ -57,3 +57,15 @@ void PinOut::ToHi() const
 {
     gpio_bit_set(port, pin);
 }
+
+
+void HAL_PINS::Init()
+{
+    gpio_mode_set(GPIOA, GPIO_MODE_INPUT, GPIO_PUPD_PULLUP, GPIO_PIN_ALL);
+
+    gpio_mode_set(GPIOB, GPIO_MODE_INPUT, GPIO_PUPD_PULLUP, GPIO_PIN_ALL);
+
+    gpio_mode_set(GPIOC, GPIO_MODE_INPUT, GPIO_PUPD_PULLUP, GPIO_PIN_13 | GPIO_PIN_14 | GPIO_PIN_15);
+
+    gpio_mode_set(GPIOF, GPIO_MODE_INPUT, GPIO_PUPD_PULLUP, GPIO_PIN_0 | GPIO_PIN_1 | GPIO_PIN_6 | GPIO_PIN_7);
+}

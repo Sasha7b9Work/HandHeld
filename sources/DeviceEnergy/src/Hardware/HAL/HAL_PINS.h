@@ -2,6 +2,12 @@
 #pragma once
 
 
+namespace HAL_PINS
+{
+    void Init();
+}
+
+
 struct ModePin
 {
     enum E
