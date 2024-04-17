@@ -646,6 +646,21 @@
             </File>
           </Files>
         </Group>
+        <Group>
+          <GroupName>Keyboard</GroupName>
+          <Files>
+            <File>
+              <FileName>Keyboard.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Keyboard\Keyboard.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Keyboard.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Keyboard\Keyboard.h</FilePath>
+            </File>
+          </Files>
+        </Group>
       </Groups>
     </Target>
     <Target>
@@ -1285,6 +1300,21 @@
               <FileName>systick.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Hardware\HAL\systick.cpp</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Keyboard</GroupName>
+          <Files>
+            <File>
+              <FileName>Keyboard.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Keyboard\Keyboard.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Keyboard.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Keyboard\Keyboard.h</FilePath>
             </File>
           </Files>
         </Group>

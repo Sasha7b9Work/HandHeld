@@ -63,6 +63,22 @@ void SysTick_Handler(void)
 }
 
 
+// PB0 LEFT
+// PB1 DOWN
+// PB2 RIGHT
+void EXTI0_1_IRQHandler(void)
+{
+
+}
+
+
+// PA7 UP
+void EXTI4_15_IRQHandler(void)
+{
+
+}
+
+
 #ifdef __cplusplus
 }
 #endif
