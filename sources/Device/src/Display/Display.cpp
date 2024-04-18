@@ -69,11 +69,6 @@ void Display::Init()
 
 void Display::Update()
 {
-    if (!ST7735::IsEnabled())
-    {
-        return;
-    }
-
     static TimeMeterMS meter;
 
     if (meter.ElapsedTime() < 20)
