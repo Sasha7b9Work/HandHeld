@@ -113,17 +113,6 @@ void EXTI4_15_IRQHandler(void)
 }
 
 
-void TIMER2_IRQHandler(void)
-{
-    if (timer_interrupt_flag_get(TIMER2, TIMER_INT_FLAG_UP))
-    {
-        timer_interrupt_flag_clear(TIMER2, TIMER_INT_FLAG_UP);
-
-        CMT2210AW::CallbackOnBit();
-    }
-}
-
-
 void TIMER14_IRQHandler(void)
 {
     if (timer_interrupt_flag_get(TIMER14, TIMER_INT_FLAG_CH1))
