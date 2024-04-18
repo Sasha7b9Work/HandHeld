@@ -28,13 +28,9 @@ void Power::Disable()
 }
 
 
-void Power::Sleep(uint timeMS)
+void Power::Sleep(uint)
 {
-    HAL_TIM2::Disable();
-
     Timer::Delay(10);
-
-    HAL_TIM5::Start(timeMS);
 
     in_sleep_mode = true;
 
@@ -53,14 +49,6 @@ void Power::Sleep(uint timeMS)
 #endif
 
     in_sleep_mode = false;
-}
-
-
-void Power::CallbackOnTimer()
-{
-    HAL_TIM5::Stop();
-    
-    HAL_TIM2::Enable();
 }
 
 

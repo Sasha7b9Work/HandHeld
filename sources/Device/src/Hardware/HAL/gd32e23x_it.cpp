@@ -68,30 +68,6 @@ void SysTick_Handler(void)
     timer_counter++;
 
     delay_decrement();
-
-    Keyboard::Update();
-}
-
-
-void TIMER2_IRQHandler(void)
-{
-    if (timer_interrupt_flag_get(TIMER2, TIMER_INT_FLAG_UP))
-    {
-        timer_interrupt_flag_clear(TIMER2, TIMER_INT_FLAG_UP);
-
-        CMT2210AW::CallbackOnBit();
-    }
-}
-
-
-void TIMER5_IRQHandler(void)
-{
-    if (timer_interrupt_flag_get(TIMER5, TIMER_INT_FLAG_UP))
-    {
-        timer_interrupt_flag_clear(TIMER5, TIMER_INT_FLAG_UP);
-
-        Power::CallbackOnTimer();
-    }
 }
 
 

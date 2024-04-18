@@ -63,8 +63,6 @@ void SysTick_Handler(void);
 
 void TIMER2_IRQHandler(void);
 
-void TIMER5_IRQHandler(void);
-
 void TIMER14_IRQHandler(void);
 
 #ifdef __cplusplus

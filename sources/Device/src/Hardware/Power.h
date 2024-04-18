@@ -13,8 +13,5 @@ namespace Power
 
     void Draw();
 
-    void CallbackOnTimer();
-
-
     extern bool in_sleep_mode;
 }

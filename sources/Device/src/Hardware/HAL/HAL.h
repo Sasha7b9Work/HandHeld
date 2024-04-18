@@ -28,28 +28,6 @@ namespace HAL_I2C
 }
 
 
-// Для приёмника
-namespace HAL_TIM2
-{
-    void Init();
-
-    void Enable();
-
-    void Disable();
-}
-
-
-// Для спящего режима
-namespace HAL_TIM5
-{
-    void Init();
-
-    void Start(uint timeMS);
-
-    void Stop();
-}
-
-
 namespace HAL_ROM
 {
     static const uint ADDRESS_BEGIN = 0x8000000;

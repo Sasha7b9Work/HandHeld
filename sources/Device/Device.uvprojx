@@ -715,19 +715,9 @@
               <FilePath>.\src\Hardware\HAL\HAL_ADC.cpp</FilePath>
             </File>
             <File>
-              <FileName>HAL_TIM2.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Hardware\HAL\HAL_TIM2.cpp</FilePath>
-            </File>
-            <File>
               <FileName>HAL_ROM.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Hardware\HAL\HAL_ROM.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>HAL_TIM5.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Hardware\HAL\HAL_TIM5.cpp</FilePath>
             </File>
           </Files>
         </Group>
@@ -1922,19 +1912,9 @@
               <FilePath>.\src\Hardware\HAL\HAL_ADC.cpp</FilePath>
             </File>
             <File>
-              <FileName>HAL_TIM2.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Hardware\HAL\HAL_TIM2.cpp</FilePath>
-            </File>
-            <File>
               <FileName>HAL_ROM.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Hardware\HAL\HAL_ROM.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>HAL_TIM5.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Hardware\HAL\HAL_TIM5.cpp</FilePath>
             </File>
           </Files>
         </Group>
