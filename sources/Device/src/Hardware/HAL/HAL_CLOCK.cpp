@@ -150,6 +150,8 @@ void HAL_CLOCK::SetLow()
     }
 
     systick_config();
+
+    HAL::Init();
 }
 
 
