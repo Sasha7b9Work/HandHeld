@@ -1784,9 +1784,9 @@
       <ActiveTab>0</ActiveTab>
       <Doc>
         <Name>&lt;1&gt;.\src\Hardware\CMSIS\system_gd32e23x.c</Name>
-        <ColumnNumber>0</ColumnNumber>
-        <TopLine>22</TopLine>
-        <CurrentLine>43</CurrentLine>
+        <ColumnNumber>45</ColumnNumber>
+        <TopLine>208</TopLine>
+        <CurrentLine>232</CurrentLine>
         <Folding>1</Folding>
         <ContractedFolders></ContractedFolders>
         <PaneID>0</PaneID>
