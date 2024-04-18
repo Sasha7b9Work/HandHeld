@@ -43,7 +43,7 @@ void ModeClock::Set(E v)
 
 void ModeClock::LeaveDeepSleep()
 {
-    if (HAL_CLOCK::in_sleep_mode)
+//    if (HAL_CLOCK::in_sleep_mode)
     {
         HAL_CLOCK::in_sleep_mode = false;
 
