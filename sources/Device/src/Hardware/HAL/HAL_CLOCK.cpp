@@ -52,26 +52,44 @@ void ModeClock::LeaveDeepSleep()
 }
 
 
+#define RCU_MODIFY(__delay)     do{                                     \
+                                    volatile uint32_t i;                \
+                                    if(0 != __delay){                   \
+                                        RCU_CFG0 |= RCU_AHB_CKSYS_DIV2; \
+                                        for(i=0; i<__delay; i++){       \
+                                        }                               \
+                                        RCU_CFG0 |= RCU_AHB_CKSYS_DIV4; \
+                                        for(i=0; i<__delay; i++){       \
+                                        }                               \
+                                    }                                   \
+                                }while(0)
+
+
+
 void HAL_CLOCK::SetDeepSleep()
 {
     ST7735::Disable();
 
     CMT2210AW::PrepareToSleep();
 
-    /* AHB = SYSCLK */
-    RCU_CFG0 |= RCU_AHB_CKSYS_DIV1;
-    /* APB2 = AHB */
-    RCU_CFG0 |= RCU_APB2_CKAHB_DIV1;
-    /* APB1 = AHB */
-    RCU_CFG0 |= RCU_APB1_CKAHB_DIV1;
-
-    /* select IRC8M as system clock */
-    RCU_CFG0 &= ~RCU_CFG0_SCS;
-    RCU_CFG0 |= RCU_CKSYSSRC_IRC8M;
-
-    /* wait until IRC8M is selected as system clock */
-    while (RCU_SCSS_IRC8M != (RCU_CFG0 & RCU_CFG0_SCSS)) {
+    /* enable IRC8M */
+    RCU_CTL0 |= RCU_CTL0_IRC8MEN;
+    while (0U == (RCU_CTL0 & RCU_CTL0_IRC8MSTB)) {
     }
+
+    RCU_MODIFY(0x80);
+    RCU_CFG0 &= ~RCU_CFG0_SCS;
+    RCU_CTL0 &= ~(RCU_CTL0_HXTALEN | RCU_CTL0_CKMEN | RCU_CTL0_PLLEN | RCU_CTL0_HXTALBPS);
+    /* reset RCU */
+    RCU_CFG0 &= ~(RCU_CFG0_SCS | RCU_CFG0_AHBPSC | RCU_CFG0_APB1PSC | RCU_CFG0_APB2PSC | \
+        RCU_CFG0_ADCPSC | RCU_CFG0_CKOUTSEL | RCU_CFG0_CKOUTDIV | RCU_CFG0_PLLDV);
+    RCU_CFG0 &= ~(RCU_CFG0_PLLSEL | RCU_CFG0_PLLMF | RCU_CFG0_PLLMF4 | RCU_CFG0_PLLDV);
+    RCU_CFG1 &= ~(RCU_CFG1_PREDV);
+    RCU_CFG2 &= ~(RCU_CFG2_USART0SEL | RCU_CFG2_ADCSEL);
+    RCU_CFG2 &= ~RCU_CFG2_IRC28MDIV;
+    RCU_CFG2 &= ~RCU_CFG2_ADCPSC2;
+    RCU_CTL1 &= ~RCU_CTL1_IRC28MEN;
+    RCU_INT = 0x00000000U;
 
     rcu_periph_clock_enable(RCU_PMU);
     pmu_to_deepsleepmode(PMU_LDO_LOWPOWER, WFI_CMD);
