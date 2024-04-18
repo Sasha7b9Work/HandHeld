@@ -3,6 +3,7 @@
 #include "Hardware/HAL/HAL.h"
 #include "Modules/ST7735/ST7735.h"
 #include "Modules/CMT2210AW/CMT2210AW.h"
+#include "Hardware/HAL/systick.h"
 #include <gd32e23x.h>
 
 
@@ -51,16 +52,56 @@ void HAL_CLOCK::SetLow()
 {
     SystemCoreClock = 3250000;
 
+    uint32_t timeout = 0U;
+    uint32_t stab_flag = 0U;
+
+    /* enable HXTAL */
+    RCU_CTL0 |= RCU_CTL0_HXTALEN;
+
+    /* wait until HXTAL is stable or the startup time is longer than HXTAL_STARTUP_TIMEOUT */
+    do {
+        timeout++;
+        stab_flag = (RCU_CTL0 & RCU_CTL0_HXTALSTB);
+    } while ((0U == stab_flag) && (HXTAL_STARTUP_TIMEOUT != timeout));
+    /* if fail */
+    if (0U == (RCU_CTL0 & RCU_CTL0_HXTALSTB)) {
+        while (1) {
+        }
+    }
+
+    FMC_WS = (FMC_WS & (~FMC_WS_WSCNT)) | WS_WSCNT_2;
+
+    /* HXTAL is stable */
+    /* AHB = SYSCLK */
+    RCU_CFG0 |= RCU_AHB_CKSYS_DIV1;
+    /* APB2 = AHB */
+    RCU_CFG0 |= RCU_APB2_CKAHB_DIV1;
+    /* APB1 = AHB */
+    RCU_CFG0 |= RCU_APB1_CKAHB_DIV1;
+
+    /* PLL = HXTAL * 3 = 78 MHz */
+    RCU_CFG0 &= ~(RCU_CFG0_PLLSEL | RCU_CFG0_PLLMF | RCU_CFG0_PLLDV);
+    RCU_CFG0 |= (RCU_PLLSRC_HXTAL | RCU_PLL_MUL2);
+
     rcu_hxtal_prediv_config(RCU_PLL_PREDV16);
     RCU_CFG0 |= RCU_CFG0_PLLDV;         // Должно быть то же, что и в PREDV2[0]
 
+    /* enable PLL */
+    RCU_CTL0 |= RCU_CTL0_PLLEN;
+
+    /* wait until PLL is stable */
     while (0U == (RCU_CTL0 & RCU_CTL0_PLLSTB)) {
     }
 
+    /* select PLL as system clock */
+    RCU_CFG0 &= ~RCU_CFG0_SCS;
+    RCU_CFG0 |= RCU_CKSYSSRC_PLL;
+
+    /* wait until PLL is selected as system clock */
     while (RCU_SCSS_PLL != (RCU_CFG0 & RCU_CFG0_SCSS)) {
     }
 
-    HAL::Init();
+    systick_config();
 }
 
 
@@ -68,14 +109,51 @@ void HAL_CLOCK::SetHi()
 {
     SystemCoreClock = 52000000;
 
-    rcu_hxtal_prediv_config(RCU_PLL_PREDV1);
-    RCU_CFG0 &= ~(RCU_CFG0_PLLDV);         // Должно быть то же, что и в PREDV2[0]
+    uint32_t timeout = 0U;
+    uint32_t stab_flag = 0U;
 
+    /* enable HXTAL */
+    RCU_CTL0 |= RCU_CTL0_HXTALEN;
+
+    /* wait until HXTAL is stable or the startup time is longer than HXTAL_STARTUP_TIMEOUT */
+    do {
+        timeout++;
+        stab_flag = (RCU_CTL0 & RCU_CTL0_HXTALSTB);
+    } while ((0U == stab_flag) && (HXTAL_STARTUP_TIMEOUT != timeout));
+    /* if fail */
+    if (0U == (RCU_CTL0 & RCU_CTL0_HXTALSTB)) {
+        while (1) {
+        }
+    }
+
+    FMC_WS = (FMC_WS & (~FMC_WS_WSCNT)) | WS_WSCNT_2;
+
+    /* HXTAL is stable */
+    /* AHB = SYSCLK */
+    RCU_CFG0 |= RCU_AHB_CKSYS_DIV1;
+    /* APB2 = AHB */
+    RCU_CFG0 |= RCU_APB2_CKAHB_DIV1;
+    /* APB1 = AHB */
+    RCU_CFG0 |= RCU_APB1_CKAHB_DIV1;
+
+    /* PLL = HXTAL * 3 = 78 MHz */
+    RCU_CFG0 &= ~(RCU_CFG0_PLLSEL | RCU_CFG0_PLLMF | RCU_CFG0_PLLDV);
+    RCU_CFG0 |= (RCU_PLLSRC_HXTAL | RCU_PLL_MUL2);
+
+    /* enable PLL */
+    RCU_CTL0 |= RCU_CTL0_PLLEN;
+
+    /* wait until PLL is stable */
     while (0U == (RCU_CTL0 & RCU_CTL0_PLLSTB)) {
     }
 
+    /* select PLL as system clock */
+    RCU_CFG0 &= ~RCU_CFG0_SCS;
+    RCU_CFG0 |= RCU_CKSYSSRC_PLL;
+
+    /* wait until PLL is selected as system clock */
     while (RCU_SCSS_PLL != (RCU_CFG0 & RCU_CFG0_SCSS)) {
     }
 
-    HAL::Init();
+    systick_config();
 }
