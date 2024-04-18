@@ -71,6 +71,7 @@ void CMT2210AW::PrepareToSleep()
 void CMT2210AW::CallbackOnClock()
 {
     need_start = true;
+    exti_interrupt_disable(EXTI_13);
 }
 
 
