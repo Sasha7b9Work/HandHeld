@@ -6,6 +6,7 @@
 #include "Keyboard/Keyboard.h"
 #include "Hardware/Timer.h"
 #include "Modules/Beeper/Beeper.h"
+#include "Hardware/HAL/HAL_PINS.h"
 
 
 #ifdef __cplusplus
@@ -127,6 +128,9 @@ void TIMER2_IRQHandler(void)
         timer_interrupt_flag_clear(TIMER2, TIMER_INT_FLAG_UP);
 
         CMT2210AW::CallbackOnBit();
+
+        pin_out.ToLow();
+        pin_out.ToHi();
     }
 }
 

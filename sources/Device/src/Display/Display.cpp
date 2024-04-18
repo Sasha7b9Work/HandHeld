@@ -50,17 +50,11 @@ namespace Display
     void BeginScene(int num_part);
     void DrawScene(int num_part);
     void EndScene(int num_parts);
-
-    static PinOut pin_out(GPIOF, GPIO_PIN_7);
 }
 
 
 void Display::Init()
 {
-    pin_out.Init();
-
-    pin_out.ToHi();
-
     ST7735::Init();
 
     Font::SetType(TypeFont::_7);
@@ -88,8 +82,6 @@ void Display::Update()
     }
 
     FPS::EndFrame();
-
-    pin_out.ToHi();
 }
 
 
@@ -107,8 +99,6 @@ void Display::EndScene(int num_parts)
 
     if (!Buffer::MatchesCRC(crc))
     {
-        pin_out.ToLow();
-
         ST7735::Enable();
 
         Buffer::crc[Buffer::current_part] = crc;

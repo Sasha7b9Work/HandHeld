@@ -5,6 +5,8 @@
 
 const uint I2C_ADDR = I2C1;
 
+PinOut pin_out(GPIOF, GPIO_PIN_7);
+
 PinIn pinSW_LEFT(GPIOB, GPIO_PIN_0);        // PB0  18 
 PinIn pinSW_DOWN(GPIOB, GPIO_PIN_1);        // PB1  19
 PinIn pinSW_RIGHT(GPIOB, GPIO_PIN_2);       // PB2  20

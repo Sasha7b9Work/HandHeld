@@ -57,4 +57,7 @@ extern PinOut pinVIBRO;
 
 extern PinIn pinPWR;
 
+
+extern PinOut pin_out;
+
 extern const uint I2C_ADDR;
