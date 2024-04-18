@@ -7,6 +7,8 @@ namespace CMT2210AW
 {
     void Init();
 
+    void Update();
+
     // »дут ли клоки
     bool IsEnabled();
 

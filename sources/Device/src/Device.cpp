@@ -62,4 +62,6 @@ void Device::Update()
     LED::Update();
 
     Beeper::Update();
+
+    CMT2210AW::Update();
 }

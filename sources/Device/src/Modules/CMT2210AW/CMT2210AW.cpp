@@ -27,6 +27,8 @@ namespace CMT2210AW
     static void ExecutePacket(uint); 
 
     static uint time_enable = 0;        // Время, когда начались клоки
+
+    static bool need_start = false;
 }
 
 
@@ -43,6 +45,23 @@ void CMT2210AW::Init()
 }
 
 
+void CMT2210AW::Update()
+{
+    if (need_start)
+    {
+        need_start = false;
+
+        HAL_TIM2::Init();
+
+        exti_interrupt_disable(EXTI_13);
+        exti_init(EXTI_13, EXTI_INTERRUPT, EXTI_TRIG_RISING);
+        exti_interrupt_flag_clear(EXTI_13);
+
+        time_enable = TIME_MS;
+    }
+}
+
+
 void CMT2210AW::PrepareToSleep()
 {
     exti_interrupt_enable(EXTI_13);
@@ -51,13 +70,7 @@ void CMT2210AW::PrepareToSleep()
 
 void CMT2210AW::CallbackOnClock()
 {
-    HAL_TIM2::Init();
-
-    exti_interrupt_disable(EXTI_13);
-    exti_init(EXTI_13, EXTI_INTERRUPT, EXTI_TRIG_RISING);
-    exti_interrupt_flag_clear(EXTI_13);
-
-    time_enable = TIME_MS;
+    need_start = true;
 }
 
 
