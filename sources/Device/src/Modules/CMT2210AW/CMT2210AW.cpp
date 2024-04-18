@@ -5,6 +5,7 @@
 #include "Display/Display.h"
 #include "Settings/Settings.h"
 #include "Hardware/Timer.h"
+#include "Hardware/HAL/HAL.h"
 #ifdef ENABLE_EMULATOR
     #include "Modules/CMT2210AW/EmulatorReceiver.h"
 #endif
@@ -50,6 +51,8 @@ void CMT2210AW::PrepareToSleep()
 
 void CMT2210AW::CallbackOnClock()
 {
+    HAL_TIM2::Start();
+
     exti_interrupt_disable(EXTI_13);
     exti_init(EXTI_13, EXTI_INTERRUPT, EXTI_TRIG_RISING);
     exti_interrupt_flag_clear(EXTI_13);

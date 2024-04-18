@@ -54,6 +54,8 @@ namespace HAL_I2C
 namespace HAL_TIM2
 {
     void Init();
+
+    void Start();
 }
 
 
