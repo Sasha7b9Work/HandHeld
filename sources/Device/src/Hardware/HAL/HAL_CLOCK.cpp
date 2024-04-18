@@ -58,6 +58,21 @@ void HAL_CLOCK::SetDeepSleep()
 
     CMT2210AW::PrepareToSleep();
 
+    /* AHB = SYSCLK */
+    RCU_CFG0 |= RCU_AHB_CKSYS_DIV1;
+    /* APB2 = AHB */
+    RCU_CFG0 |= RCU_APB2_CKAHB_DIV1;
+    /* APB1 = AHB */
+    RCU_CFG0 |= RCU_APB1_CKAHB_DIV1;
+
+    /* select IRC8M as system clock */
+    RCU_CFG0 &= ~RCU_CFG0_SCS;
+    RCU_CFG0 |= RCU_CKSYSSRC_IRC8M;
+
+    /* wait until IRC8M is selected as system clock */
+    while (RCU_SCSS_IRC8M != (RCU_CFG0 & RCU_CFG0_SCSS)) {
+    }
+
     rcu_periph_clock_enable(RCU_PMU);
     pmu_to_deepsleepmode(PMU_LDO_LOWPOWER, WFI_CMD);
 }
