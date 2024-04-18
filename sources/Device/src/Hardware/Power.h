@@ -8,8 +8,5 @@ namespace Power
 
     void Disable();
 
-    // Заснуть на time ms
-    void Sleep(uint time = (uint)-1);
-
     void Draw();
 }

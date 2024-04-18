@@ -25,12 +25,6 @@ void Power::Disable()
 }
 
 
-void Power::Sleep(uint)
-{
-
-}
-
-
 void Power::Draw()
 {
     int x = 121;

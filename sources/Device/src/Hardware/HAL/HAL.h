@@ -2,6 +2,28 @@
 #pragma once
 
 
+struct ModeClock
+{
+    enum E
+    {
+        DeepSleep,  // Спящий режим
+        Low,        // Основная частота 3MHz
+        Hi,         // Частота 52МГц для отрисовки экрана
+        Count
+    };
+
+    static void Set(E);
+
+    static bool IsDeepSleep() { return current == DeepSleep; }
+    static bool IsLow()       { return current == Low; }
+    static bool IsHi()        { return current == Hi; }
+
+private:
+
+    static E current;
+};
+
+
 namespace HAL
 {
     void Init();
