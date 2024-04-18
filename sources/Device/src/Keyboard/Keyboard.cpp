@@ -10,11 +10,17 @@ namespace Keyboard
 {
     struct Button
     {
-        Button(uint _port, uint16 _pin) : port(_port), pin(_pin) { }
+        Button(uint _port, uint16 _pin, uint8 _irqn, uint8 _exti_source_port, uint8 _exti_source_pin, exti_line_enum _exti) :
+            port(_port), pin(_pin), irqn(_irqn), exti_source_port(_exti_source_port), exti_source_pin(_exti_source_pin), exti(_exti)
+        { }
 
         void Init()
         {
             gpio_mode_set(port, GPIO_MODE_INPUT, GPIO_PUPD_PULLUP, pin);
+            nvic_irq_enable(irqn, 2);
+            syscfg_exti_line_config(exti_source_port, exti_source_pin);
+            exti_init(exti, EXTI_INTERRUPT, EXTI_TRIG_BOTH);
+            exti_interrupt_flag_clear(exti);
         }
 
         bool IsDown()
@@ -27,14 +33,18 @@ namespace Keyboard
         }
 
     private:
-        uint port;
+        uint   port;
         uint16 pin;
+        uint8  irqn;
+        uint8  exti_source_port;
+        uint8  exti_source_pin;
+        exti_line_enum exti;
     };
 
-    static Button btnMenu(GPIOB, GPIO_PIN_2);
-    static Button btnCancel(GPIOB, GPIO_PIN_0);
-    static Button btnUp(GPIOA, GPIO_PIN_7);
-    static Button btnDown(GPIOB, GPIO_PIN_1);
+    static Button btnMenu(GPIOB, GPIO_PIN_2, EXTI2_3_IRQn, EXTI_SOURCE_GPIOB, EXTI_SOURCE_PIN2, EXTI_2);
+    static Button btnCancel(GPIOB, GPIO_PIN_0, EXTI0_1_IRQn, EXTI_SOURCE_GPIOB, EXTI_SOURCE_PIN0, EXTI_0);
+    static Button btnUp(GPIOA, GPIO_PIN_7, EXTI4_15_IRQn, EXTI_SOURCE_GPIOA, EXTI_SOURCE_PIN7, EXTI_7);
+    static Button btnDown(GPIOB, GPIO_PIN_1, EXTI0_1_IRQn, EXTI_SOURCE_GPIOB, EXTI_SOURCE_PIN1, EXTI_1);
 
     struct ButtonStruct
     {
@@ -62,8 +72,6 @@ namespace Keyboard
         actions[num_actions] = action;
         num_actions++;
     }
-
-    static bool is_busy = false;
 }
 
 
@@ -76,39 +84,20 @@ void Keyboard::Init()
 }
 
 
-void Keyboard::Update()
+void Keyboard::CallbackFromInterrupt(Key::E key)
 {
-    static uint counter = 0;
-
-    if (counter++ < 10)     // “ак как прерывание вызываетс€ каждую миллисекунду, будем пропускать
-    {
-        return;
-    }
-
-    counter = 0;
-
-    if (is_busy)
-    {
-        return;
-    }
-
     uint time = TIME_MS;
 
-    for (int i = 0; i < Key::Count; i++)
+    if (time - buttons[key].prev_time > 100)
     {
-        if (time - buttons[i].prev_time < 100)
+        bool is_down = buttons[key].button->IsDown();
+
+        if (buttons[key].prev_down != is_down)
         {
-            continue;
-        }
+            AppendAction({ key , is_down ? ActionType::Down : ActionType::Up });
 
-        bool is_down = buttons[i].button->IsDown();
-
-        if (buttons[i].prev_down != is_down)
-        {
-            AppendAction({ (Key::E)i , is_down ? ActionType::Down : ActionType::Up });
-
-            buttons[i].prev_time = time;
-            buttons[i].prev_down = is_down;
+            buttons[key].prev_time = time;
+            buttons[key].prev_down = is_down;
         }
     }
 }
@@ -127,8 +116,6 @@ bool Keyboard::GetNextAction(Action &action)
         return false;
     }
 
-    is_busy = true;
-
     action = actions[0];
 
     if (num_actions == 1)
@@ -141,8 +128,6 @@ bool Keyboard::GetNextAction(Action &action)
 
         num_actions--;
     }
-
-    is_busy = false;
 
     return true;
 }
