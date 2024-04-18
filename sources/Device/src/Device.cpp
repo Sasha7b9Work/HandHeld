@@ -13,6 +13,7 @@
 #include "Storage/Storage.h"
 #include "Modules/LED/LED.h"
 #include "Modules/Beeper/Beeper.h"
+#include "Modules/ST7735/ST7735.h"
 
 
 void Device::Init()
@@ -44,6 +45,8 @@ void Device::Init()
 void Device::Update()
 {
     ModeClock::Set(ModeClock::DeepSleep);
+
+    ST7735::Enable();
 
     Menu::Update();
 
