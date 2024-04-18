@@ -53,10 +53,6 @@ void CMT2210AW::Update()
 
         HAL_TIM2::Init();
 
-        exti_interrupt_disable(EXTI_13);
-        exti_init(EXTI_13, EXTI_INTERRUPT, EXTI_TRIG_RISING);
-        exti_interrupt_flag_clear(EXTI_13);
-
         time_enable = TIME_MS;
     }
 }
