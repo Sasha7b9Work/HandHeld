@@ -28,6 +28,13 @@ namespace HAL_I2C
 }
 
 
+// Для приёмника
+namespace HAL_TIM2
+{
+    void Init();
+}
+
+
 namespace HAL_ROM
 {
     static const uint ADDRESS_BEGIN = 0x8000000;

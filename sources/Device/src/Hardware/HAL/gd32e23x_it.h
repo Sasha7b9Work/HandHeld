@@ -67,6 +67,8 @@ void EXTI2_3_IRQHandler(void);
 
 void EXTI4_15_IRQHandler(void);
 
+void TIMER2_IRQHandler(void);
+
 void TIMER14_IRQHandler(void);
 
 #ifdef __cplusplus
