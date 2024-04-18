@@ -85,7 +85,7 @@ void HAL_CLOCK::SetLow()
     SystemCoreClock = 3250000;
 
     /* enable IRC8M */
-    RCU_CTL0 = RCU_CTL0_IRC8MEN;
+    RCU_CTL0 |= RCU_CTL0_IRC8MEN;
     while (0U == (RCU_CTL0 & RCU_CTL0_IRC8MSTB)) {
     }
 
@@ -166,7 +166,7 @@ void HAL_CLOCK::SetHi()
     uint32_t stab_flag = 0U;
 
     /* enable IRC8M */
-    RCU_CTL0 = RCU_CTL0_IRC8MEN;
+    RCU_CTL0 |= RCU_CTL0_IRC8MEN;
     while (0U == (RCU_CTL0 & RCU_CTL0_IRC8MSTB)) {
     }
 
