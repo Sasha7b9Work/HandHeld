@@ -47,4 +47,7 @@ namespace Keyboard
     bool IsDown(Key::E);
 
     bool GetNextAction(Action &);
+
+    // Прошло много времени. Сон
+    bool ToMoreTime();
 }

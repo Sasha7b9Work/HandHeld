@@ -72,6 +72,8 @@ namespace Keyboard
         actions[num_actions] = action;
         num_actions++;
     }
+
+    static uint last_time = 0;
 }
 
 
@@ -86,9 +88,9 @@ void Keyboard::Init()
 
 void Keyboard::CallbackFromInterrupt(Key::E key)
 {
-    uint time = TIME_MS;
+    last_time = TIME_MS;
 
-    if (time - buttons[key].prev_time > 100)
+    if (last_time - buttons[key].prev_time > 100)
     {
         bool is_down = buttons[key].button->IsDown();
 
@@ -96,10 +98,16 @@ void Keyboard::CallbackFromInterrupt(Key::E key)
         {
             AppendAction({ key , is_down ? ActionType::Down : ActionType::Up });
 
-            buttons[key].prev_time = time;
+            buttons[key].prev_time = last_time;
             buttons[key].prev_down = is_down;
         }
     }
+}
+
+
+bool Keyboard::ToMoreTime()
+{
+    return TIME_MS - last_time > 5000;
 }
 
 
