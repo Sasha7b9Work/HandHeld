@@ -76,6 +76,8 @@ void Display::Update()
         return;
     }
 
+    meter.Reset();
+
     FPS::BeginFrame();
 
     for (int i = 0; i < NUMBER_PARTS_HEIGHT; i++)
