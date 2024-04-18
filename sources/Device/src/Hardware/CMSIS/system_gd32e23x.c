@@ -46,7 +46,8 @@
 /* select a system clock by uncommenting the following line */
 //#define __SYSTEM_CLOCK_8M_HXTAL              (__HXTAL)
 //#define __SYSTEM_CLOCK_8M_IRC8M              (__IRC8M)
-#define __SYSTEM_CLOCK_72M_PLL_HXTAL         (uint32_t)(3250000)
+//#define __SYSTEM_CLOCK_72M_PLL_HXTAL         (uint32_t)(1625000)
+#define __SYSTEM_CLOCK_72M_PLL_HXTAL         (uint32_t)(52000000)
 //#define __SYSTEM_CLOCK_72M_PLL_IRC8M_DIV2    (uint32_t)(72000000)
 
 #define RCU_MODIFY(__delay)     do{                                     \
@@ -229,9 +230,8 @@ static void system_clock_72m_hxtal(void)
     RCU_CFG0 &= ~(RCU_CFG0_PLLSEL | RCU_CFG0_PLLMF | RCU_CFG0_PLLDV);
     RCU_CFG0 |= (RCU_PLLSRC_HXTAL | RCU_PLL_MUL2);
 
-    rcu_hxtal_prediv_config(RCU_PLL_PREDV16);
-
-    RCU_CFG0 |= RCU_CFG0_PLLDV;         // Должно быть то же, что и в PREDV2[0]
+//    rcu_hxtal_prediv_config(RCU_PLL_PREDV32);
+//    RCU_CFG0 |= RCU_CFG0_PLLDV;         // Должно быть то же, что и в PREDV2[0]
 
     /* enable PLL */
     RCU_CTL0 |= RCU_CTL0_PLLEN;

@@ -11,6 +11,8 @@
 #include "Utils/FPS.h"
 #include "Utils/StringUtils.h"
 #include "Hardware/Power.h"
+#include "Hardware/HAL/HAL_PINS.h"
+#include "Utils/Math.h"
 #include <string>
 
 
@@ -19,6 +21,20 @@ namespace Display
     namespace Buffer
     {
         static uint8 buffer[SIZE];
+
+        static uint crc[NUMBER_PARTS_HEIGHT] = { 0, 0, 0, 0, 0, 0, 0, 0 };
+
+        static int current_part = 0;                            // Эту часть сейчас отрисовываем
+
+        static bool MatchesCRC(uint _crc)
+        {
+            return _crc == crc[current_part];
+        }
+
+        static uint CalcualteCRC()
+        {
+            return Math::CalculateCRC(buffer, SIZE);
+        }
 
         static void Fill(const Color &color)
         {
@@ -31,16 +47,20 @@ namespace Display
         }
     }
 
-    static int current_part = 0;                            // Эту часть сейчас отрисовываем
-
     void BeginScene(int num_part);
     void DrawScene(int num_part);
     void EndScene(int num_parts);
+
+    static PinOut pin_out(GPIOF, GPIO_PIN_7);
 }
 
 
 void Display::Init()
 {
+    pin_out.Init();
+
+    pin_out.ToHi();
+
     ST7735::Init();
 
     Font::SetType(TypeFont::_7);
@@ -49,9 +69,16 @@ void Display::Init()
 
 void Display::Update()
 {
-    FPS::BeginFrame();
+    static TimeMeterMS meter;
 
-    volatile uint start_time = TIME_MS;
+    if (meter.ElapsedTime() < 20)
+    {
+        return;
+    }
+
+    pin_out.ToLow();
+
+    FPS::BeginFrame();
 
     for (int i = 0; i < NUMBER_PARTS_HEIGHT; i++)
     {
@@ -60,17 +87,15 @@ void Display::Update()
         EndScene(i);        // 68 ms
     }
 
-    volatile uint time = TIME_MS - start_time;
-
-    time = time;
-
     FPS::EndFrame();
+
+    pin_out.ToHi();
 }
 
 
 void Display::BeginScene(int num_part)
 {
-    current_part = num_part;
+    Buffer::current_part = num_part;
 
     Buffer::Fill(Color::BLACK);
 }
@@ -78,7 +103,14 @@ void Display::BeginScene(int num_part)
 
 void Display::EndScene(int num_parts)
 {
-    ST7735::WriteBuffer(HEIGHT / NUMBER_PARTS_HEIGHT * num_parts);
+    uint crc = Buffer::CalcualteCRC();
+
+    if (!Buffer::MatchesCRC(crc))
+    {
+        Buffer::crc[Buffer::current_part] = crc;
+
+        ST7735::WriteBuffer(HEIGHT / NUMBER_PARTS_HEIGHT * num_parts);
+    }
 }
 
 
@@ -212,7 +244,7 @@ void Pixel::Set(int x, int y, const Color &color) const
         return;
     }
 
-    y -= Display::HEIGHT / Display::NUMBER_PARTS_HEIGHT * Display::current_part;
+    y -= Display::HEIGHT / Display::NUMBER_PARTS_HEIGHT * Display::Buffer::current_part;
 
     if (y < 0)
     {
