@@ -14,6 +14,8 @@ struct ModeClock
 
     static void Set(E);
 
+    static void LeaveDeepSleep();
+
     static bool IsDeepSleep() { return current == DeepSleep; }
     static bool IsLow()       { return current == Low; }
     static bool IsHi()        { return current == Hi; }

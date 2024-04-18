@@ -15,6 +15,8 @@ namespace HAL_CLOCK
     static void SetDeepSleep();
     static void SetLow();
     static void SetHi();
+
+    static bool in_sleep_mode = false;
 }
 
 
@@ -24,6 +26,8 @@ void ModeClock::Set(E v)
 
     if (v == ModeClock::DeepSleep)
     {
+        HAL_CLOCK::in_sleep_mode = true;
+
         HAL_CLOCK::SetDeepSleep();
     }
     else if (v == ModeClock::Low)
@@ -33,6 +37,17 @@ void ModeClock::Set(E v)
     else if (v == ModeClock::Hi)
     {
         HAL_CLOCK::SetHi();
+    }
+}
+
+
+void ModeClock::LeaveDeepSleep()
+{
+    if (HAL_CLOCK::in_sleep_mode)
+    {
+        HAL_CLOCK::in_sleep_mode = false;
+
+        ModeClock::Set(ModeClock::Low);
     }
 }
 

@@ -49,7 +49,7 @@ void Device::Update()
         ModeClock::Set(ModeClock::DeepSleep);
     }
 
-    ModeClock::Set(ModeClock::Low);
+    ModeClock::LeaveDeepSleep();
 
     Menu::Update();
 
