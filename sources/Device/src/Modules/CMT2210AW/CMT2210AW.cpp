@@ -23,13 +23,19 @@ namespace CMT2210AW
 
     static uint GetBits(uint64);
 
-    static void ExecutePacket(uint);
+    static void ExecutePacket(uint); 
+
+    static PinOut pin_out(GPIOF, GPIO_PIN_7);
 }
 
 
 void CMT2210AW::Init()
 {
     pinDOUT.Init();
+
+    pin_out.Init();
+
+    pin_out.ToHi();
 }
 
 
@@ -41,7 +47,11 @@ void CMT2210AW::CallbackOnBit()
 
 #else
 
+    pin_out.ToLow();
+
     AppendBit(pinDOUT.IsHi());
+
+    pin_out.ToHi();
 
 #endif
 }
