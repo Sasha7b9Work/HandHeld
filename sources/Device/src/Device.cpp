@@ -39,7 +39,7 @@ void Device::Init()
 
     Beeper::Init();
 
-    Beeper::Play(TypeSound::_2, 9);
+    ModeClock::Set(ModeClock::DeepSleep);
 }
 
 

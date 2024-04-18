@@ -36,7 +36,6 @@ void ModeClock::Set(E v)
 
 void HAL_CLOCK::SetDeepSleep()
 {
-
     rcu_periph_clock_enable(RCU_PMU);
     pmu_to_deepsleepmode(PMU_LDO_LOWPOWER, WFI_CMD);
 }
@@ -44,11 +43,33 @@ void HAL_CLOCK::SetDeepSleep()
 
 void HAL_CLOCK::SetLow()
 {
+    SystemCoreClock = 1625000;
 
+    rcu_hxtal_prediv_config(RCU_PLL_PREDV16);
+    RCU_CFG0 |= RCU_CFG0_PLLDV;         // Должно быть то же, что и в PREDV2[0]
+
+    while (0U == (RCU_CTL0 & RCU_CTL0_PLLSTB)) {
+    }
+
+    while (RCU_SCSS_PLL != (RCU_CFG0 & RCU_CFG0_SCSS)) {
+    }
+
+    HAL::Init();
 }
 
 
 void HAL_CLOCK::SetHi()
 {
+    SystemCoreClock = 52000000;
 
+    rcu_hxtal_prediv_config(RCU_PLL_PREDV1);
+    RCU_CFG0 &= ~(RCU_CFG0_PLLDV);         // Должно быть то же, что и в PREDV2[0]
+
+    while (0U == (RCU_CTL0 & RCU_CTL0_PLLSTB)) {
+    }
+
+    while (RCU_SCSS_PLL != (RCU_CFG0 & RCU_CFG0_SCSS)) {
+    }
+
+    HAL::Init();
 }
