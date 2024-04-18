@@ -1,6 +1,7 @@
 // 2024/04/18 15:19:44 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
 #include "Hardware/HAL/HAL.h"
+#include "Modules/ST7735/ST7735.h"
 #include <gd32e23x.h>
 
 
@@ -36,6 +37,8 @@ void ModeClock::Set(E v)
 
 void HAL_CLOCK::SetDeepSleep()
 {
+    ST7735::Disable();
+
     rcu_periph_clock_enable(RCU_PMU);
     pmu_to_deepsleepmode(PMU_LDO_LOWPOWER, WFI_CMD);
 }
