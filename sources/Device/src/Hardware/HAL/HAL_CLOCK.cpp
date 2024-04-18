@@ -43,7 +43,7 @@ void ModeClock::Set(E v)
 
 void ModeClock::LeaveDeepSleep()
 {
-//    if (HAL_CLOCK::in_sleep_mode)
+    if (HAL_CLOCK::in_sleep_mode)
     {
         HAL_CLOCK::in_sleep_mode = false;
 
@@ -72,8 +72,17 @@ void HAL_CLOCK::SetDeepSleep()
 
     CMT2210AW::PrepareToSleep();
 
+    rcu_periph_clock_enable(RCU_PMU);
+    pmu_to_deepsleepmode(PMU_LDO_LOWPOWER, WFI_CMD);
+}
+
+
+void HAL_CLOCK::SetLow()
+{
+    SystemCoreClock = 3250000;
+
     /* enable IRC8M */
-    RCU_CTL0 |= RCU_CTL0_IRC8MEN;
+    RCU_CTL0 = RCU_CTL0_IRC8MEN;
     while (0U == (RCU_CTL0 & RCU_CTL0_IRC8MSTB)) {
     }
 
@@ -90,15 +99,6 @@ void HAL_CLOCK::SetDeepSleep()
     RCU_CFG2 &= ~RCU_CFG2_ADCPSC2;
     RCU_CTL1 &= ~RCU_CTL1_IRC28MEN;
     RCU_INT = 0x00000000U;
-
-    rcu_periph_clock_enable(RCU_PMU);
-    pmu_to_deepsleepmode(PMU_LDO_LOWPOWER, WFI_CMD);
-}
-
-
-void HAL_CLOCK::SetLow()
-{
-    SystemCoreClock = 3250000;
 
     uint32_t timeout = 0U;
     uint32_t stab_flag = 0U;
@@ -159,6 +159,26 @@ void HAL_CLOCK::SetHi()
 
     uint32_t timeout = 0U;
     uint32_t stab_flag = 0U;
+
+    /* enable IRC8M */
+    RCU_CTL0 = RCU_CTL0_IRC8MEN;
+    while (0U == (RCU_CTL0 & RCU_CTL0_IRC8MSTB)) {
+    }
+
+    RCU_MODIFY(0x80);
+    RCU_CFG0 &= ~RCU_CFG0_SCS;
+    RCU_CTL0 &= ~(RCU_CTL0_HXTALEN | RCU_CTL0_CKMEN | RCU_CTL0_PLLEN | RCU_CTL0_HXTALBPS);
+    /* reset RCU */
+    RCU_CFG0 &= ~(RCU_CFG0_SCS | RCU_CFG0_AHBPSC | RCU_CFG0_APB1PSC | RCU_CFG0_APB2PSC | \
+        RCU_CFG0_ADCPSC | RCU_CFG0_CKOUTSEL | RCU_CFG0_CKOUTDIV | RCU_CFG0_PLLDV);
+    RCU_CFG0 &= ~(RCU_CFG0_PLLSEL | RCU_CFG0_PLLMF | RCU_CFG0_PLLMF4 | RCU_CFG0_PLLDV);
+    RCU_CFG1 &= ~(RCU_CFG1_PREDV);
+    RCU_CFG2 &= ~(RCU_CFG2_USART0SEL | RCU_CFG2_ADCSEL);
+    RCU_CFG2 &= ~RCU_CFG2_IRC28MDIV;
+    RCU_CFG2 &= ~RCU_CFG2_ADCPSC2;
+    RCU_CTL1 &= ~RCU_CTL1_IRC28MEN;
+    RCU_INT = 0x00000000U;
+
 
     /* enable HXTAL */
     RCU_CTL0 |= RCU_CTL0_HXTALEN;
