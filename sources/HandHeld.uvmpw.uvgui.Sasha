@@ -12,8 +12,8 @@
       <flags>2</flags>
       <showCmd>3</showCmd>
       <MinPosition>
-        <xPos>-1</xPos>
-        <yPos>-1</yPos>
+        <xPos>-32000</xPos>
+        <yPos>-32000</yPos>
       </MinPosition>
       <MaxPosition>
         <xPos>-1</xPos>
@@ -1785,8 +1785,8 @@
       <Doc>
         <Name>&lt;1&gt;.\src\Hardware\CMSIS\system_gd32e23x.c</Name>
         <ColumnNumber>42</ColumnNumber>
-        <TopLine>214</TopLine>
-        <CurrentLine>234</CurrentLine>
+        <TopLine>205</TopLine>
+        <CurrentLine>232</CurrentLine>
         <Folding>1</Folding>
         <ContractedFolders></ContractedFolders>
         <PaneID>0</PaneID>
