@@ -60,7 +60,7 @@ void CMT2210AW::CallbackOnClock()
 
 bool CMT2210AW::IsEnabled()
 {
-    return TIME_MS - time_enable < 300;
+    return TIME_MS - time_enable < 400;
 }
 
 
