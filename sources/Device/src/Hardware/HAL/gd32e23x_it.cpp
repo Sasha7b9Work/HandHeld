@@ -129,8 +129,8 @@ void TIMER2_IRQHandler(void)
 
         CMT2210AW::CallbackOnBit();
 
-        pin_out.ToLow();
-        pin_out.ToHi();
+        pinPF7.ToLow();
+        pinPF7.ToHi();
     }
 }
 
