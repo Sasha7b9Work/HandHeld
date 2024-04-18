@@ -60,6 +60,7 @@ void CMT2210AW::Update()
 
 void CMT2210AW::PrepareToSleep()
 {
+    exti_interrupt_flag_clear(EXTI_13);
     exti_interrupt_enable(EXTI_13);
 }
 
