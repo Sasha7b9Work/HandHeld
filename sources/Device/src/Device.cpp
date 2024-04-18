@@ -38,13 +38,13 @@ void Device::Init()
 //    PCF8563::SetTimer(1);       // Переводим INT в 0, чтобы питание не выключалось
 
     Beeper::Init();
-
-    ModeClock::Set(ModeClock::DeepSleep);
 }
 
 
 void Device::Update()
 {
+    ModeClock::Set(ModeClock::DeepSleep);
+
     Menu::Update();
 
 //    PCF8563::Update();
