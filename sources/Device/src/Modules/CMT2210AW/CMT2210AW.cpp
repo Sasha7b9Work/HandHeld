@@ -51,7 +51,7 @@ void CMT2210AW::PrepareToSleep()
 
 void CMT2210AW::CallbackOnClock()
 {
-    HAL_TIM2::Start();
+    HAL_TIM2::Init();
 
     exti_interrupt_disable(EXTI_13);
     exti_init(EXTI_13, EXTI_INTERRUPT, EXTI_TRIG_RISING);
