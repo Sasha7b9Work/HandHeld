@@ -4,15 +4,12 @@
 #include "Display/Display.h"
 #include "Hardware/Timer.h"
 #include "Hardware/Power.h"
-#include <gd32e23x.h>
 
 
 namespace Power
 {
     static const int WIDTH = 38;
     static const int HEIGHT = 14;
-
-    bool in_sleep_mode = false;
 }
 
 
@@ -30,25 +27,7 @@ void Power::Disable()
 
 void Power::Sleep(uint)
 {
-    Timer::Delay(10);
 
-    in_sleep_mode = true;
-
-#ifndef WIN32
-
-    SysTick->CTRL &= ~SysTick_CTRL_ENABLE_Msk;
-
-#endif
-
-    pmu_to_sleepmode(WFI_CMD);
-
-#ifndef WIN32
-
-    SysTick->CTRL |= SysTick_CTRL_ENABLE_Msk;
-
-#endif
-
-    in_sleep_mode = false;
 }
 
 

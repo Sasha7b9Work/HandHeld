@@ -9,7 +9,6 @@ void HAL::Init()
 {
     systick_config();
 
-    rcu_periph_clock_enable(RCU_PMU);
     rcu_periph_clock_enable(RCU_GPIOA); 
     rcu_periph_clock_enable(RCU_GPIOB);
     rcu_periph_clock_enable(RCU_GPIOC);
@@ -19,10 +18,11 @@ void HAL::Init()
 
     rcu_periph_clock_enable(RCU_I2C1);
 
-    rcu_periph_clock_enable(RCU_TIMER14);       // Для звука
-    nvic_irq_enable(TIMER14_IRQn, 0);
+    nvic_irq_enable(TIMER2_IRQn, 0);            // Таймер на приёмник
 
     HAL_I2C::Init();
 
     HAL_ADC::Init();
+
+    HAL_TIM2::Init();
 }

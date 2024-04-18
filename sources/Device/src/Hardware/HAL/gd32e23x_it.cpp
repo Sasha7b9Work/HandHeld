@@ -6,7 +6,6 @@
 #include "Keyboard/Keyboard.h"
 #include "Hardware/Timer.h"
 #include "Modules/Beeper/Beeper.h"
-#include "Hardware/Power.h"
 
 
 #ifdef __cplusplus
@@ -68,48 +67,18 @@ void SysTick_Handler(void)
     timer_counter++;
 
     delay_decrement();
+
+    Keyboard::Update();
 }
 
 
-// PB0 LEFT
-// PB1 DOWN
-void EXTI0_1_IRQHandler(void)
+void TIMER2_IRQHandler(void)
 {
-    if (SET == exti_interrupt_flag_get(EXTI_0))
+    if (timer_interrupt_flag_get(TIMER2, TIMER_INT_FLAG_UP))
     {
-        Keyboard::CallbackFromInterrupt(Key::Cancel);
+        timer_interrupt_flag_clear(TIMER2, TIMER_INT_FLAG_UP);
 
-        exti_interrupt_flag_clear(EXTI_0);
-    }
-
-    if (SET == exti_interrupt_flag_get(EXTI_1))
-    {
-        Keyboard::CallbackFromInterrupt(Key::Down);
-
-        exti_interrupt_flag_clear(EXTI_1);
-    }
-}
-
-// PB2 RIGHT
-void EXTI2_3_IRQHandler(void)
-{
-    if (SET == exti_interrupt_flag_get(EXTI_2))
-    {
-        Keyboard::CallbackFromInterrupt(Key::Menu);
-
-        exti_interrupt_flag_clear(EXTI_2);
-    }
-}
-
-
-// PA7 UP
-void EXTI4_15_IRQHandler(void)
-{
-    if (SET == exti_interrupt_flag_get(EXTI_7))
-    {
-        Keyboard::CallbackFromInterrupt(Key::Up);
-
-        exti_interrupt_flag_clear(EXTI_7);
+        CMT2210AW::CallbackOnBit();
     }
 }
 

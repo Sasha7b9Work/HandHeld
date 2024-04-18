@@ -10,10 +10,4 @@ namespace ST7735
 
     // Записывает буфер дисплея в строки, начиная с y
     void WriteBuffer(int y);
-
-    void Enable();
-
-    void Disable();
-
-    bool IsEnabled();
 }

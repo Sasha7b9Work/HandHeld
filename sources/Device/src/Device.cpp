@@ -13,7 +13,6 @@
 #include "Storage/Storage.h"
 #include "Modules/LED/LED.h"
 #include "Modules/Beeper/Beeper.h"
-#include "Hardware/Power.h"
 
 
 void Device::Init()
@@ -34,9 +33,9 @@ void Device::Init()
 
     CMT2210AW::Init();
 
-    PCF8563::Init();
+//    PCF8563::Init();
 
-    PCF8563::SetTimer(1);       // Переводим INT в 0, чтобы питание не выключалось
+//    PCF8563::SetTimer(1);       // Переводим INT в 0, чтобы питание не выключалось
 
     Beeper::Init();
 
@@ -48,7 +47,7 @@ void Device::Update()
 {
     Menu::Update();
 
-    PCF8563::Update();
+//    PCF8563::Update();
 
     Display::Update();
 
@@ -58,5 +57,5 @@ void Device::Update()
 
     LED::Update();
 
-//    Power::Sleep(50);
+    Beeper::Update();
 }

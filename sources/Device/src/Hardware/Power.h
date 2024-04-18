@@ -12,6 +12,4 @@ namespace Power
     void Sleep(uint time = (uint)-1);
 
     void Draw();
-
-    extern bool in_sleep_mode;
 }

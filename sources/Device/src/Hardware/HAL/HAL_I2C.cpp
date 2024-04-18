@@ -14,7 +14,7 @@
 
 namespace HAL_I2C
 {
-    static const uint TIMEOUT = 10;
+    static const uint TIMEOUT = 100;
 
     static bool WaitFlagYes(i2c_flag_enum);
     static bool WaitFlagNo(i2c_flag_enum);

@@ -9,8 +9,6 @@
 
 namespace ST7735
 {
-    static bool is_enabled = false;
-
     static PinOut pinDC(GPIOA, GPIO_PIN_5);       // PA5  15
     static PinOut pinRES(GPIOA, GPIO_PIN_8);      // PA8  29
     static PinOut pinBKG(GPIOA, GPIO_PIN_9);      // PA9  30
@@ -151,32 +149,6 @@ namespace ST7735
 }
 
 
-void ST7735::Enable()
-{
-    Write_Cmd(0x11);            // Sleep Out
-
-    pinBKG.ToHi();
-
-    is_enabled = true;
-}
-
-
-void ST7735::Disable()
-{
-    pinBKG.ToLow();
-
-    Write_Cmd(0x10);            // Sleep In
-
-    is_enabled = false;
-}
-
-
-bool ST7735::IsEnabled()
-{
-    return is_enabled;
-}
-
-
 void ST7735::Init()
 {
     pinDC.Init();
@@ -293,8 +265,6 @@ void ST7735::Init()
     Write_Cmd(0x29);                // Display On
 
     Write_Cmd(0x2C);                // Memory Write
-
-    is_enabled = true;
 }
 
 

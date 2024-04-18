@@ -42,7 +42,7 @@ namespace Keyboard
 {
     void Init();
 
-    void CallbackFromInterrupt(Key::E);
+    void Update();
 
     bool IsDown(Key::E);
 
