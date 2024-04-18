@@ -76,8 +76,6 @@ void Display::Update()
         return;
     }
 
-    pin_out.ToLow();
-
     FPS::BeginFrame();
 
     for (int i = 0; i < NUMBER_PARTS_HEIGHT; i++)
@@ -107,6 +105,8 @@ void Display::EndScene(int num_parts)
 
     if (!Buffer::MatchesCRC(crc))
     {
+        pin_out.ToLow();
+
         Buffer::crc[Buffer::current_part] = crc;
 
         ST7735::WriteBuffer(HEIGHT / NUMBER_PARTS_HEIGHT * num_parts);
