@@ -2,6 +2,7 @@
 #include "defines.h"
 #include "Hardware/HAL/HAL.h"
 #include "Modules/ST7735/ST7735.h"
+#include "Modules/CMT2210AW/CMT2210AW.h"
 #include <gd32e23x.h>
 
 
@@ -38,6 +39,8 @@ void ModeClock::Set(E v)
 void HAL_CLOCK::SetDeepSleep()
 {
     ST7735::Disable();
+
+    CMT2210AW::PrepareToSleep();
 
     rcu_periph_clock_enable(RCU_PMU);
     pmu_to_deepsleepmode(PMU_LDO_LOWPOWER, WFI_CMD);

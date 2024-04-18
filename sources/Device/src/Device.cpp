@@ -39,15 +39,16 @@ void Device::Init()
 //    PCF8563::SetTimer(1);       // Переводим INT в 0, чтобы питание не выключалось
 
     Beeper::Init();
-
-    Timer::Delay(3000);
-
-    ModeClock::Set(ModeClock::DeepSleep);
 }
 
 
 void Device::Update()
 {
+    if (!CMT2210AW::IsEnabled())
+    {
+        ModeClock::Set(ModeClock::DeepSleep);
+    }
+
     ST7735::Enable();
 
     Menu::Update();

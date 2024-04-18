@@ -7,8 +7,15 @@ namespace CMT2210AW
 {
     void Init();
 
+    // Идут ли клоки
+    bool IsEnabled();
+
+    void PrepareToSleep();
+
+    uint GetCode(Source::E);
+
     // Вызывается на приёме очередного бита
     void CallbackOnBit();
 
-    uint GetCode(Source::E);
+    void CallbackOnClock();
 }

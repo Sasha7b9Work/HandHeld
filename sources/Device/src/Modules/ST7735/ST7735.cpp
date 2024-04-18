@@ -153,6 +153,11 @@ namespace ST7735
 
 void ST7735::Enable()
 {
+    if (is_enabled)
+    {
+        return;
+    }
+
     Write_Cmd(0x11);            // Sleep Out
 
     pinBKG.ToHi();
@@ -163,6 +168,11 @@ void ST7735::Enable()
 
 void ST7735::Disable()
 {
+    if (!is_enabled)
+    {
+        return;
+    }
+
     pinBKG.ToLow();
 
     Write_Cmd(0x10);            // Sleep In

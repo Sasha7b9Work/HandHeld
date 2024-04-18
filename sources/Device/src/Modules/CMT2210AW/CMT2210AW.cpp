@@ -24,12 +24,41 @@ namespace CMT2210AW
     static uint GetBits(uint64);
 
     static void ExecutePacket(uint); 
+
+    static uint time_enable = 0;        // Время, когда начались клоки
 }
 
 
 void CMT2210AW::Init()
 {
     pinDOUT.Init();
+
+    // Инициализируем пин клоков от приёмника на прерывание
+    gpio_mode_set(GPIOB, GPIO_MODE_INPUT, GPIO_PUPD_PULLUP, GPIO_PIN_13);
+    nvic_irq_enable(EXTI4_15_IRQn, 2);
+    syscfg_exti_line_config(EXTI_SOURCE_GPIOB, EXTI_SOURCE_PIN13);
+    exti_init(EXTI_13, EXTI_INTERRUPT, EXTI_TRIG_RISING);
+    exti_interrupt_flag_clear(EXTI_13);
+}
+
+
+void CMT2210AW::PrepareToSleep()
+{
+    exti_interrupt_enable(EXTI_13);
+}
+
+
+void CMT2210AW::CallbackOnClock()
+{
+    exti_interrupt_disable(EXTI_13);
+
+    time_enable = TIME_MS;
+}
+
+
+bool CMT2210AW::IsEnabled()
+{
+    return TIME_MS - time_enable < 350;
 }
 
 

@@ -104,6 +104,13 @@ void EXTI2_3_IRQHandler(void)
 // PA7 UP
 void EXTI4_15_IRQHandler(void)
 {
+    if (SET == exti_interrupt_flag_get(EXTI_13))
+    {
+        exti_interrupt_flag_clear(EXTI_13);
+
+        CMT2210AW::CallbackOnClock();
+    }
+
     if (SET == exti_interrupt_flag_get(EXTI_7))
     {
         Keyboard::CallbackFromInterrupt(Key::Up);
