@@ -114,6 +114,8 @@ void Display::EndScene(int num_parts)
     {
         pin_out.ToLow();
 
+        ST7735::Enable();
+
         Buffer::crc[Buffer::current_part] = crc;
 
         ST7735::WriteBuffer(HEIGHT / NUMBER_PARTS_HEIGHT * num_parts);

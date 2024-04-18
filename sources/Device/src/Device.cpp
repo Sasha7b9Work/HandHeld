@@ -49,8 +49,6 @@ void Device::Update()
         ModeClock::Set(ModeClock::DeepSleep);
     }
 
-    ST7735::Enable();
-
     Menu::Update();
 
 //    PCF8563::Update();
