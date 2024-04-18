@@ -49,7 +49,7 @@ void HAL_CLOCK::SetDeepSleep()
 
 void HAL_CLOCK::SetLow()
 {
-    SystemCoreClock = 1625000;
+    SystemCoreClock = 3250000;
 
     rcu_hxtal_prediv_config(RCU_PLL_PREDV16);
     RCU_CFG0 |= RCU_CFG0_PLLDV;         // Должно быть то же, что и в PREDV2[0]
