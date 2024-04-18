@@ -107,7 +107,7 @@ void Keyboard::CallbackFromInterrupt(Key::E key)
 
 bool Keyboard::ToMoreTime()
 {
-    return TIME_MS - last_time > 5000;
+    return TIME_MS - last_time > 10000;
 }
 
 
