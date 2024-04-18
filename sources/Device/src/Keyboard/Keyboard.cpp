@@ -72,8 +72,6 @@ namespace Keyboard
         actions[num_actions] = action;
         num_actions++;
     }
-
-    static bool is_busy = false;
 }
 
 
@@ -86,39 +84,20 @@ void Keyboard::Init()
 }
 
 
-void Keyboard::CallbackFromInterrupt()
+void Keyboard::CallbackFromInterrupt(Key::E key)
 {
-    static uint counter = 0;
-
-    if (counter++ < 10)     // “ак как прерывание вызываетс€ каждую миллисекунду, будем пропускать
-    {
-        return;
-    }
-
-    counter = 0;
-
-    if (is_busy)
-    {
-        return;
-    }
-
     uint time = TIME_MS;
 
-    for (int i = 0; i < Key::Count; i++)
+    if (time - buttons[key].prev_time > 100)
     {
-        if (time - buttons[i].prev_time < 100)
+        bool is_down = buttons[key].button->IsDown();
+
+        if (buttons[key].prev_down != is_down)
         {
-            continue;
-        }
+            AppendAction({ key , is_down ? ActionType::Down : ActionType::Up });
 
-        bool is_down = buttons[i].button->IsDown();
-
-        if (buttons[i].prev_down != is_down)
-        {
-            AppendAction({ (Key::E)i , is_down ? ActionType::Down : ActionType::Up });
-
-            buttons[i].prev_time = time;
-            buttons[i].prev_down = is_down;
+            buttons[key].prev_time = time;
+            buttons[key].prev_down = is_down;
         }
     }
 }
@@ -137,8 +116,6 @@ bool Keyboard::GetNextAction(Action &action)
         return false;
     }
 
-    is_busy = true;
-
     action = actions[0];
 
     if (num_actions == 1)
@@ -151,8 +128,6 @@ bool Keyboard::GetNextAction(Action &action)
 
         num_actions--;
     }
-
-    is_busy = false;
 
     return true;
 }
