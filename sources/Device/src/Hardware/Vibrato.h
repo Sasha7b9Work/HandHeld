@@ -6,6 +6,8 @@ namespace Vibrato
 {
     void Init();
 
+    void Update();
+
     void Enable();
 
     void Disable();

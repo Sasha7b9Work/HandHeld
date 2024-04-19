@@ -19,3 +19,9 @@ void Vibrato::Disable()
 {
 
 }
+
+
+void Vibrato::Update()
+{
+
+}

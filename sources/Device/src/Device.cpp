@@ -61,5 +61,7 @@ void Device::Update()
 
     LED::Update();
 
+    Vibrato::Update();
+
     CMT2210AW::Update();
 }
