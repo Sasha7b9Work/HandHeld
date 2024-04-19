@@ -4,6 +4,7 @@
 #include "Modules/ST7735/ST7735.h"
 #include "Modules/CMT2210AW/CMT2210AW.h"
 #include "Hardware/HAL/systick.h"
+#include "Display/Display.h"
 #include <gd32e23x.h>
 
 
@@ -68,7 +69,7 @@ void ModeClock::LeaveDeepSleep()
 
 void HAL_CLOCK::SetDeepSleep()
 {
-    ST7735::Disable();
+    Display::PrepareToSleep();
 
     CMT2210AW::PrepareToSleep();
 
