@@ -57,6 +57,9 @@ uint Sound::time_note_start = 0;
 namespace Beeper
 {
     static bool is_running = false;
+    static bool need_running = false;
+    static uint time_start = 0;       // В это время нужно запустить
+    static TypeSound::E sound = TypeSound::Count;
 }
 
 
@@ -76,7 +79,25 @@ void Beeper::Play(TypeSound::E type, uint8 /*volume*/)
 
     is_running = true;
 
-    Sound::Start(type);
+    need_running = true;
+
+    time_start = TIME_MS + 100;
+
+    sound = type;
+}
+
+
+void Beeper::Update()
+{
+    if (need_running)
+    {
+        if (TIME_MS >= time_start)
+        {
+            Sound::Start(sound);
+
+            need_running = false;
+        }
+    }
 }
 
 
