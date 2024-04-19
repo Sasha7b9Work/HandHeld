@@ -115,6 +115,20 @@ void Source::Receive(E type)
 }
 
 
+bool Source::ExistReceived()
+{
+    for (int i = 0; i < Count; i++)
+    {
+        if (need_received[i])
+        {
+            return true;
+        }
+    }
+
+    return GetCountReceived() != 0;
+}
+
+
 bool Source::IsReceived(E type)
 {
     return Queue::IsConsist(type);

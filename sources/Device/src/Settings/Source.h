@@ -26,6 +26,8 @@ struct Source
     // Вызывается при получении сигнала
     static void Receive(E);
 
+    static bool ExistReceived();
+
     // Отменить первый принятый вызов
     static void CancelFirst();
 
