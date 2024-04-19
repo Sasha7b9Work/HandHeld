@@ -61,7 +61,7 @@ void ModeClock::LeaveDeepSleep()
     {
         HAL_CLOCK::in_sleep_mode = false;
 
-        ModeClock::Set(ModeClock::Low);
+        ModeClock::Set(ModeClock::Hi);
     }
 }
 
