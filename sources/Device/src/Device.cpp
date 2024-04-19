@@ -51,14 +51,7 @@ void Device::Update()
 
     ModeClock::LeaveDeepSleep();
 
-//    if (!ModeClock::IsHi() && Display::NeedDraw())
-//    {
-//        ModeClock::Set(ModeClock::Hi);
-//    }
-
     Menu::Update();
-
-//    PCF8563::Update();
 
     Display::Update();
 

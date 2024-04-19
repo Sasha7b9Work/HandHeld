@@ -125,8 +125,6 @@ void Display::EndScene(int num_parts)
         }
         else
         {
-            ModeClock::Set(ModeClock::Hi);
-
             ST7735::Enable();
 
             Buffer::crc[Buffer::current_part] = crc;
