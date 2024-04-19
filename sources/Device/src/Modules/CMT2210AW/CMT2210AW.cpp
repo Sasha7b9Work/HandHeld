@@ -228,7 +228,7 @@ void CMT2210AW::ExecutePacket(uint packet)
 
 uint CMT2210AW::GetCode(Source::E source)
 {
-    static const uint packets[Source::Count] = { 0x7E9E, 0x7EA6, 1, 2, 3, 4 };
+    static const uint packets[Source::Count] = { 0x7E9E, 0x7EA6, 0x7ED5, 0x7EB9, 0x7ECA, 0x7EED };
 
     return packets[source];
 }
