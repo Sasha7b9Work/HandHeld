@@ -53,8 +53,6 @@ void Device::Update()
 
     Menu::Update();
 
-    Source::Update();
-
     CMT2210AW::Update();
 
     Display::Update();
@@ -64,4 +62,6 @@ void Device::Update()
     Vibrato::Update();
 
     Beeper::Update();
+
+    Source::Update();
 }
