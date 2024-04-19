@@ -174,7 +174,7 @@ void HAL_CLOCK::SetLow()
 
 void HAL_CLOCK::SetHi()
 {
-    SystemCoreClock = 52000000;
+    SystemCoreClock = 78000000;
 
     uint32_t timeout = 0U;
     uint32_t stab_flag = 0U;
@@ -225,7 +225,7 @@ void HAL_CLOCK::SetHi()
 
     /* PLL = HXTAL * 3 = 78 MHz */
     RCU_CFG0 &= ~(RCU_CFG0_PLLSEL | RCU_CFG0_PLLMF | RCU_CFG0_PLLDV);
-    RCU_CFG0 |= (RCU_PLLSRC_HXTAL | RCU_PLL_MUL2);
+    RCU_CFG0 |= (RCU_PLLSRC_HXTAL | RCU_PLL_MUL3);
 
     /* enable PLL */
     RCU_CTL0 |= RCU_CTL0_PLLEN;
