@@ -12,6 +12,8 @@ namespace CMT2210AW
     // »дут ли клоки
     bool IsEnabled();
 
+    uint TimeAfterStart();
+
     void PrepareToSleep();
 
     uint GetCode(Source::E);

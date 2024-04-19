@@ -51,8 +51,6 @@ void Device::Update()
 
     ModeClock::LeaveDeepSleep();
 
-    Timer::Delay(100);
-
     Menu::Update();
 
     CMT2210AW::Update();
