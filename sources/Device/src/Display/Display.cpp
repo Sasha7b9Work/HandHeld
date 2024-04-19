@@ -91,11 +91,6 @@ void Display::Update()
     }
 
     FPS::EndFrame();
-
-    if (!CMT2210AW::IsEnabled())
-    {
-        ModeClock::Set(ModeClock::Low);
-    }
 }
 
 
