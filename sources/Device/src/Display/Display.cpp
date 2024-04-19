@@ -111,16 +111,21 @@ void Display::EndScene(int num_parts)
 
     if (!Buffer::MatchesCRC(crc))
     {
-        if (!CMT2210AW::IsEnabled())
+        if (!ModeClock::IsHi())
         {
-            ModeClock::Set(ModeClock::Hi);
-
-            ST7735::Enable();
-
-            Buffer::crc[Buffer::current_part] = crc;
-
-            ST7735::WriteBuffer(HEIGHT / NUMBER_PARTS_HEIGHT * num_parts);
+            if (CMT2210AW::IsEnabled())
+            {
+                return;
+            }
         }
+
+        ModeClock::Set(ModeClock::Hi);
+
+        ST7735::Enable();
+
+        Buffer::crc[Buffer::current_part] = crc;
+
+        ST7735::WriteBuffer(HEIGHT / NUMBER_PARTS_HEIGHT * num_parts);
     }
 }
 
