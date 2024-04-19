@@ -105,6 +105,15 @@ void Keyboard::CallbackFromInterrupt(Key::E key)
 }
 
 
+void Keyboard::CallbackOnEnable()
+{
+    for (int i = 0; i < Key::Count; i++)
+    {
+        buttons[i].prev_time = TIME_MS;
+    }
+}
+
+
 bool Keyboard::ToMoreTime()
 {
     return TIME_MS - last_time > 10000;

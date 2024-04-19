@@ -4,6 +4,7 @@
 #include "Modules/ST7735/ST7735.h"
 #include "Modules/CMT2210AW/CMT2210AW.h"
 #include "Hardware/HAL/systick.h"
+#include "Keyboard/Keyboard.h"
 #include "Display/Display.h"
 #include <gd32e23x.h>
 
@@ -247,4 +248,6 @@ void HAL_CLOCK::SetHi()
     systick_config();
 
     HAL::Init();
+
+    Keyboard::CallbackOnEnable();
 }

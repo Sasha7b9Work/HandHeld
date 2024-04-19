@@ -50,4 +50,6 @@ namespace Keyboard
 
     // Прошло много времени после последнего нажатия кнопки
     bool ToMoreTime();
+
+    void CallbackOnEnable();
 }
