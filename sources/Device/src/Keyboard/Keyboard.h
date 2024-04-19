@@ -51,5 +51,6 @@ namespace Keyboard
     // Прошло много времени после последнего нажатия кнопки
     bool ToMoreTime();
 
-    void CallbackOnEnable();
+    // Столько миллисекунд осталось до момента, когда дисплей можно выключать.
+    extern int ms_for_disable;
 }

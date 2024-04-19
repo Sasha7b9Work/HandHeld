@@ -9,6 +9,12 @@
 #include "Hardware/HAL/HAL_PINS.h"
 
 
+namespace Keyboard
+{
+    int ms_for_disable = 10000;
+}
+
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -66,6 +72,8 @@ void PendSV_Handler(void)
 void SysTick_Handler(void)
 {
     timer_counter++;
+
+    Keyboard::ms_for_disable--;
 
     delay_decrement();
 }

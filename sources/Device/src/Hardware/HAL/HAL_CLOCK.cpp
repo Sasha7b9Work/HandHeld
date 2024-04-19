@@ -248,6 +248,4 @@ void HAL_CLOCK::SetHi()
     systick_config();
 
     HAL::Init();
-
-    Keyboard::CallbackOnEnable();
 }
