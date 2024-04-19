@@ -26,12 +26,6 @@ void Keyboard::Init()
 }
 
 
-void Keyboard::Update()
-{
-
-}
-
-
 bool Keyboard::IsDown(Key::E)
 {
     return false;
@@ -60,3 +54,8 @@ bool Keyboard::GetNextAction(Action &action)
     return true;
 }
 
+
+bool Keyboard::ToMoreTime()
+{
+    return false;
+}

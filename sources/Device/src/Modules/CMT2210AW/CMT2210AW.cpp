@@ -60,14 +60,20 @@ void CMT2210AW::Update()
 
 void CMT2210AW::PrepareToSleep()
 {
+#ifdef WIN32
+#else
     EXTI_PD = EXTI_13;
     EXTI_INTEN |= EXTI_13;
+#endif
 }
 
 
 void CMT2210AW::CallbackOnClock()
 {
+#ifdef WIN32
+#else
     EXTI_INTEN &= ~(uint)EXTI_13;
+#endif
     need_start = true;
 }
 

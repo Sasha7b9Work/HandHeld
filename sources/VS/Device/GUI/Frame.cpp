@@ -309,6 +309,12 @@ void Frame::OnButtonUpEvent(wxCommandEvent &event)
 }
 
 
+void Frame::OnCloseWindow(wxCloseEvent &event)
+{
+    event.Skip();
+}
+
+
 void ST7735::Init()
 {
 
@@ -321,7 +327,13 @@ void ST7735::WriteBuffer(int y0)
 }
 
 
-void Frame::OnCloseWindow(wxCloseEvent &event)
+void ST7735::Enable()
 {
-    event.Skip();
+
+}
+
+
+void ST7735::Disable()
+{
+
 }

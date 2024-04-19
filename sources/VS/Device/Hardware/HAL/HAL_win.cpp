@@ -3,6 +3,21 @@
 #include "Hardware/HAL/HAL.h"
 
 
+ModeClock::E ModeClock::current = ModeClock::Low;
+
+
+void ModeClock::Set(E)
+{
+
+}
+
+
+void ModeClock::LeaveDeepSleep()
+{
+
+}
+
+
 void HAL::Init()
 {
 
