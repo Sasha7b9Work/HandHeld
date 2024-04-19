@@ -55,7 +55,7 @@ uint SourceScript::PeriodPacket() const
 }
 
 
-Source::E Source::Queue::buffer[Source::Count] = { Source::Count, Source::Count, Source::Count, Source::Count, Source::Count };
+Source::E Source::Queue::buffer[Source::Count] = { Source::Count, Source::Count, Source::Count, Source::Count, Source::Count, Source::Count };
 int Source::Queue::size = 0;
 
 Source::Queue::Time Source::Queue::time_recv[Source::Count];
@@ -66,7 +66,7 @@ void Source::DrawIcon(int x, int y, const Color &color) const
 }
 
 
-static bool need_received[Source::Count] = { false, false, false, false, false };
+static bool need_received[Source::Count] = { false, false, false, false, false, false };
 
 
 pchar Source::Name(E v)
@@ -105,7 +105,7 @@ void Source::Update()
             need_received[i] = false;
 
             // Время предыдущего приёма сигнала
-            static uint time_prev_signal[Source::Count] = { 0, 0, 0, 0, 0 };
+            static uint time_prev_signal[Source::Count] = { 0, 0, 0, 0, 0, 0 };
 
             // Время, в течение которого не нужно повторно принимать событие
             static const uint time_pause[Source::Count] =
@@ -114,7 +114,8 @@ void Source::Update()
                 10000,
                 10000,
                 10000,
-                15000
+                15000,
+                10000
             };
 
             if (time_prev_signal[i] == 0 ||

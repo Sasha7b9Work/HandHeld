@@ -14,7 +14,9 @@ Settings gset =
       {Melody::_2, Volume::Hi, ColorBell::White, ModeIndication::All},
       {Melody::_3, Volume::Hi, ColorBell::White, ModeIndication::All},
       {Melody::_4, Volume::Hi, ColorBell::White, ModeIndication::All},
-      {Melody::_5, Volume::Hi, ColorBell::White, ModeIndication::All} },
+      {Melody::_5, Volume::Hi, ColorBell::White, ModeIndication::All},
+      {Melody::_6, Volume::Hi, ColorBell::White, ModeIndication::All}
+    },
     {
         0,
         Melody::_1,
