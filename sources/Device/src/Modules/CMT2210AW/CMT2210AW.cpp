@@ -60,21 +60,28 @@ void CMT2210AW::Update()
 
 void CMT2210AW::PrepareToSleep()
 {
-    exti_interrupt_flag_clear(EXTI_13);
-    exti_interrupt_enable(EXTI_13);
+    EXTI_PD = EXTI_13;
+    EXTI_INTEN |= EXTI_13;
 }
 
 
 void CMT2210AW::CallbackOnClock()
 {
+    EXTI_INTEN &= ~(uint)EXTI_13;
     need_start = true;
-    exti_interrupt_disable(EXTI_13);
 }
 
 
 bool CMT2210AW::IsEnabled()
 {
-    return TIME_MS - time_enable < 310;
+    bool result = TIME_MS - time_enable < 310;
+
+    if (!result)
+    {
+        PrepareToSleep();
+    }
+
+    return result;
 }
 
 
