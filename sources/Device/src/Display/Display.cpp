@@ -51,8 +51,6 @@ namespace Display
     void BeginScene(int num_part);
     void DrawScene(int num_part);
     void EndScene(int num_parts);
-
-    static bool need_draw = false;
 }
 
 
@@ -91,12 +89,11 @@ void Display::Update()
     }
 
     FPS::EndFrame();
-}
 
-
-bool Display::NeedDraw()
-{
-    return need_draw;
+    if (!CMT2210AW::IsEnabled())
+    {
+        ModeClock::Set(ModeClock::Low);
+    }
 }
 
 
@@ -114,19 +111,15 @@ void Display::EndScene(int num_parts)
 
     if (!Buffer::MatchesCRC(crc))
     {
-        if (CMT2210AW::IsEnabled())
+        if (!CMT2210AW::IsEnabled())
         {
-            need_draw = true;
-        }
-        else
-        {
+            ModeClock::Set(ModeClock::Hi);
+
             ST7735::Enable();
 
             Buffer::crc[Buffer::current_part] = crc;
 
             ST7735::WriteBuffer(HEIGHT / NUMBER_PARTS_HEIGHT * num_parts);
-
-            need_draw = false;
         }
     }
 }

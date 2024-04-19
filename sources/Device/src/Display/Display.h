@@ -21,8 +21,6 @@ namespace Display
 
     void PrepareToSleep();
 
-    bool NeedDraw();
-
     namespace Buffer
     {
         static const uint SIZE = WIDTH * HEIGHT / NUMBER_PARTS_HEIGHT;

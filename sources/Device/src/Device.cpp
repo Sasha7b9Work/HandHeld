@@ -46,6 +46,8 @@ void Device::Update()
 {
     if (!CMT2210AW::IsEnabled() && Keyboard::ToMoreTime())
     {
+        Display::Update();
+
         ModeClock::Set(ModeClock::DeepSleep);
     }
 
