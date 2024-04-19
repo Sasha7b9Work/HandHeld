@@ -104,7 +104,7 @@ private:
 
 struct SourceScript
 {
-    int16 led_duratioin;
+    int16 led_duration;
     int16 vibro_duration;
     int16 period;           // Расстояние между вспышками
     uint8 num_pulses;       // Количество вспышек

@@ -25,7 +25,7 @@
 const SourceScript SourceScript::scripts[Source::Count] =
 {
     { 100, 200, 320, 2, 4000 },
-    { 0,   0,   0,   3, 0 },
+    { 100, 100, 400, 3, 4000 },
     { 100, 240, 380, 4, 5500 },
     { 100, 240, 450, 5, 3500 },
     { 100, 180, 600, 6, 1500 },
@@ -33,19 +33,43 @@ const SourceScript SourceScript::scripts[Source::Count] =
 };
 
 
-bool SourceScript::GetForLED(Source::E source, uint time)
+bool SourceScript::GetForLED(Source::E source, uint _time)
 {
     const SourceScript &script = scripts[source];
 
-    return (uint)(time % script.PeriodPacket()) < (uint)script.led_duratioin;
+    int time = (int)(_time % script.PeriodPacket());            // Находим наш пакет
+
+    for (int i = 0; i < script.num_pulses; i++)
+    {
+        if (time <= script.led_duration && time >= 0)
+        {
+            return true;
+        }
+
+        time -= script.period;
+    }
+
+    return false;
 }
 
 
-bool SourceScript::GetForVibro(Source::E source, uint time)
+bool SourceScript::GetForVibro(Source::E source, uint _time)
 {
     const SourceScript &script = scripts[source];
 
-    return (uint)(time % script.PeriodPacket()) < (uint)script.vibro_duration;
+    int time = (int)(_time % script.PeriodPacket());            // Находим наш пакет
+
+    for (int i = 0; i < script.num_pulses; i++)
+    {
+        if (time < script.vibro_duration && time >= 0)
+        {
+            return true;
+        }
+
+        time -= script.period;
+    }
+
+    return false;
 }
 
 
