@@ -10,9 +10,6 @@ namespace LED
     static bool is_enabled = false;
 
     static uint time_enable = 0;
-
-    // Время мигания в микросекундах
-    static const uint time_flash = 500;
 }
 
 
@@ -31,9 +28,7 @@ void LED::Update()
         return;
     }
 
-    uint time_passed = (TIME_MS - time_enable) / time_flash;
-
-    if ((time_passed % 2) == 0)
+    if (SourceScript::GetForLED(Source::Current(), TIME_MS - time_enable))
     {
         Driver::On();
     }

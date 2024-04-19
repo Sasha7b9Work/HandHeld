@@ -14,6 +14,7 @@ struct Source
         PhoneHome,      // Домашний телефон
         Intercom,       // Домофон
         Microphone,     // Акстический датчик
+        Test,
         Count
     };
 
@@ -32,7 +33,7 @@ struct Source
     static bool IsReceived(E);
 
     // Возвращает первый принятый
-    static E GetFirstReceived();
+    static E Current();
 
     // Есть звонки, требующие отработки
     static int GetCountReceived();
@@ -98,6 +99,23 @@ private:
         // Удалить те, срок действия которых истёк
         static void DeleteOld();
     };
+};
+
+
+struct SourceScript
+{
+    int16 led_duratioin;
+    int16 vibro_duration;
+    int16 period;           // Расстояние между вспышками
+    uint8 num_pulses;       // Количество вспышек
+    int16 pause_packet;
+
+    uint PeriodPacket() const;
+
+    static const SourceScript scripts[Source::Count];
+
+    static bool GetForLED(Source::E, uint time);
+    static bool GetForVibro(Source::E, uint time);
 };
 
 

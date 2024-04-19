@@ -10,6 +10,51 @@
 #include <cstring>
 
 
+//const led_vibro_const_t LED_VIBRO_TIMINGS[] = {
+//{.led_pulse_duration = 100 / 5, .vibro_pulse_duration = 200 / 5, .pulse_period = 320 / 5, .pulses_in_packet = 2, .pause_between_packet = 4000 / 5, .total_duration = 38000 / 5},  //передатчик дверного звонка
+//{.led_pulse_duration = 100 / 5, .vibro_pulse_duration = 240 / 5, .pulse_period = 380 / 5, .pulses_in_packet = 4, .pause_between_packet = 5500 / 5, .total_duration = 31000 / 5},  //передатчик телефона (старое знач.5500)
+//{.led_pulse_duration = 100 / 5, .vibro_pulse_duration = 240 / 5, .pulse_period = 450 / 5, .pulses_in_packet = 3, .pause_between_packet = 3500 / 5, .total_duration = 31000 / 5},  //передатчик домофона (старое знач.6500)
+//{.led_pulse_duration = 100 / 5, .vibro_pulse_duration = 180 / 5, .pulse_period = 600 / 5, .pulses_in_packet = 5, .pause_between_packet = 1500 / 5, .total_duration = 31000 / 5},  //передатчик плача ребенка
+
+//{.led_pulse_duration = 100 / 5, .vibro_pulse_duration = 40 / 5, .pulse_period = 110 / 5, .pulses_in_packet = 255, .pause_between_packet = 55 / 5,   .total_duration = 60000 / 5},  //передатчик пожарной сигнализации
+//{.led_pulse_duration = 100 / 5, .vibro_pulse_duration = 40 / 5, .pulse_period = 400 / 5, .pulses_in_packet = 6, .pause_between_packet = 600 / 5,  .total_duration = 30000 / 5},  //передатчик пейджера
+//{.led_pulse_duration = 15 / 5, .vibro_pulse_duration = 160 / 5, .pulse_period = 1000 / 5, .pulses_in_packet = 1, .pause_between_packet = 0,      .total_duration = 1000 / 5},  //вспомог.индикация при включении
+//{.led_pulse_duration = 150 / 5, .vibro_pulse_duration = 300 / 5, .pulse_period = 100 / 5, .pulses_in_packet = 2, .pause_between_packet = 0,      .total_duration = 600 / 5},  //вспомог.индикация при выключении
+
+
+const SourceScript SourceScript::scripts[Source::Count] =
+{
+    { 100, 200, 320, 2, 4000 },
+    { 0,   0,   0,   3, 0 },
+    { 100, 240, 380, 4, 5500 },
+    { 100, 240, 450, 5, 3500 },
+    { 100, 180, 600, 6, 1500 },
+    { 0,   0,   0,   0, 0 }
+};
+
+
+bool SourceScript::GetForLED(Source::E source, uint time)
+{
+    const SourceScript &script = scripts[source];
+
+    return (uint)(time % script.PeriodPacket()) < (uint)script.led_duratioin;
+}
+
+
+bool SourceScript::GetForVibro(Source::E source, uint time)
+{
+    const SourceScript &script = scripts[source];
+
+    return (uint)(time % script.PeriodPacket()) < (uint)script.vibro_duration;
+}
+
+
+uint SourceScript::PeriodPacket() const
+{
+    return (uint)period * (uint)num_pulses + (uint)pause_packet;
+}
+
+
 Source::E Source::Queue::buffer[Source::Count] = { Source::Count, Source::Count, Source::Count, Source::Count, Source::Count };
 int Source::Queue::size = 0;
 
@@ -207,7 +252,7 @@ int Source::GetCountReceived()
 }
 
 
-Source::E Source::GetFirstReceived()
+Source::E Source::Current()
 {
     return Queue::At(0);
 }

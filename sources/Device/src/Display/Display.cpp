@@ -154,7 +154,7 @@ void Display::DrawScene(int num_part)
 
         Font::SetSize(2);
 
-        pchar name = Source::Name(Source::GetFirstReceived());
+        pchar name = Source::Name(Source::Current());
 
         int num_words = SU::NumWordsInString(name);
 

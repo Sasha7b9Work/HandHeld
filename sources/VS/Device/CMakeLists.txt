@@ -53,6 +53,7 @@ file(GLOB HARDWARE                 ../../Device/src/Hardware/Power.h
                                    ../../Device/src/Hardware/Power.*
                                    ../../Device/src/Hardware/Watch.*
                                    ../../Device/src/Hardware/Timer.h
+                                   ../../Device/src/Hardware/Vibrato.h
                                                     Hardware/*.*)
 file(GLOB HARDWARE_HAL             ../../Device/src/Hardware/HAL/HAL.h
                                                     Hardware/HAL/*.*)
