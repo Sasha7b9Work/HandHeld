@@ -53,7 +53,7 @@ void Device::Update()
 
     Menu::Update();
 
-//    Display::Update();
+    Display::Update();
 
     Source::Update();
 

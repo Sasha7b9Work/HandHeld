@@ -75,20 +75,23 @@ void Display::PrepareToSleep()
 
 void Display::Update()
 {
-    FPS::BeginFrame();
-
-    for (int i = 0; i < NUMBER_PARTS_HEIGHT; i++)
+    if (Source::GetCountReceived() || !Keyboard::ToMoreTime())
     {
-        BeginScene(i);      // 0 ms
-        DrawScene(i);       // 20 ms
-        EndScene(i);        // 68 ms
-    }
+        FPS::BeginFrame();
 
-    FPS::EndFrame();
+        for (int i = 0; i < NUMBER_PARTS_HEIGHT; i++)
+        {
+            BeginScene(i);      // 0 ms
+            DrawScene(i);       // 20 ms
+            EndScene(i);        // 68 ms
+        }
 
-    if (!CMT2210AW::IsEnabled() && Source::GetCountReceived() == 0)
-    {
-        ModeClock::Set(ModeClock::Low);
+        FPS::EndFrame();
+
+        if (!CMT2210AW::IsEnabled() && Source::GetCountReceived() == 0)
+        {
+            ModeClock::Set(ModeClock::Low);
+        }
     }
 }
 
