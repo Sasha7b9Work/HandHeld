@@ -61,7 +61,5 @@ void Device::Update()
 
     Vibrato::Update();
 
-    Beeper::Update();
-
     Source::Update();
 }

@@ -25,8 +25,6 @@ namespace Beeper
 {
     void Init();
 
-    void Update();
-
     void Play(TypeSound::E, uint8);
 
     void Stop();

@@ -148,9 +148,3 @@ void Beeper::CallbackOnTimer()
 {
     Sound::Update();
 }
-
-
-void Beeper::Update()
-{
-    Beeper::Driver::Update();
-}
