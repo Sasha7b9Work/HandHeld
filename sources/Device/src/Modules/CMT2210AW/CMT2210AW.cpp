@@ -91,12 +91,6 @@ bool CMT2210AW::IsEnabled()
 }
 
 
-uint CMT2210AW::TimeAfterStart()
-{
-    return TIME_MS - time_enable;
-}
-
-
 void CMT2210AW::CallbackOnBit()
 {
 #ifdef ENABLE_EMULATOR

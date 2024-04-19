@@ -137,7 +137,7 @@ bool Source::IsReceived(E type)
 
 void Source::Update()
 {
-    if (CMT2210AW::TimeAfterStart() < 400)
+    if (CMT2210AW::IsEnabled())
     {
         return;
     }
