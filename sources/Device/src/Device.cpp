@@ -44,11 +44,8 @@ void Device::Init()
 
 void Device::Update()
 {
-    if (!CMT2210AW::IsEnabled() && Keyboard::ToMoreTime())
+    if (!CMT2210AW::IsEnabled() && Keyboard::ToMoreTime() && Source::GetCountReceived() == 0)
     {
-        Display::Update();      // Отрисовать то, что не отрисовалось, когда нельзя было переключиться на высокую частоту,
-                                // потому что шёл приём.
-
         ModeClock::Set(ModeClock::DeepSleep);
     }
 
