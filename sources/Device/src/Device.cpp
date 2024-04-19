@@ -34,9 +34,7 @@ void Device::Init()
 
     CMT2210AW::Init();
 
-//    PCF8563::Init();
-
-//    PCF8563::SetTimer(1);       // Переводим INT в 0, чтобы питание не выключалось
+    PCF8563::Init();
 
     Beeper::Init();
 }
@@ -50,6 +48,8 @@ void Device::Update()
     }
 
     ModeClock::LeaveDeepSleep();
+
+    PCF8563::Update();
 
     Menu::Update();
 
