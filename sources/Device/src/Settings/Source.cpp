@@ -7,6 +7,7 @@
 #include "Storage/Storage.h"
 #include "Modules/LED/LED.h"
 #include "Modules/Beeper/Beeper.h"
+#include "Modules/CMT2210AW/CMT2210AW.h"
 #include <cstring>
 
 
@@ -122,6 +123,11 @@ bool Source::IsReceived(E type)
 
 void Source::Update()
 {
+    if (CMT2210AW::IsEnabled())
+    {
+        return;
+    }
+
     for (int i = 0; i < Source::Count; i++)
     {
         if (need_received[i])
