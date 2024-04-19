@@ -21,6 +21,9 @@ void Source::DrawIcon(int x, int y, const Color &color) const
 }
 
 
+static bool need_received[Source::Count] = { false, false, false, false, false };
+
+
 pchar Source::Name(E v)
 {
     static const pchar names[Count] =
@@ -38,26 +41,7 @@ pchar Source::Name(E v)
 
 void Source::Receive(E type)
 {
-    // Время предыдущего приёма сигнала
-    static uint time_prev_signal[Source::Count] = { 0, 0, 0, 0, 0 };
-
-    // Время, в течение которого не нужно повторно принимать событие
-    static const uint time_pause[Source::Count] =
-    {
-        1000,
-        10000,
-        10000,
-        10000,
-        15000
-    };
-
-    if (time_prev_signal[type] == 0 ||
-        (TIME_MS > time_prev_signal[type] + time_pause[type]))
-    {
-        time_prev_signal[type] = TIME_MS;
-
-        Queue::Push(type);
-    }
+    need_received[type] = true;
 }
 
 
@@ -69,6 +53,35 @@ bool Source::IsReceived(E type)
 
 void Source::Update()
 {
+    for (int i = 0; i < Source::Count; i++)
+    {
+        if (need_received[i])
+        {
+            need_received[i] = false;
+
+            // Время предыдущего приёма сигнала
+            static uint time_prev_signal[Source::Count] = { 0, 0, 0, 0, 0 };
+
+            // Время, в течение которого не нужно повторно принимать событие
+            static const uint time_pause[Source::Count] =
+            {
+                1000,
+                10000,
+                10000,
+                10000,
+                15000
+            };
+
+            if (time_prev_signal[i] == 0 ||
+                (TIME_MS > time_prev_signal[i] + time_pause[i]))
+            {
+                time_prev_signal[i] = TIME_MS;
+
+                Queue::Push((Source::E)i);
+            }
+        }
+    }
+
     bool enabled = false;
 
     for (int i = 0; i < Source::Count; i++)
