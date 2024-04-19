@@ -71,7 +71,7 @@ void Beeper::Driver::StartFrequency(float frequency)
     gpio_af_set(GPIOA, GPIO_AF_0, GPIO_PIN_3);
 
     uint period = 250;
-    uint16 prescaler = (uint16)(72000000 / period / (uint)(frequency + 0.5f));
+    uint16 prescaler = (uint16)(SystemCoreClock / period / (uint)(frequency + 0.5f));
 
     TIMER_PSC(TIMER14) = prescaler;
     TIMER_CAR(TIMER14) = period;
