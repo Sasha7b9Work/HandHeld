@@ -86,6 +86,8 @@ void HAL_CLOCK::SetDeepSleep()
 
     CMT2210AW::PrepareToSleep();
 
+    HAL::DeInit();
+
     rcu_periph_clock_enable(RCU_PMU);
 
     RCU_CTL0 &= ~RCU_CTL0_PLLEN;

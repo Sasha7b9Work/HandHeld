@@ -29,6 +29,8 @@ private:
 namespace HAL
 {
     void Init();
+
+    void DeInit();
 }
 
 

@@ -19,6 +19,7 @@ void HAL::Init()
 
     rcu_periph_clock_enable(RCU_I2C1);
 
+    rcu_periph_clock_enable(RCU_TIMER2);
     nvic_irq_enable(TIMER2_IRQn, 0);            // Таймер на приёмник
 
     HAL_I2C::Init();
@@ -29,4 +30,13 @@ void HAL::Init()
 
     pinPF7.Init();
     pinPF7.ToHi();
+}
+
+
+void HAL::DeInit()
+{
+    rcu_periph_clock_disable(RCU_CFGCMP);
+    rcu_periph_clock_disable(RCU_I2C1);
+    rcu_periph_clock_disable(RCU_ADC);
+    rcu_periph_clock_disable(RCU_TIMER2);
 }

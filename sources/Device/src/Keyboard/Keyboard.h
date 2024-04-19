@@ -48,6 +48,6 @@ namespace Keyboard
 
     bool GetNextAction(Action &);
 
-    // Прошло много времени. Сон
+    // Прошло много времени после последнего нажатия кнопки
     bool ToMoreTime();
 }
