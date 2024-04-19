@@ -23,12 +23,12 @@ namespace HAL_CLOCK
 
 void ModeClock::Set(E v)
 {
-    current = v;
-
     if (v == ModeClock::DeepSleep)
     {
         if (!ModeClock::IsDeepSleep())
         {
+            current = ModeClock::DeepSleep;
+
             HAL_CLOCK::in_sleep_mode = true;
 
             HAL_CLOCK::SetDeepSleep();
@@ -38,6 +38,8 @@ void ModeClock::Set(E v)
     {
         if (!ModeClock::IsLow())
         {
+            current = ModeClock::Low;
+
             HAL_CLOCK::SetLow();
         }
     }
@@ -45,6 +47,8 @@ void ModeClock::Set(E v)
     {
         if (!ModeClock::IsHi())
         {
+            current = ModeClock::Hi;
+
             HAL_CLOCK::SetHi();
         }
     }
