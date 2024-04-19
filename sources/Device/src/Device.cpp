@@ -60,7 +60,7 @@ void Device::Update()
 
 //    PCF8563::Update();
 
-//    Display::Update();
+    Display::Update();
 
     Source::Update();
 

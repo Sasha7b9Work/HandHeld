@@ -119,7 +119,7 @@ void Display::EndScene(int num_parts)
 
     if (!Buffer::MatchesCRC(crc))
     {
-        if (CMT2210AW::IsEnabled() && !ModeClock::IsHi())
+        if (CMT2210AW::IsEnabled())
         {
             need_draw = true;
         }
