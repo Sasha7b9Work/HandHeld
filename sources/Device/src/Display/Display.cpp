@@ -75,15 +75,6 @@ void Display::PrepareToSleep()
 
 void Display::Update()
 {
-    static TimeMeterMS meter;
-
-    if (meter.ElapsedTime() < 20 || Keyboard::ToMoreTime())
-    {
-        return;
-    }
-
-    meter.Reset();
-
     FPS::BeginFrame();
 
     for (int i = 0; i < NUMBER_PARTS_HEIGHT; i++)
