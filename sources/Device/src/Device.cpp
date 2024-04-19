@@ -44,12 +44,17 @@ void Device::Init()
 
 void Device::Update()
 {
-    if (!CMT2210AW::IsEnabled() && Keyboard::ToMoreTime())
+    if (!CMT2210AW::IsEnabled() && Keyboard::ToMoreTime() && Source::GetCountReceived() == 0)
     {
         ModeClock::Set(ModeClock::DeepSleep);
     }
 
     ModeClock::LeaveDeepSleep();
+
+    if (!ModeClock::IsHi() && Display::NeedDraw())
+    {
+        ModeClock::Set(ModeClock::Hi);
+    }
 
     Menu::Update();
 

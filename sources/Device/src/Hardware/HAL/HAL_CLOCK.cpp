@@ -27,17 +27,26 @@ void ModeClock::Set(E v)
 
     if (v == ModeClock::DeepSleep)
     {
-        HAL_CLOCK::in_sleep_mode = true;
+        if (!ModeClock::IsDeepSleep())
+        {
+            HAL_CLOCK::in_sleep_mode = true;
 
-        HAL_CLOCK::SetDeepSleep();
+            HAL_CLOCK::SetDeepSleep();
+        }
     }
     else if (v == ModeClock::Low)
     {
-        HAL_CLOCK::SetLow();
+        if (!ModeClock::IsLow())
+        {
+            HAL_CLOCK::SetLow();
+        }
     }
     else if (v == ModeClock::Hi)
     {
-        HAL_CLOCK::SetHi();
+        if (!ModeClock::IsHi())
+        {
+            HAL_CLOCK::SetHi();
+        }
     }
 }
 
@@ -230,4 +239,6 @@ void HAL_CLOCK::SetHi()
     }
 
     systick_config();
+
+    HAL::Init();
 }

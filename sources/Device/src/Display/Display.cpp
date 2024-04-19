@@ -12,6 +12,7 @@
 #include "Utils/StringUtils.h"
 #include "Hardware/Power.h"
 #include "Hardware/HAL/HAL_PINS.h"
+#include "Modules/CMT2210AW/CMT2210AW.h"
 #include "Utils/Math.h"
 #include <string>
 
@@ -50,6 +51,8 @@ namespace Display
     void BeginScene(int num_part);
     void DrawScene(int num_part);
     void EndScene(int num_parts);
+
+    static bool need_draw = false;
 }
 
 
@@ -93,6 +96,17 @@ void Display::Update()
     }
 
     FPS::EndFrame();
+
+    if (!CMT2210AW::IsEnabled())
+    {
+        ModeClock::Set(ModeClock::Low);
+    }
+}
+
+
+bool Display::NeedDraw()
+{
+    return need_draw;
 }
 
 
@@ -110,11 +124,20 @@ void Display::EndScene(int num_parts)
 
     if (!Buffer::MatchesCRC(crc))
     {
-        ST7735::Enable();
+        if (CMT2210AW::IsEnabled() && !ModeClock::IsHi())
+        {
+            need_draw = true;
+        }
+        else
+        {
+            ST7735::Enable();
 
-        Buffer::crc[Buffer::current_part] = crc;
+            Buffer::crc[Buffer::current_part] = crc;
 
-        ST7735::WriteBuffer(HEIGHT / NUMBER_PARTS_HEIGHT * num_parts);
+            ST7735::WriteBuffer(HEIGHT / NUMBER_PARTS_HEIGHT * num_parts);
+
+            need_draw = false;
+        }
     }
 }
 
