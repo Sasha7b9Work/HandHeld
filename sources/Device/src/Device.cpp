@@ -51,10 +51,6 @@ void Device::Update()
 
     ModeClock::LeaveDeepSleep();
 
-    Timer::Delay(1000);
-
-    ModeClock::Set(ModeClock::Hi);
-
 //    if (!ModeClock::IsHi() && Display::NeedDraw())
 //    {
 //        ModeClock::Set(ModeClock::Hi);
