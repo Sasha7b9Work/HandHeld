@@ -96,8 +96,6 @@ bool Beeper::IsRunning()
 
 void Sound::Start(TypeSound::E type)
 {
-    Timer::Delay(500);
-
     current = sounds[type];
 
     num_note = 0;
