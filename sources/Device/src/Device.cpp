@@ -55,13 +55,13 @@ void Device::Update()
 
     Source::Update();
 
-    Beeper::Update();
+    CMT2210AW::Update();
+
+    Display::Update();
 
     LED::Update();
 
     Vibrato::Update();
 
-    CMT2210AW::Update();
-
-    Display::Update();
+    Beeper::Update();
 }
