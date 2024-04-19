@@ -77,7 +77,7 @@ void Display::Update()
 {
     static TimeMeterMS meter;
 
-    if (meter.ElapsedTime() < 20)
+    if (meter.ElapsedTime() < 20 || Keyboard::ToMoreTime())
     {
         return;
     }
