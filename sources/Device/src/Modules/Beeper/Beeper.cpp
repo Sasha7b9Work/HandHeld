@@ -57,6 +57,7 @@ uint Sound::time_note_start = 0;
 namespace Beeper
 {
     static bool is_running = false;
+    static uint time_start = 0;
 }
 
 
@@ -75,6 +76,8 @@ void Beeper::Play(TypeSound::E type, uint8 /*volume*/)
 #endif
 
     is_running = true;
+
+    Beeper::time_start = 0;
 
     Sound::Start(type);
 }
@@ -96,6 +99,20 @@ bool Beeper::IsRunning()
 
 void Sound::Start(TypeSound::E type)
 {
+    if (Beeper::time_start)
+    {
+        if (TIME_MS < Beeper::time_start)
+        {
+            return;
+        }
+    }
+    else
+    {
+        Beeper::time_start = TIME_MS + 100;
+
+        return;
+    }
+
     current = sounds[type];
 
     num_note = 0;
