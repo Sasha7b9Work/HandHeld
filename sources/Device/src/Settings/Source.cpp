@@ -42,7 +42,7 @@ bool SourceScript::GetForLED(Source::E source, uint _time)
 
     for (int i = 0; i < script.num_pulses; i++)
     {
-        if (time <= script.led_duration && time >= 0)
+        if (time <= script.led_duration + 100 && time >= 100)
         {
             return true;
         }
@@ -62,7 +62,7 @@ bool SourceScript::GetForVibro(Source::E source, uint _time)
 
     for (int i = 0; i < script.num_pulses; i++)
     {
-        if (time < script.vibro_duration && time >= 0)
+        if (time < script.vibro_duration + 100 && time >= 100)
         {
             return true;
         }
