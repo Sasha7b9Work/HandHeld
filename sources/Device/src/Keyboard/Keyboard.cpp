@@ -72,6 +72,8 @@ namespace Keyboard
         actions[num_actions] = action;
         num_actions++;
     }
+
+    static bool in_blocking_mode = false;
 }
 
 
@@ -84,8 +86,25 @@ void Keyboard::Init()
 }
 
 
+void Keyboard::SetBlockingMode()
+{
+    in_blocking_mode = true;
+}
+
+
+void Keyboard::PepareToSleep()
+{
+    in_blocking_mode = false;
+}
+
+
 void Keyboard::CallbackFromInterrupt(Key::E key)
 {
+    if (in_blocking_mode)
+    {
+        return;
+    }
+
     ms_for_disable = TIME_BLANK_DISPLAY;
 
     uint time = TIME_MS;

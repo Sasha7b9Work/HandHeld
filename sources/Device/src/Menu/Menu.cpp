@@ -49,6 +49,12 @@ void Menu::Update()
         }
         else
         {
+            if (action.key == Key::Cancel)
+            {
+                Keyboard::SetBlockingMode();
+                Keyboard::ms_for_disable = 0;
+            }
+
             if (action.key == Key::Menu || action.key == Key::Up || action.key == Key::Down)
             {
                 is_shown = true;
