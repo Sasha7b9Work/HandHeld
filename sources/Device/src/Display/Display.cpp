@@ -100,7 +100,7 @@ void Display::BeginScene(int num_part)
 {
     Buffer::current_part = num_part;
 
-    Buffer::Fill(Color::BLACK);
+    Buffer::Fill(Source::GetCountReceived() ? gset.sources[Source::Current()].color : Color::BLACK);
 }
 
 
