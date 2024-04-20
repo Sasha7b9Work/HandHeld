@@ -155,6 +155,15 @@ static const DataChoice dc##name{&name, value, &names##name[0]};                
 static const Choice choice##name{&dc##name};                                                                                \
 const Item name{&di##name, &choice##name}
 
+#define DEF_CHOICE_8(name, keeper, title, value, name0, name1, name2, name3, name4, name5, name6, name7)                    \
+static int8 opened##name = 0;                                                                                               \
+static const DataItem di##name{ItemType::Choice, keeper, title, &opened##name};                                             \
+extern const Item name;                                                                                                     \
+static const pchar names##name[] = {name0, name1, name2, name3, name4, name5, name6, name7, nullptr };                      \
+static const DataChoice dc##name{&name, value, &names##name[0]};                                                            \
+static const Choice choice##name{&dc##name};                                                                                \
+const Item name{&di##name, &choice##name}
+
 #define DEF_CHOICE_10(name, keeper, title, value, name0, name1, name2, name3, name4, name5, name6, name7, name8, name9)     \
 static int8 opened##name = 0;                                                                                               \
 static const DataItem di##name{ItemType::Choice, keeper, title, &opened##name};                                             \
@@ -199,21 +208,22 @@ DEF_CHOICE_3(choiceVolume, self, "√–ŒÃ Œ—“‹", (uint8 *const)&set,           \
 );
 
 #define DEF_CHOICE_COLOR(set)                                               \
-DEF_CHOICE_7(choiceColorBell, self, "÷¬≈“", (uint8 *const)&set,             \
-    ColorBell::Name(ColorBell::White),                                      \
-    ColorBell::Name(ColorBell::Red),                                        \
-    ColorBell::Name(ColorBell::Orange),                                     \
-    ColorBell::Name(ColorBell::Yellow),                                     \
-    ColorBell::Name(ColorBell::Green),                                      \
-    ColorBell::Name(ColorBell::Blue),                                       \
-    ColorBell::Name(ColorBell::Fiolet)                                      \
+DEF_CHOICE_8(choiceColor, self, "÷¬≈“", (uint8 *const)&set,                 \
+    Color::Name(Color::White),                                      \
+    Color::Name(Color::Red),                                        \
+    Color::Name(Color::Green),                                      \
+    Color::Name(Color::Blue),                                       \
+    Color::Name(Color::Gray),                                       \
+    Color::Name(Color::Yellow),                                     \
+    Color::Name(Color::Orange),                                     \
+    Color::Name(Color::Purple)                                      \
 );
 
 #define DEF_SOURCE_CHOICES(source)                                  \
 DEF_CHOICE_MODE_INDICATION(gset.sources[source].mode_indication);   \
 DEF_CHOICE_MELODY(gset.sources[source].melody);                     \
 DEF_CHOICE_VOLUME(gset.sources[source].volume);                     \
-DEF_CHOICE_COLOR(gset.sources[source].colorBell);
+DEF_CHOICE_COLOR(gset.sources[source].color);
 
 #define DEF_PAGE_SOURCE(name, source)                   \
 DEF_SOURCE_CHOICES(source);                             \
@@ -221,7 +231,7 @@ DEF_PAGE_4(name, PageMain::self, Source::Name(source),  \
     &choiceModeIndication,                              \
     &choiceMelody,                                      \
     &choiceVolume,                                      \
-    &choiceColorBell,                                   \
+    &choiceColor,                                       \
     nullptr,                                            \
     nullptr,                                            \
     nullptr                                             \

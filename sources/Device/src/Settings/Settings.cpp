@@ -10,18 +10,18 @@
 
 Settings gset =
 {
-    { {Melody::_1, Volume::Hi, ColorBell::White, ModeIndication::All},
-      {Melody::_2, Volume::Hi, ColorBell::White, ModeIndication::All},
-      {Melody::_3, Volume::Hi, ColorBell::White, ModeIndication::All},
-      {Melody::_4, Volume::Hi, ColorBell::White, ModeIndication::All},
-      {Melody::_5, Volume::Hi, ColorBell::White, ModeIndication::All},
-      {Melody::_6, Volume::Hi, ColorBell::White, ModeIndication::All}
+    { {Melody::_1, Volume::Hi, Color::White, ModeIndication::All},
+      {Melody::_2, Volume::Hi, Color::White, ModeIndication::All},
+      {Melody::_3, Volume::Hi, Color::White, ModeIndication::All},
+      {Melody::_4, Volume::Hi, Color::White, ModeIndication::All},
+      {Melody::_5, Volume::Hi, Color::White, ModeIndication::All},
+      {Melody::_6, Volume::Hi, Color::White, ModeIndication::All}
     },
     {
         0,
         Melody::_1,
         Volume::Hi,
-        ColorBell::White,
+        Color::White,
         ModeIndication::All,
         { 0, 0, 0, 0, 0, 0 }
     }
@@ -42,23 +42,6 @@ pchar Melody::Name(E v)
         "лекндхъ 8",
         "лекндхъ 9",
         "лекндхъ 10"
-    };
-
-    return names[v];
-}
-
-
-pchar ColorBell::Name(E v)
-{
-    static const pchar names[Count] =
-    {
-        "аекши",
-        "йпюямши",
-        "нпюмфебши",
-        "ф╗крши",
-        "гек╗мши",
-        "яхмхи",
-        "тхнкернбши"
     };
 
     return names[v];

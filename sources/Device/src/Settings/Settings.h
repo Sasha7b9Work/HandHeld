@@ -38,30 +38,11 @@ struct Melody
 };
 
 
-// Цвет заливки экрана при вызове
-struct ColorBell
-{
-    enum E
-    {
-        White,
-        Red,
-        Orange,
-        Yellow,
-        Green,
-        Blue,
-        Fiolet,
-        Count
-    };
-
-    static pchar Name(E);
-};
-
-
 struct SettingsSource
 {
     Melody::E         melody;           // Текущая мелодия
     Volume::E         volume;           // Громкость текущей мелодии
-    ColorBell::E      colorBell;
+    Color::E          color;
     ModeIndication::E mode_indication;  // Режим индикации
 };
 
@@ -72,7 +53,7 @@ struct SettingsAlarm
     uint8             enabled;
     Melody::E         melody;
     Volume::E         volume;
-    ColorBell::E      colorBell;
+    Color::E          color;
     ModeIndication::E mode_indication;
     RTCDateTime       time;
 };

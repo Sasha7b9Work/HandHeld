@@ -21,7 +21,7 @@ namespace PageAlarm
 
     DEF_CHOICE_VOLUME(gset.alarm.volume);
 
-    DEF_CHOICE_COLOR(gset.alarm.colorBell);
+    DEF_CHOICE_COLOR(gset.alarm.color);
 
     DEF_PAGE_7(pageAlarm, PageMain::self, "¡”ƒ»À‹Õ» ",
         &choiceEnabled,
@@ -30,7 +30,7 @@ namespace PageAlarm
         &choiceModeIndication,
         &choiceMelody,
         &choiceVolume,
-        &choiceColorBell,
+        &choiceColor,
         nullptr,
         nullptr,
         nullptr
