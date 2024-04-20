@@ -4,6 +4,7 @@
 #include "Menu/MenuItems.h"
 #include "Menu/Pages/Pages.h"
 #include "Keyboard/Keyboard.h"
+#include "Modules/ST7735/ST7735.h"
 
 
 namespace Menu
@@ -41,7 +42,7 @@ void Menu::Update()
             Source::CancelFirst();
         }
     }
-    else if (action.IsDown())
+    else if (action.IsRelease())
     {
         if (is_shown)
         {
@@ -49,9 +50,8 @@ void Menu::Update()
         }
         else
         {
-            if (action.key == Key::Cancel)
+            if (action.key == Key::Cancel && ST7735::IsEnabled())
             {
-                Keyboard::SetBlockingMode();
                 Keyboard::ms_for_disable = 0;
             }
 

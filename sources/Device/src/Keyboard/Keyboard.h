@@ -42,11 +42,6 @@ namespace Keyboard
 {
     void Init();
 
-    // Заблокировать до выхода из сна
-    void SetBlockingMode();
-
-    void PepareToSleep();
-
     void CallbackFromInterrupt(Key::E);
 
     bool IsDown(Key::E);

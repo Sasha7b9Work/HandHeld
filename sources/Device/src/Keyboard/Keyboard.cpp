@@ -72,8 +72,6 @@ namespace Keyboard
         actions[num_actions] = action;
         num_actions++;
     }
-
-    static bool in_blocking_mode = false;
 }
 
 
@@ -86,25 +84,8 @@ void Keyboard::Init()
 }
 
 
-void Keyboard::SetBlockingMode()
-{
-    in_blocking_mode = true;
-}
-
-
-void Keyboard::PepareToSleep()
-{
-    in_blocking_mode = false;
-}
-
-
 void Keyboard::CallbackFromInterrupt(Key::E key)
 {
-    if (in_blocking_mode)
-    {
-        return;
-    }
-
     ms_for_disable = TIME_BLANK_DISPLAY;
 
     uint time = TIME_MS;
@@ -115,10 +96,13 @@ void Keyboard::CallbackFromInterrupt(Key::E key)
 
         if (buttons[key].prev_down != is_down)
         {
-            AppendAction({ key , is_down ? ActionType::Down : ActionType::Up });
+            if (!is_down)
+            {
+                AppendAction({ key , ActionType::Up });
 
-            buttons[key].prev_time = time;
-            buttons[key].prev_down = is_down;
+                buttons[key].prev_time = time;
+                buttons[key].prev_down = is_down;
+            }
         }
     }
 }
