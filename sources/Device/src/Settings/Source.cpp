@@ -23,6 +23,7 @@
 //{.led_pulse_duration = 150 / 5, .vibro_pulse_duration = 300 / 5, .pulse_period = 100 / 5, .pulses_in_packet = 2, .pause_between_packet = 0,      .total_duration = 600 / 5},  //вспомог.индикация при выключении
 
 
+
 const SourceScript SourceScript::scripts[Source::Count] =
 {
     { 100, 200, 320, 2, 4000 },
@@ -259,7 +260,7 @@ void Source::Queue::DeleteOld()
     {
         for (int i = 0; i < size; i++)
         {
-            if (TIME_MS > time_recv[buffer[i]].GetMS() + TIME_ALARM)
+            if (TIME_MS > time_recv[buffer[i]].GetMS() + TimeDestroy(Current()))
             {
                 Remove(i, false);
             }
@@ -301,4 +302,20 @@ int Source::GetCountReceived()
 Source::E Source::Current()
 {
     return Queue::At(0);
+}
+
+
+uint Source::TimeDestroy(E v)
+{
+    static const uint times[Count] =
+    {
+        38000,
+        31000,
+        31000,
+        31000,
+        31000,
+        10000
+    };
+
+    return times[v];
 }
