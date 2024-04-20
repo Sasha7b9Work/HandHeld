@@ -11,7 +11,7 @@
 
 namespace Keyboard
 {
-    int ms_for_disable = 10000;
+    int ms_for_disable = TIME_BLANK_DISPLAY;
 }
 
 

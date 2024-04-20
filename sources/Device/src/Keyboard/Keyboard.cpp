@@ -86,7 +86,7 @@ void Keyboard::Init()
 
 void Keyboard::CallbackFromInterrupt(Key::E key)
 {
-    ms_for_disable = 10000;
+    ms_for_disable = TIME_BLANK_DISPLAY;
 
     uint time = TIME_MS;
 
