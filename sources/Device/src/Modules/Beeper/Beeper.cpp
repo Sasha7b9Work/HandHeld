@@ -89,6 +89,12 @@ void Beeper::Play(TypeSound::E type, uint8 /*volume*/)
 
 void Beeper::Update()
 {
+#ifdef GUI
+
+    PainterMelody::self->Update();
+
+#else
+
     if (need_running)
     {
         if (TIME_MS >= time_start)
@@ -98,6 +104,8 @@ void Beeper::Update()
             need_running = false;
         }
     }
+
+#endif
 }
 
 

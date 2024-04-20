@@ -13,12 +13,6 @@ void Beeper::Driver::Init()
 }
 
 
-void Beeper::Driver::Update()
-{
-    PainterMelody::self->Update();
-}
-
-
 void Beeper::Driver::StartFrequency(float)
 {
 }
