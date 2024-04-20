@@ -133,7 +133,7 @@ static int8 opened##name = 0;                                                   
 static const DataItem di##name{ItemType::Choice, keeper, title, &opened##name};                                             \
 extern const Item name;                                                                                                     \
 static const pchar names##name[] = {name0, name1, nullptr};                                                                 \
-static const DataChoice dc##name{&name, value, &names##name[0]};                                                            \
+static const DataChoice dc##name{&name, value, &names##name[0], nullptr };                                                  \
 static const Choice choice##name{&dc##name};                                                                                \
 const Item name{&di##name, &choice##name}
 
@@ -142,7 +142,7 @@ static int8 opened##name = 0;                                                   
 static const DataItem di##name{ItemType::Choice, keeper, title, &opened##name};                                             \
 extern const Item name;                                                                                                     \
 static const pchar names##name[] = {name0, name1, name2, nullptr };                                                         \
-static const DataChoice dc##name{&name, value, &names##name[0]};                                                            \
+static const DataChoice dc##name{&name, value, &names##name[0], nullptr };                                                  \
 static const Choice choice##name{&dc##name};                                                                                \
 const Item name{&di##name, &choice##name}
 
@@ -151,7 +151,7 @@ static int8 opened##name = 0;                                                   
 static const DataItem di##name{ItemType::Choice, keeper, title, &opened##name};                                             \
 extern const Item name;                                                                                                     \
 static const pchar names##name[] = {name0, name1, name2, name3, name4, name5, name6, nullptr };                             \
-static const DataChoice dc##name{&name, value, &names##name[0]};                                                            \
+static const DataChoice dc##name{&name, value, &names##name[0], nullptr };                                                  \
 static const Choice choice##name{&dc##name};                                                                                \
 const Item name{&di##name, &choice##name}
 
@@ -160,7 +160,18 @@ static int8 opened##name = 0;                                                   
 static const DataItem di##name{ItemType::Choice, keeper, title, &opened##name};                                             \
 extern const Item name;                                                                                                     \
 static const pchar names##name[] = {name0, name1, name2, name3, name4, name5, name6, name7, nullptr };                      \
-static const DataChoice dc##name{&name, value, &names##name[0]};                                                            \
+static const DataChoice dc##name{&name, value, &names##name[0], nullptr };                                                  \
+static const Choice choice##name{&dc##name};                                                                                \
+const Item name{&di##name, &choice##name}
+
+#define DEF_CHOICE_8_COLORS(name, keeper, title, value, name0, name1, name2, name3, name4, name5, name6, name7)             \
+static int8 opened##name = 0;                                                                                               \
+static const DataItem di##name{ItemType::Choice, keeper, title, &opened##name};                                             \
+extern const Item name;                                                                                                     \
+static const pchar names##name[] = {name0, name1, name2, name3, name4, name5, name6, name7, nullptr };                      \
+static const Color::E colors##name[] = { Color::White, Color::Red, Color::Green, Color::Blue, Color::Gray, Color::Yellow,   \
+    Color::Orange, Color::Purple };                                                                                         \
+static const DataChoice dc##name{&name, value, &names##name[0], &colors##name[0] };                                         \
 static const Choice choice##name{&dc##name};                                                                                \
 const Item name{&di##name, &choice##name}
 
@@ -169,7 +180,7 @@ static int8 opened##name = 0;                                                   
 static const DataItem di##name{ItemType::Choice, keeper, title, &opened##name};                                             \
 extern const Item name;                                                                                                     \
 static const pchar names##name[] = {name0, name1, name2, name3, name4, name5, name6, name7, name8, name9, nullptr };        \
-static const DataChoice dc##name{&name, value, &names##name[0]};                                                            \
+static const DataChoice dc##name{&name, value, &names##name[0], nullptr };                                                  \
 static const Choice choice##name{&dc##name};                                                                                \
 const Item name{&di##name, &choice##name}
 
@@ -208,7 +219,7 @@ DEF_CHOICE_3(choiceVolume, self, "√–ŒÃ Œ—“‹", (uint8 *const)&set,           \
 );
 
 #define DEF_CHOICE_COLOR(set)                                               \
-DEF_CHOICE_8(choiceColor, self, "÷¬≈“", (uint8 *const)&set,                 \
+DEF_CHOICE_8_COLORS(choiceColor, self, "÷¬≈“", (uint8 *const)&set,          \
     Color::Name(Color::White),                                      \
     Color::Name(Color::Red),                                        \
     Color::Name(Color::Green),                                      \

@@ -111,6 +111,7 @@ struct DataChoice
     const Item *item;
     uint8 *const value;
     const pchar * const names;
+    const Color::E * const colors;
 };
 
 

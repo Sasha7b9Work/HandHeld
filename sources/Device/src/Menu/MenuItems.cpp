@@ -89,7 +89,14 @@ void Choice::Draw() const
 
         pchar text = data->names[index];
 
-        Text<>(text).WriteInCenter(0, 45, Display::WIDTH, Color::WHITE);
+        Color color = Color::WHITE;
+
+        if (data->colors)
+        {
+            color = Color(data->colors[index]);
+        }
+
+        Text<>(text).WriteInCenter(0, 45, Display::WIDTH, color);
 
         Font::SetSize(1);
     }
