@@ -5,7 +5,7 @@
 #include "Hardware/Timer.h"
 #include "Settings/Settings.h"
 #include <gd32e23x.h>
-
+ 
 
 #define I2C_SPEED              100000
 #define I2C_SLAVE_ADDRESS7     (0xa2)   // Для часов
@@ -63,6 +63,24 @@ void HAL_I2C::Init()
 
     gpio_mode_set(GPIOB, GPIO_MODE_AF, GPIO_PUPD_PULLUP, GPIO_PIN_10);
     gpio_output_options_set(GPIOB, GPIO_OTYPE_OD, GPIO_OSPEED_50MHZ, GPIO_PIN_10);
+
+    /*
+    const uint ctrl10 = GPIO_CTL(GPIOB);
+    const uint pupd10 = GPIO_PUD(GPIOB);
+
+    uint ctrl = ctrl10;
+    ctrl &= ~GPIO_MODE_MASK(10);
+    ctrl &= ~GPIO_MODE_MASK(11);
+    ctrl |= GPIO_MODE_SET(10, GPIO_MODE_OUTPUT);
+    ctrl |= GPIO_MODE_SET(11, GPIO_MODE_OUTPUT);
+    GPIO_CTL(GPIOB) = ctrl;
+    uint pupd = pupd10;
+    pupd &= ~GPIO_PUPD_MASK(10);
+    pupd &= ~GPIO_PUPD_MASK(11)
+    pupd |= GPIO_PUPD_SET(10, GPIO_PUPD_PULLUP);
+    pupd |= GPIO_PUPD_SET(11, GPIO_PUPD_PULLUP);
+    GPIO_PUD(GPIOB) = pupd;
+    */
 
     gpio_mode_set(GPIOB, GPIO_MODE_AF, GPIO_PUPD_PULLUP, GPIO_PIN_11);
     gpio_output_options_set(GPIOB, GPIO_OTYPE_OD, GPIO_OSPEED_50MHZ, GPIO_PIN_11);

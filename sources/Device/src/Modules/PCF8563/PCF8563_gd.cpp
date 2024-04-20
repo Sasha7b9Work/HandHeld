@@ -12,7 +12,7 @@
 #include "defines.h"
 #include "Modules/PCF8563/PCF8563.h"
 #include "Hardware/HAL/HAL.h"
-
+ 
 
 #define PCF8563_REG_CONTROL_STATUS1     ((uint8)0x00)
 #define PCF8563_REG_CONTROL_STATUS2     ((uint8)0x01)
