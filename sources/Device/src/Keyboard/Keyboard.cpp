@@ -99,10 +99,10 @@ void Keyboard::CallbackFromInterrupt(Key::E key)
             if (!is_down)
             {
                 AppendAction({ key , ActionType::Up });
-
-                buttons[key].prev_time = time;
-                buttons[key].prev_down = is_down;
             }
+
+            buttons[key].prev_time = time;
+            buttons[key].prev_down = is_down;
         }
     }
 }
