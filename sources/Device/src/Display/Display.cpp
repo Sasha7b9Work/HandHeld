@@ -135,6 +135,10 @@ void Display::DrawScene(int num_part)
 
     if (Source::GetCountReceived())
     {
+        Color color = Color::Contrast(gset.sources[Source::Current()].color);
+
+        color.SetAsCurrent();
+
         int y = 40;
 
         if (Source::GetCountReceived() == 1)
@@ -160,15 +164,15 @@ void Display::DrawScene(int num_part)
 
         if (num_words == 1)
         {
-            Text<>(name).WriteInCenter(0, y, Display::WIDTH, Color::GREEN);
+            Text<>(name).WriteInCenter(0, y, Display::WIDTH);
         }
         else if (num_words == 2)
         {
             char buffer[32];
 
-            Text<>(SU::GetWordFromString(name, 1, buffer)).WriteInCenter(0, y - 10, Display::WIDTH, Color::GREEN);
+            Text<>(SU::GetWordFromString(name, 1, buffer)).WriteInCenter(0, y - 10, Display::WIDTH);
 
-            Text<>(SU::GetWordFromString(name, 2, buffer)).WriteInCenter(0, y + 15, Display::WIDTH, Color::GREEN);
+            Text<>(SU::GetWordFromString(name, 2, buffer)).WriteInCenter(0, y + 15, Display::WIDTH);
         }
 
         Font::SetSize(1);

@@ -65,3 +65,22 @@ pchar Color::Name(E v)
 
     return names[v];
 }
+
+
+Color::E Color::Contrast(E v)
+{
+    static const Color::E contrs[Count] =
+    {
+        Black,
+        White,
+        Black,
+        White,
+        Black,
+        Black,
+        Black,
+        Black,
+        White
+    };
+
+    return contrs[v];
+}

@@ -40,6 +40,9 @@ struct Color
 
     static pchar Name(E);
 
+    // Возвращает контрастный цвет
+    static Color::E Contrast(E);
+
     static Color current;
 };
 
