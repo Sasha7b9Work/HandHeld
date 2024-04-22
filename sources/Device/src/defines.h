@@ -6,6 +6,9 @@
 // Врем гашения дисплея после последней кнопки
 #define TIME_BLANK_DISPLAY  20000
 
+// Время индикации будильника
+#define TIME_SHOW_ALARM     15000
+
 #ifdef GUI
     #define WIN32_LEAN_AND_MEAN
     #include "wx/wx.h"

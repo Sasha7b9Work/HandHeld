@@ -95,4 +95,9 @@ void Power::Update()
     {
         Disable();
     }
+
+    if (pinPWR_CTRL.IsLow())
+    {
+        Disable();
+    }
 }

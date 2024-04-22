@@ -12,6 +12,8 @@
 #include "defines.h"
 #include "Modules/PCF8563/PCF8563.h"
 #include "Hardware/HAL/HAL.h"
+#include "Hardware/Timer.h"
+#include "Hardware/HAL/HAL_PINS.h"
  
 
 #define PCF8563_REG_CONTROL_STATUS1     ((uint8)0x00)
@@ -64,9 +66,9 @@ namespace PCF8563
 
     static uint8 buffer[7];
 
-	static RTCDateTime date_time;           // Последнее считанное время
+	static RTCDateTime date_time;       // Последнее считанное время
 
-	static uint time_alarm;
+	static uint time_alarm = 0;         // Время последней побудки
 }
 
 static void WriteBitToControlRegister(uint8 ControlRegister, uint8 BitNumber, bool bit)
@@ -265,14 +267,19 @@ void PCF8563::Update()
 
     CalculateDateTime(&date_time);
 
-//	if (pinPWR_CTRL.IsLow() && time)
-//	{
-//
-//	}
+    if (pinPWR_CTRL.IsLow() && time_alarm == 0)
+    {
+
+    }
 }
 
 
 bool PCF8563::IsAlarmed()
 {
-	return false;
+	if (TIME_MS - time_alarm > TIME_SHOW_ALARM)
+	{
+		time_alarm = 0;
+	}
+
+	return time_alarm != 0;
 }
