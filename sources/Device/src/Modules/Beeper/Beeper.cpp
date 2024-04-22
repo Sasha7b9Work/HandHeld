@@ -60,6 +60,7 @@ namespace Beeper
     static bool need_running = false;
     static uint time_start = 0;       // В это время нужно запустить
     static TypeSound::E sound = TypeSound::Count;
+    static uint8 volume = 0;
 }
 
 
@@ -69,7 +70,7 @@ void Beeper::Init()
 }
 
 
-void Beeper::Play(TypeSound::E type, uint8 /*volume*/)
+void Beeper::Play(TypeSound::E type, uint8 _volume)
 {
 #ifdef GUI
 
@@ -84,6 +85,8 @@ void Beeper::Play(TypeSound::E type, uint8 /*volume*/)
     time_start = TIME_MS + 100;
 
     sound = type;
+
+    volume = _volume;
 }
 
 
@@ -131,7 +134,7 @@ void Sound::Start(TypeSound::E type)
 
     time_note_start = TIME_MS;
 
-    Beeper::Driver::StartFrequency((float)current->notes[0].frequency);
+    Beeper::Driver::StartFrequency((float)current->notes[0].frequency, Beeper::volume);
 }
 
 
@@ -147,7 +150,7 @@ void Sound::Update()
         }
         else
         {
-            Beeper::Driver::StartFrequency((float)current->notes[num_note].frequency);
+            Beeper::Driver::StartFrequency((float)current->notes[num_note].frequency, Beeper::volume);
 
             time_note_start = TIME_MS;
         }

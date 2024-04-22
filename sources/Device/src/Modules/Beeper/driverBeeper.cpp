@@ -64,13 +64,23 @@ void Beeper::Driver::Init()
 }
 
 
-void Beeper::Driver::StartFrequency(float frequency)
+void Beeper::Driver::StartFrequency(float frequency, uint8 vol)
 {
     gpio_mode_set(GPIOA, GPIO_MODE_AF, GPIO_PUPD_NONE, GPIO_PIN_3);
     gpio_output_options_set(GPIOA, GPIO_OTYPE_PP, GPIO_OSPEED_50MHZ, GPIO_PIN_3);
     gpio_af_set(GPIOA, GPIO_AF_0, GPIO_PIN_3);
 
     uint period = 250;
+
+    if (vol == 1)
+    {
+        period = 150;
+    }
+    else if (vol == 0)
+    {
+        period = 75;
+    }
+
     uint16 prescaler = (uint16)(SystemCoreClock / period / (uint)(frequency + 0.5f));
 
     TIMER_PSC(TIMER14) = prescaler;
