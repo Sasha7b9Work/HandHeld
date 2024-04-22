@@ -60,9 +60,6 @@ GPIO_PUD(GPIOB) = pupd;
 #define DELAY()     __asm("NOP"); __asm("NOP"); __asm("NOP"); __asm("NOP"); __asm("NOP"); __asm("NOP"); __asm("NOP"); __asm("NOP"); __asm("NOP"); __asm("NOP"); __asm("NOP")
 
 
-static uint ctrl;
-
-
 static void sda_out(uint8_t out)
 {
     if (out)
