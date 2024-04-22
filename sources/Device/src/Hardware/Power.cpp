@@ -64,6 +64,20 @@ void Power::Disable()
 }
 
 
+void Power::Update()
+{
+    //    if (HAL_ADC::GetVoltage(false) <= 3.5f)
+    //    {
+    //        Disable();
+    //    }
+
+    if (pinPWR_CTRL.IsLow() && !PCF8563::IsAlarmed())
+    {
+        Disable();
+    }
+}
+
+
 void Power::Draw()
 {
     int x = 121;
@@ -113,18 +127,4 @@ void Power::Draw()
     }
 
     Text<>("%.2f", (double)voltage).Write(x + 2, y + 3, Color::WHITE);
-}
-
-
-void Power::Update()
-{
-//    if (HAL_ADC::GetVoltage(false) <= 3.5f)
-//    {
-//        Disable();
-//    }
-
-    if (pinPWR_CTRL.IsLow() && !PCF8563::IsAlarmed())
-    {
-        Disable();
-    }
 }
