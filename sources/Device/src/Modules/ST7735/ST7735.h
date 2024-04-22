@@ -16,4 +16,6 @@ namespace ST7735
     void Disable();
 
     bool IsEnabled();
+
+    uint TimeEnabled();
 }

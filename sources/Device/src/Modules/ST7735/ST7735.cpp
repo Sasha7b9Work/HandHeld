@@ -148,6 +148,8 @@ namespace ST7735
     static void LCD_SetPos_Vertical(unsigned char x0, unsigned char x1, unsigned int y0, unsigned int y1);
 
     static void LCD_SetPos_Horizontal(unsigned char x0, unsigned char x1, unsigned int y0, unsigned int y1);
+
+    static uint time_enable = 0;
 }
 
 
@@ -157,6 +159,8 @@ void ST7735::Enable()
     {
         return;
     }
+
+    time_enable = TIME_MS;
 
     Write_Cmd(0x11);            // Sleep Out
 
@@ -184,6 +188,12 @@ void ST7735::Disable()
 bool ST7735::IsEnabled()
 {
     return is_enabled;
+}
+
+
+uint ST7735::TimeEnabled()
+{
+    return TIME_MS - time_enable;
 }
 
 
