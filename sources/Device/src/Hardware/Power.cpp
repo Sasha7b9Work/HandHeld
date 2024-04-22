@@ -52,10 +52,12 @@ void Power::Init()
 
     if (PCF8563::IsAlarmed())
     {
-        while (pinPWR_CTRL.IsLow())
-        {
-            Display::DrawPowerOn();
-        }
+        PCF8563::DisableAlarm();
+    }
+
+    while (pinPWR_CTRL.IsLow())
+    {
+        Display::DrawPowerOn();
     }
 
     Timer::Delay(100);
