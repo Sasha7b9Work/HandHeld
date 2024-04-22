@@ -34,6 +34,10 @@ void Device::Init()
 {
     HAL::Init();
 
+    PCF8563::Init();
+
+    Display::Init();
+
     Power::Init();
 
     Timer::Init();
@@ -42,15 +46,11 @@ void Device::Init()
 
     Menu::Init();
 
-    Display::Init();
-
     LED::Init();
 
     Vibrato::Init();
 
     CMT2210AW::Init();
-
-    PCF8563::Init();
 
     Beeper::Init();
 }
