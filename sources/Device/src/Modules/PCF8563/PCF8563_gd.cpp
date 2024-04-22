@@ -280,7 +280,13 @@ void PCF8563::Update()
 
 void PCF8563::SetAlarm(RTCDateTime *time)
 {
-    uint8 tmp[2] = { time->Hour, time->Minute };
+    uint8 tmp[2];
+
+	tmp[0] = (uint8)(time->Minute % 10);		// BCD
+	tmp[0] |= ((time->Minute / 10) << 4);
+
+	tmp[1] = (uint8)(time->Hour % 10);
+	tmp[1] |= ((time->Hour / 10) << 4);
 
     HAL_I2C::Write(PCF8563_REG_ALARM_MINUTE, tmp, 2);
 
