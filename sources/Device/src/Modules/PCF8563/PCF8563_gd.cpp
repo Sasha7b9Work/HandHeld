@@ -238,6 +238,14 @@ void PCF8563::SetAlarm(RTCDateTime *time)
 	uint8 tmp[3] = { time->Hour, time->Minute, date_time.Day };
 
 	HAL_I2C::Write(PCF8563_REG_ALARM_MINUTE, tmp, 3);
+
+    uint8 status2 = 0;
+
+    HAL_I2C::Read(PCF8563_REG_CONTROL_STATUS2, &status2, 1);
+
+    status2 |= (1 << 1);          // Включаем alarm interrupt AIE
+
+    HAL_I2C::Write(PCF8563_REG_CONTROL_STATUS2, &status2, 1);
 }
 
 
@@ -261,14 +269,6 @@ void PCF8563::Init()
 {
     ClkoutFrequency(CLKOUT_Freq::CLKOUT_FREQ_1HZ);
     STOPEnable(0);
-
-	uint8 status2 = 0;
-
-	HAL_I2C::Read(PCF8563_REG_CONTROL_STATUS2, &status2, 1);
-
-	status2 |= (1 << 1);          // Включаем alarm interrupt AIE
-
-	HAL_I2C::Write(PCF8563_REG_CONTROL_STATUS2, &status2, 1);
 }
 
 

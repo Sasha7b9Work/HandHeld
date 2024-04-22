@@ -40,6 +40,12 @@ void Power::Init()
 
         pinPWR.ToLow();
     }
+
+    while (pinPWR_CTRL.IsHi())
+    {
+    }
+
+    Timer::Delay(100);
 }
 
 
@@ -110,11 +116,6 @@ void Power::Draw()
 
 void Power::Update()
 {
-    if (TIME_MS < 3000)
-    {
-        return;
-    }
-
     if (HAL_ADC::GetVoltage(false) <= 3.5f)
     {
         Disable();
