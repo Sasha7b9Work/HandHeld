@@ -96,6 +96,21 @@ void Display::Update()
 }
 
 
+void Display::DrawPowerOff()
+{
+    for (int i = 0; i < NUMBER_PARTS_HEIGHT; i++)
+    {
+        BeginScene(i);
+
+        Font::SetSize(2);
+
+        Text<>("ÂÛÊËŞ×ÅÍÈÅ").WriteInCenter(0, 30, Display::WIDTH, Color::WHITE);
+
+        EndScene(i);
+    }
+}
+
+
 void Display::BeginScene(int num_part)
 {
     Buffer::current_part = num_part;

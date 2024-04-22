@@ -25,12 +25,11 @@ void Power::Init()
 
 void Power::Disable()
 {
-    Display::DrawPowerOff();
-
     TimeMeterMS meter;
 
     while (meter.ElapsedTime() < 1500)
     {
+        Display::DrawPowerOff();
     }
 
     pinPWR.ToLow();
