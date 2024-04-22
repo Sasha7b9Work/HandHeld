@@ -22,6 +22,24 @@ void Power::Init()
     pinPWR_CTRL.Init();
 
     pinPWR.ToHi();
+
+    float voltage = HAL_ADC::GetVoltage(true);
+
+    if (voltage < 2.5f)
+    {
+        pinPWR.ToLow();
+    }
+    else if (voltage < 3.5f)
+    {
+        TimeMeterMS meter;
+
+        while (meter.ElapsedTime() < 3000)
+        {
+            Display::DrawLowVoltage();
+        }
+
+        pinPWR.ToLow();
+    }
 }
 
 
@@ -43,7 +61,7 @@ void Power::Draw()
     int x = 121;
     int y = 0;
 
-    float voltage = HAL_ADC::GetVoltage();
+    float voltage = HAL_ADC::GetVoltage(false);
 
     if (voltage > 4.3f)             // Идёт заряд
     {
@@ -97,7 +115,7 @@ void Power::Update()
         return;
     }
 
-    if (HAL_ADC::GetVoltage() <= 3.5f)
+    if (HAL_ADC::GetVoltage(false) <= 3.5f)
     {
         Disable();
     }

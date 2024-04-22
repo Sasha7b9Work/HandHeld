@@ -23,6 +23,8 @@ namespace Display
 
     void DrawPowerOff();
 
+    void DrawLowVoltage();
+
     namespace Buffer
     {
         static const uint SIZE = WIDTH * HEIGHT / NUMBER_PARTS_HEIGHT;

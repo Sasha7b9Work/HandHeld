@@ -112,6 +112,23 @@ void Display::DrawPowerOff()
 }
 
 
+void Display::DrawLowVoltage()
+{
+    for (int i = 0; i < NUMBER_PARTS_HEIGHT; i++)
+    {
+        BeginScene(i);
+
+        Font::SetSize(2);
+
+        Text<>("Õ»« Œ≈").WriteInCenter(0, 20, Display::WIDTH, Color::WHITE);
+
+        Text<>("Õ¿œ–ﬂ∆≈Õ»≈").WriteInCenter(0, 50, Display::WIDTH, Color::WHITE);
+
+        EndScene(i);
+    }
+}
+
+
 void Display::BeginScene(int num_part)
 {
     Buffer::current_part = num_part;

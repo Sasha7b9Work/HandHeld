@@ -39,7 +39,7 @@ namespace HAL_ADC
 {
     void Init();
 
-    float GetVoltage();
+    float GetVoltage(bool force);
 }
 
 

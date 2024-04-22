@@ -50,13 +50,13 @@ void HAL_ADC::Init()
 }
 
 
-float HAL_ADC::GetVoltage()
+float HAL_ADC::GetVoltage(bool force)
 {
     static float voltage = 5.0f;
 
     static TimeMeterMS meter;
 
-    if (!LED::IsFired() && !Vibrato::IsRunning() && !Beeper::IsRunning() && meter.ElapsedTime() > 1000)
+    if ((!LED::IsFired() && !Vibrato::IsRunning() && !Beeper::IsRunning() && meter.ElapsedTime() > 1000) || force)
     {
         meter.Reset();
 
