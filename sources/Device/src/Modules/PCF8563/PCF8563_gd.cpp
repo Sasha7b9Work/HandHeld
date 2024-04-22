@@ -298,18 +298,6 @@ void PCF8563::SetAlarm(RTCDateTime *time)
 }
 
 
-void PCF8563::DisableAlarm()
-{
-	uint8 status2 = 0;
-
-	HAL_I2C::Read(PCF8563_REG_CONTROL_STATUS2, &status2, 1);
-
-    status2 &= ~(1 << 3);
-
-    HAL_I2C::Write(PCF8563_REG_CONTROL_STATUS2, &status2, 1);		// Очищаем флаг INT
-}
-
-
 bool PCF8563::IsAlarmed()
 {
 	if (TIME_MS - time_alarm > TIME_SHOW_ALARM)

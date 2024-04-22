@@ -30,13 +30,13 @@ void Power::Init()
 
     if (voltage < 3.0f)
     {
-        PCF8563::DisableAlarm();
+        PCF8563::AlarmFlagEnable(false);
 
         PowerDown();
     }
     else if (voltage < 3.5f)
     {
-        PCF8563::DisableAlarm();
+        PCF8563::AlarmFlagEnable(false);
 
         TimeMeterMS meter;
 
@@ -56,7 +56,7 @@ void Power::Init()
 
     if (PCF8563::IsAlarmed())
     {
-        PCF8563::DisableAlarm();
+        PCF8563::AlarmFlagEnable(false);
     }
 
     while (pinPWR_CTRL.IsLow())
