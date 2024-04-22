@@ -50,6 +50,10 @@ void Power::Init()
 
     PCF8563::Update();
 
+    PCF8563::AlarmFlagEnable(false);
+
+    PCF8563::AlarmInterruptEnable(false);
+
     if (PCF8563::IsAlarmed())
     {
         PCF8563::DisableAlarm();
