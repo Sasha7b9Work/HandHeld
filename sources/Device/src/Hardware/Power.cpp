@@ -43,7 +43,7 @@ void Power::Init()
         pinPWR.ToLow();
     }
 
-    while (pinPWR_CTRL.IsHi())
+    while (pinPWR_CTRL.IsLow())
     {
     }
 
