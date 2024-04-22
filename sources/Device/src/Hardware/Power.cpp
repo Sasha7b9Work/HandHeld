@@ -7,12 +7,15 @@
 #include "Display/Display.h"
 #include "Hardware/HAL/HAL_PINS.h"
 #include "Modules/PCF8563/PCF8563.h"
+#include "Modules/LED/driverLED.h"
 
 
 namespace Power
 {
     static const int WIDTH = 38;
     static const int HEIGHT = 14;
+
+    static void PowerDown();
 }
 
 
@@ -29,7 +32,7 @@ void Power::Init()
     {
         PCF8563::DisableAlarm();
 
-        pinPWR.ToLow();
+        PowerDown();
     }
     else if (voltage < 3.5f)
     {
@@ -40,7 +43,7 @@ void Power::Init()
             Display::DrawLowVoltage();
         }
 
-        pinPWR.ToLow();
+        PowerDown();
     }
 
     while (pinPWR_CTRL.IsLow())
@@ -60,7 +63,15 @@ void Power::Disable()
         Display::DrawPowerOff();
     }
 
+    PowerDown();
+}
+
+
+void Power::PowerDown()
+{
     pinPWR.ToLow();
+
+    LED::Driver::On();
 }
 
 
