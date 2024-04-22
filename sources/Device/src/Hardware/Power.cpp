@@ -18,6 +18,7 @@ namespace Power
 void Power::Init()
 {
     pinPWR.Init();
+    pinPWR_CTRL.Init();
 
     pinPWR.ToHi();
 }

@@ -29,6 +29,7 @@ struct PinIn : public Pin
     PinIn(uint _port, uint _pin) : Pin(_port, _pin, ModePin::Input) {}
     void Init();
     bool IsHi() const;
+    bool IsLow() const { return !IsHi(); }
 };
 
 
@@ -49,13 +50,13 @@ extern PinIn pinSW_UP;
 extern PinIn  pinDOUT;
 extern PinIn  pinSCK;
 
-extern PinIn  pinPWR_CTRL;
 extern PinOut pinADC;
 
 extern PinOut pinLEDPWR;
 extern PinOut pinVIBRO;
 
-extern PinOut pinPWR;
+extern PinOut pinPWR;               // Управление включением - 1 - вкл
+extern PinIn  pinPWR_CTRL;          // Сигнал включения - 0 - нажата кнопка или будильник сработал
 
 
 extern const uint I2C_ADDR;

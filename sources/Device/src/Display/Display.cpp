@@ -14,6 +14,7 @@
 #include "Hardware/HAL/HAL_PINS.h"
 #include "Modules/CMT2210AW/CMT2210AW.h"
 #include "Utils/Math.h"
+#include "Modules/PCF8563/PCF8563.h"
 #include <string>
 
 
@@ -148,7 +149,13 @@ void Display::DrawScene(int num_part)
 {
     (void)num_part;
 
-    if (Source::GetCountReceived())
+    if (PCF8563::IsAlarmed())
+    {
+        Font::SetSize(2);
+        Text<>("¡”ƒ»À‹Õ» ").WriteInCenter(0, 30, Display::WIDTH, Color::WHITE);
+        Font::SetSize(1);
+    }
+    else if (Source::GetCountReceived())
     {
         Color color = Color::Contrast(gset.sources[Source::Current()].color);
 

@@ -215,8 +215,8 @@ static void i2c_slave_address(uint8_t IICID, uint8_t readwrite)
 
     for (int x = 7; x >= 0; x--)
     {
-        uint8 bit = (IICID & (1 << x));
-        
+        uint8 bit = (uint8)(IICID & (1 << x));
+
         sda_out(bit);
         //data setup time tSU_DAT at least 100ns
         DELAY();

@@ -65,6 +65,8 @@ namespace PCF8563
     static uint8 buffer[7];
 
 	static RTCDateTime date_time;           // Последнее считанное время
+
+	static uint time_alarm;
 }
 
 static void WriteBitToControlRegister(uint8 ControlRegister, uint8 BitNumber, bool bit)
@@ -262,4 +264,15 @@ void PCF8563::Update()
     HAL_I2C::Read(PCF8563_REG_TIME, buffer, 7);
 
     CalculateDateTime(&date_time);
+
+//	if (pinPWR_CTRL.IsLow() && time)
+//	{
+//
+//	}
+}
+
+
+bool PCF8563::IsAlarmed()
+{
+	return false;
 }

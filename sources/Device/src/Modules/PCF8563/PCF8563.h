@@ -73,4 +73,6 @@ namespace PCF8563
     void SetDateTime(RTCDateTime *);
 
     void SetAlarm(RTCDateTime *);
+
+    bool IsAlarmed();
 }
