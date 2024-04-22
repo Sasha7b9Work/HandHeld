@@ -33,8 +33,6 @@ struct Action
     ActionType::E type;
 
     bool IsRelease() const { return type == ActionType::Up; }
-
-    bool IsDown() const { return type == ActionType::Down; }
 };
 
 

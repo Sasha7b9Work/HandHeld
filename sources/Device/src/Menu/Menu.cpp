@@ -52,7 +52,10 @@ void Menu::Update()
         {
             if (action.key == Key::Cancel && ST7735::IsEnabled())
             {
-                Keyboard::ms_for_disable = 0;
+                if (Keyboard::ms_for_disable > TIME_BLANK_DISPLAY - 5)
+                {
+                    Keyboard::ms_for_disable = 0;
+                }
             }
 
             if (action.key == Key::Menu || action.key == Key::Up || action.key == Key::Down)
