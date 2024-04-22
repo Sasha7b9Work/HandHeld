@@ -36,6 +36,8 @@ void Power::Init()
     }
     else if (voltage < 3.5f)
     {
+        PCF8563::DisableAlarm();
+
         TimeMeterMS meter;
 
         while (meter.ElapsedTime() < 3000)
