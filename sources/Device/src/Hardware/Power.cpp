@@ -50,6 +50,7 @@ void Power::Init()
 
     while (pinPWR_CTRL.IsLow())
     {
+        Display::DrawPowerOn();
     }
 
     Timer::Delay(100);

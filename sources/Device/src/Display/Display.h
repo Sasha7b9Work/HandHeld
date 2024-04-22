@@ -23,6 +23,8 @@ namespace Display
 
     void DrawPowerOff();
 
+    void DrawPowerOn();
+
     void DrawLowVoltage();
 
     namespace Buffer

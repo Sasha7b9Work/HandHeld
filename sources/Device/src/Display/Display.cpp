@@ -112,6 +112,21 @@ void Display::DrawPowerOff()
 }
 
 
+void Display::DrawPowerOn()
+{
+    for (int i = 0; i < NUMBER_PARTS_HEIGHT; i++)
+    {
+        BeginScene(i);
+
+        Font::SetSize(2);
+
+        Text<>("Включение").WriteInCenter(0, 30, Display::WIDTH, Color::WHITE);
+
+        EndScene(i);
+    }
+}
+
+
 void Display::DrawLowVoltage()
 {
     for (int i = 0; i < NUMBER_PARTS_HEIGHT; i++)
