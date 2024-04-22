@@ -27,9 +27,6 @@ void HAL::Init()
     HAL_ADC::Init();
 
     HAL_TIM2::Init();
-
-    pinPF7.Init();
-    pinPF7.ToHi();
 }
 
 

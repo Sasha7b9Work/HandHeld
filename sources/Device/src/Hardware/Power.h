@@ -4,7 +4,9 @@
 
 namespace Power
 {
-    void Enable();
+    void Update();
+
+    void Init();
 
     void Disable();
 

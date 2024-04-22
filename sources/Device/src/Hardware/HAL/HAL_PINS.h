@@ -55,9 +55,7 @@ extern PinOut pinADC;
 extern PinOut pinLEDPWR;
 extern PinOut pinVIBRO;
 
-extern PinIn pinPWR;
+extern PinOut pinPWR;
 
-
-extern PinOut pinPF7;
 
 extern const uint I2C_ADDR;

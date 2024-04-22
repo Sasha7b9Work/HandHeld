@@ -4,6 +4,8 @@
 #include "Display/Display.h"
 #include "Hardware/Timer.h"
 #include "Hardware/Power.h"
+#include "Display/Display.h"
+#include "Hardware/HAL/HAL_PINS.h"
 
 
 namespace Power
@@ -13,15 +15,25 @@ namespace Power
 }
 
 
-void Power::Enable()
+void Power::Init()
 {
+    pinPWR.Init();
 
+    pinPWR.ToHi();
 }
 
 
 void Power::Disable()
 {
+    Display::DrawPowerOff();
 
+    TimeMeterMS meter;
+
+    while (meter.ElapsedTime() < 1500)
+    {
+    }
+
+    pinPWR.ToLow();
 }
 
 
@@ -74,4 +86,13 @@ void Power::Draw()
     }
 
     Text<>("%.2f", (double)voltage).Write(x + 2, y + 3, Color::WHITE);
+}
+
+
+void Power::Update()
+{
+    if (HAL_ADC::GetVoltage() <= 3.5f)
+    {
+        Disable();
+    }
 }

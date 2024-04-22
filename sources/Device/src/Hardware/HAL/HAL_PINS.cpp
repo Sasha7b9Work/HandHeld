@@ -21,7 +21,7 @@ PinOut pinADC(GPIOA, GPIO_PIN_1);           // PA1  11
 PinOut pinLEDPWR(GPIOA, GPIO_PIN_2);        // PA2  12
 PinOut pinVIBRO(GPIOA, GPIO_PIN_10);        // PA10 31
 
-PinIn pinPWR(GPIOA, GPIO_PIN_12);           // PA12 33
+PinOut pinPWR(GPIOA, GPIO_PIN_12);           // PA12 33
 
 
 void Pin::Init()

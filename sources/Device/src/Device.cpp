@@ -14,6 +14,7 @@
 #include "Modules/LED/LED.h"
 #include "Modules/Beeper/Beeper.h"
 #include "Modules/ST7735/ST7735.h"
+#include "Hardware/Power.h"
 
 
 /*
@@ -32,6 +33,8 @@
 void Device::Init()
 {
     HAL::Init();
+
+    Power::Init();
 
     Timer::Init();
 
@@ -77,4 +80,6 @@ void Device::Update()
     Beeper::Update();
 
     Source::Update();
+
+    Power::Update();
 }

@@ -52,7 +52,7 @@ void HAL_ADC::Init()
 
 float HAL_ADC::GetVoltage()
 {
-    static float voltage = 0.0f;
+    static float voltage = 5.0f;
 
     static TimeMeterMS meter;
 
