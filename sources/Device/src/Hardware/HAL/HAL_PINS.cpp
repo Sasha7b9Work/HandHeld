@@ -37,7 +37,7 @@ void PinOut::Init()
 
 void PinIn::Init()
 {
-    gpio_mode_set(port, GPIO_MODE_INPUT, GPIO_PUPD_NONE, pin);
+    gpio_mode_set(port, GPIO_MODE_INPUT, GPIO_PUPD_PULLUP, pin);
 }
 
 
