@@ -92,6 +92,11 @@ void Power::Draw()
 
 void Power::Update()
 {
+    if (TIME_MS < 3000)
+    {
+        return;
+    }
+
     if (HAL_ADC::GetVoltage() <= 3.5f)
     {
         Disable();
