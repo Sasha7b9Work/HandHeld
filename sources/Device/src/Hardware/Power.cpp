@@ -48,9 +48,14 @@ void Power::Init()
         PowerDown();
     }
 
-    while (pinPWR_CTRL.IsLow())
+    PCF8563::Update();
+
+    if (PCF8563::IsAlarmed())
     {
-        Display::DrawPowerOn();
+        while (pinPWR_CTRL.IsLow())
+        {
+            Display::DrawPowerOn();
+        }
     }
 
     Timer::Delay(100);
