@@ -6,6 +6,7 @@
 #include "Hardware/Power.h"
 #include "Display/Display.h"
 #include "Hardware/HAL/HAL_PINS.h"
+#include "Modules/PCF8563/PCF8563.h"
 
 
 namespace Power
@@ -96,7 +97,7 @@ void Power::Update()
         Disable();
     }
 
-    if (pinPWR_CTRL.IsLow())
+    if (pinPWR_CTRL.IsLow() && !PCF8563::IsAlarmed())
     {
         Disable();
     }

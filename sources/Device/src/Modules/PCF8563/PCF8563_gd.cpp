@@ -232,6 +232,19 @@ void PCF8563::SetDateTime(RTCDateTime *DateTime)
 	HAL_I2C::Write(PCF8563_REG_TIME, tmp, 7);
 }
 
+
+void PCF8563::SetAlarm(RTCDateTime *time)
+{
+	uint8 tmp[3];
+
+	tmp[0] = time->Hour;
+	tmp[1] = time->Minute;
+	tmp[3] = date_time.Day;
+
+	HAL_I2C::Write(PCF8563_REG_ALARM_MINUTE, tmp, 3);
+}
+
+
 void PCF8563::CalculateDateTime(RTCDateTime *DateTime)
 {
 	DateTime->Second = bcd2dec((uint8)((buffer[0]) & 0x7F));
@@ -252,12 +265,14 @@ void PCF8563::Init()
 {
     ClkoutFrequency(CLKOUT_Freq::CLKOUT_FREQ_1HZ);
     STOPEnable(0);
-}
 
+	uint8 status2 = 0;
 
-void PCF8563::SetAlarm(RTCDateTime *)
-{
+	HAL_I2C::Read(PCF8563_REG_CONTROL_STATUS2, &status2, 1);
 
+	status2 |= (1 << 1);          // Включаем alarm interrupt AIE
+
+	HAL_I2C::Write(PCF8563_REG_CONTROL_STATUS2, &status2, 1);
 }
 
 
@@ -269,7 +284,18 @@ void PCF8563::Update()
 
     if (pinPWR_CTRL.IsLow() && time_alarm == 0)
     {
+		uint8 status2 = 0;
 
+		HAL_I2C::Read(PCF8563_REG_CONTROL_STATUS2, &status2, 1);
+
+		if (status2 & (1 << 3))
+		{
+			time_alarm = TIME_MS;
+
+			status2 &= ~(1 << 3);
+
+			HAL_I2C::Write(PCF8563_REG_CONTROL_STATUS2, &status2, 1);		// Очищаем флаг
+		}
     }
 }
 
