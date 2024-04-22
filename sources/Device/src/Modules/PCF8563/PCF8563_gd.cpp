@@ -271,8 +271,6 @@ void PCF8563::Update()
 		if (status2 & (1 << 3))			// INT
 		{
 			time_alarm = TIME_MS;
-
-			DisableAlarm();
 		}
     }
 }
