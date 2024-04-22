@@ -118,10 +118,10 @@ void Power::Draw()
 
 void Power::Update()
 {
-    if (HAL_ADC::GetVoltage(false) <= 3.5f)
-    {
-        Disable();
-    }
+//    if (HAL_ADC::GetVoltage(false) <= 3.5f)
+//    {
+//        Disable();
+//    }
 
     if (pinPWR_CTRL.IsLow() && !PCF8563::IsAlarmed())
     {
