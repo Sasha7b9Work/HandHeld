@@ -1,274 +1,459 @@
-// 2023/5/8 19:15:35 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
-#include "Hardware/HAL/HAL.h"
-#include "Hardware/HAL/HAL_PINS.h"
 #include "Hardware/Timer.h"
-#include "Settings/Settings.h"
+#include "Hardware/HAL/HAL.h"
+#include <stdlib.h>
 #include <gd32e23x.h>
- 
 
-#define I2C_SPEED              100000
-#define I2C_SLAVE_ADDRESS7     (0xa2)   // ��� �����
-#define I2C_PAGE_SIZE           8
+/*
+const uint ctrl10 = GPIO_CTL(GPIOB);
+const uint pupd10 = GPIO_PUD(GPIOB);
+
+uint ctrl = ctrl10;
+ctrl &= ~GPIO_MODE_MASK(10);
+ctrl &= ~GPIO_MODE_MASK(11);
+ctrl |= GPIO_MODE_SET(10, GPIO_MODE_OUTPUT);
+ctrl |= GPIO_MODE_SET(11, GPIO_MODE_OUTPUT);
+GPIO_CTL(GPIOB) = ctrl;
+uint pupd = pupd10;
+pupd &= ~GPIO_PUPD_MASK(10);
+pupd &= ~GPIO_PUPD_MASK(11)
+pupd |= GPIO_PUPD_SET(10, GPIO_PUPD_PULLUP);
+pupd |= GPIO_PUPD_SET(11, GPIO_PUPD_PULLUP);
+GPIO_PUD(GPIOB) = pupd;
+*/
+
+
+#ifdef WIN32
+    #define __asm(x)
+#endif
+
+
+// SCL PB10 21 - alternate I2C1
+// SDA PB11 22 - alternate I2C1
+
+
+#define SW_I2C_WAIT_TIME    1 // 10us 100kHz
+
+#define I2C_SLAVE_ADDRESS7     (0xa2)   // Для часов
+
+#define I2C_READ            0x01
+#define READ_CMD            1
+#define WRITE_CMD           0
+
+
+#ifndef TRUE
+#define TRUE 1
+#endif
+#ifndef FALSE
+#define FALSE 0
+#endif
+
+
+#define SDA_TO_LOW()    GPIO_BC(GPIOB) = (uint)GPIO_PIN_11
+#define SDA_TO_HI()     GPIO_BOP(GPIOB) = (uint)GPIO_PIN_11
+
+#define GET_SDA()       (GPIO_ISTAT(GPIOB)&(GPIO_PIN_11))
+
+#define SCL_TO_LOW()    GPIO_BC(GPIOB) = (uint)GPIO_PIN_10
+#define SCL_TO_HI()     GPIO_BOP(GPIOB) = (uint)GPIO_PIN_10
+
+#define DELAY()     __asm("NOP"); __asm("NOP"); __asm("NOP"); __asm("NOP"); __asm("NOP"); __asm("NOP"); __asm("NOP"); __asm("NOP"); __asm("NOP"); __asm("NOP"); __asm("NOP")
+
+
+static uint ctrl;
+
+
+static void sda_out(uint8_t out)
+{
+    if (out)
+    {
+        SDA_TO_HI();
+    }
+    else
+    {
+        SDA_TO_LOW();
+    }
+}
+
+
+static void i2c_clk_data_out()
+{
+    //tLOW not less than 1,3us (but already included 100ns tSU_DAT)
+    DELAY();
+    DELAY();
+    DELAY();
+    DELAY();
+    DELAY();
+    DELAY();
+    DELAY();
+    DELAY();
+    DELAY();
+    DELAY();
+    DELAY();
+    DELAY();
+    SCL_TO_HI();
+    //tHIGH not less than 600ns
+    DELAY();
+    DELAY();
+    DELAY();
+    DELAY();
+    DELAY();
+    DELAY();
+    SCL_TO_LOW();
+}
+
+static void i2c_start_condition()
+{
+    SDA_TO_HI();
+    //tLOW not less than 1,3us
+    DELAY();
+    DELAY();
+    DELAY();
+    DELAY();
+    DELAY();
+    DELAY();
+    DELAY();
+    DELAY();
+    DELAY();
+    DELAY();
+    DELAY();
+    DELAY();
+    DELAY();
+    SCL_TO_HI();
+    //tSU_STA, at least 600ns
+    DELAY();
+    DELAY();
+    DELAY();
+    DELAY();
+    DELAY();
+    DELAY();
+    SDA_TO_LOW();
+    //tHD_STA, at least 600ns delay
+    DELAY();
+    DELAY();
+    DELAY();
+    DELAY();
+    DELAY();
+    DELAY();
+    SCL_TO_LOW();
+    //no need delay for data hold time tHD_DAT
+    //DELAY();
+}
+
+
+static void i2c_stop_condition()
+{
+    SDA_TO_LOW();
+    //tLOW not less than 1,3us
+    DELAY();
+    DELAY();
+    DELAY();
+    DELAY();
+    DELAY();
+    DELAY();
+    DELAY();
+    DELAY();
+    DELAY();
+    DELAY();
+    DELAY();
+    DELAY();
+    DELAY();
+    SCL_TO_HI();
+    //tSU_STO not less than 600ns
+    DELAY();
+    DELAY();
+    DELAY();
+    DELAY();
+    DELAY();
+    DELAY();
+    SDA_TO_HI();
+}
+
+
+static uint8_t i2c_check_ack()
+{
+    uint8_t ack;
+
+    //release SDA
+    SDA_TO_HI();
+    //tLOW not less than 1,3us (but already included 100ns tSU_DAT)
+    DELAY();
+    DELAY();
+    DELAY();
+    DELAY();
+    DELAY();
+    DELAY();
+    DELAY();
+    DELAY();
+    DELAY();
+    DELAY();
+    DELAY();
+    DELAY();
+    SCL_TO_HI();
+    //tHIGH not less than 600ns
+    DELAY();
+    DELAY();
+    DELAY();
+    DELAY();
+    DELAY();
+    DELAY();
+    ack = !GET_SDA();
+    SCL_TO_LOW();
+    return ack;
+}
+
+static void i2c_slave_address(uint8_t IICID, uint8_t readwrite)
+{
+    if (readwrite)
+    {
+        IICID |= I2C_READ;
+    }
+    else
+    {
+        IICID &= ~I2C_READ;
+    }
+
+    for (int x = 7; x >= 0; x--)
+    {
+        uint8 bit = (IICID & (1 << x));
+        
+        sda_out(bit);
+        //data setup time tSU_DAT at least 100ns
+        DELAY();
+
+        i2c_clk_data_out();
+    }
+}
+
+static void i2c_register_address(uint8_t addr)
+{
+    for (int x = 7; x >= 0; x--)
+    {
+        sda_out((uint8)(addr & (1 << x)));
+        //data setup time tSU_DAT at least 100ns
+        DELAY();
+
+        i2c_clk_data_out();
+    }
+}
+
+static void i2c_send_ack(uint8_t ack)
+{
+    //set SDA, no need delay tHD_DAT=0
+    if(ack == TRUE)
+        SDA_TO_LOW();
+    else
+        SDA_TO_HI();
+    //tLOW not less than 1,3us
+    DELAY();
+    DELAY();
+    DELAY();
+    DELAY();
+    DELAY();
+    DELAY();
+    DELAY();
+    DELAY();
+    DELAY();
+    DELAY();
+    DELAY();
+    DELAY();
+    DELAY();
+    SCL_TO_HI();
+    //tHIGH not less than 600ns
+    DELAY();
+    DELAY();
+    DELAY();
+    DELAY();
+    DELAY();
+    DELAY();
+    SCL_TO_LOW();
+
+    //release SDA for energy saving purpose
+    SDA_TO_HI();
+}
+
+static uint8_t SW_I2C_Read_Data()
+{
+    uint8_t readdata = 0;
+    //release SDA
+    SDA_TO_HI();
+
+    for (int x = 8; x--;)
+    {
+        //tLOW not less than 1,3us (but already included 100ns tSU_DAT)
+        DELAY();
+        DELAY();
+        DELAY();
+        DELAY();
+        DELAY();
+        DELAY();
+        DELAY();
+        DELAY();
+        DELAY();
+        DELAY();
+        DELAY();
+        DELAY();
+        SCL_TO_HI();
+        //tHIGH not less than 600ns
+        DELAY();
+        DELAY();
+        DELAY();
+        DELAY();
+        DELAY();
+        DELAY();
+        readdata <<= 1;
+        if (GET_SDA())
+            readdata |= 0x01;
+        SCL_TO_LOW();
+    }
+    return readdata;
+}
+
+static uint8_t SW_I2C_Read_8addr(uint8_t IICID, uint8_t regaddr, uint8_t *pdata, uint8_t rcnt)
+{
+    uint8_t returnack = TRUE;
+    uint8_t index;
+
+    if (!rcnt) return FALSE;
+
+    i2c_start_condition();
+    i2c_slave_address(IICID, WRITE_CMD);
+    if (!i2c_check_ack()) { returnack = FALSE; }
+    i2c_register_address(regaddr);
+    if (!i2c_check_ack()) { returnack = FALSE; }
+    i2c_start_condition();                              //repeated START
+    i2c_slave_address(IICID, READ_CMD);
+    if (!i2c_check_ack()) { returnack = FALSE; }
+    if (rcnt > 1)
+    {
+        for (index = 0; index < (rcnt - 1); index++)
+        {
+            pdata[index] = SW_I2C_Read_Data();
+            i2c_send_ack(TRUE);
+        }
+    }
+    pdata[rcnt - 1] = SW_I2C_Read_Data();
+    i2c_send_ack(FALSE);
+    i2c_stop_condition();
+
+    return returnack;
+}
+
+/*
+static uint8_t SW_I2C_Read_16addr(uint8_t IICID, uint16_t regaddr, uint8_t *pdata, uint8_t rcnt)
+{
+    uint8_t returnack = TRUE;
+    uint8_t index;
+
+    if (!rcnt) return FALSE;
+
+    i2c_port_initial();
+    i2c_start_condition();
+    //写ID
+    i2c_slave_address(IICID, WRITE_CMD);
+    if (!i2c_check_ack()) { returnack = FALSE; }
+    DELAY();
+    //写高八位地址
+    i2c_register_address((uint8_t)(regaddr >> 8));
+    if (!i2c_check_ack()) { returnack = FALSE; }
+    DELAY();
+    //写低八位地址
+    i2c_register_address((uint8_t)regaddr);
+    if (!i2c_check_ack()) { returnack = FALSE; }
+    DELAY();
+    //重启I2C总线
+    i2c_start_condition();
+    //读ID
+    i2c_slave_address(IICID, READ_CMD);
+    if (!i2c_check_ack()) { returnack = FALSE; }
+    //循环读数据
+    if (rcnt > 1)
+    {
+        for (index = 0; index < (rcnt - 1); index++)
+        {
+            DELAY();
+            pdata[index] = SW_I2C_Read_Data();
+            i2c_send_ack();
+        }
+    }
+    DelayUS(SW_I2C_WAIT_TIME);
+    pdata[rcnt - 1] = SW_I2C_Read_Data();
+    i2c_check_not_ack();
+    i2c_stop_condition();
+
+    return returnack;
+}
+*/
+
+static uint8_t SW_I2C_Write_8addr(uint8_t IICID, uint8_t regaddr, const uint8_t *pdata, uint8_t rcnt)
+{
+    uint8_t returnack = TRUE;
+
+    if (!rcnt) return FALSE;
+
+    i2c_start_condition();
+    i2c_slave_address(IICID, WRITE_CMD);
+    if (!i2c_check_ack()) { returnack = FALSE; }
+    i2c_register_address(regaddr);
+    if (!i2c_check_ack()) { returnack = FALSE; }
+    for (int index = 0; index < rcnt; index++)
+    {
+        i2c_register_address(pdata[index]);
+        if (!i2c_check_ack()) { returnack = FALSE; }
+    }
+    i2c_stop_condition();
+    return returnack;
+}
+
+/*
+static uint8_t SW_I2C_Write_16addr(uint8_t IICID, uint16_t regaddr, uint8_t *pdata, uint8_t rcnt)
+{
+    uint8_t returnack = TRUE;
+
+    if (!rcnt) return FALSE;
+
+    i2c_port_initial();
+    i2c_start_condition();
+    //写ID
+    i2c_slave_address(IICID, WRITE_CMD);
+    if (!i2c_check_ack()) { returnack = FALSE; }
+    DELAY();
+    //写高八位地址
+    i2c_register_address((uint8_t)(regaddr >> 8));
+    if (!i2c_check_ack()) { returnack = FALSE; }
+    DELAY();
+    //写低八位地址
+    i2c_register_address((uint8_t)regaddr);
+    if (!i2c_check_ack()) { returnack = FALSE; }
+    DELAY();
+    //写数据
+    for (int index = 0; index < rcnt; index++)
+    {
+        SW_I2C_Write_Data(pdata[index]);
+        if (!i2c_check_ack()) { returnack = FALSE; }
+        DELAY();
+    }
+    i2c_stop_condition();
+    return returnack;
+}
+*/
 
 
 namespace HAL_I2C
 {
-    static const uint TIMEOUT = 100;
-
-    static bool WaitFlagYes(i2c_flag_enum);
-    static bool WaitFlagNo(i2c_flag_enum);
-}
-
-
-bool HAL_I2C::WaitFlagYes(i2c_flag_enum flag)
-{
-    TimeMeterMS meter;
-
-    while (i2c_flag_get(I2C_ADDR, flag))
+    void Init()
     {
-        if (meter.ElapsedTime() > TIMEOUT)
-        {
-            return false;
-        }
+        gpio_mode_set(GPIOB, GPIO_MODE_OUTPUT, GPIO_PUPD_PULLUP, GPIO_PIN_10 | GPIO_PIN_11);
+        gpio_output_options_set(GPIOB, GPIO_OTYPE_OD, GPIO_OSPEED_2MHZ, GPIO_PIN_10 | GPIO_PIN_11);
     }
 
-    return true;
-}
-
-
-bool HAL_I2C::WaitFlagNo(i2c_flag_enum flag)
-{
-    TimeMeterMS meter;
-
-    while (!i2c_flag_get(I2C_ADDR, flag))
+    bool Read(uint8 reg_addr, uint8 *reg_data, uint16 len)
     {
-        if (meter.ElapsedTime() > TIMEOUT)
-        {
-            return false;
-        }
+        return SW_I2C_Read_8addr((uint8)(I2C_SLAVE_ADDRESS7), reg_addr, reg_data, (uint8)len) == 1;
     }
 
-    return true;
-}
-
-
-void HAL_I2C::Init()
-{
-    // SCL PB10 21 - alternate I2C1
-    // SDA PB11 22 - alternate I2C1
-
-    gpio_af_set(GPIOB, GPIO_AF_1, GPIO_PIN_10);
-    gpio_af_set(GPIOB, GPIO_AF_1, GPIO_PIN_11);
-
-    gpio_mode_set(GPIOB, GPIO_MODE_AF, GPIO_PUPD_PULLUP, GPIO_PIN_10);
-    gpio_output_options_set(GPIOB, GPIO_OTYPE_OD, GPIO_OSPEED_50MHZ, GPIO_PIN_10);
-
-    /*
-    const uint ctrl10 = GPIO_CTL(GPIOB);
-    const uint pupd10 = GPIO_PUD(GPIOB);
-
-    uint ctrl = ctrl10;
-    ctrl &= ~GPIO_MODE_MASK(10);
-    ctrl &= ~GPIO_MODE_MASK(11);
-    ctrl |= GPIO_MODE_SET(10, GPIO_MODE_OUTPUT);
-    ctrl |= GPIO_MODE_SET(11, GPIO_MODE_OUTPUT);
-    GPIO_CTL(GPIOB) = ctrl;
-    uint pupd = pupd10;
-    pupd &= ~GPIO_PUPD_MASK(10);
-    pupd &= ~GPIO_PUPD_MASK(11)
-    pupd |= GPIO_PUPD_SET(10, GPIO_PUPD_PULLUP);
-    pupd |= GPIO_PUPD_SET(11, GPIO_PUPD_PULLUP);
-    GPIO_PUD(GPIOB) = pupd;
-    */
-
-    gpio_mode_set(GPIOB, GPIO_MODE_AF, GPIO_PUPD_PULLUP, GPIO_PIN_11);
-    gpio_output_options_set(GPIOB, GPIO_OTYPE_OD, GPIO_OSPEED_50MHZ, GPIO_PIN_11);
-
-    /* configure I2C clock */
-    i2c_clock_config(I2C_ADDR, I2C_SPEED, I2C_DTCY_2);
-
-    /* configure I2C address */
-    i2c_mode_addr_config(I2C_ADDR, I2C_I2CMODE_ENABLE, I2C_ADDFORMAT_7BITS, I2C_SLAVE_ADDRESS7);
-
-    /* enable I2C_ADDR */
-    i2c_enable(I2C_ADDR);
-
-    /* enable acknowledge */
-    i2c_ack_config(I2C_ADDR, I2C_ACK_ENABLE);
-}
-
-
-bool HAL_I2C::Write(uint8 command, uint8 *data, int size)
-{
-    TimeMeterMS meter;
-
-    /* wait until I2C bus is idle */
-    if (!WaitFlagYes(I2C_FLAG_I2CBSY))
+    bool Write(uint8 reg_addr, uint8 *reg_data, int len)
     {
-        return false;
+        return SW_I2C_Write_8addr((uint8)(I2C_SLAVE_ADDRESS7), reg_addr, reg_data, (uint8)len) == 1;
     }
-
-    /* send a start condition to I2C bus */
-    i2c_start_on_bus(I2C_ADDR);
-
-    /* wait until SBSEND bit is set */
-    if (!WaitFlagNo(I2C_FLAG_SBSEND))
-    {
-        return false;
-    }
-
-    /* send slave address to I2C bus */
-    i2c_master_addressing(I2C_ADDR, I2C_SLAVE_ADDRESS7, I2C_TRANSMITTER);
-
-    /* wait until ADDSEND bit is set */
-    WaitFlagNo(I2C_FLAG_ADDSEND);
-
-    /* N=1,reset ACKEN bit before clearing ADDRSEND bit */
-    i2c_ack_config(I2C_ADDR, I2C_ACK_DISABLE);
-
-    /* clear ADDSEND bit */
-    i2c_flag_clear(I2C_ADDR, I2C_FLAG_ADDSEND);
-
-    /* send command */
-    i2c_data_transmit(I2C_ADDR, command);
-
-    /* wait until the TBE bit is set */
-    WaitFlagNo(I2C_FLAG_TBE);
-
-    bool result = true;
-
-    /* send array of data */
-    for (int i = 0; i < size; i++)
-    {
-        i2c_data_transmit(I2C_ADDR, *data++);
-
-        /* wait until the TBE bit is set */
-        if (!WaitFlagNo(I2C_FLAG_TBE))
-        {
-            result = false;
-
-            break;
-        }
-    }
-
-    /* send a stop condition to I2C bus */
-    i2c_stop_on_bus(I2C_ADDR);
-
-    /* wait until stop condition generate */
-    while (I2C_CTL0(I2C_ADDR) & 0x0200)
-    {
-        if (meter.ElapsedTime() > TIMEOUT)
-        {
-            result = false;
-
-            break;
-        }
-    }
-
-    /* Enable Acknowledge */
-    i2c_ack_config(I2C_ADDR, I2C_ACK_ENABLE);
-
-    return result;
-}
-
-
-bool HAL_I2C::Read(uint8 reg, uint8 *buf, uint16 len)
-{
-    TimeMeterMS meter;
-
-    bool result = true;
-
-    i2c_stop_on_bus(I2C_ADDR);
-
-    /* wait until I2C bus is idle */
-    WaitFlagYes(I2C_FLAG_I2CBSY);
-
-    /* send a start condition to I2C bus */
-    i2c_start_on_bus(I2C_ADDR);
-
-    /* wait until SBSEND bit is set */
-    WaitFlagNo(I2C_FLAG_SBSEND);
-
-    /* send slave address to I2C bus */
-    i2c_master_addressing(I2C_ADDR, I2C_SLAVE_ADDRESS7, I2C_TRANSMITTER);
-
-    /* wait until ADDSEND bit is set */
-    WaitFlagNo(I2C_FLAG_ADDSEND);
-
-    /* clear ADDSEND bit */
-    i2c_flag_clear(I2C_ADDR, I2C_FLAG_ADDSEND);
-
-    /* send command */
-    i2c_data_transmit(I2C_ADDR, reg);
-
-    WaitFlagNo(I2C_FLAG_TBE);
-
-    i2c_start_on_bus(I2C_ADDR);
-
-    WaitFlagNo(I2C_FLAG_SBSEND);
-
-    i2c_master_addressing(I2C_ADDR, I2C_SLAVE_ADDRESS7, I2C_RECEIVER);
-
-    WaitFlagNo(I2C_FLAG_ADDSEND);
-
-    i2c_flag_clear(I2C_ADDR, I2C_FLAG_ADDSEND);
-
-    if (len == 1)
-    {
-        i2c_ack_config(I2C_ADDR, I2C_ACK_DISABLE);
-
-        i2c_stop_on_bus(I2C_ADDR);
-
-        while (!i2c_flag_get(I2C_ADDR, I2C_FLAG_RBNE))
-        {
-            if (meter.ElapsedTime() > TIMEOUT)
-            {
-                result = false;
-                break;
-            }
-        }
-
-        buf[0] = i2c_data_receive(I2C_ADDR);
-    }
-    else
-    {
-        for (int i = 0; i < len; i++)
-        {
-            if (i == len - 1)
-            {
-                i2c_ack_config(I2C_ADDR, I2C_ACK_DISABLE);
-                i2c_stop_on_bus(I2C_ADDR);
-            }
-
-            while (!i2c_flag_get(I2C_ADDR, I2C_FLAG_RBNE))
-            {
-                if (meter.ElapsedTime() > TIMEOUT)
-                {
-                    result = false;
-                    break;
-                }
-            }
-
-            buf[i] = i2c_data_receive(I2C_ADDR);
-        }
-    }
-
-    /* send a stop condition to I2C bus */
-    i2c_stop_on_bus(I2C_ADDR);
-
-    /* wait until stop condition generate */
-    while (I2C_CTL0(I2C_ADDR) & 0x0200)
-    {
-        if (meter.ElapsedTime() > TIMEOUT)
-        {
-            result = false;
-            break;
-        }
-    }
-
-    /* enable acknowledge */
-    i2c_ack_config(I2C_ADDR, I2C_ACK_ENABLE);
-
-    return result;
 }
