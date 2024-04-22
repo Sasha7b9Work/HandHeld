@@ -72,6 +72,8 @@ void Power::PowerDown()
     pinPWR.ToLow();
 
     LED::Driver::On();
+
+    while(true) { }
 }
 
 
