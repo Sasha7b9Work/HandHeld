@@ -25,8 +25,10 @@ void Power::Init()
 
     float voltage = HAL_ADC::GetVoltage(true);
 
-    if (voltage < 2.5f)
+    if (voltage < 3.0f)
     {
+        PCF8563::DisableAlarm();
+
         pinPWR.ToLow();
     }
     else if (voltage < 3.5f)

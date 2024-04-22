@@ -233,22 +233,6 @@ void PCF8563::SetDateTime(RTCDateTime *DateTime)
 }
 
 
-void PCF8563::SetAlarm(RTCDateTime *time)
-{
-	uint8 tmp[3] = { time->Hour, time->Minute, date_time.Day };
-
-	HAL_I2C::Write(PCF8563_REG_ALARM_MINUTE, tmp, 3);
-
-    uint8 status2 = 0;
-
-    HAL_I2C::Read(PCF8563_REG_CONTROL_STATUS2, &status2, 1);
-
-    status2 |= (1 << 1);          // Включаем alarm interrupt AIE
-
-    HAL_I2C::Write(PCF8563_REG_CONTROL_STATUS2, &status2, 1);
-}
-
-
 void PCF8563::CalculateDateTime(RTCDateTime *DateTime)
 {
 	DateTime->Second = bcd2dec((uint8)((buffer[0]) & 0x7F));
@@ -288,11 +272,37 @@ void PCF8563::Update()
 		{
 			time_alarm = TIME_MS;
 
-			status2 &= ~(1 << 3);
-
-			HAL_I2C::Write(PCF8563_REG_CONTROL_STATUS2, &status2, 1);		// Очищаем флаг
+			DisableAlarm();
 		}
     }
+}
+
+
+void PCF8563::SetAlarm(RTCDateTime *time)
+{
+    uint8 tmp[3] = { time->Hour, time->Minute, date_time.Day };
+
+    HAL_I2C::Write(PCF8563_REG_ALARM_MINUTE, tmp, 3);
+
+    uint8 status2 = 0;
+
+    HAL_I2C::Read(PCF8563_REG_CONTROL_STATUS2, &status2, 1);
+
+    status2 |= (1 << 1);          // Включаем alarm interrupt AIE
+
+    HAL_I2C::Write(PCF8563_REG_CONTROL_STATUS2, &status2, 1);
+}
+
+
+void PCF8563::DisableAlarm()
+{
+	uint8 status2 = 0;
+
+	HAL_I2C::Read(PCF8563_REG_CONTROL_STATUS2, &status2, 1);
+
+    status2 &= ~(1 << 3);
+
+    HAL_I2C::Write(PCF8563_REG_CONTROL_STATUS2, &status2, 1);		// Очищаем флаг
 }
 
 
