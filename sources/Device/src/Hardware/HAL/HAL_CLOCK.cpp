@@ -106,7 +106,9 @@ void HAL_CLOCK::SetLow()
     while (0U == (RCU_CTL0 & RCU_CTL0_IRC8MSTB)) {
     }
 
+#ifndef WIN32
     RCU_MODIFY(0x80);
+#endif
     RCU_CFG0 &= ~RCU_CFG0_SCS;
     RCU_CTL0 &= ~(RCU_CTL0_HXTALEN | RCU_CTL0_CKMEN | RCU_CTL0_PLLEN | RCU_CTL0_HXTALBPS);
     /* reset RCU */
@@ -187,7 +189,9 @@ void HAL_CLOCK::SetHi()
     while (0U == (RCU_CTL0 & RCU_CTL0_IRC8MSTB)) {
     }
 
+#ifndef WIN32
     RCU_MODIFY(0x80);
+#endif
     RCU_CFG0 &= ~RCU_CFG0_SCS;
     RCU_CTL0 &= ~(RCU_CTL0_HXTALEN | RCU_CTL0_CKMEN | RCU_CTL0_PLLEN | RCU_CTL0_HXTALBPS);
     /* reset RCU */
