@@ -5,6 +5,11 @@ sources/Device/Objects-Debug/*
 sources/Device/Listings/*
 sources/Device/Objects/*
 
+sources/Device/Listings-Debug-1602/*
+sources/Device/Objects-Debug-1602/*
+sources/Device/Listings-1602/*
+sources/Device/Objects-1602/*
+
 sources/DeviceEnergy/Listings-Debug/*
 sources/DeviceEnergy/Objects-Debug/*
 sources/DeviceEnergy/Listings/*

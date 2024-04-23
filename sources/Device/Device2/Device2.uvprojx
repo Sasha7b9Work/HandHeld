@@ -48,14 +48,14 @@
             <NotGenerated>0</NotGenerated>
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
-          <OutputDirectory>.\Objects-Debug\</OutputDirectory>
+          <OutputDirectory>..\Objects-1602\</OutputDirectory>
           <OutputName>Project</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>0</CreateHexFile>
           <DebugInformation>1</DebugInformation>
           <BrowseInformation>1</BrowseInformation>
-          <ListingPath>.\Listings-Debug\</ListingPath>
+          <ListingPath>..\Listings-Debug-1602\</ListingPath>
           <HexFormatSelection>1</HexFormatSelection>
           <Merge32K>0</Merge32K>
           <CreateBatchFile>0</CreateBatchFile>
@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define>GD32E230, DEBUG</Define>
               <Undefine></Undefine>
-              <IncludePath>..\common\GD32E23x_Firmware_Library\Firmware\CMSIS\GD\GD32E23x;..\common\GD32E23x_Firmware_Library\Firmware\CMSIS\GD\GD32E23x\Include;.\src\Hardware\HAL;..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include;.\src</IncludePath>
+              <IncludePath>..\..\common\GD32E23x_Firmware_Library\Firmware\CMSIS\GD\GD32E23x;..\..\common\GD32E23x_Firmware_Library\Firmware\CMSIS\GD\GD32E23x\Include;..\src\Hardware\HAL;..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include;..\src</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -387,192 +387,192 @@
             <File>
               <FileName>gd32e23x_adc.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_adc.h</FilePath>
+              <FilePath>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_adc.h</FilePath>
             </File>
             <File>
               <FileName>gd32e23x_cmp.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_cmp.h</FilePath>
+              <FilePath>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_cmp.h</FilePath>
             </File>
             <File>
               <FileName>gd32e23x_crc.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_crc.h</FilePath>
+              <FilePath>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_crc.h</FilePath>
             </File>
             <File>
               <FileName>gd32e23x_dbg.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_dbg.h</FilePath>
+              <FilePath>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_dbg.h</FilePath>
             </File>
             <File>
               <FileName>gd32e23x_dma.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_dma.h</FilePath>
+              <FilePath>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_dma.h</FilePath>
             </File>
             <File>
               <FileName>gd32e23x_exti.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_exti.h</FilePath>
+              <FilePath>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_exti.h</FilePath>
             </File>
             <File>
               <FileName>gd32e23x_fmc.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_fmc.h</FilePath>
+              <FilePath>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_fmc.h</FilePath>
             </File>
             <File>
               <FileName>gd32e23x_fwdgt.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_fwdgt.h</FilePath>
+              <FilePath>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_fwdgt.h</FilePath>
             </File>
             <File>
               <FileName>gd32e23x_gpio.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_gpio.h</FilePath>
+              <FilePath>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_gpio.h</FilePath>
             </File>
             <File>
               <FileName>gd32e23x_i2c.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_i2c.h</FilePath>
+              <FilePath>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_i2c.h</FilePath>
             </File>
             <File>
               <FileName>gd32e23x_misc.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_misc.h</FilePath>
+              <FilePath>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_misc.h</FilePath>
             </File>
             <File>
               <FileName>gd32e23x_pmu.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_pmu.h</FilePath>
+              <FilePath>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_pmu.h</FilePath>
             </File>
             <File>
               <FileName>gd32e23x_rcu.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_rcu.h</FilePath>
+              <FilePath>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_rcu.h</FilePath>
             </File>
             <File>
               <FileName>gd32e23x_rtc.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_rtc.h</FilePath>
+              <FilePath>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_rtc.h</FilePath>
             </File>
             <File>
               <FileName>gd32e23x_spi.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_spi.h</FilePath>
+              <FilePath>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_spi.h</FilePath>
             </File>
             <File>
               <FileName>gd32e23x_syscfg.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_syscfg.h</FilePath>
+              <FilePath>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_syscfg.h</FilePath>
             </File>
             <File>
               <FileName>gd32e23x_timer.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_timer.h</FilePath>
+              <FilePath>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_timer.h</FilePath>
             </File>
             <File>
               <FileName>gd32e23x_usart.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_usart.h</FilePath>
+              <FilePath>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_usart.h</FilePath>
             </File>
             <File>
               <FileName>gd32e23x_wwdgt.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_wwdgt.h</FilePath>
+              <FilePath>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_wwdgt.h</FilePath>
             </File>
             <File>
               <FileName>gd32e23x_adc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_adc.c</FilePath>
+              <FilePath>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_adc.c</FilePath>
             </File>
             <File>
               <FileName>gd32e23x_cmp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_cmp.c</FilePath>
+              <FilePath>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_cmp.c</FilePath>
             </File>
             <File>
               <FileName>gd32e23x_crc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_crc.c</FilePath>
+              <FilePath>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_crc.c</FilePath>
             </File>
             <File>
               <FileName>gd32e23x_dbg.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_dbg.c</FilePath>
+              <FilePath>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_dbg.c</FilePath>
             </File>
             <File>
               <FileName>gd32e23x_dma.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_dma.c</FilePath>
+              <FilePath>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_dma.c</FilePath>
             </File>
             <File>
               <FileName>gd32e23x_exti.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_exti.c</FilePath>
+              <FilePath>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_exti.c</FilePath>
             </File>
             <File>
               <FileName>gd32e23x_fmc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_fmc.c</FilePath>
+              <FilePath>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_fmc.c</FilePath>
             </File>
             <File>
               <FileName>gd32e23x_fwdgt.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_fwdgt.c</FilePath>
+              <FilePath>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_fwdgt.c</FilePath>
             </File>
             <File>
               <FileName>gd32e23x_gpio.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_gpio.c</FilePath>
+              <FilePath>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_gpio.c</FilePath>
             </File>
             <File>
               <FileName>gd32e23x_i2c.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_i2c.c</FilePath>
+              <FilePath>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_i2c.c</FilePath>
             </File>
             <File>
               <FileName>gd32e23x_misc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_misc.c</FilePath>
+              <FilePath>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_misc.c</FilePath>
             </File>
             <File>
               <FileName>gd32e23x_pmu.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_pmu.c</FilePath>
+              <FilePath>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_pmu.c</FilePath>
             </File>
             <File>
               <FileName>gd32e23x_rcu.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_rcu.c</FilePath>
+              <FilePath>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_rcu.c</FilePath>
             </File>
             <File>
               <FileName>gd32e23x_rtc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_rtc.c</FilePath>
+              <FilePath>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_rtc.c</FilePath>
             </File>
             <File>
               <FileName>gd32e23x_spi.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_spi.c</FilePath>
+              <FilePath>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_spi.c</FilePath>
             </File>
             <File>
               <FileName>gd32e23x_syscfg.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_syscfg.c</FilePath>
+              <FilePath>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_syscfg.c</FilePath>
             </File>
             <File>
               <FileName>gd32e23x_timer.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_timer.c</FilePath>
+              <FilePath>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_timer.c</FilePath>
             </File>
             <File>
               <FileName>gd32e23x_usart.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_usart.c</FilePath>
+              <FilePath>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_usart.c</FilePath>
             </File>
             <File>
               <FileName>gd32e23x_wwdgt.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_wwdgt.c</FilePath>
+              <FilePath>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_wwdgt.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -582,27 +582,27 @@
             <File>
               <FileName>defines.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\defines.h</FilePath>
+              <FilePath>..\src\defines.h</FilePath>
             </File>
             <File>
               <FileName>main.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\main.cpp</FilePath>
+              <FilePath>..\src\main.cpp</FilePath>
             </File>
             <File>
               <FileName>Device.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Device.cpp</FilePath>
+              <FilePath>..\src\Device.cpp</FilePath>
             </File>
             <File>
               <FileName>Device.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Device.h</FilePath>
+              <FilePath>..\src\Device.h</FilePath>
             </File>
             <File>
               <FileName>opt.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\opt.h</FilePath>
+              <FilePath>..\src\opt.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -612,32 +612,32 @@
             <File>
               <FileName>Timer.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Hardware\Timer.cpp</FilePath>
+              <FilePath>..\src\Hardware\Timer.cpp</FilePath>
             </File>
             <File>
               <FileName>Timer.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Hardware\Timer.h</FilePath>
+              <FilePath>..\src\Hardware\Timer.h</FilePath>
             </File>
             <File>
               <FileName>Vibrato.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Hardware\Vibrato.cpp</FilePath>
+              <FilePath>..\src\Hardware\Vibrato.cpp</FilePath>
             </File>
             <File>
               <FileName>Vibrato.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Hardware\Vibrato.h</FilePath>
+              <FilePath>..\src\Hardware\Vibrato.h</FilePath>
             </File>
             <File>
               <FileName>Power.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Hardware\Power.cpp</FilePath>
+              <FilePath>..\src\Hardware\Power.cpp</FilePath>
             </File>
             <File>
               <FileName>Power.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Hardware\Power.h</FilePath>
+              <FilePath>..\src\Hardware\Power.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -647,12 +647,12 @@
             <File>
               <FileName>startup_gd32e23x.s</FileName>
               <FileType>2</FileType>
-              <FilePath>.\src\Hardware\CMSIS\startup_gd32e23x.s</FilePath>
+              <FilePath>..\src\Hardware\CMSIS\startup_gd32e23x.s</FilePath>
             </File>
             <File>
               <FileName>system_gd32e23x.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\src\Hardware\CMSIS\system_gd32e23x.c</FilePath>
+              <FilePath>..\src\Hardware\CMSIS\system_gd32e23x.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -662,72 +662,72 @@
             <File>
               <FileName>gd32e23x_it.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Hardware\HAL\gd32e23x_it.h</FilePath>
+              <FilePath>..\src\Hardware\HAL\gd32e23x_it.h</FilePath>
             </File>
             <File>
               <FileName>gd32e23x_libopt.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Hardware\HAL\gd32e23x_libopt.h</FilePath>
+              <FilePath>..\src\Hardware\HAL\gd32e23x_libopt.h</FilePath>
             </File>
             <File>
               <FileName>systick.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Hardware\HAL\systick.h</FilePath>
+              <FilePath>..\src\Hardware\HAL\systick.h</FilePath>
             </File>
             <File>
               <FileName>HAL_PINS.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Hardware\HAL\HAL_PINS.cpp</FilePath>
+              <FilePath>..\src\Hardware\HAL\HAL_PINS.cpp</FilePath>
             </File>
             <File>
               <FileName>HAL_PINS.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Hardware\HAL\HAL_PINS.h</FilePath>
+              <FilePath>..\src\Hardware\HAL\HAL_PINS.h</FilePath>
             </File>
             <File>
               <FileName>HAL.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Hardware\HAL\HAL.cpp</FilePath>
+              <FilePath>..\src\Hardware\HAL\HAL.cpp</FilePath>
             </File>
             <File>
               <FileName>HAL.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Hardware\HAL\HAL.h</FilePath>
+              <FilePath>..\src\Hardware\HAL\HAL.h</FilePath>
             </File>
             <File>
               <FileName>HAL_I2C.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Hardware\HAL\HAL_I2C.cpp</FilePath>
+              <FilePath>..\src\Hardware\HAL\HAL_I2C.cpp</FilePath>
             </File>
             <File>
               <FileName>gd32e23x_it.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Hardware\HAL\gd32e23x_it.cpp</FilePath>
+              <FilePath>..\src\Hardware\HAL\gd32e23x_it.cpp</FilePath>
             </File>
             <File>
               <FileName>systick.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Hardware\HAL\systick.cpp</FilePath>
+              <FilePath>..\src\Hardware\HAL\systick.cpp</FilePath>
             </File>
             <File>
               <FileName>HAL_ADC.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Hardware\HAL\HAL_ADC.cpp</FilePath>
+              <FilePath>..\src\Hardware\HAL\HAL_ADC.cpp</FilePath>
             </File>
             <File>
               <FileName>HAL_TIM2.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Hardware\HAL\HAL_TIM2.cpp</FilePath>
+              <FilePath>..\src\Hardware\HAL\HAL_TIM2.cpp</FilePath>
             </File>
             <File>
               <FileName>HAL_ROM.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Hardware\HAL\HAL_ROM.cpp</FilePath>
+              <FilePath>..\src\Hardware\HAL\HAL_ROM.cpp</FilePath>
             </File>
             <File>
               <FileName>HAL_CLOCK.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Hardware\HAL\HAL_CLOCK.cpp</FilePath>
+              <FilePath>..\src\Hardware\HAL\HAL_CLOCK.cpp</FilePath>
             </File>
           </Files>
         </Group>
@@ -737,32 +737,32 @@
             <File>
               <FileName>Display.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Display\Display.cpp</FilePath>
+              <FilePath>..\src\Display\Display.cpp</FilePath>
             </File>
             <File>
               <FileName>Display.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Display\Display.h</FilePath>
+              <FilePath>..\src\Display\Display.h</FilePath>
             </File>
             <File>
               <FileName>Colors.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Display\Colors.cpp</FilePath>
+              <FilePath>..\src\Display\Colors.cpp</FilePath>
             </File>
             <File>
               <FileName>Colors.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Display\Colors.h</FilePath>
+              <FilePath>..\src\Display\Colors.h</FilePath>
             </File>
             <File>
               <FileName>Icons.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Display\Icons.cpp</FilePath>
+              <FilePath>..\src\Display\Icons.cpp</FilePath>
             </File>
             <File>
               <FileName>Icons.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Display\Icons.h</FilePath>
+              <FilePath>..\src\Display\Icons.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -772,32 +772,32 @@
             <File>
               <FileName>Display.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Display\Display.h</FilePath>
+              <FilePath>..\src\Display\Display.h</FilePath>
             </File>
             <File>
               <FileName>Font.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Display\Font\Font.cpp</FilePath>
+              <FilePath>..\src\Display\Font\Font.cpp</FilePath>
             </File>
             <File>
               <FileName>Font.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Display\Font\Font.h</FilePath>
+              <FilePath>..\src\Display\Font\Font.h</FilePath>
             </File>
             <File>
               <FileName>font5.inc</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Display\Font\font5.inc</FilePath>
+              <FilePath>..\src\Display\Font\font5.inc</FilePath>
             </File>
             <File>
               <FileName>font8.inc</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Display\Font\font8.inc</FilePath>
+              <FilePath>..\src\Display\Font\font8.inc</FilePath>
             </File>
             <File>
               <FileName>font10_7.inc</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Display\Font\font10_7.inc</FilePath>
+              <FilePath>..\src\Display\Font\font10_7.inc</FilePath>
             </File>
           </Files>
         </Group>
@@ -807,12 +807,12 @@
             <File>
               <FileName>Keyboard.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Keyboard\Keyboard.h</FilePath>
+              <FilePath>..\src\Keyboard\Keyboard.h</FilePath>
             </File>
             <File>
               <FileName>Keyboard.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Keyboard\Keyboard.cpp</FilePath>
+              <FilePath>..\src\Keyboard\Keyboard.cpp</FilePath>
             </File>
           </Files>
         </Group>
@@ -822,32 +822,32 @@
             <File>
               <FileName>Menu.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Menu\Menu.cpp</FilePath>
+              <FilePath>..\src\Menu\Menu.cpp</FilePath>
             </File>
             <File>
               <FileName>Menu.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Menu\Menu.h</FilePath>
+              <FilePath>..\src\Menu\Menu.h</FilePath>
             </File>
             <File>
               <FileName>MenuItems.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Menu\MenuItems.cpp</FilePath>
+              <FilePath>..\src\Menu\MenuItems.cpp</FilePath>
             </File>
             <File>
               <FileName>MenuItems.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Menu\MenuItems.h</FilePath>
+              <FilePath>..\src\Menu\MenuItems.h</FilePath>
             </File>
             <File>
               <FileName>Menu.txt</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Menu\Menu.txt</FilePath>
+              <FilePath>..\src\Menu\Menu.txt</FilePath>
             </File>
             <File>
               <FileName>MenuItemDef.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Menu\MenuItemDef.h</FilePath>
+              <FilePath>..\src\Menu\MenuItemDef.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -857,27 +857,27 @@
             <File>
               <FileName>Pages.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Menu\Pages\Pages.h</FilePath>
+              <FilePath>..\src\Menu\Pages\Pages.h</FilePath>
             </File>
             <File>
               <FileName>PageAlarm.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageAlarm.cpp</FilePath>
+              <FilePath>..\src\Menu\Pages\PageAlarm.cpp</FilePath>
             </File>
             <File>
               <FileName>PageJournal.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageJournal.cpp</FilePath>
+              <FilePath>..\src\Menu\Pages\PageJournal.cpp</FilePath>
             </File>
             <File>
               <FileName>PageWatch.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageWatch.cpp</FilePath>
+              <FilePath>..\src\Menu\Pages\PageWatch.cpp</FilePath>
             </File>
             <File>
               <FileName>Pages.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\Pages.cpp</FilePath>
+              <FilePath>..\src\Menu\Pages\Pages.cpp</FilePath>
             </File>
           </Files>
         </Group>
@@ -887,22 +887,22 @@
             <File>
               <FileName>Beeper.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Modules\Beeper\Beeper.cpp</FilePath>
+              <FilePath>..\src\Modules\Beeper\Beeper.cpp</FilePath>
             </File>
             <File>
               <FileName>Beeper.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Modules\Beeper\Beeper.h</FilePath>
+              <FilePath>..\src\Modules\Beeper\Beeper.h</FilePath>
             </File>
             <File>
               <FileName>driverBeeper.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Modules\Beeper\driverBeeper.cpp</FilePath>
+              <FilePath>..\src\Modules\Beeper\driverBeeper.cpp</FilePath>
             </File>
             <File>
               <FileName>driverBeeper.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Modules\Beeper\driverBeeper.h</FilePath>
+              <FilePath>..\src\Modules\Beeper\driverBeeper.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -912,17 +912,17 @@
             <File>
               <FileName>sound1.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Modules\Beeper\Sounds\sound1.h</FilePath>
+              <FilePath>..\src\Modules\Beeper\Sounds\sound1.h</FilePath>
             </File>
             <File>
               <FileName>sound2.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Modules\Beeper\Sounds\sound2.h</FilePath>
+              <FilePath>..\src\Modules\Beeper\Sounds\sound2.h</FilePath>
             </File>
             <File>
               <FileName>sound3.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Modules\Beeper\Sounds\sound3.h</FilePath>
+              <FilePath>..\src\Modules\Beeper\Sounds\sound3.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -932,12 +932,12 @@
             <File>
               <FileName>CMT2210AW.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Modules\CMT2210AW\CMT2210AW.cpp</FilePath>
+              <FilePath>..\src\Modules\CMT2210AW\CMT2210AW.cpp</FilePath>
             </File>
             <File>
               <FileName>CMT2210AW.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Modules\CMT2210AW\CMT2210AW.h</FilePath>
+              <FilePath>..\src\Modules\CMT2210AW\CMT2210AW.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -947,22 +947,22 @@
             <File>
               <FileName>driverLED.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Modules\LED\driverLED.cpp</FilePath>
+              <FilePath>..\src\Modules\LED\driverLED.cpp</FilePath>
             </File>
             <File>
               <FileName>driverLED.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Modules\LED\driverLED.h</FilePath>
+              <FilePath>..\src\Modules\LED\driverLED.h</FilePath>
             </File>
             <File>
               <FileName>LED.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Modules\LED\LED.cpp</FilePath>
+              <FilePath>..\src\Modules\LED\LED.cpp</FilePath>
             </File>
             <File>
               <FileName>LED.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Modules\LED\LED.h</FilePath>
+              <FilePath>..\src\Modules\LED\LED.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -972,17 +972,17 @@
             <File>
               <FileName>PCF8563.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Modules\PCF8563\PCF8563.cpp</FilePath>
+              <FilePath>..\src\Modules\PCF8563\PCF8563.cpp</FilePath>
             </File>
             <File>
               <FileName>PCF8563.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Modules\PCF8563\PCF8563.h</FilePath>
+              <FilePath>..\src\Modules\PCF8563\PCF8563.h</FilePath>
             </File>
             <File>
               <FileName>PCF8563_gd.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Modules\PCF8563\PCF8563_gd.cpp</FilePath>
+              <FilePath>..\src\Modules\PCF8563\PCF8563_gd.cpp</FilePath>
             </File>
           </Files>
         </Group>
@@ -992,12 +992,12 @@
             <File>
               <FileName>ST7735.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Modules\ST7735\ST7735.h</FilePath>
+              <FilePath>..\src\Modules\ST7735\ST7735.h</FilePath>
             </File>
             <File>
               <FileName>ST7735.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Modules\ST7735\ST7735.cpp</FilePath>
+              <FilePath>..\src\Modules\ST7735\ST7735.cpp</FilePath>
             </File>
           </Files>
         </Group>
@@ -1007,22 +1007,22 @@
             <File>
               <FileName>Settings.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Settings\Settings.cpp</FilePath>
+              <FilePath>..\src\Settings\Settings.cpp</FilePath>
             </File>
             <File>
               <FileName>Settings.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Settings\Settings.h</FilePath>
+              <FilePath>..\src\Settings\Settings.h</FilePath>
             </File>
             <File>
               <FileName>Source.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Settings\Source.cpp</FilePath>
+              <FilePath>..\src\Settings\Source.cpp</FilePath>
             </File>
             <File>
               <FileName>Source.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Settings\Source.h</FilePath>
+              <FilePath>..\src\Settings\Source.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -1032,12 +1032,12 @@
             <File>
               <FileName>Storage.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Storage\Storage.cpp</FilePath>
+              <FilePath>..\src\Storage\Storage.cpp</FilePath>
             </File>
             <File>
               <FileName>Storage.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Storage\Storage.h</FilePath>
+              <FilePath>..\src\Storage\Storage.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -1047,32 +1047,32 @@
             <File>
               <FileName>Math.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Utils\Math.cpp</FilePath>
+              <FilePath>..\src\Utils\Math.cpp</FilePath>
             </File>
             <File>
               <FileName>Math.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Utils\Math.h</FilePath>
+              <FilePath>..\src\Utils\Math.h</FilePath>
             </File>
             <File>
               <FileName>FPS.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Utils\FPS.cpp</FilePath>
+              <FilePath>..\src\Utils\FPS.cpp</FilePath>
             </File>
             <File>
               <FileName>FPS.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Utils\FPS.h</FilePath>
+              <FilePath>..\src\Utils\FPS.h</FilePath>
             </File>
             <File>
               <FileName>StringUtils.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Utils\StringUtils.cpp</FilePath>
+              <FilePath>..\src\Utils\StringUtils.cpp</FilePath>
             </File>
             <File>
               <FileName>StringUtils.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Utils\StringUtils.h</FilePath>
+              <FilePath>..\src\Utils\StringUtils.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -1120,14 +1120,14 @@
             <NotGenerated>0</NotGenerated>
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
-          <OutputDirectory>.\Objects\</OutputDirectory>
+          <OutputDirectory>..\Objects-1602\</OutputDirectory>
           <OutputName>Project</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>0</CreateHexFile>
           <DebugInformation>1</DebugInformation>
           <BrowseInformation>1</BrowseInformation>
-          <ListingPath>.\Listings\</ListingPath>
+          <ListingPath>..\Listings-1602\</ListingPath>
           <HexFormatSelection>1</HexFormatSelection>
           <Merge32K>0</Merge32K>
           <CreateBatchFile>0</CreateBatchFile>
@@ -1412,7 +1412,7 @@
               <MiscControls></MiscControls>
               <Define>GD32E230</Define>
               <Undefine></Undefine>
-              <IncludePath>..\common\GD32E23x_Firmware_Library\Firmware\CMSIS\GD\GD32E23x;..\common\GD32E23x_Firmware_Library\Firmware\CMSIS\GD\GD32E23x\Include;.\src\Hardware\HAL;..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include;.\src</IncludePath>
+              <IncludePath>..\..\common\GD32E23x_Firmware_Library\Firmware\CMSIS\GD\GD32E23x;..\..\common\GD32E23x_Firmware_Library\Firmware\CMSIS\GD\GD32E23x\Include;..\src\Hardware\HAL;..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include;..\src</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -1459,192 +1459,192 @@
             <File>
               <FileName>gd32e23x_adc.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_adc.h</FilePath>
+              <FilePath>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_adc.h</FilePath>
             </File>
             <File>
               <FileName>gd32e23x_cmp.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_cmp.h</FilePath>
+              <FilePath>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_cmp.h</FilePath>
             </File>
             <File>
               <FileName>gd32e23x_crc.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_crc.h</FilePath>
+              <FilePath>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_crc.h</FilePath>
             </File>
             <File>
               <FileName>gd32e23x_dbg.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_dbg.h</FilePath>
+              <FilePath>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_dbg.h</FilePath>
             </File>
             <File>
               <FileName>gd32e23x_dma.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_dma.h</FilePath>
+              <FilePath>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_dma.h</FilePath>
             </File>
             <File>
               <FileName>gd32e23x_exti.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_exti.h</FilePath>
+              <FilePath>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_exti.h</FilePath>
             </File>
             <File>
               <FileName>gd32e23x_fmc.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_fmc.h</FilePath>
+              <FilePath>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_fmc.h</FilePath>
             </File>
             <File>
               <FileName>gd32e23x_fwdgt.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_fwdgt.h</FilePath>
+              <FilePath>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_fwdgt.h</FilePath>
             </File>
             <File>
               <FileName>gd32e23x_gpio.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_gpio.h</FilePath>
+              <FilePath>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_gpio.h</FilePath>
             </File>
             <File>
               <FileName>gd32e23x_i2c.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_i2c.h</FilePath>
+              <FilePath>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_i2c.h</FilePath>
             </File>
             <File>
               <FileName>gd32e23x_misc.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_misc.h</FilePath>
+              <FilePath>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_misc.h</FilePath>
             </File>
             <File>
               <FileName>gd32e23x_pmu.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_pmu.h</FilePath>
+              <FilePath>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_pmu.h</FilePath>
             </File>
             <File>
               <FileName>gd32e23x_rcu.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_rcu.h</FilePath>
+              <FilePath>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_rcu.h</FilePath>
             </File>
             <File>
               <FileName>gd32e23x_rtc.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_rtc.h</FilePath>
+              <FilePath>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_rtc.h</FilePath>
             </File>
             <File>
               <FileName>gd32e23x_spi.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_spi.h</FilePath>
+              <FilePath>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_spi.h</FilePath>
             </File>
             <File>
               <FileName>gd32e23x_syscfg.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_syscfg.h</FilePath>
+              <FilePath>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_syscfg.h</FilePath>
             </File>
             <File>
               <FileName>gd32e23x_timer.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_timer.h</FilePath>
+              <FilePath>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_timer.h</FilePath>
             </File>
             <File>
               <FileName>gd32e23x_usart.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_usart.h</FilePath>
+              <FilePath>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_usart.h</FilePath>
             </File>
             <File>
               <FileName>gd32e23x_wwdgt.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_wwdgt.h</FilePath>
+              <FilePath>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_wwdgt.h</FilePath>
             </File>
             <File>
               <FileName>gd32e23x_adc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_adc.c</FilePath>
+              <FilePath>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_adc.c</FilePath>
             </File>
             <File>
               <FileName>gd32e23x_cmp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_cmp.c</FilePath>
+              <FilePath>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_cmp.c</FilePath>
             </File>
             <File>
               <FileName>gd32e23x_crc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_crc.c</FilePath>
+              <FilePath>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_crc.c</FilePath>
             </File>
             <File>
               <FileName>gd32e23x_dbg.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_dbg.c</FilePath>
+              <FilePath>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_dbg.c</FilePath>
             </File>
             <File>
               <FileName>gd32e23x_dma.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_dma.c</FilePath>
+              <FilePath>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_dma.c</FilePath>
             </File>
             <File>
               <FileName>gd32e23x_exti.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_exti.c</FilePath>
+              <FilePath>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_exti.c</FilePath>
             </File>
             <File>
               <FileName>gd32e23x_fmc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_fmc.c</FilePath>
+              <FilePath>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_fmc.c</FilePath>
             </File>
             <File>
               <FileName>gd32e23x_fwdgt.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_fwdgt.c</FilePath>
+              <FilePath>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_fwdgt.c</FilePath>
             </File>
             <File>
               <FileName>gd32e23x_gpio.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_gpio.c</FilePath>
+              <FilePath>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_gpio.c</FilePath>
             </File>
             <File>
               <FileName>gd32e23x_i2c.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_i2c.c</FilePath>
+              <FilePath>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_i2c.c</FilePath>
             </File>
             <File>
               <FileName>gd32e23x_misc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_misc.c</FilePath>
+              <FilePath>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_misc.c</FilePath>
             </File>
             <File>
               <FileName>gd32e23x_pmu.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_pmu.c</FilePath>
+              <FilePath>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_pmu.c</FilePath>
             </File>
             <File>
               <FileName>gd32e23x_rcu.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_rcu.c</FilePath>
+              <FilePath>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_rcu.c</FilePath>
             </File>
             <File>
               <FileName>gd32e23x_rtc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_rtc.c</FilePath>
+              <FilePath>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_rtc.c</FilePath>
             </File>
             <File>
               <FileName>gd32e23x_spi.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_spi.c</FilePath>
+              <FilePath>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_spi.c</FilePath>
             </File>
             <File>
               <FileName>gd32e23x_syscfg.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_syscfg.c</FilePath>
+              <FilePath>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_syscfg.c</FilePath>
             </File>
             <File>
               <FileName>gd32e23x_timer.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_timer.c</FilePath>
+              <FilePath>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_timer.c</FilePath>
             </File>
             <File>
               <FileName>gd32e23x_usart.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_usart.c</FilePath>
+              <FilePath>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_usart.c</FilePath>
             </File>
             <File>
               <FileName>gd32e23x_wwdgt.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_wwdgt.c</FilePath>
+              <FilePath>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_wwdgt.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1654,27 +1654,27 @@
             <File>
               <FileName>defines.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\defines.h</FilePath>
+              <FilePath>..\src\defines.h</FilePath>
             </File>
             <File>
               <FileName>main.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\main.cpp</FilePath>
+              <FilePath>..\src\main.cpp</FilePath>
             </File>
             <File>
               <FileName>Device.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Device.cpp</FilePath>
+              <FilePath>..\src\Device.cpp</FilePath>
             </File>
             <File>
               <FileName>Device.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Device.h</FilePath>
+              <FilePath>..\src\Device.h</FilePath>
             </File>
             <File>
               <FileName>opt.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\opt.h</FilePath>
+              <FilePath>..\src\opt.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -1684,32 +1684,32 @@
             <File>
               <FileName>Timer.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Hardware\Timer.cpp</FilePath>
+              <FilePath>..\src\Hardware\Timer.cpp</FilePath>
             </File>
             <File>
               <FileName>Timer.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Hardware\Timer.h</FilePath>
+              <FilePath>..\src\Hardware\Timer.h</FilePath>
             </File>
             <File>
               <FileName>Vibrato.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Hardware\Vibrato.cpp</FilePath>
+              <FilePath>..\src\Hardware\Vibrato.cpp</FilePath>
             </File>
             <File>
               <FileName>Vibrato.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Hardware\Vibrato.h</FilePath>
+              <FilePath>..\src\Hardware\Vibrato.h</FilePath>
             </File>
             <File>
               <FileName>Power.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Hardware\Power.cpp</FilePath>
+              <FilePath>..\src\Hardware\Power.cpp</FilePath>
             </File>
             <File>
               <FileName>Power.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Hardware\Power.h</FilePath>
+              <FilePath>..\src\Hardware\Power.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -1719,12 +1719,12 @@
             <File>
               <FileName>startup_gd32e23x.s</FileName>
               <FileType>2</FileType>
-              <FilePath>.\src\Hardware\CMSIS\startup_gd32e23x.s</FilePath>
+              <FilePath>..\src\Hardware\CMSIS\startup_gd32e23x.s</FilePath>
             </File>
             <File>
               <FileName>system_gd32e23x.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\src\Hardware\CMSIS\system_gd32e23x.c</FilePath>
+              <FilePath>..\src\Hardware\CMSIS\system_gd32e23x.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1734,72 +1734,72 @@
             <File>
               <FileName>gd32e23x_it.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Hardware\HAL\gd32e23x_it.h</FilePath>
+              <FilePath>..\src\Hardware\HAL\gd32e23x_it.h</FilePath>
             </File>
             <File>
               <FileName>gd32e23x_libopt.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Hardware\HAL\gd32e23x_libopt.h</FilePath>
+              <FilePath>..\src\Hardware\HAL\gd32e23x_libopt.h</FilePath>
             </File>
             <File>
               <FileName>systick.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Hardware\HAL\systick.h</FilePath>
+              <FilePath>..\src\Hardware\HAL\systick.h</FilePath>
             </File>
             <File>
               <FileName>HAL_PINS.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Hardware\HAL\HAL_PINS.cpp</FilePath>
+              <FilePath>..\src\Hardware\HAL\HAL_PINS.cpp</FilePath>
             </File>
             <File>
               <FileName>HAL_PINS.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Hardware\HAL\HAL_PINS.h</FilePath>
+              <FilePath>..\src\Hardware\HAL\HAL_PINS.h</FilePath>
             </File>
             <File>
               <FileName>HAL.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Hardware\HAL\HAL.cpp</FilePath>
+              <FilePath>..\src\Hardware\HAL\HAL.cpp</FilePath>
             </File>
             <File>
               <FileName>HAL.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Hardware\HAL\HAL.h</FilePath>
+              <FilePath>..\src\Hardware\HAL\HAL.h</FilePath>
             </File>
             <File>
               <FileName>HAL_I2C.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Hardware\HAL\HAL_I2C.cpp</FilePath>
+              <FilePath>..\src\Hardware\HAL\HAL_I2C.cpp</FilePath>
             </File>
             <File>
               <FileName>gd32e23x_it.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Hardware\HAL\gd32e23x_it.cpp</FilePath>
+              <FilePath>..\src\Hardware\HAL\gd32e23x_it.cpp</FilePath>
             </File>
             <File>
               <FileName>systick.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Hardware\HAL\systick.cpp</FilePath>
+              <FilePath>..\src\Hardware\HAL\systick.cpp</FilePath>
             </File>
             <File>
               <FileName>HAL_ADC.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Hardware\HAL\HAL_ADC.cpp</FilePath>
+              <FilePath>..\src\Hardware\HAL\HAL_ADC.cpp</FilePath>
             </File>
             <File>
               <FileName>HAL_TIM2.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Hardware\HAL\HAL_TIM2.cpp</FilePath>
+              <FilePath>..\src\Hardware\HAL\HAL_TIM2.cpp</FilePath>
             </File>
             <File>
               <FileName>HAL_ROM.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Hardware\HAL\HAL_ROM.cpp</FilePath>
+              <FilePath>..\src\Hardware\HAL\HAL_ROM.cpp</FilePath>
             </File>
             <File>
               <FileName>HAL_CLOCK.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Hardware\HAL\HAL_CLOCK.cpp</FilePath>
+              <FilePath>..\src\Hardware\HAL\HAL_CLOCK.cpp</FilePath>
             </File>
           </Files>
         </Group>
@@ -1809,32 +1809,32 @@
             <File>
               <FileName>Display.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Display\Display.cpp</FilePath>
+              <FilePath>..\src\Display\Display.cpp</FilePath>
             </File>
             <File>
               <FileName>Display.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Display\Display.h</FilePath>
+              <FilePath>..\src\Display\Display.h</FilePath>
             </File>
             <File>
               <FileName>Colors.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Display\Colors.cpp</FilePath>
+              <FilePath>..\src\Display\Colors.cpp</FilePath>
             </File>
             <File>
               <FileName>Colors.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Display\Colors.h</FilePath>
+              <FilePath>..\src\Display\Colors.h</FilePath>
             </File>
             <File>
               <FileName>Icons.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Display\Icons.cpp</FilePath>
+              <FilePath>..\src\Display\Icons.cpp</FilePath>
             </File>
             <File>
               <FileName>Icons.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Display\Icons.h</FilePath>
+              <FilePath>..\src\Display\Icons.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -1844,32 +1844,32 @@
             <File>
               <FileName>Display.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Display\Display.h</FilePath>
+              <FilePath>..\src\Display\Display.h</FilePath>
             </File>
             <File>
               <FileName>Font.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Display\Font\Font.cpp</FilePath>
+              <FilePath>..\src\Display\Font\Font.cpp</FilePath>
             </File>
             <File>
               <FileName>Font.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Display\Font\Font.h</FilePath>
+              <FilePath>..\src\Display\Font\Font.h</FilePath>
             </File>
             <File>
               <FileName>font5.inc</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Display\Font\font5.inc</FilePath>
+              <FilePath>..\src\Display\Font\font5.inc</FilePath>
             </File>
             <File>
               <FileName>font8.inc</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Display\Font\font8.inc</FilePath>
+              <FilePath>..\src\Display\Font\font8.inc</FilePath>
             </File>
             <File>
               <FileName>font10_7.inc</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Display\Font\font10_7.inc</FilePath>
+              <FilePath>..\src\Display\Font\font10_7.inc</FilePath>
             </File>
           </Files>
         </Group>
@@ -1879,12 +1879,12 @@
             <File>
               <FileName>Keyboard.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Keyboard\Keyboard.h</FilePath>
+              <FilePath>..\src\Keyboard\Keyboard.h</FilePath>
             </File>
             <File>
               <FileName>Keyboard.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Keyboard\Keyboard.cpp</FilePath>
+              <FilePath>..\src\Keyboard\Keyboard.cpp</FilePath>
             </File>
           </Files>
         </Group>
@@ -1894,32 +1894,32 @@
             <File>
               <FileName>Menu.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Menu\Menu.cpp</FilePath>
+              <FilePath>..\src\Menu\Menu.cpp</FilePath>
             </File>
             <File>
               <FileName>Menu.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Menu\Menu.h</FilePath>
+              <FilePath>..\src\Menu\Menu.h</FilePath>
             </File>
             <File>
               <FileName>MenuItems.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Menu\MenuItems.cpp</FilePath>
+              <FilePath>..\src\Menu\MenuItems.cpp</FilePath>
             </File>
             <File>
               <FileName>MenuItems.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Menu\MenuItems.h</FilePath>
+              <FilePath>..\src\Menu\MenuItems.h</FilePath>
             </File>
             <File>
               <FileName>Menu.txt</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Menu\Menu.txt</FilePath>
+              <FilePath>..\src\Menu\Menu.txt</FilePath>
             </File>
             <File>
               <FileName>MenuItemDef.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Menu\MenuItemDef.h</FilePath>
+              <FilePath>..\src\Menu\MenuItemDef.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -1929,27 +1929,27 @@
             <File>
               <FileName>Pages.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Menu\Pages\Pages.h</FilePath>
+              <FilePath>..\src\Menu\Pages\Pages.h</FilePath>
             </File>
             <File>
               <FileName>PageAlarm.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageAlarm.cpp</FilePath>
+              <FilePath>..\src\Menu\Pages\PageAlarm.cpp</FilePath>
             </File>
             <File>
               <FileName>PageJournal.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageJournal.cpp</FilePath>
+              <FilePath>..\src\Menu\Pages\PageJournal.cpp</FilePath>
             </File>
             <File>
               <FileName>PageWatch.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageWatch.cpp</FilePath>
+              <FilePath>..\src\Menu\Pages\PageWatch.cpp</FilePath>
             </File>
             <File>
               <FileName>Pages.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\Pages.cpp</FilePath>
+              <FilePath>..\src\Menu\Pages\Pages.cpp</FilePath>
             </File>
           </Files>
         </Group>
@@ -1959,22 +1959,22 @@
             <File>
               <FileName>Beeper.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Modules\Beeper\Beeper.cpp</FilePath>
+              <FilePath>..\src\Modules\Beeper\Beeper.cpp</FilePath>
             </File>
             <File>
               <FileName>Beeper.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Modules\Beeper\Beeper.h</FilePath>
+              <FilePath>..\src\Modules\Beeper\Beeper.h</FilePath>
             </File>
             <File>
               <FileName>driverBeeper.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Modules\Beeper\driverBeeper.cpp</FilePath>
+              <FilePath>..\src\Modules\Beeper\driverBeeper.cpp</FilePath>
             </File>
             <File>
               <FileName>driverBeeper.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Modules\Beeper\driverBeeper.h</FilePath>
+              <FilePath>..\src\Modules\Beeper\driverBeeper.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -1984,17 +1984,17 @@
             <File>
               <FileName>sound1.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Modules\Beeper\Sounds\sound1.h</FilePath>
+              <FilePath>..\src\Modules\Beeper\Sounds\sound1.h</FilePath>
             </File>
             <File>
               <FileName>sound2.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Modules\Beeper\Sounds\sound2.h</FilePath>
+              <FilePath>..\src\Modules\Beeper\Sounds\sound2.h</FilePath>
             </File>
             <File>
               <FileName>sound3.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Modules\Beeper\Sounds\sound3.h</FilePath>
+              <FilePath>..\src\Modules\Beeper\Sounds\sound3.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -2004,12 +2004,12 @@
             <File>
               <FileName>CMT2210AW.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Modules\CMT2210AW\CMT2210AW.cpp</FilePath>
+              <FilePath>..\src\Modules\CMT2210AW\CMT2210AW.cpp</FilePath>
             </File>
             <File>
               <FileName>CMT2210AW.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Modules\CMT2210AW\CMT2210AW.h</FilePath>
+              <FilePath>..\src\Modules\CMT2210AW\CMT2210AW.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -2019,22 +2019,22 @@
             <File>
               <FileName>driverLED.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Modules\LED\driverLED.cpp</FilePath>
+              <FilePath>..\src\Modules\LED\driverLED.cpp</FilePath>
             </File>
             <File>
               <FileName>driverLED.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Modules\LED\driverLED.h</FilePath>
+              <FilePath>..\src\Modules\LED\driverLED.h</FilePath>
             </File>
             <File>
               <FileName>LED.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Modules\LED\LED.cpp</FilePath>
+              <FilePath>..\src\Modules\LED\LED.cpp</FilePath>
             </File>
             <File>
               <FileName>LED.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Modules\LED\LED.h</FilePath>
+              <FilePath>..\src\Modules\LED\LED.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -2044,17 +2044,17 @@
             <File>
               <FileName>PCF8563.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Modules\PCF8563\PCF8563.cpp</FilePath>
+              <FilePath>..\src\Modules\PCF8563\PCF8563.cpp</FilePath>
             </File>
             <File>
               <FileName>PCF8563.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Modules\PCF8563\PCF8563.h</FilePath>
+              <FilePath>..\src\Modules\PCF8563\PCF8563.h</FilePath>
             </File>
             <File>
               <FileName>PCF8563_gd.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Modules\PCF8563\PCF8563_gd.cpp</FilePath>
+              <FilePath>..\src\Modules\PCF8563\PCF8563_gd.cpp</FilePath>
             </File>
           </Files>
         </Group>
@@ -2064,12 +2064,12 @@
             <File>
               <FileName>ST7735.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Modules\ST7735\ST7735.h</FilePath>
+              <FilePath>..\src\Modules\ST7735\ST7735.h</FilePath>
             </File>
             <File>
               <FileName>ST7735.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Modules\ST7735\ST7735.cpp</FilePath>
+              <FilePath>..\src\Modules\ST7735\ST7735.cpp</FilePath>
             </File>
           </Files>
         </Group>
@@ -2079,22 +2079,22 @@
             <File>
               <FileName>Settings.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Settings\Settings.cpp</FilePath>
+              <FilePath>..\src\Settings\Settings.cpp</FilePath>
             </File>
             <File>
               <FileName>Settings.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Settings\Settings.h</FilePath>
+              <FilePath>..\src\Settings\Settings.h</FilePath>
             </File>
             <File>
               <FileName>Source.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Settings\Source.cpp</FilePath>
+              <FilePath>..\src\Settings\Source.cpp</FilePath>
             </File>
             <File>
               <FileName>Source.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Settings\Source.h</FilePath>
+              <FilePath>..\src\Settings\Source.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -2104,12 +2104,12 @@
             <File>
               <FileName>Storage.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Storage\Storage.cpp</FilePath>
+              <FilePath>..\src\Storage\Storage.cpp</FilePath>
             </File>
             <File>
               <FileName>Storage.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Storage\Storage.h</FilePath>
+              <FilePath>..\src\Storage\Storage.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -2119,32 +2119,32 @@
             <File>
               <FileName>Math.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Utils\Math.cpp</FilePath>
+              <FilePath>..\src\Utils\Math.cpp</FilePath>
             </File>
             <File>
               <FileName>Math.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Utils\Math.h</FilePath>
+              <FilePath>..\src\Utils\Math.h</FilePath>
             </File>
             <File>
               <FileName>FPS.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Utils\FPS.cpp</FilePath>
+              <FilePath>..\src\Utils\FPS.cpp</FilePath>
             </File>
             <File>
               <FileName>FPS.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Utils\FPS.h</FilePath>
+              <FilePath>..\src\Utils\FPS.h</FilePath>
             </File>
             <File>
               <FileName>StringUtils.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Utils\StringUtils.cpp</FilePath>
+              <FilePath>..\src\Utils\StringUtils.cpp</FilePath>
             </File>
             <File>
               <FileName>StringUtils.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Utils\StringUtils.h</FilePath>
+              <FilePath>..\src\Utils\StringUtils.h</FilePath>
             </File>
           </Files>
         </Group>

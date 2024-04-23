@@ -28,7 +28,7 @@
     <TargetOption>
       <CLKADS>12000000</CLKADS>
       <OPTTT>
-        <gFlags>1</gFlags>
+        <gFlags>0</gFlags>
         <BeepAtEnd>1</BeepAtEnd>
         <RunSim>0</RunSim>
         <RunTarget>1</RunTarget>
@@ -45,7 +45,7 @@
         <PageWidth>79</PageWidth>
         <PageLength>66</PageLength>
         <TabStop>8</TabStop>
-        <ListingPath>.\Listings-Debug\</ListingPath>
+        <ListingPath>..\Listings-Debug-1602\</ListingPath>
       </OPTLEX>
       <ListingPage>
         <CreateCListing>1</CreateCListing>
@@ -75,7 +75,7 @@
       <OPTFL>
         <tvExp>1</tvExp>
         <tvExpOptDlg>0</tvExpOptDlg>
-        <IsCurrentTarget>1</IsCurrentTarget>
+        <IsCurrentTarget>0</IsCurrentTarget>
       </OPTFL>
       <CpuCode>255</CpuCode>
       <DebugOpt>
@@ -103,7 +103,7 @@
         <bEvRecOn>1</bEvRecOn>
         <bSchkAxf>0</bSchkAxf>
         <bTchkAxf>0</bTchkAxf>
-        <nTsel>14</nTsel>
+        <nTsel>13</nTsel>
         <sDll></sDll>
         <sDllPa></sDllPa>
         <sDlgDll></sDlgDll>
@@ -114,14 +114,9 @@
         <tDlgDll></tDlgDll>
         <tDlgPa></tDlgPa>
         <tIfile></tIfile>
-        <pMon>BIN\CMSIS_AGDI_V8M.DLL</pMon>
+        <pMon>BIN\UL2V8M.DLL</pMon>
       </DebugOpt>
       <TargetDriverDllRegistry>
-        <SetRegEntry>
-          <Number>0</Number>
-          <Key>CMSIS_AGDI_V8M</Key>
-          <Name>-X"Any" -UAny -O206 -S0 -C0 -P00000000 -TO65536 -TC10000000 -TT10000000 -TP20 -TDS8007 -TDT0 -TDC1F -TIEFFFFFFFF -TIP8 -FO11 -FD20000000 -FC1000 -FN1 -FF0GD32E23x.FLM -FS08000000 -FL010000 -FP0($$Device:GD32E230C8$Flash\GD32E23x.FLM)</Name>
-        </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
           <Key>UL2V8M</Key>
@@ -198,7 +193,7 @@
         <PageWidth>79</PageWidth>
         <PageLength>66</PageLength>
         <TabStop>8</TabStop>
-        <ListingPath>.\Listings\</ListingPath>
+        <ListingPath>..\Listings-1602\</ListingPath>
       </OPTLEX>
       <ListingPage>
         <CreateCListing>1</CreateCListing>
@@ -226,9 +221,9 @@
         <LExpSel>0</LExpSel>
       </OPTXL>
       <OPTFL>
-        <tvExp>1</tvExp>
+        <tvExp>0</tvExp>
         <tvExpOptDlg>0</tvExpOptDlg>
-        <IsCurrentTarget>0</IsCurrentTarget>
+        <IsCurrentTarget>1</IsCurrentTarget>
       </OPTFL>
       <CpuCode>255</CpuCode>
       <DebugOpt>
@@ -256,7 +251,7 @@
         <bEvRecOn>1</bEvRecOn>
         <bSchkAxf>0</bSchkAxf>
         <bTchkAxf>0</bTchkAxf>
-        <nTsel>14</nTsel>
+        <nTsel>13</nTsel>
         <sDll></sDll>
         <sDllPa></sDllPa>
         <sDlgDll></sDlgDll>
@@ -267,14 +262,9 @@
         <tDlgDll></tDlgDll>
         <tDlgPa></tDlgPa>
         <tIfile></tIfile>
-        <pMon>BIN\CMSIS_AGDI_V8M.DLL</pMon>
+        <pMon>BIN\UL2V8M.DLL</pMon>
       </DebugOpt>
       <TargetDriverDllRegistry>
-        <SetRegEntry>
-          <Number>0</Number>
-          <Key>CMSIS_AGDI_V8M</Key>
-          <Name>-X"Any" -UAny -O206 -S0 -C0 -P00000000 -TO65536 -TC10000000 -TT10000000 -TP20 -TDS8007 -TDT0 -TDC1F -TIEFFFFFFFF -TIP8 -FO11 -FD20000000 -FC1000 -FN1 -FF0GD32E23x.FLM -FS08000000 -FL010000 -FP0($$Device:GD32E230C8$Flash\GD32E23x.FLM)</Name>
-        </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
           <Key>UL2V8M</Key>
@@ -340,7 +330,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_adc.h</PathWithFileName>
+      <PathWithFileName>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_adc.h</PathWithFileName>
       <FilenameWithoutPath>gd32e23x_adc.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -352,7 +342,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_cmp.h</PathWithFileName>
+      <PathWithFileName>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_cmp.h</PathWithFileName>
       <FilenameWithoutPath>gd32e23x_cmp.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -364,7 +354,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_crc.h</PathWithFileName>
+      <PathWithFileName>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_crc.h</PathWithFileName>
       <FilenameWithoutPath>gd32e23x_crc.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -376,7 +366,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_dbg.h</PathWithFileName>
+      <PathWithFileName>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_dbg.h</PathWithFileName>
       <FilenameWithoutPath>gd32e23x_dbg.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -388,7 +378,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_dma.h</PathWithFileName>
+      <PathWithFileName>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_dma.h</PathWithFileName>
       <FilenameWithoutPath>gd32e23x_dma.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -400,7 +390,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_exti.h</PathWithFileName>
+      <PathWithFileName>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_exti.h</PathWithFileName>
       <FilenameWithoutPath>gd32e23x_exti.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -412,7 +402,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_fmc.h</PathWithFileName>
+      <PathWithFileName>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_fmc.h</PathWithFileName>
       <FilenameWithoutPath>gd32e23x_fmc.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -424,7 +414,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_fwdgt.h</PathWithFileName>
+      <PathWithFileName>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_fwdgt.h</PathWithFileName>
       <FilenameWithoutPath>gd32e23x_fwdgt.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -436,7 +426,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_gpio.h</PathWithFileName>
+      <PathWithFileName>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_gpio.h</PathWithFileName>
       <FilenameWithoutPath>gd32e23x_gpio.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -448,7 +438,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_i2c.h</PathWithFileName>
+      <PathWithFileName>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_i2c.h</PathWithFileName>
       <FilenameWithoutPath>gd32e23x_i2c.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -460,7 +450,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_misc.h</PathWithFileName>
+      <PathWithFileName>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_misc.h</PathWithFileName>
       <FilenameWithoutPath>gd32e23x_misc.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -472,7 +462,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_pmu.h</PathWithFileName>
+      <PathWithFileName>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_pmu.h</PathWithFileName>
       <FilenameWithoutPath>gd32e23x_pmu.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -484,7 +474,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_rcu.h</PathWithFileName>
+      <PathWithFileName>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_rcu.h</PathWithFileName>
       <FilenameWithoutPath>gd32e23x_rcu.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -496,7 +486,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_rtc.h</PathWithFileName>
+      <PathWithFileName>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_rtc.h</PathWithFileName>
       <FilenameWithoutPath>gd32e23x_rtc.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -508,7 +498,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_spi.h</PathWithFileName>
+      <PathWithFileName>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_spi.h</PathWithFileName>
       <FilenameWithoutPath>gd32e23x_spi.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -520,7 +510,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_syscfg.h</PathWithFileName>
+      <PathWithFileName>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_syscfg.h</PathWithFileName>
       <FilenameWithoutPath>gd32e23x_syscfg.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -532,7 +522,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_timer.h</PathWithFileName>
+      <PathWithFileName>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_timer.h</PathWithFileName>
       <FilenameWithoutPath>gd32e23x_timer.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -544,7 +534,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_usart.h</PathWithFileName>
+      <PathWithFileName>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_usart.h</PathWithFileName>
       <FilenameWithoutPath>gd32e23x_usart.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -556,7 +546,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_wwdgt.h</PathWithFileName>
+      <PathWithFileName>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include\gd32e23x_wwdgt.h</PathWithFileName>
       <FilenameWithoutPath>gd32e23x_wwdgt.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -568,7 +558,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_adc.c</PathWithFileName>
+      <PathWithFileName>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_adc.c</PathWithFileName>
       <FilenameWithoutPath>gd32e23x_adc.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -580,7 +570,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_cmp.c</PathWithFileName>
+      <PathWithFileName>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_cmp.c</PathWithFileName>
       <FilenameWithoutPath>gd32e23x_cmp.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -592,7 +582,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_crc.c</PathWithFileName>
+      <PathWithFileName>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_crc.c</PathWithFileName>
       <FilenameWithoutPath>gd32e23x_crc.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -604,7 +594,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_dbg.c</PathWithFileName>
+      <PathWithFileName>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_dbg.c</PathWithFileName>
       <FilenameWithoutPath>gd32e23x_dbg.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -616,7 +606,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_dma.c</PathWithFileName>
+      <PathWithFileName>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_dma.c</PathWithFileName>
       <FilenameWithoutPath>gd32e23x_dma.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -628,7 +618,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_exti.c</PathWithFileName>
+      <PathWithFileName>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_exti.c</PathWithFileName>
       <FilenameWithoutPath>gd32e23x_exti.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -640,7 +630,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_fmc.c</PathWithFileName>
+      <PathWithFileName>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_fmc.c</PathWithFileName>
       <FilenameWithoutPath>gd32e23x_fmc.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -652,7 +642,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_fwdgt.c</PathWithFileName>
+      <PathWithFileName>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_fwdgt.c</PathWithFileName>
       <FilenameWithoutPath>gd32e23x_fwdgt.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -664,7 +654,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_gpio.c</PathWithFileName>
+      <PathWithFileName>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_gpio.c</PathWithFileName>
       <FilenameWithoutPath>gd32e23x_gpio.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -676,7 +666,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_i2c.c</PathWithFileName>
+      <PathWithFileName>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_i2c.c</PathWithFileName>
       <FilenameWithoutPath>gd32e23x_i2c.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -688,7 +678,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_misc.c</PathWithFileName>
+      <PathWithFileName>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_misc.c</PathWithFileName>
       <FilenameWithoutPath>gd32e23x_misc.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -700,7 +690,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_pmu.c</PathWithFileName>
+      <PathWithFileName>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_pmu.c</PathWithFileName>
       <FilenameWithoutPath>gd32e23x_pmu.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -712,7 +702,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_rcu.c</PathWithFileName>
+      <PathWithFileName>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_rcu.c</PathWithFileName>
       <FilenameWithoutPath>gd32e23x_rcu.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -724,7 +714,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_rtc.c</PathWithFileName>
+      <PathWithFileName>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_rtc.c</PathWithFileName>
       <FilenameWithoutPath>gd32e23x_rtc.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -736,7 +726,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_spi.c</PathWithFileName>
+      <PathWithFileName>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_spi.c</PathWithFileName>
       <FilenameWithoutPath>gd32e23x_spi.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -748,7 +738,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_syscfg.c</PathWithFileName>
+      <PathWithFileName>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_syscfg.c</PathWithFileName>
       <FilenameWithoutPath>gd32e23x_syscfg.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -760,7 +750,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_timer.c</PathWithFileName>
+      <PathWithFileName>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_timer.c</PathWithFileName>
       <FilenameWithoutPath>gd32e23x_timer.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -772,7 +762,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_usart.c</PathWithFileName>
+      <PathWithFileName>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_usart.c</PathWithFileName>
       <FilenameWithoutPath>gd32e23x_usart.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -784,7 +774,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_wwdgt.c</PathWithFileName>
+      <PathWithFileName>..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Source\gd32e23x_wwdgt.c</PathWithFileName>
       <FilenameWithoutPath>gd32e23x_wwdgt.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -793,7 +783,7 @@
 
   <Group>
     <GroupName>src</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -804,7 +794,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\defines.h</PathWithFileName>
+      <PathWithFileName>..\src\defines.h</PathWithFileName>
       <FilenameWithoutPath>defines.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -816,7 +806,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\main.cpp</PathWithFileName>
+      <PathWithFileName>..\src\main.cpp</PathWithFileName>
       <FilenameWithoutPath>main.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -828,7 +818,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Device.cpp</PathWithFileName>
+      <PathWithFileName>..\src\Device.cpp</PathWithFileName>
       <FilenameWithoutPath>Device.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -840,7 +830,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Device.h</PathWithFileName>
+      <PathWithFileName>..\src\Device.h</PathWithFileName>
       <FilenameWithoutPath>Device.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -852,7 +842,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\opt.h</PathWithFileName>
+      <PathWithFileName>..\src\opt.h</PathWithFileName>
       <FilenameWithoutPath>opt.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -872,7 +862,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Hardware\Timer.cpp</PathWithFileName>
+      <PathWithFileName>..\src\Hardware\Timer.cpp</PathWithFileName>
       <FilenameWithoutPath>Timer.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -884,7 +874,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Hardware\Timer.h</PathWithFileName>
+      <PathWithFileName>..\src\Hardware\Timer.h</PathWithFileName>
       <FilenameWithoutPath>Timer.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -896,7 +886,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Hardware\Vibrato.cpp</PathWithFileName>
+      <PathWithFileName>..\src\Hardware\Vibrato.cpp</PathWithFileName>
       <FilenameWithoutPath>Vibrato.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -908,7 +898,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Hardware\Vibrato.h</PathWithFileName>
+      <PathWithFileName>..\src\Hardware\Vibrato.h</PathWithFileName>
       <FilenameWithoutPath>Vibrato.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -920,7 +910,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Hardware\Power.cpp</PathWithFileName>
+      <PathWithFileName>..\src\Hardware\Power.cpp</PathWithFileName>
       <FilenameWithoutPath>Power.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -932,7 +922,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Hardware\Power.h</PathWithFileName>
+      <PathWithFileName>..\src\Hardware\Power.h</PathWithFileName>
       <FilenameWithoutPath>Power.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -952,7 +942,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Hardware\CMSIS\startup_gd32e23x.s</PathWithFileName>
+      <PathWithFileName>..\src\Hardware\CMSIS\startup_gd32e23x.s</PathWithFileName>
       <FilenameWithoutPath>startup_gd32e23x.s</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -964,7 +954,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Hardware\CMSIS\system_gd32e23x.c</PathWithFileName>
+      <PathWithFileName>..\src\Hardware\CMSIS\system_gd32e23x.c</PathWithFileName>
       <FilenameWithoutPath>system_gd32e23x.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -984,7 +974,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Hardware\HAL\gd32e23x_it.h</PathWithFileName>
+      <PathWithFileName>..\src\Hardware\HAL\gd32e23x_it.h</PathWithFileName>
       <FilenameWithoutPath>gd32e23x_it.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -996,7 +986,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Hardware\HAL\gd32e23x_libopt.h</PathWithFileName>
+      <PathWithFileName>..\src\Hardware\HAL\gd32e23x_libopt.h</PathWithFileName>
       <FilenameWithoutPath>gd32e23x_libopt.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1008,7 +998,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Hardware\HAL\systick.h</PathWithFileName>
+      <PathWithFileName>..\src\Hardware\HAL\systick.h</PathWithFileName>
       <FilenameWithoutPath>systick.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1020,7 +1010,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Hardware\HAL\HAL_PINS.cpp</PathWithFileName>
+      <PathWithFileName>..\src\Hardware\HAL\HAL_PINS.cpp</PathWithFileName>
       <FilenameWithoutPath>HAL_PINS.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1032,7 +1022,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Hardware\HAL\HAL_PINS.h</PathWithFileName>
+      <PathWithFileName>..\src\Hardware\HAL\HAL_PINS.h</PathWithFileName>
       <FilenameWithoutPath>HAL_PINS.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1044,7 +1034,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Hardware\HAL\HAL.cpp</PathWithFileName>
+      <PathWithFileName>..\src\Hardware\HAL\HAL.cpp</PathWithFileName>
       <FilenameWithoutPath>HAL.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1056,7 +1046,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Hardware\HAL\HAL.h</PathWithFileName>
+      <PathWithFileName>..\src\Hardware\HAL\HAL.h</PathWithFileName>
       <FilenameWithoutPath>HAL.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1068,7 +1058,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Hardware\HAL\HAL_I2C.cpp</PathWithFileName>
+      <PathWithFileName>..\src\Hardware\HAL\HAL_I2C.cpp</PathWithFileName>
       <FilenameWithoutPath>HAL_I2C.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1080,7 +1070,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Hardware\HAL\gd32e23x_it.cpp</PathWithFileName>
+      <PathWithFileName>..\src\Hardware\HAL\gd32e23x_it.cpp</PathWithFileName>
       <FilenameWithoutPath>gd32e23x_it.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1092,7 +1082,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Hardware\HAL\systick.cpp</PathWithFileName>
+      <PathWithFileName>..\src\Hardware\HAL\systick.cpp</PathWithFileName>
       <FilenameWithoutPath>systick.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1104,7 +1094,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Hardware\HAL\HAL_ADC.cpp</PathWithFileName>
+      <PathWithFileName>..\src\Hardware\HAL\HAL_ADC.cpp</PathWithFileName>
       <FilenameWithoutPath>HAL_ADC.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1116,7 +1106,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Hardware\HAL\HAL_TIM2.cpp</PathWithFileName>
+      <PathWithFileName>..\src\Hardware\HAL\HAL_TIM2.cpp</PathWithFileName>
       <FilenameWithoutPath>HAL_TIM2.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1128,7 +1118,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Hardware\HAL\HAL_ROM.cpp</PathWithFileName>
+      <PathWithFileName>..\src\Hardware\HAL\HAL_ROM.cpp</PathWithFileName>
       <FilenameWithoutPath>HAL_ROM.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1140,7 +1130,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Hardware\HAL\HAL_CLOCK.cpp</PathWithFileName>
+      <PathWithFileName>..\src\Hardware\HAL\HAL_CLOCK.cpp</PathWithFileName>
       <FilenameWithoutPath>HAL_CLOCK.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1160,7 +1150,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Display\Display.cpp</PathWithFileName>
+      <PathWithFileName>..\src\Display\Display.cpp</PathWithFileName>
       <FilenameWithoutPath>Display.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1172,7 +1162,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Display\Display.h</PathWithFileName>
+      <PathWithFileName>..\src\Display\Display.h</PathWithFileName>
       <FilenameWithoutPath>Display.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1184,7 +1174,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Display\Colors.cpp</PathWithFileName>
+      <PathWithFileName>..\src\Display\Colors.cpp</PathWithFileName>
       <FilenameWithoutPath>Colors.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1196,7 +1186,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Display\Colors.h</PathWithFileName>
+      <PathWithFileName>..\src\Display\Colors.h</PathWithFileName>
       <FilenameWithoutPath>Colors.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1208,7 +1198,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Display\Icons.cpp</PathWithFileName>
+      <PathWithFileName>..\src\Display\Icons.cpp</PathWithFileName>
       <FilenameWithoutPath>Icons.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1220,7 +1210,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Display\Icons.h</PathWithFileName>
+      <PathWithFileName>..\src\Display\Icons.h</PathWithFileName>
       <FilenameWithoutPath>Icons.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1240,7 +1230,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Display\Display.h</PathWithFileName>
+      <PathWithFileName>..\src\Display\Display.h</PathWithFileName>
       <FilenameWithoutPath>Display.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1252,7 +1242,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Display\Font\Font.cpp</PathWithFileName>
+      <PathWithFileName>..\src\Display\Font\Font.cpp</PathWithFileName>
       <FilenameWithoutPath>Font.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1264,7 +1254,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Display\Font\Font.h</PathWithFileName>
+      <PathWithFileName>..\src\Display\Font\Font.h</PathWithFileName>
       <FilenameWithoutPath>Font.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1276,7 +1266,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Display\Font\font5.inc</PathWithFileName>
+      <PathWithFileName>..\src\Display\Font\font5.inc</PathWithFileName>
       <FilenameWithoutPath>font5.inc</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1288,7 +1278,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Display\Font\font8.inc</PathWithFileName>
+      <PathWithFileName>..\src\Display\Font\font8.inc</PathWithFileName>
       <FilenameWithoutPath>font8.inc</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1300,7 +1290,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Display\Font\font10_7.inc</PathWithFileName>
+      <PathWithFileName>..\src\Display\Font\font10_7.inc</PathWithFileName>
       <FilenameWithoutPath>font10_7.inc</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1320,7 +1310,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Keyboard\Keyboard.h</PathWithFileName>
+      <PathWithFileName>..\src\Keyboard\Keyboard.h</PathWithFileName>
       <FilenameWithoutPath>Keyboard.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1332,7 +1322,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Keyboard\Keyboard.cpp</PathWithFileName>
+      <PathWithFileName>..\src\Keyboard\Keyboard.cpp</PathWithFileName>
       <FilenameWithoutPath>Keyboard.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1352,7 +1342,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Menu\Menu.cpp</PathWithFileName>
+      <PathWithFileName>..\src\Menu\Menu.cpp</PathWithFileName>
       <FilenameWithoutPath>Menu.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1364,7 +1354,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Menu\Menu.h</PathWithFileName>
+      <PathWithFileName>..\src\Menu\Menu.h</PathWithFileName>
       <FilenameWithoutPath>Menu.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1376,7 +1366,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Menu\MenuItems.cpp</PathWithFileName>
+      <PathWithFileName>..\src\Menu\MenuItems.cpp</PathWithFileName>
       <FilenameWithoutPath>MenuItems.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1388,7 +1378,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Menu\MenuItems.h</PathWithFileName>
+      <PathWithFileName>..\src\Menu\MenuItems.h</PathWithFileName>
       <FilenameWithoutPath>MenuItems.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1400,7 +1390,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Menu\Menu.txt</PathWithFileName>
+      <PathWithFileName>..\src\Menu\Menu.txt</PathWithFileName>
       <FilenameWithoutPath>Menu.txt</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1412,7 +1402,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Menu\MenuItemDef.h</PathWithFileName>
+      <PathWithFileName>..\src\Menu\MenuItemDef.h</PathWithFileName>
       <FilenameWithoutPath>MenuItemDef.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1432,7 +1422,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Menu\Pages\Pages.h</PathWithFileName>
+      <PathWithFileName>..\src\Menu\Pages\Pages.h</PathWithFileName>
       <FilenameWithoutPath>Pages.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1444,7 +1434,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Menu\Pages\PageAlarm.cpp</PathWithFileName>
+      <PathWithFileName>..\src\Menu\Pages\PageAlarm.cpp</PathWithFileName>
       <FilenameWithoutPath>PageAlarm.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1456,7 +1446,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Menu\Pages\PageJournal.cpp</PathWithFileName>
+      <PathWithFileName>..\src\Menu\Pages\PageJournal.cpp</PathWithFileName>
       <FilenameWithoutPath>PageJournal.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1468,7 +1458,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Menu\Pages\PageWatch.cpp</PathWithFileName>
+      <PathWithFileName>..\src\Menu\Pages\PageWatch.cpp</PathWithFileName>
       <FilenameWithoutPath>PageWatch.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1480,7 +1470,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Menu\Pages\Pages.cpp</PathWithFileName>
+      <PathWithFileName>..\src\Menu\Pages\Pages.cpp</PathWithFileName>
       <FilenameWithoutPath>Pages.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1500,7 +1490,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Modules\Beeper\Beeper.cpp</PathWithFileName>
+      <PathWithFileName>..\src\Modules\Beeper\Beeper.cpp</PathWithFileName>
       <FilenameWithoutPath>Beeper.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1512,7 +1502,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Modules\Beeper\Beeper.h</PathWithFileName>
+      <PathWithFileName>..\src\Modules\Beeper\Beeper.h</PathWithFileName>
       <FilenameWithoutPath>Beeper.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1524,7 +1514,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Modules\Beeper\driverBeeper.cpp</PathWithFileName>
+      <PathWithFileName>..\src\Modules\Beeper\driverBeeper.cpp</PathWithFileName>
       <FilenameWithoutPath>driverBeeper.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1536,7 +1526,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Modules\Beeper\driverBeeper.h</PathWithFileName>
+      <PathWithFileName>..\src\Modules\Beeper\driverBeeper.h</PathWithFileName>
       <FilenameWithoutPath>driverBeeper.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1556,7 +1546,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Modules\Beeper\Sounds\sound1.h</PathWithFileName>
+      <PathWithFileName>..\src\Modules\Beeper\Sounds\sound1.h</PathWithFileName>
       <FilenameWithoutPath>sound1.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1568,7 +1558,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Modules\Beeper\Sounds\sound2.h</PathWithFileName>
+      <PathWithFileName>..\src\Modules\Beeper\Sounds\sound2.h</PathWithFileName>
       <FilenameWithoutPath>sound2.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1580,7 +1570,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Modules\Beeper\Sounds\sound3.h</PathWithFileName>
+      <PathWithFileName>..\src\Modules\Beeper\Sounds\sound3.h</PathWithFileName>
       <FilenameWithoutPath>sound3.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1600,7 +1590,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Modules\CMT2210AW\CMT2210AW.cpp</PathWithFileName>
+      <PathWithFileName>..\src\Modules\CMT2210AW\CMT2210AW.cpp</PathWithFileName>
       <FilenameWithoutPath>CMT2210AW.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1612,7 +1602,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Modules\CMT2210AW\CMT2210AW.h</PathWithFileName>
+      <PathWithFileName>..\src\Modules\CMT2210AW\CMT2210AW.h</PathWithFileName>
       <FilenameWithoutPath>CMT2210AW.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1632,7 +1622,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Modules\LED\driverLED.cpp</PathWithFileName>
+      <PathWithFileName>..\src\Modules\LED\driverLED.cpp</PathWithFileName>
       <FilenameWithoutPath>driverLED.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1644,7 +1634,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Modules\LED\driverLED.h</PathWithFileName>
+      <PathWithFileName>..\src\Modules\LED\driverLED.h</PathWithFileName>
       <FilenameWithoutPath>driverLED.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1656,7 +1646,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Modules\LED\LED.cpp</PathWithFileName>
+      <PathWithFileName>..\src\Modules\LED\LED.cpp</PathWithFileName>
       <FilenameWithoutPath>LED.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1668,7 +1658,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Modules\LED\LED.h</PathWithFileName>
+      <PathWithFileName>..\src\Modules\LED\LED.h</PathWithFileName>
       <FilenameWithoutPath>LED.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1688,7 +1678,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Modules\PCF8563\PCF8563.cpp</PathWithFileName>
+      <PathWithFileName>..\src\Modules\PCF8563\PCF8563.cpp</PathWithFileName>
       <FilenameWithoutPath>PCF8563.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1700,7 +1690,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Modules\PCF8563\PCF8563.h</PathWithFileName>
+      <PathWithFileName>..\src\Modules\PCF8563\PCF8563.h</PathWithFileName>
       <FilenameWithoutPath>PCF8563.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1712,7 +1702,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Modules\PCF8563\PCF8563_gd.cpp</PathWithFileName>
+      <PathWithFileName>..\src\Modules\PCF8563\PCF8563_gd.cpp</PathWithFileName>
       <FilenameWithoutPath>PCF8563_gd.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1732,7 +1722,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Modules\ST7735\ST7735.h</PathWithFileName>
+      <PathWithFileName>..\src\Modules\ST7735\ST7735.h</PathWithFileName>
       <FilenameWithoutPath>ST7735.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1744,7 +1734,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Modules\ST7735\ST7735.cpp</PathWithFileName>
+      <PathWithFileName>..\src\Modules\ST7735\ST7735.cpp</PathWithFileName>
       <FilenameWithoutPath>ST7735.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1764,7 +1754,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Settings\Settings.cpp</PathWithFileName>
+      <PathWithFileName>..\src\Settings\Settings.cpp</PathWithFileName>
       <FilenameWithoutPath>Settings.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1776,7 +1766,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Settings\Settings.h</PathWithFileName>
+      <PathWithFileName>..\src\Settings\Settings.h</PathWithFileName>
       <FilenameWithoutPath>Settings.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1788,7 +1778,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Settings\Source.cpp</PathWithFileName>
+      <PathWithFileName>..\src\Settings\Source.cpp</PathWithFileName>
       <FilenameWithoutPath>Source.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1800,7 +1790,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Settings\Source.h</PathWithFileName>
+      <PathWithFileName>..\src\Settings\Source.h</PathWithFileName>
       <FilenameWithoutPath>Source.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1820,7 +1810,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Storage\Storage.cpp</PathWithFileName>
+      <PathWithFileName>..\src\Storage\Storage.cpp</PathWithFileName>
       <FilenameWithoutPath>Storage.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1832,7 +1822,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Storage\Storage.h</PathWithFileName>
+      <PathWithFileName>..\src\Storage\Storage.h</PathWithFileName>
       <FilenameWithoutPath>Storage.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1852,7 +1842,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Utils\Math.cpp</PathWithFileName>
+      <PathWithFileName>..\src\Utils\Math.cpp</PathWithFileName>
       <FilenameWithoutPath>Math.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1864,7 +1854,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Utils\Math.h</PathWithFileName>
+      <PathWithFileName>..\src\Utils\Math.h</PathWithFileName>
       <FilenameWithoutPath>Math.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1876,7 +1866,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Utils\FPS.cpp</PathWithFileName>
+      <PathWithFileName>..\src\Utils\FPS.cpp</PathWithFileName>
       <FilenameWithoutPath>FPS.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1888,7 +1878,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Utils\FPS.h</PathWithFileName>
+      <PathWithFileName>..\src\Utils\FPS.h</PathWithFileName>
       <FilenameWithoutPath>FPS.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1900,7 +1890,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Utils\StringUtils.cpp</PathWithFileName>
+      <PathWithFileName>..\src\Utils\StringUtils.cpp</PathWithFileName>
       <FilenameWithoutPath>StringUtils.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1912,7 +1902,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Utils\StringUtils.h</PathWithFileName>
+      <PathWithFileName>..\src\Utils\StringUtils.h</PathWithFileName>
       <FilenameWithoutPath>StringUtils.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
