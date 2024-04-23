@@ -50,7 +50,7 @@ void Menu::Update()
         }
         else
         {
-            if (action.key == Key::Cancel && ST7735::TimeEnabled() > 100)
+            if (action.key == Key::Cancel && Display::TimeEnabled() > 100)
             {
                 Keyboard::ms_for_disable = 0;
             }

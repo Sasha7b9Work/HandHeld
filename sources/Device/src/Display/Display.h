@@ -27,6 +27,8 @@ namespace Display
 
     void DrawLowVoltage();
 
+    uint TimeEnabled();
+
     namespace Buffer
     {
         static const uint SIZE = WIDTH * HEIGHT / NUMBER_PARTS_HEIGHT;

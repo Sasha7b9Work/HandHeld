@@ -48,6 +48,7 @@ struct Source
     static uint TimeDestroy(E);
 
 private:
+
     Source::E value;
 
     // Который первый входит, тот первый и выходит

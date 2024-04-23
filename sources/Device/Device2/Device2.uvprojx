@@ -338,7 +338,7 @@
             <v6Rtti>0</v6Rtti>
             <VariousControls>
               <MiscControls></MiscControls>
-              <Define>GD32E230, DEBUG</Define>
+              <Define>GD32E230, DEBUG, TYPE_1602</Define>
               <Undefine></Undefine>
               <IncludePath>..\..\common\GD32E23x_Firmware_Library\Firmware\CMSIS\GD\GD32E23x;..\..\common\GD32E23x_Firmware_Library\Firmware\CMSIS\GD\GD32E23x\Include;..\src\Hardware\HAL;..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include;..\src</IncludePath>
             </VariousControls>
@@ -743,16 +743,6 @@
               <FileName>Colors.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\src\Display\Colors.h</FilePath>
-            </File>
-            <File>
-              <FileName>Icons.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\src\Display\Icons.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Icons.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\src\Display\Icons.h</FilePath>
             </File>
             <File>
               <FileName>Display1602.cpp</FileName>
@@ -1400,7 +1390,7 @@
             <v6Rtti>0</v6Rtti>
             <VariousControls>
               <MiscControls></MiscControls>
-              <Define>GD32E230</Define>
+              <Define>GD32E230, TYPE_1602</Define>
               <Undefine></Undefine>
               <IncludePath>..\..\common\GD32E23x_Firmware_Library\Firmware\CMSIS\GD\GD32E23x;..\..\common\GD32E23x_Firmware_Library\Firmware\CMSIS\GD\GD32E23x\Include;..\src\Hardware\HAL;..\..\common\GD32E23x_Firmware_Library\Firmware\GD32E23x_standard_peripheral\Include;..\src</IncludePath>
             </VariousControls>
@@ -1805,16 +1795,6 @@
               <FileName>Colors.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\src\Display\Colors.h</FilePath>
-            </File>
-            <File>
-              <FileName>Icons.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\src\Display\Icons.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Icons.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\src\Display\Icons.h</FilePath>
             </File>
             <File>
               <FileName>Display1602.cpp</FileName>

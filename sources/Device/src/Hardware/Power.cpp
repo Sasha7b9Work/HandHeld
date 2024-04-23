@@ -12,8 +12,11 @@
 
 namespace Power
 {
+#ifdef TYPE_1602
+#else
     static const int WIDTH = 38;
     static const int HEIGHT = 14;
+#endif
 
     static void PowerDown();
 }
@@ -101,6 +104,8 @@ void Power::Update()
 }
 
 
+#ifdef TYPE_1602
+#else
 void Power::Draw()
 {
     int x = 121;
@@ -151,3 +156,4 @@ void Power::Draw()
 
     Text<>("%.2f", (double)voltage).Write(x + 2, y + 3, Color::WHITE);
 }
+#endif

@@ -77,6 +77,12 @@ int Font::GetWidth(uint8 symbol)
 }
 
 
+#ifdef TYPE_1602
+int Char::Write(int x, int, const Color & /* = Color::NUMBER */) const
+{
+    return x;
+}
+#else
 int Char::Write(int x, int y, const Color &color) const
 {
     color.SetAsCurrent();
@@ -124,3 +130,4 @@ int Char::Write(int x, int y, const Color &color) const
 
     return x;
 }
+#endif
