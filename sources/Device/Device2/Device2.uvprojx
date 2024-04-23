@@ -735,16 +735,6 @@
           <GroupName>Display</GroupName>
           <Files>
             <File>
-              <FileName>Display.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\src\Display\Display.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Display.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\src\Display\Display.h</FilePath>
-            </File>
-            <File>
               <FileName>Colors.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>..\src\Display\Colors.cpp</FilePath>
@@ -763,6 +753,16 @@
               <FileName>Icons.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\src\Display\Icons.h</FilePath>
+            </File>
+            <File>
+              <FileName>Display1602.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\src\Display\Display1602.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Display1602.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\src\Display\Display1602.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -942,27 +942,17 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Modules/LED</GroupName>
+          <GroupName>Modules/ColorLED</GroupName>
           <Files>
             <File>
-              <FileName>driverLED.cpp</FileName>
+              <FileName>ColorLED.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>..\src\Modules\LED\driverLED.cpp</FilePath>
+              <FilePath>..\src\Modules\ColorLED\ColorLED.cpp</FilePath>
             </File>
             <File>
-              <FileName>driverLED.h</FileName>
+              <FileName>ColorLED.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\src\Modules\LED\driverLED.h</FilePath>
-            </File>
-            <File>
-              <FileName>LED.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\src\Modules\LED\LED.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>LED.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\src\Modules\LED\LED.h</FilePath>
+              <FilePath>..\src\Modules\ColorLED\ColorLED.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -987,17 +977,17 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Modules/ST7735</GroupName>
+          <GroupName>Modules/WH1602B</GroupName>
           <Files>
             <File>
-              <FileName>ST7735.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\src\Modules\ST7735\ST7735.h</FilePath>
+              <FileName>WH1602B.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\src\Modules\WH1602B\WH1602B.cpp</FilePath>
             </File>
             <File>
-              <FileName>ST7735.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\src\Modules\ST7735\ST7735.cpp</FilePath>
+              <FileName>WH1602B.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\src\Modules\WH1602B\WH1602B.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -1807,16 +1797,6 @@
           <GroupName>Display</GroupName>
           <Files>
             <File>
-              <FileName>Display.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\src\Display\Display.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Display.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\src\Display\Display.h</FilePath>
-            </File>
-            <File>
               <FileName>Colors.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>..\src\Display\Colors.cpp</FilePath>
@@ -1835,6 +1815,16 @@
               <FileName>Icons.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\src\Display\Icons.h</FilePath>
+            </File>
+            <File>
+              <FileName>Display1602.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\src\Display\Display1602.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Display1602.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\src\Display\Display1602.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -2014,27 +2004,17 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Modules/LED</GroupName>
+          <GroupName>Modules/ColorLED</GroupName>
           <Files>
             <File>
-              <FileName>driverLED.cpp</FileName>
+              <FileName>ColorLED.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>..\src\Modules\LED\driverLED.cpp</FilePath>
+              <FilePath>..\src\Modules\ColorLED\ColorLED.cpp</FilePath>
             </File>
             <File>
-              <FileName>driverLED.h</FileName>
+              <FileName>ColorLED.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\src\Modules\LED\driverLED.h</FilePath>
-            </File>
-            <File>
-              <FileName>LED.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\src\Modules\LED\LED.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>LED.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\src\Modules\LED\LED.h</FilePath>
+              <FilePath>..\src\Modules\ColorLED\ColorLED.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -2059,17 +2039,17 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Modules/ST7735</GroupName>
+          <GroupName>Modules/WH1602B</GroupName>
           <Files>
             <File>
-              <FileName>ST7735.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\src\Modules\ST7735\ST7735.h</FilePath>
+              <FileName>WH1602B.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\src\Modules\WH1602B\WH1602B.cpp</FilePath>
             </File>
             <File>
-              <FileName>ST7735.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\src\Modules\ST7735\ST7735.cpp</FilePath>
+              <FileName>WH1602B.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\src\Modules\WH1602B\WH1602B.h</FilePath>
             </File>
           </Files>
         </Group>

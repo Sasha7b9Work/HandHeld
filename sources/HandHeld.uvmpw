@@ -22,7 +22,6 @@
   <project>
     <PathAndName>.\Device\Device2\Device2.uvprojx</PathAndName>
     <NodeIsActive>1</NodeIsActive>
-    <NodeIsExpanded>1</NodeIsExpanded>
   </project>
 
 </ProjectWorkspace>
