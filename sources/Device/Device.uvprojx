@@ -924,6 +924,41 @@
               <FileType>5</FileType>
               <FilePath>.\src\Modules\Beeper\Sounds\sound3.h</FilePath>
             </File>
+            <File>
+              <FileName>sound4.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Modules\Beeper\Sounds\sound4.h</FilePath>
+            </File>
+            <File>
+              <FileName>sound5.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Modules\Beeper\Sounds\sound5.h</FilePath>
+            </File>
+            <File>
+              <FileName>sound6.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Modules\Beeper\Sounds\sound6.h</FilePath>
+            </File>
+            <File>
+              <FileName>sound7.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Modules\Beeper\Sounds\sound7.h</FilePath>
+            </File>
+            <File>
+              <FileName>sound8.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Modules\Beeper\Sounds\sound8.h</FilePath>
+            </File>
+            <File>
+              <FileName>sound9.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Modules\Beeper\Sounds\sound9.h</FilePath>
+            </File>
+            <File>
+              <FileName>sound10.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Modules\Beeper\Sounds\sound10.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1995,6 +2030,41 @@
               <FileName>sound3.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Modules\Beeper\Sounds\sound3.h</FilePath>
+            </File>
+            <File>
+              <FileName>sound4.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Modules\Beeper\Sounds\sound4.h</FilePath>
+            </File>
+            <File>
+              <FileName>sound5.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Modules\Beeper\Sounds\sound5.h</FilePath>
+            </File>
+            <File>
+              <FileName>sound6.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Modules\Beeper\Sounds\sound6.h</FilePath>
+            </File>
+            <File>
+              <FileName>sound7.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Modules\Beeper\Sounds\sound7.h</FilePath>
+            </File>
+            <File>
+              <FileName>sound8.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Modules\Beeper\Sounds\sound8.h</FilePath>
+            </File>
+            <File>
+              <FileName>sound9.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Modules\Beeper\Sounds\sound9.h</FilePath>
+            </File>
+            <File>
+              <FileName>sound10.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Modules\Beeper\Sounds\sound10.h</FilePath>
             </File>
           </Files>
         </Group>

@@ -41,11 +41,18 @@ struct Sound
 #include "Modules/Beeper/Sounds/sound1.h"
 #include "Modules/Beeper/Sounds/sound2.h"
 #include "Modules/Beeper/Sounds/sound3.h"
+#include "Modules/Beeper/Sounds/sound4.h"
+#include "Modules/Beeper/Sounds/sound5.h"
+#include "Modules/Beeper/Sounds/sound6.h"
+#include "Modules/Beeper/Sounds/sound7.h"
+#include "Modules/Beeper/Sounds/sound8.h"
+#include "Modules/Beeper/Sounds/sound9.h"
+#include "Modules/Beeper/Sounds/sound10.h"
 
 
 const Sound *Sound::sounds[TypeSound::Count] =
 {
-    &sound1, &sound2, &sound3, &sound1, &sound1, &sound1, &sound1, &sound1, &sound1, &sound1
+    &sound1, &sound2, &sound3, &sound4, &sound5, &sound6, &sound7, &sound8, &sound9, &sound10
 };
 
 
