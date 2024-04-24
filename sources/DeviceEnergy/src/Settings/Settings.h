@@ -69,12 +69,12 @@ struct SettingsSource
 // Настройки будильника
 struct SettingsAlarm
 {
-    uint8             enabled;
     Melody::E         melody;
     Volume::E         volume;
     ColorBell::E      colorBell;
     ModeIndication::E mode_indication;
     RTCDateTime       time;
+    uint8             enabled;
 };
 
 

@@ -16,12 +16,12 @@ Settings gset =
       {Melody::_4, Volume::Hi, ColorBell::White, ModeIndication::All},
       {Melody::_5, Volume::Hi, ColorBell::White, ModeIndication::All} },
     {
-        0,
         Melody::_1,
         Volume::Hi,
         ColorBell::White,
         ModeIndication::All,
-        { 0, 0, 0, 0, 0, 0 }
+        { 0, 0, 0, 0, 0, 0 },
+        0
     }
 };
 
