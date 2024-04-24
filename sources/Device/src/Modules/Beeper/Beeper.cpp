@@ -17,6 +17,20 @@ struct Note
 };
 
 
+static const float freqs[] =
+{
+    0.0f,  262.63f,  277.18f,  293.66f,  311.13f,  329.63f,  349.23f,  369.99f,  392.00f,  415.30f,  440.0f,  466.16f,  493.88f,
+           523.25f,  554.36f,  587.32f,  622.26f,  659.26f,  698.46f,  739.98f,  784.00f,  830.60f,  880.0f,  932.32f,  987.75f,
+          1046.50f, 1108.70f, 1174.60f, 1244.50f, 1318.50f, 1396.90f, 1480.00f, 1568.00f, 1661.20f, 1720.00f, 1864.60f, 1975.50f
+};
+
+
+static const uint pauses[] =
+{
+    32, 64, 128, 256, 512, 1024, 2048, 4096
+};
+
+
 struct Sound
 {
     const Note *const notes;        // В конце мелодии нулевые значения
@@ -41,6 +55,9 @@ private:
 
     // Столько нот в звуке
     static int NumberNotes();
+
+    // Возвращает частоту текущей ноты
+    static float GetFrequency();
 };
 
 
@@ -147,7 +164,27 @@ void Sound::Start(TypeSound::E type)
 
     time_note_start = TIME_MS;
 
-    Beeper::Driver::StartFrequency((float)current->notes[0].frequency, Beeper::volume);
+    Beeper::Driver::StartFrequency(GetFrequency(), Beeper::volume);
+}
+
+
+float Sound::GetFrequency()
+{
+    if (current->native)
+    {
+        return (float)current->notes[num_note].frequency;
+    }
+
+    uint8 code = (uint8)(current->notes[num_note].frequency & 0x1F);
+
+    if (code == 0)
+    {
+        num_note++;
+
+        code = (uint8)(current->notes[num_note].frequency & 0x1F);
+    }
+
+    return freqs[code];
 }
 
 
@@ -163,7 +200,7 @@ void Sound::Update()
         }
         else
         {
-            Beeper::Driver::StartFrequency((float)current->notes[num_note].frequency, Beeper::volume);
+            Beeper::Driver::StartFrequency(GetFrequency(), Beeper::volume);
 
             time_note_start = TIME_MS;
         }
@@ -173,7 +210,14 @@ void Sound::Update()
 
 uint Sound::TimeNoteFull()
 {
-    return current->notes[num_note].duration * 100U;
+    if (current->native)
+    {
+        return current->notes[num_note].duration * 100U;
+    }
+
+    uint8 code = (uint8)((current->notes[num_note].frequency >> 5) & 0x7);
+
+    return pauses[code];
 }
 
 
