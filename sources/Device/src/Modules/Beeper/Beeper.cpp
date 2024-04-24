@@ -20,15 +20,18 @@ struct Note
 struct Sound
 {
     const Note *const notes;        // В конце мелодии нулевые значения
+
+    static void Start(TypeSound::E);
+
+    static void Update();
+
+private:
+
     static int num_note;
     static uint time_note_start;    // В миллисекундах
     static const Sound *current;
 
     static const Sound *sounds[TypeSound::Count];
-
-    static void Start(TypeSound::E);
-
-    static void Update();
 
     // Полное время звучания проигрываемой ноты
     static uint TimeNoteFull();
