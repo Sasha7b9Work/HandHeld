@@ -154,6 +154,6 @@ void Power::Draw()
         }
     }
 
-    Text<>("%.2f", (double)voltage).Write(x + 2, y + 3, Color::WHITE);
+//    Text<>("%.2f", (double)voltage).Write(x + 2, y + 3, Color::WHITE);
 }
 #endif
