@@ -14,5 +14,5 @@ static const Note notes4[] =
 
 static const Sound sound4 =
 {
-    notes4
+    notes4, true
 };

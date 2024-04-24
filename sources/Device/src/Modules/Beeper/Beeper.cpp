@@ -21,6 +21,9 @@ struct Sound
 {
     const Note *const notes;        // В конце мелодии нулевые значения
 
+    const bool native;              // Если true - ноты играются, как есть.
+                                    // Если false - с преобразованием
+
     static void Start(TypeSound::E);
 
     static void Update();
