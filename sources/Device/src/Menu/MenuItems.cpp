@@ -48,19 +48,21 @@ void Page::Draw() const
     {
         Font::SetSize(2);
 
-        int num_words = SU::NumWordsInString(data->item->Title().c_str());
+        Text<> title = data->item->Title();
+
+        int num_words = SU::NumWordsInString(title.c_str());
 
         if (num_words == 1)
         {
-            data->item->Title().WriteInCenter(0, 30, Display::WIDTH, Color::GREEN);
+            title.WriteInCenter(0, 30, Display::WIDTH, Color::GREEN);
         }
         else if(num_words == 2)
         {
             char buffer[32];
 
-            Text<>(SU::GetWordFromString(data->item->Title().c_str(), 1, buffer)).WriteInCenter(0, 15, Display::WIDTH, Color::GREEN);
+            Text<>(SU::GetWordFromString(title.c_str(), 1, buffer)).WriteInCenter(0, 15, Display::WIDTH, Color::GREEN);
 
-            Text<>(SU::GetWordFromString(data->item->Title().c_str(), 2, buffer)).WriteInCenter(0, 45, Display::WIDTH);
+            Text<>(SU::GetWordFromString(title.c_str(), 2, buffer)).WriteInCenter(0, 45, Display::WIDTH);
         }
 
         Font::SetSize(1);
@@ -421,15 +423,17 @@ void Item::Open() const
 
     if (IsDateTime())
     {
-        *GetDateTime()->data->field = 0;
+        const DataDateTime *_data = GetDateTime()->data;
 
-        if (GetDateTime()->data->is_alarm)
+        *_data->field = 0;
+
+        if (_data->is_alarm)
         {
-            *GetDateTime()->data->date_time = gset.alarm.time;
+            *_data->date_time = gset.alarm.time;
         }
         else
         {
-            *GetDateTime()->data->date_time = PCF8563::GetDateTime();
+            *_data->date_time = PCF8563::GetDateTime();
         }
     }
 
