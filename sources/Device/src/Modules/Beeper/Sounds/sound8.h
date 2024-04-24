@@ -1,18 +1,15 @@
 #pragma once
 
 
-static const Note notes8[] =
+//Happy birthday
+static const uint8 notes8[] =
 {
-    { 600,  5, 9 },
-    { 400,  5, 8 },
-    { 800,  5, 9 },
-    { 1600, 5, 8 },
-    { 3200, 5, 9 },
-    { 0,    0, 0}
+    107,107,141,139,144,143,128,107,107,141,139,146,144,128,107,107,151,148,146,112,
+    111,149,117,117,148,144,146,144,128,0
 };
 
 
 static const Sound sound8 =
 {
-    notes8, true
+    nullptr, notes8
 };

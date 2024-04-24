@@ -1,18 +1,14 @@
 #pragma once
 
 
-static const Note notes3[] =
+// Ring 3
+static const uint8 notes3[] =
 {
-    { 1000, 5, 9 },
-    { 1000, 5, 8 },
-    { 1000, 5, 9 },
-    { 1000, 5, 8 },
-    { 1000, 5, 9 },
-    { 0,    0, 0 }
+    33,32,33,33,33,33,32,33,33,33,33,32,33,33,33,32,32,33,33,33,33,32,33,33,33,33,32,33,33,33,0
 };
 
 
 static const Sound sound3 =
 {
-    notes3, true
+    nullptr, notes3
 };

@@ -33,10 +33,8 @@ static const uint pauses[] =
 
 struct Sound
 {
-    const Note *const notes;        // В конце мелодии нулевые значения
-
-    const bool native;              // Если true - ноты играются, как есть.
-                                    // Если false - с преобразованием
+    const Note *const  notes;       // В конце мелодии нулевые значения
+    const uint8 *const composite;   // Здесь объединённые индексы частот и длительностей
 
     static void Start(TypeSound::E);
 
@@ -170,18 +168,18 @@ void Sound::Start(TypeSound::E type)
 
 float Sound::GetFrequency()
 {
-    if (current->native)
+    if (current->notes)
     {
         return (float)current->notes[num_note].frequency;
     }
 
-    uint8 code = (uint8)(current->notes[num_note].frequency & 0x1F);
+    uint8 code = (uint8)(current->composite[num_note] & 0x1F);
 
     if (code == 0)
     {
         num_note++;
 
-        code = (uint8)(current->notes[num_note].frequency & 0x1F);
+        code = (uint8)(current->composite[num_note] & 0x1F);
     }
 
     return freqs[code];
@@ -210,12 +208,12 @@ void Sound::Update()
 
 uint Sound::TimeNoteFull()
 {
-    if (current->native)
+    if (current->notes)
     {
         return current->notes[num_note].duration * 100U;
     }
 
-    uint8 code = (uint8)((current->notes[num_note].frequency >> 5) & 0x7);
+    uint8 code = (uint8)((current->composite[num_note] >> 5) & 0x7);
 
     return pauses[code];
 }
@@ -223,9 +221,20 @@ uint Sound::TimeNoteFull()
 
 int Sound::NumberNotes()
 {
+    if (current->notes)
+    {
+        for (int i = 0; ; i++)
+        {
+            if (current->notes[i].frequency == 0)
+            {
+                return i;
+            }
+        }
+    }
+
     for (int i = 0; ; i++)
     {
-        if (current->notes[i].frequency == 0)
+        if (current->composite[i] == 0)
         {
             return i;
         }
