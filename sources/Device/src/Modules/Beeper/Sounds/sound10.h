@@ -20,7 +20,7 @@
 * Имерский марш
 */
 
-static const Note notes1[] =
+static const Note notes10[] =
 {
     { 196,  10, 9 },  // М 5
     { 196,  10, 8 },  // М 5
@@ -46,7 +46,7 @@ static const Note notes1[] =
 };
 
 
-static const Sound sound1 =
+static const Sound sound10 =
 {
-    notes1, true
+    notes10, true
 };
