@@ -255,8 +255,6 @@ void PCF8563::Init()
 {
     ClkoutFrequency(CLKOUT_Freq::CLKOUT_FREQ_1HZ);
     STOPEnable(false);
-
-
 }
 
 
