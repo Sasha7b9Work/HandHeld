@@ -3,6 +3,8 @@
 #include "Modules/Beeper/driverBeeper.h"
 #include "Modules/Beeper/Beeper.h"
 #include "Hardware/Timer.h"
+#include "Modules/PCF8563/PCF8563.h"
+#include "Settings/Settings.h"
 #include <cmath>
 #ifdef GUI
     #include "GUI/Controls/PainterMelody.h"
@@ -200,6 +202,11 @@ void Sound::Update()
         if (num_note == NumberNotes())
         {
             Beeper::Stop();
+
+            if (Source::GetCountReceived() || PCF8563::IsAlarmed())
+            {
+                Beeper::Play(Beeper::sound, Beeper::volume);
+            }
         }
         else
         {
