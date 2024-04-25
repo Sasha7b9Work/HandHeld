@@ -329,17 +329,17 @@ uint Source::TimeDestroy(E v)
 
 bool ModeIndication::ConsistSound(E mode)
 {
-    return mode == Sound || mode == Sound_LED || mode == Sound_Vibro;
+    return mode == All || mode == Sound || mode == Sound_LED || mode == Sound_Vibro;
 }
 
 
 bool ModeIndication::ConsistLED(E mode)
 {
-    return mode == LED || mode == Sound_LED || mode == LED_Vibro;
+    return mode == All || mode == LED || mode == Sound_LED || mode == LED_Vibro;
 }
 
 
 bool ModeIndication::ConsistVibro(E mode)
 {
-    return mode == Vibro || mode == Sound_Vibro || mode == LED_Vibro;
+    return mode == All || mode == Vibro || mode == Sound_Vibro || mode == LED_Vibro;
 }
