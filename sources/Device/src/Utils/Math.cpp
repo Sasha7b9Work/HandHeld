@@ -54,7 +54,7 @@ uint Math::CalculateCRC32(const void *data, int size)
 
     while (size--)
     {
-        crc = CrcTable[crc ^ *pointer++] ^ (crc >> 8);
+        crc = CrcTable[((uint8)crc) ^ *pointer++] ^ (crc >> 8);
     }
 
     return crc;
