@@ -6,14 +6,18 @@
 
 namespace PageAlarm
 {
+    static void FuncOnChange()
+    {
+
+    }
+
     DEF_CHOICE_2(choiceEnabled, self, "бйкчвемн", &gset.alarm.enabled,
         "мер",
-        "дю"
+        "дю",
+        FuncOnChange
     );
 
     DEF_TIME(time, self, "бпелъ", true);
-
-    DEF_DATE(date, self, "дюрю", false);
 
     DEF_CHOICE_MODE_INDICATION(gset.alarm.mode_indication);
 
@@ -23,10 +27,9 @@ namespace PageAlarm
 
     DEF_CHOICE_COLOR(gset.alarm.color);
 
-    DEF_PAGE_7(pageAlarm, PageMain::self, "асдхкэмхй",
+    DEF_PAGE_6(pageAlarm, PageMain::self, "асдхкэмхй",
         &choiceEnabled,
         &time,
-        &date,
         &choiceModeIndication,
         &choiceMelody,
         &choiceVolume,

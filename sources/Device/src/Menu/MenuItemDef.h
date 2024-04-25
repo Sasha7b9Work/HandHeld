@@ -128,59 +128,59 @@ static const DataPage dp##name{&name, items##name, &current_item##name, func_dra
 static const Page page##name{&dp##name};                                                                                    \
 const Item name{&di##name, &page##name}
 
-#define DEF_CHOICE_2(name, keeper, title, value, name0, name1)                                                              \
+#define DEF_CHOICE_2(name, keeper, title, value, name0, name1, func_on_change)                                              \
 static int8 opened##name = 0;                                                                                               \
 static const DataItem di##name{ItemType::Choice, keeper, title, &opened##name};                                             \
 extern const Item name;                                                                                                     \
 static const pchar names##name[] = {name0, name1, nullptr};                                                                 \
-static const DataChoice dc##name{&name, value, &names##name[0], nullptr };                                                  \
+static const DataChoice dc##name{&name, func_on_change, value, &names##name[0], nullptr };                                  \
 static const Choice choice##name{&dc##name};                                                                                \
 const Item name{&di##name, &choice##name}
 
-#define DEF_CHOICE_3(name, keeper, title, value, name0, name1, name2)                                                       \
+#define DEF_CHOICE_3(name, keeper, title, value, name0, name1, name2, func_on_change)                                       \
 static int8 opened##name = 0;                                                                                               \
 static const DataItem di##name{ItemType::Choice, keeper, title, &opened##name};                                             \
 extern const Item name;                                                                                                     \
 static const pchar names##name[] = {name0, name1, name2, nullptr };                                                         \
-static const DataChoice dc##name{&name, value, &names##name[0], nullptr };                                                  \
+static const DataChoice dc##name{&name, func_on_change, value, &names##name[0], nullptr };                                  \
 static const Choice choice##name{&dc##name};                                                                                \
 const Item name{&di##name, &choice##name}
 
-#define DEF_CHOICE_7(name, keeper, title, value, name0, name1, name2, name3, name4, name5, name6)                           \
+#define DEF_CHOICE_7(name, keeper, title, value, name0, name1, name2, name3, name4, name5, name6, func_on_change)           \
 static int8 opened##name = 0;                                                                                               \
 static const DataItem di##name{ItemType::Choice, keeper, title, &opened##name};                                             \
 extern const Item name;                                                                                                     \
 static const pchar names##name[] = {name0, name1, name2, name3, name4, name5, name6, nullptr };                             \
-static const DataChoice dc##name{&name, value, &names##name[0], nullptr };                                                  \
+static const DataChoice dc##name{&name, func_on_change, value, &names##name[0], nullptr };                                  \
 static const Choice choice##name{&dc##name};                                                                                \
 const Item name{&di##name, &choice##name}
 
-#define DEF_CHOICE_8(name, keeper, title, value, name0, name1, name2, name3, name4, name5, name6, name7)                    \
+#define DEF_CHOICE_8(name, keeper, title, value, name0, name1, name2, name3, name4, name5, name6, name7, func_on_change)    \
 static int8 opened##name = 0;                                                                                               \
 static const DataItem di##name{ItemType::Choice, keeper, title, &opened##name};                                             \
 extern const Item name;                                                                                                     \
 static const pchar names##name[] = {name0, name1, name2, name3, name4, name5, name6, name7, nullptr };                      \
-static const DataChoice dc##name{&name, value, &names##name[0], nullptr };                                                  \
+static const DataChoice dc##name{&name, func_on_change, value, &names##name[0], nullptr };                                  \
 static const Choice choice##name{&dc##name};                                                                                \
 const Item name{&di##name, &choice##name}
 
-#define DEF_CHOICE_8_COLORS(name, keeper, title, value, name0, name1, name2, name3, name4, name5, name6, name7)             \
+#define DEF_CHOICE_8_COLORS(name, keeper, title, value, name0, name1, name2, name3, name4, name5, name6, name7, func_on_change)  \
 static int8 opened##name = 0;                                                                                               \
 static const DataItem di##name{ItemType::Choice, keeper, title, &opened##name};                                             \
 extern const Item name;                                                                                                     \
 static const pchar names##name[] = {name0, name1, name2, name3, name4, name5, name6, name7, nullptr };                      \
 static const Color::E colors##name[] = { Color::White, Color::Red, Color::Green, Color::Blue, Color::Gray, Color::Yellow,   \
     Color::Orange, Color::Purple };                                                                                         \
-static const DataChoice dc##name{&name, value, &names##name[0], &colors##name[0] };                                         \
+static const DataChoice dc##name{&name, func_on_change, value, &names##name[0], &colors##name[0] };                         \
 static const Choice choice##name{&dc##name};                                                                                \
 const Item name{&di##name, &choice##name}
 
-#define DEF_CHOICE_10(name, keeper, title, value, name0, name1, name2, name3, name4, name5, name6, name7, name8, name9)     \
+#define DEF_CHOICE_10(name, keeper, title, value, name0, name1, name2, name3, name4, name5, name6, name7, name8, name9, func_on_change)  \
 static int8 opened##name = 0;                                                                                               \
 static const DataItem di##name{ItemType::Choice, keeper, title, &opened##name};                                             \
 extern const Item name;                                                                                                     \
 static const pchar names##name[] = {name0, name1, name2, name3, name4, name5, name6, name7, name8, name9, nullptr };        \
-static const DataChoice dc##name{&name, value, &names##name[0], nullptr };                                                  \
+static const DataChoice dc##name{&name, func_on_change, value, &names##name[0], nullptr };                                  \
 static const Choice choice##name{&dc##name};                                                                                \
 const Item name{&di##name, &choice##name}
 
@@ -197,7 +197,8 @@ DEF_CHOICE_10(choiceMelody, self, "Ã≈ÀŒƒ»ﬂ", (uint8 *const)&set,            \
     Melody::Name(Melody::_7),                                               \
     Melody::Name(Melody::_8),                                               \
     Melody::Name(Melody::_9),                                               \
-    Melody::Name(Melody::_10)                                               \
+    Melody::Name(Melody::_10),                                              \
+    nullptr                                                                 \
 );
 
 #define DEF_CHOICE_MODE_INDICATION(set)                                     \
@@ -208,14 +209,16 @@ DEF_CHOICE_7(choiceModeIndication, self, "ŒœŒ¬≈Ÿ≈Õ»≈", (uint8 *const)&set,  \
     "«¬” +—¬≈“",                                                            \
     "«¬” +¬»¡–Œ",                                                           \
     "—¬≈“+¬»¡–Œ",                                                           \
-    "¬—≈"                                                                   \
+    "¬—≈",                                                                  \
+    nullptr                                                                 \
 );
 
 #define DEF_CHOICE_VOLUME(set)                                              \
 DEF_CHOICE_3(choiceVolume, self, "√–ŒÃ Œ—“‹", (uint8 *const)&set,           \
     "Õ»« ¿ﬂ",                                                               \
     "—–≈ƒÕﬂﬂ",                                                              \
-    "¬€—Œ ¿ﬂ"                                                               \
+    "¬€—Œ ¿ﬂ",                                                              \
+    nullptr                                                                 \
 );
 
 #define DEF_CHOICE_COLOR(set)                                               \
@@ -227,7 +230,8 @@ DEF_CHOICE_8_COLORS(choiceColor, self, "÷¬≈“", (uint8 *const)&set,          \
     Color::Name(Color::Gray),                                       \
     Color::Name(Color::Yellow),                                     \
     Color::Name(Color::Orange),                                     \
-    Color::Name(Color::Purple)                                      \
+    Color::Name(Color::Purple),                                     \
+    nullptr                                                         \
 );
 
 #define DEF_SOURCE_CHOICES(source)                                  \

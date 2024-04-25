@@ -109,6 +109,7 @@ private:
 struct DataChoice
 {
     const Item *item;
+    void (*func_on_change)();
     uint8 *const value;
     const pchar * const names;
     const Color::E * const colors;
