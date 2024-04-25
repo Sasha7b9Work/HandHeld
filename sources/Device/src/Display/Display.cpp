@@ -178,9 +178,9 @@ void Display::EndScene(int num_parts)
     {
         if (!ModeClock::IsHi())
         {
-            if (CMT2210AW::IsEnabled())
+            while (CMT2210AW::IsEnabled())
             {
-                return;
+                CMT2210AW::Update();
             }
         }
 
