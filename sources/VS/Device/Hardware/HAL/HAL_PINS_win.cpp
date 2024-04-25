@@ -4,6 +4,8 @@
 
 
 PinIn pinDOUT(0, 0);
+PinOut pinPWR(0, 0);
+PinIn pinPWR_CTRL(0, 0);
 
 
 void PinIn::Init()
@@ -14,5 +16,23 @@ void PinIn::Init()
 
 bool PinIn::IsHi() const
 {
-    return false;
+    return true;
+}
+
+
+void PinOut::Init()
+{
+
+}
+
+
+void PinOut::ToLow() const
+{
+
+}
+
+
+void PinOut::ToHi() const
+{
+
 }

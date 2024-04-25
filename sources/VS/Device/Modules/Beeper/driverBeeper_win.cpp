@@ -13,7 +13,7 @@ void Beeper::Driver::Init()
 }
 
 
-void Beeper::Driver::StartFrequency(float)
+void Beeper::Driver::StartFrequency(float, uint8)
 {
 }
 

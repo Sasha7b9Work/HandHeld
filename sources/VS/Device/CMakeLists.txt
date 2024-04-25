@@ -47,7 +47,9 @@ file(GLOB GUI_CONTROLS                          GUI/Controls/*.*)
 file(GLOB SRC                                   *.h *.cpp
                                    ../../Device/src/Device.*
                                    ../../Device/src/*.h)
-file(GLOB DISPLAY                  ../../Device/src/Display/*.*)
+file(GLOB DISPLAY                  ../../Device/src/Display/Colors.*
+                                   ../../Device/src/Display/Display.*
+                                   ../../Device/src/Display/Icons.*)
 file(GLOB DISPLAY_FONT             ../../Device/src/Display/Font/*.*)
 file(GLOB HARDWARE                 ../../Device/src/Hardware/Power.h
                                    ../../Device/src/Hardware/Power.*

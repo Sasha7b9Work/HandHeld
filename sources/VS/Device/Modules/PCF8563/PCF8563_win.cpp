@@ -51,3 +51,15 @@ void PCF8563::SetAlarm(RTCDateTime *)
 {
 
 }
+
+
+void PCF8563::AlarmFlagEnable(bool)
+{
+
+}
+
+
+bool PCF8563::IsAlarmed()
+{
+    return false;
+}

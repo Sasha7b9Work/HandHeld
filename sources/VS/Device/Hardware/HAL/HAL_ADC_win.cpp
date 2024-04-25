@@ -3,7 +3,7 @@
 #include "Hardware/HAL/HAL.h"
 
 
-float HAL_ADC::GetVoltage()
+float HAL_ADC::GetVoltage(bool)
 {
     return 3.6f;
 }

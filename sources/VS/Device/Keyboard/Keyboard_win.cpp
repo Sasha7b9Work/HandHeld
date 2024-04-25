@@ -6,6 +6,8 @@
 
 namespace Keyboard
 {
+    int ms_for_disable = 0;
+
     static const int MAX_ACTIONS = 10;
 
     static Action actions[MAX_ACTIONS];

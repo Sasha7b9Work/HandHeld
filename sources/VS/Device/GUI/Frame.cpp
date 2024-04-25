@@ -11,6 +11,7 @@
 #include "Modules/CMT2210AW/EmulatorReceiver.h"
 #include "GUI/Controls/Painter.h"
 #include "GUI/Controls/PainterVibrator.h"
+#include "Hardware/Timer.h"
 
 
 namespace Keyboard
@@ -336,4 +337,10 @@ void ST7735::Enable()
 void ST7735::Disable()
 {
 
+}
+
+
+uint ST7735::TimeEnabled()
+{
+    return TIME_MS;
 }

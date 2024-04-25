@@ -28,3 +28,13 @@ uint Timer::CurrentTime()
 
     return result;
 }
+
+
+void Timer::Delay(uint timeMS)
+{
+    uint end_time = CurrentTime() + timeMS;
+
+    while (end_time < CurrentTime())
+    {
+    }
+}
