@@ -1,6 +1,6 @@
 # (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 
-project (Device2)
+project (Device1602)
 
 #set(CMAKE_UNITY_BUILD OFF)
 
