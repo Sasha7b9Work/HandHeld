@@ -2,13 +2,21 @@
 #include "defines.h"
 #include "Menu/Pages/Pages.h"
 #include "Menu/MenuItemDef.h"
+#include "Modules/PCF8563/PCF8563.h"
 
 
 namespace PageAlarm
 {
     static void FuncOnChange()
     {
-
+        if (gset.alarm.enabled)
+        {
+            PCF8563::SetAlarm(&gset.alarm.time);
+        }
+        else
+        {
+            PCF8563::AlarmInterruptEnable(false);
+        }
     }
 
     DEF_CHOICE_2(choiceEnabled, self, "ÂÊËÞ×ÅÍÎ", &gset.alarm.enabled,

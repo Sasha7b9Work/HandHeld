@@ -63,3 +63,9 @@ bool PCF8563::IsAlarmed()
 {
     return false;
 }
+
+
+void PCF8563::AlarmInterruptEnable(bool)
+{
+
+}
