@@ -73,10 +73,10 @@ void Display::PrepareToSleep()
 {
     ST7735::Disable();
 
-//    for (int i = 0; i < NUMBER_PARTS_HEIGHT; i++)
-//    {
-//        Buffer::crc[i] = 0;
-//    }
+    for (int i = 0; i < NUMBER_PARTS_HEIGHT; i++)
+    {
+        Buffer::crc[i] = 0;
+    }
 }
 
 
