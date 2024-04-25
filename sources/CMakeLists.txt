@@ -11,4 +11,4 @@ if(${CMAKE_BUILD_TYPE} STREQUAL Debug)
 endif()
 
 add_subdirectory(Device)
-add_subdirectory(Device/Device2)
+add_subdirectory(Device/Device1602)

@@ -69,3 +69,9 @@ void PCF8563::AlarmInterruptEnable(bool)
 {
 
 }
+
+
+void PCF8563::DisableAlarm()
+{
+
+}
