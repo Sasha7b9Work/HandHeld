@@ -274,6 +274,8 @@ void PCF8563::Update()
 
 		if (status2 & (1 << PCF8563_CONTROL2_AF))			// INT
 		{
+			AlarmInterruptEnable(false);
+
 			time_alarm = TIME_MS;
 
 			if (ModeIndication::ConsistSound(gset.alarm.mode_indication))
