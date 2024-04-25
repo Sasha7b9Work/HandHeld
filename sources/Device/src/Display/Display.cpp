@@ -82,7 +82,7 @@ void Display::PrepareToSleep()
 
 void Display::Update()
 {
-    if (Source::GetCountReceived() || !Keyboard::ToMoreTime())
+    if (PCF8563::IsAlarmed() || Source::GetCountReceived() || !Keyboard::ToMoreTime())
     {
         FPS::BeginFrame();
 
