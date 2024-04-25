@@ -285,12 +285,12 @@ void PCF8563::Update()
 
 			if (ModeIndication::ConsistLED(gset.alarm.mode_indication))
 			{
-				Vibrato::Enable();
+				LED::Enable();
 			}
 
 			if (ModeIndication::ConsistVibro(gset.alarm.mode_indication))
 			{
-				LED::Enable();
+				Vibrato::Enable();
 			}
 		}
     }
