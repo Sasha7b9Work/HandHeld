@@ -67,4 +67,6 @@ namespace Math
 
         return crc;
     }
+
+    uint CalculateCRC32(const void *data, int size);
 }
