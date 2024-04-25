@@ -94,11 +94,11 @@ void Display::Update()
         }
 
         FPS::EndFrame();
+    }
 
-        if (!CMT2210AW::IsEnabled() && Source::GetCountReceived() == 0 && !PCF8563::IsAlarmed())
-        {
-            ModeClock::Set(ModeClock::Low);
-        }
+    if (!CMT2210AW::IsEnabled() && Source::GetCountReceived() == 0 && !PCF8563::IsAlarmed())
+    {
+        ModeClock::Set(ModeClock::Low);
     }
 }
 
