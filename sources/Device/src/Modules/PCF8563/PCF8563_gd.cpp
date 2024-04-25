@@ -335,3 +335,9 @@ bool PCF8563::IsAlarmed()
 
 	return time_alarm != 0;
 }
+
+
+void PCF8563::DisableAlarm()
+{
+	time_alarm = 1;
+}

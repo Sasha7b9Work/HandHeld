@@ -174,7 +174,7 @@ void Display::EndScene(int num_parts)
 {
     uint crc = Buffer::CalcualteCRC();
 
-    if (!Buffer::MatchesCRC(crc))
+//    if (!Buffer::MatchesCRC(crc))
     {
         if (!ModeClock::IsHi())
         {

@@ -35,7 +35,11 @@ void Menu::Update()
         return;
     }
 
-    if (Source::GetCountReceived() != 0)
+    if (PCF8563::IsAlarmed())
+    {
+        PCF8563::DisableAlarm();
+    }
+    else if (Source::GetCountReceived() != 0)
     {
         if (action.IsRelease())
         {
