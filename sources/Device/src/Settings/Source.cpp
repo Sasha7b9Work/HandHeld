@@ -220,17 +220,17 @@ void Source::Queue::Push(Source::E type)
 
     const SettingsSource &source = gset.sources[type];
 
-    if (source.mode_indication == ModeIndication::All || source.mode_indication == ModeIndication::Sound || source.mode_indication == ModeIndication::Sound_LED || source.mode_indication == ModeIndication::Sound_Vibro)
+    if (ModeIndication::ConsistSound(source.mode_indication))
     {
         Beeper::Play((TypeSound::E)source.melody, (uint8)source.volume);
     }
 
-    if (source.mode_indication == ModeIndication::All || source.mode_indication == ModeIndication::Vibro || source.mode_indication == ModeIndication::Sound_Vibro || source.mode_indication == ModeIndication::LED_Vibro)
+    if (ModeIndication::ConsistVibro(source.mode_indication))
     {
         Vibrato::Enable();
     }
 
-    if (source.mode_indication == ModeIndication::All || source.mode_indication == ModeIndication::LED || source.mode_indication == ModeIndication::Sound_LED || source.mode_indication == ModeIndication::LED_Vibro)
+    if (ModeIndication::ConsistLED(source.mode_indication))
     {
         LED::Enable();
     }
