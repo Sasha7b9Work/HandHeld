@@ -58,7 +58,7 @@ void Device::Init()
 
 void Device::Update()
 {
-    if (!CMT2210AW::IsEnabled() && Keyboard::ToMoreTime() && Source::GetCountReceived() == 0)
+    if (!CMT2210AW::IsEnabled() && Keyboard::ToMoreTime() && Source::GetCountReceived() == 0 && !PCF8563::IsAlarmed())
     {
         ModeClock::Set(ModeClock::DeepSleep);
     }
