@@ -250,7 +250,9 @@ RTCDateTime PCF8563::GetDateTime()
 void PCF8563::Init()
 {
     ClkoutFrequency(CLKOUT_Freq::CLKOUT_FREQ_1HZ);
-    STOPEnable(0);
+    STOPEnable(false);
+
+
 }
 
 
@@ -266,7 +268,7 @@ void PCF8563::Update()
 
 		HAL_I2C::Read(PCF8563_REG_CONTROL_STATUS2, &status2, 1);
 
-		if (status2 & (1 << 3))			// INT
+		if (status2 & (1 << PCF8563_CONTROL2_AF))			// INT
 		{
 			time_alarm = TIME_MS;
 		}
@@ -290,7 +292,7 @@ void PCF8563::SetAlarm(RTCDateTime *time)
 
     HAL_I2C::Read(PCF8563_REG_CONTROL_STATUS2, &status2, 1);
 
-    status2 |= (1 << 1);          // Включаем alarm interrupt AIE
+    status2 |= (1 << PCF8563_CONTROL2_AIE);					// Включаем alarm interrupt AIE
 
     HAL_I2C::Write(PCF8563_REG_CONTROL_STATUS2, &status2, 1);
 }
