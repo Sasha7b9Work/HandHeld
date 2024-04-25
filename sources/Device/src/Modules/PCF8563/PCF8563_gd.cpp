@@ -75,8 +75,7 @@ static void WriteBitToControlRegister(uint8 ControlRegister, uint8 BitNumber, bo
 {
     uint8 value = 0;
 
-    // HAL_I2C_Mem_Read(hi2c_pcf8563, PCF8563::ADDRESS, ControlRegister ? PCF8563_REG_CONTROL_STATUS1 : PCF8563_REG_CONTROL_STATUS2, 1, &tmp, 1, PCF8563::I2C_TIMEOUT);
-    HAL_I2C::Read(ControlRegister ? PCF8563_REG_CONTROL_STATUS1 : PCF8563_REG_CONTROL_STATUS2, &value, 1);
+    HAL_I2C::Read(ControlRegister, &value, 1);
 
     if (bit)
     {
@@ -96,8 +95,7 @@ static void WriteBitToControlRegister(uint8 ControlRegister, uint8 BitNumber, bo
 		value &= BINARY_U8(10101000);
 	}
 
-//    HAL_I2C_Mem_Write(hi2c_pcf8563, PCF8563::ADDRESS, ControlRegister ? PCF8563_REG_CONTROL_STATUS1 : PCF8563_REG_CONTROL_STATUS2, 1, &Value, 1, PCF8563::I2C_TIMEOUT);
-	HAL_I2C::Write(ControlRegister ? PCF8563_REG_CONTROL_STATUS1 : PCF8563_REG_CONTROL_STATUS2, &value, 1);
+	HAL_I2C::Write(ControlRegister, &value, 1);
 }
 
 void PCF8563::TEST1Enable(bool en)
