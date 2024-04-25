@@ -23,7 +23,7 @@ Settings gset =
         Color::White,
         ModeIndication::All,
         { 0, 0, 0, 0, 0, 0 },
-        0
+        1
     }
 };
 
