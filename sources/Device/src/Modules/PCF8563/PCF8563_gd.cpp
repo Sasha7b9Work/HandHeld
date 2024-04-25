@@ -300,9 +300,12 @@ void PCF8563::SetAlarm(RTCDateTime *time)
 
 bool PCF8563::IsAlarmed()
 {
-	if (TIME_MS - time_alarm > TIME_SHOW_ALARM)
+	if (time_alarm != 0)
 	{
-		time_alarm = 0;
+		if (TIME_MS - time_alarm > TIME_SHOW_ALARM)
+		{
+			time_alarm = 0;
+		}
 	}
 
 	return time_alarm != 0;
