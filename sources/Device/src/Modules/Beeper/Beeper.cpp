@@ -100,6 +100,11 @@ void Beeper::Init()
 
 void Beeper::Play(TypeSound::E type, uint8 _volume)
 {
+    if (is_running)
+    {
+        return;
+    }
+
 #ifdef GUI
 
     PainterMelody::self->EnableMelody(type);

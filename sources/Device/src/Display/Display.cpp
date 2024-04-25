@@ -154,7 +154,19 @@ void Display::BeginScene(int num_part)
 {
     Buffer::current_part = num_part;
 
-    Buffer::Fill(Source::GetCountReceived() ? gset.sources[Source::Current()].color : Color::BLACK);
+    Color color = Color::BLACK;
+
+    if (Source::GetCountReceived())
+    {
+        color = gset.sources[Source::Current()].color;
+    }
+
+    if (PCF8563::IsAlarmed())
+    {
+        color = gset.alarm.color;
+    }
+
+    Buffer::Fill(color);
 }
 
 
@@ -190,7 +202,7 @@ void Display::DrawScene(int num_part)
     if (PCF8563::IsAlarmed())
     {
         Font::SetSize(2);
-        Text<>("¡”ƒ»À‹Õ» ").WriteInCenter(0, 30, Display::WIDTH, Color::WHITE);
+        Text<>("¡”ƒ»À‹Õ» ").WriteInCenter(0, 30, Display::WIDTH, Color(Color::Contrast(gset.alarm.color)));
         Font::SetSize(1);
     }
     else if (Source::GetCountReceived())

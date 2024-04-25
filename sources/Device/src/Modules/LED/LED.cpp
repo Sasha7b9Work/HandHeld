@@ -28,7 +28,9 @@ void LED::Update()
         return;
     }
 
-    if (SourceScript::GetForLED(Source::Current(), TIME_MS - time_enable))
+    Source::E source = PCF8563::IsAlarmed() ? Source::Test : Source::Current();
+
+    if (SourceScript::GetForLED(source, TIME_MS - time_enable))
     {
         Driver::On();
     }

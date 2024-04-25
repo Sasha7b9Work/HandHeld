@@ -14,6 +14,10 @@
 #include "Hardware/HAL/HAL.h"
 #include "Hardware/Timer.h"
 #include "Hardware/HAL/HAL_PINS.h"
+#include "Settings/Settings.h"
+#include "Modules/Beeper/Beeper.h"
+#include "Hardware/Vibrato.h"
+#include "Modules/LED/LED.h"
  
 
 #define PCF8563_REG_CONTROL_STATUS1     ((uint8)0x00)
@@ -271,6 +275,21 @@ void PCF8563::Update()
 		if (status2 & (1 << PCF8563_CONTROL2_AF))			// INT
 		{
 			time_alarm = TIME_MS;
+
+			if (ModeIndication::ConsistSound(gset.alarm.mode_indication))
+			{
+				Beeper::Play((TypeSound::E)gset.alarm.melody, (uint8)gset.alarm.volume);
+			}
+
+			if (ModeIndication::ConsistLED(gset.alarm.mode_indication))
+			{
+				Vibrato::Enable();
+			}
+
+			if (ModeIndication::ConsistVibro(gset.alarm.mode_indication))
+			{
+				LED::Enable();
+			}
 		}
     }
 }
@@ -305,6 +324,10 @@ bool PCF8563::IsAlarmed()
 		if (TIME_MS - time_alarm > TIME_SHOW_ALARM)
 		{
 			time_alarm = 0;
+
+			Beeper::Stop();
+			Vibrato::Disable();
+			LED::Disable();
 		}
 	}
 

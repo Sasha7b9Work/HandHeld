@@ -138,4 +138,8 @@ struct ModeIndication
         All,
         Count
     };
+
+    static bool ConsistSound(E);
+    static bool ConsistLED(E);
+    static bool ConsistVibro(E);
 };

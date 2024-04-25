@@ -3,6 +3,7 @@
 #include "Hardware/Vibrato.h"
 #include "Hardware/Timer.h"
 #include "Settings/Source.h"
+#include "Modules/PCF8563/PCF8563.h"
 #include <gd32e23x.h>
 
 
@@ -62,7 +63,9 @@ void Vibrato::Update()
         return;
     }
 
-    if (SourceScript::GetForVibro(Source::Current(), TIME_MS - time_start))
+    Source::E source = PCF8563::IsAlarmed() ? Source::Test : Source::Current();
+
+    if (SourceScript::GetForVibro(source, TIME_MS - time_start))
     {
         Driver::On();
     }
