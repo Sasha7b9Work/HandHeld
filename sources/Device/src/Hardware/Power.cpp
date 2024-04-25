@@ -63,7 +63,7 @@ void Power::Init()
         Display::DrawPowerOn();
     }
 
-    Timer::Delay(100);
+    Timer::Delay(100);          // Антидребезг
 }
 
 
@@ -97,9 +97,14 @@ void Power::Update()
         Disable();
     }
 
-    if (pinPWR_CTRL.IsLow() && !PCF8563::IsAlarmed())
+    if (pinPWR_CTRL.IsLow())
     {
-        Disable();
+        PCF8563::Update();
+
+        if (!PCF8563::IsAlarmed())
+        {
+            Disable();
+        }
     }
 }
 
