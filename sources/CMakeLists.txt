@@ -11,6 +11,4 @@ if(${CMAKE_BUILD_TYPE} STREQUAL Debug)
 endif()
 
 add_subdirectory(Device)
-add_subdirectory(Energy)
-add_subdirectory(DeviceEnergy)
 add_subdirectory(Device/Device2)

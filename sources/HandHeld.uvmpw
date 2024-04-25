@@ -10,19 +10,10 @@
   <project>
     <PathAndName>.\Device\Device.uvprojx</PathAndName>
     <NodeIsActive>1</NodeIsActive>
-    <NodeIsExpanded>1</NodeIsExpanded>
   </project>
 
   <project>
     <PathAndName>.\Device\Device2\Device2.uvprojx</PathAndName>
-  </project>
-
-  <project>
-    <PathAndName>.\Energy\Energy.uvprojx</PathAndName>
-  </project>
-
-  <project>
-    <PathAndName>.\DeviceEnergy\DeviceEnergy.uvprojx</PathAndName>
   </project>
 
 </ProjectWorkspace>
