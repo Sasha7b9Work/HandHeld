@@ -190,7 +190,7 @@ void Source::Update()
         }
     }
 
-    if (!enabled)
+    if (!enabled && !PCF8563::IsAlarmed())
     {
         Vibrato::Disable();
         LED::Disable();
