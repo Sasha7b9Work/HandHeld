@@ -75,7 +75,7 @@ void Display::PrepareToSleep()
 
     for (int i = 0; i < NUMBER_PARTS_HEIGHT; i++)
     {
-        Buffer::crc[i] = 0;
+        Buffer::crc[i] = 0;                         // Без этого не будет выходить по кнопке из сна
     }
 }
 
