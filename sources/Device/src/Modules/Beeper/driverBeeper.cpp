@@ -74,11 +74,11 @@ void Beeper::Driver::StartFrequency(float frequency, uint8 vol)
 
     if (vol == 1)
     {
-        period = 150;
+        period = 170;
     }
     else if (vol == 0)
     {
-        period = 75;
+        period = 100;
     }
 
     uint16 prescaler = (uint16)(SystemCoreClock / period / (uint)(frequency + 0.5f));
