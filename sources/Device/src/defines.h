@@ -25,6 +25,12 @@
     #pragma clang diagnostic ignored "-Wformat-nonliteral"
     #pragma clang diagnostic ignored "-Wc++98-compat-pedantic"
     #pragma clang diagnostic ignored "-Wnon-virtual-dtor"
+
+#ifdef TYPE_1602
+    #pragma clang diagnostic ignored "-Wunused-variable"
+    #pragma clang diagnostic ignored "-Wunused-private-field"
+#endif
+
 #else
 #endif
 

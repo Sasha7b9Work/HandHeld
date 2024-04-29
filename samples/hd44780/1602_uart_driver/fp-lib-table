@@ -1,0 +1,5 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "belkin")(type "KiCad")(uri "/home/dltech/src/lowlevellib/commonFiles/kicad_lib/belkin.pretty")(options "")(descr ""))
+  (lib (name "stock_modified")(type "KiCad")(uri "/home/dltech/src/lowlevellib/commonFiles/kicad_lib/stock_modified.pretty")(options "")(descr ""))
+)
