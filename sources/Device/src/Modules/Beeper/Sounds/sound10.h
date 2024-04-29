@@ -1,6 +1,22 @@
 #pragma once
 
 
+
+static const Note notes10[] =
+{
+    { 500,  10, 9 },
+    { 5000, 10, 8 },
+    { 0,    0, 0}
+};
+
+
+static const Sound sound10 =
+{
+    notes10, nullptr
+};
+
+
+/*
 // Малая
 #define M_2_3     155
 #define M_4_5     185
@@ -15,10 +31,10 @@
 #define First_4_5 370
 
 
-/*
-* https://dominantamusic.ru/blog/pesni-na-sintezatore-po-tsifram/
-* Имерский марш
-*/
+//
+// https://dominantamusic.ru/blog/pesni-na-sintezatore-po-tsifram/
+// Имерский марш
+//
 
 static const Note notes10[] =
 {
@@ -50,3 +66,4 @@ static const Sound sound10 =
 {
     notes10, nullptr
 };
+*/
