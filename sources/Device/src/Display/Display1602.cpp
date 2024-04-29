@@ -12,7 +12,17 @@ void Display::Init()
 
 void Display::Update()
 {
+    for (int i = 0; i < 20; i++)
+    {
+        uint8 buffer[8];
 
+        for (uint8 j = 0; j < 8; j++)
+        {
+            buffer[j] = j;
+        }
+
+        WH1602B::Write(i, buffer);
+    }
 }
 
 

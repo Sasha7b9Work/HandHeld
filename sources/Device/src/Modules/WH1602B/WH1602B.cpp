@@ -1,6 +1,7 @@
 // 2024/04/29 21:49:15 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
 #include "Modules/WH1602B/WH1602B.h"
+#include "Hardware/HAL/HAL_PINS.h"
 
 
 namespace WH1602B
@@ -28,18 +29,37 @@ namespace WH1602B
 #define DEFAULT_VIEW_MODE			VIEW_MODE_DispOn_BlkOff_CrsOff
 #define DEFAULT_ENTRY_MODE			ENTRY_MODE_INC_NO_SHIFT
 
-#define SET_EN()
-#define CLR_EN()
-#define SET_RS()
-#define CLR_RS()
-#define SET_D7()
-#define CLR_D7()
-#define SET_D6()
-#define CLR_D6()
-#define SET_D5()
-#define CLR_D5()
-#define SET_D4()
-#define CLR_D4()
+
+    static PinOut pinEN(GPIOB, GPIO_PIN_1);
+    static PinOut pinRS(GPIOB, GPIO_PIN_0);
+    static PinOut pinD7(GPIOA, GPIO_PIN_4);
+    static PinOut pinD6(GPIOA, GPIO_PIN_5);
+    static PinOut pinD5(GPIOA, GPIO_PIN_6);
+    static PinOut pinD4(GPIOA, GPIO_PIN_7);
+    static PinOut pinPWR(GPIOB, GPIO_PIN_2);
+
+
+// PB1
+#define SET_EN()    pinEN.ToHi()
+#define CLR_EN()    pinEN.ToLow()
+// PB0
+#define SET_RS()    pinRS.ToHi()
+#define CLR_RS()    pinRS.ToLow()
+// PA4
+#define SET_D7()    pinD7.ToHi()
+#define CLR_D7()    pinD7.ToLow()
+// PA5
+#define SET_D6()    pinD6.ToHi()
+#define CLR_D6()    pinD6.ToLow()
+// PA6
+#define SET_D5()    pinD5.ToHi()
+#define CLR_D5()    pinD5.ToLow()
+// PA7
+#define SET_D4()    pinD4.ToHi()
+#define CLR_D4()    pinD4.ToLow();
+// PB2
+#define SET_PWR()   pinPWR.ToHi();
+#define CLR_PWR()   pinPWR.ToLow();
 
 #define DATA_7_MASK		0x80u
 #define DATA_6_MASK		0x40u
@@ -68,7 +88,15 @@ namespace WH1602B
 
 
 void WH1602B::Init()
-{   
+{
+    pinPWR.Init();
+    pinEN.Init();
+    pinRS.Init();
+    pinD4.Init();
+    pinD5.Init();
+    pinD6.Init();
+    pinD7.Init();
+
     lcdWrite(0x30);
     lcd10usDelay(INIT_CYCLE_TIME);
     lcdWrite(0x30);
@@ -82,7 +110,7 @@ void WH1602B::Init()
 }
 
 
-void WH1602B::Write(int, uint8[8])
+void WH1602B::Write(int num_row, uint8 buffer[8])
 {
 
 }

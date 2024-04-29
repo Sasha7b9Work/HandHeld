@@ -1,0 +1,4 @@
+"..\out\STARTUP.obj",
+"..\out\main.obj" 
+TO "..\out\1602分屏显示一段文字" 
+PRINT("..\listing\1602分屏显示一段文字.m51") RAMSIZE(256) 

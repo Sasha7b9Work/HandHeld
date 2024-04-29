@@ -1,0 +1,4 @@
+"..\out\STARTUP.obj",
+"..\out\main.obj" 
+TO "..\out\1602渐入式显示" 
+PRINT("..\listing\1602渐入式显示.m51") RAMSIZE(256) 
