@@ -56,11 +56,14 @@ void Power::Init()
     if (PCF8563::IsAlarmed())
     {
         PCF8563::AlarmFlagEnable(false);
+        PCF8563::AlarmInterruptEnable(false);
     }
-
-    while (pinPWR_CTRL.IsLow())
+    else
     {
-        Display::DrawPowerOn();
+        while (pinPWR_CTRL.IsLow())
+        {
+            Display::DrawPowerOn();
+        }
     }
 
     Timer::Delay(100);          // Антидребезг
