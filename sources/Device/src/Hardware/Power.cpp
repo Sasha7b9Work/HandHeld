@@ -108,6 +108,10 @@ void Power::Update()
         {
             Disable();
         }
+        else
+        {
+            PCF8563::AlarmFlagEnable(false);
+        }
     }
 }
 
