@@ -205,7 +205,7 @@ void Sound::Update()
 
             if (Source::GetCountReceived() || PCF8563::IsAlarmed())
             {
-                Beeper::Play(Beeper::sound, Beeper::volume);
+                Sound::Start(Beeper::sound);
             }
         }
         else
