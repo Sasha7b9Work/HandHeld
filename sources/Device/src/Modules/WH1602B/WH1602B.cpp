@@ -30,15 +30,6 @@ namespace WH1602B
 #define DEFAULT_ENTRY_MODE			ENTRY_MODE_INC_NO_SHIFT
 
 
-    static PinOut pinEN(GPIOB, GPIO_PIN_1);
-    static PinOut pinRS(GPIOB, GPIO_PIN_0);
-    static PinOut pinD7(GPIOA, GPIO_PIN_4);
-    static PinOut pinD6(GPIOA, GPIO_PIN_5);
-    static PinOut pinD5(GPIOA, GPIO_PIN_6);
-    static PinOut pinD4(GPIOA, GPIO_PIN_7);
-    static PinOut pinPWR(GPIOB, GPIO_PIN_2);
-
-
 // PB1
 #define SET_EN()    pinEN.ToHi()
 #define CLR_EN()    pinEN.ToLow()
@@ -61,14 +52,14 @@ namespace WH1602B
 #define SET_PWR()   pinPWR.ToHi();
 #define CLR_PWR()   pinPWR.ToLow();
 
-#define DATA_7_MASK		0x80u
-#define DATA_6_MASK		0x40u
-#define DATA_5_MASK		0x20u
-#define DATA_4_MASK		0x10u
-#define DATA_3_MASK		0x08u
-#define DATA_2_MASK		0x04u
-#define DATA_1_MASK		0x02u
-#define DATA_0_MASK		0x01u
+#define DATA_7_MASK     0x80u
+#define DATA_6_MASK     0x40u
+#define DATA_5_MASK     0x20u
+#define DATA_4_MASK     0x10u
+#define DATA_3_MASK     0x08u
+#define DATA_2_MASK     0x04u
+#define DATA_1_MASK     0x02u
+#define DATA_0_MASK     0x01u
 
 #define MCU_FREQ_VALUE (78000000 / 1000000U) //MCU clock frequency in MHz
 
@@ -84,12 +75,22 @@ namespace WH1602B
     static void lcdHigh(uint8 data);
     static void lcdStrobe();
     static void lcdLow(uint8 data);
+
+    static PinOut pinEN(GPIOB, GPIO_PIN_1);
+    static PinOut pinRS(GPIOB, GPIO_PIN_0);
+    static PinOut pinD7(GPIOA, GPIO_PIN_4);
+    static PinOut pinD6(GPIOA, GPIO_PIN_5);
+    static PinOut pinD5(GPIOA, GPIO_PIN_6);
+    static PinOut pinD4(GPIOA, GPIO_PIN_7);
+    static PinOut pinPWR(GPIOB, GPIO_PIN_2);
 }
 
 
 void WH1602B::Init()
 {
     pinPWR.Init();
+    pinPWR.ToHi();
+
     pinEN.Init();
     pinRS.Init();
     pinD4.Init();
@@ -112,7 +113,18 @@ void WH1602B::Init()
 
 void WH1602B::Write(int num_row, uint8 buffer[8])
 {
+    CLR_RS();                   // Посылаем команду
+    uint8 command = 0x80;       // Set DDRAM address
+    command |= num_row * 2;
 
+    lcdWrite(command);
+
+    SET_RS();                   // Посылаем данные
+
+    for (int i = 0; i < 8; i++)
+    {
+        lcdWrite(buffer[i]);
+    }
 }
 
 
@@ -141,15 +153,6 @@ void WH1602B::lcdConfig(uint8 param)
     lcdStrobe();		// 4-bit, two lines, 5x8 pixel
     lcd10usDelay(BUSY_CYCLE_TIME);
     /* Note: The number of display lines and character font cannot be changed after this point. */
-}
-
-
-void WH1602B::lcdHigh(uint8 data)
-{/* Low level function. */
-    if (data & DATA_7_MASK) SET_D7(); else CLR_D7();
-    if (data & DATA_6_MASK) SET_D6(); else CLR_D6();
-    if (data & DATA_5_MASK) SET_D5(); else CLR_D5();
-    if (data & DATA_4_MASK) SET_D4(); else CLR_D4();
 }
 
 
@@ -196,6 +199,15 @@ void WH1602B::lcdLow(uint8 data)
     if (data & DATA_2_MASK) SET_D6(); else CLR_D6();
     if (data & DATA_1_MASK) SET_D5(); else CLR_D5();
     if (data & DATA_0_MASK) SET_D4(); else CLR_D4();
+}
+
+
+void WH1602B::lcdHigh(uint8 data)
+{/* Low level function. */
+    if (data & DATA_7_MASK) SET_D7(); else CLR_D7();
+    if (data & DATA_6_MASK) SET_D6(); else CLR_D6();
+    if (data & DATA_5_MASK) SET_D5(); else CLR_D5();
+    if (data & DATA_4_MASK) SET_D4(); else CLR_D4();
 }
 
 
