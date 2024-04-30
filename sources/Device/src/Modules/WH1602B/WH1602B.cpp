@@ -175,7 +175,7 @@ void WH1602B::lcdConfig(uint8 param)
 void WH1602B::lcd10usDelay(volatile uint us)
 {
     /* Conversion to us */
-    us *= MCU_FREQ_VALUE;
+    us = 50;
     /* Wait */
     while (us > 0u)
     {
