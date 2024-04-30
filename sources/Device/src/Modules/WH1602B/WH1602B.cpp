@@ -77,8 +77,8 @@ namespace WH1602B
     static void lcdStrobe();
     static void lcdLow(uint8 data);
 
-    static PinOut pinEN(GPIOB, GPIO_PIN_1);
-    static PinOut pinRS(GPIOB, GPIO_PIN_0);
+    static PinOut pinEN(GPIOB, GPIO_PIN_0);
+    static PinOut pinRS(GPIOB, GPIO_PIN_1);
     static PinOut pinD7(GPIOA, GPIO_PIN_4);
     static PinOut pinD6(GPIOA, GPIO_PIN_5);
     static PinOut pinD5(GPIOA, GPIO_PIN_6);
@@ -99,16 +99,31 @@ void WH1602B::Init()
     pinD6.Init();
     pinD7.Init();
 
-    lcdWrite(0x30);
-    lcd10usDelay(INIT_CYCLE_TIME);
-    lcdWrite(0x30);
-    lcd10usDelay(INIT_CYCLE_TIME);
+//    lcdHigh(0x33);
+//    lcdStrobe();
+//    lcd10usDelay(INIT_CYCLE_TIME);
+//    lcdHigh(0x33);
+//    lcdStrobe();
+//    lcd10usDelay(INIT_CYCLE_TIME);
+    
+    lcdWrite(0x02);
+    lcd10usDelay(BUSY_CYCLE_TIME);
+    lcdWrite(0x28);
+    lcd10usDelay(BUSY_CYCLE_TIME);
+    lcdWrite(0x0C);
+    lcd10usDelay(BUSY_CYCLE_TIME);
+    lcdWrite(0x01);
+    lcd10usDelay(INIT_CYCLE_TIME);      //длительная задержка
+    lcdWrite(0x06);
+    lcd10usDelay(BUSY_CYCLE_TIME);
+    lcdWrite(0x80);
+    lcd10usDelay(BUSY_CYCLE_TIME);
 
-    lcdConfig(DEFAULT_DISPLAY_CONFIG);
-    lcdSetMode(DEFAULT_VIEW_MODE);
-    lcdSetMode(DEFAULT_ENTRY_MODE);
-    lcdClrScr();
-    lcdReturn();
+//    lcdConfig(DEFAULT_DISPLAY_CONFIG);
+//    lcdSetMode(DEFAULT_VIEW_MODE);
+//    lcdSetMode(DEFAULT_ENTRY_MODE);
+//    lcdClrScr();
+//    lcdReturn();
 }
 
 
@@ -136,7 +151,7 @@ void WH1602B::lcdWrite(uint8 data)
     lcdLow(data);
     lcdStrobe();
     /* The busy flag must be checked after the 4-bit data has been transferred twice. */
-    lcd10usDelay(BUSY_CYCLE_TIME);
+    lcd10usDelay(200);
 }
 
 
@@ -181,6 +196,7 @@ void WH1602B::lcdStrobe(void)
     SET_EN();
     lcd10usDelay(ENABLE_CYCLE_TIME);
     CLR_EN();
+    lcd10usDelay(20);
 }
 
 
