@@ -62,7 +62,7 @@ namespace WH1602B
 #define DATA_1_MASK     0x02u
 #define DATA_0_MASK     0x01u
 
-#define MCU_FREQ_VALUE (78000000 / 1000000U) //MCU clock frequency in MHz
+#define MCU_FREQ_VALUE (78000000 / 10000000U) //MCU clock frequency in MHz
 
 #define ENABLE_CYCLE_TIME	1u	/* Minimal value ~ 1us */
 #define AC_UPDATE_TIME		4u	/* Minimal value ~ 4us */
