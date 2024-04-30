@@ -2,6 +2,7 @@
 #include "defines.h"
 #include "Modules/WH1602B/WH1602B.h"
 #include "Hardware/HAL/HAL_PINS.h"
+#include <gd32e23x.h>
 
 
 namespace WH1602B
@@ -47,10 +48,10 @@ namespace WH1602B
 #define CLR_D5()    pinD5.ToLow()
 // PA7
 #define SET_D4()    pinD4.ToHi()
-#define CLR_D4()    pinD4.ToLow();
+#define CLR_D4()    pinD4.ToLow()
 // PB2
-#define SET_PWR()   pinPWR.ToHi();
-#define CLR_PWR()   pinPWR.ToLow();
+#define SET_PWR()   pinPWR.ToHi()
+#define CLR_PWR()   pinPWR.ToLow()
 
 #define DATA_7_MASK     0x80u
 #define DATA_6_MASK     0x40u
