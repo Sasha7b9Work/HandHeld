@@ -125,6 +125,20 @@ void Beeper::Play(TypeSound::E type, uint8 _volume)
 }
 
 
+void Sound::Start(TypeSound::E type)
+{
+    current = sounds[type];
+
+    num_note = 0;
+
+    time_note_start = TIME_MS;
+
+    Beeper::is_running = true;
+
+    Beeper::Driver::StartFrequency(GetFrequency(), Beeper::volume);
+}
+
+
 void Beeper::Update()
 {
 #ifdef GUI
@@ -158,18 +172,6 @@ void Beeper::Stop()
 bool Beeper::IsRunning()
 {
     return is_running;
-}
-
-
-void Sound::Start(TypeSound::E type)
-{
-    current = sounds[type];
-
-    num_note = 0;
-
-    time_note_start = TIME_MS;
-
-    Beeper::Driver::StartFrequency(GetFrequency(), Beeper::volume);
 }
 
 
