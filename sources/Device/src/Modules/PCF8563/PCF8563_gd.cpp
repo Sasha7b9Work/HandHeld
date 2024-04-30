@@ -323,11 +323,7 @@ bool PCF8563::IsAlarmed()
 	{
 		if (TIME_MS - time_alarm > TIME_SHOW_ALARM)
 		{
-			time_alarm = 0;
-
-			Beeper::Stop();
-			Vibrato::Disable();
-			LED::Disable();
+			DisableAlarm();
 		}
 	}
 
@@ -337,5 +333,9 @@ bool PCF8563::IsAlarmed()
 
 void PCF8563::DisableAlarm()
 {
-	time_alarm = 1;
+	time_alarm = 0;
+
+	Beeper::Stop();
+	Vibrato::Disable();
+	LED::Disable();
 }
