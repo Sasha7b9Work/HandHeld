@@ -34,52 +34,52 @@ void Device::Init()
 {
     HAL::Init();
 
-//    PCF8563::Init();
+    PCF8563::Init();
 
     Display::Init();
 
-//    Power::Init();
+    Power::Init();
 
     Timer::Init();
 
-//    Keyboard::Init();
+    Keyboard::Init();
 
-//    Menu::Init();
-//
-//    LED::Init();
-//
-//    Vibrato::Init();
-//
-//    CMT2210AW::Init();
-//
-//    Beeper::Init();
+    Menu::Init();
+
+    LED::Init();
+
+    Vibrato::Init();
+
+    CMT2210AW::Init();
+
+    Beeper::Init();
 }
 
 
 void Device::Update()
 {
-//    if (!CMT2210AW::IsEnabled() && Keyboard::ToMoreTime() && Source::GetCountReceived() == 0 && !PCF8563::IsAlarmed())
-//    {
-//        ModeClock::Set(ModeClock::DeepSleep);
-//    }
-//
-//    ModeClock::LeaveDeepSleep();
-//
-//    PCF8563::Update();
-//
-//    Menu::Update();
-//
-//    CMT2210AW::Update();
+    if (!CMT2210AW::IsEnabled() && Keyboard::ToMoreTime() && Source::GetCountReceived() == 0 && !PCF8563::IsAlarmed())
+    {
+        ModeClock::Set(ModeClock::DeepSleep);
+    }
+
+    ModeClock::LeaveDeepSleep();
+
+    PCF8563::Update();
+
+    Menu::Update();
+
+    CMT2210AW::Update();
 
     Display::Update();
 
-//    LED::Update();
-//
-//    Vibrato::Update();
-//
-//    Beeper::Update();
-//
-//    Source::Update();
-//
-//    Power::Update();
+    LED::Update();
+
+    Vibrato::Update();
+
+    Beeper::Update();
+
+    Source::Update();
+
+    Power::Update();
 }
