@@ -38,7 +38,7 @@ struct Sound
     const Note *const  notes;       // В конце мелодии нулевые значения
     const uint8 *const composite;   // Здесь объединённые индексы частот и длительностей
 
-    static void Start(TypeSound::E);
+    static void Start(TypeSound::E = TypeSound::Count);
 
     static void Update();
 
@@ -127,7 +127,10 @@ void Beeper::Play(TypeSound::E type, uint8 _volume)
 
 void Sound::Start(TypeSound::E type)
 {
-    current = sounds[type];
+    if (type != TypeSound::Count)
+    {
+        current = sounds[type];
+    }
 
     num_note = 0;
 
@@ -207,7 +210,7 @@ void Sound::Update()
 
             if (Source::GetCountReceived() || PCF8563::IsAlarmed())
             {
-                Sound::Start(Beeper::sound);
+                Sound::Start();
             }
         }
         else
