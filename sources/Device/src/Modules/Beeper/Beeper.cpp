@@ -38,17 +38,17 @@ struct Sound
     const Note *const  notes;       // В конце мелодии нулевые значения
     const uint8 *const composite;   // Здесь объединённые индексы частот и длительностей
 
-    static void Start(TypeSound::E = TypeSound::Count);
+    static void Start();
 
     static void Update();
+
+    static const Sound *current;
+    static const Sound *sounds[TypeSound::Count];
 
 private:
 
     static int num_note;
     static uint time_note_start;    // В миллисекундах
-    static const Sound *current;
-
-    static const Sound *sounds[TypeSound::Count];
 
     // Полное время звучания проигрываемой ноты
     static uint TimeNoteFull();
@@ -89,7 +89,6 @@ namespace Beeper
     static bool is_running = false;
     static bool need_running = false;
     static uint time_start = 0;       // В это время нужно запустить
-    static TypeSound::E sound = TypeSound::Count;
     static uint8 volume = 0;
 }
 
@@ -119,19 +118,14 @@ void Beeper::Play(TypeSound::E type, uint8 _volume)
 
     time_start = TIME_MS + 100;
 
-    sound = type;
+    Sound::current = Sound::sounds[type];
 
     volume = _volume;
 }
 
 
-void Sound::Start(TypeSound::E type)
+void Sound::Start()
 {
-    if (type != TypeSound::Count)
-    {
-        current = sounds[type];
-    }
-
     num_note = 0;
 
     time_note_start = TIME_MS;
@@ -154,7 +148,7 @@ void Beeper::Update()
     {
         if (TIME_MS >= time_start)
         {
-            Sound::Start(sound);
+            Sound::Start();
 
             need_running = false;
         }
