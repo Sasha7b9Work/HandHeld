@@ -37,7 +37,17 @@ void PCF8563::SetTimer(uint /*time_sec*/)
 
 RTCDateTime PCF8563::GetDateTime()
 {
-    return time;
+    wxDateTime data_time = wxDateTime::Now();
+
+    return
+    {
+        (uint8)(data_time.GetYear() - 2000),
+        (uint8)(data_time.GetMonth() + 1),
+        (uint8)(data_time.GetDay()),
+        (uint8)(data_time.GetHour()),
+        (uint8)(data_time.GetMinute()),
+        (uint8)(data_time.GetSecond())
+    };
 }
 
 

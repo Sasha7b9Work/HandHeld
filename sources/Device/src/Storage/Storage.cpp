@@ -35,6 +35,11 @@ namespace Storage
             return nullptr;
         }
 
+        Record GetRecord(int /*num*/)
+        {
+            return Record();
+        }
+
         Record *FirstRecord()
         {
             return (Record *)address;
@@ -85,24 +90,22 @@ namespace Storage
 
         int GetCountRecords()
         {
-            return 0;
+            Record *place = FirstRecord();
+            Record *last = LastRecord();
 
-//            Record *place = FirstRecord();
-//            Record *last = LastRecord();
-//
-//            int result = 0;
-//
-//            while(place < last)
-//            {
-//                if (place->IsValidData())
-//                {
-//                    result++;
-//                }
-//
-//                place++;
-//            }
-//
-//            return result;
+            int result = 0;
+
+            while(place < last)
+            {
+                if (place->IsValidData())
+                {
+                    result++;
+                }
+
+                place++;
+            }
+
+            return result;
         }
 
         static Page FromEnd(int index)
@@ -121,11 +124,10 @@ namespace Storage
         uint address;
     };
 
-//    static void Append(const Record &);
+    static void Append(const Record &);
 }
 
 
-/*
 void Storage::Append(const Record &rec)
 {
     for (int i = HAL_ROM::PAGE_FIRST_JOURNAL; i < HAL_ROM::PAGE_LAST_JOURNAL; i++)
@@ -182,7 +184,6 @@ void Storage::Append(const Record &rec)
 
     page.Write(record);
 }
-*/
 
 
 int Storage::GetCountRecords()
@@ -198,31 +199,26 @@ int Storage::GetCountRecords()
 }
 
 
-Record Storage::Get(int /*num*/)
+Record Storage::Get(int num)
 {
-    return Record();
+    for (int i = 0; i < Page::Count(); i++)
+    {
+        Page page(i);
 
-//  for (int i = 0; i < Page::Count(); i++)
-//    {
-//        Page page(i);
-//
-//        if (num < page.GetCountRecords())
-//        {
-//            page.GetRecord(num);
-//        }
-//
-//        num -= page.GetCountRecords();
-//
-//        if (num < 0)
-//        {
-//            break;
-//        }
-//    }
-//
-//    Record record =
-//    {
-//
-//    }
+        if (num < page.GetCountRecords())
+        {
+            return page.GetRecord(num);
+        }
+
+        num -= page.GetCountRecords();
+
+        if (num < 0)
+        {
+            break;
+        }
+    }
+
+    return Record();
 }
 
 
@@ -267,22 +263,20 @@ bool Record::IsValidData() const
 }
 
 
-void Storage::Append(const RTCDateTime & /*time*/, Source::E /*source*/, bool /*received*/)
+void Storage::Append(const RTCDateTime &time, Source::E source, bool received)
 {
-    return;
+    Record record =
+    {
+        0,
+        time,
+        (uint8)source,
+        0
+    };
 
-//    Record record =
-//    {
-//        0,
-//        time,
-//        (uint8)source,
-//        0
-//    };
-//
-//    if (received)
-//    {
-//        record.source |= 0x80;
-//    }
-//
-//    Append(record);
+    if (received)
+    {
+        record.source |= 0x80;
+    }
+
+    Append(record);
 }
