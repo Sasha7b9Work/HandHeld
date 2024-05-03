@@ -99,7 +99,7 @@ void Beeper::Init()
 }
 
 
-void Beeper::Play(TypeSound::E type, uint8 _volume)
+void Beeper::_Play(TypeSound::E type, uint8 _volume)
 {
     if (is_running)
     {

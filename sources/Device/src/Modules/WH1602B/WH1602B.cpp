@@ -69,10 +69,10 @@ namespace WH1602B
 
     static void lcdWrite(uint8 data);
     static void lcd10usDelay(volatile uint us);
-    static void lcdConfig(uint8 param);
-    static void lcdSetMode(uint8 param);
-    static void lcdClrScr();
-    static void lcdReturn();
+//    static void lcdConfig(uint8 param);
+//    static void lcdSetMode(uint8 param);
+//    static void lcdClrScr();
+//    static void lcdReturn();
     static void lcdHigh(uint8 data);
     static void lcdStrobe();
     static void lcdLow(uint8 data);
@@ -155,21 +155,21 @@ void WH1602B::lcdWrite(uint8 data)
 }
 
 
-void WH1602B::lcdConfig(uint8 param)
-{
-    /* Send commands to LCD. */
-    CLR_RS();
-
-    lcdHigh(param);
-    lcdStrobe();		// Change 8-bit interface to 4-bit interface
-    lcd10usDelay(BUSY_CYCLE_TIME);
-    lcdStrobe();		/* DB7 to DB4 of the "Function set" instruction is written twice. */
-    lcd10usDelay(BUSY_CYCLE_TIME);
-    lcdLow(param);
-    lcdStrobe();		// 4-bit, two lines, 5x8 pixel
-    lcd10usDelay(BUSY_CYCLE_TIME);
-    /* Note: The number of display lines and character font cannot be changed after this point. */
-}
+//void WH1602B::lcdConfig(uint8 param)
+//{
+//    /* Send commands to LCD. */
+//    CLR_RS();
+//
+//    lcdHigh(param);
+//    lcdStrobe();		// Change 8-bit interface to 4-bit interface
+//    lcd10usDelay(BUSY_CYCLE_TIME);
+//    lcdStrobe();		/* DB7 to DB4 of the "Function set" instruction is written twice. */
+//    lcd10usDelay(BUSY_CYCLE_TIME);
+//    lcdLow(param);
+//    lcdStrobe();		// 4-bit, two lines, 5x8 pixel
+//    lcd10usDelay(BUSY_CYCLE_TIME);
+//    /* Note: The number of display lines and character font cannot be changed after this point. */
+//}
 
 
 void WH1602B::lcd10usDelay(volatile uint us)
@@ -184,11 +184,11 @@ void WH1602B::lcd10usDelay(volatile uint us)
 }
 
 
-void WH1602B::lcdSetMode(uint8 param)
-{
-    CLR_RS();
-    lcdWrite(param);
-}
+//void WH1602B::lcdSetMode(uint8 param)
+//{
+//    CLR_RS();
+//    lcdWrite(param);
+//}
 
 
 void WH1602B::lcdStrobe(void)
@@ -200,14 +200,14 @@ void WH1602B::lcdStrobe(void)
 }
 
 
-void WH1602B::lcdClrScr(void)
-{
-    CLR_RS();
-    /* Clear screen */
-    lcdWrite(0x01u);
-    /* Busy delay */
-    lcd10usDelay(CLRSCR_CYCLE_TIME);
-}
+//void WH1602B::lcdClrScr(void)
+//{
+//    CLR_RS();
+//    /* Clear screen */
+//    lcdWrite(0x01u);
+//    /* Busy delay */
+//    lcd10usDelay(CLRSCR_CYCLE_TIME);
+//}
 
 
 void WH1602B::lcdLow(uint8 data)
@@ -228,11 +228,11 @@ void WH1602B::lcdHigh(uint8 data)
 }
 
 
-void WH1602B::lcdReturn(void)
-{
-    CLR_RS();
-    /* Return home */
-    lcdWrite(0x02u);
-    /* Busy delay */
-    lcd10usDelay(RETHOME_CYCLE_TIME);
-}
+//void WH1602B::lcdReturn(void)
+//{
+//    CLR_RS();
+//    /* Return home */
+//    lcdWrite(0x02u);
+//    /* Busy delay */
+//    lcd10usDelay(RETHOME_CYCLE_TIME);
+//}
