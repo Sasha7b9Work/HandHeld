@@ -181,7 +181,7 @@ float Sound::GetFrequency()
 
     uint8 code = (uint8)(current->composite[num_note] & 0x1F);
 
-    if (code == 0)
+    if (current->composite[num_note] != 0 && code == 0)
     {
         num_note++;
 
