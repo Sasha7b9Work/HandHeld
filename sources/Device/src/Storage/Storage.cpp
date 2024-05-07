@@ -17,7 +17,7 @@ namespace Storage
 
 void Storage::Init()
 {
-    HAL_ROM::ReadBuffer(HAL_ROM::AddressPage(HAL_ROM::PAGE_FOR_JOURNAL), records, MAX_RECORDS * sizeof(Record));
+    HAL_ROM::ReadBuffer(HAL_ROM::AddressPage(HAL_ROM::PAGE_FOR_JOURNAL), records, MAX_RECORDS * (int)sizeof(Record));
 
     num_records = GetCountRecords();
 }
@@ -27,7 +27,7 @@ void Storage::Save()
 {
     HAL_ROM::ErasePage(HAL_ROM::PAGE_FOR_JOURNAL);
 
-    HAL_ROM::WriteBuffer(HAL_ROM::AddressPage(HAL_ROM::PAGE_FOR_JOURNAL), records, num_records * sizeof(Record));
+    HAL_ROM::WriteBuffer(HAL_ROM::AddressPage(HAL_ROM::PAGE_FOR_JOURNAL), records, num_records * (int)sizeof(Record));
 }
 
 

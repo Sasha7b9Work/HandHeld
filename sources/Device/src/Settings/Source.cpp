@@ -117,6 +117,22 @@ pchar Source::Name(E v)
 }
 
 
+pchar Source::NameSmall(E v)
+{
+    static const pchar names[Count] =
+    {
+        "дбепмни гбнмнй",
+        "лнахк. рекетнм",
+        "днлюь. рекетнм",
+        "днлнтнм",
+        "лхйпнтнм",
+        "TECT"
+    };
+
+    return names[v];
+}
+
+
 void Source::Receive(E type)
 {
     need_received[type] = true;

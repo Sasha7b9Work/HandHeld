@@ -44,6 +44,8 @@ struct Source
 
     static pchar Name(E);
 
+    static pchar NameSmall(E);
+
     // ֲנולÿ מעלוםû
     static uint TimeDestroy(E);
 
