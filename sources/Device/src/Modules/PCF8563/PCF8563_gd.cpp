@@ -228,7 +228,7 @@ void PCF8563::SetDateTime(RTCDateTime *DateTime)
 	tmp[3] = dec2bcd(DateTime->Day);
 	tmp[4] = (uint8)dayofweek(DateTime->Day, DateTime->Month, DateTime->Year);
 	tmp[5] = dec2bcd(DateTime->Month);
-	tmp[6] = dec2bcd((uint8)(DateTime->Year - 2000));
+	tmp[6] = dec2bcd((uint8)(DateTime->Year));
 
 	// HAL_I2C_Mem_Write(hi2c_pcf8563, PCF8563::ADDRESS, PCF8563_REG_TIME, 1, tmp, 7, PCF8563::I2C_TIMEOUT);
 	HAL_I2C::Write(PCF8563_REG_TIME, tmp, 7);
