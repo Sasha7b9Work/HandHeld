@@ -22,6 +22,10 @@ struct Record
 // Здесь будут храниться принятые и непринятые вызовы
 namespace Storage
 {
+    void Init();
+
+    void Save();
+
     // Если receive == true, то вызов "принят"
     void Append(const RTCDateTime &, Source::E, bool receive);
 

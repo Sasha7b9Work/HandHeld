@@ -8,6 +8,7 @@
 #include "Hardware/HAL/HAL_PINS.h"
 #include "Modules/PCF8563/PCF8563.h"
 #include "Modules/LED/driverLED.h"
+#include "Storage/Storage.h"
 
 
 namespace Power
@@ -85,6 +86,8 @@ void Power::Disable()
 
 void Power::PowerDown()
 {
+    Storage::Save();
+
     pinPWR.ToLow();
 
     LED::Driver::On();

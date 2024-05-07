@@ -67,11 +67,16 @@ namespace HAL_ROM
 {
     static const uint ADDRESS_BEGIN = 0x8000000;
     static const uint SIZE_PAGE = 1024;
-    static const int PAGE_FIRST_JOURNAL = 62;       // Первый сектор журнала
-    static const int PAGE_SECOND_JOURNAL = 63;      // Второй сектор журнала
+    static const uint NUM_PAGES = 64;
+
+    static const int PAGE_FOR_JOURNAL = 63;
+
+    void Init();
 
     // Стиреть страницу от 0 до 63
     void ErasePage(int);
+
+    uint AddressPage(int);
 
     // address должен быть кратен 4
     void WriteBuffer(uint address, const void *buffer, int size);
