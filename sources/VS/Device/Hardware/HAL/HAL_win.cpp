@@ -20,5 +20,6 @@ void ModeClock::LeaveDeepSleep()
 
 void HAL::Init()
 {
-
+    HAL_ROM::Init();
 }
+

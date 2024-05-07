@@ -7,6 +7,7 @@
 struct Record
 {
     uint         crc;            // Если здесь ноль, то запись стёрта
+    uint         number;
     RTCDateTime  time;
     uint8        source;         // В старшем бите - 1/0 - принято/непринято
     uint8        control_bits;   // Сюда записываем ноль, чтобы убедиться, что запись прошла успешно. Не участвует в вычислении CRC
@@ -21,9 +22,14 @@ struct Record
 // Здесь будут храниться принятые и непринятые вызовы
 namespace Storage
 {
-    void Append(const RTCDateTime &, Source::E, bool);
+    void Init();
+
+    void Save();
+
+    // Если receive == true, то вызов "принят"
+    void Append(const RTCDateTime &, Source::E, bool receive);
 
     int GetCountRecords();
 
-    Record Get(int);
+    Record *Get(int);
 }

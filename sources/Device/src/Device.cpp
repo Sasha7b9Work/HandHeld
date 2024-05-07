@@ -53,6 +53,8 @@ void Device::Init()
     CMT2210AW::Init();
 
     Beeper::Init();
+
+    Storage::Init();
 }
 
 
