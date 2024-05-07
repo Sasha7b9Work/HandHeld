@@ -32,7 +32,7 @@ namespace PageJournal
         Text<>("%02d/%02d %02d:%02d",
             time.Day, time.Month, time.Hour, time.Minute).Write(x + 55, y + 15, (rec->source & 0x80) ? Color::GREEN : Color::RED);
 
-        Text<>(Source::Name((Source::E)(rec->source & 0x7F))).WriteInCenter(x, y + 50, Display::WIDTH);
+        Text<>(Source::NameSmall((Source::E)(rec->source & 0x7F))).WriteInCenter(x, y + 50, Display::WIDTH);
 
         Font::SetSize(1);
     }
