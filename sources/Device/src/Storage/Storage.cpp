@@ -1,188 +1,144 @@
-// 2024/03/20 20:05:55 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
-#include "defines.h"
+// 2024/05/07 08:31:57 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
+#include "defines_win.h"
 #include "Storage/Storage.h"
-#include "Settings/Settings.h"
-#include "Utils/Math.h"
 #include "Hardware/HAL/HAL.h"
 
 
 namespace Storage
 {
+    // Столько байт отводится для хранения одной записи
+    static const uint BYTES_FOR_RECORD = 64;
+
     struct Page
     {
-        static const int RECORS_ON_PAGE = HAL_ROM::SIZE_PAGE / sizeof(Record);
+        Page(int _number) : number(_number) { }
 
-        Page(int i) : num_page(i)
+        int GetCountRecords() const
         {
-            address = (uint)(HAL_ROM::ADDRESS_BEGIN + (uint)i * HAL_ROM::SIZE_PAGE);
-        }
-
-        // Есть ли место для новой записи
-        Record *RecordForWrite()
-        {
-            Record *record = FirstRecord();
-
-            while (record < LastRecord())
-            {
-                if (record->IsEmpty())
-                {
-                    return record;
-                }
-
-                record++;
-            }
-
-            return nullptr;
-        }
-
-        Record GetRecord(int /*num*/)
-        {
-            return Record();
-        }
-
-        Record *FirstRecord()
-        {
-            return (Record *)address;
-        }
-
-        Record *LastRecord()
-        {
-            return (Record *)(address + RECORS_ON_PAGE * sizeof(Record));
-        }
-
-        // Последняя запись с существующими данными
-        Record *LastExistRecord()
-        {
-            Record *record = LastRecord() - 1;
-
-            while (record >= FirstRecord())
-            {
-                if (record->IsValidData())
-                {
-                    return record;
-                }
-
-                record++;
-            }
-
-            return nullptr;
-        }
-
-        void Erase()
-        {
-            HAL_ROM::ErasePage(num_page);
-        }
-
-        void Write(const Record &record)
-        {
-            Record *place = FirstRecord();
-            Record *last = LastRecord();
-
-            while (place < last)
-            {
-                if (place->IsEmpty())
-                {
-                    HAL_ROM::WriteBuffer((uint)place, &record, sizeof(record));
-                    break;
-                }
-            }
-        }
-
-        int GetCountRecords()
-        {
-            Record *place = FirstRecord();
-            Record *last = LastRecord();
-
             int result = 0;
 
-            while(place < last)
+            for (uint address = Begin(); address < End(); address += BYTES_FOR_RECORD)
             {
-                if (place->IsValidData())
+                Record *record = (Record *)address;
+
+                if (record->crc != (uint)(-1))
                 {
                     result++;
                 }
-
-                place++;
             }
 
             return result;
         }
 
-        static Page FromEnd(int index)
+        uint Begin() const
         {
-            return Page(HAL_ROM::PAGE_LAST_JOURNAL - index);
+            return HAL_ROM::ADDRESS_BEGIN + HAL_ROM::SIZE_PAGE * number;
         }
 
-        // Столько всего страниц
-        static int Count()
+        uint End() const
         {
-            return HAL_ROM::PAGE_LAST_JOURNAL - HAL_ROM::PAGE_FIRST_JOURNAL;
+            return Begin() + HAL_ROM::SIZE_PAGE;
+        }
+
+        Record *GetRecord(int num_record)
+        {
+            uint address = Begin();
+
+            address += num_record * BYTES_FOR_RECORD;
+
+            return (Record *)address;
+        }
+
+        Record *GetFirstEmpty()
+        {
+            uint address = Begin();
+
+            for (; address < End(); address += BYTES_FOR_RECORD)
+            {
+                Record *record = (Record *)address;
+
+                if (record->crc == (uint)(-1))
+                {
+                    break;
+                }
+            }
+
+            return (address < End()) ? ((Record *)address) : nullptr;
+        }
+
+        static Page *GetFirst();
+        {
+            Page *first = nullptr;
+
+            int count_0 = pages[0]->GetCountRecords();
+            int count_1 = pages[1]->GetCountRecords();
+
+            if (count_0 && count_1)
+            {
+                if (pages[0]->GetRecord(0)->number < pages[1]->GetRecord(0)->number)
+                {
+                    first = pages[0];
+                    second = pages[1];
+                }
+            }
+            else if (count_0 == 0 && count_1 == 0)
+            {
+
+            }
+            else if (count_0)
+            {
+                first = pages[0];
+            }
+            else if (count_1)
+            {
+                first = pages[1];
+            }
+
+            return first;
         }
 
     private:
-        int num_page;
-        uint address;
+        int number;
     };
 
-    static void Append(const Record &);
+    static Page page_0(HAL_ROM::PAGE_FIRST_JOURNAL);
+    static Page page_1(HAL_ROM::PAGE_SECOND_JOURNAL);
+
+    static Page *pages[2] = { &page_0, &page_1 };
+
+    Page *Page::GetFirst()
+    {
+
+    }
 }
 
 
-void Storage::Append(const Record &rec)
+void Storage::Append(const RTCDateTime &time, Source::E source, bool receive)
 {
-    for (int i = HAL_ROM::PAGE_FIRST_JOURNAL; i < HAL_ROM::PAGE_LAST_JOURNAL; i++)
+    Record record =
     {
-        Page page(i);
-
-        Record *place = page.RecordForWrite();
-
-        if (place)
-        {
-            Record record = rec;
-            record.crc = rec.CalculateCRC();
-            record.control_bits = 0;
-
-            HAL_ROM::WriteBuffer((uint)place, &record, sizeof(record));
-
-            return;
-        }
-    }
-
-    Record last_record =
-    {
-        0, { 0, 0, 0, 0, 0, 0 }, 0, 0
+        0,
+        0,
+        time,
+        (uint8)source,
+        0
     };
 
-    int num_page = 0;
-
-    for (int i = HAL_ROM::PAGE_FIRST_JOURNAL; i < HAL_ROM::PAGE_LAST_JOURNAL; i++)
+    if (GetCountRecords() == 0)
     {
-        Page page(i);
-
-        Record *record = page.LastExistRecord();
-
-        if (!record)
-        {
-            num_page = i;
-            break;
-        }
-
-        if (record->time < last_record.time)
-        {
-            last_record = *record;
-            num_page = i;
-        }
+        record.number = 1;
+    }
+    else
+    {
+        record.number = Storage::Get(GetCountRecords() - 1)->number + 1;
     }
 
-    Page page(num_page);
+    if (receive)
+    {
+        record.source |= 0x80;
+    }
 
-    page.Erase();
 
-    Record record = rec;
-    record.crc = rec.CalculateCRC();
-    record.control_bits = 0;
-
-    page.Write(record);
 }
 
 
@@ -190,93 +146,55 @@ int Storage::GetCountRecords()
 {
     int result = 0;
 
-    for (int i = 0; i < Page::Count(); i++)
+    for (int page = 0; page < 2; page++)
     {
-        result += Page::FromEnd(i).GetCountRecords();
+        result += pages[page]->GetCountRecords();
     }
 
-    return result;
+    return result;;
 }
 
 
-Record Storage::Get(int num)
+Record *Storage::Get(int number)
 {
-    for (int i = 0; i < Page::Count(); i++)
+    if (number >= GetCountRecords())
     {
-        Page page(i);
-
-        if (num < page.GetCountRecords())
-        {
-            return page.GetRecord(num);
-        }
-
-        num -= page.GetCountRecords();
-
-        if (num < 0)
-        {
-            break;
-        }
+        return nullptr;
     }
 
-    return Record();
-}
+    Page *first = nullptr;
+    Page *second = nullptr;
 
+    int count_0 = pages[0]->GetCountRecords();
+    int count_1 = pages[1]->GetCountRecords();
 
-const uint8 *Record::Begin() const
-{
-    return (const uint8 *)this;
-}
-
-
-const uint8 *Record::End() const
-{
-    return Begin() + sizeof(*this);
-}
-
-
-uint Record::CalculateCRC() const
-{
-    return Math::CalculateCRC(Begin(), &control_bits - Begin());
-}
-
-
-bool Record::IsEmpty() const
-{
-    const uint8 *pointer = Begin();
-    const uint8 *end = End();
-
-    while (pointer < end)
+    if (count_0 && count_1)
     {
-        if (*pointer++ != 0xFF)
+        if (pages[0]->GetRecord(0)->number < pages[1]->GetRecord(0)->number)
         {
-            return false;
+            first = pages[0];
+            second = pages[1];
         }
     }
-
-    return true;
-}
-
-
-bool Record::IsValidData() const
-{
-    return control_bits == 0 && crc == CalculateCRC();
-}
-
-
-void Storage::Append(const RTCDateTime &time, Source::E source, bool received)
-{
-    Record record =
+    else if (count_0 == 0 && count_1 == 0)
     {
-        0,
-        time,
-        (uint8)source,
-        0
-    };
 
-    if (received)
+    }
+    else if (count_0)
     {
-        record.source |= 0x80;
+        first = pages[0];
+    }
+    else if (count_1)
+    {
+        first = pages[1];
     }
 
-    Append(record);
+    if (number < HAL_ROM::SIZE_PAGE / BYTES_FOR_RECORD)
+    {
+        return first->GetRecord(number);
+    }
+
+    number -= HAL_ROM::SIZE_PAGE / BYTES_FOR_RECORD;
+
+    return second->GetRecord(number);
 }

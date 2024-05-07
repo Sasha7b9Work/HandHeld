@@ -67,8 +67,8 @@ namespace HAL_ROM
 {
     static const uint ADDRESS_BEGIN = 0x8000000;
     static const uint SIZE_PAGE = 1024;
-    static const int PAGE_FIRST_JOURNAL = 61;       // Первый сектор журнала
-    static const int PAGE_LAST_JOURNAL = 64;        // Последний сектор журнала (в нём настроек уже нет)
+    static const int PAGE_FIRST_JOURNAL = 62;       // Первый сектор журнала
+    static const int PAGE_SECOND_JOURNAL = 63;      // Второй сектор журнала
 
     // Стиреть страницу от 0 до 63
     void ErasePage(int);
