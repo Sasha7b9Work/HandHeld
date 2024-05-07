@@ -68,6 +68,9 @@ namespace PCF8563
 
     RTCDateTime GetDateTime();        // Use in blocking/interrupt mode in PCF8563_INT EXTI handler
 
+    // \tode Нужно при включении брать из микросхемы время тревоги
+    RTCDateTime GetTimeAlarm();
+
     void SetDateTime(RTCDateTime *);
 
     void SetAlarm(RTCDateTime *);
