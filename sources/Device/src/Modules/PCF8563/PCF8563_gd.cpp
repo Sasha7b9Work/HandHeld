@@ -309,7 +309,7 @@ RTCDateTime PCF8563::GetTimeAlarm()
 
 	HAL_I2C::Read(PCF8563_REG_ALARM_MINUTE, buffer, 2);
 
-	return { 0, 1, 0, bcd2dec(buffer[1]), bcd2dec(buffer[0]), 0 };
+	return { 0, 1, 0, bcd2dec((uint8)(buffer[1] & 0x7F)), bcd2dec((uint8)(buffer[0] & 0x7F)), 0 };
 }
 
 
