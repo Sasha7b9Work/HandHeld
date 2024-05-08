@@ -313,7 +313,7 @@ RTCDateTime PCF8563::GetTimeAlarm()
 }
 
 
-void PCF8563::SetAlarm(RTCDateTime *time)
+void PCF8563::_SetAlarm(RTCDateTime *time, bool enabled)
 {
     uint8 tmp[2];
 
@@ -322,7 +322,7 @@ void PCF8563::SetAlarm(RTCDateTime *time)
 
     HAL_I2C::Write(PCF8563_REG_ALARM_MINUTE, tmp, 2);
 
-	AlarmInterruptEnable(true);
+	AlarmInterruptEnable(enabled);
 }
 
 
