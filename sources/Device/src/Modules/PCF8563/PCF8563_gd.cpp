@@ -66,9 +66,7 @@
 
 namespace PCF8563
 {
-	static void CalculateDateTime(RTCDateTime *DateTime);
-
-    static uint8 buffer[7];
+	static void CalculateDateTime(uint8 buffer[8], RTCDateTime *DateTime);
 
 	static RTCDateTime date_time;       // Последнее считанное время
 
@@ -235,7 +233,7 @@ void PCF8563::SetDateTime(RTCDateTime *DateTime)
 }
 
 
-void PCF8563::CalculateDateTime(RTCDateTime *DateTime)
+void PCF8563::CalculateDateTime(uint8 buffer[7], RTCDateTime *DateTime)
 {
 	DateTime->Second = bcd2dec((uint8)((buffer[0]) & 0x7F));
 	DateTime->Minute = bcd2dec(buffer[1]);
@@ -246,23 +244,35 @@ void PCF8563::CalculateDateTime(RTCDateTime *DateTime)
 	DateTime->Year = (uint8)(bcd2dec(buffer[6]));
 }
 
+
 RTCDateTime PCF8563::GetDateTime()
 {
     return date_time;
 }
 
+
 void PCF8563::Init()
 {
     ClkoutFrequency(CLKOUT_Freq::CLKOUT_FREQ_1HZ);
     STOPEnable(false);
+
+	uint8 status2 = 0;
+
+	HAL_I2C::Read(PCF8563_REG_CONTROL_STATUS2, &status2, 1);
+
+	gset.alarm.enabled = (status2 & (1 << PCF8563_CONTROL2_AIE)) != 0;		// Считываем, включён ли будильник
+
+	gset.alarm.time = GetTimeAlarm();										// Считываем время будильника
 }
 
 
 void PCF8563::Update()
 {
+	static uint8 buffer[7];
+
     HAL_I2C::Read(PCF8563_REG_TIME, buffer, 7);
 
-    CalculateDateTime(&date_time);
+    CalculateDateTime(buffer, &date_time);
 
     if (pinPWR_CTRL.IsLow() && time_alarm == 0)
     {
@@ -272,8 +282,6 @@ void PCF8563::Update()
 
 		if (status2 & (1 << PCF8563_CONTROL2_AF))			// INT
 		{
-			AlarmInterruptEnable(false);
-
 			time_alarm = TIME_MS;
 
 			if (ModeIndication::ConsistSound(gset.alarm.mode_indication))
@@ -295,25 +303,26 @@ void PCF8563::Update()
 }
 
 
+RTCDateTime PCF8563::GetTimeAlarm()
+{
+	uint8 buffer[2];
+
+	HAL_I2C::Read(PCF8563_REG_ALARM_MINUTE, buffer, 2);
+
+	return { 0, 1, 0, bcd2dec(buffer[1]), bcd2dec(buffer[0]), 0 };
+}
+
+
 void PCF8563::SetAlarm(RTCDateTime *time)
 {
     uint8 tmp[2];
 
-	tmp[0] = (uint8)(time->Minute % 10);		// BCD
-	tmp[0] |= ((time->Minute / 10) << 4);
-
-	tmp[1] = (uint8)(time->Hour % 10);
-	tmp[1] |= ((time->Hour / 10) << 4);
+	tmp[0] = dec2bcd(time->Minute);
+	tmp[1] = dec2bcd(time->Hour);
 
     HAL_I2C::Write(PCF8563_REG_ALARM_MINUTE, tmp, 2);
 
-    uint8 status2 = 0;
-
-    HAL_I2C::Read(PCF8563_REG_CONTROL_STATUS2, &status2, 1);
-
-    status2 |= (1 << PCF8563_CONTROL2_AIE);					// Включаем alarm interrupt AIE
-
-    HAL_I2C::Write(PCF8563_REG_CONTROL_STATUS2, &status2, 1);
+	AlarmInterruptEnable(true);
 }
 
 
