@@ -57,7 +57,6 @@ void Power::Init()
     if (PCF8563::IsAlarmed())
     {
         PCF8563::AlarmFlagEnable(false);
-        PCF8563::AlarmInterruptEnable(false);
     }
     else
     {

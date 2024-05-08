@@ -322,7 +322,7 @@ void DateTime::ApplyAction(const Action &action) const
                     gset.alarm.time.Year = data->date_time->Year;
                 }
 
-                PCF8563::_SetAlarm(&gset.alarm.time, gset.alarm.enabled != 0);
+                PCF8563::SetAlarm(&gset.alarm.time, gset.alarm.enabled != 0);
             }
             else
             {

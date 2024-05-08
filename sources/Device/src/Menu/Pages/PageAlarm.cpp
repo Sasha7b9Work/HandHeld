@@ -9,7 +9,7 @@ namespace PageAlarm
 {
     static void FuncOnChange()
     {
-        PCF8563::_SetAlarm(&gset.alarm.time, gset.alarm.enabled != 0);
+        PCF8563::SetAlarm(&gset.alarm.time, gset.alarm.enabled != 0);
     }
 
     DEF_CHOICE_2(choiceEnabled, self, "ÂÊËŞ×ÅÍÎ", &gset.alarm.enabled,

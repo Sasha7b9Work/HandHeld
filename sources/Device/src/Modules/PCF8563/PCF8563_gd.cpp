@@ -260,9 +260,9 @@ void PCF8563::Init()
 
 	HAL_I2C::Read(PCF8563_REG_CONTROL_STATUS2, &status2, 1);
 
-	gset.alarm.enabled = (status2 & (1 << PCF8563_CONTROL2_AIE)) != 0;		// —читываем, включЄн ли будильник
+	gset.alarm.enabled = (status2 & (1 << PCF8563_CONTROL2_AIE)) == 0 ? 0U : 1U;	// —читываем, включЄн ли будильник
 
-	gset.alarm.time = GetTimeAlarm();										// —читываем врем€ будильника
+	gset.alarm.time = GetTimeAlarm();												// —читываем врем€ будильника
 }
 
 
@@ -313,7 +313,7 @@ RTCDateTime PCF8563::GetTimeAlarm()
 }
 
 
-void PCF8563::_SetAlarm(RTCDateTime *time, bool enabled)
+void PCF8563::SetAlarm(RTCDateTime *time, bool enabled)
 {
     uint8 tmp[2];
 
