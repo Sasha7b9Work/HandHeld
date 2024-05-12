@@ -90,11 +90,11 @@ static void WriteBitToControlRegister(uint8 ControlRegister, uint8 BitNumber, bo
 
 	if (ControlRegister == PCF8563_REG_CONTROL_STATUS1)				// Put zeros where zero is needed
 	{
-		value &= BINARY_U8(00011111);
+		value &= BINARY_U8(10101000);
 	}
 	else if (ControlRegister == PCF8563_REG_CONTROL_STATUS2)
 	{
-		value &= BINARY_U8(10101000);
+		value &= BINARY_U8(00011111);
 	}
 
 	HAL_I2C::Write(ControlRegister, &value, 1);
@@ -238,7 +238,7 @@ void PCF8563::CalculateDateTime(uint8 buffer[7], RTCDateTime *DateTime)
 	DateTime->Second = bcd2dec((uint8)((buffer[0]) & 0x7F));
 	DateTime->Minute = bcd2dec(buffer[1]);
 	DateTime->Hour = bcd2dec(buffer[2]);
-	DateTime->Day = buffer[3];
+	DateTime->Day = bcd2dec(buffer[3]);
 //	DateTime->DayOfWeek = bcd2dec((uint8)(buffer[4] + 1)); // too keep weekdays in 1-7 format
 	DateTime->Month = bcd2dec((uint8)(buffer[5] & 0x1F));
 	DateTime->Year = (uint8)(bcd2dec(buffer[6]));
