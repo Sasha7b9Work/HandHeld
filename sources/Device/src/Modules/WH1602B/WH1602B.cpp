@@ -129,10 +129,12 @@ void WH1602B::Init()
 
 void WH1602B::Write(uint8 buffer[16])
 {
-    CLR_RS();                   // Посылаем команду
-    uint8 command = 0x80;       // Set DDRAM address
+    Clear();
 
-    lcdWrite(command);
+//    CLR_RS();                   // Посылаем команду
+//    uint8 command = 0x80;       // Set DDRAM address
+//
+//    lcdWrite(command);
 
     SET_RS();                   // Посылаем данные
 
@@ -140,6 +142,16 @@ void WH1602B::Write(uint8 buffer[16])
     {
         lcdWrite(buffer[i]);
     }
+}
+
+
+void WH1602B::Clear()
+{
+    CLR_RS();
+
+    lcdWrite(0x01u);
+
+    lcd10usDelay(CLRSCR_CYCLE_TIME);
 }
 
 

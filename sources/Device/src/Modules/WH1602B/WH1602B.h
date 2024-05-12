@@ -6,5 +6,8 @@ namespace WH1602B
 {
     void Init();
 
+    void Clear();
+
     void Write(uint8[16]);
 }
+

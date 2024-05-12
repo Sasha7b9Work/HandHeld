@@ -12,7 +12,7 @@ void Display::Init()
 
 void Display::Update()
 {
-    char *buffer = "12345678ABCDEFGH";
+    pchar buffer = "12345678ABCDEFGH";
 
     WH1602B::Write((uint8*)buffer);
 }
