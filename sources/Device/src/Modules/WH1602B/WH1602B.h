@@ -6,5 +6,5 @@ namespace WH1602B
 {
     void Init();
 
-    void Write(int num_row, uint8[8]);
+    void Write(uint8[16]);
 }

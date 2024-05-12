@@ -12,17 +12,9 @@ void Display::Init()
 
 void Display::Update()
 {
-    for (int i = 0; i < 20; i++)
-    {
-        uint8 buffer[8] = {'A', 'B', 'C', ' ', 'x', 'y', 'z', '1'};
+    char *buffer = "12345678ABCDEFGH";
 
-        //for (uint8 j = 0; j < 8; j++)
-        //{
-        //    buffer[j] = j;
-        //}
-
-        WH1602B::Write(i, buffer);
-    }
+    WH1602B::Write((uint8*)buffer);
 }
 
 
