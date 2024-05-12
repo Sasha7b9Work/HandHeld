@@ -198,7 +198,7 @@ void Sound::Update()
     {
         num_note++;
 
-        if (num_note == NumberNotes())
+        if (num_note >= NumberNotes())
         {
             Beeper::Stop();
 
