@@ -79,10 +79,10 @@ void SysTick_Handler(void)
 }
 
 
-// PB0 LEFT
-// PB1 DOWN
 void EXTI0_1_IRQHandler(void)
 {
+#ifdef TYPE_1602
+#else
     if (SET == exti_interrupt_flag_get(EXTI_0))
     {
         Keyboard::CallbackFromInterrupt(Key::Cancel);
@@ -96,21 +96,23 @@ void EXTI0_1_IRQHandler(void)
 
         exti_interrupt_flag_clear(EXTI_1);
     }
+#endif
 }
 
-// PB2 RIGHT
 void EXTI2_3_IRQHandler(void)
 {
+#ifdef TYPE_1602
+#else
     if (SET == exti_interrupt_flag_get(EXTI_2))
     {
         Keyboard::CallbackFromInterrupt(Key::Menu);
 
         exti_interrupt_flag_clear(EXTI_2);
     }
+#endif
 }
 
 
-// PA7 UP
 void EXTI4_15_IRQHandler(void)
 {
     if (SET == exti_interrupt_flag_get(EXTI_13))
@@ -120,12 +122,39 @@ void EXTI4_15_IRQHandler(void)
         CMT2210AW::CallbackOnClock();
     }
 
+#ifdef TYPE_1602
+    if (SET == exti_interrupt_flag_get(EXTI_4))
+    {
+        exti_interrupt_flag_clear(EXTI_4);
+
+        Keyboard::CallbackFromInterrupt(Key::Cancel);
+    }
+    if (SET == exti_interrupt_flag_get(EXTI_5))
+    {
+        exti_interrupt_flag_clear(EXTI_5);
+
+        Keyboard::CallbackFromInterrupt(Key::Up);
+    }
+    if (SET == exti_interrupt_flag_get(EXTI_6))
+    {
+        exti_interrupt_flag_clear(EXTI_6);
+
+        Keyboard::CallbackFromInterrupt(Key::Menu);
+    }
+    if (SET == exti_interrupt_flag_get(EXTI_15))
+    {
+        exti_interrupt_flag_clear(EXTI_15);
+
+        Keyboard::CallbackFromInterrupt(Key::Down);
+    }
+#else
     if (SET == exti_interrupt_flag_get(EXTI_7))
     {
         Keyboard::CallbackFromInterrupt(Key::Up);
 
         exti_interrupt_flag_clear(EXTI_7);
     }
+#endif
 }
 
 
