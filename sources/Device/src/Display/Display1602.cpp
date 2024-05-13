@@ -465,13 +465,13 @@ void Display::LoadSymbolsToCGRAM()
 
 void RTCDateTime::DrawTime(int, int, const Color &) const
 {
-    Text<>("%02d:%02d", Day, Month, Year).Write(0, 0);
+    Text<>("%02d:%02d", Day, Month, Year).WriteInCenter(0, 0, Display::WIDTH);
 }
 
 
 void RTCDateTime::DrawDate(int, int, const Color &) const
 {
-    Text<>("%02d/%02d/%02d", Day, Month, Year).Write(0, 1);
+    Text<>("%02d/%02d/%02d", Day, Month, Year).WriteInCenter(0, 1, Display::WIDTH);
 }
 
 
