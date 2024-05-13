@@ -45,11 +45,11 @@ namespace Display
                 BINARY_U8(00010000)
             },
             {
-                BINARY_U8(00001111),    // Ä - 0x02
-                BINARY_U8(00001001),
-                BINARY_U8(00001001),
-                BINARY_U8(00001001),
-                BINARY_U8(00001001),
+                BINARY_U8(00001110),    // Ä - 0x02
+                BINARY_U8(00001010),
+                BINARY_U8(00001010),
+                BINARY_U8(00001010),
+                BINARY_U8(00001010),
                 BINARY_U8(00011111),
                 BINARY_U8(00010001)
             },
