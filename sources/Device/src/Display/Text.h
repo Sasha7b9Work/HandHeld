@@ -4,7 +4,7 @@
 #include "Display/Font/Font.h"
 #include <cstdarg>
 #include <cstdio>
-//#include <cstring>
+#include <cstring>
 
 
 
@@ -38,6 +38,9 @@ struct Text
     }
     int GetLength() const
     {
+#ifdef TYPE_1602
+        return (int)std::strlen(text);
+#else
         int result = 0;
 
         pchar pointer = text;
@@ -50,6 +53,7 @@ struct Text
         }
 
         return result;
+#endif
     }
     const char *c_str() const
     {
