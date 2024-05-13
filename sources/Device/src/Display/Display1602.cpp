@@ -201,7 +201,7 @@ namespace Display
                 BINARY_U8(00010111),    // Þ - 0x13
                 BINARY_U8(00010101),
                 BINARY_U8(00010101),
-                BINARY_U8(00011111),
+                BINARY_U8(00011101),
                 BINARY_U8(00010101),
                 BINARY_U8(00010101),
                 BINARY_U8(00010111)
