@@ -90,7 +90,7 @@ void Choice::Draw() const
     {
         Font::SetSize(2);
 
-        data->item->Title().WriteInCenter(0, 15, Display::WIDTH, Color::GREEN);
+        data->item->Title().WriteInCenter(0, HAL::Is1602() ? 0 : 15, Display::WIDTH, Color::GREEN);
 
         int index = (int)(*data->value);
 
@@ -103,7 +103,7 @@ void Choice::Draw() const
             color = Color(data->colors[index]);
         }
 
-        Text<>(text).WriteInCenter(0, 45, Display::WIDTH, color);
+        Text<>(text).WriteInCenter(0, HAL::Is1602() ? 1 : 45, Display::WIDTH, color);
 
         Font::SetSize(1);
     }
@@ -127,7 +127,7 @@ void DateTime::DrawField(int x, int y, const Text<> &text, bool selected) const
 #endif
 
     Font::SetSize(4);
-    text.Write(x + 3, y + 3, selected ? Color::BLACK : Color::WHITE);
+    text.Write(HAL::Is1602() ? 0 : (x + 3), HAL::Is1602() ? 1 : (y + 3), selected ? Color::BLACK : Color::WHITE);
     Font::SetSize(1);
 }
 
