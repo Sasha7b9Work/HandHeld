@@ -6,6 +6,7 @@
 #include "Utils/Math.h"
 #include "Settings/Settings.h"
 #include "Utils/StringUtils.h"
+#include "Hardware/HAL/HAL.h"
 #ifdef TYPE_1602
     #include "Display/Display1602.h"
 #else
@@ -58,15 +59,15 @@ void Page::Draw() const
 
         if (num_words == 1)
         {
-            title.WriteInCenter(0, 30, Display::WIDTH, Color::GREEN);
+            title.WriteInCenter(0, HAL::Is1602() ? 0 : 30, Display::WIDTH, Color::GREEN);
         }
         else if(num_words == 2)
         {
             char buffer[32];
 
-            Text<>(SU::GetWordFromString(title.c_str(), 1, buffer)).WriteInCenter(0, 15, Display::WIDTH, Color::GREEN);
+            Text<>(SU::GetWordFromString(title.c_str(), 1, buffer)).WriteInCenter(0, HAL::Is1602() ? 0 : 15, Display::WIDTH, Color::GREEN);
 
-            Text<>(SU::GetWordFromString(title.c_str(), 2, buffer)).WriteInCenter(0, 45, Display::WIDTH);
+            Text<>(SU::GetWordFromString(title.c_str(), 2, buffer)).WriteInCenter(0, HAL::Is1602() ? 1 : 45, Display::WIDTH);
         }
 
         Font::SetSize(1);

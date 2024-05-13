@@ -37,3 +37,13 @@ void HAL::DeInit()
     rcu_periph_clock_disable(RCU_ADC);
     rcu_periph_clock_disable(RCU_TIMER2);
 }
+
+
+bool HAL::Is1602()
+{
+#ifdef TYPE_1602
+    return true;
+#else
+    return false;
+#endif
+}

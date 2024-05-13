@@ -31,6 +31,8 @@ namespace HAL
     void Init();
 
     void DeInit();
+
+    bool Is1602();
 }
 
 
