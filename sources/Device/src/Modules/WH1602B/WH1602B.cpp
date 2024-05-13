@@ -151,6 +151,8 @@ void WH1602B::Write(uint8 buffer[32])
 
     lcdWrite(command);
 
+    SET_RS();
+
     for (int i = 16; i < 32; i++)
     {
         lcdWrite(buffer[i]);
