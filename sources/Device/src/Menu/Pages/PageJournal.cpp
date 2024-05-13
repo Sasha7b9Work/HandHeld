@@ -34,8 +34,6 @@ namespace PageJournal
         Font::SetSize(2);
 
 #ifdef TYPE_1602
-        Text<>("%d", top_record + 1).Write(x + 5, y + 15);
-
         Text<>("%02d  %02d/%02d %02d:%02d",
             time.Day, time.Month, time.Hour, time.Minute).Write(0, 0, (rec->source & 0x80) ? Color::GREEN : Color::RED);
 
