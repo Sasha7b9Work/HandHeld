@@ -140,7 +140,18 @@ void WH1602B::Write(uint8 buffer[32])
 
     SET_RS();                   // Посылаем данные
 
-    for (int i = 0; i < 32; i++)
+    for (int i = 0; i < 16; i++)
+    {
+        lcdWrite(buffer[i]);
+    }
+
+    CLR_RS();
+
+    uint8 command = 0x80 | 0x40;
+
+    lcdWrite(command);
+
+    for (int i = 16; i < 32; i++)
     {
         lcdWrite(buffer[i]);
     }
