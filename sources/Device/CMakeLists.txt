@@ -34,9 +34,10 @@ add_compile_options(
 file(GLOB GD32E23x                ../common/GD32E23x_Firmware_Library/Firmware/GD32E23x_standard_peripheral/Include/*.*
                                   ../common/GD32E23x_Firmware_Library/Firmware/GD32E23x_standard_peripheral/Source/*.*)
 file(GLOB SRC                     src/*.*)
-file(GLOB DISPLAY                 src/Display/Display.*
+file(GLOB DISPLAY                 src/Display/Display7735.*
                                   src/Display/Icons.*
                                   src/Display/Colors.*)
+file(GLOB DISPLAY_FONT            src/Display/Font/*.*)
 file(GLOB HARDWARE                src/Hardware/*.*)
 file(GLOB HARDWARE_CMSIS          src/Hardware/CMSIS/*.*)
 file(GLOB HARDWARE_HAL            src/Hardware/HAL/*.*)
@@ -56,6 +57,7 @@ file(GLOB UTILS                   src/Utils/*.*)
 source_group(GD32E23x               FILES ${GD32E23x})
 source_group(src                    FILES ${SRC})
 source_group(Display                FILES ${DISPLAY})
+source_group(Display/Font           FILES ${DISPLAY_FONT})
 source_group(Hardware               FILES ${HARDWARE})
 source_group(Hardware/CMSIS         FILES ${HARDWARE_CMSIS})
 source_group(Hardware/HAL           FILES ${HARDWARE_HAL})
@@ -83,6 +85,7 @@ add_library(${PROJECT_NAME}
     ${GD32E23x}
     ${SRC}
     ${DISPLAY}
+    ${DISPLAY_FONT}
     ${HARDWARE}
     ${HARDWARE_CMSIS}
     ${HARDWARE_HAL}

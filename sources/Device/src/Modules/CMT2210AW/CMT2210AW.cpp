@@ -2,7 +2,6 @@
 #include "defines.h"
 #include "Modules/CMT2210AW/CMT2210AW.h"
 #include "Hardware/HAL/HAL_PINS.h"
-#include "Display/Display.h"
 #include "Settings/Settings.h"
 #include "Hardware/Timer.h"
 #include "Hardware/HAL/HAL.h"

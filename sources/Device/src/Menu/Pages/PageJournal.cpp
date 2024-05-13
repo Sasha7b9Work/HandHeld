@@ -2,8 +2,13 @@
 #include "defines.h"
 #include "Menu/Pages/Pages.h"
 #include "Menu/MenuItemDef.h"
-#include "Display/Display.h"
 #include "Storage/Storage.h"
+#include "Display/Font/Font.h"
+#ifdef TYPE_1602
+    #include "Display/Display1602.h"
+#else
+    #include "Display/Display7735.h"
+#endif
 
 
 namespace PageJournal

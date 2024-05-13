@@ -5,7 +5,11 @@
 #include "Modules/CMT2210AW/CMT2210AW.h"
 #include "Hardware/HAL/systick.h"
 #include "Keyboard/Keyboard.h"
-#include "Display/Display.h"
+#ifdef TYPE_1602
+    #include "Display/Display1602.h"
+#else
+    #include "Display/Display7735.h"
+#endif
 #include <gd32e23x.h>
 
 

@@ -1,7 +1,8 @@
 // 2024/03/23 13:37:26 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
 #include "Display/Icons.h"
-#include "Display/Display.h"
+#include "Display/Display7735.h"
+#include "Display/Text.h"
 
 
 static IconSourceDoorBell iconSourceDoorBell;

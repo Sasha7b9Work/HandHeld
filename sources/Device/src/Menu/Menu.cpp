@@ -4,7 +4,12 @@
 #include "Menu/MenuItems.h"
 #include "Menu/Pages/Pages.h"
 #include "Keyboard/Keyboard.h"
-#include "Modules/ST7735/ST7735.h"
+#ifdef TYPE_1602
+    #include "Display/Display1602.h"
+#else
+    #include "Display/Display7735.h"
+    #include "Modules/ST7735/ST7735.h"
+#endif
 
 
 namespace Menu

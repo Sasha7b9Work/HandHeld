@@ -2,7 +2,8 @@
 #include "defines.h"
 #include "Utils/FPS.h"
 #include "Hardware/Timer.h"
-#include "Display/Display.h"
+#include "Display/Font/Font.h"
+#include "Display/Text.h"
 
 
 namespace FPS

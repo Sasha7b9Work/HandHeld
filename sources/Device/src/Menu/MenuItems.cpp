@@ -1,12 +1,16 @@
 // 2024/03/02 13:56:13 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
 #include "Menu/MenuItems.h"
-#include "Display/Display.h"
 #include "Menu/Menu.h"
 #include "Display/Font/Font.h"
 #include "Utils/Math.h"
 #include "Settings/Settings.h"
 #include "Utils/StringUtils.h"
+#ifdef TYPE_1602
+    #include "Display/Display1602.h"
+#else
+    #include "Display/Display7735.h"
+#endif
 
 
 void Item::Draw() const

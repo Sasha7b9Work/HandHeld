@@ -1,14 +1,17 @@
 // 2024/03/20 23:04:20 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
 #include "Hardware/HAL/HAL.h"
-#include "Display/Display.h"
 #include "Hardware/Timer.h"
 #include "Hardware/Power.h"
-#include "Display/Display.h"
 #include "Hardware/HAL/HAL_PINS.h"
 #include "Modules/PCF8563/PCF8563.h"
 #include "Modules/LED/driverLED.h"
 #include "Storage/Storage.h"
+#ifdef TYPE_1602
+    #include "Display/Display1602.h"
+#else
+    #include "Display/Display7735.h"
+#endif
 
 
 namespace Power

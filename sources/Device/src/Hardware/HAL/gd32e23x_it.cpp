@@ -1,7 +1,6 @@
 #include "defines.h"
 #include "gd32e23x_it.h"
 #include "systick.h"
-#include "Display/Display.h"
 #include "Modules/CMT2210AW/CMT2210AW.h"
 #include "Keyboard/Keyboard.h"
 #include "Hardware/Timer.h"
