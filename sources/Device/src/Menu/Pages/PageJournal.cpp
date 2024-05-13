@@ -4,6 +4,7 @@
 #include "Menu/MenuItemDef.h"
 #include "Storage/Storage.h"
 #include "Display/Font/Font.h"
+#include "Hardware/HAL/HAL.h"
 #ifdef TYPE_1602
     #include "Display/Display1602.h"
 #else
