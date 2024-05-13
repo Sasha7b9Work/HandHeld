@@ -132,11 +132,8 @@ void WH1602B::Init()
 
 void WH1602B::Write(uint8 buffer[32])
 {
-    Clear();
-
-//    CLR_RS();                   // Посылаем команду
-//    uint8 command = 0x80;       // Set DDRAM address
-//    lcdWrite(command);
+    CLR_RS();                   // Посылаем команду
+    lcdWrite(0x80);
 
     SET_RS();                   // Посылаем данные
 
@@ -146,10 +143,7 @@ void WH1602B::Write(uint8 buffer[32])
     }
 
     CLR_RS();
-
-    uint8 command = 0x80 | 0x40;
-
-    lcdWrite(command);
+    lcdWrite(0x80 | 0x40);
 
     SET_RS();
 
