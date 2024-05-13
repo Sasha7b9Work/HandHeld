@@ -130,7 +130,7 @@ void WH1602B::Init()
 }
 
 
-void WH1602B::Write(uint8 buffer[32])
+void WH1602B::WriteFull(uint8 buffer[32])
 {
     CLR_RS();                   // Посылаем команду
     lcdWrite(0x80);
@@ -150,6 +150,20 @@ void WH1602B::Write(uint8 buffer[32])
     for (int i = 16; i < 32; i++)
     {
         lcdWrite(buffer[i]);
+    }
+}
+
+
+void WH1602B::LoadSymbolToCGA(int slot, const uint8 rows[7])
+{
+    CLR_RS();
+    lcdWrite((uint8)(0x40 | (slot * 8)));
+
+    SET_RS();
+
+    for (int i = 0; i < 7; i++)
+    {
+        lcdWrite(rows[i]);
     }
 }
 
@@ -245,12 +259,6 @@ void WH1602B::lcdHigh(uint8 data)
     if (data & DATA_6_MASK) SET_D6(); else CLR_D6();
     if (data & DATA_5_MASK) SET_D5(); else CLR_D5();
     if (data & DATA_4_MASK) SET_D4(); else CLR_D4();
-}
-
-
-void WH1602B::LoadSymbolToCGA(int, const uint8 [7])
-{
-
 }
 
 

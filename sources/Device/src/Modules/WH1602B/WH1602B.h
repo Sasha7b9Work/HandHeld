@@ -8,7 +8,7 @@ namespace WH1602B
 
     void Clear();
 
-    void Write(uint8[32]);
+    void WriteFull(uint8[32]);
 
     // Записать в CGARAM символ с кодом code
     void LoadSymbolToCGA(int slot, const uint8 rows[7]);

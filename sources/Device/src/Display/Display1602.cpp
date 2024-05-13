@@ -383,7 +383,7 @@ void Display::EndScene()
 
     LoadSymbolsToCGRAM();
 
-    WH1602B::Write((uint8 *)buffer);
+    WH1602B::WriteFull((uint8 *)buffer);
 }
 
 
