@@ -122,6 +122,10 @@ void Power::Update()
 
 
 #ifdef TYPE_1602
+void Power::Draw()
+{
+
+}
 #else
 void Power::Draw()
 {

@@ -2,7 +2,14 @@
 #include "defines.h"
 #include "Display/Display1602.h"
 #include "Modules/WH1602B/WH1602B.h"
+#include "Modules/PCF8563/PCF8563.h"
+#include "Settings/Source.h"
+#include "Menu/Menu.h"
+#include "Hardware/Power.h"
 #include <cstring>
+
+
+template int Text<64>::Write(int x, int y, const Color &color) const;
 
 
 namespace Display
@@ -12,6 +19,7 @@ namespace Display
     static void BeginScene();
     static void EndScene();
     static void Convert();
+    static void WriteSymbol(int x, int y, char);
 }
 
 
@@ -24,6 +32,30 @@ void Display::Init()
 void Display::Update()
 {
     BeginScene();
+
+    if (PCF8563::IsAlarmed())
+    {
+
+    }
+    else if (Source::GetCountReceived())
+    {
+
+    }
+    else
+    {
+        if (Menu::IsShown())
+        {
+            Menu::Draw();
+        }
+        else
+        {
+            PCF8563::GetDateTime().DrawTime(0, 0);
+
+            PCF8563::GetDateTime().DrawDate(0, 0);
+
+            Power::Draw();
+        }
+    }
 
     EndScene();
 }
@@ -95,6 +127,52 @@ void Display::Convert()
             {
                 buffer[i][j] = symbols[symbol - 128];
             }
+        }
+    }
+}
+
+
+void RTCDateTime::DrawTime(int, int, const Color &) const
+{
+    Text<>("%02d:%02d", Day, Month, Year).Write(0, 0);
+}
+
+
+void RTCDateTime::DrawDate(int, int, const Color &) const
+{
+    Text<>("%02d/%02d/%02d", Day, Month, Year).Write(0, 1);
+}
+
+
+template<int capacity>
+int Text<capacity>::Write(int x, int y, const Color &) const
+{
+    if (x == -1)
+    {
+        WriteInCenter(0, y, 0);
+    }
+    else
+    {
+        const char *pointer = &text[0];
+
+        while (*pointer)
+        {
+            Display::WriteSymbol(x++, y, *pointer);
+            pointer++;
+        }
+    }
+
+    return 0;
+}
+
+
+void Display::WriteSymbol(int x, int y, char symbol)
+{
+    if (y == 0 || y == 1)
+    {
+        if (x >= 0 && x <= 15)
+        {
+            buffer[y][x] = symbol;
         }
     }
 }

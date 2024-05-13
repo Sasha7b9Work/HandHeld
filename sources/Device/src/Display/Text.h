@@ -27,20 +27,7 @@ struct Text
         std::vsprintf(text, format, args);
         va_end(args);
     }
-    int Write(int x, int y, const Color &color = Color::NUMBER) const
-    {
-        color.SetAsCurrent();
-
-        pchar pointer = text;
-
-        while (*pointer)
-        {
-            x = Char(*pointer++).Write(x, y);
-            x += Font::GetSize(); //-V1026
-        }
-
-        return x;
-    }
+    int Write(int x, int y, const Color &color = Color::NUMBER) const;
     void WriteInCenter(int x, int y, int width, const Color &color = Color::NUMBER) const
     {
         int length = GetLength();
