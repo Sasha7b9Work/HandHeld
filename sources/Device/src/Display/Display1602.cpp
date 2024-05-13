@@ -7,6 +7,7 @@
 #include "Menu/Menu.h"
 #include "Hardware/Power.h"
 #include "Utils/StringUtils.h"
+#include "Settings/Settings.h"
 #include <cstring>
 
 
