@@ -224,7 +224,7 @@ namespace Display
                             // чтобы на его место записать другой, более нужный
         };
 
-        static SymbolCGRAM places[8] =
+        static SymbolCGRAM slots[8] =
         {
             { 255, 0 },
             { 255, 0 },
@@ -236,12 +236,15 @@ namespace Display
             { 255, 0 }
         };
 
-        static bool SymbolLoaded(uint8 code)
+        // Возвращает true, если символ с кодом code загружен в CGA.
+        static bool SymbolLoaded(uint8 code, int *slot)
         {
             for (int i = 0; i < 8; i++)
             {
-                if (places[i].code == code)
+                if (slots[i].code == code)
                 {
+                    *slot = i;
+
                     return true;
                 }
             }
@@ -249,24 +252,26 @@ namespace Display
             return false;
         }
 
-        static void LoadSymbol(uint8 code)
+        static int LoadSymbol(uint8 code)
         {
-            int place = 0;                  // Место размешение символа в CGRAM - от 0 до 8
+            int slot = 0;                  // Место размешение символа в CGRAM - от 0 до 7
 
             uint time = 0xFFFFFFFF;
 
             for (int i = 0; i < 8; i++)
             {
-                if (places[i].time < time)
+                if (slots[i].time < time)
                 {
-                    place = i;
-                    time = places[i].time;
+                    slot = i;
+                    time = slots[i].time;
                 }
             }
 
-            places[place] = { code, TIME_MS };
+            slots[slot] = { code, TIME_MS };
 
-            WH1602B::LoadSymbolToCGA(code, symbols[code].rows);
+            WH1602B::LoadSymbolToCGA(slot, symbols[code].rows);
+
+            return slot;
         }
     };
 
@@ -436,7 +441,28 @@ void Display::Convert()
 
 void Display::LoadSymbolsToCGRAM()
 {
+    for (int i = 0; i < 2; i++)
+    {
+        for (int j = 0; j < 16; j++)
+        {
+            uint8 symbol = (uint8)buffer[i][j];
 
+            if (symbol <= 0x14)
+            {
+                int slot = 0;
+
+                if (CGRAM::SymbolLoaded(symbol, &slot))
+                {
+                }
+                else
+                {
+                    slot = CGRAM::LoadSymbol(symbol);
+                }
+
+                buffer[i][j] = (char)slot;
+            }
+        }
+    }
 }
 
 
