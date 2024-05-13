@@ -6,6 +6,7 @@
 #include "Settings/Source.h"
 #include "Menu/Menu.h"
 #include "Hardware/Power.h"
+#include "Utils/StringUtils.h"
 #include <cstring>
 
 
@@ -35,11 +36,26 @@ void Display::Update()
 
     if (PCF8563::IsAlarmed())
     {
-
+        Text<>("¡”ƒ»À‹Õ» ").WriteInCenter(0, 0, Display::WIDTH, Color(Color::Contrast(gset.alarm.color)));
     }
     else if (Source::GetCountReceived())
     {
+        pchar name = Source::Name(Source::Current());
 
+        int num_words = SU::NumWordsInString(name);
+
+        if (num_words == 1)
+        {
+            Text<>(name).WriteInCenter(0, 0, Display::WIDTH);
+        }
+        else if (num_words == 2)
+        {
+            char buff[32];
+
+            Text<>(SU::GetWordFromString(name, 1, buff)).WriteInCenter(0, 0, Display::WIDTH);
+
+            Text<>(SU::GetWordFromString(name, 2, buff)).WriteInCenter(0, 1, Display::WIDTH);
+        }
     }
     else
     {
