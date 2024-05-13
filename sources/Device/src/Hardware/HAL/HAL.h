@@ -32,7 +32,14 @@ namespace HAL
 
     void DeInit();
 
-    bool Is1602();
+    inline bool Is1602()
+    {
+#ifdef TYPE_1602
+        return true;
+#else
+        return false;
+#endif
+    }
 }
 
 
