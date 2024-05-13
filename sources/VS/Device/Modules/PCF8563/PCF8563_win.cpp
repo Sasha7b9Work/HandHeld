@@ -57,7 +57,7 @@ void PCF8563::SetDateTime(RTCDateTime *date_time)
 }
 
 
-void PCF8563::SetAlarm(RTCDateTime *)
+void PCF8563::SetAlarm(RTCDateTime *, bool)
 {
 
 }

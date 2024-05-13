@@ -1,7 +1,7 @@
 // 2022/04/27 11:11:56 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines_win.h"
 #include "Frame.h"
-#include "Display/Display.h"
+#include "Display/Display7735.h"
 #include "Modules/ST7735/ST7735.h"
 #include "Application.h"
 #include "Menu/Menu.h"

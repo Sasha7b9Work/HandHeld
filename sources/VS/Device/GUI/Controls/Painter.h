@@ -1,6 +1,6 @@
 // 2024/03/29 11:28:35 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
-#include "Display/Display.h"
+#include "Display/Display7735.h"
 
 
 class Painter : public wxPanel

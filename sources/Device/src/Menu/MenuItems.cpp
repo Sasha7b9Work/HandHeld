@@ -138,7 +138,7 @@ void DateTime::Draw() const
     {
         Font::SetSize(2);
 
-        Text<>("”—“¿ÕŒ¬ ¿").WriteInCenter(0, 10, Display::WIDTH, Color::WHITE);
+        Text<>("”—“¿ÕŒ¬ ¿").WriteInCenter(0, HAL::Is1602() ? 0 : 10, Display::WIDTH, Color::WHITE);
 
         Font::SetSize(1);
 
@@ -174,7 +174,7 @@ void DateTime::Draw() const
     {
         Font::SetSize(2);
 
-        data->item->Title().WriteInCenter(0, 30, Display::WIDTH, Color::GREEN);
+        data->item->Title().WriteInCenter(0, HAL::Is1602() ? 0 : 30, Display::WIDTH, Color::GREEN);
 
         Font::SetSize(1);
     }
