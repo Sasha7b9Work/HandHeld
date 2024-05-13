@@ -48,8 +48,8 @@ namespace PageJournal
         {
             Font::SetSize(2);
 
-            Text<>("∆”–Õ¿À").WriteInCenter(0, 20, Display::WIDTH, Color::WHITE);
-            Text<>("œ”—“").WriteInCenter(0, 50, Display::WIDTH);
+            Text<>("∆”–Õ¿À").WriteInCenter(0, HAL::Is1602() ? 0 : 20, Display::WIDTH, Color::WHITE);
+            Text<>("œ”—“").WriteInCenter(0, HAL::Is1602() ? 1 : 50, Display::WIDTH);
 
             Font::SetSize(1);
         }
