@@ -217,14 +217,14 @@ namespace Display
             }
         };
 
-        struct SymbolCGRAM
+        struct SlotCGRAM
         {
             uint8 code;     // Код символа от 0x00 до 0x14 - столько символов нет в стандартном знакогенераторе
             uint  time;     // Время загузки символа. Нужно, чтобы определить символ, который загружался раньше всех,
                             // чтобы на его место записать другой, более нужный
         };
 
-        static SymbolCGRAM slots[8] =
+        static SlotCGRAM slots[8] =
         {
             { 255, 0 },
             { 255, 0 },
