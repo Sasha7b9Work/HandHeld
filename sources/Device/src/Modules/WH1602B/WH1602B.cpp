@@ -130,7 +130,7 @@ void WH1602B::Init()
 }
 
 
-void WH1602B::Write(uint8 buffer[16])
+void WH1602B::Write(uint8 buffer[32])
 {
     Clear();
 
@@ -140,7 +140,7 @@ void WH1602B::Write(uint8 buffer[16])
 
     SET_RS();                   // Посылаем данные
 
-    for (int i = 0; i < 16; i++)
+    for (int i = 0; i < 32; i++)
     {
         lcdWrite(buffer[i]);
     }
