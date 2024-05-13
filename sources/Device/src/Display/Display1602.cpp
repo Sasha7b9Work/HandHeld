@@ -16,11 +16,235 @@ template int Text<64>::Write(int x, int y, const Color &color) const;
 
 namespace Display
 {
+    struct Symbol
+    {
+        uint8 rows[7];          // В каждом байте хранятся 5 точек строки символа
+    };
+
+    static const Symbol symbols[21] =
+    {
+        {
+            BINARY_U8(00000000),    // Б - 0x00
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000)
+        },
+        {
+            BINARY_U8(00000000),    // Г - 0x01
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000)
+        },
+        {
+            BINARY_U8(00000000),    // Д - 0x02
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000)
+        },
+        {
+            BINARY_U8(00000000),    // Ж - 0x03
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000)
+        },
+        {
+            BINARY_U8(00000000),    // З - 0x04
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000)
+        },
+        {
+            BINARY_U8(00000000),    // И - 0x05
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000)
+        },
+        {
+            BINARY_U8(00000000),    // Й - 0x06
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000)
+        },
+        {
+            BINARY_U8(00000000),    // Л - 0x07
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000)
+        },
+        {
+            BINARY_U8(00000000),    // П - 0x08
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000)
+        },
+        {
+            BINARY_U8(00000000),    // У - 0x09
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000)
+        },
+        {
+            BINARY_U8(00000000),    // Ф - 0x0A
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000)
+        },
+        {
+            BINARY_U8(00000000),    // Ц - 0x0B
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000)
+        },
+        {
+            BINARY_U8(00000000),    // Ч - 0x0C
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000)
+        },
+        {
+            BINARY_U8(00000000),    // Ш - 0x0D
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000)
+        },
+        {
+            BINARY_U8(00000000),    // Щ - 0x0E
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000)
+        },
+        {
+            BINARY_U8(00000000),    // Ъ - 0x0F
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000)
+        },
+        {
+            BINARY_U8(00000000),    // Ы - 0x10
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000)
+        },
+        {
+            BINARY_U8(00000000),    // Ь - 0x11
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000)
+        },
+        {
+            BINARY_U8(00000000),    // Э - 0x12
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000)
+        },
+        {
+            BINARY_U8(00000000),    // Ю - 0x13
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000)
+        },
+        {
+            BINARY_U8(00000000),    // Я - 0x14
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000),
+            BINARY_U8(00000000)
+        }
+    };
+
+    struct SymbolCGRAM
+    {
+        uint8 code;             // Код символа от 0x00 до 0x14 - столько символов нет в стандартном знакогенераторе
+        uint time;              // Время загузки символа. Нужно, чтобы определить символ, который загружался раньше всех,
+                                // чтобы на его место записать другой, более нужный
+    };
+
+    struct ROM
+    {
+        SymbolCGRAM symbols[8] =
+        {
+            { 0, 0 },
+            { 0, 0 },
+            { 0, 0 },
+            { 0, 0 },
+            { 0, 0 },
+            { 0, 0 },
+            { 0, 0 },
+            { 0, 0 }
+        };
+    };
+
     static char buffer[2][16];
 
     static void BeginScene();
     static void EndScene();
+    // Конвертировать выводимые символы в символы, приходные для загрузки в дисплй
     static void Convert();
+    // Загрузить в дисплей символы, которых нет в стандартном знакогенераторе и заменить на них
+    // нужные символы в буфере
+    static void LoadSymbolsToCGRAM();
     static void WriteSymbol(int x, int y, char);
 }
 
@@ -118,19 +342,43 @@ void Display::EndScene()
 {
     Convert();
 
+    LoadSymbolsToCGRAM();
+
     WH1602B::Write((uint8 *)buffer);
 }
 
 
 void Display::Convert()
 {
-    static const pchar symbols =
+    //  Б - 0x00
+    //  Г - 0x01
+    //  Д - 0x02
+    //  Ж - 0x03
+    //  З - 0x04
+    //  И - 0x05
+    //  Й - 0x06
+    //  Л - 0x07
+    //  П - 0x08
+    //  У - 0x09
+    //  Ф - 0x0A
+    //  Ц - 0x0B
+    //  Ч - 0x0C
+    //  Ш - 0x0D
+    //  Щ - 0x0E
+    //  Ъ - 0x0F
+    //  Ы - 0x10
+    //  Ь - 0x11
+    //  Э - 0x12
+    //  Ю - 0x13
+    //  Я - 0x14
+
+    static const pchar symbs =
         "                "
         "                "
         "                "
         "                "
-        "ABBGDEJZIIKLMNOP"
-        "PCTYFXC4JJQYIIII"
+        "A\x00""B\x01\x02E\x03\x04\x05\x06K\x07MHO\x08"
+        "PCT\x09\x0AX\x0B\x0C\x0D\x0E\x0F\x10\x11\x12\x13\x14"
         "                "
         "                ";
 
@@ -142,10 +390,19 @@ void Display::Convert()
 
             if (symbol > 127)
             {
-                buffer[i][j] = symbols[symbol - 128];
+                buffer[i][j] = symbs[symbol - 128];
             }
         }
     }
+
+    // На выходе сиволы кириллицы будут замены на символы латинского алфавита (если есть),
+    // либо на коды символов, загружаемых в дисплей
+}
+
+
+void Display::LoadSymbolsToCGRAM()
+{
+
 }
 
 
