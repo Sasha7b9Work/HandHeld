@@ -236,7 +236,7 @@ namespace Display
             { 255, 0 }
         };
 
-        // Возвращает true, если символ с кодом code загружен в CGA.
+        // Возвращает true, если символ с кодом code загружен в CGRAM.
         static bool SymbolLoaded(uint8 code, int *slot)
         {
             for (int i = 0; i < 8; i++)
