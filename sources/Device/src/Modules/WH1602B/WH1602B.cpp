@@ -11,6 +11,7 @@ namespace WH1602B
 #define CLRSCR_CYCLE_TIME			(200u)	/* x 10us. See datasheet for minimal value. */
 #define RETHOME_CYCLE_TIME			(200u)	/* x 10us. See datasheet for minimal value. */
 #define INIT_CYCLE_TIME				(400u)
+#define POWERUP_CYCLE_TIME			(2000u)
 
 #define DISPLAY_CONFIG_4bit_2L_5x8		(0x28u) /* Use 4-bit interface, 2 or 4 Lines, 5x8 pixel resolution */
 #define DISPLAY_CONFIG_4bit_1L_5x8		(0x20u) /* Use 4-bit interface, 1 Line, 5x8 pixel resolution */
@@ -105,6 +106,8 @@ void WH1602B::Init()
 //    lcdHigh(0x33);
 //    lcdStrobe();
 //    lcd10usDelay(INIT_CYCLE_TIME);
+
+    lcd10usDelay(POWERUP_CYCLE_TIME);
     
     lcdWrite(0x02);
     lcd10usDelay(BUSY_CYCLE_TIME);
@@ -133,7 +136,6 @@ void WH1602B::Write(uint8 buffer[16])
 
 //    CLR_RS();                   // Посылаем команду
 //    uint8 command = 0x80;       // Set DDRAM address
-//
 //    lcdWrite(command);
 
     SET_RS();                   // Посылаем данные
@@ -186,7 +188,7 @@ void WH1602B::lcdWrite(uint8 data)
 void WH1602B::lcd10usDelay(volatile uint us)
 {
     /* Conversion to us */
-    us = 50;
+    us = 100;
     /* Wait */
     while (us > 0u)
     {
@@ -207,7 +209,7 @@ void WH1602B::lcdStrobe(void)
     SET_EN();
     lcd10usDelay(ENABLE_CYCLE_TIME);
     CLR_EN();
-    lcd10usDelay(20);
+    lcd10usDelay(100);
 }
 
 
