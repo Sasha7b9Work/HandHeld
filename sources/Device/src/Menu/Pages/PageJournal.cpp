@@ -26,7 +26,6 @@ namespace PageJournal
         }
 
         int x = 0;
-        int y = 0;
 
         const Record *rec = Storage::Get(top_record);
         const RTCDateTime time = rec->time;
@@ -35,10 +34,12 @@ namespace PageJournal
 
 #ifdef TYPE_1602
         Text<>("%02d  %02d/%02d %02d:%02d",
-            time.Day, time.Month, time.Hour, time.Minute).Write(0, 0, (rec->source & 0x80) ? Color::GREEN : Color::RED);
+            top_record + 1, time.Day, time.Month, time.Hour, time.Minute).Write(0, 0, (rec->source & 0x80) ? Color::GREEN : Color::RED);
 
         Text<>(Source::NameSmall((Source::E)(rec->source & 0x7F))).WriteInCenter(x, 1, Display::WIDTH);
 #else
+        int y = 0;
+
         Text<>("%d", top_record + 1).Write(x + 5, y + 15);
 
         Text<>("%02d/%02d %02d:%02d",
