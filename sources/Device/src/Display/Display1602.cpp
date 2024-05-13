@@ -451,10 +451,7 @@ void Display::LoadSymbolsToCGRAM()
             {
                 int slot = 0;
 
-                if (CGRAM::SymbolLoaded(symbol, &slot))
-                {
-                }
-                else
+                if (!CGRAM::SymbolLoaded(symbol, &slot))
                 {
                     slot = CGRAM::LoadSymbol(symbol);
                 }
