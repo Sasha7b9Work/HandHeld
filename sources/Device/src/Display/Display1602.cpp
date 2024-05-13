@@ -24,85 +24,85 @@ namespace Display
     static const Symbol symbols[21] =
     {
         {
-            BINARY_U8(00000000),    // Á - 0x00
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000)
+            BINARY_U8(00011111),    // Á - 0x00
+            BINARY_U8(00010000),
+            BINARY_U8(00010000),
+            BINARY_U8(00011111),
+            BINARY_U8(00010001),
+            BINARY_U8(00010001),
+            BINARY_U8(00011111)
         },
         {
-            BINARY_U8(00000000),    // Ã - 0x01
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000)
+            BINARY_U8(00011111),    // Ã - 0x01
+            BINARY_U8(00010000),
+            BINARY_U8(00010000),
+            BINARY_U8(00010000),
+            BINARY_U8(00010000),
+            BINARY_U8(00010000),
+            BINARY_U8(00010000)
         },
         {
-            BINARY_U8(00000000),    // Ä - 0x02
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000)
+            BINARY_U8(00001111),    // Ä - 0x02
+            BINARY_U8(00001001),
+            BINARY_U8(00001001),
+            BINARY_U8(00001001),
+            BINARY_U8(00001001),
+            BINARY_U8(00011111),
+            BINARY_U8(00010001)
         },
         {
-            BINARY_U8(00000000),    // Æ - 0x03
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000)
+            BINARY_U8(00010101),    // Æ - 0x03
+            BINARY_U8(00010101),
+            BINARY_U8(00010101),
+            BINARY_U8(00001110),
+            BINARY_U8(00010101),
+            BINARY_U8(00010101),
+            BINARY_U8(00010101)
         },
         {
-            BINARY_U8(00000000),    // Ç - 0x04
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000)
+            BINARY_U8(00001110),    // Ç - 0x04
+            BINARY_U8(00010001),
+            BINARY_U8(00000001),
+            BINARY_U8(00000110),
+            BINARY_U8(00000001),
+            BINARY_U8(00010001),
+            BINARY_U8(00001110)
         },
         {
-            BINARY_U8(00000000),    // È - 0x05
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000)
+            BINARY_U8(00010001),    // È - 0x05
+            BINARY_U8(00010001),
+            BINARY_U8(00010011),
+            BINARY_U8(00010101),
+            BINARY_U8(00011001),
+            BINARY_U8(00010001),
+            BINARY_U8(00010001)
         },
         {
-            BINARY_U8(00000000),    // É - 0x06
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000)
+            BINARY_U8(00010101),    // É - 0x06
+            BINARY_U8(00010001),
+            BINARY_U8(00010011),
+            BINARY_U8(00010101),
+            BINARY_U8(00011001),
+            BINARY_U8(00010001),
+            BINARY_U8(00010001)
         },
         {
-            BINARY_U8(00000000),    // Ë - 0x07
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000)
+            BINARY_U8(00000111),    // Ë - 0x07
+            BINARY_U8(00001001),
+            BINARY_U8(00010001),
+            BINARY_U8(00010001),
+            BINARY_U8(00010001),
+            BINARY_U8(00010001),
+            BINARY_U8(00010001)
         },
         {
-            BINARY_U8(00000000),    // Ï - 0x08
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000)
+            BINARY_U8(00011111),    // Ï - 0x08
+            BINARY_U8(00010001),
+            BINARY_U8(00010001),
+            BINARY_U8(00010001),
+            BINARY_U8(00010001),
+            BINARY_U8(00010001),
+            BINARY_U8(00010001)
         },
         {
             BINARY_U8(00000000),    // Ó - 0x09
@@ -114,103 +114,103 @@ namespace Display
             BINARY_U8(00000000)
         },
         {
-            BINARY_U8(00000000),    // Ô - 0x0A
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000)
+            BINARY_U8(00000001),    // Ô - 0x0A
+            BINARY_U8(00000001),
+            BINARY_U8(00000001),
+            BINARY_U8(00000001),
+            BINARY_U8(00000001),
+            BINARY_U8(00000001),
+            BINARY_U8(00000001)
         },
         {
-            BINARY_U8(00000000),    // Ö - 0x0B
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000)
+            BINARY_U8(00000001),    // Ö - 0x0B
+            BINARY_U8(00000001),
+            BINARY_U8(00000001),
+            BINARY_U8(00000001),
+            BINARY_U8(00000001),
+            BINARY_U8(00000001),
+            BINARY_U8(00000001)
         },
         {
-            BINARY_U8(00000000),    // × - 0x0C
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000)
+            BINARY_U8(00000001),    // × - 0x0C
+            BINARY_U8(00000001),
+            BINARY_U8(00000001),
+            BINARY_U8(00000001),
+            BINARY_U8(00000001),
+            BINARY_U8(00000001),
+            BINARY_U8(00000001)
         },
         {
-            BINARY_U8(00000000),    // Ø - 0x0D
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000)
+            BINARY_U8(00000001),    // Ø - 0x0D
+            BINARY_U8(00000001),
+            BINARY_U8(00000001),
+            BINARY_U8(00000001),
+            BINARY_U8(00000001),
+            BINARY_U8(00000001),
+            BINARY_U8(00000001)
         },
         {
-            BINARY_U8(00000000),    // Ù - 0x0E
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000)
+            BINARY_U8(00000001),    // Ù - 0x0E
+            BINARY_U8(00000001),
+            BINARY_U8(00000001),
+            BINARY_U8(00000001),
+            BINARY_U8(00000001),
+            BINARY_U8(00000001),
+            BINARY_U8(00000001)
         },
         {
-            BINARY_U8(00000000),    // Ú - 0x0F
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000)
+            BINARY_U8(00000001),    // Ú - 0x0F
+            BINARY_U8(00000001),
+            BINARY_U8(00000001),
+            BINARY_U8(00000001),
+            BINARY_U8(00000001),
+            BINARY_U8(00000001),
+            BINARY_U8(00000001)
         },
         {
-            BINARY_U8(00000000),    // Û - 0x10
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000)
+            BINARY_U8(00000001),    // Û - 0x10
+            BINARY_U8(00000001),
+            BINARY_U8(00000001),
+            BINARY_U8(00000001),
+            BINARY_U8(00000001),
+            BINARY_U8(00000001),
+            BINARY_U8(00000001)
         },
         {
-            BINARY_U8(00000000),    // Ü - 0x11
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000)
+            BINARY_U8(00000001),    // Ü - 0x11
+            BINARY_U8(00000001),
+            BINARY_U8(00000001),
+            BINARY_U8(00000001),
+            BINARY_U8(00000001),
+            BINARY_U8(00000001),
+            BINARY_U8(00000001)
         },
         {
-            BINARY_U8(00000000),    // Ý - 0x12
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000)
+            BINARY_U8(00000001),    // Ý - 0x12
+            BINARY_U8(00000001),
+            BINARY_U8(00000001),
+            BINARY_U8(00000001),
+            BINARY_U8(00000001),
+            BINARY_U8(00000001),
+            BINARY_U8(00000001)
         },
         {
-            BINARY_U8(00000000),    // Þ - 0x13
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000)
+            BINARY_U8(00000001),    // Þ - 0x13
+            BINARY_U8(00000001),
+            BINARY_U8(00000001),
+            BINARY_U8(00000001),
+            BINARY_U8(00000001),
+            BINARY_U8(00000001),
+            BINARY_U8(00000001)
         },
         {
-            BINARY_U8(00000000),    // ß - 0x14
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000)
+            BINARY_U8(00000001),    // ß - 0x14
+            BINARY_U8(00000001),
+            BINARY_U8(00000001),
+            BINARY_U8(00000001),
+            BINARY_U8(00000001),
+            BINARY_U8(00000001),
+            BINARY_U8(00000001)
         }
     };
 
