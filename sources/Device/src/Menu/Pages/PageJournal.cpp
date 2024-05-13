@@ -33,12 +33,21 @@ namespace PageJournal
 
         Font::SetSize(2);
 
+#ifdef TYPE_1602
+        Text<>("%d", top_record + 1).Write(x + 5, y + 15);
+
+        Text<>("%02d  %02d/%02d %02d:%02d",
+            time.Day, time.Month, time.Hour, time.Minute).Write(0, 0, (rec->source & 0x80) ? Color::GREEN : Color::RED);
+
+        Text<>(Source::NameSmall((Source::E)(rec->source & 0x7F))).WriteInCenter(x, 1, Display::WIDTH);
+#else
         Text<>("%d", top_record + 1).Write(x + 5, y + 15);
 
         Text<>("%02d/%02d %02d:%02d",
             time.Day, time.Month, time.Hour, time.Minute).Write(x + 55, y + 15, (rec->source & 0x80) ? Color::GREEN : Color::RED);
 
         Text<>(Source::NameSmall((Source::E)(rec->source & 0x7F))).WriteInCenter(x, y + 50, Display::WIDTH);
+#endif
 
         Font::SetSize(1);
     }
