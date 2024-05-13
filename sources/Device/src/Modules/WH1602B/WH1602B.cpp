@@ -248,6 +248,12 @@ void WH1602B::lcdHigh(uint8 data)
 }
 
 
+void WH1602B::LoadSymbolToCGA(uint8, const uint8 [7])
+{
+
+}
+
+
 //void WH1602B::lcdReturn(void)
 //{
 //    CLR_RS();

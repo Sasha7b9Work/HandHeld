@@ -8,6 +8,7 @@
 #include "Hardware/Power.h"
 #include "Utils/StringUtils.h"
 #include "Settings/Settings.h"
+#include "Hardware/Timer.h"
 #include <cstring>
 
 
@@ -16,224 +17,257 @@ template int Text<64>::Write(int x, int y, const Color &color) const;
 
 namespace Display
 {
-    struct Symbol
+    namespace CGRAM
     {
-        uint8 rows[7];          // В каждом байте хранятся 5 точек строки символа
-    };
-
-    static const Symbol symbols[21] =
-    {
+        struct Symbol
         {
-            BINARY_U8(00011111),    // Б - 0x00
-            BINARY_U8(00010000),
-            BINARY_U8(00010000),
-            BINARY_U8(00011111),
-            BINARY_U8(00010001),
-            BINARY_U8(00010001),
-            BINARY_U8(00011111)
-        },
-        {
-            BINARY_U8(00011111),    // Г - 0x01
-            BINARY_U8(00010000),
-            BINARY_U8(00010000),
-            BINARY_U8(00010000),
-            BINARY_U8(00010000),
-            BINARY_U8(00010000),
-            BINARY_U8(00010000)
-        },
-        {
-            BINARY_U8(00001111),    // Д - 0x02
-            BINARY_U8(00001001),
-            BINARY_U8(00001001),
-            BINARY_U8(00001001),
-            BINARY_U8(00001001),
-            BINARY_U8(00011111),
-            BINARY_U8(00010001)
-        },
-        {
-            BINARY_U8(00010101),    // Ж - 0x03
-            BINARY_U8(00010101),
-            BINARY_U8(00010101),
-            BINARY_U8(00001110),
-            BINARY_U8(00010101),
-            BINARY_U8(00010101),
-            BINARY_U8(00010101)
-        },
-        {
-            BINARY_U8(00001110),    // З - 0x04
-            BINARY_U8(00010001),
-            BINARY_U8(00000001),
-            BINARY_U8(00000110),
-            BINARY_U8(00000001),
-            BINARY_U8(00010001),
-            BINARY_U8(00001110)
-        },
-        {
-            BINARY_U8(00010001),    // И - 0x05
-            BINARY_U8(00010001),
-            BINARY_U8(00010011),
-            BINARY_U8(00010101),
-            BINARY_U8(00011001),
-            BINARY_U8(00010001),
-            BINARY_U8(00010001)
-        },
-        {
-            BINARY_U8(00010101),    // Й - 0x06
-            BINARY_U8(00010001),
-            BINARY_U8(00010011),
-            BINARY_U8(00010101),
-            BINARY_U8(00011001),
-            BINARY_U8(00010001),
-            BINARY_U8(00010001)
-        },
-        {
-            BINARY_U8(00000111),    // Л - 0x07
-            BINARY_U8(00001001),
-            BINARY_U8(00010001),
-            BINARY_U8(00010001),
-            BINARY_U8(00010001),
-            BINARY_U8(00010001),
-            BINARY_U8(00010001)
-        },
-        {
-            BINARY_U8(00011111),    // П - 0x08
-            BINARY_U8(00010001),
-            BINARY_U8(00010001),
-            BINARY_U8(00010001),
-            BINARY_U8(00010001),
-            BINARY_U8(00010001),
-            BINARY_U8(00010001)
-        },
-        {
-            BINARY_U8(00000000),    // У - 0x09
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000),
-            BINARY_U8(00000000)
-        },
-        {
-            BINARY_U8(00000001),    // Ф - 0x0A
-            BINARY_U8(00000001),
-            BINARY_U8(00000001),
-            BINARY_U8(00000001),
-            BINARY_U8(00000001),
-            BINARY_U8(00000001),
-            BINARY_U8(00000001)
-        },
-        {
-            BINARY_U8(00000001),    // Ц - 0x0B
-            BINARY_U8(00000001),
-            BINARY_U8(00000001),
-            BINARY_U8(00000001),
-            BINARY_U8(00000001),
-            BINARY_U8(00000001),
-            BINARY_U8(00000001)
-        },
-        {
-            BINARY_U8(00000001),    // Ч - 0x0C
-            BINARY_U8(00000001),
-            BINARY_U8(00000001),
-            BINARY_U8(00000001),
-            BINARY_U8(00000001),
-            BINARY_U8(00000001),
-            BINARY_U8(00000001)
-        },
-        {
-            BINARY_U8(00000001),    // Ш - 0x0D
-            BINARY_U8(00000001),
-            BINARY_U8(00000001),
-            BINARY_U8(00000001),
-            BINARY_U8(00000001),
-            BINARY_U8(00000001),
-            BINARY_U8(00000001)
-        },
-        {
-            BINARY_U8(00000001),    // Щ - 0x0E
-            BINARY_U8(00000001),
-            BINARY_U8(00000001),
-            BINARY_U8(00000001),
-            BINARY_U8(00000001),
-            BINARY_U8(00000001),
-            BINARY_U8(00000001)
-        },
-        {
-            BINARY_U8(00000001),    // Ъ - 0x0F
-            BINARY_U8(00000001),
-            BINARY_U8(00000001),
-            BINARY_U8(00000001),
-            BINARY_U8(00000001),
-            BINARY_U8(00000001),
-            BINARY_U8(00000001)
-        },
-        {
-            BINARY_U8(00000001),    // Ы - 0x10
-            BINARY_U8(00000001),
-            BINARY_U8(00000001),
-            BINARY_U8(00000001),
-            BINARY_U8(00000001),
-            BINARY_U8(00000001),
-            BINARY_U8(00000001)
-        },
-        {
-            BINARY_U8(00000001),    // Ь - 0x11
-            BINARY_U8(00000001),
-            BINARY_U8(00000001),
-            BINARY_U8(00000001),
-            BINARY_U8(00000001),
-            BINARY_U8(00000001),
-            BINARY_U8(00000001)
-        },
-        {
-            BINARY_U8(00000001),    // Э - 0x12
-            BINARY_U8(00000001),
-            BINARY_U8(00000001),
-            BINARY_U8(00000001),
-            BINARY_U8(00000001),
-            BINARY_U8(00000001),
-            BINARY_U8(00000001)
-        },
-        {
-            BINARY_U8(00000001),    // Ю - 0x13
-            BINARY_U8(00000001),
-            BINARY_U8(00000001),
-            BINARY_U8(00000001),
-            BINARY_U8(00000001),
-            BINARY_U8(00000001),
-            BINARY_U8(00000001)
-        },
-        {
-            BINARY_U8(00000001),    // Я - 0x14
-            BINARY_U8(00000001),
-            BINARY_U8(00000001),
-            BINARY_U8(00000001),
-            BINARY_U8(00000001),
-            BINARY_U8(00000001),
-            BINARY_U8(00000001)
-        }
-    };
-
-    struct SymbolCGRAM
-    {
-        uint8 code;             // Код символа от 0x00 до 0x14 - столько символов нет в стандартном знакогенераторе
-        uint time;              // Время загузки символа. Нужно, чтобы определить символ, который загружался раньше всех,
-                                // чтобы на его место записать другой, более нужный
-    };
-
-    struct ROM
-    {
-        SymbolCGRAM symbols[8] =
-        {
-            { 0, 0 },
-            { 0, 0 },
-            { 0, 0 },
-            { 0, 0 },
-            { 0, 0 },
-            { 0, 0 },
-            { 0, 0 },
-            { 0, 0 }
+            uint8 rows[7];          // В каждом байте хранятся 5 точек строки символа
         };
+
+        static const Symbol symbols[21] =
+        {
+            {
+                BINARY_U8(00011111),    // Б - 0x00
+                BINARY_U8(00010000),
+                BINARY_U8(00010000),
+                BINARY_U8(00011111),
+                BINARY_U8(00010001),
+                BINARY_U8(00010001),
+                BINARY_U8(00011111)
+            },
+            {
+                BINARY_U8(00011111),    // Г - 0x01
+                BINARY_U8(00010000),
+                BINARY_U8(00010000),
+                BINARY_U8(00010000),
+                BINARY_U8(00010000),
+                BINARY_U8(00010000),
+                BINARY_U8(00010000)
+            },
+            {
+                BINARY_U8(00001111),    // Д - 0x02
+                BINARY_U8(00001001),
+                BINARY_U8(00001001),
+                BINARY_U8(00001001),
+                BINARY_U8(00001001),
+                BINARY_U8(00011111),
+                BINARY_U8(00010001)
+            },
+            {
+                BINARY_U8(00010101),    // Ж - 0x03
+                BINARY_U8(00010101),
+                BINARY_U8(00010101),
+                BINARY_U8(00001110),
+                BINARY_U8(00010101),
+                BINARY_U8(00010101),
+                BINARY_U8(00010101)
+            },
+            {
+                BINARY_U8(00001110),    // З - 0x04
+                BINARY_U8(00010001),
+                BINARY_U8(00000001),
+                BINARY_U8(00000110),
+                BINARY_U8(00000001),
+                BINARY_U8(00010001),
+                BINARY_U8(00001110)
+            },
+            {
+                BINARY_U8(00010001),    // И - 0x05
+                BINARY_U8(00010001),
+                BINARY_U8(00010011),
+                BINARY_U8(00010101),
+                BINARY_U8(00011001),
+                BINARY_U8(00010001),
+                BINARY_U8(00010001)
+            },
+            {
+                BINARY_U8(00010101),    // Й - 0x06
+                BINARY_U8(00010001),
+                BINARY_U8(00010011),
+                BINARY_U8(00010101),
+                BINARY_U8(00011001),
+                BINARY_U8(00010001),
+                BINARY_U8(00010001)
+            },
+            {
+                BINARY_U8(00000111),    // Л - 0x07
+                BINARY_U8(00001001),
+                BINARY_U8(00010001),
+                BINARY_U8(00010001),
+                BINARY_U8(00010001),
+                BINARY_U8(00010001),
+                BINARY_U8(00010001)
+            },
+            {
+                BINARY_U8(00011111),    // П - 0x08
+                BINARY_U8(00010001),
+                BINARY_U8(00010001),
+                BINARY_U8(00010001),
+                BINARY_U8(00010001),
+                BINARY_U8(00010001),
+                BINARY_U8(00010001)
+            },
+            {
+                BINARY_U8(00000000),    // У - 0x09
+                BINARY_U8(00000000),
+                BINARY_U8(00000000),
+                BINARY_U8(00000000),
+                BINARY_U8(00000000),
+                BINARY_U8(00000000),
+                BINARY_U8(00000000)
+            },
+            {
+                BINARY_U8(00000001),    // Ф - 0x0A
+                BINARY_U8(00000001),
+                BINARY_U8(00000001),
+                BINARY_U8(00000001),
+                BINARY_U8(00000001),
+                BINARY_U8(00000001),
+                BINARY_U8(00000001)
+            },
+            {
+                BINARY_U8(00000001),    // Ц - 0x0B
+                BINARY_U8(00000001),
+                BINARY_U8(00000001),
+                BINARY_U8(00000001),
+                BINARY_U8(00000001),
+                BINARY_U8(00000001),
+                BINARY_U8(00000001)
+            },
+            {
+                BINARY_U8(00000001),    // Ч - 0x0C
+                BINARY_U8(00000001),
+                BINARY_U8(00000001),
+                BINARY_U8(00000001),
+                BINARY_U8(00000001),
+                BINARY_U8(00000001),
+                BINARY_U8(00000001)
+            },
+            {
+                BINARY_U8(00000001),    // Ш - 0x0D
+                BINARY_U8(00000001),
+                BINARY_U8(00000001),
+                BINARY_U8(00000001),
+                BINARY_U8(00000001),
+                BINARY_U8(00000001),
+                BINARY_U8(00000001)
+            },
+            {
+                BINARY_U8(00000001),    // Щ - 0x0E
+                BINARY_U8(00000001),
+                BINARY_U8(00000001),
+                BINARY_U8(00000001),
+                BINARY_U8(00000001),
+                BINARY_U8(00000001),
+                BINARY_U8(00000001)
+            },
+            {
+                BINARY_U8(00000001),    // Ъ - 0x0F
+                BINARY_U8(00000001),
+                BINARY_U8(00000001),
+                BINARY_U8(00000001),
+                BINARY_U8(00000001),
+                BINARY_U8(00000001),
+                BINARY_U8(00000001)
+            },
+            {
+                BINARY_U8(00000001),    // Ы - 0x10
+                BINARY_U8(00000001),
+                BINARY_U8(00000001),
+                BINARY_U8(00000001),
+                BINARY_U8(00000001),
+                BINARY_U8(00000001),
+                BINARY_U8(00000001)
+            },
+            {
+                BINARY_U8(00000001),    // Ь - 0x11
+                BINARY_U8(00000001),
+                BINARY_U8(00000001),
+                BINARY_U8(00000001),
+                BINARY_U8(00000001),
+                BINARY_U8(00000001),
+                BINARY_U8(00000001)
+            },
+            {
+                BINARY_U8(00000001),    // Э - 0x12
+                BINARY_U8(00000001),
+                BINARY_U8(00000001),
+                BINARY_U8(00000001),
+                BINARY_U8(00000001),
+                BINARY_U8(00000001),
+                BINARY_U8(00000001)
+            },
+            {
+                BINARY_U8(00000001),    // Ю - 0x13
+                BINARY_U8(00000001),
+                BINARY_U8(00000001),
+                BINARY_U8(00000001),
+                BINARY_U8(00000001),
+                BINARY_U8(00000001),
+                BINARY_U8(00000001)
+            },
+            {
+                BINARY_U8(00000001),    // Я - 0x14
+                BINARY_U8(00000001),
+                BINARY_U8(00000001),
+                BINARY_U8(00000001),
+                BINARY_U8(00000001),
+                BINARY_U8(00000001),
+                BINARY_U8(00000001)
+            }
+        };
+
+        struct SymbolCGRAM
+        {
+            uint8 code;     // Код символа от 0x00 до 0x14 - столько символов нет в стандартном знакогенераторе
+            uint  time;     // Время загузки символа. Нужно, чтобы определить символ, который загружался раньше всех,
+                            // чтобы на его место записать другой, более нужный
+        };
+
+        static SymbolCGRAM places[8] =
+        {
+            { 255, 0 },
+            { 255, 0 },
+            { 255, 0 },
+            { 255, 0 },
+            { 255, 0 },
+            { 255, 0 },
+            { 255, 0 },
+            { 255, 0 }
+        };
+
+        static bool SymbolLoaded(uint8 code)
+        {
+            for (int i = 0; i < 8; i++)
+            {
+                if (places[i].code == code)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        static void LoadSymbol(uint8 code)
+        {
+            int place = 0;                  // Место размешение символа в CGRAM - от 0 до 8
+
+            uint time = 0xFFFFFFFF;
+
+            for (int i = 0; i < 8; i++)
+            {
+                if (places[i].time < time)
+                {
+                    place = i;
+                    time = places[i].time;
+                }
+            }
+
+            places[place] = { code, TIME_MS };
+
+            WH1602B::LoadSymbolToCGA(code, symbols[code].rows);
+        }
     };
 
     static char buffer[2][16];
