@@ -8,6 +8,7 @@ namespace WH1602B
 
     void Clear();
 
+    // Записать все символы дисплея
     void WriteFull(uint8[32]);
 
     // Записать в CGARAM символ с кодом code

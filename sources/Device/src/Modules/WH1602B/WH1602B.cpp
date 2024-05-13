@@ -70,10 +70,6 @@ namespace WH1602B
 
     static void lcdWrite(uint8 data);
     static void lcd10usDelay(volatile uint us);
-//    static void lcdConfig(uint8 param);
-//    static void lcdSetMode(uint8 param);
-//    static void lcdClrScr();
-//    static void lcdReturn();
     static void lcdHigh(uint8 data);
     static void lcdStrobe();
     static void lcdLow(uint8 data);
@@ -100,13 +96,6 @@ void WH1602B::Init()
     pinD6.Init();
     pinD7.Init();
 
-//    lcdHigh(0x33);
-//    lcdStrobe();
-//    lcd10usDelay(INIT_CYCLE_TIME);
-//    lcdHigh(0x33);
-//    lcdStrobe();
-//    lcd10usDelay(INIT_CYCLE_TIME);
-
     lcd10usDelay(POWERUP_CYCLE_TIME);
     
     lcdWrite(0x02);
@@ -121,12 +110,6 @@ void WH1602B::Init()
     lcd10usDelay(BUSY_CYCLE_TIME);
     lcdWrite(0x80);
     lcd10usDelay(BUSY_CYCLE_TIME);
-
-//    lcdConfig(DEFAULT_DISPLAY_CONFIG);
-//    lcdSetMode(DEFAULT_VIEW_MODE);
-//    lcdSetMode(DEFAULT_ENTRY_MODE);
-//    lcdClrScr();
-//    lcdReturn();
 }
 
 
@@ -189,40 +172,15 @@ void WH1602B::lcdWrite(uint8 data)
 }
 
 
-//void WH1602B::lcdConfig(uint8 param)
-//{
-//    /* Send commands to LCD. */
-//    CLR_RS();
-//
-//    lcdHigh(param);
-//    lcdStrobe();		// Change 8-bit interface to 4-bit interface
-//    lcd10usDelay(BUSY_CYCLE_TIME);
-//    lcdStrobe();		/* DB7 to DB4 of the "Function set" instruction is written twice. */
-//    lcd10usDelay(BUSY_CYCLE_TIME);
-//    lcdLow(param);
-//    lcdStrobe();		// 4-bit, two lines, 5x8 pixel
-//    lcd10usDelay(BUSY_CYCLE_TIME);
-//    /* Note: The number of display lines and character font cannot be changed after this point. */
-//}
-
-
 void WH1602B::lcd10usDelay(volatile uint us)
 {
-    /* Conversion to us */
     us = 100;
-    /* Wait */
+
     while (us > 0u)
     {
         us--;
     }
 }
-
-
-//void WH1602B::lcdSetMode(uint8 param)
-//{
-//    CLR_RS();
-//    lcdWrite(param);
-//}
 
 
 void WH1602B::lcdStrobe(void)
@@ -232,16 +190,6 @@ void WH1602B::lcdStrobe(void)
     CLR_EN();
     lcd10usDelay(100);
 }
-
-
-//void WH1602B::lcdClrScr(void)
-//{
-//    CLR_RS();
-//    /* Clear screen */
-//    lcdWrite(0x01u);
-//    /* Busy delay */
-//    lcd10usDelay(CLRSCR_CYCLE_TIME);
-//}
 
 
 void WH1602B::lcdLow(uint8 data)
@@ -260,13 +208,3 @@ void WH1602B::lcdHigh(uint8 data)
     if (data & DATA_5_MASK) SET_D5(); else CLR_D5();
     if (data & DATA_4_MASK) SET_D4(); else CLR_D4();
 }
-
-
-//void WH1602B::lcdReturn(void)
-//{
-//    CLR_RS();
-//    /* Return home */
-//    lcdWrite(0x02u);
-//    /* Busy delay */
-//    lcd10usDelay(RETHOME_CYCLE_TIME);
-//}
