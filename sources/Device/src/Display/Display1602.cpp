@@ -252,6 +252,7 @@ namespace Display
             return false;
         }
 
+        // Загрузить символ в память дисплея в слот, который использовался раньше всех
         static int LoadSymbol(uint8 code)
         {
             int slot = 0;                  // Место размешение символа в CGRAM - от 0 до 7
