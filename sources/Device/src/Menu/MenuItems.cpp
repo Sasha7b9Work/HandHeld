@@ -119,7 +119,7 @@ void DateTime::DrawField(int x, int y, Text<> &text, bool selected) const
 
     if (selected)
     {
-        if (((TIME_MS / 250) % 3) == 2)
+        if (((TIME_MS / 250) % 3) == 2)     // Выключаем на 250 мс через каждые 750
         {
             need_draw = false;
         }
