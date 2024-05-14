@@ -224,7 +224,7 @@ namespace Display
                 BINARY_U8(00010101),
                 BINARY_U8(00011001),
                 BINARY_U8(00010001),
-                BINARY_U8(00001110)
+                BINARY_U8(00011111)
             },
             {
                 BINARY_U8(00001000),    // 1 - 0x16
@@ -233,7 +233,7 @@ namespace Display
                 BINARY_U8(00001000),
                 BINARY_U8(00001000),
                 BINARY_U8(00001000),
-                BINARY_U8(00011100)
+                BINARY_U8(00011111)
             },
             {
                 BINARY_U8(00001110),    // 2 - 0x17
@@ -251,7 +251,7 @@ namespace Display
                 BINARY_U8(00000010),
                 BINARY_U8(00000001),
                 BINARY_U8(00010001),
-                BINARY_U8(00001110)
+                BINARY_U8(00011111)
             },
             {
                 BINARY_U8(00000010),    // 4 - 0x19
@@ -260,7 +260,7 @@ namespace Display
                 BINARY_U8(00010010),
                 BINARY_U8(00011111),
                 BINARY_U8(00000010),
-                BINARY_U8(00000010)
+                BINARY_U8(00011111)
             },
             {
                 BINARY_U8(00011111),    // 5 - 0x1A
@@ -269,7 +269,7 @@ namespace Display
                 BINARY_U8(00000001),
                 BINARY_U8(00000001),
                 BINARY_U8(00010001),
-                BINARY_U8(00001110)
+                BINARY_U8(00011111)
             },
             {
                 BINARY_U8(00000110),    // 6 - 0x1B
@@ -278,7 +278,7 @@ namespace Display
                 BINARY_U8(00011110),
                 BINARY_U8(00010001),
                 BINARY_U8(00010001),
-                BINARY_U8(00001110)
+                BINARY_U8(00011111)
             },
             {
                 BINARY_U8(00011111),    // 7 - 0x1C
@@ -287,7 +287,7 @@ namespace Display
                 BINARY_U8(00000010),
                 BINARY_U8(00000100),
                 BINARY_U8(00000100),
-                BINARY_U8(00000100)
+                BINARY_U8(00011111)
             },
             {
                 BINARY_U8(00001110),    // 8 - 0x1D
@@ -296,7 +296,7 @@ namespace Display
                 BINARY_U8(00001110),
                 BINARY_U8(00010001),
                 BINARY_U8(00010001),
-                BINARY_U8(00001110)
+                BINARY_U8(00011111)
             },
             {
                 BINARY_U8(00001110),    // 9 - 0x1E
@@ -305,7 +305,7 @@ namespace Display
                 BINARY_U8(00001111),
                 BINARY_U8(00000001),
                 BINARY_U8(00000010),
-                BINARY_U8(00001100)
+                BINARY_U8(00011111)
             },
 
         };
