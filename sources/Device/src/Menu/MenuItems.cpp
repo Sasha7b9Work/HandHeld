@@ -114,17 +114,20 @@ void DateTime::DrawField(int x, int y, Text<> &text, bool selected) const
 {
 #ifdef TYPE_1602
 
-    char *pointer = text.c_str();
-
-    int delta = 0xE0 - 0x30;        // 0xE0 - код инвертированного нуля
-
-    while (*pointer)                // Предполагаем, что все символы - цифровые
+    if(selected)
     {
-        uint8 symbol = (uint8)(*pointer);
+        char *pointer = text.c_str();
 
-        *pointer = (char)(symbol + delta);
+        int delta = 0xE0 - 0x30;        // 0xE0 - код инвертированного нуля
 
-        pointer++;
+        while (*pointer)                // Предполагаем, что все символы - цифровые
+        {
+            uint8 symbol = (uint8)(*pointer);
+
+            *pointer = (char)(symbol + delta);
+
+            pointer++;
+        }
     }
 
 #else
