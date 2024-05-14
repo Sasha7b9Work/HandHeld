@@ -127,7 +127,7 @@ void DateTime::DrawField(int x, int y, const Text<> &text, bool selected) const
 #endif
 
     Font::SetSize(4);
-    text.Write(HAL::Is1602() ? 0 : (x + 3), HAL::Is1602() ? 1 : (y + 3), selected ? Color::BLACK : Color::WHITE);
+    text.Write(x + 3, HAL::Is1602() ? 1 : (y + 3), selected ? Color::BLACK : Color::WHITE);
     Font::SetSize(1);
 }
 
@@ -157,6 +157,15 @@ void DateTime::Draw() const
 
         const int y = 32;
 
+#ifdef TYPE_1602
+        int x[3] = { 1, 4, 7 };
+
+        if (data->is_time)
+        {
+            x[0] = 3;
+            x[1] = 6;
+        }
+#else
         int x[3] = { 5, 58, 111 };
 
         if (data->is_time)
@@ -164,6 +173,7 @@ void DateTime::Draw() const
             x[0] = 30;
             x[1] = 80;
         }
+#endif
 
         for (int i = 0; i < NumFields(); i++)
         {

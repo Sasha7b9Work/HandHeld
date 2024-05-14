@@ -137,7 +137,7 @@ void WH1602B::WriteFull(uint8 buffer[32])
 }
 
 
-void WH1602B::LoadSymbolToCGA(int slot, const uint8 rows[7])
+void WH1602B::LoadSymbolToCGRAM(int slot, const uint8 rows[7])
 {
     CLR_RS();
     lcdWrite((uint8)(0x40 | (slot * 8)));

@@ -270,7 +270,7 @@ namespace Display
 
             slots[slot] = { code, TIME_MS };
 
-            WH1602B::LoadSymbolToCGA(slot, symbols[code].rows);
+            WH1602B::LoadSymbolToCGRAM(slot, symbols[code].rows);
 
             return slot;
         }
