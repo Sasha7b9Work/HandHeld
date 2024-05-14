@@ -19,7 +19,7 @@ namespace Display
 {
     namespace CGRAM
     {
-        static const int NUM_SYMBOLS = 31;
+        static const int NUM_SYMBOLS = 21;
 
         struct Symbol
         {
@@ -216,98 +216,7 @@ namespace Display
                 BINARY_U8(00000101),
                 BINARY_U8(00001001),
                 BINARY_U8(00010001)
-            },
-            {
-                BINARY_U8(00001110),    // 0 - 0x15
-                BINARY_U8(00010001),
-                BINARY_U8(00010011),
-                BINARY_U8(00010101),
-                BINARY_U8(00011001),
-                BINARY_U8(00010001),
-                BINARY_U8(00011111)
-            },
-            {
-                BINARY_U8(00001000),    // 1 - 0x16
-                BINARY_U8(00011000),
-                BINARY_U8(00001000),
-                BINARY_U8(00001000),
-                BINARY_U8(00001000),
-                BINARY_U8(00001000),
-                BINARY_U8(00011111)
-            },
-            {
-                BINARY_U8(00001110),    // 2 - 0x17
-                BINARY_U8(00010001),
-                BINARY_U8(00000001),
-                BINARY_U8(00000010),
-                BINARY_U8(00000100),
-                BINARY_U8(00001000),
-                BINARY_U8(00011111)
-            },
-            {
-                BINARY_U8(00011111),    // 3 - 0x18
-                BINARY_U8(00000010),
-                BINARY_U8(00000100),
-                BINARY_U8(00000010),
-                BINARY_U8(00000001),
-                BINARY_U8(00010001),
-                BINARY_U8(00011111)
-            },
-            {
-                BINARY_U8(00000010),    // 4 - 0x19
-                BINARY_U8(00000110),
-                BINARY_U8(00001010),
-                BINARY_U8(00010010),
-                BINARY_U8(00011111),
-                BINARY_U8(00000010),
-                BINARY_U8(00011111)
-            },
-            {
-                BINARY_U8(00011111),    // 5 - 0x1A
-                BINARY_U8(00010000),
-                BINARY_U8(00011110),
-                BINARY_U8(00000001),
-                BINARY_U8(00000001),
-                BINARY_U8(00010001),
-                BINARY_U8(00011111)
-            },
-            {
-                BINARY_U8(00000110),    // 6 - 0x1B
-                BINARY_U8(00001000),
-                BINARY_U8(00010000),
-                BINARY_U8(00011110),
-                BINARY_U8(00010001),
-                BINARY_U8(00010001),
-                BINARY_U8(00011111)
-            },
-            {
-                BINARY_U8(00011111),    // 7 - 0x1C
-                BINARY_U8(00000001),
-                BINARY_U8(00000010),
-                BINARY_U8(00000010),
-                BINARY_U8(00000100),
-                BINARY_U8(00000100),
-                BINARY_U8(00011111)
-            },
-            {
-                BINARY_U8(00001110),    // 8 - 0x1D
-                BINARY_U8(00010001),
-                BINARY_U8(00010001),
-                BINARY_U8(00001110),
-                BINARY_U8(00010001),
-                BINARY_U8(00010001),
-                BINARY_U8(00011111)
-            },
-            {
-                BINARY_U8(00001110),    // 9 - 0x1E
-                BINARY_U8(00010001),
-                BINARY_U8(00010001),
-                BINARY_U8(00001111),
-                BINARY_U8(00000001),
-                BINARY_U8(00000010),
-                BINARY_U8(00011111)
-            },
-
+            }
         };
 
         struct SlotCGRAM
@@ -504,16 +413,6 @@ void Display::Convert()
     //  Э - 0x12
     //  Ю - 0x13
     //  Я - 0x14
-    //  инверт 0 - 0x15
-    //  инверт 1 - 0x16
-    //  инверт 2 - 0x17
-    //  инверт 3 - 0x18
-    //  инверт 4 - 0x19
-    //  инверт 5 - 0x1A
-    //  инверт 6 - 0x1B
-    //  инверт 7 - 0x1C
-    //  инверт 8 - 0x1D
-    //  инверт 9 - 0x1E
 
     static const pchar symbs =
         "++++++++++++++++"
@@ -522,7 +421,7 @@ void Display::Convert()
         "++++++++++++++++"
         "A\x00""B\x01\x02""E\x03\x04\x05\x06K\x07MHO\x08"           // 0xA0
         "PCT\x09\x0AX\x0B\x0C\x0D\x0E\x0F\x10\x11\x12\x13\x14"      // 0xD0
-        "\x15\x16\x17\x18\x19\x1A\x1B\x1C\x1D\x1E++++++"            // 0xE0
+        "++++++++++++++++"                                          // 0xE0
         "++++++++++++++++";                                         // 0xF0
 
     for (int i = 0; i < 2; i++)
