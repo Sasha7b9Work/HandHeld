@@ -119,7 +119,7 @@ void DateTime::DrawField(int x, int y, Text<> &text, bool selected) const
 
     if (selected)
     {
-        if ((TIME_MS / 500) % 2)
+        if (((TIME_MS / 500) % 3) == 2)
         {
             need_draw = false;
         }
