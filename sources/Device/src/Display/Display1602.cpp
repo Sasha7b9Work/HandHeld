@@ -19,12 +19,14 @@ namespace Display
 {
     namespace CGRAM
     {
+        static const int NUM_SYMBOLS = 31;
+
         struct Symbol
         {
             uint8 rows[7];          // В каждом байте хранятся 5 точек строки символа
         };
 
-        static const Symbol symbols[21] =
+        static const Symbol symbols[NUM_SYMBOLS] =
         {
             {
                 BINARY_U8(00011111),    // Б - 0x00
@@ -214,12 +216,103 @@ namespace Display
                 BINARY_U8(00000101),
                 BINARY_U8(00001001),
                 BINARY_U8(00010001)
-            }
+            },
+            {
+                BINARY_U8(00011111),    // 0 - 0x15
+                BINARY_U8(00010001),
+                BINARY_U8(00010001),
+                BINARY_U8(00010001),
+                BINARY_U8(00011111),
+                BINARY_U8(00000000),
+                BINARY_U8(00000000)
+            },
+            {
+                BINARY_U8(00000001),    // 1 - 0x16
+                BINARY_U8(00000001),
+                BINARY_U8(00000001),
+                BINARY_U8(00000001),
+                BINARY_U8(00000001),
+                BINARY_U8(00000000),
+                BINARY_U8(00000000)
+            },
+            {
+                BINARY_U8(00001111),    // 2 - 0x17
+                BINARY_U8(00000001),
+                BINARY_U8(00000001),
+                BINARY_U8(00000110),
+                BINARY_U8(00000111),
+                BINARY_U8(00000000),
+                BINARY_U8(00000000)
+            },
+            {
+                BINARY_U8(00011111),    // 3 - 0x18
+                BINARY_U8(00000001),
+                BINARY_U8(00001111),
+                BINARY_U8(00000001),
+                BINARY_U8(00001111),
+                BINARY_U8(00000000),
+                BINARY_U8(00000000)
+            },
+            {
+                BINARY_U8(00001001),    // 4 - 0x19
+                BINARY_U8(00001001),
+                BINARY_U8(00001111),
+                BINARY_U8(00000001),
+                BINARY_U8(00000001),
+                BINARY_U8(00000000),
+                BINARY_U8(00000000)
+            },
+            {
+                BINARY_U8(00011111),    // 5 - 0x1A
+                BINARY_U8(00010000),
+                BINARY_U8(00011111),
+                BINARY_U8(00000001),
+                BINARY_U8(00011111),
+                BINARY_U8(00000000),
+                BINARY_U8(00000000)
+            },
+            {
+                BINARY_U8(00011111),    // 6 - 0x1B
+                BINARY_U8(00010000),
+                BINARY_U8(00011111),
+                BINARY_U8(00010001),
+                BINARY_U8(00011111),
+                BINARY_U8(00000000),
+                BINARY_U8(00000000)
+            },
+            {
+                BINARY_U8(00001111),    // 7 - 0x1C
+                BINARY_U8(00000001),
+                BINARY_U8(00000001),
+                BINARY_U8(00000001),
+                BINARY_U8(00000001),
+                BINARY_U8(00000000),
+                BINARY_U8(00000000)
+            },
+            {
+                BINARY_U8(00011111),    // 8 - 0x1D
+                BINARY_U8(00010001),
+                BINARY_U8(00011111),
+                BINARY_U8(00010001),
+                BINARY_U8(00011111),
+                BINARY_U8(00000000),
+                BINARY_U8(00000000)
+            },
+            {
+                BINARY_U8(00011111),    // 9 - 0x1E
+                BINARY_U8(00010001),
+                BINARY_U8(00011111),
+                BINARY_U8(00000001),
+                BINARY_U8(00011111),
+                BINARY_U8(00000000),
+                BINARY_U8(00000000)
+            },
+
         };
 
         struct SlotCGRAM
         {
-            uint8 code;     // Код символа от 0x00 до 0x14 - столько символов нет в стандартном знакогенераторе
+            uint8 code;     // Код символа от 9 до 30 - столько символов нет в стандартном знакогенераторе
             uint  time;     // Время загузки символа. Нужно, чтобы определить символ, который загружался раньше всех,
                             // чтобы на его место записать другой, более нужный
         };
@@ -411,16 +504,26 @@ void Display::Convert()
     //  Э - 0x12
     //  Ю - 0x13
     //  Я - 0x14
+    //  инверт 0 - 0x15
+    //  инверт 1 - 0x16
+    //  инверт 2 - 0x17
+    //  инверт 3 - 0x18
+    //  инверт 4 - 0x19
+    //  инверт 5 - 0x1A
+    //  инверт 6 - 0x1B
+    //  инверт 7 - 0x1C
+    //  инверт 8 - 0x1D
+    //  инверт 9 - 0x1E
 
     static const pchar symbs =
         "++++++++++++++++"
         "++++++++++++++++"
         "++++++++++++++++"
         "++++++++++++++++"
-        "A\x00""B\x01\x02""E\x03\x04\x05\x06K\x07MHO\x08"
-        "PCT\x09\x0AX\x0B\x0C\x0D\x0E\x0F\x10\x11\x12\x13\x14"
-        "++++++++++++++++"
-        "++++++++++++++++";
+        "A\x00""B\x01\x02""E\x03\x04\x05\x06K\x07MHO\x08"           // 0xA0
+        "PCT\x09\x0AX\x0B\x0C\x0D\x0E\x0F\x10\x11\x12\x13\x14"      // 0xD0
+        "\x15\x16\x17\x18\x19\x1A\x1B\x1C\x1D\x1E++++++"            // 0xE0
+        "++++++++++++++++";                                         // 0xF0
 
     for (int i = 0; i < 2; i++)
     {
@@ -448,7 +551,7 @@ void Display::LoadSymbolsToCGRAM()
         {
             uint8 symbol = (uint8)buffer[i][j];
 
-            if (symbol <= 0x14)
+            if (symbol <= CGRAM::NUM_SYMBOLS)
             {
                 int slot = 0;
 

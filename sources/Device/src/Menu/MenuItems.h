@@ -100,7 +100,7 @@ struct DateTime
     void ApplyAction(const Action &) const;
 private:
     void ChangeValueInCurrentField(int delta) const;
-    void DrawField(int x, int y, const Text<> &, bool selected) const;
+    void DrawField(int x, int y, Text<> &, bool selected) const;
     int NumFields() const { return data->is_time ? 2 : 3; }
 };
 

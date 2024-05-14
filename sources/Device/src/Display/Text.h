@@ -55,7 +55,7 @@ struct Text
         return result;
 #endif
     }
-    const char *c_str() const
+    char *c_str()
     {
         return &text[0];
     }

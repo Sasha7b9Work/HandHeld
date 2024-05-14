@@ -110,10 +110,24 @@ void Choice::Draw() const
 }
 
 
-void DateTime::DrawField(int x, int y, const Text<> &text, bool selected) const
+void DateTime::DrawField(int x, int y, Text<> &text, bool selected) const
 {
-#ifndef TYPE_1602
+#ifdef TYPE_1602
 
+    char *pointer = text.c_str();
+
+    int delta = 0xE0 - 0x30;        // 0xE0 - код инвертированного нуля
+
+    while (*pointer)                // Предполагаем, что все символы - цифровые
+    {
+        uint8 symbol = (uint8)(*pointer);
+
+        *pointer = (char)(symbol + delta);
+
+        pointer++;
+    }
+
+#else
     const int width = 42;
     const int height = 35;
 
@@ -177,7 +191,9 @@ void DateTime::Draw() const
 
         for (int i = 0; i < NumFields(); i++)
         {
-            DrawField(x[i], y, Text<>("%02d", values[i]), i == *data->field);
+            Text <>text("%02d", values[i]);
+
+            DrawField(x[i], y, text, i == *data->field);
         }
     }
     else
