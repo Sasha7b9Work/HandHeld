@@ -218,13 +218,13 @@ namespace Display
                 BINARY_U8(00010001)
             },
             {
-                BINARY_U8(00011111),    // 0 - 0x15
-                BINARY_U8(00010001),
-                BINARY_U8(00010001),
-                BINARY_U8(00010001),
-                BINARY_U8(00011111),
-                BINARY_U8(00000000),
-                BINARY_U8(00000000)
+                BINARY_U8(00010001),    // 0 - 0x15
+                BINARY_U8(00001110),
+                BINARY_U8(00001100),
+                BINARY_U8(00001010),
+                BINARY_U8(00000110),
+                BINARY_U8(00001110),
+                BINARY_U8(00010001)
             },
             {
                 BINARY_U8(00000001),    // 1 - 0x16
