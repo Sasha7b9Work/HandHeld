@@ -7,6 +7,7 @@
 #include "Settings/Settings.h"
 #include "Utils/StringUtils.h"
 #include "Hardware/HAL/HAL.h"
+#include "Hardware/Timer.h"
 #ifdef TYPE_1602
     #include "Display/Display1602.h"
 #else
@@ -112,21 +113,15 @@ void Choice::Draw() const
 
 void DateTime::DrawField(int x, int y, Text<> &text, bool selected) const
 {
+    bool need_draw = true;
+
 #ifdef TYPE_1602
 
-    if(selected)
+    if (selected)
     {
-        char *pointer = text.c_str();
-
-        int delta = 0xE0 - 0x30;        // 0xE0 - код инвертированного нуля
-
-        while (*pointer)                // Предполагаем, что все символы - цифровые
+        if ((TIME_MS / 1000) % 2)
         {
-            uint8 symbol = (uint8)(*pointer);
-
-            *pointer = (char)(symbol + delta);
-
-            pointer++;
+            need_draw = false;
         }
     }
 
@@ -143,9 +138,12 @@ void DateTime::DrawField(int x, int y, Text<> &text, bool selected) const
 
 #endif
 
-    Font::SetSize(4);
-    text.Write(x + 3, HAL::Is1602() ? 1 : (y + 3), selected ? Color::BLACK : Color::WHITE);
-    Font::SetSize(1);
+    if (need_draw)
+    {
+        Font::SetSize(4);
+        text.Write(x + 3, HAL::Is1602() ? 1 : (y + 3), selected ? Color::BLACK : Color::WHITE);
+        Font::SetSize(1);
+    }
 }
 
 
