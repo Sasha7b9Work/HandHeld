@@ -299,6 +299,8 @@ void Display::Init()
 
 void Display::Update()
 {
+    uint time_start = TIME_MS;
+
     BeginScene();
 
     if (PCF8563::IsAlarmed())
@@ -341,6 +343,10 @@ void Display::Update()
     }
 
     EndScene();
+
+    uint time = TIME_MS - time_start;
+
+    time = time;
 }
 
 
