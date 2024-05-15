@@ -72,9 +72,9 @@ void LED::Driver::Off()
 {
     is_fired = false;
 
-    pinRED.ToLow();
-    pinGREEN.ToLow();
-    pinBLUE.ToLow();
+    pinRED.ToHi();
+    pinGREEN.ToHi();
+    pinBLUE.ToHi();
 }
 
 
