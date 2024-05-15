@@ -54,9 +54,12 @@ void LED::Enable()
 
 void LED::Disable()
 {
-    is_enabled = false;
+    if (is_enabled)
+    {
+        is_enabled = false;
 
-    Driver::Off();
+        Driver::Off();
+    }
 }
 
 
