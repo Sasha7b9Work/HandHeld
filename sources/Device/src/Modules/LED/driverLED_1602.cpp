@@ -61,7 +61,7 @@ void LED::Driver::On()
         {
             for (int i = 0; i < 3; i++)
             {
-                pins[i]->Set(enabled[color][i]);
+                pins[i]->Set(!enabled[color][i]);
             }
         }
     }
