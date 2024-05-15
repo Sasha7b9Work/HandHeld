@@ -43,9 +43,12 @@ void LED::Update()
 
 void LED::Enable()
 {
-    is_enabled = true;
+    if (!is_enabled)
+    {
+        is_enabled = true;
 
-    time_enable = TIME_MS;
+        time_enable = TIME_MS;
+    }
 }
 
 
