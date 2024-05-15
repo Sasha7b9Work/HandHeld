@@ -39,6 +39,7 @@ struct PinOut : public Pin
     void Init();
     void ToLow() const;
     void ToHi() const;
+    void Set(bool enable) const { enable ? ToHi() : ToLow(); }
 };
 
 

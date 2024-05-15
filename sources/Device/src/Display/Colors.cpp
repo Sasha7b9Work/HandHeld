@@ -5,7 +5,7 @@
 
 uint16 Color::colors[16] =
 {
-    0xFFFF,                         // WHITE
+    MAKE_COLOR(0x1f, 0x3f, 0x1f),   // WHITE
     MAKE_COLOR(0x1f, 0x00, 0x00),   // RED
     MAKE_COLOR(0x00, 0x3f, 0x00),   // GREEN
     MAKE_COLOR(0x00, 0x00, 0x1f),   // BLUE
