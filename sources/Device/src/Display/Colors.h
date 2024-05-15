@@ -6,14 +6,14 @@ struct Color
 {
     enum E
     {
-        White,
-        Red,
-        Green,
-        Blue,
+        White,      // R + G + B
+        Red,        // R
+        Green,      // G
+        Blue,       // B
+        Yellow,     // R + G
+        Cyan,       // G + B    Голубой
+        Magenta,    // R + B    Пурпурный
         Gray,
-        Yellow,
-        Orange,
-        Purple,
         Black,
         Count = 16
     };
@@ -26,10 +26,10 @@ struct Color
     static Color RED;
     static Color GREEN;
     static Color BLUE;
-    static Color GRAY;
     static Color YELLOW;
-    static Color ORANGE;
-    static Color PURPLE;
+    static Color CYAN;
+    static Color MAGENTA;
+    static Color GRAY;
     static Color BLACK;
 
     static Color NUMBER;

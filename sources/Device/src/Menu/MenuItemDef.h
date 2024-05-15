@@ -164,24 +164,35 @@ static const DataChoice dc##name{&name, func_on_change, value, &names##name[0], 
 static const Choice choice##name{&dc##name};                                                                                \
 const Item name{&di##name, &choice##name}
 
+#define DEF_CHOICE_7_COLORS(name, keeper, title, value, name0, name1, name2, name3, name4, name5, name6, func_on_change)         \
+static int8 opened##name = 0;                                                                                                    \
+static const DataItem di##name{ItemType::Choice, keeper, title, &opened##name};                                                  \
+extern const Item name;                                                                                                          \
+static const pchar names##name[] = {name0, name1, name2, name3, name4, name5, name6, nullptr };                                  \
+static const Color::E colors##name[] = { Color::White, Color::Red, Color::Green, Color::Blue, Color::Yellow, Color::Cyan,        \
+    Color::Magenta };                                                                                                            \
+static const DataChoice dc##name{&name, func_on_change, value, &names##name[0], &colors##name[0] };                              \
+static const Choice choice##name{&dc##name};                                                                                     \
+const Item name{&di##name, &choice##name}
+
 #define DEF_CHOICE_8_COLORS(name, keeper, title, value, name0, name1, name2, name3, name4, name5, name6, name7, func_on_change)  \
-static int8 opened##name = 0;                                                                                               \
-static const DataItem di##name{ItemType::Choice, keeper, title, &opened##name};                                             \
-extern const Item name;                                                                                                     \
-static const pchar names##name[] = {name0, name1, name2, name3, name4, name5, name6, name7, nullptr };                      \
-static const Color::E colors##name[] = { Color::White, Color::Red, Color::Green, Color::Blue, Color::Gray, Color::Yellow,   \
-    Color::Orange, Color::Purple };                                                                                         \
-static const DataChoice dc##name{&name, func_on_change, value, &names##name[0], &colors##name[0] };                         \
-static const Choice choice##name{&dc##name};                                                                                \
+static int8 opened##name = 0;                                                                                                    \
+static const DataItem di##name{ItemType::Choice, keeper, title, &opened##name};                                                  \
+extern const Item name;                                                                                                          \
+static const pchar names##name[] = {name0, name1, name2, name3, name4, name5, name6, name7, nullptr };                           \
+static const Color::E colors##name[] = { Color::White, Color::Red, Color::Green, Color::Blue, Color::Gray, Color::Yellow,        \
+    Color::Orange, Color::Purple };                                                                                              \
+static const DataChoice dc##name{&name, func_on_change, value, &names##name[0], &colors##name[0] };                              \
+static const Choice choice##name{&dc##name};                                                                                     \
 const Item name{&di##name, &choice##name}
 
 #define DEF_CHOICE_10(name, keeper, title, value, name0, name1, name2, name3, name4, name5, name6, name7, name8, name9, func_on_change)  \
-static int8 opened##name = 0;                                                                                               \
-static const DataItem di##name{ItemType::Choice, keeper, title, &opened##name};                                             \
-extern const Item name;                                                                                                     \
-static const pchar names##name[] = {name0, name1, name2, name3, name4, name5, name6, name7, name8, name9, nullptr };        \
-static const DataChoice dc##name{&name, func_on_change, value, &names##name[0], nullptr };                                  \
-static const Choice choice##name{&dc##name};                                                                                \
+static int8 opened##name = 0;                                                                                                            \
+static const DataItem di##name{ItemType::Choice, keeper, title, &opened##name};                                                          \
+extern const Item name;                                                                                                                  \
+static const pchar names##name[] = {name0, name1, name2, name3, name4, name5, name6, name7, name8, name9, nullptr };                     \
+static const DataChoice dc##name{&name, func_on_change, value, &names##name[0], nullptr };                                               \
+static const Choice choice##name{&dc##name};                                                                                             \
 const Item name{&di##name, &choice##name}
 
 
@@ -222,16 +233,15 @@ DEF_CHOICE_3(choiceVolume, self, "√–ŒÃ Œ—“‹", (uint8 *const)&set,           \
 );
 
 #define DEF_CHOICE_COLOR(set)                                               \
-DEF_CHOICE_8_COLORS(choiceColor, self, "÷¬≈“", (uint8 *const)&set,          \
-    Color::Name(Color::White),                                      \
-    Color::Name(Color::Red),                                        \
-    Color::Name(Color::Green),                                      \
-    Color::Name(Color::Blue),                                       \
-    Color::Name(Color::Gray),                                       \
-    Color::Name(Color::Yellow),                                     \
-    Color::Name(Color::Orange),                                     \
-    Color::Name(Color::Purple),                                     \
-    nullptr                                                         \
+DEF_CHOICE_7_COLORS(choiceColor, self, "÷¬≈“", (uint8 *const)&set,          \
+    Color::Name(Color::White),                                              \
+    Color::Name(Color::Red),                                                \
+    Color::Name(Color::Green),                                              \
+    Color::Name(Color::Blue),                                               \
+    Color::Name(Color::Yellow),                                             \
+    Color::Name(Color::Cyan),                                               \
+    Color::Name(Color::Magenta),                                            \
+    nullptr                                                                 \
 );
 
 #define DEF_SOURCE_CHOICES(source)                                  \

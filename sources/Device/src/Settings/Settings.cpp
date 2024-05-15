@@ -9,12 +9,12 @@
 
 Settings gset =
 {
-    { {Melody::_9, Volume::Hi, Color::Red,    ModeIndication::All},
-      {Melody::_10, Volume::Hi, Color::Orange, ModeIndication::All},
-      {Melody::_3, Volume::Hi, Color::Yellow, ModeIndication::All},
-      {Melody::_4, Volume::Hi, Color::Green,  ModeIndication::All},
-      {Melody::_5, Volume::Hi, Color::Blue,   ModeIndication::All},
-      {Melody::_6, Volume::Hi, Color::Purple, ModeIndication::All}
+    { {Melody::_9,  Volume::Hi, Color::Red,     ModeIndication::All},
+      {Melody::_10, Volume::Hi, Color::Cyan,    ModeIndication::All},
+      {Melody::_3,  Volume::Hi, Color::Yellow,  ModeIndication::All},
+      {Melody::_4,  Volume::Hi, Color::Green,   ModeIndication::All},
+      {Melody::_5,  Volume::Hi, Color::Blue,    ModeIndication::All},
+      {Melody::_6,  Volume::Hi, Color::Magenta, ModeIndication::All}
     },
     {
         Melody::_1,

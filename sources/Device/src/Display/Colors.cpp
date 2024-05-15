@@ -9,11 +9,11 @@ uint16 Color::colors[16] =
     MAKE_COLOR(0x1f, 0x00, 0x00),   // RED
     MAKE_COLOR(0x00, 0x3f, 0x00),   // GREEN
     MAKE_COLOR(0x00, 0x00, 0x1f),   // BLUE
-    MAKE_COLOR(0x10, 0x20, 0x10),   // GRAY
     MAKE_COLOR(0x1f, 0x3f, 0x00),   // YELLOW
-    MAKE_COLOR(0x1f, 0x20, 0x00),   // ORANGE
-    MAKE_COLOR(0x13, 0x07, 0x1d),   // PURPLE
-    0x0000,                         // BLACK
+    MAKE_COLOR(0x00, 0x3f, 0x1f),   // CYAN
+    MAKE_COLOR(0x1f, 0x00, 0x1f),   // MAGENTA
+    MAKE_COLOR(0x10, 0x20, 0x10),   // GRAY
+    MAKE_COLOR(0x00, 0x00, 0x00),   // BLACK
     0x0000,
     0x0000,
     0x0000,
@@ -28,10 +28,10 @@ Color Color::WHITE(White);
 Color Color::RED(Red);
 Color Color::GREEN(Green);
 Color Color::BLUE(Blue);
-Color Color::GRAY(Gray);
 Color Color::YELLOW(Yellow);
-Color Color::ORANGE(Orange);
-Color Color::PURPLE(Purple);
+Color Color::CYAN(Cyan);
+Color Color::MAGENTA(Magenta);
+Color Color::GRAY(Gray);
 Color Color::BLACK(Black);
 Color Color::NUMBER(Count);
 
@@ -56,10 +56,10 @@ pchar Color::Name(E v)
         "йпюямши",
         "гекемши",
         "яхмхи",
-        "яепши",
         "фекрши",
-        "нпюмфебши",
-        "тхнкернбши",
+        "цнксани",
+        "оспоспмши",
+        "яепши",
         "вепмши"
     };
 
