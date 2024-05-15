@@ -985,11 +985,6 @@
           <GroupName>Modules/LED</GroupName>
           <Files>
             <File>
-              <FileName>driverLED.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Modules\LED\driverLED.cpp</FilePath>
-            </File>
-            <File>
               <FileName>driverLED.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Modules\LED\driverLED.h</FilePath>
@@ -1003,6 +998,11 @@
               <FileName>LED.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Modules\LED\LED.h</FilePath>
+            </File>
+            <File>
+              <FileName>driverLED_7735.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Modules\LED\driverLED_7735.cpp</FilePath>
             </File>
           </Files>
         </Group>
@@ -2097,11 +2097,6 @@
           <GroupName>Modules/LED</GroupName>
           <Files>
             <File>
-              <FileName>driverLED.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Modules\LED\driverLED.cpp</FilePath>
-            </File>
-            <File>
               <FileName>driverLED.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Modules\LED\driverLED.h</FilePath>
@@ -2115,6 +2110,11 @@
               <FileName>LED.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Modules\LED\LED.h</FilePath>
+            </File>
+            <File>
+              <FileName>driverLED_7735.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Modules\LED\driverLED_7735.cpp</FilePath>
             </File>
           </Files>
         </Group>

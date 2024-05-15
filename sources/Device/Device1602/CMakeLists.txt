@@ -45,7 +45,9 @@ file(GLOB MENU_PAGES              ../src/Menu/Pages/*.*)
 file(GLOB MODULES_BEEPER          ../src/Modules/Beeper/*.*)
 file(GLOB MODULES_BEEPER_SOUNDS   ../src/Modules/Beeper/Sounds/*.*)
 file(GLOB MODULES_CMT2210AW       ../src/Modules/CMT2210AW/*.*)
-file(GLOB MODULES_COLORLED        ../src/Modules/ColorLED/*.*)
+file(GLOB MODULES_LED             ../src/Modules/LED/*.h
+                                  ../src/Modules/LED/LED.cpp
+                                  ../src/Modules/LED/driverLED_1602.cpp)
 file(GLOB MODULES_PCF8563         ../src/Modules/PCF8563/*.*)
 file(GLOB MODULES_WH1602B         ../src/Modules/WH1602B/*.*)
 file(GLOB SETTINGS                ../src/Settings/*.*)
@@ -64,7 +66,7 @@ source_group(Menu/Pages             FILES ${MENU_PAGES})
 source_group(Modules/Beeper         FILES ${MODULES_BEEPER})
 source_group(Modules/Beeper/Sounds  FILES ${MODULES_BEEPER_SOUNDS})
 source_group(Modules/CMT2210AW      FILES ${MODULES_CMT2210AW})
-source_group(Modules/ColorLED       FILES ${MODULES_COLORLED})
+source_group(Modules/LED            FILES ${MODULES_LED})
 source_group(Modules/PCF8563        FILES ${MODULES_PCF8563})
 source_group(Modules/WH1602B        FILES ${MODULES_WH1602B})
 source_group(Settings               FILES ${SETTINGS})
@@ -91,7 +93,7 @@ add_library(${PROJECT_NAME}
     ${MODULES_BEEPER}
     ${MODULES_BEEPER_SOUNDS}
     ${MODULES_CMT2210AW}
-    ${MODULES_COLORLED}
+    ${MODULES_LED}
     ${MODULES_PCF8563}
     ${MODULES_WH1602B}
     ${SETTINGS}

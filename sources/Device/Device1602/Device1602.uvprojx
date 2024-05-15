@@ -932,17 +932,27 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Modules/ColorLED</GroupName>
+          <GroupName>Modules/LED</GroupName>
           <Files>
             <File>
-              <FileName>ColorLED.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\src\Modules\ColorLED\ColorLED.cpp</FilePath>
+              <FileName>driverLED.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\src\Modules\LED\driverLED.h</FilePath>
             </File>
             <File>
-              <FileName>ColorLED.h</FileName>
+              <FileName>LED.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\src\Modules\LED\LED.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>LED.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\src\Modules\ColorLED\ColorLED.h</FilePath>
+              <FilePath>..\src\Modules\LED\LED.h</FilePath>
+            </File>
+            <File>
+              <FileName>driverLED_1602.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\src\Modules\LED\driverLED_1602.cpp</FilePath>
             </File>
           </Files>
         </Group>
@@ -1984,17 +1994,27 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Modules/ColorLED</GroupName>
+          <GroupName>Modules/LED</GroupName>
           <Files>
             <File>
-              <FileName>ColorLED.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\src\Modules\ColorLED\ColorLED.cpp</FilePath>
+              <FileName>driverLED.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\src\Modules\LED\driverLED.h</FilePath>
             </File>
             <File>
-              <FileName>ColorLED.h</FileName>
+              <FileName>LED.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\src\Modules\LED\LED.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>LED.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\src\Modules\ColorLED\ColorLED.h</FilePath>
+              <FilePath>..\src\Modules\LED\LED.h</FilePath>
+            </File>
+            <File>
+              <FileName>driverLED_1602.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\src\Modules\LED\driverLED_1602.cpp</FilePath>
             </File>
           </Files>
         </Group>

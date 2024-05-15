@@ -47,7 +47,9 @@ file(GLOB MENU_PAGES              src/Menu/Pages/*.*)
 file(GLOB MODULES_BEEPER          src/Modules/Beeper/*.*)
 file(GLOB MODULES_BEEPER_SOUNDS   src/Modules/Beeper/Sounds/*.*)
 file(GLOB MODULES_CMT2210AW       src/Modules/CMT2210AW/*.*)
-file(GLOB MODULES_LED             src/Modules/LED/*.*)
+file(GLOB MODULES_LED             src/Modules/LED/*.h
+                                  src/Modules/LED/LED.cpp
+                                  src/Modules/LED/driverLED_7735.cpp)
 file(GLOB MODULES_PCF8563         src/Modules/PCF8563/*.*)
 file(GLOB MODULES_ST7735          src/Modules/ST7735/*.*)
 file(GLOB SETTINGS                src/Settings/*.*)
