@@ -481,7 +481,7 @@ void Display::LoadSymbolsToCGRAM()
 
 void RTCDateTime::DrawTime(int, int, const Color &) const
 {
-    Text<>("%02d:%02d", Day, Month, Year).WriteInCenter(0, 0, Display::WIDTH);
+    Text<>("%02d:%02d", Hour, Minute).WriteInCenter(0, 0, Display::WIDTH);
 }
 
 
