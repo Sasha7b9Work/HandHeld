@@ -98,7 +98,7 @@ void WH1602B::Enable()
     is_enabled = true;
 
     pinPWR.Init();
-    Enable();
+    pinPWR.ToHi();
 
     pinEN.Init();
     pinRS.Init();
