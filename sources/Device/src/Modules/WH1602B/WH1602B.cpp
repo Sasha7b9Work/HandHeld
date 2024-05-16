@@ -129,6 +129,12 @@ void WH1602B::Enable()
 void WH1602B::Disable()
 {
     pinPWR.ToLow();
+    pinEN.ToLow();
+    pinRS.ToLow();
+    pinD4.ToLow();
+    pinD5.ToLow();
+    pinD6.ToLow();
+    pinD7.ToLow();
 }
 
 
