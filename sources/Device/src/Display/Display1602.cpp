@@ -278,7 +278,15 @@ namespace Display
         }
     };
 
+    // Основной буфер. Сюда пишем
     static char buffer[2][16];
+
+    // Буфер предыдущего экрана. Если 
+    static char prev_buffer[2][16] =
+    {
+        { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+        { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }
+    };
 
     static void BeginScene();
     static void EndScene();
@@ -293,7 +301,7 @@ namespace Display
 
 void Display::Init()
 {
-    WH1602B::Init();
+    WH1602B::Enable();
 }
 
 
@@ -346,31 +354,38 @@ void Display::Update()
 
 void Display::DrawPowerOn()
 {
+    BeginScene();
 
+    Text<>("ВКЛЮЧЕНИЕ").WriteInCenter(0, 0, Display::WIDTH);
+
+    EndScene();
 }
 
 
 void Display::DrawPowerOff()
 {
+    BeginScene();
 
+    Text<>("ВЫКЛЮЧЕНИЕ").WriteInCenter(0, 0, Display::WIDTH);
+
+    EndScene();
 }
 
 
 void Display::DrawLowVoltage()
 {
+    BeginScene();
 
-}
+    Text<>("НИЗКОЕ").WriteInCenter(0, 0, Display::WIDTH);
+    Text<>("НАПРЯЖЕНИЕ").WriteInCenter(0, 1, Display::WIDTH);
 
-
-void Display::PrepareToSleep()
-{
-
+    EndScene();
 }
 
 
 uint Display::TimeEnabled()
 {
-    return 0;
+    return WH1602B::TimeEnabled();
 }
 
 
@@ -382,16 +397,12 @@ void Display::BeginScene()
 
 void Display::EndScene()
 {
-    static char prev_buffer[2][16] =
-    {
-        { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-        { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }
-    };
-
     if (std::memcmp(buffer, prev_buffer, 2 * 16) == 0)
     {
         return;
     }
+
+    WH1602B::Enable();
 
     std::memcpy(prev_buffer, buffer, 2 * 16);
 
@@ -400,6 +411,14 @@ void Display::EndScene()
     LoadSymbolsToCGRAM();
 
     WH1602B::WriteFull((uint8 *)buffer);
+}
+
+
+void Display::PrepareToSleep()
+{
+    std::memset(prev_buffer, 0, 16 * 2);
+
+    WH1602B::Disable();
 }
 
 

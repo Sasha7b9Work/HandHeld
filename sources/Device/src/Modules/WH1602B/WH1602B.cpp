@@ -2,6 +2,7 @@
 #include "defines.h"
 #include "Modules/WH1602B/WH1602B.h"
 #include "Hardware/HAL/HAL_PINS.h"
+#include "Hardware/Timer.h"
 #include <gd32e23x.h>
 
 
@@ -81,13 +82,23 @@ namespace WH1602B
     static PinOut pinD5(GPIOA, GPIO_PIN_6);
     static PinOut pinD4(GPIOA, GPIO_PIN_7);
     static PinOut pinPWR(GPIOB, GPIO_PIN_2);
+
+    static bool is_enabled = false;
+    static uint time_enable = 0;
 }
 
 
-void WH1602B::Init()
+void WH1602B::Enable()
 {
+    if (is_enabled)
+    {
+        return;
+    }
+
+    is_enabled = true;
+
     pinPWR.Init();
-    pinPWR.ToHi();
+    Enable();
 
     pinEN.Init();
     pinRS.Init();
@@ -110,6 +121,20 @@ void WH1602B::Init()
     lcd10usDelay(BUSY_CYCLE_TIME);
     lcdWrite(0x80);
     lcd10usDelay(BUSY_CYCLE_TIME);
+
+    time_enable = TIME_MS;
+}
+
+
+void WH1602B::Disable()
+{
+    pinPWR.ToLow();
+}
+
+
+uint WH1602B::TimeEnabled()
+{
+    return TIME_MS - time_enable;
 }
 
 

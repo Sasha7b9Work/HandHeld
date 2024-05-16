@@ -129,7 +129,7 @@ void Display::DrawPowerOn()
 
         Font::SetSize(2);
 
-        Text<>("Включение").WriteInCenter(0, 30, Display::WIDTH, Color::WHITE);
+        Text<>("ВКЛЮЧЕНИЕ").WriteInCenter(0, 30, Display::WIDTH, Color::WHITE);
 
         EndScene(i);
     }

@@ -4,7 +4,9 @@
 
 namespace WH1602B
 {
-    void Init();
+    void Enable();
+
+    void Disable();
 
     void Clear();
 
@@ -13,5 +15,7 @@ namespace WH1602B
 
     // Записать в CGARAM символ с кодом code
     void LoadSymbolToCGRAM(int slot, const uint8 rows[7]);
+
+    uint TimeEnabled();
 }
 
