@@ -299,8 +299,6 @@ void Display::Init()
 
 void Display::Update()
 {
-    uint time_start = TIME_MS;
-
     BeginScene();
 
     if (PCF8563::IsAlarmed())
@@ -343,10 +341,6 @@ void Display::Update()
     }
 
     EndScene();
-
-    uint time = TIME_MS - time_start;
-
-    time = time;
 }
 
 
@@ -388,6 +382,19 @@ void Display::BeginScene()
 
 void Display::EndScene()
 {
+    static char prev_buffer[2][16] =
+    {
+        { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+        { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }
+    };
+
+    if (std::memcmp(buffer, prev_buffer, 2 * 16) == 0)
+    {
+        return;
+    }
+
+    std::memcpy(prev_buffer, buffer, 2 * 16);
+
     Convert();
 
     LoadSymbolsToCGRAM();
