@@ -207,7 +207,7 @@ void WH1602B::lcdWrite(uint8 data)
 
 void WH1602B::lcd10usDelay(volatile uint us)
 {
-    us = 100;
+    us = 500;
 
     while (us > 0u)
     {

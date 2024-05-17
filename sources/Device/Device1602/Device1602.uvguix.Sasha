@@ -15,7 +15,7 @@
     <View>
       <WinId>38003</WinId>
       <ViewName>Registers</ViewName>
-      <TableColWidths>158 144</TableColWidths>
+      <TableColWidths>151 151</TableColWidths>
     </View>
     <View>
       <WinId>346</WinId>
@@ -40,7 +40,7 @@
       <WinId>1506</WinId>
       <ViewName>Symbols</ViewName>
       <UserString></UserString>
-      <TableColWidths>106 106 106</TableColWidths>
+      <TableColWidths>70 70 70</TableColWidths>
     </View>
     <View>
       <WinId>1936</WinId>
@@ -101,10 +101,10 @@
         <yPos>-1</yPos>
       </MaxPosition>
       <NormalPosition>
-        <Top>447</Top>
-        <Left>1597</Left>
-        <Right>3489</Right>
-        <Bottom>1317</Bottom>
+        <Top>-10</Top>
+        <Left>184</Left>
+        <Right>1616</Right>
+        <Bottom>757</Bottom>
       </NormalPosition>
     </WindowPosition>
     <MDIClientArea>
