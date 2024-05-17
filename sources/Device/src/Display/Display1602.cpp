@@ -238,6 +238,14 @@ namespace Display
             { 255, 0 }
         };
 
+        static void Clear()
+        {
+            for (int i = 0; i < 8; i++)
+            {
+                slots[i].code = 255;
+            }
+        }
+
         // Возвращает true, если символ с кодом code загружен в CGRAM.
         static bool SymbolLoaded(uint8 code, int *slot)
         {
@@ -417,6 +425,8 @@ void Display::EndScene()
 void Display::PrepareToSleep()
 {
     std::memset(prev_buffer, 0, 16 * 2);
+
+    CGRAM::Clear();
 
     WH1602B::Disable();
 }
