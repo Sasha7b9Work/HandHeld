@@ -135,6 +135,8 @@ void WH1602B::Disable()
     pinD5.ToLow();
     pinD6.ToLow();
     pinD7.ToLow();
+
+    is_enabled = false;
 }
 
 
