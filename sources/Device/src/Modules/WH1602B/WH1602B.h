@@ -17,5 +17,7 @@ namespace WH1602B
     void LoadSymbolToCGRAM(int slot, const uint8 rows[7]);
 
     uint TimeEnabled();
+
+    bool IsPowered();
 }
 

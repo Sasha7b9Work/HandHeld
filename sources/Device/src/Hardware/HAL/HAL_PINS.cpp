@@ -57,3 +57,9 @@ void PinOut::ToHi() const
 {
     gpio_bit_set(port, pin);
 }
+
+
+bool PinOut::IsHi() const
+{
+    return gpio_output_bit_get(port, pin) != RESET;
+}
