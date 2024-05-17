@@ -103,7 +103,7 @@ void Keyboard::CallbackFromInterrupt(Key::E key)
 
     ms_for_disable = TIME_BLANK_DISPLAY;
 
-    if (meter.ElapsedTime() < 2000)
+    if (meter.ElapsedTime() < 200)
     {
         return;
     }
