@@ -94,6 +94,18 @@ void Keyboard::Init()
 
 void Keyboard::CallbackFromInterrupt(Key::E key)
 {
+    static TimeMeterMS meter;
+
+    if (ms_for_disable < 0)             // Вышли из спящего режима
+    {
+        meter.Reset();
+    }
+
+    if (meter.ElapsedTime() < 2000)
+    {
+        return;
+    }
+
     ms_for_disable = TIME_BLANK_DISPLAY;
 
     uint time = TIME_MS;
@@ -118,7 +130,7 @@ void Keyboard::CallbackFromInterrupt(Key::E key)
 
 bool Keyboard::ToMoreTime()
 {
-    return ms_for_disable <= 0;
+    return ms_for_disable < 0;
 }
 
 
