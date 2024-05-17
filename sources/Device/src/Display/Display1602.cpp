@@ -307,11 +307,6 @@ void Display::Init()
 
 void Display::Update()
 {
-    if (!WH1602B::IsPowered())
-    {
-        return;
-    }
-
     BeginScene();
 
     if (PCF8563::IsAlarmed())

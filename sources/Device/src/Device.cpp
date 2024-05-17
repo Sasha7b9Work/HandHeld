@@ -82,7 +82,10 @@ void Device::Update()
 
     CMT2210AW::Update();
 
-    Display::Update();
+    if (Source::GetCountReceived() || !Keyboard::ToMoreTime())
+    {
+        Display::Update();
+    }
 
     LED::Update();
 

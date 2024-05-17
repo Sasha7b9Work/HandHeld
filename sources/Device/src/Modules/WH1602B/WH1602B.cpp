@@ -126,12 +126,6 @@ void WH1602B::Enable()
 }
 
 
-bool WH1602B::IsPowered()
-{
-    return pinPWR.IsHi();
-}
-
-
 void WH1602B::Disable()
 {
     pinPWR.ToLow();
