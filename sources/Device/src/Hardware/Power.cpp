@@ -65,11 +65,6 @@ void Power::Init()
     {
         while (pinPWR_CTRL.IsLow())
         {
-            while (Source::GetCountReceived())
-            {
-                Source::CancelFirst();
-            }
-
             Display::DrawPowerOn();
         }
     }
@@ -80,6 +75,11 @@ void Power::Init()
 
 void Power::Disable()
 {
+    while (Source::GetCountReceived())
+    {
+        Source::CancelFirst();
+    }
+
     TimeMeterMS meter;
 
     while (meter.ElapsedTime() < 1500)
