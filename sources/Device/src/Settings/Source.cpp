@@ -8,6 +8,7 @@
 #include "Modules/LED/LED.h"
 #include "Modules/Beeper/Beeper.h"
 #include "Modules/CMT2210AW/CMT2210AW.h"
+#include "Keyboard/Keyboard.h"
 #include <cstring>
 
 
@@ -285,6 +286,9 @@ void Source::Queue::DeleteOld()
             if (TIME_MS > time_recv[buffer[i]].GetMS() + TimeDestroy(Current()))
             {
                 Remove(i, false);
+
+                //Установить таймаут свечения дисплея после окончания вызова
+                Keyboard::ms_for_disable = TIME_BLANK_DISPLAY;
             }
         }
     }
