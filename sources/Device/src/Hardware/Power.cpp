@@ -65,6 +65,11 @@ void Power::Init()
     {
         while (pinPWR_CTRL.IsLow())
         {
+            while (Source::GetCountReceived())
+            {
+                Source::CancelFirst();
+            }
+
             Display::DrawPowerOn();
         }
     }

@@ -169,11 +169,6 @@ void Display::BeginScene(int num_part)
         color = gset.alarm.color;
     }
 
-    if (pinPWR_CTRL.IsLow())
-    {
-        color = Color::BLACK;
-    }
-
     Buffer::Fill(color);
 }
 
