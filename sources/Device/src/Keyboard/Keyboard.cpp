@@ -122,7 +122,7 @@ void Keyboard::CallbackFromInterrupt(Key::E key)
 
             if (buttons[key].prev_down != is_down)
             {
-                if (!is_down)
+                if (is_down)
                 {
                     AppendAction({ key , ActionType::Up });
                 }
