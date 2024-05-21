@@ -40,7 +40,7 @@ namespace Keyboard
 {
     void Init();
 
-    void CallbackFromInterrupt(Key::E);
+    void CallbackFromInterrupt(Key::E = Key::Count);
 
     bool IsDown(Key::E);
 

@@ -18,6 +18,7 @@
 #include "Modules/Beeper/Beeper.h"
 #include "Hardware/Vibrato.h"
 #include "Modules/LED/LED.h"
+#include "Keyboard/Keyboard.h"
  
 
 #define PCF8563_REG_CONTROL_STATUS1     ((uint8)0x00)
@@ -283,6 +284,8 @@ void PCF8563::Update()
 		if (status2 & (1 << PCF8563_CONTROL2_AF))			// INT
 		{
 			time_alarm = TIME_MS;
+
+			Keyboard::CallbackFromInterrupt();
 
 			if (ModeIndication::ConsistSound(gset.alarm.mode_indication))
 			{

@@ -288,7 +288,7 @@ void Source::Queue::DeleteOld()
                 Remove(i, false);
 
                 //Установить таймаут свечения дисплея после окончания вызова
-                Keyboard::ms_for_disable = TIME_BLANK_DISPLAY;
+                Keyboard::CallbackFromInterrupt();
             }
         }
     }
