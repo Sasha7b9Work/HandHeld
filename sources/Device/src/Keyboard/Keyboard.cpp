@@ -120,16 +120,16 @@ void Keyboard::CallbackFromInterrupt(Key::E key)
         {
             bool is_down = buttons[key].button->IsDown();
 
-            if (buttons[key].prev_down != is_down)
-            {
+//          if (buttons[key].prev_down != is_down)
+//          {
                 if (is_down)
                 {
                     AppendAction({ key , ActionType::Up });
                 }
 
                 buttons[key].prev_time = time;
-                buttons[key].prev_down = is_down;
-            }
+//              buttons[key].prev_down = is_down;
+//          }
         }
     }
 }
