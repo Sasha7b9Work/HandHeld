@@ -118,7 +118,7 @@ void Keyboard::CallbackFromInterrupt(Key::E key)
 
         if (time - buttons[key].prev_time > 250)
         {
-            bool is_down = buttons[key].button->IsDown();
+            bool is_down = buttons[key].button->IsDown();       // Даже если мы зашли при нуле - не факт, что здесь ноль будет
 
 //          if (buttons[key].prev_down != is_down)
 //          {
