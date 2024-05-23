@@ -126,18 +126,40 @@ void Power::Update()
 }
 
 
-#ifdef TYPE_1602
 void Power::Draw()
 {
+    float voltage = HAL_ADC::GetVoltage(false);
 
-}
+#ifdef TYPE_1602
+
+    if (voltage > 3.9f)         // 5/5 Полный заряд
+    {
+        Display::DrawSymbol(0, 15, 0xF5);
+    }
+    else if (voltage > 3.85f)
+    {
+        Display::DrawSymbol(0, 15, 0xF4);
+    }
+    else if (voltage > 3.8f)
+    {
+        Display::DrawSymbol(0, 15, 0xF3);
+    }
+    else if (voltage > 3.7f)
+    {
+        Display::DrawSymbol(0, 15, 0xF2);
+    }
+    else if (voltage > 3.6f)
+    {
+        Display::DrawSymbol(0, 15, 0xF1);
+    }
+    else if (voltage > 3.5f)
+    {
+        Display::DrawSymbol(0, 15, 0xF0);
+    }
+
 #else
-void Power::Draw()
-{
     int x = 121;
     int y = 0;
-
-    float voltage = HAL_ADC::GetVoltage(false);
 
     Color color = Color::GREEN;
 
@@ -165,9 +187,5 @@ void Power::Draw()
         Rect(WIDTH, HEIGHT).Draw(x, y, Color::RED);
         Rect(5, 7).Fill(x - 4, y + 3);
     }
-    else
-    {
-        // Здесь нужно отключиться
-    }
-}
 #endif
+}

@@ -19,5 +19,6 @@ namespace Display
     void PrepareToSleep();
 
     uint TimeEnabled();
-}
 
+    void DrawSymbol(int x, int y, uint8);
+}

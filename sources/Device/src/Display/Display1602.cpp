@@ -19,7 +19,7 @@ namespace Display
 {
     namespace CGRAM
     {
-        static const int NUM_SYMBOLS = 21;
+        static const int NUM_SYMBOLS = 0x1B;
 
         struct Symbol
         {
@@ -216,7 +216,62 @@ namespace Display
                 BINARY_U8(00000101),
                 BINARY_U8(00001001),
                 BINARY_U8(00010001)
-            }
+            },
+            {
+                BINARY_U8(00001110),    // Пустой аккумулятор - 0x15
+                BINARY_U8(00010001),
+                BINARY_U8(00010001),
+                BINARY_U8(00010001),
+                BINARY_U8(00010001),
+                BINARY_U8(00010001),
+                BINARY_U8(00011111)
+            },
+            {
+                BINARY_U8(00001110),    // 1/5 линий - 0x16
+                BINARY_U8(00010001),
+                BINARY_U8(00010001),
+                BINARY_U8(00010001),
+                BINARY_U8(00010001),
+                BINARY_U8(00011111),
+                BINARY_U8(00011111)
+            },
+            {
+                BINARY_U8(00001110),    // 2/5 линий - 0x17
+                BINARY_U8(00010001),
+                BINARY_U8(00010001),
+                BINARY_U8(00010001),
+                BINARY_U8(00011111),
+                BINARY_U8(00011111),
+                BINARY_U8(00011111)
+            },
+            {
+                BINARY_U8(00001110),    // 3/5 линий - 0x18
+                BINARY_U8(00010001),
+                BINARY_U8(00010001),
+                BINARY_U8(00011111),
+                BINARY_U8(00011111),
+                BINARY_U8(00011111),
+                BINARY_U8(00011111)
+            },
+            {
+                BINARY_U8(00001110),    // 4/5 линий - 0x19
+                BINARY_U8(00010001),
+                BINARY_U8(00011111),
+                BINARY_U8(00011111),
+                BINARY_U8(00011111),
+                BINARY_U8(00011111),
+                BINARY_U8(00011111)
+            },
+            {
+                BINARY_U8(00001110),    // 5/5 линий - 0x1A
+                BINARY_U8(00011111),
+                BINARY_U8(00011111),
+                BINARY_U8(00011111),
+                BINARY_U8(00011111),
+                BINARY_U8(00011111),
+                BINARY_U8(00011111)
+            },
+
         };
 
         struct SlotCGRAM
@@ -304,6 +359,12 @@ namespace Display
     // нужные символы в буфере
     static void LoadSymbolsToCGRAM();
     static void WriteSymbol(int x, int y, char);
+}
+
+
+void Display::DrawSymbol(int x, int y, uint8 symbol)
+{
+    WriteSymbol(x, y, (char)symbol);
 }
 
 
@@ -464,7 +525,7 @@ void Display::Convert()
         "A\x00""B\x01\x02""E\x03\x04\x05\x06K\x07MHO\x08"           // 0xA0
         "PCT\x09\x0AX\x0B\x0C\x0D\x0E\x0F\x10\x11\x12\x13\x14"      // 0xD0
         "++++++++++++++++"                                          // 0xE0
-        "++++++++++++++++";                                         // 0xF0
+        "\x15\x16\x17\x18\x19\x1A+++++++++++";                      // 0xF0     // Состояния аккумулятора - от пустого к полному
 
     for (int i = 0; i < 2; i++)
     {
