@@ -134,27 +134,27 @@ void Power::Draw()
 
     if (voltage > 3.9f)         // 5/5 Полный заряд
     {
-        Display::DrawSymbol(0, 15, 0xF5);
+        Display::DrawSymbol(15, 0, 0xF5);
     }
     else if (voltage > 3.85f)
     {
-        Display::DrawSymbol(0, 15, 0xF4);
+        Display::DrawSymbol(15, 0, 0xF4);
     }
     else if (voltage > 3.8f)
     {
-        Display::DrawSymbol(0, 15, 0xF3);
+        Display::DrawSymbol(15, 0, 0xF3);
     }
     else if (voltage > 3.7f)
     {
-        Display::DrawSymbol(0, 15, 0xF2);
+        Display::DrawSymbol(15, 0, 0xF2);
     }
     else if (voltage > 3.6f)
     {
-        Display::DrawSymbol(0, 15, 0xF1);
+        Display::DrawSymbol(15, 0, 0xF1);
     }
     else if (voltage > 3.5f)
     {
-        Display::DrawSymbol(0, 15, 0xF0);
+        Display::DrawSymbol(15, 0, 0xF0);
     }
 
 #else
