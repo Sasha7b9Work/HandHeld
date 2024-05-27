@@ -466,18 +466,18 @@ void Display::BeginScene()
 
 void Display::EndScene()
 {
+    WH1602B::Enable();
+
+    Convert();
+
+    LoadSymbolsToCGRAM();
+
     if (std::memcmp(buffer, prev_buffer, 2 * 16) == 0)
     {
         return;
     }
 
-    WH1602B::Enable();
-
     std::memcpy(prev_buffer, buffer, 2 * 16);
-
-    Convert();
-
-    LoadSymbolsToCGRAM();
 
     WH1602B::WriteFull((uint8 *)buffer);
 }
