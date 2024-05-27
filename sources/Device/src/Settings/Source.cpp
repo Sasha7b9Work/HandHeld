@@ -361,5 +361,11 @@ bool ModeIndication::ConsistLED(E mode)
 
 bool ModeIndication::ConsistVibro(E mode)
 {
+#ifdef TYPE_1602
+    (void)mode;
+
+    return true;
+#else
     return mode == All || mode == Vibro || mode == Sound_Vibro || mode == LED_Vibro;
+#endif
 }

@@ -55,7 +55,6 @@ extern PinIn  pinSCK;
 extern PinOut pinADC;
 
 extern PinOut pinLEDPWR;
-extern PinOut pinVIBRO;
 
 extern PinOut pinPWR;               // Управление включением - 1 - вкл
 extern PinIn  pinPWR_CTRL;          // Сигнал включения - 0 - нажата кнопка или будильник сработал
