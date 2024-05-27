@@ -20,7 +20,20 @@ namespace PageAlarm
 
     DEF_TIME(time, self, "ÂÐÅÌß", true);
 
-    DEF_CHOICE_MODE_INDICATION(gset.alarm.mode_indication);
+    static void OnChange_ModeIndication()
+    {
+#ifdef TYPE_1602
+        if (gset.alarm.mode_indication == ModeIndication::Vibro)
+        {
+            gset.alarm.mode_indication = ModeIndication::Sound_LED;
+        }
+        else if (gset.alarm.mode_indication == ModeIndication::Sound_Vibro)
+        {
+            gset.alarm.mode_indication = ModeIndication::All;
+        }
+#endif
+    }
+    DEF_CHOICE_MODE_INDICATION(gset.alarm.mode_indication, OnChange_ModeIndication);
 
     DEF_CHOICE_MELODY(gset.alarm.melody);
 

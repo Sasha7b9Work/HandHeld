@@ -212,7 +212,7 @@ DEF_CHOICE_10(choiceMelody, self, "лекндхъ", (uint8 *const)&set,            \
     nullptr                                                                 \
 );
 
-#define DEF_CHOICE_MODE_INDICATION(set)                                     \
+#define DEF_CHOICE_MODE_INDICATION(set, func)                               \
 DEF_CHOICE_7(choiceModeIndication, self, "нонбеыемхе", (uint8 *const)&set,  \
     "гбсй",                                                                 \
     "ябер",                                                                 \
@@ -221,7 +221,7 @@ DEF_CHOICE_7(choiceModeIndication, self, "нонбеыемхе", (uint8 *const)&set,  \
     "гбсй+бхапн",                                                           \
     "ябер+бхапн",                                                           \
     "бяе",                                                                  \
-    nullptr                                                                 \
+    func                                                                    \
 );
 
 #define DEF_CHOICE_VOLUME(set)                                              \
@@ -244,14 +244,14 @@ DEF_CHOICE_7_COLORS(choiceColor, self, "жбер", (uint8 *const)&set,          \
     nullptr                                                                 \
 );
 
-#define DEF_SOURCE_CHOICES(source)                                  \
-DEF_CHOICE_MODE_INDICATION(gset.sources[source].mode_indication);   \
-DEF_CHOICE_MELODY(gset.sources[source].melody);                     \
-DEF_CHOICE_VOLUME(gset.sources[source].volume);                     \
+#define DEF_SOURCE_CHOICES(source, func)                                    \
+DEF_CHOICE_MODE_INDICATION(gset.sources[source].mode_indication, func);     \
+DEF_CHOICE_MELODY(gset.sources[source].melody);                             \
+DEF_CHOICE_VOLUME(gset.sources[source].volume);                             \
 DEF_CHOICE_COLOR(gset.sources[source].color);
 
-#define DEF_PAGE_SOURCE(name, source)                   \
-DEF_SOURCE_CHOICES(source);                             \
+#define DEF_PAGE_SOURCE(name, source, func)             \
+DEF_SOURCE_CHOICES(source, func);                       \
 DEF_PAGE_4(name, PageMain::self, Source::Name(source),  \
     &choiceModeIndication,                              \
     &choiceMelody,                                      \
