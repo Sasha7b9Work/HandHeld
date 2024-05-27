@@ -116,7 +116,7 @@ namespace Display
                 BINARY_U8(00001111),
                 BINARY_U8(00000001),
                 BINARY_U8(00000001),
-                BINARY_U8(00011110)
+                BINARY_U8(00001110)
             },
             {
                 BINARY_U8(00001110),    // Ô - 0x0A
