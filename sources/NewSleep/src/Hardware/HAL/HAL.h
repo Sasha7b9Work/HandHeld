@@ -6,19 +6,19 @@ struct ModeClock
 {
     enum E
     {
-        DeepSleep,  // Спящий режим
-        Low,        // Основная частота 3MHz
-        Hi,         // Частота 52МГц для отрисовки экрана
+        Low,        // Низкая частота, на которую переключаемся перед заходом в спящий режим
+        Sleep,      // Спящий режим
+        Hi,         // Частота 52МГц, в которую переходим по выходу из спящего режима
         Count
     };
 
     static void Set(E);
 
-    static void LeaveDeepSleep();
+    static void LeaveSleep();
 
-    static bool IsDeepSleep() { return current == DeepSleep; }
-    static bool IsLow()       { return current == Low; }
-    static bool IsHi()        { return current == Hi; }
+    static bool IsSleep() { return current == Sleep; }
+    static bool IsLow()   { return current == Low; }
+    static bool IsHi()    { return current == Hi; }
 
 private:
 

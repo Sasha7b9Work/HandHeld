@@ -44,7 +44,7 @@ struct PinOut : public Pin
 };
 
 
-extern PinIn pinSW_LEFT;
+extern PinOut pinSW_LEFT;
 extern PinIn pinSW_DOWN;
 extern PinIn pinSW_RIGHT;
 extern PinIn pinSW_UP;

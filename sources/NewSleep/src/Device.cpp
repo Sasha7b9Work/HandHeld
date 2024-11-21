@@ -3,6 +3,10 @@
 #include "Device.h"
 #include "Hardware/HAL/HAL.h"
 #include "Hardware/Timer.h"
+#include "Hardware/HAL/HAL_PINS.h"
+
+
+static void ControlFunction();
 
 
 void Device::Init()
@@ -10,12 +14,32 @@ void Device::Init()
     HAL::Init();
 
     Timer::Init();
+
+    pinSW_LEFT.Init();
 }
 
 
 void Device::Update()
 {
-    ModeClock::Set(ModeClock::DeepSleep);
+    ModeClock::Set(ModeClock::Low);
 
-    ModeClock::LeaveDeepSleep();
+    ControlFunction();
+
+    ModeClock::Set(ModeClock::Sleep);
+
+    ModeClock::LeaveSleep();
+
+    ModeClock::Set(ModeClock::Hi);
+
+    ControlFunction();
+}
+
+
+static void ControlFunction()
+{
+    for (int i = 0; i < 100; i++)
+    {
+        pinSW_LEFT.ToHi();
+        pinSW_LEFT.ToLow();
+    }
 }

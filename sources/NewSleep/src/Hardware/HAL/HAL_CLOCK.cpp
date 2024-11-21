@@ -10,7 +10,7 @@ ModeClock::E ModeClock::current = ModeClock::Low;
 
 namespace HAL_CLOCK
 {
-    static void SetDeepSleep();
+    static void SetSleep();
     static void SetLow();
     static void SetHi();
 
@@ -20,15 +20,15 @@ namespace HAL_CLOCK
 
 void ModeClock::Set(E v)
 {
-    if (v == ModeClock::DeepSleep)
+    if (v == ModeClock::Sleep)
     {
-        if (!ModeClock::IsDeepSleep())
+        if (!ModeClock::IsSleep())
         {
-            current = ModeClock::DeepSleep;
+            current = ModeClock::Sleep;
 
             HAL_CLOCK::in_sleep_mode = true;
 
-            HAL_CLOCK::SetDeepSleep();
+            HAL_CLOCK::SetSleep();
         }
     }
     else if (v == ModeClock::Low)
@@ -52,7 +52,7 @@ void ModeClock::Set(E v)
 }
 
 
-void ModeClock::LeaveDeepSleep()
+void ModeClock::LeaveSleep()
 {
     if (HAL_CLOCK::in_sleep_mode)
     {
@@ -77,13 +77,13 @@ void ModeClock::LeaveDeepSleep()
 
 
 
-void HAL_CLOCK::SetDeepSleep()
+void HAL_CLOCK::SetSleep()
 {
     rcu_periph_clock_enable(RCU_PMU);
 
     RCU_CTL0 &= ~RCU_CTL0_PLLEN;
 
-    pmu_to_deepsleepmode(PMU_LDO_LOWPOWER, WFI_CMD);
+    pmu_to_sleepmode(WFI_CMD);
 }
 
 
