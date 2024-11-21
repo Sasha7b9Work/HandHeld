@@ -19,16 +19,8 @@ add_definitions(-DGD32E230 -DTYPE_BOARD_799)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -MP -Wall")
 
 add_compile_options(
-    /wd4310
-    /wd4514
-    /wd4623
-    /wd4626
-    /wd4710
-    /wd4820    # 'xxx': '4' bytes padding added after data member 'yyy'
-    /wd4996
-    /wd5027
-    /wd5045
-    /wd5204
+    /wd4514     # 'xxx': unreferenced inline function has been removed
+    /wd4820     # 'xxx': 'x' bytes padding added after data member 'yyy'
 )
 
 file(GLOB GD32E23x                ../common/GD32E23x_Firmware_Library/Firmware/GD32E23x_standard_peripheral/Include/*.*
