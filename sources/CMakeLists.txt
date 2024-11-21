@@ -12,3 +12,4 @@ endif()
 
 add_subdirectory(Device)
 add_subdirectory(Device/Device1602)
+add_subdirectory(NewSleep)

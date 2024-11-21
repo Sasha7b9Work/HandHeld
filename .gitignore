@@ -15,6 +15,11 @@ sources/DeviceEnergy/Objects-Debug/*
 sources/DeviceEnergy/Listings/*
 sources/DeviceEnergy/Objects/*
 
+sources/NewSleep/Listings-Debug/*
+sources/NewSleep/Objects-Debug/*
+sources/NewSleep/Listings/*
+sources/NewSleep/Objects/*
+
 sources/Energy/Listings-Debug/*
 sources/Energy/Objects-Debug/*
 sources/Energy/Listings/*
