@@ -43,26 +43,6 @@ namespace HAL
 }
 
 
-// Уровень батареи
-namespace HAL_ADC
-{
-    void Init();
-
-    float GetVoltage(bool force);
-}
-
-
-// Для дисплея
-namespace HAL_I2C
-{
-    void Init();
-
-    bool Write(uint8 command, uint8 *data, int size);
-
-    bool Read(uint8 reg, uint8 *buf, uint16 len);
-}
-
-
 // Для приёмника
 namespace HAL_TIM2
 {

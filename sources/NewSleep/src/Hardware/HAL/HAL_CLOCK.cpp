@@ -1,15 +1,7 @@
 // 2024/04/18 15:19:44 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
 #include "Hardware/HAL/HAL.h"
-#include "Modules/ST7735/ST7735.h"
-#include "Modules/CMT2210AW/CMT2210AW.h"
 #include "Hardware/HAL/systick.h"
-#include "Keyboard/Keyboard.h"
-#ifdef TYPE_1602
-    #include "Display/Display1602.h"
-#else
-    #include "Display/Display7735.h"
-#endif
 #include <gd32e23x.h>
 
 
@@ -66,7 +58,7 @@ void ModeClock::LeaveDeepSleep()
     {
         HAL_CLOCK::in_sleep_mode = false;
 
-        ModeClock::Set(Source::ExistReceived() ? ModeClock::Hi : ModeClock::Low);
+        ModeClock::Set(ModeClock::Hi);
     }
 }
 
@@ -87,12 +79,6 @@ void ModeClock::LeaveDeepSleep()
 
 void HAL_CLOCK::SetDeepSleep()
 {
-    Display::PrepareToSleep();
-
-    CMT2210AW::PrepareToSleep();
-
-//    HAL::DeInit();
-
     rcu_periph_clock_enable(RCU_PMU);
 
     RCU_CTL0 &= ~RCU_CTL0_PLLEN;
