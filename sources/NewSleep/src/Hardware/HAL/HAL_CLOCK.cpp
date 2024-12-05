@@ -79,11 +79,9 @@ void ModeClock::LeaveSleep()
 
 void HAL_CLOCK::SetSleep()
 {
-    rcu_periph_clock_enable(RCU_PMU);
-
     RCU_CTL0 &= ~RCU_CTL0_PLLEN;
 
-    pmu_to_sleepmode(WFE_CMD);
+    pmu_to_sleepmode(WFI_CMD);
 }
 
 
