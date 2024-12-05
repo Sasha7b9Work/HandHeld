@@ -6,7 +6,7 @@
 #include "Hardware/HAL/HAL_PINS.h"
 
 
-static void ControlFunction();
+static void ControlFunction(int type);
 
 
 void Device::Init()
@@ -23,7 +23,7 @@ void Device::Update()
 {
     ModeClock::Set(ModeClock::Low);
 
-    ControlFunction();
+    ControlFunction(0);
 
     ModeClock::Set(ModeClock::Sleep);
 
@@ -31,15 +31,26 @@ void Device::Update()
 
     ModeClock::Set(ModeClock::Hi);
 
-    ControlFunction();
+    ControlFunction(1);
 }
 
 
-static void ControlFunction()
+static void ControlFunction(int type)
 {
-    for (int i = 0; i < 100; i++)
+    if (type == 0)
     {
-        pinSW_LEFT.ToHi();
-        pinSW_LEFT.ToLow();
+        for (int i = 0; i < 0xFFF; i++)
+        {
+            pinSW_LEFT.ToHi();
+            pinSW_LEFT.ToLow();
+        }
+    }
+    else
+    {
+        for (int i = 0; i < 0xFFF; i++)
+        {
+            pinSW_LEFT.ToHi();
+            pinSW_LEFT.ToLow();
+        }
     }
 }
