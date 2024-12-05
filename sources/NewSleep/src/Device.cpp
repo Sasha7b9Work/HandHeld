@@ -28,6 +28,10 @@ void Device::Init()
 
 void Device::Update()
 {
+    while (true)
+    {
+        ModeClock::Set(Mode)
+    }
 //    ModeClock::Set(ModeClock::Low);
 //
 //    ControlFunction(0);
