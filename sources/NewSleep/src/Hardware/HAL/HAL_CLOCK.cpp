@@ -28,8 +28,6 @@ void ModeClock::Set(E v)
 
             HAL_CLOCK::in_sleep_mode = true;
 
-            HAL_CLOCK::SetLow();
-
             HAL_CLOCK::SetSleep();
         }
     }

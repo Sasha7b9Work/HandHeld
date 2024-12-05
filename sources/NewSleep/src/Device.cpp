@@ -20,6 +20,8 @@ void Device::Init()
 
 //    pinSW_LEFT.Init();
 
+    ModeClock::Set(ModeClock::Hi);
+
     ModeClock::Set(ModeClock::Sleep);
 }
 
