@@ -8,7 +8,7 @@
 
 namespace Device
 {
-    void ControlFunction(int type);
+    void ControlFunction(bool pins, int type);
 }
 
 
@@ -24,32 +24,56 @@ void Device::Update()
 {
     ModeClock::Set(ModeClock::Hi);
 
-    ControlFunction(1);
+    ControlFunction(true, 1);
+    ControlFunction(false, 1);
 
     ModeClock::Set(ModeClock::Sleep);
 
     ModeClock::Set(ModeClock::Low);
 
-    ControlFunction(0);
+    ControlFunction(true, 0);
+    ControlFunction(false, 0);
 }
 
 
-void Device::ControlFunction(int type)
+void Device::ControlFunction(bool pins, int type)
 {
     if (type == 0)
     {
-        for (int i = 0; i < 0xFFFF; i++)
+        if (pins)
         {
-            pinSW_LEFT.ToHi();
-            pinSW_LEFT.ToLow();
+            for (int i = 0; i < 0xFFFF; i++)
+            {
+                pinSW_LEFT.ToHi();
+                pinSW_LEFT.ToLow();
+            }
+        }
+        else
+        {
+            volatile int i = 0xFFFFFF;
+
+            while (i--)
+            {
+            }
         }
     }
     else
     {
-        for (int i = 0; i < 0xFFFFF; i++)
+        if (pins)
         {
-            pinSW_LEFT.ToHi();
-            pinSW_LEFT.ToLow();
+            for (int i = 0; i < 0xFFFFF; i++)
+            {
+                pinSW_LEFT.ToHi();
+                pinSW_LEFT.ToLow();
+            }
+        }
+        else
+        {
+            volatile int i = 0xFFFFFFF;
+
+            while (i--)
+            {
+            }
         }
     }
 }
