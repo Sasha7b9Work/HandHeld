@@ -77,7 +77,7 @@ void ModeClock::LeaveSleep()
 
 
 
-void HAL_CLOCK::SetSleep()
+void HAL_CLOCK::SetSleep() 
 {
     pmu_to_sleepmode(WFI_CMD);
 }

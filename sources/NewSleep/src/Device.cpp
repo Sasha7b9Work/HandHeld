@@ -17,6 +17,8 @@ void Device::Init()
     HAL::Init();
 
     pinSW_LEFT.Init();
+
+    ModeClock::Set(ModeClock::Hi);
 }
 
 
@@ -24,19 +26,19 @@ void Device::Update()
 {
     ModeClock::Set(ModeClock::Hi);
 
-    ControlFunction(1);
+//    ControlFunction(1);
 
     ModeClock::Set(ModeClock::Sleep);
 
-    ControlFunction(1);
-
-    ModeClock::Set(ModeClock::Low);
-
-    ControlFunction(0);
-
-    ModeClock::Set(ModeClock::Sleep);
-
-    ControlFunction(0);
+//    ControlFunction(1);
+//
+//    ModeClock::Set(ModeClock::Low);
+//
+//    ControlFunction(0);
+//
+//    ModeClock::Set(ModeClock::Sleep);
+//
+//    ControlFunction(0);
 }
 
 
