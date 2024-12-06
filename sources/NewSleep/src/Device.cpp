@@ -16,33 +16,21 @@ void Device::Init()
 {
     HAL::Init();
 
-//    Timer::Init();
-
-//    pinSW_LEFT.Init();
-
-    ModeClock::Set(ModeClock::Hi);
-
-    ModeClock::Set(ModeClock::Sleep);
+    pinSW_LEFT.Init();
 }
 
 
 void Device::Update()
 {
-    while (true)
-    {
-        ModeClock::Set(Mode)
-    }
-//    ModeClock::Set(ModeClock::Low);
-//
-//    ControlFunction(0);
-//
-//    ModeClock::Set(ModeClock::Sleep);
-//
-//    ModeClock::LeaveSleep();
-//
-//    ModeClock::Set(ModeClock::Hi);
-//
-//    ControlFunction(1);
+    ModeClock::Set(ModeClock::Hi);
+
+    ModeClock::Set(ModeClock::Sleep);
+
+    ControlFunction(1);
+
+    ModeClock::Set(ModeClock::Low);
+
+    ControlFunction(0);
 }
 
 
