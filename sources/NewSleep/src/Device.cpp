@@ -24,9 +24,9 @@ void Device::Update()
 {
     ModeClock::Set(ModeClock::Hi);
 
-    ModeClock::Set(ModeClock::Sleep);
-
     ControlFunction(1);
+
+    ModeClock::Set(ModeClock::Sleep);
 
     ModeClock::Set(ModeClock::Low);
 

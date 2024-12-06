@@ -79,8 +79,6 @@ void ModeClock::LeaveSleep()
 
 void HAL_CLOCK::SetSleep()
 {
-    RCU_CTL0 &= ~RCU_CTL0_PLLEN;
-
     pmu_to_sleepmode(WFI_CMD);
 }
 
