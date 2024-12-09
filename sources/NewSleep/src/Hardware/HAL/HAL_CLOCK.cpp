@@ -237,7 +237,7 @@ void HAL_CLOCK::SetHi()
     while (RCU_SCSS_PLL != (RCU_CFG0 & RCU_CFG0_SCSS)) {
     }
 
-//    systick_config();
+    systick_config();
 
     HAL::Init();
 }
