@@ -24,7 +24,7 @@ void Device::Init()
 
 void Device::Update()
 {
-    ModeClock::Set(ModeClock::Hi);
+//    ModeClock::Set(ModeClock::Hi);
 
     ControlFunction(1);
 
