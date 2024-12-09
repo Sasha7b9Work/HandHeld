@@ -79,6 +79,8 @@ void ModeClock::LeaveSleep()
 
 void HAL_CLOCK::SetSleep() 
 {
+    system_lowpower_reset(SCB_SCR_SLEEPONEXIT);
+
     pmu_to_sleepmode(WFI_CMD);
 }
 
