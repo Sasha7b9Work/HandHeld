@@ -79,7 +79,9 @@ void ModeClock::LeaveSleep()
 
 void HAL_CLOCK::SetSleep() 
 {
+#ifndef WIN32
     NVIC_DisableIRQ(SysTick_IRQn);
+#endif
 
     system_lowpower_reset(SCB_SCR_SLEEPONEXIT);
 
