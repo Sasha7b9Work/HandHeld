@@ -10,6 +10,8 @@ void HAL::Init()
 {
     systick_config();
 
+//    NVIC_DisableIRQ((IRQn_Type)nvic_irq);
+
     rcu_periph_clock_enable(RCU_PMU);
 
 //    rcu_periph_clock_enable(RCU_GPIOA); 
