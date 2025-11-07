@@ -26,10 +26,14 @@ if(WIN32)
     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /SUBSYSTEM:WINDOWS")
 
     add_compile_options(
+        /wd4355
         /wd4365
+        /wd4505
+        /wd4514
         /wd4623
         /wd4625
         /wd4626
+        /wd4710
         /wd4774
         /wd4820
         /wd5026
@@ -121,7 +125,7 @@ add_executable(${PROJECT_NAME}
     ${UTILS}
 )
 
-target_link_libraries(${PROJECT_NAME} wxbase32ud wxmsw32ud_core Ws2_32)
+target_link_libraries(${PROJECT_NAME} wxbase33ud wxmsw33ud_core Ws2_32)
 
-add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD COMMAND copy ..\\..\\ThirdParty\\lib\\vc_dll\\wxbase32ud_vc_custom.dll $(OutputPath) /Y)
-add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD COMMAND copy ..\\..\\ThirdParty\\lib\\vc_dll\\wxmsw32ud_core_vc_custom.dll $(OutputPath) /Y)
+add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD COMMAND copy ..\\..\\ThirdParty\\lib\\vc_dll\\wxbase331ud_vc_custom.dll $(OutputPath) /Y)
+add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD COMMAND copy ..\\..\\ThirdParty\\lib\\vc_dll\\wxmsw331ud_core_vc_custom.dll $(OutputPath) /Y)
